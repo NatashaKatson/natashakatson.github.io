@@ -6,6 +6,7 @@ enableInlineShortcodes: true
 enableRobotsTXT: true
 
 googleAnalytics: G-PM04VCTDBG
+disqusShortname: natashakatson-github-io
 
 minify:
     disableXML: true
@@ -61,6 +62,7 @@ params:
     license: "CC BY-NC-ND 4.0"
     licenseUrl: "https://creativecommons.org/licenses/by-nc-nd/4.0/deed.en"
     ShowReadingTime: true
+    comments: true
     defaultTheme: auto
     ShowShareButtons: true
     displayFullLangName: true
