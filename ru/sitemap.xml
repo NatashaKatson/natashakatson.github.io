@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://natashakatson.github.io/ru/</loc>
+    <lastmod>2020-12-30T15:44:13-05:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://natashakatson.github.io/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://natashakatson.github.io/ru/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://natashakatson.github.io/ru/posts/</loc>
+    <lastmod>2020-12-30T15:44:13-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://natashakatson.github.io/ru/tags/</loc>
+    <lastmod>2020-12-30T15:44:13-05:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://natashakatson.github.io/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://natashakatson.github.io/ru/tags/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://natashakatson.github.io/ru/posts/hello-canada/</loc>
+    <lastmod>2020-12-30T15:44:13-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://natashakatson.github.io/ru/tags/%D0%B1%D1%8E%D1%80%D1%80%D0%BE%D0%BA%D1%80%D0%B0%D1%82%D0%B8%D1%8F/</loc>
+    <lastmod>2020-12-30T15:44:13-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://natashakatson.github.io/ru/tags/%D0%BF%D0%B5%D1%80%D0%B5%D0%B5%D0%B7%D0%B4/</loc>
+    <lastmod>2020-12-30T15:44:13-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://natashakatson.github.io/ru/categories/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://natashakatson.github.io/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://natashakatson.github.io/ru/categories/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://natashakatson.github.io/ru/series/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://natashakatson.github.io/series/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://natashakatson.github.io/ru/series/"
+                />
+  </url>
+  
+</urlset>
