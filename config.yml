@@ -36,6 +36,8 @@ languages:
 
             Здесь я постараюсь рассказывать разные не очень типичные истории про иммиграцию, местные цены, работу, ну и другое, что меня окружает.
 
+        license: "RU CC BY-NC-ND 4.0"
+        licenseUrl: "https://creativecommons.org/licenses/by-nc-nd/4.0/deed.ru"
         menu:
             main:
                 # - name: Archive
@@ -56,8 +58,8 @@ params:
     env: production
     description: ""
     author: Natasha Katson
-    license: "CC BY-NC-SA 4.0"
-    licenseUrl: "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"
+    license: "CC BY-NC-ND 4.0"
+    licenseUrl: "https://creativecommons.org/licenses/by-nc-nd/4.0/deed.en"
     ShowReadingTime: true
     defaultTheme: auto
     ShowShareButtons: true
