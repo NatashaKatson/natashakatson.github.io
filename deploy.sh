@@ -1,7 +1,6 @@
 
 #!/bin/sh
 
-
 echo "Deleting old publication"
 rm -rf public
 mkdir public
