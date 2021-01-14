@@ -1,7 +1,7 @@
 ---
 title: "Как мы получали SIN (social insurance number) в Канаде"
 date: 2021-01-14T14:54:18-05:00
-draft: true
+draft: false
 tags:
 - переезд
 ---
