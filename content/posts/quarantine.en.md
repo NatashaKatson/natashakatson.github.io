@@ -11,13 +11,15 @@ While I have some free time, I want to tell you about the quarantine in Canada, 
 
 We got Uber and went directly to our place in downtown Toronto. D.'s company rented apartments there in a tall condo building. We knew nothing about the place; we just hoped it would have a balcony so we could "walk around and get some air." It appeared to be nice furnished apartments with cooking supplies and everything a person needs to stay at home. It also had a balcony with a view on a small park. 
 
+{{< figure src="/images/2021-01-03.jpg" caption=" " >}}
+
 When we arrived, the receptionist told us about the quarantine and added us to the "quarantine list," which allowed them to leave the deliveries at our doors. Usually, they would ask the residence to pick up the deliveries at the reception (because of Covid). The quarantine means that you should not leave your apartments even if you need to take out the trash. We usually called a company which owned our suit in advance to ask them to take out our trash, put the trash next to our door, and some person took it out. Every morning we checked in the ArriveCan app, which you need to install before going to Canada; either way, they wouldn't let you on board. If you forget to check-in, you'll get a reminder about it. On the 15th day, our profile got reset, and we could finally go outside.
 
 And now I'll share details about some delivery services that we used to survive the quarantine. There are many deliveries here, but it's not easy to quickly get around them with a full understanding of prices and fees. 
 
 TL;DR The cheapest way is to order items directly from the Grocery store. But because of our situation, we were not sure how many things we should order because we didn't know if we would stay here in Canada. 
 
-Grocery Delivery 
+## Grocery Delivery 
 
 ### Uber Eats
 The next morning after we arrived, we were too hungry to look around for different options, so we quickly ordered something. We were already familiar with [Uber Eats](https://ubereats.app.link/LfdZFuf8Kcb). The grocery delivery in Uber Eats is actually powered by Cornershop (I will tell about it further) and is done within 1-2 hours. Eventually, Uber Eats turned out to be the most expensive grocery delivery because we paid both the Uber Eats fee and the Cornershop fee.
@@ -74,13 +76,13 @@ The last but not least grocery delivery that I want to mention is [Instacart](ht
 
 Summary:
 
-**Item Subtotal: $93.62**
-Sales Tax: $0.00
-Tip: $4.68
-Service Fee: $4.68
-Bags Fee: $0.30
-Retailer Coupon Discount: -$20.00
-**Total: $83.89**
+- **Item Subtotal: $93.62**  
+- Sales Tax: $0.00  
+- Tip: $4.68  
+- Service Fee: $4.68  
+- Bags Fee: $0.30  
+- Retailer Coupon Discount: -$20.00  
+- **Total: $83.89**  
 
 All the products were carefully packed, the delivery person left the bags right by the door, knocked, and left.
 
