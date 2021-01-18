@@ -53,6 +53,11 @@
   </url>
   
   <url>
+    <loc>https://natashakatson.github.io/ru/tags/%D0%B1%D1%8E%D1%80%D0%BE%D0%BA%D1%80%D0%B0%D1%82%D0%B8%D1%8F/</loc>
+    <lastmod>2021-01-14T14:54:18-05:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://natashakatson.github.io/ru/tags/%D0%BF%D0%B5%D1%80%D0%B5%D0%B5%D0%B7%D0%B4/</loc>
     <lastmod>2021-01-14T14:54:18-05:00</lastmod>
   </url>
@@ -60,11 +65,16 @@
   <url>
     <loc>https://natashakatson.github.io/ru/posts/welcome-to-canada/</loc>
     <lastmod>2021-01-11T20:27:05-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://natashakatson.github.io/ru/tags/%D0%B1%D1%8E%D1%80%D0%BE%D0%BA%D1%80%D0%B0%D1%82%D0%B8%D1%8F/</loc>
-    <lastmod>2021-01-11T20:27:05-05:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://natashakatson.github.io/posts/welcome-to-canada/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://natashakatson.github.io/ru/posts/welcome-to-canada/"
+                />
   </url>
   
   <url>
@@ -100,11 +110,6 @@
                 hreflang="ru"
                 href="https://natashakatson.github.io/ru/posts/hello-canada/"
                 />
-  </url>
-  
-  <url>
-    <loc>https://natashakatson.github.io/ru/tags/%D0%B1%D1%8E%D1%80%D1%80%D0%BE%D0%BA%D1%80%D0%B0%D1%82%D0%B8%D1%8F/</loc>
-    <lastmod>2020-12-30T15:44:13-05:00</lastmod>
   </url>
   
   <url>
