@@ -1,7 +1,7 @@
 ---
 title: "Quarantine in Toronto "
 date: 2021-01-03T15:26:31-05:00
-draft: true
+draft: false
 tags: 
 - prices
 - delivery
@@ -85,5 +85,75 @@ Summary:
 - **Total: $83.89**  
 
 All the products were carefully packed, the delivery person left the bags right by the door, knocked, and left.
+
+## Food delivery 
+
+Apart from cooking our meals, we also wanted to try various local restaurant deliveries, especially given that Toronto is famous for a variety of cuisine from all over the world.
+
+We mostly used Uber Eats and DoorDash during our quarantine. 
+
+### Uber Eats
+
+To be honest, [Uber Eats](https://ubereats.app.link/LfdZFuf8Kcb) has a much more variety of food compared to DoorDash. 
+They also have different discounts and personalized offers, for example, the "order one, get one free" deal. Although it should be one dish to use this option, we left a comment for a restaurant to make one meal spicier than another one when we ordered from a Thai restaurant. Please note that the price for the dish is usually lower than it actually costs. For example, you want to order Massaman Curry, the price is $21, but you **have to** add meat/seafood and rice to the order, and you have to separately pay for it. In the end, the "order one get one free" deal is only applied to Masaman Curry ($21) and is not applied to the additional stuff. There are different fees applied to the order, like taxes, tips, and service fees.
+
+Here is an example of one of our first orders.
+
+- **Massaman Curry** CA $21
+- Shrimp CA $4.00
+- Jasmine Rice CA $0.00 (usually it's not free, though)
+
+- Tax CA $3.93
+- Service Fee CA $4.20
+- Delivery Fee $0.99
+- Tips CA $5.11
+- **Total** CA $39.23
+
+So, although the Curry cost $21, we had to pay $39.12 in total. We later noticed that we could modify the tip, but I advise you to leave good tips because it's a pandemic going on, and delivery people are our heroes.
+
+**Useful tip**. You can get a free one month trial for Uber Eats (Eats Pass) and get free delivery in addition to 5% off from the orders that are more than $15. I eventually subscribed for Eats Pass for a month.
+
+### DoorDash
+
+ [Doordash](https://drd.sh/iVyp4q/) is an Uber Eats competitor. 
+It seemed to me that there are fewer restaurant options in it, but there are promotions, and delivery is often cheaper. DoorDash also has a subscription with some discounts. As a new user, you will get some bonuses - free shipping and some other discounts.
+
+Here is my first order from DoorDash.
+
+- **Subtotal** $30.58
+- Tax $4.42
+- Delivery Fee Free
+- Service Fee $3.36
+- Discount -$5.00
+- Tip $2.00
+- **Total** $35.36
+
+## Alcohol delivery
+
+You can also order alcohol in Toronto. We used [Runner](https://runnerinc.page.link/DgAEw6CcoQtk2sp78), the delivery usually took around two hours after the order was placed. To get your first order, you have to show your ID for them to make sure that you are over 19 years old. The delivery person from Runner was literally the only person we saw during 14 days of quarantine. After they confirm your ID, they would just leave a package by the door, knock and leave for every other delivery.
+
+We ordered twelve bottles of beer and two bottles of wine for our first delivery.
+- **Item total** $86.58
+- Delivery Fee $9.99
+- Tax $4.24
+- Tip $5.00
+- **Total** 103.87
+
+## Other deliveries
+
+I'm sure everyone knows about weed legalization in Canada. We were exhausted and devastated because of our situation, so we could not help but take advantage of this. Most of the deliveries need you to stop by the shop to show your ID, but some didn't (for example, [OCS] (https://ocs.ca/)). Delivery was not so fast; it took them 2-3 days. We ordered a PAX vaporizer and some pods with a high level of CBD extracts to finally relax and get some sleep. The PAX costs $46.50, one pod costs around $50 on average (but it will last for half a year).
+
+- Subtotal $96.45, including $11.00 tax
+- Delivery Fee $0.00
+
+And, of course, Amazon. Amazon.ca is not as great as amazon.com, but you can still order almost anything with fast delivery. For example, cleaning supplies. I got Amazon Prime, which is also free for the first month.
+
+What we were really missing during the quarantine was the PlayStation! But we sold ours just before the trip in order to buy one here after the arrival. But again, we couldn't do it because we were not sure if they let us stay here..and to be honest, where can you order PlayStation 5?! They are still not available anywhere. 
+
+Of course, quarantine is a great time to read about everything that you need to get done after it ends (banks, a mobile phone, renting an apartment), but to be honest, we have learned practically nothing since we were under terrible stress. Once a day, we went out to the balcony to "walk," several times a week, we worked out.
+
+In general, you can survive 14 days quarantine, it's pretty easy to get mad. Perhaps the most unusual feeling is the understanding that you have been in a completely new country and a city for two weeks but have not yet seen anything except the view from the window. I really appreciated people who walked the dogs; I usually spent a few hours looking at them 🐶.
+
+P.S. We paid for everything using our Russian Tinkoff bank, which lets you have a CAD balance on your card. Once the quarantine was over, our spending on groceries got less since we were not obligated to order everything, and thus we could spend less on delivery fees. Also, take outs usually give you great discounts.
 
 
