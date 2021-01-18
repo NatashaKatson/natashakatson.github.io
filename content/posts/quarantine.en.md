@@ -141,7 +141,7 @@ We ordered twelve bottles of beer and two bottles of wine for our first delivery
 
 ## Other deliveries
 
-I'm sure everyone knows about weed legalization in Canada. We were exhausted and devastated because of our situation, so we could not help but take advantage of this. Most of the deliveries need you to stop by the shop to show your ID, but some didn't (for example, [OCS] (https://ocs.ca/)). Delivery was not so fast; it took them 2-3 days. We ordered a PAX vaporizer and some pods with a high level of CBD extracts to finally relax and get some sleep. The PAX costs $46.50, one pod costs around $50 on average (but it will last for half a year).
+I'm sure everyone knows about weed legalization in Canada. We were exhausted and devastated because of our situation, so we could not help but take advantage of this. Most of the deliveries need you to stop by the shop to show your ID, but some didn't (for example, [OCS](https://ocs.ca/)). Delivery was not so fast; it took them 2-3 days. We ordered a PAX vaporizer and some pods with a high level of CBD extracts to finally relax and get some sleep. The PAX costs $46.50, one pod costs around $50 on average (but it will last for half a year).
 
 - Subtotal $96.45, including $11.00 tax
 - Delivery Fee $0.00
