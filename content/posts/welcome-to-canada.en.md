@@ -1,5 +1,5 @@
 ---
-title: "The day when we finally got a Work Permit"
+title: "The Day When We Finally Got a Work Permit"
 date: 2021-01-11T20:27:05-05:00
 draft: false
 tags: 

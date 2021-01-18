@@ -1,5 +1,5 @@
 ---
-title: "A story about one almost successful relocation"
+title: "A Story About One Almost Successful Relocation"
 date: 2020-12-30T21:19:57-05:00
 draft: false
 tags: 
