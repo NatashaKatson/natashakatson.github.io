@@ -73,6 +73,36 @@
   </url>
   
   <url>
+    <loc>https://natashakatson.github.io/tags/delivery/</loc>
+    <lastmod>2021-01-03T15:26:31-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://natashakatson.github.io/tags/prices/</loc>
+    <lastmod>2021-01-03T15:26:31-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://natashakatson.github.io/tags/quarantine/</loc>
+    <lastmod>2021-01-03T15:26:31-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://natashakatson.github.io/posts/quarantine/</loc>
+    <lastmod>2021-01-03T15:26:31-05:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://natashakatson.github.io/ru/posts/quarantine/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://natashakatson.github.io/posts/quarantine/"
+                />
+  </url>
+  
+  <url>
     <loc>https://natashakatson.github.io/posts/hello-canada/</loc>
     <lastmod>2020-12-30T21:19:57-05:00</lastmod>
     <xhtml:link
