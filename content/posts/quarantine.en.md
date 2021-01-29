@@ -152,6 +152,6 @@ Of course, quarantine is a great time to read about everything that you need to 
 
 In general, you can survive 14 days quarantine, but it's pretty easy to get mad. Perhaps the most unusual feeling is the understanding that you have been in a completely new country and a city for two weeks but have not yet seen anything except the view from your window. I really appreciated people who walked the dogs; I usually spent a few hours a day looking at them 🐶.
 
-P.S. We paid for everything using our Russian Tinkoff bank, which lets you have a CAD balance on your card. Once the quarantine was over, our spending on groceries got less since we were not obligated to order everything, and thus we could spend less on delivery fees. Also, take outs usually give you great discounts.
+P.S. We paid for everything using our Russian [Tinkoff bank](https://www.tinkoff.ru/sl/7WyfhoLwreO), which lets you have a CAD balance on your card. Once the quarantine was over, our spending on groceries got less since we were not obligated to order everything, and thus we could spend less on delivery fees. Also, take outs usually give you great discounts.
 
 
