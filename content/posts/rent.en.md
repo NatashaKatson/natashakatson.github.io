@@ -1,5 +1,5 @@
 ---
-title: "How Did We Rent Apartments in Toronto"
+title: "How We Rented Apartments in Toronto"
 date: 2021-02-03T19:00:00-05:00
 draft: true
 tags:
