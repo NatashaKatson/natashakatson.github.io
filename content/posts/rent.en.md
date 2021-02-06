@@ -7,7 +7,7 @@ tags:
 - moving
 ---
 Today I'll share my experience of looking for apartments in Toronto.
-While we have a temporary place till March 3, we have recently signed a rent lease to a new place, and we should get the keys on February 17. As a person who has recently moved here from Russia, I still feel that it's all a fraud, but hopefully, this country is more civilized, and a signed lease gives you some guarantees. It's a long read, but I really tried to explain in details how everything works here.
+While we have a temporary place till March 3, we have recently signed a lease to a new place, and we should get the keys on February 17. As a person who has recently moved here from Russia, I still feel that it's all a fraud, but hopefully, this country is more civilized, and a signed lease gives you some guarantees. It's a long read, but I really tried to explain in details how everything works here.
 
 ## Step 1 - learn about the city
 A few weeks before moving to Toronto, we decided to learn a little bit about its neighborhoods.
@@ -34,7 +34,7 @@ My favorite neighborhood was [Bridle Path](https://www.google.com/maps/place/Bri
 
 Toronto is huge and wildly different; you can find completely different types of housing for rent. Here is an overview:
 
-1. A condo. Usually, a condo is owned by a person, in rare cases by some company. There are two types of condo buildings: high-rise and low-rise. As I wrote above, these buildings also have some facilities, and the apartments, in general, look modern. We decided to rent a place in a high-rise building only if we don't find anything else. But a condo as a type of rental housing sounds good to us.
+1. A condo. Usually, a condo is owned by a person, in rare cases by some company. There are two types of condo buildings: high-rise and low-rise. As I wrote above, these buildings also have some amenities, and the apartments, in general, look modern. We decided to rent a place in a high-rise building only if we don't find anything else. But a condo as a type of rental housing sounds good to us.
 2. Rental apartments that are located in buildings that are owned by a company. Pros - you don't need to communicate with a landlord if something needs to be fixed; cons - usually, the washer and a dryer are located in those buildings' basement. Also, we heard there might be bedbugs in such buildings. So we decided even not to consider such places, although they are in great demand among people who have just arrived in Canada.
 3. Basements - are my "favorite" type of rental housing here. If you see a house in Toronto, most probably someone lives in a basement there (and it's not a homeless person!). They say homeowners rent out basements to pay for their mortgage, not sure if it's true because often the first and the second floors are also rented out. Even though you'll most likely have a backyard if you rent a basement, it's dark inside, and come on.. it's a basement! We did not consider the basements at all; it still seems to me that it is not very healthy to live there (particularly for the lungs).
 4. The floor in a house or a whole house. Everything is clear here, the landlord will own the place, but since houses are large than the condos, they'll be more pricy. I always wanted to rent a house, but it did not fit into the budget at all.
