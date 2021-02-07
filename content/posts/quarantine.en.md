@@ -2,6 +2,8 @@
 title: "Quarantine in Toronto "
 date: 2021-01-03T15:26:31-05:00
 draft: false
+showtoc: true
+tocOpen: false
 tags: 
 - prices
 - delivery
@@ -70,7 +72,7 @@ Here is the summary of our first order:
 - HST @ 13%:  $2.20
 - **Total**: $140.94
 
-## Instacart 
+### Instacart 
 
 The last but not least grocery delivery that I want to mention is [Instacart](https://inst.cr/t/YjVsWUdYMTBu). My referral link will give you a $10 discount for your first order. I also used a referral link when I signed up, but I didn't order items from my basket right away..And I got $20 off the next day :) The delivery costs around 5% of the order summary. I liked it that they contacted me in their virtual chat about the items that were out of stock; this way, it was easier for me to find a replacement. As I previously mentioned, Uber Eats and Cornershop do the same thing, but Instacart representative contact you directly in live chat, which is nice. 
 

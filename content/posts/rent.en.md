@@ -1,7 +1,7 @@
 ---
 title: "How We Rented A Condo in Toronto"
 date: 2021-02-03T19:00:00-05:00
-draft: true
+draft: false
 showtoc: true
 tocOpen: false
 tags:

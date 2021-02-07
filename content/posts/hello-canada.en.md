@@ -2,6 +2,8 @@
 title: "A Story About One Almost Successful Relocation"
 date: 2020-12-30T21:19:57-05:00
 draft: false
+showtoc: true
+tocOpen: false
 tags: 
 - relocation
 - O Canada
