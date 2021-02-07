@@ -2,6 +2,8 @@
 title: "Как мы снимали квартиру в Торонто"
 date: 2021-02-03T19:00:00-05:00
 draft: false
+showtoc: true
+tocOpen: false
 tags:
 - переезд
 - аренда
