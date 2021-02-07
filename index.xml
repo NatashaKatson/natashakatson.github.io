@@ -5,9 +5,19 @@
     <link>https://natashakatson.github.io/</link>
     <description>Recent content on Natasha&#39;s Journey</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 14 Jan 2021 14:54:18 -0500</lastBuildDate><atom:link href="https://natashakatson.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 03 Feb 2021 19:00:00 -0500</lastBuildDate><atom:link href="https://natashakatson.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Get your SIN in Canada</title>
+      <title>How We Rented A Condo in Toronto</title>
+      <link>https://natashakatson.github.io/posts/rent/</link>
+      <pubDate>Wed, 03 Feb 2021 19:00:00 -0500</pubDate>
+      
+      <guid>https://natashakatson.github.io/posts/rent/</guid>
+      <description>Today I&amp;rsquo;ll share my experience of looking for a condo (an apartment) in Toronto. A disclamer: I&amp;rsquo;ll refer to our condo as an apartment just because it sounds more familiar to me.
+While we have a temporary place till March 3, we have recently signed a lease to a new place, and we should get the keys on February 17. As a person who has recently moved here from Russia, I still feel that it&amp;rsquo;s all a fraud, but hopefully, this country is more civilized, and a signed lease gives you some guarantees.</description>
+    </item>
+    
+    <item>
+      <title>Get Your SIN in Canada</title>
       <link>https://natashakatson.github.io/posts/get-your-sin/</link>
       <pubDate>Thu, 14 Jan 2021 14:54:18 -0500</pubDate>
       
@@ -43,6 +53,15 @@ CBSA office looks similar to the police station (I haven&amp;rsquo;t been at any
       <guid>https://natashakatson.github.io/posts/hello-canada/</guid>
       <description>Hello, my name is Natasha, and I&amp;rsquo;m a person who plans everything, but nothing goes according to my plan because of very different circumstances (and then I suffer and get depressed). I always wanted to move from Russia. I had plenty of ideas, thoughts, and sometimes opportunities to do that, but it never really happened until this time.
 Immigration and relocation is not an easy process, especially during a pandemic. I am sure that many of those who relocated have 1001 stories about how they moved, but ours is just very weird and unusual.</description>
+    </item>
+    
+    <item>
+      <title>Archive</title>
+      <link>https://natashakatson.github.io/archives/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://natashakatson.github.io/archives/</guid>
+      <description>archives</description>
     </item>
     
   </channel>

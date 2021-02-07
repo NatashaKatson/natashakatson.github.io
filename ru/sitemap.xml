@@ -50,6 +50,16 @@
   <url>
     <loc>https://natashakatson.github.io/ru/posts/rent/</loc>
     <lastmod>2021-02-03T19:00:00-05:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://natashakatson.github.io/posts/rent/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://natashakatson.github.io/ru/posts/rent/"
+                />
   </url>
   
   <url>
@@ -177,6 +187,20 @@
                 rel="alternate"
                 hreflang="ru"
                 href="https://natashakatson.github.io/ru/series/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://natashakatson.github.io/ru/archives/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://natashakatson.github.io/archives/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://natashakatson.github.io/ru/archives/"
                 />
   </url>
   

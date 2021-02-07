@@ -64,5 +64,14 @@
 Вообще, иммиграция и переезды - это процесс непростой, особенно во время пандемии. Уверена, что у многих есть 1001 история про то, как они переезжали, но наша - просто гром среди ясного неба.</description>
     </item>
     
+    <item>
+      <title>Архив</title>
+      <link>https://natashakatson.github.io/ru/archives/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://natashakatson.github.io/ru/archives/</guid>
+      <description>archives</description>
+    </item>
+    
   </channel>
 </rss>

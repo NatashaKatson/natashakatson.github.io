@@ -3,6 +3,76 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://natashakatson.github.io/posts/rent/</loc>
+    <lastmod>2021-02-03T19:00:00-05:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://natashakatson.github.io/ru/posts/rent/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://natashakatson.github.io/posts/rent/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://natashakatson.github.io/tags/moving/</loc>
+    <lastmod>2021-02-03T19:00:00-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://natashakatson.github.io/</loc>
+    <lastmod>2021-02-03T19:00:00-05:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://natashakatson.github.io/ru/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://natashakatson.github.io/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://natashakatson.github.io/posts/</loc>
+    <lastmod>2021-02-03T19:00:00-05:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://natashakatson.github.io/ru/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://natashakatson.github.io/posts/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://natashakatson.github.io/tags/rent/</loc>
+    <lastmod>2021-02-03T19:00:00-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://natashakatson.github.io/tags/</loc>
+    <lastmod>2021-02-03T19:00:00-05:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://natashakatson.github.io/ru/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://natashakatson.github.io/tags/"
+                />
+  </url>
+  
+  <url>
     <loc>https://natashakatson.github.io/tags/bureaucracy/</loc>
     <lastmod>2021-01-14T14:54:18-05:00</lastmod>
   </url>
@@ -23,53 +93,8 @@
   </url>
   
   <url>
-    <loc>https://natashakatson.github.io/</loc>
-    <lastmod>2021-01-14T14:54:18-05:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://natashakatson.github.io/ru/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://natashakatson.github.io/"
-                />
-  </url>
-  
-  <url>
-    <loc>https://natashakatson.github.io/posts/</loc>
-    <lastmod>2021-01-14T14:54:18-05:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://natashakatson.github.io/ru/posts/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://natashakatson.github.io/posts/"
-                />
-  </url>
-  
-  <url>
     <loc>https://natashakatson.github.io/tags/relocation/</loc>
     <lastmod>2021-01-14T14:54:18-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://natashakatson.github.io/tags/</loc>
-    <lastmod>2021-01-14T14:54:18-05:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://natashakatson.github.io/ru/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://natashakatson.github.io/tags/"
-                />
   </url>
   
   <url>
@@ -135,6 +160,20 @@
   <url>
     <loc>https://natashakatson.github.io/tags/o-canada/</loc>
     <lastmod>2020-12-30T21:19:57-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://natashakatson.github.io/archives/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://natashakatson.github.io/ru/archives/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://natashakatson.github.io/archives/"
+                />
   </url>
   
   <url>
