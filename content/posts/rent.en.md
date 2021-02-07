@@ -1,5 +1,5 @@
 ---
-title: "How We Rented Apartments in Toronto"
+title: "How We Rented A Condo in Toronto"
 date: 2021-02-03T19:00:00-05:00
 draft: true
 showtoc: true
@@ -8,7 +8,8 @@ tags:
 - rent
 - moving
 ---
-Today I'll share my experience of looking for apartments in Toronto.
+Today I'll share my experience of looking for a condo (an apartment) in Toronto. A disclamer: I'll refer to our condo as an apartment just because it sounds more familiar to me.
+
 While we have a temporary place till March 3, we have recently signed a lease to a new place, and we should get the keys on February 17. As a person who has recently moved here from Russia, I still feel that it's all a fraud, but hopefully, this country is more civilized, and a signed lease gives you some guarantees. It's a long read, but I really tried to explain in details how everything works here.
 
 ## Step 1 - learn about the city
@@ -50,7 +51,7 @@ When we finally got our documents to stay here in Canada legally, we could start
 - And the most important thing - you should have enough money in your Canadian bank account. Firstly, to get a statement from a local bank that you have money, and secondly, so that you can make a deposit within 24 hours after signing the contract (I'll talk more about it later).
   
 Some landlords also want to see your SIN, but it's illegal, and you should not do it.
-  A few days after D. got employed here, we opened a bank account, transferred our funds from Russia, and got a cheque book that could be helpful later for rent payments.
+  A few days after D. got employed here, we opened a bank account, transferred our funds from Russia, and got a check book that could be helpful later for rent payments.
 
 ## Step 5 - actually rent a place
 Finally, when we got all the documents, we could start looking for a place. I should also mention that you can't move out earlier than in a year when you rent a place in Toronto. If you do, you will still have to pay till the end of the lease period anyway. So it was vital for us to find a decent place where we would enjoy living.
@@ -72,22 +73,21 @@ Here is a timeline to clarify how difficult everything is here and how different
 1. Saturday, 11 am. We checked the place, liked it and decided to rent it.
 2. Saturday, 12 pm. Right after we checked the apartments, we got into the agent's car (all cafes are closed here) and filled out our offer for renting an apartment (OREA Form 410), which our agent later added to Docusign for signing (it's very cool that the entire document flow here can be done online). The landlord will only consider you as a tenant if they receive an offer from you (well, from their agent). In the offer, you need to add all tenants and occupants, your position and company details, previous place of residence, and two contacts in Canada as referrals. We only have one friend in Vancouver, so we added her, and we decided to add a friend from the USA.
    Although usually, the rent starts on the 1st of the month, our possession date will be February 17. Current tenants occupy the place until February 15, so we decided to rent the apartment right after they leave. Basically, in our offer, we proposed to pay for a year and a few weeks on top and three months of deposits instead of the usual two months (our agent said that since we don't have any credit history in Canada, it might help us to get the place). Then the agent got our documents altogether and emailed them to the landlord's agent along with our offer.
-3. Saturday, 6 pm. We received an email from our agent saying that the other agent didn't want to forward our offer to the landlord. They needed a confirmation from D.'s company that he was employed there and passed a probation period. And since it was Saturday, they proposed to wait until Monday to get a response from the HR team.
+3. Saturday, 6 pm. We received an email from our agent saying that the other agent didn't want to forward our offer to the landlord. They asked for a confirmation from D.'s company that he was employed there and passed a probation period. And since it was Saturday, they proposed to wait until Monday to get a response from the HR team.
 4. Saturday, 7 pm. D. emailed both HR and the team lead and asked them to confirm his employment ASAP. It was complicated to confirm the probation period, though. He had already passed the probation period in Russia, but since he was a new employee here in Canada, HR were obligated to add another probation period to the contract. Moreover, that agent shouldn't even ask about the probation period since it's a piece of confidential information. Our agent just assumed that the landlord's agent didn't want to do any paperwork on the weekend.
 5. Sunday, 7 pm. Our agent told us that other people who also checked the condo made an offer, and she assumed that they offered $2800 CAD. We got really sad, but the agent said it was a typical situation in Toronto, and, if we wanted, we could raise our offer to $2900 CAD. She said that $2900 CAD was the initial price for that place before COVID, and it really might help. We rechecked the real estate websites, realized there was nothing new, and decided to go with a new price (although, as I previously mentioned, our initial limit was $2500 CAD). We were also worried that the landlord's agent wouldn't even forward our offer to the landlord, but our agent assured us that they were obligated by law to forward all offers they received.
-6. Monday, 3 pm. The landlord chose us! We were thrilled that our (mine) misery during the weekend was not in vain (well, as usual, I didn't sleep and didn't eat well). Our agent immediately warned us that when the landlord signs the offer, the apartment is "frozen" on the market; roughly speaking, they have no right to show or lease it to anyone. Then the most interesting thing began - they sent us a contract for 20 pages, we signed it. And then, the landlord's agent added an appendix B to the contract for another 20 pages. As our agent said, everything in the add-on was like we were renting a house, not a condo, i.e., they wanted to add as much as possible into the contract to keep themselves safe (I can understand it, but some things were just crazy). Some cases were completely contrary to the law of the state of Ontario, which means they had no legal force. For example, it stated that no pets were allowed in the apartment (we don't have any pets, though). Well, everyone in Ontario is allowed to have pets; in fact, a gorgeous kitty lives in this apartment at the moment 😸.
+6. Monday, 3 pm. The landlord chose us! We were thrilled that our (mine) misery during the weekend was not in vain (well, as usual, I didn't sleep and didn't eat well). Our agent immediately warned us that when the landlord signs the offer, the apartment is "frozen" on the market; roughly speaking, they have no right to show or lease it to anyone. Then the most interesting thing began - they sent us a 20 pages contract, we signed it. And then, the landlord's agent added an appendix B to the contract, yet another 20 pages long. As our agent said, everything in the add-on looked like we were renting a house, not a condo, i.e., they wanted to add as much as possible into the contract to keep themselves safe (I can understand it, but some things were just crazy). Some statements were completely contrary to the law of the state of Ontario, which means they had no legal value. For example, it stated that no pets were allowed in the apartment (we don't have any pets, though). Well, everyone in Ontario is allowed to have pets; in fact, a gorgeous kitty lives in this apartment at the moment 😸.
 {{< figure src="/images/cat.png" caption=" " alt="кот" >}}
-
 Another "cool" thing was about the carpet. "The Tenant agrees to employ carpets for frequent walking areas in order to prevent noise
 distribution and floor deterioration." Our agent told us that this part usually applies to the houses, but not to the condos.
-Generally, we wanted to remove some items from the contract, but then we learned how it worked. We can either accept the contract and sign as is or reject and ask to send a new contract with the desired changes. But, if you reject the current contract (i.e., just ask to change any items there), the apartment is again open to the market, and at that moment, someone can make another offer, which may be better than ours, and in this case, we would lose our apartment. So we agreed with everything and signed the contract as is.
+Generally, we wanted to remove some statements from the contract, but then we learned how it works. We can either accept the contract and sign as is or reject and ask to send a new contract with the desired changes. But, if you reject the current contract (i.e., just ask to change any statements there), the apartment is again open to the market, and at that moment, someone can make another offer, which may be better than ours, and in this case, we would lose our apartment. So we agreed with everything and signed the contract as is.
 
 7. After both parties have signed the contract, you as a tenant have one working day to make a deposit. The apartment is considered to be leased the moment the landlord's brokerage receives the deposit. The deposit does not go directly to the landlord to protect all parties from fraud.
 8. On Tuesday morning, we went to the bank to make a deposit. We had two options:
-   - To deliver a bank draft in person to the bank, which is free;  
-   - To electronically wire the funds, but this option costs an additional $17.50 CAD.  
-   We chose the first option, went to our bank, got a check, made a picture of it (in case the other bank loses it, yes, it happens!), and delivered the check to another bank.
-   9.On Tuesday afternoon, we sent the picture of the check to our agent, and after a few hours got an update that the brokerage received our deposit. At that moment, we officially rented that condo!
+   - To electronically wire the funds, but this option costs an additional $17.50 CAD;
+   - To deliver a bank draft in person to the bank, which is free. We chose this option, went to our bank, got a check, made a picture of it (in case the other bank loses it, yes, it happens!), and delivered the check to another bank.
+
+9. On Tuesday afternoon, we sent the picture of the check to our agent, and after a few hours got an update that the brokerage received our deposit. At that moment, we officially rented that condo!
 
 Hurray, now we need to wait for February 17 and get the keys. Not yet :)   
 
@@ -97,14 +97,13 @@ After our agent congratulated us on a successful deal (she knew how we were worr
 2. We had to move the electricity and water account over to our names. That was easy; we just registered on the website which our consultant has provided us with. Starting from February 17, we will have access to our account.
 3. Contact our landlord regarding the payment method. We had two options again:
    - Email transfer. We preferred this option, but RBC has a $2500 CAD limit per day for any transfers, and it's not enough for us.  
-   - Post-dated cheques.  So we chose this option since we also already got the cheques when we opened an account.   
-   
-4. Prepare a personal cheque for $300 CAD refundable key deposit (yes, if we lose our keys, we would have to pay $300 CAD for it)
-5.  And my favorite part is that we need to reserve an elevator for our move with building management (it's just something very new to us!).
+   - Post-dated checks.  So we chose this option since we also already got the checks when we opened an account.
+4. Prepare a personal check for $300 CAD refundable key deposit (yes, if we lose our keys, we would have to pay $300 CAD for it).
+5.  And my favorite part is that we have to reserve an elevator for our move with building management (it's just something very new to us!).
 
 ## An epilogue
-If you have read up to this point, I congratulate you 😂🥳. I'm thrilled that we managed to rent the apartment that we liked and in the area where we wanted to live. The only thing we absolutely forgot to do was to check if there were any homeless shelters in the area. There are many mentally sick homeless people in Toronto, I don't want to interact with them, and shelter means they will continuously hang around. I just remembered this yesterday and discovered that there is the second-largest shelter in Toronto for homeless women not far from the condo building. I was very upset, but let's hope that everything will be fine there because after all the area is still considered quite good and even trendy 😏.
+If you have read up to this point, my congratulations to you 😂🥳. I'm thrilled that we managed to rent the apartment that we liked and in the area where we wanted to live. The only thing we absolutely forgot to do was to check if there were any shelters in the area. There are many mentally sick homeless people in Toronto, I don't want to interact with them, and having a shelter nearby means they will continuously hang around. I just remembered this yesterday and discovered that there is the second-largest shelter in Toronto for homeless women not far from the condo building. I was very upset, but let's hope that everything will be fine there because after all the area is still considered quite nice and even trendy 😏.
 
-I also want to say that I honestly admire those who come to Canada without work and any help. I can say that the consultant helps a lot by telling us what to do and when. When you first come across such a  familiar situation as renting an apartment in a new country, you get a little crazy about everything that needs to be done and when. I immediately remembered how we moved out of our apartment in St. Petersburg. We told our landlord about us leaving two weeks before we moved out. We told her that our friends wanted to move in, introduced them, and they paid us the deposit that she owned us, not to bother the landlord once again. Haha, here they probably only write about it in fairy tales.
+I also want to say that I honestly admire those who come to Canada without work and any help. I can say that the consultant helps a lot by telling us what to do and when. When you first come across such an ordinary situation as renting an apartment, you get a little crazy about everything that needs to be done in a new country. I immediately remembered how we moved out of our apartment in St. Petersburg. We told our landlord about us leaving two weeks before we moved out. We told her that our friends wanted to move in, introduced them, and they paid us the deposit that she owned us, not to bother the landlord once again. Haha, here they probably only write about it in fairy tales.
 
-I still have the feeling that it's all a fraud before we actually get the keys. Oh, I need to get rid of this post-Russian habit of seeing a fraud everywhere or at least relax for a while.
+I still have the feeling that it's all scam before we actually get the keys. Oh, I need to get rid of this post-Russian habit of seeing a fraud everywhere or at least relax for a while.
