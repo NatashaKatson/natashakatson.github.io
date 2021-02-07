@@ -18,12 +18,9 @@ languages:
         weight: 1
         menu:
             main:
-                # - name: Archive
-                #   url: archives
-                #   weight: 5
-                # - name: Search
-                #   url: search/
-                #   weight: 10
+                - name: Archive
+                  url: archives/
+                  weight: 5
                 - name: Tags
                   url: tags/
                   weight: 10
@@ -41,11 +38,11 @@ languages:
         licenseUrl: "https://creativecommons.org/licenses/by-nc-nd/4.0/deed.ru"
         menu:
             main:
-                # - name: Archive
-                #   url: archives/
-                #   weight: 5
+                - name: Архив
+                  url: archives/
+                  weight: 5
                 - name: Тэги
-                  url: tags
+                  url: tags/
                   weight: 10
 
 
