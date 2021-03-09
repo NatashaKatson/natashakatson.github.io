@@ -15,6 +15,7 @@ tags:
 - Work Permit (или любой другой документ, который подтверждает статус легального пребывания в Канаде). 
 - Паспорт (или другой ID). 
 - Подтверждение адреса (proof of address). 
+
 Плюс ко всему нужно распечатать и заполнить анкету (скачать можно [тут](http://www.forms.ssb.gov.on.ca/mbs/ssb/forms/ssbforms.nsf/FormDetail?OpenForm&ACT=RDR&TAB=PROFILE&SRCH=1&ENV=WWE&TIT=Registration+for+Ontario+Health+Coverage+form+&NO=014-0265-82)).
 
 Казалось бы, ничего сложного, но последний пункт самый неприятный. Proof of address требуют именно оригинал, это может быть контракт на квартиру (чтобы найти квартиру, нужно какое-то время потратить), tenant insurance (страховка, которую нужно купить для аренды квартиры), справка с работы и другие документы, подтверждающие адрес; вот [здесь](https://www.ontario.ca/page/apply-ohip-and-get-health-card) можно найти полный список.
