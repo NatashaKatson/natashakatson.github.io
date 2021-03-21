@@ -1,6 +1,7 @@
 ---
 title: "Как дела?"
 date: 2021-03-20T13:00:18-05:00
+showtoc: true
 draft: false
 tags:
 - какдела
