@@ -32,7 +32,9 @@ languages:
           Content: >
             Мой персональный блог.
 
-            Здесь я постараюсь рассказывать разные не очень типичные истории про иммиграцию, местные цены, работу, ну и другое, что меня окружает.
+            Здесь я постараюсь рассказывать разные не очень типичные истории про иммиграцию, местные цены, работу, ну и другое, что меня окружает.  
+
+            [**Подписаться**](https://feedburner.google.com/fb/a/mailverify?uri=NatashasJourneyrRu&amp;loc=ru_RU) на блог.
 
         license: "CC BY-NC-ND 4.0"
         licenseUrl: "https://creativecommons.org/licenses/by-nc-nd/4.0/deed.ru"
@@ -68,7 +70,9 @@ params:
         Content: >
             Welcome to my personal blog.
 
-            Here I want cover some untypical (or not) stories about immigration, exploring the world, prices, work and much more.
+            Here I want cover some untypical (or not) stories about immigration, exploring the world, prices, work and much more.  
+
+            [**Subscribe**](https://feedburner.google.com/fb/a/mailverify?uri=NatashasJourney&amp;loc=en_US) to get email updates.
 
     socialIcons:
         - name: twitter
