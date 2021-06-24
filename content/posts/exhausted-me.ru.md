@@ -5,7 +5,7 @@ draft: false
 showtoc: true
 tocOpen: false
 images:
-- "/images/result_vaccine.jpg"
+- "/images/waitingscreaming.jpg"
 tags:
 - вакцинация
 ---
