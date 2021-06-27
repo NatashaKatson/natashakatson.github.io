@@ -5,7 +5,7 @@ draft: false
 showtoc: true
 tocOpen: false
 images:
-- "/images/flowers.jpg"
+- "/images/house.jpg"
 tags:
 - торонто
 - toronto
