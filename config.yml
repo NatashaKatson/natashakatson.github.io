@@ -1,4 +1,4 @@
-baseURL: "http://natashakatson.com/"
+baseURL: "//natashakatson.com/"
 title: Natasha's Journey
 paginate: 5
 theme: hugo-PaperMod
