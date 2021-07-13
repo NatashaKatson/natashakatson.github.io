@@ -2,210 +2,210 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://natashakatson.com/ru/</loc>
+    <loc>/ru/</loc>
     <lastmod>2021-06-26T21:51:27-04:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://natashakatson.com/"
+                href="/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ru"
-                href="https://natashakatson.com/ru/"
+                href="/ru/"
                 />
   </url><url>
-    <loc>https://natashakatson.com/ru/posts/</loc>
+    <loc>/ru/posts/</loc>
     <lastmod>2021-06-26T21:51:27-04:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://natashakatson.com/posts/"
+                href="/posts/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ru"
-                href="https://natashakatson.com/ru/posts/"
+                href="/ru/posts/"
                 />
   </url><url>
-    <loc>https://natashakatson.com/ru/tags/</loc>
+    <loc>/ru/tags/</loc>
     <lastmod>2021-06-26T21:51:27-04:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://natashakatson.com/tags/"
+                href="/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ru"
-                href="https://natashakatson.com/ru/tags/"
+                href="/ru/tags/"
                 />
   </url><url>
-    <loc>https://natashakatson.com/ru/tags/toronto/</loc>
+    <loc>/ru/tags/toronto/</loc>
     <lastmod>2021-06-26T21:51:27-04:00</lastmod>
   </url><url>
-    <loc>https://natashakatson.com/ru/posts/good-things/</loc>
+    <loc>/ru/posts/good-things/</loc>
     <lastmod>2021-06-26T21:51:27-04:00</lastmod>
   </url><url>
-    <loc>https://natashakatson.com/ru/tags/%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D1%82%D0%BE/</loc>
+    <loc>/ru/tags/%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D1%82%D0%BE/</loc>
     <lastmod>2021-06-26T21:51:27-04:00</lastmod>
   </url><url>
-    <loc>https://natashakatson.com/ru/posts/exhausted-me/</loc>
+    <loc>/ru/posts/exhausted-me/</loc>
     <lastmod>2021-06-23T13:35:27-04:00</lastmod>
   </url><url>
-    <loc>https://natashakatson.com/ru/tags/%D0%B2%D0%B0%D0%BA%D1%86%D0%B8%D0%BD%D0%B0%D1%86%D0%B8%D1%8F/</loc>
+    <loc>/ru/tags/%D0%B2%D0%B0%D0%BA%D1%86%D0%B8%D0%BD%D0%B0%D1%86%D0%B8%D1%8F/</loc>
     <lastmod>2021-06-23T13:35:27-04:00</lastmod>
   </url><url>
-    <loc>https://natashakatson.com/ru/posts/vaccination/</loc>
+    <loc>/ru/posts/vaccination/</loc>
     <lastmod>2021-05-19T13:35:27-04:00</lastmod>
   </url><url>
-    <loc>https://natashakatson.com/ru/posts/driver-license/</loc>
+    <loc>/ru/posts/driver-license/</loc>
     <lastmod>2021-03-25T13:35:27-04:00</lastmod>
   </url><url>
-    <loc>https://natashakatson.com/ru/tags/%D0%BF%D0%B5%D1%80%D0%B5%D0%B5%D0%B7%D0%B4/</loc>
+    <loc>/ru/tags/%D0%BF%D0%B5%D1%80%D0%B5%D0%B5%D0%B7%D0%B4/</loc>
     <lastmod>2021-03-25T13:35:27-04:00</lastmod>
   </url><url>
-    <loc>https://natashakatson.com/ru/tags/%D0%BF%D1%80%D0%B0%D0%B2%D0%B0/</loc>
+    <loc>/ru/tags/%D0%BF%D1%80%D0%B0%D0%B2%D0%B0/</loc>
     <lastmod>2021-03-25T13:35:27-04:00</lastmod>
   </url><url>
-    <loc>https://natashakatson.com/ru/posts/how-am-i/</loc>
+    <loc>/ru/posts/how-am-i/</loc>
     <lastmod>2021-03-20T13:00:18-05:00</lastmod>
   </url><url>
-    <loc>https://natashakatson.com/ru/tags/%D0%BA%D0%B0%D0%BA%D0%B4%D0%B5%D0%BB%D0%B0/</loc>
+    <loc>/ru/tags/%D0%BA%D0%B0%D0%BA%D0%B4%D0%B5%D0%BB%D0%B0/</loc>
     <lastmod>2021-03-20T13:00:18-05:00</lastmod>
   </url><url>
-    <loc>https://natashakatson.com/ru/posts/perks/</loc>
+    <loc>/ru/posts/perks/</loc>
     <lastmod>2021-03-19T13:00:18-05:00</lastmod>
   </url><url>
-    <loc>https://natashakatson.com/ru/tags/%D0%BF%D0%BB%D1%8E%D1%88%D0%BA%D0%B8/</loc>
+    <loc>/ru/tags/%D0%BF%D0%BB%D1%8E%D1%88%D0%BA%D0%B8/</loc>
     <lastmod>2021-03-19T13:00:18-05:00</lastmod>
   </url><url>
-    <loc>https://natashakatson.com/ru/posts/ohip/</loc>
+    <loc>/ru/posts/ohip/</loc>
     <lastmod>2021-03-09T13:00:18-05:00</lastmod>
   </url><url>
-    <loc>https://natashakatson.com/ru/tags/%D0%B1%D1%8E%D1%80%D0%BE%D0%BA%D1%80%D0%B0%D1%82%D0%B8%D1%8F/</loc>
+    <loc>/ru/tags/%D0%B1%D1%8E%D1%80%D0%BE%D0%BA%D1%80%D0%B0%D1%82%D0%B8%D1%8F/</loc>
     <lastmod>2021-03-09T13:00:18-05:00</lastmod>
   </url><url>
-    <loc>https://natashakatson.com/ru/tags/%D1%81%D1%82%D1%80%D0%B0%D1%85%D0%BE%D0%B2%D0%BA%D0%B0/</loc>
+    <loc>/ru/tags/%D1%81%D1%82%D1%80%D0%B0%D1%85%D0%BE%D0%B2%D0%BA%D0%B0/</loc>
     <lastmod>2021-03-09T13:00:18-05:00</lastmod>
   </url><url>
-    <loc>https://natashakatson.com/ru/posts/rent/</loc>
+    <loc>/ru/posts/rent/</loc>
     <lastmod>2021-02-03T19:00:00-05:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://natashakatson.com/posts/rent/"
+                href="/posts/rent/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ru"
-                href="https://natashakatson.com/ru/posts/rent/"
+                href="/ru/posts/rent/"
                 />
   </url><url>
-    <loc>https://natashakatson.com/ru/tags/%D0%B0%D1%80%D0%B5%D0%BD%D0%B4%D0%B0/</loc>
+    <loc>/ru/tags/%D0%B0%D1%80%D0%B5%D0%BD%D0%B4%D0%B0/</loc>
     <lastmod>2021-02-03T19:00:00-05:00</lastmod>
   </url><url>
-    <loc>https://natashakatson.com/ru/tags/%D0%B1%D0%B0%D0%BD%D0%BA%D0%B8/</loc>
+    <loc>/ru/tags/%D0%B1%D0%B0%D0%BD%D0%BA%D0%B8/</loc>
     <lastmod>2021-01-28T14:54:18-05:00</lastmod>
   </url><url>
-    <loc>https://natashakatson.com/ru/posts/banking/</loc>
+    <loc>/ru/posts/banking/</loc>
     <lastmod>2021-01-28T14:54:18-05:00</lastmod>
   </url><url>
-    <loc>https://natashakatson.com/ru/posts/get-your-sin/</loc>
+    <loc>/ru/posts/get-your-sin/</loc>
     <lastmod>2021-01-14T14:54:18-05:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://natashakatson.com/posts/get-your-sin/"
+                href="/posts/get-your-sin/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ru"
-                href="https://natashakatson.com/ru/posts/get-your-sin/"
+                href="/ru/posts/get-your-sin/"
                 />
   </url><url>
-    <loc>https://natashakatson.com/ru/posts/welcome-to-canada/</loc>
+    <loc>/ru/posts/welcome-to-canada/</loc>
     <lastmod>2021-01-11T20:27:05-05:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://natashakatson.com/posts/welcome-to-canada/"
+                href="/posts/welcome-to-canada/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ru"
-                href="https://natashakatson.com/ru/posts/welcome-to-canada/"
+                href="/ru/posts/welcome-to-canada/"
                 />
   </url><url>
-    <loc>https://natashakatson.com/ru/posts/quarantine/</loc>
+    <loc>/ru/posts/quarantine/</loc>
     <lastmod>2021-01-03T15:26:31-05:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://natashakatson.com/posts/quarantine/"
+                href="/posts/quarantine/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ru"
-                href="https://natashakatson.com/ru/posts/quarantine/"
+                href="/ru/posts/quarantine/"
                 />
   </url><url>
-    <loc>https://natashakatson.com/ru/tags/%D0%B4%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BA%D0%B8/</loc>
+    <loc>/ru/tags/%D0%B4%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BA%D0%B8/</loc>
     <lastmod>2021-01-03T15:26:31-05:00</lastmod>
   </url><url>
-    <loc>https://natashakatson.com/ru/tags/%D0%BA%D0%B0%D1%80%D0%B0%D0%BD%D1%82%D0%B8%D0%BD/</loc>
+    <loc>/ru/tags/%D0%BA%D0%B0%D1%80%D0%B0%D0%BD%D1%82%D0%B8%D0%BD/</loc>
     <lastmod>2021-01-03T15:26:31-05:00</lastmod>
   </url><url>
-    <loc>https://natashakatson.com/ru/tags/%D1%86%D0%B5%D0%BD%D1%8B/</loc>
+    <loc>/ru/tags/%D1%86%D0%B5%D0%BD%D1%8B/</loc>
     <lastmod>2021-01-03T15:26:31-05:00</lastmod>
   </url><url>
-    <loc>https://natashakatson.com/ru/posts/hello-canada/</loc>
+    <loc>/ru/posts/hello-canada/</loc>
     <lastmod>2020-12-30T15:44:13-05:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://natashakatson.com/posts/hello-canada/"
+                href="/posts/hello-canada/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ru"
-                href="https://natashakatson.com/ru/posts/hello-canada/"
+                href="/ru/posts/hello-canada/"
                 />
   </url><url>
-    <loc>https://natashakatson.com/ru/categories/</loc>
+    <loc>/ru/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://natashakatson.com/categories/"
+                href="/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ru"
-                href="https://natashakatson.com/ru/categories/"
+                href="/ru/categories/"
                 />
   </url><url>
-    <loc>https://natashakatson.com/ru/series/</loc>
+    <loc>/ru/series/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://natashakatson.com/series/"
+                href="/series/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ru"
-                href="https://natashakatson.com/ru/series/"
+                href="/ru/series/"
                 />
   </url><url>
-    <loc>https://natashakatson.com/ru/archives/</loc>
+    <loc>/ru/archives/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://natashakatson.com/archives/"
+                href="/archives/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ru"
-                href="https://natashakatson.com/ru/archives/"
+                href="/ru/archives/"
                 />
   </url>
 </urlset>
