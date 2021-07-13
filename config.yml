@@ -1,4 +1,5 @@
 baseURL: "/"
+
 title: Natasha's Journey
 paginate: 5
 theme: hugo-PaperMod
