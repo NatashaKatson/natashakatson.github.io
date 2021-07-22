@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Natasha&#39;s Journey</title>
-    <link>/</link>
+    <link>https://natashakatson.com/</link>
     <description>Recent content on Natasha&#39;s Journey</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 03 Feb 2021 19:00:00 -0500</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 03 Feb 2021 19:00:00 -0500</lastBuildDate><atom:link href="https://natashakatson.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How We Rented A Condo in Toronto</title>
-      <link>/posts/rent/</link>
+      <link>https://natashakatson.com/posts/rent/</link>
       <pubDate>Wed, 03 Feb 2021 19:00:00 -0500</pubDate>
       
-      <guid>/posts/rent/</guid>
+      <guid>https://natashakatson.com/posts/rent/</guid>
       <description>&lt;p&gt;Today I&amp;rsquo;ll share my experience of looking for a condo (an apartment) in Toronto. A disclamer: I&amp;rsquo;ll refer to our condo as an apartment just because it sounds more familiar to me.&lt;/p&gt;
 &lt;p&gt;While we have a temporary place till March 3, we have recently signed a lease to a new place, and we should get the keys on February 17. As a person who has recently moved here from Russia, I still feel that it&amp;rsquo;s all a fraud, but hopefully, this country is more civilized, and a signed lease gives you some guarantees. It&amp;rsquo;s a long read, but I really tried to explain in details how everything works here.&lt;/p&gt;
 &lt;h2 id=&#34;step-1---learn-about-the-city&#34;&gt;Step 1 - learn about the city&lt;/h2&gt;
@@ -20,7 +20,7 @@
 &lt;li&gt;First, I emailed my friend who moved to Toronto 16 years ago (and we haven&amp;rsquo;t talked much since then). I asked him to divide the city into several zones, where red would show the areas that it&amp;rsquo;s better to avoid, and green would show friendly neighborhoods. And I got the following image from him.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;figure&gt;
-    &lt;img loading=&#34;lazy&#34; src=&#34;/images/areas.png&#34;
+    &lt;img loading=&#34;lazy&#34; src=&#34;https://natashakatson.com/images/areas.png&#34;
          alt=&#34;areas&#34;/&gt; &lt;figcaption&gt;
             &lt;p&gt;&lt;/p&gt;
         &lt;/figcaption&gt;
@@ -86,7 +86,7 @@ Although usually, the rent starts on the 1st of the month, our possession date w
 &lt;li&gt;
 &lt;p&gt;Monday, 3 pm. The landlord chose us! We were thrilled that our (mine) misery during the weekend was not in vain (well, as usual, I didn&amp;rsquo;t sleep and didn&amp;rsquo;t eat well). Our agent immediately warned us that when the landlord signs the offer, the apartment is &amp;ldquo;frozen&amp;rdquo; on the market; roughly speaking, they have no right to show or lease it to anyone. Then the most interesting thing began - they sent us a 20 pages contract, we signed it. And then, the landlord&amp;rsquo;s agent added an appendix B to the contract, yet another 20 pages long. As our agent said, everything in the add-on looked like we were renting a house, not a condo, i.e., they wanted to add as much as possible into the contract to keep themselves safe (I can understand it, but some things were just crazy). Some statements were completely contrary to the law of the state of Ontario, which means they had no legal value. For example, it stated that no pets were allowed in the apartment (we don&amp;rsquo;t have any pets, though). Well, everyone in Ontario is allowed to have pets; in fact, a gorgeous kitty lives in this apartment at the moment 😸.
 &lt;figure&gt;
-    &lt;img loading=&#34;lazy&#34; src=&#34;/images/cat.png&#34;
+    &lt;img loading=&#34;lazy&#34; src=&#34;https://natashakatson.com/images/cat.png&#34;
          alt=&#34;кот&#34;/&gt; &lt;figcaption&gt;
             &lt;p&gt;&lt;/p&gt;
         &lt;/figcaption&gt;
@@ -134,10 +134,10 @@ Generally, we wanted to remove some statements from the contract, but then we le
     
     <item>
       <title>Get Your SIN in Canada</title>
-      <link>/posts/get-your-sin/</link>
+      <link>https://natashakatson.com/posts/get-your-sin/</link>
       <pubDate>Thu, 14 Jan 2021 14:54:18 -0500</pubDate>
       
-      <guid>/posts/get-your-sin/</guid>
+      <guid>https://natashakatson.com/posts/get-your-sin/</guid>
       <description>&lt;p&gt;Finally, we have all the necessary documents (work permit, to be specific) to proceed with further bureaucracy.&lt;/p&gt;
 &lt;p&gt;Here is how the process usually works. A person lands in Canada with a work visa (let&amp;rsquo;s say during the COVID pandemic). After the arrival, they get a Work Permit at the airport and take a two-week quarantine, which I &lt;a href=&#34;https://natashakatson.github.io/ru/posts/quarantine/&#34; target=&#34;_blank&#34;&gt;mentioned&lt;/a&gt; earlier. While they in quarantine, they can apply online for a SIN (social insurance number0, contact a bank to get an account, and get employed remotely with their Work Permit.&lt;/p&gt;
 &lt;p&gt;In general, the minimum required documents before you can start looking for an apartment are: SIN, a bank account, employment confirmation.&lt;/p&gt;
@@ -162,10 +162,10 @@ Me: At the airport, we got back there after the quarantine because we had an app
     
     <item>
       <title>The Day When We Finally Got a Work Permit</title>
-      <link>/posts/welcome-to-canada/</link>
+      <link>https://natashakatson.com/posts/welcome-to-canada/</link>
       <pubDate>Mon, 11 Jan 2021 20:27:05 -0500</pubDate>
       
-      <guid>/posts/welcome-to-canada/</guid>
+      <guid>https://natashakatson.com/posts/welcome-to-canada/</guid>
       <description>&lt;p&gt;Today is the 11th of January, which means that we have to go to the airport to check if there are any news regarding our &lt;a href=&#34;https://natashakatson.github.io/posts/hello-canada/&#34; target=&#34;_blank&#34;&gt;case&lt;/a&gt;. I had insomnia, couldn&amp;rsquo;t eat in the morning, but we finally went to the airport to be there by 2:30 pm.&lt;/p&gt;
 &lt;p&gt;CBSA office looks similar to the police station (I haven&amp;rsquo;t been at any, but I see it that way). The Officer on duty got our documents and checked if we were who we said we were. He looked at D.&amp;rsquo;s copy of the passport, looked at me, and said: &amp;ldquo;It&amp;rsquo;s not you&amp;rdquo;. Of course, it&amp;rsquo;s not me; it&amp;rsquo;s my husband&amp;rsquo;s ID you are looking at, Officer. Then he asked us about our story, and when we told him, he got confused. He asked D.: &amp;ldquo;How will I know that it&amp;rsquo;s you and not your tween brother?&amp;rdquo; I kind of wanted to cry when I heard this question. Really? Really? How about checking all the supporting documents and biometrics for a change. Then we told him that we have been waiting for a month and a half already, and we really wanted to hear their answer on our case. We also mentioned the last name of the first officer we met upon our arrival here, and luckily he was at the airport that day. The Officer on duty took our documents and went to talk to Officer J. (the one who met us upon our arrival).&lt;/p&gt;
 &lt;p&gt;After an hour, Officer J. came to us and said there was still no reply from the visa office, but our lawyer convinced him to issue our documents! So, Officer J. decided to issue D. a temporary resident permit, and because of that, he could issue a temporary work permit. Actually, we asked him for the exact same documents when we arrived, but he refused back then. Luckily (we are very grateful), he eventually issued us our papers and gave our passports back with the stamp! We spent an additional $440 CAD ($155 for a new work permit, $200 for a temporary residence permit, $85 for a new biometric). Of course, we didn&amp;rsquo;t care about the prices; we were just happy to stay here in Canada.&lt;/p&gt;
@@ -177,14 +177,14 @@ Me: At the airport, we got back there after the quarantine because we had an app
     
     <item>
       <title>Quarantine in Toronto </title>
-      <link>/posts/quarantine/</link>
+      <link>https://natashakatson.com/posts/quarantine/</link>
       <pubDate>Sun, 03 Jan 2021 15:26:31 -0500</pubDate>
       
-      <guid>/posts/quarantine/</guid>
+      <guid>https://natashakatson.com/posts/quarantine/</guid>
       <description>&lt;p&gt;While I have some free time, I want to tell you about the quarantine in Canada, specifically in Toronto. Before we went to Canada, we read this &lt;a href=&#34;https://www.canada.ca/en/public-health/services/publications/diseases-conditions/2019-novel-coronavirus-information-sheet.html&#34; target=&#34;_blank&#34;&gt;article&lt;/a&gt; about the 14 days of mandatory quarantine for everyone entering Canada. As requested, we prepared a quarantine plan to share with the Officer, but we haven&amp;rsquo;t talked much about the quarantine itself because of our &lt;a href=&#34;https://natashakatson.github.io/posts/hello-canada/&#34; target=&#34;_blank&#34;&gt;unusual case&lt;/a&gt;. The Officer just told us to go to our temporary place and be back at the airport when the quarantine is over. I was actually mentally prepared for the quarantine; what I was not prepared for was our situation. But I won&amp;rsquo;t talk about it today.&lt;/p&gt;
 &lt;p&gt;We got Uber and went directly to our place in downtown Toronto. D.&amp;rsquo;s company rented apartments there in a tall condo building. We knew nothing about the place; we just hoped it would have a balcony so we could &amp;ldquo;walk around and get some air.&amp;rdquo; It appeared to be nice furnished apartments with cooking supplies and everything a person needs to stay at home. It also had a balcony with a view on a small park.&lt;/p&gt;
 &lt;figure&gt;
-    &lt;img loading=&#34;lazy&#34; src=&#34;/images/2021-01-03.jpg&#34;
+    &lt;img loading=&#34;lazy&#34; src=&#34;https://natashakatson.com/images/2021-01-03.jpg&#34;
          alt=&#34;&#34;/&gt; &lt;figcaption&gt;
             &lt;p&gt;&lt;/p&gt;
         &lt;/figcaption&gt;
@@ -325,10 +325,10 @@ Me: At the airport, we got back there after the quarantine because we had an app
     
     <item>
       <title>A Story About One Almost Successful Relocation</title>
-      <link>/posts/hello-canada/</link>
+      <link>https://natashakatson.com/posts/hello-canada/</link>
       <pubDate>Wed, 30 Dec 2020 21:19:57 -0500</pubDate>
       
-      <guid>/posts/hello-canada/</guid>
+      <guid>https://natashakatson.com/posts/hello-canada/</guid>
       <description>&lt;p&gt;Hello, my name is Natasha, and I&amp;rsquo;m a person who plans everything, but nothing goes according to my plan because of very different circumstances (and then I suffer and get depressed). I always wanted to move from Russia. I had plenty of ideas, thoughts, and sometimes opportunities to do that, but it never really happened until this time.&lt;/p&gt;
 &lt;p&gt;Immigration and relocation is not an easy process, especially during a pandemic. I am sure that many of those who relocated have 1001 stories about how they moved, but ours is just very weird and unusual. I don&amp;rsquo;t even know where to start because I can&amp;rsquo;t share one part of this story (although it deserves special attention), so I&amp;rsquo;ll start somewhere in the middle but will capture the background.&lt;/p&gt;
 &lt;p&gt;Back in April 2019, I started planning a relocation to Amsterdam with the company I worked in (a huge and pretty popular tech company). From that time, I lived in the &amp;ldquo;waiting mode&amp;rdquo; (I decided not to buy an apartment, didn&amp;rsquo;t rent a new apartment, and so on). Although the relocation paperwork process has not yet been launched, there have already been some agreements. In the fall of 2019, my husband and I even went to Amsterdam to check it out once again, talk to my uncle, who has been living there for more than 20 years, reviewed everything related to health insurance and what&amp;rsquo;s not.
