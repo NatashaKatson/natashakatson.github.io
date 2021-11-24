@@ -8,6 +8,7 @@ images:
 - "/images/flowers.jpg"
 tags:
 - вакцинация
+- как дела
 ---
 Всем привет!
 
