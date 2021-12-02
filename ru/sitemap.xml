@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://natashakatson.com/ru/</loc>
-    <lastmod>2021-11-23T11:16:27-04:00</lastmod>
+    <lastmod>2021-12-02T11:16:27-04:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -16,7 +16,7 @@
                 />
   </url><url>
     <loc>https://natashakatson.com/ru/posts/</loc>
-    <lastmod>2021-11-23T11:16:27-04:00</lastmod>
+    <lastmod>2021-12-02T11:16:27-04:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -29,7 +29,7 @@
                 />
   </url><url>
     <loc>https://natashakatson.com/ru/tags/</loc>
-    <lastmod>2021-11-23T11:16:27-04:00</lastmod>
+    <lastmod>2021-12-02T11:16:27-04:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -41,13 +41,22 @@
                 href="https://natashakatson.com/ru/tags/"
                 />
   </url><url>
+    <loc>https://natashakatson.com/ru/tags/work-permit/</loc>
+    <lastmod>2021-12-02T11:16:27-04:00</lastmod>
+  </url><url>
+    <loc>https://natashakatson.com/ru/tags/%D0%BA%D0%B0%D0%BD%D0%B0%D0%B4%D0%B0/</loc>
+    <lastmod>2021-12-02T11:16:27-04:00</lastmod>
+  </url><url>
+    <loc>https://natashakatson.com/ru/posts/work-permit-part-two/</loc>
+    <lastmod>2021-12-02T11:16:27-04:00</lastmod>
+  </url><url>
+    <loc>https://natashakatson.com/ru/tags/%D0%B1%D1%8E%D1%80%D0%BE%D0%BA%D1%80%D0%B0%D1%82%D0%B8%D1%8F/</loc>
+    <lastmod>2021-12-02T11:16:27-04:00</lastmod>
+  </url><url>
     <loc>https://natashakatson.com/ru/posts/one-year-in-canada/</loc>
     <lastmod>2021-11-23T11:16:27-04:00</lastmod>
   </url><url>
     <loc>https://natashakatson.com/ru/tags/%D0%BA%D0%B0%D0%BA-%D0%B4%D0%B5%D0%BB%D0%B0/</loc>
-    <lastmod>2021-11-23T11:16:27-04:00</lastmod>
-  </url><url>
-    <loc>https://natashakatson.com/ru/tags/%D0%BA%D0%B0%D0%BD%D0%B0%D0%B4%D0%B0/</loc>
     <lastmod>2021-11-23T11:16:27-04:00</lastmod>
   </url><url>
     <loc>https://natashakatson.com/ru/tags/%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D1%82%D0%BE/</loc>
@@ -138,9 +147,6 @@
     <lastmod>2021-03-19T13:00:18-05:00</lastmod>
   </url><url>
     <loc>https://natashakatson.com/ru/posts/ohip/</loc>
-    <lastmod>2021-03-09T13:00:18-05:00</lastmod>
-  </url><url>
-    <loc>https://natashakatson.com/ru/tags/%D0%B1%D1%8E%D1%80%D0%BE%D0%BA%D1%80%D0%B0%D1%82%D0%B8%D1%8F/</loc>
     <lastmod>2021-03-09T13:00:18-05:00</lastmod>
   </url><url>
     <loc>https://natashakatson.com/ru/posts/rent/</loc>
