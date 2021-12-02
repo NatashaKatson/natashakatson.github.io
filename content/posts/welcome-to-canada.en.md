@@ -5,6 +5,7 @@ draft: false
 tags: 
 - relocation
 - bureaucracy 
+- work permit
 ---
 Today is the 11th of January, which means that we have to go to the airport to check if there are any news regarding our [case](https://natashakatson.github.io/posts/hello-canada/). I had insomnia, couldn't eat in the morning, but we finally went to the airport to be there by 2:30 pm.
 

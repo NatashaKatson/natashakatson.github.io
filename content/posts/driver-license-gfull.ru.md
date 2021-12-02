@@ -5,7 +5,7 @@ draft: false
 showtoc: true
 tocOpen: false
 tags:
-- права
+- водительские права
 - g full
 ---
 Всем привет!

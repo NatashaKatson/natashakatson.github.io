@@ -8,6 +8,7 @@ tags:
 - relocation
 - O Canada
 - bureaucracy
+- work permit
 ---
 
 Hello, my name is Natasha, and I'm a person who plans everything, but nothing goes according to my plan because of very different circumstances (and then I suffer and get depressed). I always wanted to move from Russia. I had plenty of ideas, thoughts, and sometimes opportunities to do that, but it never really happened until this time.
