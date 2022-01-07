@@ -55,4 +55,4 @@ tags:
 
 P.S. Только что открываю дверь, а там букет с открыткой, Канадские друзья поздравляют с получением разрешения на работу и избавлением от TRP 😂
 
-{{< figure src="/images/workpermit3/flowers.jpg" caption=" " >}}
+{{< figure src="/images/workpermit3/flowers.jpg" caption="Congrats on the transition from criminals to skilled workers! We love you :)" >}}
