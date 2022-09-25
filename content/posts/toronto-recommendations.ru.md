@@ -62,7 +62,7 @@ tags:
 
 Торонто хоть и находится не у океана, но всё равно есть рестораны, где подают устрицы. Я, честно говоря, немного побаиваюсь есть устрицы далеко от океана, но как-то раз брала их в [Bar Neon](https://www.google.com/maps/place/Bar+Neon/@43.6591894,-79.4392738,15z/data=!4m2!3m1!1s0x0:0xacc305c486fede6b?sa=X&ved=2ahUKEwitpd2qrrD6AhU4ADQIHZzrAnAQ_BJ6BQiAARAF) на Bloor, куда пошла ради их уютного патио на заднем дворе. Качество было хорошее, так что если летом захочется посидеть где-то на патио на западном Bloor, то точно могу рекомендовать это место! 
 
-Поесть еду ближнего Востока можно в [Mezetta Restaurant & Tapas Bar](https://www.google.com/maps/place/Mezzetta+Restaurant+%26+Tapas+Br/@43.681617,-79.4253794,15z/data=!4m2!3m1!1s0x0:0x5d206d2863b10515?sa=X&ved=2ahUKEwiJz6D8vLD6AhV7IjQIHdrSDdAQ_BJ6BAhwEAU) на St.Clair. Там много и вегетаринских, и мясных блюд, а идти туда рекомендую с друзьями, чтобы заказать много всего и пробовать еду друг у друга. 
+Поесть еду ближнего Востока можно в [Mezetta Restaurant and Tapas Bar](https://www.google.com/maps/place/Mezzetta+Restaurant+%26+Tapas+Br/@43.681617,-79.4253794,15z/data=!4m2!3m1!1s0x0:0x5d206d2863b10515?sa=X&ved=2ahUKEwiJz6D8vLD6AhV7IjQIHdrSDdAQ_BJ6BAhwEAU) на St.Clair. Там много и вегетаринских, и мясных блюд, а идти туда рекомендую с друзьями, чтобы заказать много всего и пробовать еду друг у друга. 
 
 {{< figure src="/images/recommendations/Mezetta.jpg" caption="Mezetta Restaurant" >}}
 
