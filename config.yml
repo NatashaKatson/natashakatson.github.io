@@ -34,7 +34,7 @@ languages:
 
             Здесь я постараюсь рассказывать разные не очень типичные истории про иммиграцию, местные цены, работу, ну и другое, что меня окружает.
             
-            [**Подписаться**](https://t.me/natashakatson) на Telegram канал.
+            [**Подписаться**](https://t.me/natashakatson) на Telegram канал, чтобы не пропускать новые посты!
           KoFi: <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Поддержать меня на Ko-fi', '#29abe0', 'M4M35IHJS');kofiwidget2.draw();</script>
 
         license: "CC BY-NC-ND 4.0"
@@ -47,7 +47,9 @@ languages:
                 - name: Тэги
                   url: tags/
                   weight: 10
-
+                - name: Telegram канал
+                  url: https://t.me/natashakatson
+                  weight: 1
 
 outputs:
     home:
@@ -56,6 +58,7 @@ outputs:
         - JSON
 
 params:
+    disableTranslationOnPost: true
     env: production
     description: ""
     author: Natasha Katson
