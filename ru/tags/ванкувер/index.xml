@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Ванкувер on Natasha&#39;s Journey</title>
+    <title>ванкувер on Natasha&#39;s Journey</title>
     <link>https://natashakatson.com/ru/tags/%D0%B2%D0%B0%D0%BD%D0%BA%D1%83%D0%B2%D0%B5%D1%80/</link>
-    <description>Recent content in Ванкувер on Natasha&#39;s Journey</description>
+    <description>Recent content in ванкувер on Natasha&#39;s Journey</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 15 Jan 2023 20:00:13 -0400</lastBuildDate><atom:link href="https://natashakatson.com/ru/tags/%D0%B2%D0%B0%D0%BD%D0%BA%D1%83%D0%B2%D0%B5%D1%80/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 13 Feb 2023 11:00:13 -0400</lastBuildDate><atom:link href="https://natashakatson.com/ru/tags/%D0%B2%D0%B0%D0%BD%D0%BA%D1%83%D0%B2%D0%B5%D1%80/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Бюрократия при переезде из Онтарио в Британскую Колумбию</title>
+      <link>https://natashakatson.com/ru/posts/moving-from-on-to-bc/</link>
+      <pubDate>Mon, 13 Feb 2023 11:00:13 -0400</pubDate>
+      
+      <guid>https://natashakatson.com/ru/posts/moving-from-on-to-bc/</guid>
+      <description>Всем привет!
+Вот уже чуть больше месяца как мы переехали из Торонто в Ванкувер. Из хороших новостей - нам удалось снять квартиру в районе, где хотелось (Kitsilano) и мы туда наконец переедем через неделю. Из плохих новостей, лендлорды в конец офигели и нам эту квартиру сдали на 900 долларов больше, чем её снимают нынешние жильцы (они сняли в пандемию, когда цены просели, правда) и то после моих торгов, изначально хотели сдать аж на 1100 долларов больше.</description>
+    </item>
+    
     <item>
       <title>Welcome to Vancouver и немного других новостей</title>
       <link>https://natashakatson.com/ru/posts/welcome_to_vancouver/</link>
