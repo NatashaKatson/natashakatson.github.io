@@ -56,7 +56,7 @@ But the timeline turned out much more pleasant, albeit longer than for other acq
 
 Now, just two more years and we can finally apply for citizenship! We are incredibly happy, but as our friend commented, “Why did it take so long? Our government is inherently flawed!” :) Next steps—celebrate with poutine, continue fighting to get our money back, and apply for citizenship in two years.
 
-{{< figure src="/images/PR/PR.jpeg" caption="я с листиком" >}}
+{{< figure src="/images/PR/PR.jpeg" caption="maple leaf and I" >}}
 
 
 
