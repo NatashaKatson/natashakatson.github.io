@@ -3,10 +3,10 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://natashakatson.com/tags/canada/</loc>
-    <lastmod>2024-06-15T10:00:13-04:00</lastmod>
+    <lastmod>2024-08-21T10:00:13-04:00</lastmod>
   </url><url>
     <loc>https://natashakatson.com/</loc>
-    <lastmod>2024-06-15T10:00:13-04:00</lastmod>
+    <lastmod>2024-08-21T10:00:13-04:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ru"
@@ -18,8 +18,24 @@
                 href="https://natashakatson.com/"
                 />
   </url><url>
+    <loc>https://natashakatson.com/tags/postpartum/</loc>
+    <lastmod>2024-08-21T10:00:13-04:00</lastmod>
+  </url><url>
+    <loc>https://natashakatson.com/posts/postpartum/</loc>
+    <lastmod>2024-08-21T10:00:13-04:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://natashakatson.com/ru/posts/postpartum/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://natashakatson.com/posts/postpartum/"
+                />
+  </url><url>
     <loc>https://natashakatson.com/posts/</loc>
-    <lastmod>2024-06-15T10:00:13-04:00</lastmod>
+    <lastmod>2024-08-21T10:00:13-04:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ru"
@@ -30,6 +46,22 @@
                 hreflang="en"
                 href="https://natashakatson.com/posts/"
                 />
+  </url><url>
+    <loc>https://natashakatson.com/tags/</loc>
+    <lastmod>2024-08-21T10:00:13-04:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://natashakatson.com/ru/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://natashakatson.com/tags/"
+                />
+  </url><url>
+    <loc>https://natashakatson.com/tags/vancouver/</loc>
+    <lastmod>2024-08-21T10:00:13-04:00</lastmod>
   </url><url>
     <loc>https://natashakatson.com/tags/pr/</loc>
     <lastmod>2024-06-15T10:00:13-04:00</lastmod>
@@ -42,19 +74,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://natashakatson.com/tags/pr/"
-                />
-  </url><url>
-    <loc>https://natashakatson.com/tags/</loc>
-    <lastmod>2024-06-15T10:00:13-04:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://natashakatson.com/ru/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://natashakatson.com/tags/"
                 />
   </url><url>
     <loc>https://natashakatson.com/posts/we-got-a-pr/</loc>
