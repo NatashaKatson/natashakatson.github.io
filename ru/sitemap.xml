@@ -49,6 +49,16 @@
   </url><url>
     <loc>https://natashakatson.com/ru/posts/how-am-i-fall/</loc>
     <lastmod>2024-10-05T10:00:13-04:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://natashakatson.com/posts/how-am-i-fall/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://natashakatson.com/ru/posts/how-am-i-fall/"
+                />
   </url><url>
     <loc>https://natashakatson.com/ru/tags/%D0%B1%D0%B5%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D0%BE%D1%81%D1%82%D1%8C/</loc>
     <lastmod>2024-08-21T10:00:13-04:00</lastmod>
