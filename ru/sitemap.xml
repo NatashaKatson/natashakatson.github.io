@@ -2,8 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://natashakatson.com/ru/posts/vacation-in-mexico/</loc>
+    <lastmod>2025-02-09T10:00:13-04:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://natashakatson.com/posts/vacation-in-mexico/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://natashakatson.com/ru/posts/vacation-in-mexico/"
+                />
+  </url><url>
     <loc>https://natashakatson.com/ru/</loc>
-    <lastmod>2024-10-05T10:00:13-04:00</lastmod>
+    <lastmod>2025-02-09T10:00:13-04:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -16,7 +29,7 @@
                 />
   </url><url>
     <loc>https://natashakatson.com/ru/posts/</loc>
-    <lastmod>2024-10-05T10:00:13-04:00</lastmod>
+    <lastmod>2025-02-09T10:00:13-04:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -29,7 +42,7 @@
                 />
   </url><url>
     <loc>https://natashakatson.com/ru/tags/</loc>
-    <lastmod>2024-10-05T10:00:13-04:00</lastmod>
+    <lastmod>2025-02-09T10:00:13-04:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -40,6 +53,12 @@
                 hreflang="ru"
                 href="https://natashakatson.com/ru/tags/"
                 />
+  </url><url>
+    <loc>https://natashakatson.com/ru/tags/%D0%BC%D0%B5%D0%BA%D1%81%D0%B8%D0%BA%D0%B0/</loc>
+    <lastmod>2025-02-09T10:00:13-04:00</lastmod>
+  </url><url>
+    <loc>https://natashakatson.com/ru/tags/%D0%BE%D1%82%D0%BF%D1%83%D1%81%D0%BA/</loc>
+    <lastmod>2025-02-09T10:00:13-04:00</lastmod>
   </url><url>
     <loc>https://natashakatson.com/ru/tags/%D0%B2%D0%B0%D0%BD%D0%BA%D1%83%D0%B2%D0%B5%D1%80/</loc>
     <lastmod>2024-10-05T10:00:13-04:00</lastmod>
@@ -142,9 +161,6 @@
     <lastmod>2023-08-26T10:00:13-04:00</lastmod>
   </url><url>
     <loc>https://natashakatson.com/ru/tags/%D0%BB%D0%B5%D1%82%D0%BE/</loc>
-    <lastmod>2023-08-26T10:00:13-04:00</lastmod>
-  </url><url>
-    <loc>https://natashakatson.com/ru/tags/%D0%BE%D1%82%D0%BF%D1%83%D1%81%D0%BA/</loc>
     <lastmod>2023-08-26T10:00:13-04:00</lastmod>
   </url><url>
     <loc>https://natashakatson.com/ru/posts/aloha/</loc>
