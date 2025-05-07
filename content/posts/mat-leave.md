@@ -41,7 +41,8 @@ You're iterating, tracking everything (diapers, feeds, sleep), using multiple ap
 ## Cross-functional collaboration
 
 My partner is amazing, and we're doing this together, but when both team members are operating on 4 hours of broken sleep, alignment is hard. We've had to practice radical communication. Quick stand-ups, making decisions fast and under pressure.
-Parallel projects
+
+## Parallel projects
 
 You're also running logistics:
 - Managing childcare waitlists that don't work (does anyone know of childcare spots in Kitsilano, Mount Pleasant, or surrounding areas?)  
