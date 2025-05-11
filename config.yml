@@ -62,7 +62,7 @@ languages:
                   url: https://t.me/natashakatson
                   weight: 1
                 - name: English
-                  url: https://natashakatson.com/en/blog
+                  url: https://natashakatson.com/blog
                   weight: 15  
 
 outputs:
