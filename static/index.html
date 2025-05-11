@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Natasha Katson | Personal Blog</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .profile-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .profile-photo {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow: hidden; /* Ensures the image stays within the circle */
+        }
+        
+        .photo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* This ensures the image covers the entire circle */
+            display: block;
+        }
+        
+        .profile-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: #3498db;
+            margin-bottom: 20px;
+        }
+        
+        .location {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 5px;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            color: #7f8c8d;
+        }
+        
+        .location svg {
+            width: 18px;
+            height: 18px;
+        }
+        
+        .expertise {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .expertise h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .expertise-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .expertise-item {
+            background-color: #ecf0f1;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #2c3e50;
+        }
+        
+        .about-blog {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .about-blog h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .blog-button {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        
+        .blog-button:hover {
+            background-color: #2980b9;
+        }
+        
+        .recognition {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .recognition h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #7f8c8d;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .contact-item svg {
+            width: 18px;
+            height: 18px;
+            color: #3498db;
+        }
+        
+        .contact-item a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .profile-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .location {
+                justify-content: center;
+            }
+            
+            .contact-info {
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Natasha Katson</h1>
+            <h2>Product Marketing Leader</h2>
+        </header>
+        
+        <div class="profile-container">
+            <div class="profile-photo">
+                <img src="/images/profile.jpeg" alt="Natasha Katson" class="photo-img">
+            </div>
+            
+            <div class="profile-info">
+                <p>Seasoned Product Marketing Leader with over a decade of expertise in the B2B SaaS landscape, bringing strategic vision and creative messaging to tech products. Beyond my professional world, I'm the proud mom of a wonderfully energetic little boy who keeps me on my toes. You'll find me exploring the beautiful outdoors, expressing creativity through painting, fostering connections in my community, and finding joy in bringing order to chaos through thoughtful organization.</p>
+                
+                <div class="location">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    Vancouver, BC, Canada
+                </div>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                        <a href="mailto:natasha.katson@gmail.com">natasha.katson@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                        <a href="https://linkedin.com/in/natasha-katson" target="_blank">linkedin.com/in/natasha-katson</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="expertise">
+            <h3>My Professional Expertise</h3>
+            <div class="expertise-items">
+                <span class="expertise-item">Go-to-Market Strategy</span>
+                <span class="expertise-item">Product Positioning & Messaging</span>
+                <span class="expertise-item">Market Research & Insights</span>
+                <span class="expertise-item">Campaign Development</span>
+                <span class="expertise-item">Cross-Functional Leadership</span>
+                <span class="expertise-item">Sales Enablement</span>
+                <span class="expertise-item">Competitive Analysis</span>
+            </div>
+        </div>
+        
+        <div class="about-blog">
+            <h3>About My Blog</h3>
+            <p>Welcome to my personal corner of the internet! This blog is intentionally unrelated to my professional work - it's all about life, experiences, and the journey of balancing motherhood with personal growth.</p>
+            <p>Here I share thoughts, stories, and moments that make up my life outside of the tech world. Join me as I explore everyday adventures, parenting insights, and the little joys that make life meaningful.</p>
+            
+            
+            <a href="/blog" class="blog-button">Visit My Blog →</a>
+        </div>
+        
+        <div class="recognition">
+            <h3>Professional Recognition</h3>
+            <p>Top Product Marketing Influencer 2021</p>
+            <p>Founding 500 Member of Product Marketing Alliance</p>
+        </div>
+        
+        <footer>
+            <p>© 2025 Natasha Katson. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

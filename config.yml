@@ -14,17 +14,25 @@ minify:
 
 languages:
     en:
+        #baseUrl: https://natashakatson.com/blog
         languageName: "English"
         weight: 1
         menu:
             main:
+                - name: Home
+                  url: blog/
+                  weight: 1
                 - name: Archive
                   url: archives/
                   weight: 5
                 - name: Tags
                   url: tags/
                   weight: 10
+                - name: Russian
+                  url: ru/blog
+                  weight: 15
     ru:
+        #baseUrl: https://natashakatson.com/ru/blog
         languageName: "Russian"
         weight: 2
         homeInfoParams:
@@ -41,6 +49,9 @@ languages:
         licenseUrl: "https://creativecommons.org/licenses/by-nc-nd/4.0/deed.ru"
         menu:
             main:
+                - name: Главная
+                  url: blog/
+                  weight: 1
                 - name: Архив
                   url: archives/
                   weight: 5
@@ -50,6 +61,9 @@ languages:
                 - name: Telegram канал
                   url: https://t.me/natashakatson
                   weight: 1
+                - name: English
+                  url: https://natashakatson.com/en/blog
+                  weight: 15  
 
 outputs:
     home:
