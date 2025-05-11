@@ -443,6 +443,30 @@
                 href="https://natashakatson.com/ru/posts/hello-canada/"
                 />
   </url><url>
+    <loc>https://natashakatson.com/ru/blog/bogus/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://natashakatson.com/blog/bogus/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://natashakatson.com/ru/blog/bogus/"
+                />
+  </url><url>
+    <loc>https://natashakatson.com/ru/blog/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://natashakatson.com/blog/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://natashakatson.com/ru/blog/"
+                />
+  </url><url>
     <loc>https://natashakatson.com/ru/categories/</loc>
     <xhtml:link
                 rel="alternate"

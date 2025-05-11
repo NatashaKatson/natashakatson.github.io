@@ -248,6 +248,18 @@
     <loc>https://natashakatson.com/tags/o-canada/</loc>
     <lastmod>2020-12-30T21:19:57-05:00</lastmod>
   </url><url>
+    <loc>https://natashakatson.com/blog/bogus/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://natashakatson.com/ru/blog/bogus/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://natashakatson.com/blog/bogus/"
+                />
+  </url><url>
     <loc>https://natashakatson.com/archives/</loc>
     <xhtml:link
                 rel="alternate"
@@ -258,6 +270,18 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://natashakatson.com/archives/"
+                />
+  </url><url>
+    <loc>https://natashakatson.com/blog/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://natashakatson.com/ru/blog/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://natashakatson.com/blog/"
                 />
   </url><url>
     <loc>https://natashakatson.com/categories/</loc>
