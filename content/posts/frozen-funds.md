@@ -87,3 +87,4 @@ Nobody, absolutely nobody, will be held accountable. In the end, we are all just
 
 And finally, the question remains: where is the money?! To be continued…
 
+Update: On December 2, D. finally received his transfer! We had to file additional complaints with the bank, write to the ombudsman, etc. But it’s finally resolved, hooray!
