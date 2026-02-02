@@ -1,0 +1,382 @@
+/* Homepage Styles */
+
+.homepage {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* Hero Section */
+.hero-section {
+  text-align: center;
+  padding: 80px 20px 60px;
+  background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.profile-image-container {
+  margin-bottom: 40px;
+}
+
+.profile-image {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 8px solid #ffffff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.hero-name {
+  font-size: 3rem;
+  font-weight: 400;
+  color: #2d3748;
+  margin-bottom: 12px;
+  font-family: 'Playfair Display', serif;
+}
+
+.hero-title {
+  font-size: 1.75rem;
+  color: #4299e1;
+  font-weight: 400;
+  margin-bottom: 30px;
+}
+
+.hero-description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #718096;
+  margin-bottom: 40px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-contact {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #4a5568;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+
+.contact-item:hover {
+  color: #4299e1;
+}
+
+.contact-item .icon {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+}
+
+/* Areas of Expertise Section */
+.expertise-section {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: #2d3748;
+  margin-bottom: 16px;
+  font-family: 'Playfair Display', serif;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: #718096;
+  margin-bottom: 50px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.expertise-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.expertise-pill {
+  padding: 14px 28px;
+  background: #e6f4ff;
+  color: #2d6a9f;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.expertise-pill:hover {
+  background: #4299e1;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Personal Section */
+.personal-section {
+  padding: 80px 20px;
+  background: #f8f9fa;
+  text-align: center;
+}
+
+.section-label {
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  color: #4299e1;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.section-description {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #718096;
+  margin-bottom: 50px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.interests-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.interest-card {
+  background: white;
+  padding: 40px 30px;
+  border-radius: 16px;
+  text-align: center;
+  transition: all 0.3s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.interest-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.interest-icon {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 20px;
+  padding: 12px;
+  background: #e6f4ff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.interest-icon svg {
+  width: 28px;
+  height: 28px;
+  stroke: #4299e1;
+  stroke-width: 2;
+}
+
+.interest-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 12px;
+}
+
+.interest-description {
+  font-size: 0.95rem;
+  color: #718096;
+  line-height: 1.6;
+}
+
+/* Recognition Section */
+.recognition-section {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.recognition-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  max-width: 800px;
+  margin: 50px auto 0;
+}
+
+.recognition-card {
+  background: #f8f9fa;
+  padding: 40px 30px;
+  border-radius: 16px;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.recognition-card:hover {
+  background: #e6f4ff;
+}
+
+.recognition-icon {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 20px;
+  padding: 12px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.recognition-icon svg {
+  width: 28px;
+  height: 28px;
+  stroke: #4299e1;
+  stroke-width: 2;
+}
+
+.recognition-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 8px;
+}
+
+.recognition-year {
+  font-size: 0.95rem;
+  color: #718096;
+}
+
+/* Blog Section */
+.blog-section {
+  padding: 80px 20px;
+  background: white;
+  text-align: center;
+}
+
+.blog-description {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #718096;
+  margin-bottom: 24px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.blog-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #4299e1;
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-top: 30px;
+  transition: all 0.2s;
+}
+
+.blog-link:hover {
+  gap: 12px;
+  color: #2c5aa0;
+}
+
+.arrow-icon {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-name {
+    font-size: 2.25rem;
+  }
+
+  .hero-title {
+    font-size: 1.5rem;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+  }
+
+  .hero-contact {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .section-subtitle,
+  .section-description,
+  .blog-description {
+    font-size: 1rem;
+  }
+
+  .profile-image {
+    width: 220px;
+    height: 220px;
+  }
+
+  .interests-grid,
+  .recognition-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .expertise-grid {
+    gap: 12px;
+  }
+
+  .expertise-pill {
+    padding: 12px 24px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section,
+  .expertise-section,
+  .personal-section,
+  .recognition-section,
+  .blog-section {
+    padding: 60px 16px;
+  }
+
+  .profile-image {
+    width: 180px;
+    height: 180px;
+  }
+
+  .hero-name {
+    font-size: 1.875rem;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+  }
+}
