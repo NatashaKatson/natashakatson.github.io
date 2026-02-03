@@ -127,7 +127,12 @@
   margin: 0 auto;
 }
 
+.expertise-item {
+  position: relative;
+}
+
 .expertise-pill {
+  display: inline-block;
   padding: 14px 32px;
   background: #f0f7fc;
   color: #4a7c9b;
@@ -135,13 +140,67 @@
   border-radius: 50px;
   font-size: 0.95rem;
   font-weight: 500;
+  cursor: default;
   transition: all 0.2s;
 }
 
-.expertise-pill:hover {
+.expertise-item:hover .expertise-pill {
   background: #e6f4ff;
   border-color: #4299e1;
   color: #2c5aa0;
+}
+
+.expertise-card {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 320px;
+  margin-top: 12px;
+  padding: 20px 24px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s;
+  z-index: 10;
+}
+
+.expertise-card::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid #ffffff;
+}
+
+.expertise-card::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-bottom: 9px solid #e2e8f0;
+  z-index: -1;
+}
+
+.expertise-item:hover .expertise-card {
+  opacity: 1;
+  visibility: visible;
+}
+
+.expertise-card p {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: #4a5568;
+  margin: 0;
 }
 
 /* Personal Section */
@@ -432,6 +491,11 @@
     font-size: 0.9rem;
   }
 
+  .expertise-card {
+    width: 280px;
+    padding: 16px 20px;
+  }
+
   .blog-card {
     padding: 40px 32px;
   }
@@ -444,6 +508,12 @@
   .recognition-section,
   .blog-section {
     padding: 32px 16px;
+  }
+
+  .expertise-card {
+    width: 260px;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .profile-image {
