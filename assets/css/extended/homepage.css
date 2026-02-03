@@ -144,7 +144,8 @@
   transition: all 0.2s;
 }
 
-.expertise-item:hover .expertise-pill {
+.expertise-item:hover .expertise-pill,
+.expertise-item.active .expertise-pill {
   background: #e6f4ff;
   border-color: #4299e1;
   color: #2c5aa0;
@@ -191,7 +192,8 @@
   z-index: -1;
 }
 
-.expertise-item:hover .expertise-card {
+.expertise-item:hover .expertise-card,
+.expertise-item.active .expertise-card {
   opacity: 1;
   visibility: visible;
 }

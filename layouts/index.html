@@ -92,6 +92,23 @@
     </div>
   </section>
 
+  <script>
+    document.querySelectorAll('.expertise-item').forEach(item => {
+      item.addEventListener('click', function(e) {
+        const wasActive = this.classList.contains('active');
+        document.querySelectorAll('.expertise-item').forEach(i => i.classList.remove('active'));
+        if (!wasActive) {
+          this.classList.add('active');
+        }
+      });
+    });
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.expertise-item')) {
+        document.querySelectorAll('.expertise-item').forEach(i => i.classList.remove('active'));
+      }
+    });
+  </script>
+
   <!-- Professional Recognition Section -->
   <section class="recognition-section">
     <h2 class="section-title">Professional Recognition</h2>
