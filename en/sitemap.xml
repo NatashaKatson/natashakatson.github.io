@@ -2,11 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://natashakatson.com/tags/costa-rica/</loc>
-    <lastmod>2026-01-27T07:00:13-04:00</lastmod>
+    <loc>https://natashakatson.com/tags/frozen-money/</loc>
+    <lastmod>2026-02-06T11:00:13-04:00</lastmod>
+  </url><url>
+    <loc>https://natashakatson.com/posts/unfrozen-funds/</loc>
+    <lastmod>2026-02-06T11:00:13-04:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://natashakatson.com/ru/posts/unfrozen-funds/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://natashakatson.com/posts/unfrozen-funds/"
+                />
   </url><url>
     <loc>https://natashakatson.com/</loc>
-    <lastmod>2026-01-27T07:00:13-04:00</lastmod>
+    <lastmod>2026-02-06T11:00:13-04:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ru"
@@ -19,7 +32,7 @@
                 />
   </url><url>
     <loc>https://natashakatson.com/posts/</loc>
-    <lastmod>2026-01-27T07:00:13-04:00</lastmod>
+    <lastmod>2026-02-06T11:00:13-04:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ru"
@@ -30,6 +43,38 @@
                 hreflang="en"
                 href="https://natashakatson.com/posts/"
                 />
+  </url><url>
+    <loc>https://natashakatson.com/tags/rbc/</loc>
+    <lastmod>2026-02-06T11:00:13-04:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://natashakatson.com/ru/tags/rbc/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://natashakatson.com/tags/rbc/"
+                />
+  </url><url>
+    <loc>https://natashakatson.com/tags/sanctions/</loc>
+    <lastmod>2026-02-06T11:00:13-04:00</lastmod>
+  </url><url>
+    <loc>https://natashakatson.com/tags/</loc>
+    <lastmod>2026-02-06T11:00:13-04:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://natashakatson.com/ru/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://natashakatson.com/tags/"
+                />
+  </url><url>
+    <loc>https://natashakatson.com/tags/costa-rica/</loc>
+    <lastmod>2026-01-27T07:00:13-04:00</lastmod>
   </url><url>
     <loc>https://natashakatson.com/posts/costa-rica/</loc>
     <lastmod>2026-01-27T07:00:13-04:00</lastmod>
@@ -44,26 +89,10 @@
                 href="https://natashakatson.com/posts/costa-rica/"
                 />
   </url><url>
-    <loc>https://natashakatson.com/tags/</loc>
-    <lastmod>2026-01-27T07:00:13-04:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ru"
-                href="https://natashakatson.com/ru/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://natashakatson.com/tags/"
-                />
-  </url><url>
     <loc>https://natashakatson.com/tags/vacation/</loc>
     <lastmod>2026-01-27T07:00:13-04:00</lastmod>
   </url><url>
     <loc>https://natashakatson.com/tags/frozen-funds/</loc>
-    <lastmod>2025-11-16T13:00:13-04:00</lastmod>
-  </url><url>
-    <loc>https://natashakatson.com/tags/sanctions/</loc>
     <lastmod>2025-11-16T13:00:13-04:00</lastmod>
   </url><url>
     <loc>https://natashakatson.com/posts/frozen-funds/</loc>
