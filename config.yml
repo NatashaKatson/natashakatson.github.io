@@ -50,13 +50,13 @@ languages:
         menu:
             main:
                 - name: Главная
-                  url: blog/
+                  url: /ru/blog/
                   weight: 1
                 - name: Архив
-                  url: archives/
+                  url: /ru/archives/
                   weight: 5
                 - name: Тэги
-                  url: tags/
+                  url: /ru/tags/
                   weight: 10
                 - name: Telegram канал
                   url: https://t.me/natashakatson
