@@ -74,7 +74,7 @@ outputs:
 params:
     disableTranslationOnPost: true
     env: production
-    description: ""
+    description: "Product Marketing Leader with 8+ years in B2B SaaS. I help companies sharpen their positioning, messaging, and go-to-market strategy. Based in Vancouver, BC."
     author: Natasha Katson
     license: "CC BY-NC-ND 4.0"
     licenseUrl: "https://creativecommons.org/licenses/by-nc-nd/4.0/deed.en"
