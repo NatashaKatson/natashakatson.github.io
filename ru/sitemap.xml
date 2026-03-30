@@ -214,6 +214,16 @@
   </url><url>
     <loc>https://natashakatson.com/ru/posts/labour-and-delivery/</loc>
     <lastmod>2023-12-03T10:00:13-04:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://natashakatson.com/posts/labour-and-delivery/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ru"
+                href="https://natashakatson.com/ru/posts/labour-and-delivery/"
+                />
   </url><url>
     <loc>https://natashakatson.com/ru/posts/celpip-while-pregnant/</loc>
     <lastmod>2023-11-22T10:00:13-04:00</lastmod>
