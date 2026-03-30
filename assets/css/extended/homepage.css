@@ -57,7 +57,8 @@
   font-size: 1.75rem;
   color: #4299e1;
   font-weight: 400;
-  margin-top: 8px;
+  margin-top: 4px;
+  font-family: 'Playfair Display', serif;
 }
 
 .hero-description {
