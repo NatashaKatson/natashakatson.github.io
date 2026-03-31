@@ -36,13 +36,13 @@ A midwife is a registered maternity care provider. I don't think there's a direc
 A couple of years ago, my massage therapist told me she had her first pregnancy with an OB-GYN and her second with a midwife — and it was a completely different experience. She said she'd never go back to an OB-GYN. At the time I found that surprising, since an OB-GYN is a doctor and that seemed like the most important thing — but over time my thinking changed, because midwives have so many advantages!
 
 Pros of midwife care:
-- You can start being followed as early as 8 weeks.
-- Appointments are very long — no one is rushing you. Typically 30 minutes to an hour, plenty of time for all your questions.
-- They're more accessible than OB-GYNs. At my clinic, non-urgent questions and requests (like getting a note, etc.) were answered within the day; urgent ones within 15 minutes, 24/7.
-- If something goes wrong during the pregnancy, they'll still refer you to an OB-GYN or another specialist as needed — and the midwife remains your main point of contact throughout.
-- The birth will always be attended by someone from your midwife team.
-- If you want a home birth, midwives will happily attend — they love home births, by all accounts. They arrive with all the necessary equipment.
-- For the first six weeks postpartum, your midwife will be there: coming to your home to check on the baby and parents, giving advice, helping with breastfeeding, etc.
+- You can start being followed as early as 8 weeks.  
+- Appointments are very long — no one is rushing you. Typically 30 minutes to an hour, plenty of time for all your questions.  
+- They're more accessible than OB-GYNs. At my clinic, non-urgent questions and requests (like getting a note, etc.) were answered within the day; urgent ones within 15 minutes, 24/7.  
+- If something goes wrong during the pregnancy, they'll still refer you to an OB-GYN or another specialist as needed — and the midwife remains your main point of contact throughout.  
+- The birth will always be attended by someone from your midwife team.  
+- If you want a home birth, midwives will happily attend — they love home births, by all accounts. They arrive with all the necessary equipment.  
+- For the first six weeks postpartum, your midwife will be there: coming to your home to check on the baby and parents, giving advice, helping with breastfeeding, etc.  
 
 Cons:
 Honestly, I don't see any downsides to midwife care. It all depends on the specific people, of course, but my team has five people and they're all wonderful — responsive, understanding, and kind. The only thing some people might consider a downside is that a midwife isn't a doctor. But knowing that you'll be referred to a specialist if complications arise, that doesn't really matter much.
@@ -52,12 +52,12 @@ One more thing: midwives are affiliated with specific hospitals. We, for example
 ## OB-GYN
 
 Since I don't have personal experience with this route, I'll just share my thoughts. Honestly, I don't know many people who chose an OB-GYN for their prenatal care. This is largely because, despite being a doctor, there are quite a few downsides compared to midwife care:
-- Care typically doesn't begin until 20 weeks. Until then, you're seen by your family doctor — or a walk-in clinic if you don't have one (though I'm not entirely sure about this).
+- Care typically doesn't begin until 20 weeks. Until then, you're seen by your family doctor — or a walk-in clinic if you don't have one (though I'm not entirely sure about this).  
 - Appointments are 10, maximum 15 minutes. For a first pregnancy, that feels very short — especially since until week 33 appointments are only monthly, and questions accumulate.
-- There isn't always an emergency line. If something happens outside office hours, you just go to the ER — you can't consult your doctor.
-- The birth isn't necessarily attended by your own OB-GYN. It will likely be the on-call hospital doctor.
-- OB-GYNs don't attend home births.
-- Right after delivery, you and the baby are transferred back to your family doctor. The OB-GYN doesn't provide postpartum follow-up. If you don't have a family doctor, that means a walk-in clinic — which is hard to imagine with a newborn.
+- There isn't always an emergency line. If something happens outside office hours, you just go to the ER — you can't consult your doctor.  
+- The birth isn't necessarily attended by your own OB-GYN. It will likely be the on-call hospital doctor.  
+- OB-GYNs don't attend home births.  
+- Right after delivery, you and the baby are transferred back to your family doctor. The OB-GYN doesn't provide postpartum follow-up. If you don't have a family doctor, that means a walk-in clinic — which is hard to imagine with a newborn.  
 
 I did recently learn, though, that even if you did your prenatal care with an OB-GYN, some midwives can start seeing you after delivery and manage the baby's first six weeks. This happened to some friends of mine who couldn't get a midwife for the pregnancy itself but signed up for postpartum care.
 
@@ -122,9 +122,9 @@ It's also recommended in the third trimester to see a pelvic floor physiotherapi
 Since we knew almost nothing about preparing for labour, we wanted to take some kind of course — and the midwife strongly recommended it starting around week 25. There are many options: weekly evening classes over a month, a full-day intensive on a weekend, or online courses. After looking at the prices (typically $150–300 CAD) and reading comparisons between in-person and online, we decided to try the free online options. If questions remained, we could always ask the midwife, and basic skills like putting on a diaper would be covered at the hospital. I told the public nurse who calls me periodically that we were planning to do online courses, and she vetted their quality (making sure they were taught by certified professionals, not TikTok "experts") and also sent me an additional course she'd heard good things about. I should also note that I specifically looked for Canadian materials, because recommendations in the US and Canada differ — including when to go to the hospital.
 
 Here's the list of free online courses we did:
-- A recorded YouTube version of Holliday Tyson's in-person course — she's a well-known and very popular midwife: https://www.youtube.com/@maternitycaremidwives927/featured
-  The course has three parts: prenatal, labour and birth, and postnatal.
-  Overall, I really liked it as an introduction and I'm glad we started there — though I wanted more detail.
+- A recorded [YouTube](https://www.youtube.com/@maternitycaremidwives927/featured) version of Holliday Tyson's in-person course — she's a well-known and very popular midwife. 
+The course has three parts: prenatal, labour and birth, and postnatal.
+Overall, I really liked it as an introduction and I'm glad we started there — though I wanted more detail.
 - The [online course](https://www.durham.ca/en/health-and-wellness/online-prenatal-program.aspx) from Durham Region, which you can take at your own pace. It's actually a whole set of courses covering everything from pregnancy to baby care. We loved it — incredibly comprehensive. There are videos of real people sharing their birth stories, and I immediately recognised from the accents that they were American, even though the course itself is Canadian.
 - A two-day webinar from Markham Hospital — [Tummy Talks](https://info.tummytalks.ca/). It ran on a convenient schedule: Saturday and Sunday from 9–11 AM. The funniest thing is that this course is built on the same material as above and even uses the same videos — but since it's live, you can ask questions, and some of the audience questions were actually my favourite part. It was also nice that some content was tailored specifically to our province (you choose your province when registering).
 - The only course we wanted to take in person was infant and child CPR. I knew that in a scary situation, memory can fail you — but if you've practised on a mannequin, at least your hands remember what to do. So we did a two-hour [CPR course](https://safebeginnings.ca/) with mannequins.
