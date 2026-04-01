@@ -8,7 +8,7 @@
 {{- end }}
 
 {{- /* Title */}}
-<title>{{ if .IsHome }}Natasha Katson - Product Marketing Consultant{{ else }}{{ if .Title }}{{ .Title }} | {{ end }}{{ .Site.Title }}{{ end }}</title>
+<title>{{ if .IsHome }}Natasha Katson — B2B SaaS &amp; AI Product Marketing Consultant{{ else }}{{ if .Title }}{{ .Title }} | {{ end }}{{ .Site.Title }}{{ end }}</title>
 
 {{- /* Meta */}}
 {{- if .IsHome }}
@@ -120,7 +120,9 @@
 {{- if hugo.IsProduction | or (eq .Site.Params.env "production") }}
 {{- template "_internal/google_analytics.html" . }}
 {{- template "_internal/google_news.html" . }}
+{{- if not .IsHome }}
 {{- template "partials/templates/opengraph.html" . }}
 {{- template "partials/templates/twitter_cards.html" . }}
+{{- end }}
 {{- template "partials/templates/schema_json.html" . }}
 {{- end -}}
