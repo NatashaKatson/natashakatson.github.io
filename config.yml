@@ -20,7 +20,7 @@ languages:
         menu:
             main:
                 - name: Home
-                  url: blog/
+                  url: /
                   weight: 1
                 - name: Archive
                   url: archives/
@@ -50,7 +50,7 @@ languages:
         menu:
             main:
                 - name: Главная
-                  url: /ru/blog/
+                  url: /
                   weight: 1
                 - name: Архив
                   url: /ru/archives/
