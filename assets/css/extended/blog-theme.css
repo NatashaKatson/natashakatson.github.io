@@ -175,3 +175,10 @@ h1, h2, h3, h4, h5, h6,
 .dark .pagination a:hover {
     background: #EDE8E0;
 }
+
+/* --- Responsive --- */
+@media (max-width: 640px) {
+    .post-title {
+        font-size: 26px;
+    }
+}
