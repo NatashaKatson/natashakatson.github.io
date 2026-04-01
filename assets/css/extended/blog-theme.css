@@ -1,0 +1,177 @@
+/* ============================================================
+   Blog Theme — Match landing page design system
+   Palette: cream / ink / rust / gold  |  Fonts: Fraunces + DM Sans
+   ============================================================ */
+
+/* --- CSS Variable Overrides (Light Mode) --- */
+:root {
+    --theme: #F7F3EC;
+    --entry: #FEFCF8;
+    --primary: rgba(28, 26, 23, 0.88);
+    --secondary: rgba(28, 26, 23, 0.56);
+    --tertiary: rgba(28, 26, 23, 0.16);
+    --content: rgba(28, 26, 23, 0.88);
+    --border: rgba(28, 26, 23, 0.12);
+    --code-bg: #EDE8E0;
+    --radius: 4px;
+}
+
+/* --- CSS Variable Overrides (Dark Mode) --- */
+.dark {
+    --theme: #1C1A17;
+    --entry: #2A2520;
+    --primary: rgba(247, 243, 236, 0.88);
+    --secondary: rgba(247, 243, 236, 0.56);
+    --tertiary: rgba(247, 243, 236, 0.16);
+    --content: rgba(247, 243, 236, 0.88);
+    --code-bg: #252220;
+    --border: rgba(247, 243, 236, 0.12);
+}
+
+/* List page background (PaperMod defaults to --code-bg) */
+.list {
+    background: var(--theme);
+}
+
+.dark.list {
+    background: var(--theme);
+}
+
+/* --- Typography --- */
+body {
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6,
+.post-title,
+.page-header h1 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+}
+
+.entry-header h1,
+.entry-header h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+}
+
+
+#menu a {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+/* --- Header --- */
+#menu .active {
+    color: #C4622D;
+    border-bottom-color: #C4622D;
+}
+
+#menu a:hover {
+    color: #C4622D;
+}
+
+/* --- Post Entry Cards --- */
+.post-entry {
+    border: 1px solid var(--border);
+    background: var(--entry);
+    box-shadow: 0 2px 8px rgba(28, 26, 23, 0.04);
+    transition: box-shadow 0.15s, transform 0.1s;
+}
+
+.post-entry:hover {
+    box-shadow: 0 8px 24px rgba(28, 26, 23, 0.09);
+}
+
+.post-entry:hover .entry-header h2 {
+    color: #C4622D;
+}
+
+/* --- Post Content --- */
+.post-title {
+    font-size: 36px;
+    line-height: 1.15;
+}
+
+.post-content p,
+.post-content li {
+    line-height: 1.75;
+    font-size: 1rem;
+}
+
+.post-content a {
+    color: #C4622D;
+    box-shadow: 0 1px 0 rgba(196, 98, 45, 0.4);
+}
+
+.post-content a:hover {
+    color: #9E4A1F;
+    box-shadow: 0 1px 0 #9E4A1F;
+}
+
+.post-content blockquote {
+    border-inline-start-color: #C4622D;
+    color: rgba(28, 26, 23, 0.65);
+    font-style: italic;
+}
+
+.dark .post-content blockquote {
+    color: rgba(247, 243, 236, 0.65);
+}
+
+/* --- Tags --- */
+.post-tags a {
+    background: #F5EDD0;
+    color: #B8900A;
+    border: 1px solid rgba(184, 144, 10, 0.25);
+    border-radius: 40px;
+    font-size: 0.75rem;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+}
+
+.post-tags a:hover {
+    background: #B8900A;
+    color: #F5EDD0;
+    border-color: #B8900A;
+}
+
+.dark .post-tags a {
+    background: rgba(184, 144, 10, 0.15);
+    color: #D4A830;
+    border-color: rgba(184, 144, 10, 0.3);
+}
+
+.dark .post-tags a:hover {
+    background: #B8900A;
+    color: #F5EDD0;
+}
+
+/* --- Pagination --- */
+.pagination a {
+    background: #1C1A17;
+    color: #F7F3EC;
+    border-radius: 3px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 0.85rem;
+}
+
+.pagination a:hover {
+    background: #4A4540;
+}
+
+.dark .pagination a {
+    background: #F7F3EC;
+    color: #1C1A17;
+}
+
+.dark .pagination a:hover {
+    background: #EDE8E0;
+}
