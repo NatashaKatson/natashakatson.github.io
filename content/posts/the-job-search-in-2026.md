@@ -9,9 +9,7 @@ tags:
 ---
 Hi everyone!
  
-I've been meaning to write this post for a while, but kept thinking "I'll publish it once I have good news to share." Well, that's clearly not a strategy that's working, so here we are.
- 
-I'm still job searching, and it's been a while!
+I've been meaning to write this post for a while, but kept thinking "I'll publish it once I have good news to share." Well, that's clearly not a strategy that's working, so here we are. I'm still job searching, and it's been a while!
 
 # Beginning of the search
  
