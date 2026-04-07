@@ -5,7 +5,7 @@ showtoc: true
 draft: false
 tags:
 - work
-- job
+- job search
 - product marketing 
 ---
 Hi everyone! 
