@@ -32,9 +32,9 @@ People ask: "Have you found a job yet?" And I say no. And they don't say anythin
  
 There's this weird shame that lands on you in those moments. Like I'm being irresponsible somehow or I should have planned this better, or figured it out differently, or picked a different time.
  
-I know some men who've been job searching for more than a year (it's just a reality of the current market, nothing to be ashamed of). Nobody asks them about daycare costs or implies they're wasting money or being irresponsible. It's just a thing they're doing. For the men, it's a job search. For me, it's starting to feel like a character flaw.
+I know some men who've been job searching for more than a year (it's just a reality of the current market, nothing to be ashamed of). Nobody asks them about daycare costs or implies they're wasting money or being irresponsible. It's just a thing they're doing. For the men, it's a job search and for me it's starting to feel like a character flaw.
  
-And it's not just one thing at a time. My son ages out of his current daycare in September, which means I'm starting the search all over again. Three months of calls, waitlists, hoping to get lucky. All of this happening in parallel with the job search and feeling completely drained because I can't find either. My husband is incredibly supportive, but I'm the one with the time to make all the calls, track all the waitlists, follow up on everything. It's just relentless.
+And it's not just one thing at a time. My son ages out of his current daycare in September, which means I'm starting the search all over again. Three months of calls, waitlists, hoping to get lucky. All of this happening in parallel with the job search and feeling completely drained because I can't find either. My husband is incredibly supportive, but I'm the one with the time to make all the calls, track all the waitlists, follow up on everything.
 
 # The market 
 Okay, now let's talk about the job market itself, which is its own thing.
