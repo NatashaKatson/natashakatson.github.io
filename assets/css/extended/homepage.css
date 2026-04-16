@@ -560,3 +560,22 @@
     text-align: center;
   }
 }
+
+.v3-fix-cta {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.v3-fix-cta-link {
+  color: #8B4A2F;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(139, 74, 47, 0.4);
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: text-decoration-color 0.2s ease;
+}
+
+.v3-fix-cta-link:hover {
+  text-decoration-color: #8B4A2F;
+}
