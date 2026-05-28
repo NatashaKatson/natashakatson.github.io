@@ -60,7 +60,7 @@ tags:
 
 ## Какие вопросы задавали
 
-Многое повторяет то, что было в 2021 году, поэтому отсылаю к старому посту: сейчас тоже спрашивают про positioning, GTM, sales enablement, behavioral вопросы. Но появилось и новое.
+Многое повторяет то, что было в 2021 году, поэтому отсылаю к старому [посту](https://natashakatson.com/ru/posts/how-to-find-a-job/): сейчас тоже спрашивают про positioning, GTM, sales enablement, behavioral вопросы. Но появилось и новое.
 
 ### AI и продукт. Этого пять лет назад не было вообще:
 - How are you using AI in your day-to-day PMM work? 
