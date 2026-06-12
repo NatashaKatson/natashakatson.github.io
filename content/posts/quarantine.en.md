@@ -152,7 +152,6 @@ Of course, quarantine is a great time to read about everything you need to get d
 
 All in all, you can survive a 14-day quarantine, but it’s pretty easy to go a little crazy. Perhaps the most unusual feeling is realizing that you’ve been in a completely new country and city for two weeks but haven’t seen anything except the view from your window. I really appreciated the people walking their dogs; I usually spent a few hours a day watching them 🐶.
 
-
 P.S. We paid for everything using our Russian [Tinkoff bank](https://www.tinkoff.ru/sl/7WyfhoLwreO), card, which lets you hold a CAD balance. Once the quarantine was over, our spending on groceries went down, since we were no longer obligated to order everything, and so we could spend less on delivery fees. Also, takeout places usually give you great discounts.
 
 
