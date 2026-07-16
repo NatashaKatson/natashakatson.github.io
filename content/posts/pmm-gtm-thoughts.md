@@ -71,4 +71,6 @@ But also to be fair I don't have a complete answer. I guess some features still 
 
 Will see, I guess.
 
-P.S. I am really happy to think about those things again, I truly missed working at a company. Although it's extra hard now that I'm a mom and I don't have time for anything. Took me a month to publish this post. Thanks for reading!
+P.S. I am really happy to think about those things again, I truly missed working at a company. Although it's extra hard now that I'm a mom and I don't have time for anything. Took me a month to publish this post. And I really woke up at 5 am and couldn't go back to sleep because of all these thoughts.
+
+Thanks for reading!
