@@ -74,3 +74,5 @@ Will see, I guess.
 P.S. I am really happy to think about those things again, I truly missed working at a company. Although it's extra hard now that I'm a mom and I don't have time for anything. Took me a month to publish this post. And I really woke up at 5 am and couldn't go back to sleep because of all these thoughts.
 
 Thanks for reading!
+
+{{< figure src="/images/excited_customer.png" caption="Very Excited Customer" >}}
