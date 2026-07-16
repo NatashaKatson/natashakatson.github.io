@@ -10,7 +10,7 @@ tags:
 - AI
 - product marketing
 ---
-## 5 am thoughts
+## Everything is exciting and overwhelming
 
 Okay, now that I'm back to being a full-time Product Marketer I can’t stop thinking of a few things. First, how exciting it is to be a marketer now when everything is changing rapidly. Secondly, how in the world should we reach people, people like us, who are overtired and overstimulated, with all the new things we are all building? Things that are important, that do simplify someone’s work, that are cool… most of the time.
 
