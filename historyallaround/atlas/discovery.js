@@ -8,6 +8,13 @@
     pendingPoint = null,
     placeReturn = null;
   const trail = [];
+  let activeDiscovery = null;
+  const discoveries = window.CuratedDiscoveries || [];
+  function curatedSelection(value) {
+    const story = discoveries.find((s) => s.id === value?.id);
+    const index = story?.stops.findIndex((s) => s.id === value?.stop) ?? -1;
+    return index >= 0 ? { story, index, stop: story.stops[index] } : null;
+  }
   const trailPanel = document.createElement("div");
   trailPanel.className = "story-trail";
   trailPanel.hidden = true;
@@ -97,6 +104,7 @@
     return {
       pinned,
       activeComparisonStory,
+      activeDiscovery,
       year: state.year,
       sel: state.sel,
       polity: selectedPolity,
@@ -122,6 +130,7 @@
     placeToken++;
     pinned = s.pinned ?? null;
     activeComparisonStory = s.activeComparisonStory ?? null;
+    activeDiscovery = curatedSelection(s.activeDiscovery) ? s.activeDiscovery : null;
     place = s.placeState;
     placeReturn = s.placeReturn;
     placePanel.hidden = !place;
@@ -488,6 +497,67 @@
   // Discovery cards and exact-view links use stable source keys rather than array IDs.
   let pinned = null;
   let activeComparisonStory = null;
+  const curatedShelf = document.createElement("section");
+  curatedShelf.className = "curated-discoveries comparison-stories";
+  curatedShelf.setAttribute("aria-label", "Curated discoveries");
+  curatedShelf.innerHTML = `<div class="kicker">Curated discoveries</div><div class="curated-catalog">${discoveries.map((s) => `<button type="button" class="story-card curated-cover" data-discovery="${esc(s.id)}"><b>${esc(s.title)}</b><span>${esc(s.subtitle)}</span><small>${esc(fmtSpan(s.start, s.end))} · ${s.stops.length} stops <span aria-hidden="true">↗</span></small></button>`).join("")}</div><div class="curated-reader" hidden></div>`;
+  document.getElementById("regions").before(curatedShelf);
+  const curatedReader = curatedShelf.querySelector(".curated-reader");
+  function sourceLinks(sources) {
+    return sources.map(([label, url]) => `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(label)} ↗</a>`).join(" · ");
+  }
+  function renderCurated() {
+    const selected = curatedSelection(activeDiscovery);
+    const key = selected ? `${selected.story.id}/${selected.stop.id}` : "";
+    curatedReader.hidden = !selected;
+    curatedShelf.querySelector(".curated-catalog").hidden = !!selected;
+    if (!selected) { curatedReader.dataset.selection = ""; return; }
+    const { story, stop, index } = selected;
+    if (curatedReader.dataset.selection !== key) {
+      curatedReader.dataset.selection = key;
+      curatedReader.innerHTML = `<button type="button" data-curated-close>← All discoveries</button><h3 tabindex="-1" data-curated-heading>${esc(story.title)}</h3><p>${esc(story.introduction)}</p><p class="curated-sources">${sourceLinks(story.sources)}</p><nav class="curated-stops" aria-label="Discovery stops">${story.stops.map((s, i) => `<button type="button" data-curated-stop="${i}" ${i === index ? 'aria-current="step"' : ""}><span>${i + 1}</span> ${esc(s.location)}</button>`).join("")}</nav><div class="curated-stop"><div class="kicker">Stop ${index + 1} of ${story.stops.length} · ${stop.kind === "context" ? "Period snapshot" : "Dated event"} · ${esc(fmt(stop.year))}</div><h4>${esc(stop.title)}</h4><p>${esc(stop.text)}</p>${stop.kind === "context" ? "<p class=\"curated-context-note\">The map year is a window into this period, not an exact date for everything described here.</p>" : ""}<p class="curated-sources">${sourceLinks(stop.sources)}</p></div><p class="curated-map-status" role="status"></p><button type="button" data-curated-return hidden>Show this stop on the map</button><div class="curated-navigation"><button type="button" data-curated-prev ${index === 0 ? "disabled" : ""}>← Previous</button><button type="button" data-curated-next ${index === story.stops.length - 1 ? "disabled" : ""}>Next stop →</button></div><p class="curated-context-note">A selection of contemporary histories, not a complete world survey or a claim that these places were connected. The circle locates a city or site; borders follow the Atlas's available coverage.</p>`;
+      curatedReader.querySelectorAll("[data-curated-stop]").forEach((b) => b.onclick = () => openCurated(story.id, +b.dataset.curatedStop));
+      curatedReader.querySelector("[data-curated-prev]").onclick = () => openCurated(story.id, index - 1);
+      curatedReader.querySelector("[data-curated-next]").onclick = () => openCurated(story.id, index + 1);
+      curatedReader.querySelector("[data-curated-return]").onclick = () => openCurated(story.id, index);
+      curatedReader.querySelector("[data-curated-close]").onclick = () => {
+        activeDiscovery = null;
+        renderCurated(); update();
+        curatedShelf.querySelector(`[data-discovery="${story.id}"]`).focus({ preventScroll: true });
+      };
+    }
+    const atYear = state.year === stop.year && !compare.on;
+    curatedReader.querySelector(".curated-map-status").textContent = atYear
+      ? `Map · ${fmt(stop.year)} · ${stop.location}`
+      : `You’re exploring ${fmt(state.year)}${compare.on ? " in comparison mode" : ""}. This stop opens ${fmt(stop.year)}.`;
+    curatedReader.querySelector("[data-curated-return]").hidden = atYear;
+  }
+  function openCurated(id, index = 0) {
+    const story = discoveries.find((s) => s.id === id);
+    const stop = story?.stops[index];
+    if (!stop) return;
+    window.HistoryChallenge?.cancelPick();
+    trail.push(snapshot());
+    if (trail.length > 30) trail.shift();
+    placeToken++; linkToken++;
+    place = null; placeReturn = null; lastPoint = null; searchPlace = null;
+    placePanel.hidden = true;
+    pinned = null; activeComparisonStory = null;
+    stopPlay(); stopSpin(); flyToken++; userMoved = true;
+    if (compare.on) document.getElementById("compareToggle").click();
+    activeDiscovery = { id, stop: stop.id };
+    compare.selectedYear = null;
+    state.borders = "history";
+    syncBordersUI();
+    setYear(stop.year);
+    zoomK = 1.8;
+    focusPoint(stop.point);
+    update(); renderTrail();
+    curatedReader.querySelector("[data-curated-heading]").focus({ preventScroll: true });
+    if (window.innerWidth <= 860) stage.scrollIntoView({ block: "center", behavior: "auto" });
+  }
+  curatedShelf.querySelectorAll("[data-discovery]").forEach((b) => b.onclick = () => openCurated(b.dataset.discovery));
+  renderCurated();
   const comparisonStories = [
     {
       title: "From Nootka to the 49th parallel", left: 1789, right: 1846,
@@ -531,6 +601,7 @@
     trail.push(snapshot());
     if (trail.length > 30) trail.shift();
     activeComparisonStory = index;
+    activeDiscovery = null;
     pinned = null;
     placeToken++;
     place = null;
@@ -603,6 +674,7 @@
       point: place?.point || lastPoint || null,
       location: searchPlace,
       story: activeComparisonStory,
+      discovery: activeDiscovery,
       pin: pinned ? { wiki: pinned.wiki, date: pinned.start, year: pinned.year } : null,
     };
   }
@@ -645,8 +717,9 @@
     const anchor = v.pin && ev.find((r) => r.wiki === v.pin.wiki && r.start === v.pin.date);
     pinned = anchor ? { ...anchor, year: v.pin.year } : null;
     activeComparisonStory = v.story;
+    activeDiscovery = curatedSelection(v.discovery) ? v.discovery : null;
     const saved = { ...snapshot(), ...v, sel: r?.id || null, polity: null,
-      activeComparisonStory: v.story, pinned,
+      activeComparisonStory: v.story, activeDiscovery, pinned,
       flatT: { x: v.pan[0] * W, y: v.pan[1] * H }, searchPlace: v.location || null,
       lastPoint: v.point, placeState: null, placeReturn: null };
     placeToken++;
@@ -678,7 +751,7 @@
     linkToken++;
     place = null; placeReturn = null; searchPlace = null; lastPoint = null;
     placePanel.hidden = true;
-    pinned = null; activeComparisonStory = null;
+    pinned = null; activeComparisonStory = null; activeDiscovery = null;
     stopPlay(); stopSpin(); flyToken++; userMoved = true;
     if (compare.on) document.getElementById("compareToggle").click();
     state.sel = null; selectedPolity = null; compare.selectedYear = null;
@@ -719,6 +792,7 @@
     pinned = null;
     searchPlace = null;
     activeComparisonStory = null;
+    activeDiscovery = null;
     lastPoint = null;
     stopPlay();
     stopSpin();
@@ -759,6 +833,7 @@
     render(scene) {
       window.PopulationTimeline?.render(state.year, compare.on ? compare.left : null);
       renderComparisonStory();
+      renderCurated();
       const right = state.year;
       let allHits = [];
       if (compare.on) {
@@ -822,7 +897,10 @@
               ),
             ]
           : [];
-      const markedPoint = place?.point || (searchPlace && lastPoint);
+      const curated = curatedSelection(activeDiscovery);
+      const curatedPoint = curated && state.year === curated.stop.year && !compare.on && !state.sel && !selectedPolity
+        ? curated.stop.point : null;
+      const markedPoint = place?.point || (searchPlace && lastPoint) || curatedPoint;
       if (markedPoint && visible(...markedPoint)) {
         const p = proj(markedPoint);
         ctx.save();
@@ -864,6 +942,7 @@
       return compare.on;
     },
     detail() {
+      renderCurated();
       if ((selectedPolity || state.sel) && compare.selectedYear !== null)
         withYear(compare.selectedYear, renderDetailBase);
       const x = state.sel && byId[state.sel];
