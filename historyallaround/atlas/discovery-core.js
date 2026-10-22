@@ -1,6 +1,22 @@
 /* Pure discovery helpers, shared by the browser and regression tests. */
 (function (root) {
   const api = {
+    yearsBetween(from, to) {
+      return to - from - (from < 0 && to > 0 ? 1 : 0);
+    },
+    contemporaryPair(people, year, anchorWiki) {
+      const alive = people.filter((p) => p.born <= year && p.died >= year);
+      const anchor = alive.find((p) => p.wiki === anchorWiki);
+      const pairs = alive.flatMap((a, i) => alive.slice(i + 1).flatMap((b) => {
+        if (a.region === b.region || (anchor && a !== anchor && b !== anchor)) return [];
+        const from = Math.max(a.born, b.born), to = Math.min(a.died, b.died);
+        return [{ people: [a, b], from, to, year }];
+      }));
+      return pairs.sort((a, b) =>
+        a.people.filter((p) => p.approx).length - b.people.filter((p) => p.approx).length ||
+        api.yearsBetween(b.from, b.to) - api.yearsBetween(a.from, a.to) ||
+        a.people.map((p) => p.wiki).join("/").localeCompare(b.people.map((p) => p.wiki).join("/")))[0] || null;
+    },
     searchText(value) {
       return String(value || "").normalize("NFKD").replace(/\p{M}/gu, "")
         .toLocaleLowerCase("en").replace(/[^\p{L}\p{N}]+/gu, " ").trim();

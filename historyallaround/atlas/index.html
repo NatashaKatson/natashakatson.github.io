@@ -652,7 +652,16 @@ const EVENTS = [
 [2024,null,0,"Paris Summer Olympics","Paris hosts the Summer Olympic Games from July 26 to August 11.",48.86,2.35,"eu","culture","2024_Summer_Olympics","https://www.paris.fr/en/pages/the-paris-olympic-and-paralympic-games-kick-off-in-one-year-27787"],
 [2025,null,0,"Rubin Observatory reveals its first images","The Vera C. Rubin Observatory in Chile unveils its First Look images on June 23.",-30.24,-70.74,"am","ideas","Vera_C._Rubin_Observatory","https://www.nsf.gov/news/first-imagery-nsf-doe-vera-c-rubin-observatory"],
 [2026,null,0,"Milano Cortina Winter Olympics","Italy hosts the Winter Olympic Games in February, with the closing ceremony in Verona on February 22.",45.46,9.19,"eu","culture","2026_Winter_Olympics","https://www.youtube.com/watch?v=LY0XM_DfgDo"],
-[2026,null,0,"Artemis II flies around the Moon","Four astronauts fly around the Moon and return to Earth on April 10. The marker shows the mission's launch site in Florida.",28.61,-80.60,"am","ideas","Artemis_II","https://www.nasa.gov/mission/artemis-ii/"]
+[2026,null,0,"Artemis II flies around the Moon","Four astronauts fly around the Moon and return to Earth on April 10. The marker shows the mission's launch site in Florida.",28.61,-80.60,"am","ideas","Artemis_II","https://www.nasa.gov/mission/artemis-ii/"],
+// Focused depth: Cleopatra's world. Append records to preserve existing array IDs.
+[-51,-30,0,"Cleopatra VII rules Egypt","Cleopatra's reign spans the final decades of Ptolemaic Egypt. The marker locates Alexandria, not her whereabouts throughout the period.",31.2,29.92,"me","power","Reign_of_Cleopatra","https://www.ucl.ac.uk/museums-static/digitalegypt/chronology/cleopatravii.html"],
+[-53,null,0,"Parthian victory at Carrhae","Parthian cavalry defeats the invading Roman army of Crassus near Harran. Rome's expansion encounters a powerful rival east of the Mediterranean.",36.865,39.032,"me","war","Battle_of_Carrhae","https://www.iranicaonline.org/articles/carrhae-harran-town-in-mesopotamia-where-in-may-53-b/"],
+[-52,null,0,"Siege of Alesia","Caesar defeats the Gallic coalition led by Vercingetorix at Alesia, a decisive siege in the conquest of Gaul.",47.537,4.501,"eu","war","Battle_of_Alesia","https://www.alesia.com/wp-content/uploads/2025/06/2025-2026-Programme-Pedagogique.pdf"],
+[-50,null,1,"Glassblowing emerges in the eastern Mediterranean","Around the middle of the first century BC, glassworkers begin inflating molten glass with a blowpipe. The date is approximate; Jerusalem preserves early evidence, not proof of a single invention site.",31.78,35.23,"me","ideas","Glassblowing","https://exhibitions.kelsey.lsa.umich.edu/galleries/Exhibits/WondrousGlass/RomanGlass-Making.html"],
+[-31,null,0,"Battle of Actium","Octavian's forces defeat Antony and Cleopatra in a naval battle off western Greece. Cleopatra's reign in Egypt ends the following year.",38.94,20.76,"eu","war","Battle_of_Actium","https://www.metmuseum.org/art/collection/search/251827"],
+[-30,null,0,"Egypt comes under Roman rule","After the deaths of Cleopatra and Antony, Octavian annexes Egypt. The Ptolemaic dynasty ends; this point marks Alexandria rather than the extent of Roman control.",31.2,29.92,"me","power","Roman_Egypt","https://academic.oup.com/edited-volume/61673/chapter-abstract/548065820"],
+[-300,100,1,"Monte Albán's second urban phase","The Zapotec centre in Oaxaca develops its ceremonial core, hillside terraces and water systems. These are broad archaeological phase dates, not construction dates for every monument.",17.043,-96.7675,"am","culture","Monte_Albán","https://whc.unesco.org/en/list/415/"],
+[-206,9,0,"Western Han China","Western Han rule spans 206 BC–AD 9. Its capital Chang'an grew into a great city of palaces, residential wards and markets. The marker locates the capital, not the dynasty's territorial extent.",34.27,108.9,"as","culture","Western_Han","https://www.metmuseum.org/essays/han-dynasty-206-b-c-220-a-d"]
 ];
 
 // [name, born, died, approx, role, lat, lon, region, wikiSlug]
@@ -720,7 +729,9 @@ const PEOPLE = [
 ["Frida Kahlo",1907,1954,0,"Painter",19.35,-99.16,"am","Frida_Kahlo"],
 ["Nelson Mandela",1918,2013,0,"President of South Africa",-25.75,28.19,"af","Nelson_Mandela"],
 ["Martin Luther King Jr.",1929,1968,0,"Civil rights leader",33.75,-84.39,"am","Martin_Luther_King_Jr."],
-["Yuri Gagarin",1934,1968,0,"First human in space",55.6,34.6,"eu","Yuri_Gagarin"]
+["Yuri Gagarin",1934,1968,0,"First human in space",55.6,34.6,"eu","Yuri_Gagarin"],
+["Emperor Yuan of Han",-75,-33,0,"Han emperor in China, reigning 48–33 BC",34.27,108.9,"as","Emperor_Yuan_of_Han","https://en.wikipedia.org/wiki/Emperor_Yuan_of_Han"],
+["Virgil",-70,-19,0,"Roman poet",45.16,10.8,"eu","Virgil","https://www.livius.org/articles/person/virgil/"]
 ];
 
 // [year to jump to, text]
@@ -788,7 +799,7 @@ function parseYear(s){
 }
 
 const ev=EVENTS.map((e,i)=>({id:"e"+i,kind:"event",start:e[0],end:e[1]??e[0],approx:!!e[2],title:e[3],blurb:e[4],lat:e[5],lon:e[6],region:e[7],cat:e[8],wiki:e[9],source:e[10]}));
-const ppl=PEOPLE.map((p,i)=>({id:"p"+i,kind:"person",name:p[0],born:p[1],died:p[2],approx:!!p[3],role:p[4],lat:p[5],lon:p[6],region:p[7],wiki:p[8]}));
+const ppl=PEOPLE.map((p,i)=>({id:"p"+i,kind:"person",name:p[0],born:p[1],died:p[2],approx:!!p[3],role:p[4],lat:p[5],lon:p[6],region:p[7],wiki:p[8],source:p[9]}));
 const byId=Object.fromEntries([...ev,...ppl].map(x=>[x.id,x]));
 const wikiUrl=s=>"https://en.wikipedia.org/wiki/"+encodeURIComponent(s).replace(/%2C/g,",").replace(/%27/g,"'");
 
@@ -906,7 +917,7 @@ function renderScene(){
     byHue.forEach((fs,i)=>{if(!fs.length)return;ctx.beginPath();for(const f of fs)path(f);ctx.fillStyle=STATE_FILLS[i%STATE_FILLS.length];ctx.fill()});
     // Repaint nested self-governing territories after their sovereign realm so both remain legible.
     for(const f of pols)if(f.territoryOverlay){ctx.beginPath();path(f);ctx.fillStyle=STATE_FILLS[f.hue];ctx.fill()}
-    ctx.beginPath();for(const f of pols)path(f);ctx.strokeStyle=C.border;ctx.lineWidth=lw;ctx.stroke();
+    ctx.beginPath();for(const f of pols)path(f);ctx.strokeStyle=C.border;ctx.lineWidth=lw;ctx.setLineDash([3,2]);ctx.stroke();ctx.setLineDash([]);
     if(selectedPolity){const f=pols.find(p=>p.name===selectedPolity.name&&p.from===selectedPolity.from&&p.to===selectedPolity.to);if(f){ctx.beginPath();path(f);ctx.strokeStyle=C.accent;ctx.lineWidth=2.4;ctx.stroke()}}}
   else if(state.borders==="today"){ctx.beginPath();path(G.borders);ctx.strokeStyle=C.border;ctx.lineWidth=lw;ctx.stroke()}
   ctx.beginPath();path(G.land);ctx.strokeStyle=C["land-edge"];ctx.lineWidth=.8;ctx.stroke();
@@ -935,7 +946,7 @@ function renderScene(){
   const people=alivePeople();
   for(const p of people){if(!visible(p.lon,p.lat))continue;const[x,y]=proj([p.lon,p.lat]);
     ctx.save();ctx.translate(x,y);ctx.rotate(Math.PI/4);ctx.strokeStyle=C.ink;ctx.lineWidth=1.4;ctx.fillStyle=C.paper;ctx.beginPath();ctx.rect(-3.5,-3.5,7,7);ctx.fill();ctx.stroke();ctx.restore();
-    hits.push({x,y,id:p.id,label:p.name})}
+    hits.push({x,y,id:p.id,label:p.name+" · "+fmtSpan(p.born,p.died,p.approx)})}
   const act=activeEvents();
   const labelled=polLabels.slice();
   act.slice().reverse().forEach(({e,r})=>{if(!visible(e.lon,e.lat))return;const[x,y]=proj([e.lon,e.lat]);
@@ -943,7 +954,7 @@ function renderScene(){
     ctx.beginPath();ctx.arc(x,y,rad+2.5,0,7);ctx.fillStyle=C.halo;ctx.fill();
     ctx.shadowColor="rgba(28,26,23,.12)";ctx.shadowBlur=1+2*r;ctx.beginPath();ctx.arc(x,y,rad,0,7);ctx.fillStyle=col;ctx.fill();ctx.shadowBlur=0;ctx.strokeStyle=C.border;ctx.lineWidth=.9;ctx.stroke();
     if(r>.7){ctx.beginPath();ctx.arc(x,y,rad*.38,0,7);ctx.fillStyle="rgba(255,255,255,.85)";ctx.fill()}ctx.globalAlpha=1;
-    hits.push({x,y,id:e.id,label:e.title})});
+    hits.push({x,y,id:e.id,label:e.title+" · "+fmtSpan(e.start,e.end!==e.start?e.end:null,e.approx)})});
   // labels for strongest few, avoiding overlap
   ctx.font=`500 ${W<600?10.5:11.5}px ${C.display}`;ctx.textBaseline="middle";
   const maxL=W<600?3:6;let n=0;
@@ -1038,18 +1049,18 @@ function select(id,fly=true,recordYear=null){window.HistoryDiscovery?.selectedRe
 function selectPolity(f,year=state.year){if(window.HistoryDiscovery)window.HistoryDiscovery.selectPolityYear(year);state.sel=null;selectedPolity=f;stopPlay();stopSpin();renderDetail();draw();if(window.innerWidth<=860)document.getElementById("detail").scrollIntoView({behavior:"smooth",block:"start"})}
 function renderDetail(){renderDetailBase();if(window.HistoryDiscovery)window.HistoryDiscovery.detail()}
 function renderDetailBase(){const el=document.getElementById("detail");if(selectedPolity){const f=selectedPolity,member=f.member&&f.member!==f.name?f.member:"Independent or parent state",link=f.wiki?`<a href="${wikiUrl(f.wiki)}" target="_blank" rel="noopener">Read more on Wikipedia ↗</a>`:"";
-    el.innerHTML=`<div class="detail polity"><button class="iconbtn close" aria-label="Close">×</button><div class="kicker"><i></i>State on the map in ${esc(fmt(state.year))}</div><h3>${esc(f.name)}</h3><div class="meta-grid"><div><span>Recorded lifespan</span><strong>${esc(fmtSpan(f.from,f.to))}</strong></div><div><span>Political relationship</span><strong>${esc(member)}</strong></div></div>${link}</div>`;
+    el.innerHTML=`<div class="detail polity"><button class="iconbtn close" aria-label="Close">×</button><div class="kicker"><i></i>State on the map in ${esc(fmt(state.year))}</div><h3>${esc(f.name)}</h3><div class="meta-grid"><div><span>Mapped coverage</span><strong>${esc(fmtSpan(f.from,f.to))}</strong></div><div><span>Political relationship</span><strong>${esc(member)}</strong></div></div><p>Approximate, simplified reconstruction. Mapped extents may include claims and do not establish effective control. Coverage dates describe this source record.</p>${link}</div>`;
     el.querySelector(".close").onclick=()=>{selectedPolity=null;renderDetail();draw()};return}
   const x=state.sel&&byId[state.sel];if(!x){el.innerHTML="";return}
   if(x.kind==="event"){
     el.innerHTML=`<div class="detail" style="--c:var(--c-${x.cat})"><button class="iconbtn close" aria-label="Close">×</button>
-    <div class="kicker"><i></i>${esc(fmtSpan(x.start,x.end!==x.start?x.end:null,x.approx))} · ${REGIONS[x.region]}</div>
-    <h3>${esc(x.title)}</h3><p>${esc(x.blurb)}</p>${x.source?`<p><a href="${esc(x.source)}" target="_blank" rel="noopener">Primary source ↗</a></p>`:""}<a href="${wikiUrl(x.wiki)}" target="_blank" rel="noopener">Read more on Wikipedia ↗</a>
+    <div class="kicker"><i></i>${esc(fmtSpan(x.start,x.end!==x.start?x.end:null,x.approx))} · ${REGIONS[x.region]}${x.approx?" · Approximate date":""}</div>
+    <h3>${esc(x.title)}</h3><p>${esc(x.blurb)}</p>${x.source?`<p><a href="${esc(x.source)}" target="_blank" rel="noopener">Source ↗</a></p>`:""}<a href="${wikiUrl(x.wiki)}" target="_blank" rel="noopener">Read more on Wikipedia ↗</a>
     <div class="meanwhile-slot"></div></div>`}
   else{const age=state.year-x.born;el.innerHTML=`<div class="detail" style="--c:var(--ink)"><button class="iconbtn close" aria-label="Close">×</button>
     <div class="kicker"><i></i>${esc(fmt(x.born,x.approx))} – ${esc(fmt(x.died,x.approx))} · ${REGIONS[x.region]}</div>
     <h3>${esc(x.name)}</h3><p>${esc(x.role)}.${state.year>=x.born&&state.year<=x.died?` In ${esc(fmt(state.year))}, about ${age} years old.`:""}</p>
-    <a href="${wikiUrl(x.wiki)}" target="_blank" rel="noopener">Read more on Wikipedia ↗</a></div>`}
+    <a href="${esc(x.source||wikiUrl(x.wiki))}" target="_blank" rel="noopener">${x.source?"Source":"Read more on Wikipedia"} ↗</a></div>`}
   el.querySelector(".close").onclick=()=>{state.sel=null;selectedPolity=null;update()}}
 function renderSide(){
   const act=activeEvents(),y=state.year;
@@ -1114,5 +1125,6 @@ startSpin();
 <script src="challenge-core.js"></script>
 <script src="challenge.js"></script>
 <script src="population.js"></script>
+<script src="contemporaries.js"></script>
 </body>
 </html>
