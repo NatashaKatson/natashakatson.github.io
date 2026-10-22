@@ -426,3 +426,7 @@
   .app > header .history-search-trigger { padding: 8px 10px; }
   .app > header .view-tool { display: none; }
 }
+
+.atlas-support { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--rule); }
+.atlas-support > p { margin: 0 0 10px; color: #756c65; font-size: 12px; line-height: 1.5; }
+.atlas-support .bmc-btn-container { max-width: 100%; }
