@@ -184,8 +184,8 @@
   width: auto;
 }
 @media (max-width: 860px) {
-  /* Expanded comparison controls must not pull a sticky timeline over the map. */
-  .stage.comparing + .time {
+  /* The population readout and controls must not cover the map's lower controls. */
+  .time {
     position: static;
   }
 }
