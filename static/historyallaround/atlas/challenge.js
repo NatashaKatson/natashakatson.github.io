@@ -7,7 +7,7 @@
   const card = document.createElement("section");
   card.className = "daily-challenge-card";
   card.setAttribute("aria-label", "Daily history challenge");
-  document.querySelector(".side-content").prepend(card);
+  document.querySelector(".side-content").append(card);
   const dialog = document.createElement("dialog");
   dialog.className = "history-search daily-challenge-dialog";
   dialog.id = "dailyChallenge";
