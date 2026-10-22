@@ -716,7 +716,15 @@ function roundYear(y){const n=Math.round(y);return n===0?(y<0?-1:1):n}
 function fmt(y,approx){const c=approx?"c. ":"";if(y<0)return c+Math.abs(y).toLocaleString("en-US")+" BC";if(y<1000)return c+"AD "+y;return c+y}
 function fmtSpan(a,b,ap){return b&&b!==a?fmt(a,ap)+"–"+(a<0&&b>0?fmt(b):(b<0?Math.abs(b).toLocaleString("en-US")+" BC":b)):fmt(a,ap)}
 function eraOf(y){let e=ERAS[0][1];for(const[s,n]of ERAS)if(y>=s)e=n;return e}
-function parseYear(s){s=s.trim().toLowerCase().replace(/,/g,"");const m=s.match(/^(-?\d+)\s*(bc|bce|b\.c\.|ad|ce)?$/);if(!m)return null;let y=+m[1];if(m[2]&&m[2].startsWith("b"))y=-Math.abs(y);return y===0?null:Math.max(-300000,Math.min(NOW,y))}
+function parseYear(s){
+  s=s.trim().toLowerCase().replace(/,/g,"");
+  const m=s.match(/^(?:(bc|bce|b\.c\.|ad|ce)\s*)?(-?\d+)\s*(bc|bce|b\.c\.|ad|ce)?$/);
+  if(!m||(m[1]&&m[3]))return null;
+  const era=m[1]||m[3];let y=Number(m[2]);
+  if(!Number.isFinite(y)||y===0)return null;
+  if(era){if(era.startsWith("b"))y=-Math.abs(y);else if(y<0)return null}
+  return Math.max(-300000,Math.min(NOW,y));
+}
 
 const ev=EVENTS.map((e,i)=>({id:"e"+i,kind:"event",start:e[0],end:e[1]??e[0],approx:!!e[2],title:e[3],blurb:e[4],lat:e[5],lon:e[6],region:e[7],cat:e[8],wiki:e[9]}));
 const ppl=PEOPLE.map((p,i)=>({id:"p"+i,kind:"person",name:p[0],born:p[1],died:p[2],approx:!!p[3],role:p[4],lat:p[5],lon:p[6],region:p[7],wiki:p[8]}));
@@ -753,8 +761,10 @@ const BIDX=JSON.parse(document.getElementById("bordersIndex").textContent);
 const BCS=BIDX.chunkSize,BSET=new Set(BIDX.chunks),BFROM=BIDX.chunks[0],BTO=BIDX.to;
 const STATE_FILLS=["rgba(145,166,139,.84)","rgba(124,151,166,.84)","rgba(181,119,99,.83)","rgba(190,159,83,.84)","rgba(151,136,163,.83)","rgba(169,126,140,.83)","rgba(109,151,143,.84)","rgba(177,153,119,.84)"];
 const bCache=new Map(),bErrors=new Set();
-// Start year of the file holding year y, or null where Cliopatria has nothing.
-function chunkOf(y){if(y<BFROM||y>BTO)return null;const c=BFROM+Math.floor((Math.min(y,BTO)-BFROM)/BCS)*BCS;return BSET.has(c)?c:null}
+// Carry the last available border snapshot forward through the current year.
+function borderYear(y){return y>BTO&&y<=NOW?BTO:y}
+// Start year of the source file, or null outside the supported timeline.
+function chunkOf(y){if(y<BFROM||y>NOW)return null;const c=BFROM+Math.floor((Math.min(y,BTO)-BFROM)/BCS)*BCS;return BSET.has(c)?c:null}
 const unparen=s=>s.replace(/^\((.*)\)$/,"$1");
 function loadChunk(c){if(bCache.has(c))return Promise.resolve(bCache.get(c));
   const pr=fetch(`borders/c${c}.json`).then(r=>{if(!r.ok)throw new Error(r.status);return r.json()}).then(t=>{
@@ -779,7 +789,8 @@ function polities(){const y=state.year;if(polCache.y===y)return polCache.list;co
   if(!Array.isArray(fs))return []; // Never show a different year while loading.
   // Keep the files near this one in memory, drop the rest.
   bCache.delete(c);bCache.set(c,fs);for(const k of bCache.keys()){if(bCache.size<=14)break;if(Math.abs(k-c)>2*BCS&&!window.HistoryDiscovery?.keepChunk(k))bCache.delete(k)}
-  const seen=new Map();for(const f of fs)if(f.from<=y&&f.to>=y){const o=seen.get(f.name);if(!o||f.from>o.from)seen.set(f.name,f)}
+  const sourceYear=borderYear(y);
+  const seen=new Map();for(const f of fs)if(f.from<=sourceYear&&f.to>=sourceYear){const o=seen.get(f.name);if(!o||f.from>o.from)seen.set(f.name,f)}
   let list=[...seen.values()];
   // Cliopatria stores the modern Danish realm as one feature and anchors its label in Greenland.
   // Since Home Rule (1979), show Greenland as its own territory while retaining the realm relationship.

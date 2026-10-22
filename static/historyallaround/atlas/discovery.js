@@ -70,8 +70,9 @@
           placePanel.hidden = true;
           lastPoint = null;
           stopPlay();
-          setYear(r.start ?? r.born);
           if (r.cat) state.cats.add(r.cat);
+          buildMarks();
+          setYear(r.start ?? r.born);
           document
             .querySelectorAll("#legend [data-k]")
             .forEach((c) =>
@@ -127,13 +128,14 @@
     state.year = s.year;
     state.sel = s.sel;
     selectedPolity = s.polity;
-    state.borders = s.borders;
     setMode(s.mode);
     rot = s.rot;
     flatT = s.flatT;
     zoomK = s.zoom;
     if (compare.on !== s.compare)
       document.getElementById("compareToggle").click();
+    // Enabling comparison selects historical borders; restore the saved layer afterward.
+    state.borders = s.borders;
     compare.left = s.left;
     form.elements.left.value = fmt(s.left);
     document.getElementById("changedOutlines").checked = s.changed;
@@ -482,10 +484,10 @@
               ofs = bCache.get(chunkOf(other));
             if (Array.isArray(fs) && Array.isArray(ofs)) {
               const peers = new Map(
-                core.active(ofs, other).map((f) => [f.name, f]),
+                core.active(ofs, borderYear(other)).map((f) => [f.name, f]),
               );
               ctx.beginPath();
-              for (const f of core.active(fs, year)) {
+              for (const f of core.active(fs, borderYear(year))) {
                 const peer = peers.get(f.name);
                 if (
                   !peer ||
@@ -517,7 +519,8 @@
           ? [
               ...new Set(
                 (compare.on ? [compare.left, right] : [right])
-                  .map(borderStatus)
+                  .map((year) => borderStatus(year) ||
+                    (year > BTO ? `${fmt(year)}: showing latest available borders (${fmt(BTO)}).` : ""))
                   .filter(Boolean),
               ),
             ]

@@ -56,3 +56,46 @@ test("inline atlas scripts remain syntactically valid after integration", () => 
   assert.match(html, /discovery-core\.js/);
   assert.match(html, /discovery\.js/);
 });
+
+// The formatter is also used to populate the comparison year inputs.
+test("year inputs accept formatted years and reject contradictory eras", () => {
+  const html = fs.readFileSync("static/historyallaround/atlas/index.html", "utf8");
+  const parse = html.match(/^function parseYear\(s\)\{[\s\S]*?^\}/m)[0];
+  const format = html.match(/^function fmt\(y,approx\).*$/m)[0];
+  const context = vm.createContext({ NOW: 2026 });
+  vm.runInContext(parse + "\n" + format, context);
+  for (const year of [-300000, -500, -1, 1, 500, 999, 1000, 2026]) {
+    context.year = year;
+    assert.equal(vm.runInContext("parseYear(fmt(year))", context), year);
+  }
+  for (const [input, expected] of [["AD 1", 1], ["500 BCE", -500], ["BCE 500", -500], ["CE 500", 500], ["-500", -500], ["1,492", 1492]]) {
+    context.input = input;
+    assert.equal(vm.runInContext("parseYear(input)", context), expected);
+  }
+  for (const input of ["0", "AD 0", "0 BC", "-500 CE", "AD 500 BC", "1492junk", "9".repeat(400)]) {
+    context.input = input;
+    assert.equal(vm.runInContext("parseYear(input)", context), null);
+  }
+});
+
+test("border snapshots continue through today without changing historical dates", () => {
+  const html = fs.readFileSync("static/historyallaround/atlas/index.html", "utf8");
+  const index = JSON.parse(html.match(/<script type="application\/json" id="bordersIndex">(.*?)<\/script>/s)[1]);
+  const context = vm.createContext({
+    NOW: 2026, BTO: index.to, BFROM: index.chunks[0],
+    BCS: index.chunkSize, BSET: new Set(index.chunks),
+  });
+  for (const name of ["borderYear", "chunkOf"])
+    vm.runInContext(html.match(new RegExp("^function " + name + "\\(y\\).*?}$", "m"))[0], context);
+  for (const year of [2024, 2025, 2026]) {
+    context.year = year;
+    assert.equal(vm.runInContext("borderYear(year)", context), 2024);
+    assert.equal(vm.runInContext("chunkOf(year)", context), 2000);
+  }
+  assert.equal(vm.runInContext("borderYear(2012)", context), 2012);
+  assert.equal(vm.runInContext("chunkOf(2027)", context), null);
+  assert.equal(vm.runInContext("chunkOf(BFROM - 1)", context), null);
+  const active = {name: "Current", from: 2000, to: 2024, area: 1};
+  const ended = {name: "Ended", from: 2000, to: 2020, area: 1};
+  assert.deepEqual(core.active([active, ended], vm.runInContext("borderYear(2026)", context)), [active]);
+});
