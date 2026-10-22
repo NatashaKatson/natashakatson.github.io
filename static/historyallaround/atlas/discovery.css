@@ -383,3 +383,46 @@
 /* Keep the fixed final year visible inside the ruler at every viewport width. */
 .ticks .timeline-end { transform: translateX(-100%); color: #2d2420; font-weight: 600; }
 .ticks .timeline-end::before { left: 100%; }
+
+/* Header: one shared control baseline, with deliberate rows on smaller screens. */
+.app { grid-template-rows: auto minmax(0, 1fr) auto; }
+.app > header {
+  min-height: 84px; padding-top: 13px; padding-bottom: 13px;
+  flex-wrap: nowrap; justify-content: space-between; gap: 24px;
+}
+.app > header .brand { align-items: center; gap: 12px; flex-shrink: 0; }
+.app > header .brand > svg { width: 32px; height: 32px; flex-shrink: 0; }
+.app > header .brand-copy { min-width: 0; }
+.app > header .brand-kicker { display: block; line-height: 1.3; margin-bottom: 4px; font-size: 8px; letter-spacing: .16em; }
+.app > header .brand h1 { font-size: 23px; line-height: 1.15; white-space: nowrap; }
+.app > header .brand > span { max-width: 165px; margin-left: 4px; font-size: 12px; line-height: 1.5; }
+.app > header .head-tools { display: grid; grid-template-columns: auto auto auto; align-items: end; gap: 14px; flex-shrink: 0; }
+.app > header .tool-label { display: block; margin: 0 0 5px; font-size: 8px; line-height: 1.2; letter-spacing: .12em; }
+.app > header .history-search-trigger { height: 40px; padding: 8px 13px; font-size: 12px; border-color: #d8cfc5; }
+.app > header .goto { align-items: flex-end; gap: 6px; margin: 0; }
+.app > header .goto input { height: 40px; width: 140px; font-size: 13px; border-color: #d8cfc5; }
+.app > header .goto .iconbtn { width: 40px !important; height: 40px !important; }
+.app > header .view-tool .seg { height: 40px; padding: 3px; align-items: stretch; }
+.app > header .view-tool .seg button { height: 32px; min-height: 0; padding: 3px 12px; font-family: var(--body); font-size: 12px; }
+@media (max-width: 1400px) {
+  .app > header .brand > span { display: none; }
+}
+@media (max-width: 860px) {
+  .app > header { flex-wrap: wrap; gap: 15px; padding: 15px 20px; }
+  .app > header .head-tools { width: 100%; margin-left: 0; grid-template-columns: minmax(100px, 1fr) minmax(190px, 1.5fr) auto; gap: 12px; }
+  .app > header .history-search-trigger { width: 100%; }
+  .app > header .goto { width: 100%; min-width: 0; }
+  .app > header .goto > div { min-width: 0; flex: 1; }
+  .app > header .goto input { width: 100%; min-width: 0; }
+  .app > header .view-tool { display: block; }
+}
+@media (max-width: 560px) {
+  .app > header { min-height: 0; padding: 13px 14px; gap: 13px; }
+  .app > header .brand { width: auto; gap: 10px; }
+  .app > header .brand > svg { width: 29px; height: 29px; }
+  .app > header .brand h1 { font-size: 21px; }
+  .app > header .brand-kicker { font-size: 7px; margin-bottom: 3px; }
+  .app > header .head-tools { grid-template-columns: auto minmax(0, 1fr); gap: 10px; }
+  .app > header .history-search-trigger { padding: 8px 10px; }
+  .app > header .view-tool { display: none; }
+}
