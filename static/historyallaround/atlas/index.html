@@ -7,7 +7,7 @@
 <meta name="description" content="Scrub through 300,000 years of history on a globe and see what was happening around the world at the same moment, with borders that change over time.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..800&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,400..700&display=swap">
 <style>
 /* Layout: an atlas on a lightbox. Globe fills the stage, a ruler-like timeline runs underneath, the "Meanwhile" ledger sits beside it (below it on phones). */
 :root{
@@ -319,6 +319,49 @@ header .seg{padding:3px;background:#f0f3f6;border:1px solid #d8dfe6;border-radiu
 @media(max-width:1050px){.app{grid-template-columns:minmax(0,1fr) 370px}.brand span{display:none}}
 @media(max-width:860px){.app{display:flex;height:auto}.app header{min-height:68px}.stage{height:min(62vh,520px);min-height:360px;border:0}.time{border-right:0}.side{border-top:1px solid #dce2e8}.side-intro{position:static}.readout{padding:11px 13px}.readout .yr{font-size:44px}.borders-control{top:auto;right:auto;bottom:58px;left:max(16px,env(safe-area-inset-left,0px));box-shadow:0 7px 20px rgba(42,70,86,.1)}}
 @media(max-width:560px){.app header{padding:11px 14px}.brand h1{font-size:20px}.head-tools{gap:7px}.stage{min-height:340px}.readout{top:14px;left:14px}.readout .now{max-width:240px}.side-content{padding:16px}.side-intro{padding:18px 16px}.side h2{font-size:25px}.item{grid-template-columns:48px minmax(0,1fr);padding:10px}.fact .row{flex-wrap:wrap}}
+/* Warm editorial atlas: a quiet reading room around a hand-coloured map. */
+:root,:root[data-theme="dark"]{
+  --paper:#fbf8f0;--paper-2:#f2ebdf;--ink:#342b23;--muted:#786f64;--rule:rgba(80,62,43,.19);
+  --accent:#ad7423;--accent-ink:#fffaf0;
+  --c-power:#557a8b;--c-war:#bb6253;--c-ideas:#5e8772;--c-culture:#bd812f;--c-nature:#826f92;--c-fashion:#a96378;
+  --display:"Newsreader",Georgia,"Times New Roman",serif;--body:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;--halo:rgba(251,248,240,.9);color-scheme:light
+}
+html,body{background:#e9e1d3}body{color:var(--ink);font-size:15px;line-height:1.55}
+.app{grid-template-columns:minmax(0,1fr) minmax(370px,410px);grid-template-rows:68px minmax(0,1fr) 132px;background:#f5efe4}
+header{padding:0 max(24px,env(safe-area-inset-right,0px)) 0 max(24px,env(safe-area-inset-left,0px));background:rgba(251,248,240,.97);border-bottom:1px solid rgba(78,60,40,.16);box-shadow:none}
+.brand{gap:12px}.brand>svg{width:27px;height:27px}.brand>svg circle:first-child{fill:#77582d}.brand>svg [stroke]{stroke:#e2c58a}.brand>svg circle:last-child{fill:#a85f4e}
+.brand-kicker{font-family:var(--mono);font-size:8px;letter-spacing:.2em;color:#9a7135}.brand h1{font-family:var(--display);font-size:23px;font-weight:600;letter-spacing:-.025em;color:#3a2c21}.brand span{font-size:12px;color:#867b6d}
+.head-tools{gap:14px}.tool-label{color:#817568;font-size:8px;letter-spacing:.14em}.goto input{height:35px;width:128px;background:#f6f0e5;border:1px solid rgba(82,63,42,.2);border-radius:999px;padding:7px 12px;color:#3a3028;font-family:var(--body);box-shadow:inset 0 1px 2px rgba(73,52,30,.03)}.goto input::placeholder{color:#9a9085}
+.goto .iconbtn{width:35px!important;height:35px!important;border:0!important;border-radius:50%!important;background:#9d6b28!important;color:#fffaf0!important;box-shadow:0 4px 12px rgba(126,83,31,.16)}
+header .seg{padding:3px;background:#f1eadf;border:1px solid rgba(82,63,42,.16);border-radius:999px}header .seg button{min-height:27px;padding:4px 12px;border-radius:999px;color:#766c60;font-weight:600}header .seg button[aria-pressed="true"]{background:#fffaf1;color:#493b2d;box-shadow:0 1px 4px rgba(72,50,28,.12)}
+.stage{
+  --paper:#fbf8f0;--paper-2:#f1eadc;--ink:#3a3028;--muted:#766e63;--rule:rgba(78,61,42,.2);
+  --ocean:#e7e2d6;--ocean-2:#cbd6cf;--land:#d8cdb1;--land-edge:#7d7563;--grat:rgba(91,78,59,.18);
+  --border:rgba(65,53,38,.7);--atmo:rgba(218,175,94,.2);--shade:rgba(75,58,35,.22);--star:transparent;
+  --accent:#a7681f;--accent-ink:#fffaf0;--halo:rgba(251,248,240,.91);
+  --c-power:#557a8b;--c-war:#bb6253;--c-ideas:#5e8772;--c-culture:#bd812f;--c-nature:#826f92;--c-fashion:#a96378;
+  background:radial-gradient(ellipse at 47% 44%,#f5f0e4 0%,#ebe3d4 62%,#ddd3c1 100%);color:#3a3028;border-right:1px solid rgba(78,61,42,.15)
+}
+.stage::after{opacity:1;background:radial-gradient(circle at 28% 18%,rgba(255,255,255,.34),transparent 30%),repeating-linear-gradient(7deg,rgba(88,69,44,.018) 0,rgba(88,69,44,.018) 1px,transparent 1px,transparent 5px);box-shadow:inset 0 0 90px rgba(95,73,47,.08);mix-blend-mode:multiply}
+.readout{top:22px;left:max(28px,env(safe-area-inset-left,0px));padding:0;background:transparent;border:0;border-radius:0;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none;text-shadow:0 1px rgba(255,255,255,.6)}
+.readout::before{font-family:var(--mono);font-size:8px;letter-spacing:.22em;color:#8c7a63;font-weight:500;margin-bottom:1px}.readout .yr{font-family:var(--display);font-size:clamp(62px,8vw,108px);font-weight:500;letter-spacing:-.055em;line-height:.83;background:none;color:#624722}.readout .yr small{font-family:var(--display);font-size:.28em;font-weight:500;font-style:italic;color:#7f684b}.readout .era{margin-top:13px;font-family:var(--body);font-size:10px;font-weight:600;letter-spacing:.09em;color:#9a6727}.readout .era::before{background:#b67b30}.readout .now{font-size:12px;line-height:1.45;color:#766d61;text-shadow:none;max-width:300px}.readout .now b{color:#493b2d;font-weight:650}
+.borders-control{top:18px;right:max(18px,env(safe-area-inset-right,0px));padding:8px 9px 9px;background:rgba(251,248,240,.84);border:1px solid rgba(81,64,44,.16);border-radius:14px;box-shadow:0 8px 28px rgba(78,58,35,.09);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.borders-control .tool-label{color:#85796b;font-weight:500;margin-left:6px}.bseg{padding:3px!important;background:#eee6d8!important;border:0!important;border-radius:999px}.bseg button{border-radius:999px;color:#776c60;font-weight:600}.bseg button[aria-pressed="true"]{background:#fffaf0;color:#4c3c2d;box-shadow:0 1px 4px rgba(78,55,31,.12)}
+.zoom{gap:7px}.zoom .iconbtn{width:38px;height:38px;background:rgba(251,248,240,.88);border:1px solid rgba(80,62,42,.2);border-radius:50%;color:#4b3c2e;box-shadow:0 5px 18px rgba(78,58,35,.1)}.stage-hint{color:#756b5d;font-size:9px}
+.legend{gap:7px;bottom:17px}.chip{min-height:31px;padding:5px 11px;background:rgba(251,248,240,.86);border:1px solid rgba(80,62,42,.16);border-radius:999px;color:#4c4136;font-size:11px;font-weight:600;box-shadow:0 4px 15px rgba(78,58,35,.07);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}.chip i{width:8px;height:8px;border-radius:50%;box-shadow:none}.tip{border-radius:8px}.tip.country{background:#47382a;color:#fffaf0;border:0}
+.time{padding:13px 22px 12px;background:#fbf8f0;border-top:1px solid rgba(78,61,42,.17);border-right:1px solid rgba(78,61,42,.15);color:#3b3128;box-shadow:0 -6px 24px rgba(81,59,34,.035)}
+.time-heading b{font-family:var(--display);font-size:17px;font-weight:600}.time-heading span{font-family:var(--body);font-size:10px;color:#8b8176}.controls .lbl{font-size:10px;color:#897f72}.iconbtn,.time .iconbtn:not(.play){border:1px solid rgba(81,64,44,.21);border-radius:50%;background:#fffaf1;color:#514235}.play{height:38px;padding:0 16px;border:0;border-radius:999px;background:#a97128;color:#fffaf0;box-shadow:0 4px 14px rgba(137,90,32,.16);font-family:var(--body);font-size:13px;font-weight:700}.play:hover{border:0;filter:brightness(.97)}
+.era-b{font-size:8.5px;letter-spacing:.07em;color:#887d70;border-color:#ddd2c2}.marks{border-color:#bdb09c}.ticks span{font-size:9px;color:#81776b}.win{background:rgba(173,116,35,.11);border-color:#ad7423}.needle{border-color:#ad7423;filter:none}.needle::before{border-top-color:#ad7423}
+.side{background:#f2ebdf;border-left:0;padding:0;scrollbar-color:#cbbda9 transparent}.side-intro{padding:19px 22px 15px;background:rgba(251,248,240,.94);border-bottom:1px solid rgba(78,61,42,.16);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}.side-intro .kicker{margin-bottom:3px;color:#a36b27;font-size:8px;font-weight:500;letter-spacing:.17em}.side h2{font-family:var(--display);font-size:31px;line-height:1;font-weight:600;letter-spacing:-.025em;color:#3a2f26}.side .sub{margin:7px 0 0;font-family:var(--body);font-size:11px;color:#82776b}.side-content{padding:17px 22px 28px;background:#f2ebdf}
+.state-picker{gap:7px;margin-bottom:20px}.state-picker label{font-size:10px;color:#756a5e}.state-picker select{height:39px;padding:8px 11px;background:#fbf8f0;border:1px solid rgba(82,63,42,.18);border-radius:10px;color:#4a3d31}.state-picker button{padding:7px 13px;background:#9e6b29;border:0;border-radius:999px;color:#fffaf0;font-weight:650}
+.detail{padding:16px 17px;margin-bottom:18px;background:#fbf8f0;border:1px solid rgba(81,63,42,.17);border-top:3px solid var(--c);border-radius:12px;box-shadow:0 8px 25px rgba(74,52,29,.055)}.detail .kicker{font-size:9px}.detail h3{font-family:var(--display);font-size:24px;line-height:1.13;font-weight:600;letter-spacing:-.015em;margin-top:7px}.detail p{color:#5c5146}.detail a{color:#956222}.detail .near{border-color:rgba(81,63,42,.16)}
+.region{margin-bottom:21px}.region h4{margin-bottom:7px;padding:0 1px 6px;border-color:rgba(81,63,42,.17);color:#786d61;font-size:9px;font-weight:600;letter-spacing:.11em}.item{grid-template-columns:54px minmax(0,1fr);gap:11px;margin:0 0 6px;padding:10px 11px;background:rgba(251,248,240,.74);border:1px solid rgba(81,63,42,.12);border-radius:10px;box-shadow:none}.item:hover,.item[aria-current="true"]{background:#fbf8f0;border-color:rgba(154,103,39,.35);box-shadow:0 4px 14px rgba(74,52,29,.05)}.item .y{font-size:10px;color:#887c6e}.item .t{font-family:var(--display);font-size:17px;line-height:1.2;font-weight:600}.item .b{margin-top:3px;color:#6d6257;font-size:12.5px;line-height:1.48}.item .t i{width:7px;height:7px;box-shadow:none}
+.atlas-section-title{padding-top:15px;margin-top:9px;border-color:rgba(81,63,42,.17);color:#786d61;font-size:9px;font-weight:600}.person{padding:5px 10px;background:#fbf8f0;border:1px solid rgba(81,63,42,.16);border-radius:999px;color:#54483c;font-size:11px}.person:hover{border-color:#a9793e}.empty{font-size:12.5px;color:#81766a}
+.fact{padding:18px;background:#ded0b8;border:1px solid rgba(91,66,37,.2);border-radius:12px;box-shadow:0 8px 22px rgba(74,52,29,.07);color:#423529}.fact b{font-size:9px;color:#8f5e23}.fact p{font-family:var(--display);font-size:18px;line-height:1.38}.fact button{padding:5px 11px;border:1px solid rgba(73,54,34,.45);border-radius:999px;background:rgba(255,250,240,.38);color:#493a2c;font-size:11px}.foot{padding-top:17px;border-color:rgba(81,63,42,.17);color:#887e73;font-size:10.5px}
+@media(max-width:1050px){.app{grid-template-columns:minmax(0,1fr) 360px}}
+@media(max-width:860px){.app{display:flex;height:auto}.app header{min-height:68px}.stage{height:min(64vh,540px);min-height:370px;border:0}.time{border-right:0}.side{border-top:1px solid rgba(81,63,42,.17)}.side-intro{position:static}.readout{padding:0}.readout .yr{font-size:64px}.borders-control{top:auto;right:auto;bottom:57px;left:max(16px,env(safe-area-inset-left,0px))}}
+@media(max-width:560px){.app header{padding:10px 14px}.brand h1{font-size:21px}.stage{min-height:350px}.readout{top:16px;left:16px}.readout .yr{font-size:58px}.readout .now{max-width:220px}.side-content{padding:16px}.side-intro{padding:17px 16px}.side h2{font-size:29px}.item{grid-template-columns:48px minmax(0,1fr);padding:10px}.fact .row{flex-wrap:wrap}}
 </style>
 <style>body{margin:0}</style>
 </head>
@@ -332,7 +375,7 @@ header .seg{padding:3px;background:#f0f3f6;border:1px solid #d8dfe6;border-radiu
       <form class="goto" id="goto" autocomplete="off"><div><label for="gotoInput" class="tool-label">Jump to a year</label>
         <input id="gotoInput" placeholder="e.g. 500 BC" aria-label="Go to year"></div><button class="iconbtn" aria-label="Go">→</button></form>
       <div class="view-tool"><span class="tool-label">View</span><div class="seg" role="group" aria-label="Map view">
-        <button id="vGlobe" aria-pressed="false">Globe</button><button id="vFlat" aria-pressed="true">Map</button>
+        <button id="vGlobe" aria-pressed="true">Globe</button><button id="vFlat" aria-pressed="false">Map</button>
       </div></div>
     </div>
   </header>
@@ -679,7 +722,7 @@ const ppl=PEOPLE.map((p,i)=>({id:"p"+i,kind:"person",name:p[0],born:p[1],died:p[
 const byId=Object.fromEntries([...ev,...ppl].map(x=>[x.id,x]));
 const wikiUrl=s=>"https://en.wikipedia.org/wiki/"+encodeURIComponent(s).replace(/%2C/g,",").replace(/%27/g,"'");
 
-const state={year:1453,mode:"flat",sel:null,borders:"history",cats:new Set(Object.keys(CATS)),playing:false,factI:0};
+const state={year:1453,mode:"globe",sel:null,borders:"history",cats:new Set(Object.keys(CATS)),playing:false,factI:0};
 let rot=[-25,-22,0],zoomK=1,flatT={x:0,y:0},userMoved=false,selectedPolity=null;
 
 // ---------- styles from tokens
@@ -707,7 +750,7 @@ const geo=()=>hi&&zoomK>=HI_ZOOM&&performance.now()>=stillAt?hi:lo;
 // Historical borders: Cliopatria polities in 25-year files, fetched when the timeline reaches them.
 const BIDX=JSON.parse(document.getElementById("bordersIndex").textContent);
 const BCS=BIDX.chunkSize,BSET=new Set(BIDX.chunks),BFROM=BIDX.chunks[0],BTO=BIDX.to;
-const STATE_FILLS=["rgba(224,122,95,.78)","rgba(127,120,210,.74)","rgba(233,196,106,.82)","rgba(108,145,191,.76)","rgba(140,175,135,.78)","rgba(217,150,117,.76)","rgba(105,167,156,.76)","rgba(196,119,138,.74)"];
+const STATE_FILLS=["rgba(201,154,116,.82)","rgba(126,153,148,.82)","rgba(215,187,111,.84)","rgba(144,158,123,.82)","rgba(177,132,145,.8)","rgba(133,157,177,.82)","rgba(190,153,101,.82)","rgba(166,143,116,.82)"];
 const bCache=new Map(),bErrors=new Set();
 // Start year of the file holding year y, or null where Cliopatria has nothing.
 function chunkOf(y){if(y<BFROM)return null;const c=BFROM+Math.floor((Math.min(y,BTO)-BFROM)/BCS)*BCS;return BSET.has(c)?c:null}
