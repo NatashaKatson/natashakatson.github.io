@@ -2,6 +2,7 @@
 (() => {
   const core = DiscoveryCore;
   let place = null,
+    searchPlace = null,
     placeToken = 0,
     lastPoint = null,
     pendingPoint = null,
@@ -69,6 +70,7 @@
           place = null;
           placePanel.hidden = true;
           lastPoint = null;
+          searchPlace = null;
           stopPlay();
           if (r.cat) state.cats.add(r.cat);
           buildMarks();
@@ -108,6 +110,7 @@
       selectedYear: compare.selectedYear,
       cats: [...state.cats],
       lastPoint,
+      searchPlace,
       placeState: place,
       placeReturn,
     };
@@ -121,6 +124,7 @@
     placePanel.hidden = !place;
     if (place) renderPlace();
     lastPoint = s.lastPoint ?? null;
+    searchPlace = s.searchPlace ?? null;
     stopPlay();
     stopSpin();
     state.cats = new Set(s.cats);
@@ -309,6 +313,7 @@
       return;
     const p = pendingPoint.point;
     pendingPoint = null;
+    searchPlace = null;
     if (
       !Number.isFinite(p[0]) ||
       !Number.isFinite(p[1]) ||
@@ -523,6 +528,7 @@
     placeReturn = null;
     placePanel.hidden = true;
     lastPoint = null;
+    searchPlace = null;
     if (!compare.on) document.getElementById("compareToggle").click();
     const s = comparisonStories[index];
     compare.left = s.left;
@@ -586,12 +592,13 @@
       record: r ? { wiki: r.wiki, kind: r.kind, date: r.start ?? r.born } : null,
       polity: selectedPolity?.name || null,
       point: place?.point || lastPoint || null,
+      location: searchPlace,
       story: activeComparisonStory,
       pin: pinned ? { wiki: pinned.wiki, date: pinned.start, year: pinned.year } : null,
     };
   }
   function urlHash() {
-    return "#" + new URLSearchParams({ view: JSON.stringify(viewData()) });
+    return challengeReturnHash || "#" + new URLSearchParams({ view: JSON.stringify(viewData()) });
   }
   const share = document.createElement("button");
   share.type = "button";
@@ -631,7 +638,8 @@
     activeComparisonStory = v.story;
     const saved = { ...snapshot(), ...v, sel: r?.id || null, polity: null,
       activeComparisonStory: v.story, pinned,
-      flatT: { x: v.pan[0] * W, y: v.pan[1] * H }, placeState: null, placeReturn: null };
+      flatT: { x: v.pan[0] * W, y: v.pan[1] * H }, searchPlace: v.location || null,
+      lastPoint: v.point, placeState: null, placeReturn: null };
     placeToken++;
     restore(saved);
     userMoved = true;
@@ -651,10 +659,96 @@
     return true;
   }
 
+  let challengeReturn = null, challengeReturnHash = "";
+  function startChallengeMap(year) {
+    if (challengeReturn) finishChallengeMap();
+    const savedHash = urlHash();
+    challengeReturn = snapshot();
+    challengeReturnHash = savedHash;
+    placeToken++;
+    linkToken++;
+    place = null; placeReturn = null; searchPlace = null; lastPoint = null;
+    placePanel.hidden = true;
+    pinned = null; activeComparisonStory = null;
+    stopPlay(); stopSpin(); flyToken++; userMoved = true;
+    if (compare.on) document.getElementById("compareToggle").click();
+    state.sel = null; selectedPolity = null; compare.selectedYear = null;
+    state.cats = new Set();
+    buildMarks();
+    document.querySelectorAll("#legend [data-k]").forEach((b) => b.setAttribute("aria-pressed", "false"));
+    state.borders = "history";
+    syncBordersUI();
+    setMode("flat");
+    setYear(year);
+  }
+  function finishChallengeMap() {
+    const saved = challengeReturn;
+    challengeReturn = null;
+    challengeReturnHash = "";
+    if (saved) restore(saved);
+  }
+  async function jumpSearch(result, isCurrent = () => true) {
+    window.HistoryChallenge?.cancelPick();
+    let polity = null;
+    if (result.kind === "state") {
+      const chunk = chunkOf(result.year);
+      const features = chunk === null ? null : await loadChunk(chunk);
+      if (!isCurrent()) return false;
+      if (!features) throw new Error("Historical borders could not load. Try this result again.");
+      polity = features.find((f) => f.name === result.title && f.member === result.member &&
+        f.from <= result.year && f.to >= result.year);
+      if (!polity) throw new Error("This historical record is unavailable in that year.");
+    }
+    if (!isCurrent()) return false;
+    trail.push(snapshot());
+    if (trail.length > 30) trail.shift();
+    placeToken++;
+    linkToken++;
+    place = null;
+    placeReturn = null;
+    placePanel.hidden = true;
+    pinned = null;
+    searchPlace = null;
+    activeComparisonStory = null;
+    lastPoint = null;
+    stopPlay();
+    stopSpin();
+    userMoved = true;
+    if (compare.on) document.getElementById("compareToggle").click();
+    compare.selectedYear = null;
+    state.sel = null;
+    selectedPolity = null;
+    if (result.kind === "event" || result.kind === "person") {
+      const r = byId[result.recordId];
+      if (r.cat) state.cats.add(r.cat);
+      buildMarks();
+      document.querySelectorAll("#legend [data-k]").forEach((c) =>
+        c.setAttribute("aria-pressed", state.cats.has(c.dataset.k)));
+      setYear(result.start);
+      select(r.id, false);
+    } else if (polity) {
+      state.borders = "history";
+      syncBordersUI();
+      setYear(result.year);
+      selectPolity(polity, result.year);
+    } else {
+      lastPoint = [result.lon, result.lat];
+      searchPlace = { title: result.title, geonameId: result.geonameId || null };
+    }
+    zoomK = result.kind === "state" ? 1.6 : 2.6;
+    focusPoint([result.lon, result.lat]);
+    update();
+    renderTrail();
+    return true;
+  }
   window.HistoryDiscovery = {
+    startChallengeMap,
+    finishChallengeMap,
+    jumpSearch,
     urlHash,
     openView,
     render(scene) {
+      window.PopulationTimeline?.render(state.year, compare.on ? compare.left : null);
       renderComparisonStory();
       const right = state.year;
       let allHits = [];
@@ -719,8 +813,9 @@
               ),
             ]
           : [];
-      if (place && visible(...place.point)) {
-        const p = proj(place.point);
+      const markedPoint = place?.point || (searchPlace && lastPoint);
+      if (markedPoint && visible(...markedPoint)) {
+        const p = proj(markedPoint);
         ctx.save();
         ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
         ctx.beginPath();
@@ -738,6 +833,7 @@
         : "";
       status.textContent = messages.join(" · ");
       status.hidden = !messages.length;
+      window.HistoryChallenge?.render();
     },
     mapAt(x, y, lookup) {
       compare.hoverYear =
@@ -747,10 +843,12 @@
     },
     selectPolityYear(year) {
       lastPoint = null;
+      searchPlace = null;
       compare.selectedYear = year;
     },
     selectedRecord(year) {
       lastPoint = null;
+      searchPlace = null;
       compare.selectedYear = year;
     },
     isComparing() {
@@ -760,6 +858,12 @@
       if ((selectedPolity || state.sel) && compare.selectedYear !== null)
         withYear(compare.selectedYear, renderDetailBase);
       const x = state.sel && byId[state.sel];
+      if (!x && !selectedPolity && searchPlace && lastPoint) {
+        document.getElementById("detail").innerHTML = `<div class="detail search-place-detail"><button type="button" class="iconbtn close" aria-label="Close">×</button><div class="kicker">Present-day place · exploring ${esc(fmt(state.year))}</div><h3>${esc(searchPlace.title)}</h3><p>${pointLabel(lastPoint)}</p><p>This name locates a point on today's map. It does not establish the name, settlement, or political control here in ${esc(fmt(state.year))}.</p><a target="_blank" rel="noopener" href="${searchPlace.geonameId ? `https://www.geonames.org/${searchPlace.geonameId}/` : "https://www.naturalearthdata.com/"}">${searchPlace.geonameId ? "GeoNames" : "Natural Earth"} source ↗</a></div>`;
+        document.querySelector("#detail .close").onclick = () => {
+          searchPlace = null; lastPoint = null; update();
+        };
+      }
       const point = Array.isArray(lastPoint)
         ? lastPoint
         : x

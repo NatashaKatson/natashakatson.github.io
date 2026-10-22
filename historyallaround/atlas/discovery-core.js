@@ -1,6 +1,43 @@
 /* Pure discovery helpers, shared by the browser and regression tests. */
 (function (root) {
   const api = {
+    searchText(value) {
+      return String(value || "").normalize("NFKD").replace(/\p{M}/gu, "")
+        .toLocaleLowerCase("en").replace(/[^\p{L}\p{N}]+/gu, " ").trim();
+    },
+    prepareSearch(records) {
+      return records.map((r) => ({ ...r,
+        searchName: api.searchText(r.title),
+        searchAliases: (r.aliases || []).map(api.searchText).filter(Boolean),
+        searchBody: api.searchText([r.title, ...(r.aliases || []), r.description].join(" ")),
+      }));
+    },
+    search(records, query, kind = "all", limit = 16) {
+      const q = api.searchText(query);
+      if (q.length < 2) return [];
+      const words = q.split(/\s+/);
+      const counts = new Map();
+      return records.flatMap((r) => {
+        if (kind !== "all" && r.kind !== kind) return [];
+        const names = [r.searchName, ...r.searchAliases];
+        if (!words.every((word) => r.searchBody.includes(word))) return [];
+        const score = r.searchName === q ? 120
+          : names.slice(1).includes(q) ? 110
+          : r.searchName.startsWith(q) ? 100
+          : r.searchName.split(" ").includes(q) ? 90
+          : names.some((name) => name.startsWith(q)) ? 80
+          : r.searchName.includes(q) ? 70
+          : names.some((name) => name.includes(q)) ? 60 : 30;
+        return [{ record: r, score }];
+      }).sort((a, b) => b.score - a.score || (b.record.population || 0) - (a.record.population || 0) ||
+        a.record.title.localeCompare(b.record.title) || (a.record.start || 0) - (b.record.start || 0))
+        .filter(({ record }) => {
+          const count = counts.get(record.kind) || 0;
+          counts.set(record.kind, count + 1);
+          // A common city name must not crowd every historical record out of All.
+          return kind !== "all" || count < 6;
+        }).slice(0, limit).map((r) => r.record);
+    },
     meanwhile(record, events, year) {
       const regions = new Set();
       return events.filter((e) => e.wiki !== record.wiki && e.region !== record.region &&
@@ -33,6 +70,9 @@
             v.record.wiki.length <= 300 && ["event", "person"].includes(v.record.kind) && year(v.record.date))) ||
           !(v.polity === null || (typeof v.polity === "string" && v.polity.length <= 300)) ||
           !(v.point === null || (nums(v.point, 2, 180) && Math.abs(v.point[1]) <= 90)) ||
+          !(v.location == null || (v.point && typeof v.location.title === "string" &&
+            v.location.title.length <= 500 && (v.location.geonameId === null ||
+              (Number.isSafeInteger(v.location.geonameId) && v.location.geonameId > 0)))) ||
           !(v.pin == null || (typeof v.pin.wiki === "string" && v.pin.wiki.length <= 300 && year(v.pin.date) && year(v.pin.year))) ||
           !(v.story === null || (Number.isInteger(v.story) && v.story >= 0 && v.story < 3))) return null;
         return v;
