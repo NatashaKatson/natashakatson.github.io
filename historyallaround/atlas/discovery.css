@@ -318,7 +318,7 @@
 }
 
 .daily-challenge-card {
-  margin: 0 0 18px; padding: 16px; border: 1px solid #dfc0ae;
+  margin: 18px 0 0; padding: 16px; border: 1px solid #dfc0ae;
   border-radius: 5px; background: #f3e6da; color: #2d2420;
 }
 .daily-challenge-card .kicker { color: #975239; font-size: 9px; letter-spacing: .08em; }
