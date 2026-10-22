@@ -58,6 +58,9 @@
   }
   function renderResults() {
     if (!dialog.open) return;
+    const focusedButton = document.activeElement;
+    const focusedRecord = results.contains(focusedButton) && focusedButton.matches("[data-search-result]")
+      ? matches[+focusedButton.dataset.searchResult] : null;
     const query = input.value.trim();
     const loading = datasets.filter((d) => !d.loaded && !d.error);
     const failed = datasets.filter((d) => d.error);
@@ -78,6 +81,11 @@
       results.querySelectorAll("[data-search-result]").forEach((b) => b.onclick = () => navigate(+b.dataset.searchResult));
     }
     results.setAttribute("aria-busy", String(navigating));
+    // Index downloads can insert or reorder results while a visitor uses the keyboard.
+    if (focusedRecord) {
+      const index = matches.indexOf(focusedRecord);
+      (results.querySelector(`[data-search-result="${index}"]`) || input).focus();
+    }
   }
   async function loadDataset(d) {
     if (d.loaded || d.pending) return;

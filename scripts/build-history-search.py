@@ -83,7 +83,8 @@ def build_places(archive, admin_file):
             f = line.split('\t')
             if len(f) < 19:
                 raise ValueError('Unexpected GeoNames row')
-            # Keep common alternative spellings, while bounding the download size.
+            # GeoNames orders aliases alphabetically, not by common usage or language.
+            # Keep every distinct spelling so native names and exonyms remain searchable.
             aliases = []
             def normalized(value):
                 return ''.join(c for c in unicodedata.normalize('NFKD', value.casefold()) if c.isalnum())
@@ -94,8 +95,6 @@ def build_places(archive, admin_file):
                         not alias.startswith(('Template:', 'http://', 'https://'))):
                     aliases.append(alias)
                     seen.add(key)
-                if len(aliases) == 8:
-                    break
             rows.append([f[1], f[8], round(float(f[5]), 4), round(float(f[4]), 4),
                          int(f[14]), int(f[0]), aliases, regions.get(f'{f[8]}.{f[10]}', f[10])])
     rows.sort(key=lambda r: (-r[4], r[0], r[5]))

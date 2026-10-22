@@ -195,3 +195,12 @@ test("city search includes source attribution, distinct duplicate names, and val
   }
   new vm.Script(fs.readFileSync("static/historyallaround/atlas/search.js", "utf8"));
 });
+
+test("city search retains common exonyms and names across scripts", () => {
+  const data = JSON.parse(fs.readFileSync("static/historyallaround/atlas/search-places.json"));
+  const records = core.prepareSearch(data.rows.map(([title, country, lon, lat, population, id, aliases]) =>
+    ({ kind: "place", title, population, aliases })));
+  for (const [query, expected] of [["Kiev", "Kyiv"], ["Москва", "Moscow"],
+    ["東京", "Tokyo"], ["Peking", "Beijing"], ["Лондон", "London"]])
+    assert.equal(core.search(records, query, "place")[0]?.title, expected, query);
+});

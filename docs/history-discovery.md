@@ -19,7 +19,7 @@ Click a map location, or open an event/person/territory, and choose **Explore th
 
 Twenty entries appear initially; Show more adds twenty. Dates and records are source-derived, and coverage can overlap. Jumping to a period focuses the original coordinate. Return restores the original year, camera, selection, map mode, border layer, comparison and category filters.
 
-The scan is on demand, progressive and limited to two concurrent requests. It can read the full border archive (about 14 MB uncompressed across 217 files); decoded feature caching stays bounded. Returning or selecting a new place cancels remaining work for the previous scan. Failed files are explicitly reported as incomplete coverage. No scan runs during ordinary map browsing.
+The scan is on demand, progressive and limited to two concurrent requests. It can read the full border archive (about 14 MB uncompressed across 217 files); decoded feature caching stays bounded. Returning or selecting a new place cancels remaining work for the previous scan. Back resumes an interrupted scan from its completed files. Failed files are explicitly reported as incomplete coverage. No scan runs during ordinary map browsing.
 
 The dataset does not systematically distinguish claims from control, contain Indigenous territories, or provide historical place names, settlement records, and cultural histories. The panel explains those limitations. Missing entries never mean a place was uninhabited. Adding these dimensions requires dated, licensed, appropriately attributed sources, ideally developed with relevant communities.
 
@@ -121,7 +121,7 @@ links and Back. Exploring its full location history remains an explicit action.
 
 There are no geocoding requests or API keys. Events, people and country labels reuse
 existing data. `search-states.json` (2,082 coverage periods, about 150 KB) and
-`search-places.json` (34,179 populated places, about 4.3 MB before HTTP compression)
+`search-places.json` (34,179 populated places, about 7 MB before HTTP compression)
 load once on opening search. Initial map loading does not request these indexes.
 Local records remain usable during loading or after failure; retry loads missing
 indexes. This is not a complete index of every historic place or person.
@@ -129,7 +129,7 @@ indexes. This is not a complete index of every historic place or person.
 ### Search data and regeneration
 
 Historical coverage derives from the checked-in Cliopatria/Seshat snapshots under
-CC BY 4.0. Coordinates, names, up to eight distinct alternate spellings, and region
+CC BY 4.0. Coordinates, names, distinct alternate spellings, and region
 labels for populated places derive from GeoNames's
 [cities15000.zip](https://download.geonames.org/export/dump/cities15000.zip) and
 [admin1CodesASCII.txt](https://download.geonames.org/export/dump/admin1CodesASCII.txt),
@@ -137,7 +137,10 @@ imported October 22, 2026. GeoNames licenses this data under
 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), as stated in its
 [readme](https://download.geonames.org/export/dump/readme.txt). The derived index
 rounds coordinates to four decimals, omits unused fields, deduplicates spellings,
-and excludes URL/template artifacts. Natural Earth country labels are public domain.
+and excludes URL/template artifacts and names longer than 80 characters. Aliases
+are retained across scripts, including native names and common exonyms; GeoNames's
+alphabetical ordering does not determine which aliases are searchable.
+Natural Earth country labels are public domain.
 Attribution appears in the search dialog, selected-place source links, and footer.
 
 Regenerate historical search data from the checked-in archive:
@@ -163,7 +166,9 @@ node tests/history-search.browser.mjs
 The search suite verifies lazy loading, aliases/accents, dated state navigation,
 person/event jumps, category visibility, Back, duplicate place names, shared places,
 keyboard controls, empty results, safe text, canceled navigation, failed download
-recovery, and the 390px mobile layout. The pure checks validate that every indexed
+recovery, focus retention during index loading, and the 390px mobile layout.
+On mobile, the timeline stays below the map so border, category and zoom controls
+remain reachable. The pure checks validate that every indexed
 historical target matches an available snapshot and its political membership.
 
 ## Daily history challenge

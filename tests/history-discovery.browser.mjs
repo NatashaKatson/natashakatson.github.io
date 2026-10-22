@@ -106,6 +106,24 @@ panel.querySelector('[data-return]').click();
 setYear(1800);await loadChunk(chunkOf(1800));const qing=polities().find(f=>f.name==='Qing Dynasty');assert(qing,'Qing record available');selectPolity(qing,1800);
 assert(!document.querySelector('#detail .discovery-action'),'territory selection never silently chooses centroid');
 assert(document.querySelector('#detail .discovery-location-hint'),'territory selection explains how to choose a place');
+// Hold two scan requests in flight, navigate away, then restore the partial scan.
+const originalLoad=loadChunk,completed=new Set(BIDX.chunks.slice(0,10)),blocked=[],resumed=[];
+const panelStatus=()=>panel.querySelector('[role="status"]').textContent;
+try {
+ loadChunk=c=>completed.has(c)?Promise.resolve([]):new Promise(resolve=>blocked.push(resolve));
+ const scanning=HistoryDiscovery.explore([12.49,41.89]);
+ await new Promise(r=>setTimeout(r,0));
+ assert(panelStatus().includes('10/'),'partial scan made progress');
+ const event=ev.find(e=>e.wiki==='Pig_War_(1859)');
+ await HistoryDiscovery.jumpSearch({kind:'event',recordId:event.id,start:event.start,lon:event.lon,lat:event.lat});
+ loadChunk=async c=>{resumed.push(c);return []};
+ document.querySelector('.story-trail button').click();
+ blocked.forEach(resolve=>resolve([]));await scanning;
+ for(let i=0;i<100&&!panelStatus().includes('Search complete');i++)await new Promise(r=>setTimeout(r,10));
+ assert(!panel.hidden&&panelStatus().includes('Search complete'),'Back resumes and completes canceled scan');
+ assert(resumed.length===BIDX.chunks.length-completed.size&&!resumed.some(c=>completed.has(c)),'completed scan files are retained without duplication');
+ panel.querySelector('[data-return]').click();
+}finally{loadChunk=originalLoad;blocked.forEach(resolve=>resolve([]));}
 return 'Phase 2: Rome coverage/events, fixed point, jumps, return and empty history passed';})()`),
 );
 console.log(

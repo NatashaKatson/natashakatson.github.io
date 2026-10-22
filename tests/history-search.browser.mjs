@@ -63,11 +63,31 @@ console.log(await evaluate(`(async()=>{
 const assert=(v,m)=>{if(!v)throw Error(m)};
 assert(window.HistoryDiscovery,'Atlas loaded');stopSpin();
 assert(!performance.getEntriesByType('resource').some(r=>/search-(states|places).json/.test(r.name)),'indexes are lazy');
+const originalFetch=window.fetch,indexLoads=new Map();
+window.fetch=(url,...args)=>/^search-/.test(url)
+ ? new Promise((resolve,reject)=>indexLoads.set(url,()=>originalFetch(url,...args).then(resolve,reject)))
+ : originalFetch(url,...args);
 document.querySelector('.history-search-trigger').click();
 assert(document.getElementById('historySearch').open,'search opens');
 assert(document.activeElement.id==='historySearchInput','search receives focus');
 const input=document.getElementById('historySearchInput');
+input.value='Cleopatra';input.dispatchEvent(new Event('input',{bubbles:true}));
+await new Promise(r=>setTimeout(r,160));
+input.dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowDown',bubbles:true}));
+assert(document.activeElement.querySelector('strong')?.textContent==='Cleopatra','local result focused during download');
+try {
+ for(const url of ['search-states.json','search-places.json']){
+  indexLoads.get(url)();
+  for(let i=0;i<100;i++){
+   await new Promise(r=>setTimeout(r,100));
+   const status=document.getElementById('historySearchStatus').textContent;
+   if(url==='search-states.json'?!status.includes('Loading states'):!status.includes('Loading'))break;
+  }
+  assert(document.activeElement.querySelector('strong')?.textContent==='Cleopatra','index update preserves focused record');
+ }
+}finally{window.fetch=originalFetch;}
 input.value='Roman Empire';input.dispatchEvent(new Event('input',{bubbles:true}));
+await new Promise(r=>setTimeout(r,160));
 for(let i=0;i<100;i++){await new Promise(r=>setTimeout(r,100));if(!document.getElementById('historySearchStatus').textContent.includes('Loading'))break;}
 assert(document.querySelector('[data-search-retry]').hidden,'both indexes loaded');
 window.searchQuery=async(q,kind='all')=>{

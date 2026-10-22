@@ -67,7 +67,9 @@
           trail.push(snapshot());
           if (trail.length > 30) trail.shift();
           const r = connections[+b.dataset.story].record;
+          placeToken++;
           place = null;
+          placeReturn = null;
           placePanel.hidden = true;
           lastPoint = null;
           searchPlace = null;
@@ -117,6 +119,7 @@
   }
   function restore(s) {
     flyToken++;
+    placeToken++;
     pinned = s.pinned ?? null;
     activeComparisonStory = s.activeComparisonStory ?? null;
     place = s.placeState;
@@ -153,6 +156,7 @@
     slider.value = Math.round(tAt(s.year) * SLIDER_STEPS);
     syncBordersUI();
     update();
+    if (place && !place.done) scanPlace(place);
   }
   function pointLabel(point) {
     return `${Math.abs(point[1]).toFixed(2)}°${point[1] < 0 ? "S" : "N"}, ${Math.abs(point[0]).toFixed(2)}°${point[0] < 0 ? "W" : "E"}`;
@@ -236,12 +240,12 @@
   async function explore(point) {
     if (!point) return;
     if (!place) placeReturn = snapshot();
-    const token = ++placeToken;
     place = {
       point: point.slice(),
       coverage: [],
       events: core.nearby(ev, point),
       checked: 0,
+      completedChunks: new Set(),
       failed: 0,
       done: false,
       limit: 20,
@@ -249,15 +253,20 @@
     focusPoint(point);
     renderPlace();
     placePanel.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    await scanPlace(place);
+  }
+  async function scanPlace(p) {
+    const token = ++placeToken;
+    const point = p.point;
     // Two fetches at a time, only after an explicit exploration request. Retain the atlas's bounded cache.
-    const chunks = BIDX.chunks.slice();
+    const chunks = BIDX.chunks.filter((c) => !p.completedChunks.has(c));
     let next = 0;
-    const p = place;
     async function worker() {
       while (next < chunks.length && token === placeToken) {
         const c = chunks[next++];
         const fs = await loadChunk(c);
         if (token !== placeToken) return;
+        p.completedChunks.add(c);
         p.checked++;
         if (!fs) p.failed++;
         else {

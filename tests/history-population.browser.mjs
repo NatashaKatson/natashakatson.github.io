@@ -84,6 +84,24 @@ details.open=false;
 return 'Population: fixed 2026 endpoint under a 2035 clock, year updates, estimates/projections, interpolation, coverage and comparison passed';
 })()`));
 await send('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:2,mobile:true});
+await new Promise(r=>setTimeout(r,300));
+console.log(await evaluate(`(()=>{
+const assert=(v,m)=>{if(!v)throw Error(m)};
+document.getElementById('compareToggle').click();
+window.scrollTo({top:0,behavior:'instant'});
+const time=document.querySelector('.time').getBoundingClientRect();
+assert(time.top>=stage.getBoundingClientRect().bottom,'ordinary mobile timeline stays below map');
+for(const selector of ['.borders-control button','.legend button','.zoom button']){
+ const button=document.querySelector(selector),r=button.getBoundingClientRect();
+ assert(document.elementFromPoint(r.x+r.width/2,r.y+r.height/2)?.closest('button')===button,'mobile map control is reachable: '+selector);
+}
+const style=getComputedStyle(document.getElementById('play'));
+const luminance=color=>{const c=color.match(/[0-9.]+/g).slice(0,3).map(n=>{const v=+n/255;return v<=.04045?v/12.92:((v+.055)/1.055)**2.4});return c[0]*.2126+c[1]*.7152+c[2]*.0722};
+const a=luminance(style.color),b=luminance(style.backgroundColor);
+assert((Math.max(a,b)+.05)/(Math.min(a,b)+.05)>=4.5,'Play text contrast meets 4.5:1');
+document.getElementById('compareToggle').click();
+return 'Mobile map controls remain reachable and Play text has sufficient contrast';
+})()`));
 console.log(await evaluate(`(()=>{
 render();const s=document.querySelector('.population-strip'),r=s.getBoundingClientRect();
 if(document.documentElement.scrollWidth>innerWidth||r.right>innerWidth||s.scrollWidth>s.clientWidth)throw Error('Population overflows mobile');
