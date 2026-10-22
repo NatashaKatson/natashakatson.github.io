@@ -618,7 +618,13 @@ const EVENTS = [
 [1940,null,0,"Nylon stockings","Nylon stockings go on sale in the US and sell out within days.",40.71,-74.0,"am","fashion","Nylon"],
 [1946,null,0,"The bikini","A two-piece swimsuit is shown in Paris and named after a nuclear test site.",48.86,2.35,"eu","fashion","Bikini"],
 [1947,null,0,"Dior's New Look","Full skirts and cinched waists, after years of wartime rationing.",48.87,2.31,"eu","fashion","Christian_Dior"],
-[1964,null,1,"The miniskirt","Hemlines rise on London's King's Road and spread worldwide.",51.49,-0.17,"eu","fashion","Miniskirt"]
+[1964,null,1,"The miniskirt","Hemlines rise on London's King's Road and spread worldwide.",51.49,-0.17,"eu","fashion","Miniskirt"],
+// Recent events: optional final field links to the primary source.
+[2023,null,0,"Chandrayaan-3 lands on the Moon","India's Chandrayaan-3 lander touches down on the Moon on August 23. The marker shows the mission's launch site.",13.72,80.23,"as","ideas","Chandrayaan-3","https://new1.isro.gov.in/ISRO_EN/Release_of_Chandrayaan-3_science_data_to_the_Scientific_Community.html"],
+[2024,null,0,"Paris Summer Olympics","Paris hosts the Summer Olympic Games from July 26 to August 11.",48.86,2.35,"eu","culture","2024_Summer_Olympics","https://www.paris.fr/en/pages/the-paris-olympic-and-paralympic-games-kick-off-in-one-year-27787"],
+[2025,null,0,"Rubin Observatory reveals its first images","The Vera C. Rubin Observatory in Chile unveils its First Look images on June 23.",-30.24,-70.74,"am","ideas","Vera_C._Rubin_Observatory","https://www.nsf.gov/news/first-imagery-nsf-doe-vera-c-rubin-observatory"],
+[2026,null,0,"Milano Cortina Winter Olympics","Italy hosts the Winter Olympic Games in February, with the closing ceremony in Verona on February 22.",45.46,9.19,"eu","culture","2026_Winter_Olympics","https://www.youtube.com/watch?v=LY0XM_DfgDo"],
+[2026,null,0,"Artemis II flies around the Moon","Four astronauts fly around the Moon and return to Earth on April 10. The marker shows the mission's launch site in Florida.",28.61,-80.60,"am","ideas","Artemis_II","https://www.nasa.gov/mission/artemis-ii/"]
 ];
 
 // [name, born, died, approx, role, lat, lon, region, wikiSlug]
@@ -726,7 +732,7 @@ function parseYear(s){
   return Math.max(-300000,Math.min(NOW,y));
 }
 
-const ev=EVENTS.map((e,i)=>({id:"e"+i,kind:"event",start:e[0],end:e[1]??e[0],approx:!!e[2],title:e[3],blurb:e[4],lat:e[5],lon:e[6],region:e[7],cat:e[8],wiki:e[9]}));
+const ev=EVENTS.map((e,i)=>({id:"e"+i,kind:"event",start:e[0],end:e[1]??e[0],approx:!!e[2],title:e[3],blurb:e[4],lat:e[5],lon:e[6],region:e[7],cat:e[8],wiki:e[9],source:e[10]}));
 const ppl=PEOPLE.map((p,i)=>({id:"p"+i,kind:"person",name:p[0],born:p[1],died:p[2],approx:!!p[3],role:p[4],lat:p[5],lon:p[6],region:p[7],wiki:p[8]}));
 const byId=Object.fromEntries([...ev,...ppl].map(x=>[x.id,x]));
 const wikiUrl=s=>"https://en.wikipedia.org/wiki/"+encodeURIComponent(s).replace(/%2C/g,",").replace(/%27/g,"'");
@@ -982,7 +988,7 @@ function renderDetailBase(){const el=document.getElementById("detail");if(select
   if(x.kind==="event"){const others=activeEvents().map(({e})=>e).filter(o=>o!==x&&o.region!==x.region).slice(0,3),elsewhere=others.length?others.map(o=>`<button class="item" data-id="${o.id}" style="--c:var(--c-${o.cat})"><span class="y">${esc(fmt(o.start,o.approx))}</span><span><span class="t"><i></i>${esc(o.title)}</span><span class="b">${REGIONS[o.region]}</span></span></button>`).join(""):`<p>No other recorded event falls within one year of ${esc(fmt(state.year))}.</p>`;
     el.innerHTML=`<div class="detail" style="--c:var(--c-${x.cat})"><button class="iconbtn close" aria-label="Close">×</button>
     <div class="kicker"><i></i>${esc(fmtSpan(x.start,x.end!==x.start?x.end:null,x.approx))} · ${REGIONS[x.region]}</div>
-    <h3>${esc(x.title)}</h3><p>${esc(x.blurb)}</p><a href="${wikiUrl(x.wiki)}" target="_blank" rel="noopener">Read more on Wikipedia ↗</a>
+    <h3>${esc(x.title)}</h3><p>${esc(x.blurb)}</p>${x.source?`<p><a href="${esc(x.source)}" target="_blank" rel="noopener">Primary source ↗</a></p>`:""}<a href="${wikiUrl(x.wiki)}" target="_blank" rel="noopener">Read more on Wikipedia ↗</a>
     <div class="near"><b>Elsewhere within one year</b>${elsewhere}</div></div>`}
   else{const age=state.year-x.born;el.innerHTML=`<div class="detail" style="--c:var(--ink)"><button class="iconbtn close" aria-label="Close">×</button>
     <div class="kicker"><i></i>${esc(fmt(x.born,x.approx))} – ${esc(fmt(x.died,x.approx))} · ${REGIONS[x.region]}</div>
