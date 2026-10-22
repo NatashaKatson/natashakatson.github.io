@@ -80,6 +80,10 @@ const snapshotPolity=polities().find(f=>!f.territoryOverlay);selectPolity(snapsh
 setYear(BFROM-1);render();
 assert(document.getElementById('changedOutlines').disabled,'missing coverage disables outlines');
 assert(document.querySelector('.discovery-tools .discovery-status'),'coverage status stays below map');
+setYear(2026);assert(!document.getElementById('nowLine').textContent.includes('No recorded events'),'2026 has events');
+assert(document.getElementById('regions').textContent.includes('Artemis II'),'2026 ledger includes current records');
+const currentEvent=ev.find(e=>e.wiki==='Artemis_II');select(currentEvent.id,false);
+assert(document.querySelector('#detail a[href="https://www.nasa.gov/mission/artemis-ii/"]'),'primary source accessible');
 setYear(500);render();form.requestSubmit();assert(form.elements.right.validity.valid&&state.year===500,'formatted AD input can be resubmitted');
 return 'Phase 1: comparison, BCE/CE, dated borders, shared navigation, keyboard divider and data gaps passed';})()`),
 );

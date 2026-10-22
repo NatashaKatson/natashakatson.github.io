@@ -99,3 +99,23 @@ test("border snapshots continue through today without changing historical dates"
   const ended = {name: "Ended", from: 2000, to: 2020, area: 1};
   assert.deepEqual(core.active([active, ended], vm.runInContext("borderYear(2026)", context)), [active]);
 });
+
+test("recent years contain sourced events visible to the timeline", () => {
+  const html = fs.readFileSync("static/historyallaround/atlas/index.html", "utf8");
+  const events = html.slice(html.indexOf("const EVENTS ="), html.indexOf("const PEOPLE ="));
+  const mapping = html.match(/^const ev=EVENTS.map.*$/m)[0];
+  const active = html.slice(html.indexOf("function relevance("), html.indexOf("function alivePeople("));
+  const context = vm.createContext({
+    state: { year: 2026, cats: new Set(["ideas", "culture", "nature", "war", "power", "fashion"]) },
+    halfWin: () => 1,
+  });
+  vm.runInContext(events + "\n" + mapping + "\n" + active, context);
+  for (const year of [2023, 2024, 2025, 2026]) {
+    context.state.year = year;
+    assert.equal(vm.runInContext("activeEvents().some(({e}) => e.start === state.year && e.source?.startsWith('https://'))", context), true);
+  }
+  context.state.year = 2026;
+  assert.equal(vm.runInContext("activeEvents().some(({e}) => e.wiki === 'Artemis_II')", context), true);
+  context.state.cats.clear();
+  assert.equal(vm.runInContext("activeEvents().length", context), 0);
+});
