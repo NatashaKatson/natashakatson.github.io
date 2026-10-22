@@ -63,4 +63,32 @@ Build with the CI version, **Hugo 0.110.0**, using `hugo --minify`. The locally 
 1. Precompute a compact spatial/temporal coverage index to avoid scanning every border file for each place. Keep the original source geometries authoritative.
 2. Add community-reviewed Indigenous presence, settlement and place-name histories with explicit validity dates, provenance, uncertainty and distinctions between claims and control.
 3. Grow the curated story graph with stable entity IDs, typed relationships and citation-level evidence. Existing array-index record IDs should not be used in a long-lived public graph.
-4. Add shareable URLs for comparison years, selected coordinates and story trails, followed by physical-device and network-throttling checks.
+4. Extend exact-view sharing with exported image cards and saved multi-step trails, followed by physical-device and network-throttling checks.
+
+## Meanwhile, comparison stories, and sharing
+
+Event details now show up to three **Meanwhile…** cards from other regions whose
+recorded date ranges include the selected year. Each region appears at most once;
+there is no adjacent-year fallback or invented connection when records are sparse.
+Cards keep their source links and approximate-date labels. Following a card pins
+the starting event with a return button; the exploration trail restores the earlier
+view. Cards can reveal a category hidden by filters and enable that category when
+followed.
+
+**Three stories to explore**, above the regional ledger, opens sourced comparisons:
+1789/1846 (Nootka and Oregon), 1846/1859 (Oregon Treaty and Pig War), and 1821/1903
+(Russian claims and the Alaska boundary documents). Explanations appear only while
+the story's two years are displayed. They describe selected records, not calculated
+territorial gains or a complete history of Indigenous sovereignty.
+
+**Share this view** pauses playback and copies a versioned URL, with a selectable
+link if clipboard access is unavailable. It encodes both years, divider, outlines,
+map mode, rotation, zoom, relative flat-map pan, category filters, selected event or
+person (source key plus date), selected polity name/year, pinned event, location
+coordinate, and comparison story. Opening the link restores that state. Coordinates
+restore a location action; the full place-history scan is still on demand. Saved
+trails and downloaded border data are not embedded. Camera framing adapts to the
+recipient's viewport. Old links such as `#1903` and `#500bc` continue to work.
+Malformed or unsupported view payloads are ignored. There is no account or backend.
+
+Release verification: all 10 pure/syntax regression tests and the browser suite passed, including exact-view reload, territory sharing, copyable-link UI, three comparisons, pinned return, and emulated mobile/touch checks. The production build passed with Hugo 0.110.0; the newer installed Hugo retains the previously documented configuration/theme incompatibility.

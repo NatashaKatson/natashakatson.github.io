@@ -209,6 +209,62 @@ console.log(
     `(()=>{const assert=(v,m)=>{if(!v)throw Error(m)};const r=stage.getBoundingClientRect(),t=document.querySelector('.time').getBoundingClientRect();assert(t.top>=r.bottom,'comparison controls do not obscure map');return 'Mobile comparison controls remain below the map'})()`,
   ),
 );
+console.log(await evaluate(`(async()=>{
+const assert=(v,m)=>{if(!v)throw Error(m)};
+if(HistoryDiscovery.isComparing())document.getElementById('compareToggle').click();
+setYear(1789);const anchor=ev.find(e=>e.wiki==='Nootka_Crisis');select(anchor.id,false);stopSpin();
+const card=document.querySelector('[data-meanwhile]');assert(card,'same-year discovery card');card.click();
+assert(state.year===1789,'meanwhile preserves year');assert(document.querySelector('.pinned-event'),'starting event pinned');
+const pinnedHash=HistoryDiscovery.urlHash();
+setYear(1850);await HistoryDiscovery.openView(pinnedHash);
+assert(state.year===1789&&document.querySelector('.pinned-event'),'share restores pin');
+document.querySelector('.pinned-event').click();assert(state.sel===anchor.id,'pin returns to starting event');
+for(let i=0;i<3;i++){
+ document.querySelector('[data-comparison-story="'+i+'"]').click();render();
+ assert(HistoryDiscovery.isComparing(),'story enables comparison');
+ assert(!document.querySelector('.comparison-explanation').hidden,'story explanation visible');
+ assert(document.querySelector('.comparison-explanation a'),'story source available');
+ const v=DiscoveryCore.parseView(HistoryDiscovery.urlHash(),NOW,Object.keys(CATS));
+ assert(v.story===i&&v.selectedYear===v.year,'story selected in right year');
+}
+setMode('flat');setZoom(1.8);flatT={x:40,y:-20};
+document.querySelector('.compare-divider').dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowRight',bubbles:true}));
+const saved=HistoryDiscovery.urlHash(), expected=DiscoveryCore.parseView(saved,NOW,Object.keys(CATS));
+setYear(1500);setMode('globe');await HistoryDiscovery.openView(saved);render();
+assert(state.year===expected.year&&state.mode==='flat'&&Math.abs(zoomK-1.8)<.001,'share restores date and camera');
+assert(Math.abs(flatT.x-40)<.01&&Math.abs(flatT.y+20)<.01,'share restores map pan');
+assert(state.sel&&byId[state.sel].wiki===expected.record.wiki,'share restores stable record');
+assert(!document.querySelector('.comparison-explanation').hidden,'share restores story explanation');
+const before=state.year;assert(!await HistoryDiscovery.openView('#view=broken')&&state.year===before,'malformed links harmless');
+assert(document.documentElement.scrollWidth<=innerWidth,'new discovery panels fit mobile');
+return 'Discovery release: meanwhile, pin return, three stories, exact-view restoration, malformed links and mobile width passed';
+})()`));
+const reloadHash = await evaluate('HistoryDiscovery.urlHash()');
+await send('Page.navigate', {url:(process.env.ATLAS_TEST_URL || 'http://127.0.0.1:8891/atlas/') + reloadHash});
+await new Promise(r=>setTimeout(r,1800));
+console.log(await evaluate(`(()=>{
+const v=DiscoveryCore.parseView(${JSON.stringify(reloadHash)},NOW,Object.keys(CATS));
+if(state.year!==v.year||state.mode!==v.mode||Math.abs(zoomK-v.zoom)>.001||!HistoryDiscovery.isComparing()||byId[state.sel]?.wiki!==v.record.wiki||document.querySelector('.comparison-explanation').hidden)throw Error('Shared link failed after full page navigation');
+return 'Shared link survives full page navigation';
+})()`));
+console.log(await evaluate(`(async()=>{
+const assert=(v,m)=>{if(!v)throw Error(m)};
+await loadChunk(chunkOf(state.year));
+const f=corePolity();
+function corePolity(){return DiscoveryCore.active(bCache.get(chunkOf(state.year))||[],borderYear(state.year))[0]}
+assert(f,'territory loaded');selectPolity(f,state.year);
+const hash=HistoryDiscovery.urlHash();selectedPolity=null;renderDetail();
+await HistoryDiscovery.openView(hash);
+assert(selectedPolity?.name===f.name,'territory name restored from dated data');
+const share=[...document.querySelectorAll('.discovery-tools>button')].find(b=>b.textContent==='Share this view');
+await share.onclick();
+const input=document.querySelector('.share-panel input');
+assert(!document.querySelector('.share-panel').hidden&&input.value.includes('#view='),'share reveals copyable URL');
+assert(DiscoveryCore.parseView(new URL(input.value).hash,NOW,Object.keys(CATS)).polity===f.name,'share captures territory');
+document.querySelector('.share-panel button').click();
+assert(document.querySelector('.share-panel').hidden,'share panel closes');
+return 'Territory sharing and copyable-link UI passed';
+})()`));
 const shot = await send("Page.captureScreenshot", {
   format: "png",
   captureBeyondViewport: true,

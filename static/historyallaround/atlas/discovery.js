@@ -91,6 +91,8 @@
   document.querySelector(".side-content").prepend(placePanel);
   function snapshot() {
     return {
+      pinned,
+      activeComparisonStory,
       year: state.year,
       sel: state.sel,
       polity: selectedPolity,
@@ -105,17 +107,20 @@
       compare: compare.on,
       selectedYear: compare.selectedYear,
       cats: [...state.cats],
+      lastPoint,
       placeState: place,
       placeReturn,
     };
   }
   function restore(s) {
     flyToken++;
+    pinned = s.pinned ?? null;
+    activeComparisonStory = s.activeComparisonStory ?? null;
     place = s.placeState;
     placeReturn = s.placeReturn;
     placePanel.hidden = !place;
     if (place) renderPlace();
-    lastPoint = null;
+    lastPoint = s.lastPoint ?? null;
     stopPlay();
     stopSpin();
     state.cats = new Set(s.cats);
@@ -466,8 +471,191 @@
   form.addEventListener("input", (e) => e.target.setCustomValidity(""));
   document.getElementById("changedOutlines").onchange = draw;
   setSplit(0.5);
+  // Discovery cards and exact-view links use stable source keys rather than array IDs.
+  let pinned = null;
+  let activeComparisonStory = null;
+  const comparisonStories = [
+    {
+      title: "From Nootka to the 49th parallel", left: 1789, right: 1846,
+      wiki: "Oregon_Treaty", point: [-125, 49],
+      text: "In 1789, Spain and Britain confronted one another at Nootka Sound. By 1846, Britain and the United States agreed a boundary at the 49th parallel, keeping Vancouver Island British. Compare two moments in imperial claims, not a continuous account of local sovereignty.",
+      sources: [["Nootka Crisis", "https://en.wikipedia.org/wiki/Nootka_Crisis"], ["Oregon boundary", "https://sos.oregon.gov/blue-book/explore/pages/american.aspx"]],
+    },
+    {
+      title: "A treaty, a channel, and a pig", left: 1846, right: 1859,
+      wiki: "Pig_War_(1859)", point: [-123.09, 48.53],
+      text: "The Oregon Treaty settled much of the boundary in 1846 but left the channel through the San Juan Islands unclear. In 1859, a shot pig triggered a military confrontation. The 1859 map is a moment in the dispute, not its final settlement.",
+      sources: [["Washington State Archives", "https://www.sos.wa.gov/archives/explore-our-collection/national-history-day-topic-guide/pig-war-pig-and-international-boundary-dispute"]],
+    },
+    {
+      title: "A Russian claim, an Alaska boundary case", left: 1821, right: 1903,
+      wiki: "Alaska_boundary_dispute", point: [-135.31, 59.46],
+      text: "The Russian ukase of 1821 asserted coastal and trading claims reaching south to 51°N. Russian ukases later appeared among the documents in the 1903 Alaska boundary case. This is a documentary connection across two dates, not evidence that the decree directly caused the later ruling.",
+      sources: [["Russian decree", "https://en.wikipedia.org/wiki/Ukase_of_1821"], ["Library of Congress: boundary case", "https://www.loc.gov/item/04004083/"]],
+    },
+  ];
+  const discoveryShelf = document.createElement("section");
+  discoveryShelf.className = "comparison-stories";
+  discoveryShelf.setAttribute("aria-label", "Curated comparison stories");
+  discoveryShelf.innerHTML = `<details><summary>Three stories to explore</summary><p>Follow changing claims and boundaries in the Pacific Northwest.</p>${comparisonStories.map((s, i) => `<button type="button" class="story-card" data-comparison-story="${i}"><b>${esc(s.title)}</b><small>${fmt(s.left)} → ${fmt(s.right)}</small></button>`).join("")}</details><div class="comparison-explanation" hidden></div>`;
+  document.getElementById("regions").before(discoveryShelf);
+  const storyExplanation = discoveryShelf.querySelector(".comparison-explanation");
+  function renderComparisonStory() {
+    const s = comparisonStories[activeComparisonStory];
+    const showing = s && compare.on && s.left === compare.left && s.right === state.year;
+    const key = showing ? String(activeComparisonStory) : "none";
+    if (storyExplanation.dataset.story === key) return;
+    storyExplanation.dataset.story = key;
+    storyExplanation.hidden = !showing;
+    storyExplanation.innerHTML = showing ? `<h3>${esc(s.title)}</h3><p>${esc(s.text)}</p><p>These maps show approximate source coverage. They do not establish effective control or describe Indigenous sovereignty.</p><p>${s.sources.map(([label, url]) => `<a target="_blank" rel="noopener" href="${esc(url)}">${esc(label)} ↗</a>`).join(" · ")}</p><button type="button" data-story-close>Close story</button>` : "";
+    storyExplanation.querySelector("[data-story-close]")?.addEventListener("click", () => {
+      activeComparisonStory = null;
+      renderComparisonStory();
+    });
+  }
+  function openComparisonStory(index) {
+    trail.push(snapshot());
+    if (trail.length > 30) trail.shift();
+    activeComparisonStory = index;
+    pinned = null;
+    placeToken++;
+    place = null;
+    placeReturn = null;
+    placePanel.hidden = true;
+    lastPoint = null;
+    if (!compare.on) document.getElementById("compareToggle").click();
+    const s = comparisonStories[index];
+    compare.left = s.left;
+    form.elements.left.value = fmt(s.left);
+    state.borders = "history";
+    syncBordersUI();
+    setYear(s.right);
+    const r = ev.find((r) => r.wiki === s.wiki);
+    state.cats.add(r.cat);
+    buildMarks();
+    document.querySelectorAll("#legend [data-k]").forEach((b) =>
+      b.setAttribute("aria-pressed", state.cats.has(b.dataset.k)));
+    select(r.id, false, s.right);
+    zoomK = 2.4;
+    focusPoint(s.point);
+    update();
+    renderTrail();
+  }
+  discoveryShelf.querySelectorAll("[data-comparison-story]").forEach((b) =>
+    b.onclick = () => openComparisonStory(+b.dataset.comparisonStory));
+  function addMeanwhile(el, record) {
+    if (record.kind !== "event") return;
+    const year = compare.selectedYear ?? state.year;
+    const others = core.meanwhile(record, ev, year);
+    const section = el.querySelector(".meanwhile-slot");
+    if (!section) return;
+    section.className = "near meanwhile-slot";
+    section.innerHTML = `<b>Meanwhile… in ${esc(fmt(year))}</b><p>Events recorded in the same year, elsewhere. Coincidence in time does not imply a causal connection; approximate dates remain approximate.</p>${pinned && pinned.id !== record.id ? `<button type="button" class="pinned-event">← Return to ${esc(pinned.title)} · ${esc(fmt(pinned.year))}</button>` : ""}${others.length ? others.map((r, i) => `<div class="meanwhile-card"><button type="button" class="story-card" data-meanwhile="${i}"><b>${esc(r.title)}</b><small>${esc(REGIONS[r.region])} · ${esc(fmtSpan(r.start, r.end !== r.start ? r.end : null, r.approx))}</small><span>${esc(r.blurb)}</span></button><a href="${esc(r.source || wikiUrl(r.wiki))}" target="_blank" rel="noopener">Source ↗</a></div>`).join("") : "<p>No same-year events in other regions are recorded here yet.</p>"}`;
+    section.querySelector(".pinned-event")?.addEventListener("click", () => {
+      const anchor = pinned;
+      trail.push(snapshot());
+      if (trail.length > 30) trail.shift();
+      setYear(anchor.year);
+      select(anchor.id, false, anchor.year);
+      focusPoint([anchor.lon, anchor.lat]);
+      renderTrail();
+    });
+    section.querySelectorAll("[data-meanwhile]").forEach((b) => b.onclick = () => {
+      trail.push(snapshot());
+      if (trail.length > 30) trail.shift();
+      if (!pinned) pinned = { ...record, year };
+      const target = others[+b.dataset.meanwhile];
+      state.cats.add(target.cat);
+      buildMarks();
+      document.querySelectorAll("#legend [data-k]").forEach((c) =>
+        c.setAttribute("aria-pressed", state.cats.has(c.dataset.k)));
+      setYear(year);
+      select(target.id, false, year);
+      focusPoint([target.lon, target.lat]);
+      renderTrail();
+    });
+  }
+  function viewData() {
+    const r = byId[state.sel];
+    return {
+      v: 1, year: state.year, left: compare.left, mode: state.mode,
+      borders: state.borders, rot: rot.slice(), pan: [flatT.x / W, flatT.y / H],
+      zoom: zoomK, split: compare.split, compare: compare.on,
+      changed: document.getElementById("changedOutlines").checked,
+      selectedYear: compare.selectedYear, cats: [...state.cats],
+      record: r ? { wiki: r.wiki, kind: r.kind, date: r.start ?? r.born } : null,
+      polity: selectedPolity?.name || null,
+      point: place?.point || lastPoint || null,
+      story: activeComparisonStory,
+      pin: pinned ? { wiki: pinned.wiki, date: pinned.start, year: pinned.year } : null,
+    };
+  }
+  function urlHash() {
+    return "#" + new URLSearchParams({ view: JSON.stringify(viewData()) });
+  }
+  const share = document.createElement("button");
+  share.type = "button";
+  share.textContent = "Share this view";
+  tools.append(share);
+  const sharePanel = document.createElement("div");
+  sharePanel.className = "share-panel";
+  sharePanel.hidden = true;
+  sharePanel.innerHTML = '<label>Link to this exact view <input readonly aria-label="Shareable atlas link"></label><button type="button">Close</button><p role="status"></p>';
+  tools.append(sharePanel);
+  sharePanel.querySelector("button").onclick = () => { sharePanel.hidden = true; share.focus(); };
+  share.onclick = async () => {
+    stopPlay(); stopSpin(); flyToken++;
+    const url = new URL(location.href);
+    url.hash = urlHash();
+    history.replaceState(null, "", url);
+    sharePanel.hidden = false;
+    const input = sharePanel.querySelector("input");
+    input.value = url.href;
+    input.focus(); input.select();
+    try {
+      await navigator.clipboard.writeText(url.href);
+      sharePanel.querySelector("p").textContent = "Link copied. It includes the years, map view, filters, and selection.";
+    } catch (_) {
+      sharePanel.querySelector("p").textContent = "Copy the selected link to share this view.";
+    }
+  };
+  let linkToken = 0;
+  async function openView(hash) {
+    const v = core.parseView(hash, NOW, Object.keys(CATS));
+    if (!v) return false;
+    const token = ++linkToken;
+    const r = v.record && [...ev, ...ppl].find((r) =>
+      r.wiki === v.record.wiki && r.kind === v.record.kind && (r.start ?? r.born) === v.record.date);
+    const anchor = v.pin && ev.find((r) => r.wiki === v.pin.wiki && r.start === v.pin.date);
+    pinned = anchor ? { ...anchor, year: v.pin.year } : null;
+    activeComparisonStory = v.story;
+    const saved = { ...snapshot(), ...v, sel: r?.id || null, polity: null,
+      activeComparisonStory: v.story, pinned,
+      flatT: { x: v.pan[0] * W, y: v.pan[1] * H }, placeState: null, placeReturn: null };
+    placeToken++;
+    restore(saved);
+    userMoved = true;
+    lastPoint = v.point;
+    renderDetail();
+    if (v.polity) {
+      const year = v.selectedYear ?? v.year;
+      const chunk = chunkOf(year);
+      const fs = chunk === null ? null : await loadChunk(chunk);
+      if (token !== linkToken) return true;
+      // Do not overwrite a selection the visitor made while the border file loaded.
+      if (state.year === v.year && !state.sel && !selectedPolity) {
+        const f = core.active(fs || [], borderYear(year)).find((f) => f.name === v.polity);
+        if (f) selectPolity(f, year);
+      }
+    }
+    return true;
+  }
+
   window.HistoryDiscovery = {
+    urlHash,
+    openView,
     render(scene) {
+      renderComparisonStory();
       const right = state.year;
       let allHits = [];
       if (compare.on) {
@@ -589,7 +777,11 @@
         hint.textContent = "Click a specific location on the map to explore its history. A state or empire can span several present-day countries.";
         document.querySelector("#detail .detail").append(hint);
       }
-      if (x) addStories(document.querySelector("#detail .detail"), x);
+      if (x) {
+        const el = document.querySelector("#detail .detail");
+        addMeanwhile(el, x);
+        addStories(el, x);
+      }
       else if (selectedPolity) {
         const f = selectedPolity;
         addStories(document.querySelector("#detail .detail"), {
@@ -604,4 +796,12 @@
     },
     explore,
   };
+  openView(initialAtlasHash);
+  window.addEventListener("hashchange", () => {
+    if (location.hash.includes("view=")) openView(location.hash);
+    else {
+      const year = parseYear(location.hash.slice(1));
+      if (year !== null) { stopPlay(); setYear(year); }
+    }
+  });
 })();

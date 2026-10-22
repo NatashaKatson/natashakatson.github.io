@@ -119,3 +119,29 @@ test("recent years contain sourced events visible to the timeline", () => {
   context.state.cats.clear();
   assert.equal(vm.runInContext("activeEvents().length", context), 0);
 });
+
+test("meanwhile uses inclusive same-year dates, other regions, and preserves sparse coverage", () => {
+  const anchor = { wiki: "Anchor", region: "am" };
+  const ongoing = { wiki: "Ongoing", region: "as", start: 1810, end: 1820, approx: false };
+  const exact = { wiki: "Exact", region: "eu", start: 1815, end: 1815, approx: false };
+  const nearbyYear = { wiki: "Next", region: "af", start: 1816, end: 1816 };
+  const sameRegion = { wiki: "Local", region: "am", start: 1815, end: 1815 };
+  const events = [ongoing, exact, nearbyYear, sameRegion, { ...exact, wiki: "Duplicate region" }];
+  assert.deepEqual(core.meanwhile(anchor, events, 1815), [ongoing, exact]);
+  assert.deepEqual(core.meanwhile(anchor, events, 1850), []);
+});
+
+test("shared views reject malformed or unbounded camera and date values", () => {
+  const view = { v: 1, year: -500, left: 1903, mode: "flat", borders: "history",
+    rot: [-25, -22, 0], pan: [.2, -.4], zoom: 2, split: .52, compare: true,
+    changed: false, selectedYear: -500, cats: ["war"], record: null,
+    polity: null, point: [179, -90], story: 1, pin: null };
+  const hash = (v) => "#" + new URLSearchParams({ view: JSON.stringify(v) });
+  assert.deepEqual(core.parseView(hash(view), 2026, ["war"]), view);
+  for (const invalid of [{year: 0}, {year: 2027}, {zoom: 100}, {pan: [0, null]},
+    {point: [0, 91]}, {cats: ["bogus"]}, {record: {wiki: "A", kind: "script", date: 1}},
+    {pin: {wiki: "A", date: 1, year: 0}}, {story: 3}, {v: 2}])
+    assert.equal(core.parseView(hash({...view, ...invalid}), 2026, ["war"]), null);
+  assert.equal(core.parseView("#view=%7Bbroken", 2026, ["war"]), null);
+  assert.equal(core.parseView("#1903", 2026, ["war"]), null);
+});
