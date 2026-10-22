@@ -350,9 +350,9 @@ header .seg{padding:3px;background:#f0f3f6;border:1px solid #d8dfe6;border-radiu
   <div class="time">
     <div class="controls">
       <div class="time-heading"><b>Move through time</b><span>Drag the ruler or press play</span></div>
-      <button class="iconbtn" id="prev" aria-label="Previous event">‹</button>
+      <button class="iconbtn" id="prev" aria-label="Previous year" title="Previous year">‹</button>
       <button class="iconbtn play" id="play" aria-label="Play">▶ Play</button>
-      <button class="iconbtn" id="next" aria-label="Next event">›</button>
+      <button class="iconbtn" id="next" aria-label="Next year" title="Next year">›</button>
       <span class="lbl" id="winLbl"></span>
     </div>
     <div class="ruler" id="ruler">
@@ -361,7 +361,7 @@ header .seg{padding:3px;background:#f0f3f6;border:1px solid #d8dfe6;border-radiu
       <div class="ticks" id="ticks"></div>
       <div class="win" id="win"></div>
       <div class="needle" id="needle"></div>
-      <input type="range" id="slider" min="0" max="10000" step="1" aria-label="Year">
+      <input type="range" id="slider" min="0" max="3000000" step="1" aria-label="Year">
     </div>
   </div>
 
@@ -660,7 +660,7 @@ const REGIONS={eu:"Europe",me:"Middle East & North Africa",af:"Sub-Saharan Afric
 const REGION_ORDER=["eu","me","af","as","am","oc"];
 const CATS={power:"Power & states",war:"War",ideas:"Science & exploration",culture:"Culture & faith",nature:"People & nature",fashion:"Fashion & dress"};
 const ERAS=[[-300000,"Prehistory"],[-3200,"Ancient"],[-800,"Classical"],[500,"Medieval"],[1500,"Early modern"],[1800,"Modern"]];
-const NOW=2025;
+const NOW=new Date().getFullYear(),SLIDER_STEPS=3000000;
 
 // piecewise scale: slider t (0..1) <-> year
 const SEG=[[0,-300000],[0.10,-10000],[0.17,-3000],[0.40,0],[0.70,1500],[0.83,1800],[1,NOW]];
@@ -668,11 +668,11 @@ function yearAt(t){for(let i=1;i<SEG.length;i++){const[a,ya]=SEG[i-1],[b,yb]=SEG
 function tAt(y){for(let i=1;i<SEG.length;i++){const[a,ya]=SEG[i-1],[b,yb]=SEG[i];if(y<=yb)return a+(b-a)*(y-ya)/(yb-ya)}return 1}
 const SAME_TIME_YEARS=1;
 function halfWin(){return SAME_TIME_YEARS}
-function roundYear(y){const a=Math.abs(y);let s=a>20000?1000:a>5000&&y<0?100:a>1000&&y<0?10:1;return Math.round(y/s)*s}
+function roundYear(y){const n=Math.round(y);return n===0?(y<0?-1:1):n}
 function fmt(y,approx){const c=approx?"c. ":"";if(y<0)return c+Math.abs(y).toLocaleString("en-US")+" BC";if(y<1000)return c+"AD "+y;return c+y}
 function fmtSpan(a,b,ap){return b&&b!==a?fmt(a,ap)+"–"+(a<0&&b>0?fmt(b):(b<0?Math.abs(b).toLocaleString("en-US")+" BC":b)):fmt(a,ap)}
 function eraOf(y){let e=ERAS[0][1];for(const[s,n]of ERAS)if(y>=s)e=n;return e}
-function parseYear(s){s=s.trim().toLowerCase().replace(/,/g,"");const m=s.match(/^(-?\d+)\s*(bc|bce|b\.c\.|ad|ce)?$/);if(!m)return null;let y=+m[1];if(m[2]&&m[2].startsWith("b"))y=-Math.abs(y);return Math.max(-300000,Math.min(NOW,y))}
+function parseYear(s){s=s.trim().toLowerCase().replace(/,/g,"");const m=s.match(/^(-?\d+)\s*(bc|bce|b\.c\.|ad|ce)?$/);if(!m)return null;let y=+m[1];if(m[2]&&m[2].startsWith("b"))y=-Math.abs(y);return y===0?null:Math.max(-300000,Math.min(NOW,y))}
 
 const ev=EVENTS.map((e,i)=>({id:"e"+i,kind:"event",start:e[0],end:e[1]??e[0],approx:!!e[2],title:e[3],blurb:e[4],lat:e[5],lon:e[6],region:e[7],cat:e[8],wiki:e[9]}));
 const ppl=PEOPLE.map((p,i)=>({id:"p"+i,kind:"person",name:p[0],born:p[1],died:p[2],approx:!!p[3],role:p[4],lat:p[5],lon:p[6],region:p[7],wiki:p[8]}));
@@ -884,23 +884,25 @@ ERAS.forEach(([s,n],i)=>{const a=tAt(s),b=i<ERAS.length-1?tAt(ERAS[i+1][0]):1;co
 [-200000,-10000,-3000,-1000,1,500,1000,1500,1800,1900,2000].forEach(y=>{const s=document.createElement("span");s.style.left=tAt(y)*100+"%";s.textContent=y<0?(Math.abs(y)>=10000?Math.abs(y)/1000+"k":Math.abs(y))+" BC":y===1?"AD 1":y;if(window.innerWidth<600&&![-10000,-1000,1000,1800,2000].includes(y))return;ticks.appendChild(s)});
 function buildMarks(){marks.innerHTML="";for(const e of ev){if(!state.cats.has(e.cat))continue;const b=document.createElement("b");b.style.left=tAt(e.start)*100+"%";b.style.height=(8+((e.start*7)%9+9)%9)+"px";b.style.setProperty("--c",`var(--c-${e.cat})`);marks.appendChild(b)}}
 buildMarks();
-slider.addEventListener("input",()=>{state.year=roundYear(yearAt(slider.value/10000));selectedPolity=null;stopPlay();update(true)});
-function setYear(y,keepSel){state.year=y;slider.value=Math.round(tAt(y)*10000);if(!keepSel){state.sel=null;selectedPolity=null}update()}
-function step(dir){const list=ev.filter(e=>state.cats.has(e.cat)).map(e=>e.start).sort((a,b)=>a-b);const y=state.year;const t=dir>0?list.find(s=>s>y):[...list].reverse().find(s=>s<y);if(t!==undefined){stopPlay();setYear(t)}}
-document.getElementById("prev").onclick=()=>step(-1);
-document.getElementById("next").onclick=()=>step(1);
+slider.addEventListener("input",()=>{state.year=roundYear(yearAt(slider.value/SLIDER_STEPS));selectedPolity=null;stopPlay();update(true)});
+slider.addEventListener("keydown",e=>{if(e.key==="ArrowLeft"&&!e.shiftKey){nudgeYear(-1);e.preventDefault()}if(e.key==="ArrowRight"&&!e.shiftKey){nudgeYear(1);e.preventDefault()}});
+function setYear(y,keepSel){y=roundYear(Math.max(-300000,Math.min(NOW,y)));state.year=y;slider.value=Math.round(tAt(y)*SLIDER_STEPS);if(!keepSel){state.sel=null;selectedPolity=null}update()}
+function stepEvent(dir){const list=ev.filter(e=>state.cats.has(e.cat)).map(e=>e.start).sort((a,b)=>a-b);const y=state.year;const t=dir>0?list.find(s=>s>y):[...list].reverse().find(s=>s<y);if(t!==undefined){stopPlay();setYear(t)}}
+function nudgeYear(dir){stopPlay();const y=state.year===-1&&dir>0?1:state.year===1&&dir<0?-1:state.year+dir;setYear(y)}
+document.getElementById("prev").onclick=()=>nudgeYear(-1);
+document.getElementById("next").onclick=()=>nudgeYear(1);
 let raf=0;const playBtn=document.getElementById("play");
 function stopPlay(){state.playing=false;cancelAnimationFrame(raf);playBtn.innerHTML="▶ Play";playBtn.setAttribute("aria-label","Play")}
-playBtn.onclick=()=>{if(state.playing)return stopPlay();if(state.year>=NOW-1)setYear(-300000);state.playing=true;playBtn.innerHTML="❚❚ Pause";playBtn.setAttribute("aria-label","Pause");
-  let last=performance.now();(function tick(n){const dt=Math.min(64,n-last);last=n;let t=+slider.value/10000+dt*0.0000085;if(t>=1){t=1;stopPlay()}slider.value=Math.round(t*10000);state.year=roundYear(yearAt(t));update(true);if(state.playing)raf=requestAnimationFrame(tick)})(last)};
-document.addEventListener("keydown",e=>{if(e.target.tagName==="INPUT"&&e.target.type!=="range")return;if(e.key==="ArrowLeft"&&e.shiftKey){step(-1);e.preventDefault()}if(e.key==="ArrowRight"&&e.shiftKey){step(1);e.preventDefault()}if(e.key===" "&&e.target===document.body){playBtn.click();e.preventDefault()}});
-document.getElementById("goto").addEventListener("submit",e=>{e.preventDefault();const inp=document.getElementById("gotoInput");const y=parseYear(inp.value);if(y===null){inp.setCustomValidity("Try a year like 1492 or 500 BC");inp.reportValidity();return}inp.setCustomValidity("");stopPlay();setYear(y);inp.blur()});
+playBtn.onclick=()=>{if(state.playing)return stopPlay();if(state.year>=NOW)setYear(-300000);state.playing=true;playBtn.innerHTML="❚❚ Pause";playBtn.setAttribute("aria-label","Pause");
+  let last=performance.now();(function tick(n){const dt=Math.min(64,n-last);last=n;let t=+slider.value/SLIDER_STEPS+dt*0.0000085;if(t>=1){t=1;stopPlay()}slider.value=Math.round(t*SLIDER_STEPS);state.year=roundYear(yearAt(t));update(true);if(state.playing)raf=requestAnimationFrame(tick)})(last)};
+document.addEventListener("keydown",e=>{if(e.target.tagName==="INPUT"&&e.target.type!=="range")return;if(e.key==="ArrowLeft"&&e.shiftKey){stepEvent(-1);e.preventDefault()}if(e.key==="ArrowRight"&&e.shiftKey){stepEvent(1);e.preventDefault()}if(e.key===" "&&e.target===document.body){playBtn.click();e.preventDefault()}});
+document.getElementById("goto").addEventListener("submit",e=>{e.preventDefault();const inp=document.getElementById("gotoInput");const y=parseYear(inp.value);if(y===null){inp.setCustomValidity(/^\s*0\s*(bc|bce|b\.c\.|ad|ce)?\s*$/i.test(inp.value)?"There is no year 0. Try 1 BC or AD 1.":"Try a year like 1492 or 500 BC");inp.reportValidity();return}inp.setCustomValidity("");stopPlay();setYear(y);inp.blur()});
 document.getElementById("gotoInput").addEventListener("input",e=>e.target.setCustomValidity(""));
 
 // ---------- side ledger
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 function select(id,fly=true){state.sel=id;selectedPolity=null;const x=byId[id];stopPlay();
-  if(x.kind==="event"&&(state.year<x.start-halfWin(x.start)||state.year>x.end+halfWin(x.start))){state.year=x.start;slider.value=Math.round(tAt(x.start)*10000)}
+  if(x.kind==="event"&&(state.year<x.start-halfWin(x.start)||state.year>x.end+halfWin(x.start))){state.year=x.start;slider.value=Math.round(tAt(x.start)*SLIDER_STEPS)}
   if(fly||state.mode==="globe")flyTo(x.lon,x.lat);update();
   if(window.innerWidth<=860)document.getElementById("detail").scrollIntoView({behavior:"smooth",block:"start"})}
 function selectPolity(f){state.sel=null;selectedPolity=f;stopPlay();stopSpin();renderDetail();renderStatePicker();draw();if(window.innerWidth<=860)document.getElementById("detail").scrollIntoView({behavior:"smooth",block:"start"})}
@@ -925,7 +927,7 @@ function renderSide(){
   const reg=document.getElementById("regions");
   const filled=REGION_ORDER.filter(r=>by[r]);
   reg.innerHTML=filled.length?filled.map(r=>`<div class="region"><h4><span>${REGIONS[r]}</span><span>${by[r].length}</span></h4>${by[r].sort((a,b)=>a.start-b.start).map(e=>`<button class="item" data-id="${e.id}" aria-current="${state.sel===e.id}" style="--c:var(--c-${e.cat})"><span class="y">${esc(fmt(e.start,e.approx))}</span><span><span class="t"><i></i>${esc(e.title)}</span><span class="b">${esc(e.blurb)}</span></span></button>`).join("")}</div>`).join("")
-    :`<p class="empty">No events in this window yet. Use ‹ and › to jump to the nearest one.</p>`;
+    :`<p class="empty">No events within one year. Move one year at a time, drag the timeline or enter another date.</p>`;
   const quiet=REGION_ORDER.filter(r=>!by[r]).map(r=>REGIONS[r]);
   if(filled.length&&quiet.length)reg.insertAdjacentHTML("beforeend",`<p class="empty">Nothing recorded here yet for ${quiet.join(", ")}.</p>`);
   const pp=alivePeople().filter(p=>p.born<=y&&p.died>=y);
@@ -953,7 +955,7 @@ function update(fast){
   yr.innerHTML=y<0?`${Math.abs(y).toLocaleString("en-US")}<small>BC</small>`:y<1000?`<small style="margin:0 .15em 0 0">AD</small>${y}`:`${y}`;
   document.getElementById("era").textContent=eraOf(y);
   {const n=activeEvents().length,r=new Set(activeEvents().map(a=>a.e.region)).size,pp=alivePeople().filter(p=>p.born<=y&&p.died>=y).length;
-   document.getElementById("nowLine").innerHTML=n?`<b>${n} event${n===1?"":"s"}</b> across ${r} region${r===1?"":"s"}`+(pp?` · <b>${pp}</b> ${pp===1?"person":"people"} alive`:""):"A quiet stretch. Press › to jump ahead."}
+   document.getElementById("nowLine").innerHTML=n?`<b>${n} event${n===1?"":"s"}</b> across ${r} region${r===1?"":"s"}`+(pp?` · <b>${pp}</b> ${pp===1?"person":"people"} alive`:""):"A quiet stretch. Move one year at a time or press Play."}
   const t=tAt(y),w=halfWin(y),a=tAt(Math.max(-300000,y-w)),b=tAt(Math.min(NOW,y+w));
   const win=document.getElementById("win");win.style.left=a*100+"%";win.style.width=(b-a)*100+"%";
   document.getElementById("needle").style.left=t*100+"%";
@@ -964,8 +966,8 @@ function update(fast){
 }
 
 // initial state from link, e.g. #1492 or #500bc
-(function(){const h=(location.hash||"").slice(1);const m=h.match(/^(\d+)(bc)?$/i);if(m){const y=m[2]?-+m[1]:+m[1];if(y>=-300000&&y<=NOW)state.year=y}})();
-slider.value=Math.round(tAt(state.year)*10000);
+(function(){const h=(location.hash||"").slice(1);const m=h.match(/^(\d+)(bc)?$/i);if(m){const y=m[2]?-+m[1]:+m[1];if(y!==0&&y>=-300000&&y<=NOW)state.year=y}})();
+slider.value=Math.round(tAt(state.year)*SLIDER_STEPS);
 renderFact();update();
 // Spin only while an untouched globe is visible; the flat map and offscreen globe use no animation frames.
 let onScreen=true,spinRaf=0,spinLast=0;const reduceMotion=matchMedia("(prefers-reduced-motion: reduce)");
