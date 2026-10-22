@@ -96,6 +96,16 @@ assert(panel.textContent.includes('Search complete'),'search finished');assert(p
 panel.querySelector('[data-place-row]').click();assert(state.year!==0,'valid jump year');assert(rot[0]===-12.49&&rot[1]===-41.89,'fixed coordinate');
 document.getElementById('compareToggle').click();panel.querySelector('[data-return]').click();assert(HistoryDiscovery.isComparing()&&state.borders==='today','return restores saved comparison and border layer');assert(state.year===before.year&&zoomK===before.zoom&&rot[0]===before.rot[0],'return restores timeline and camera');
 await HistoryDiscovery.explore([0,-50]);assert(panel.textContent.includes('No records found'),'empty ocean history');panel.querySelector('[data-return]').click();
+await HistoryDiscovery.explore([103,47]);
+assert(panel.querySelector('h3').textContent==='Location history: Mongolia','Mongolian point explicitly identified');
+assert(panel.textContent.includes('not the whole highlighted state or empire'),'point and empire distinguished');
+panel.querySelector('[data-return]').click();
+await HistoryDiscovery.explore([116.4,39.9]);
+assert(panel.querySelector('h3').textContent==='Location history: China','Chinese point explicitly identified');
+panel.querySelector('[data-return]').click();
+setYear(1800);await loadChunk(chunkOf(1800));const qing=polities().find(f=>f.name==='Qing Dynasty');assert(qing,'Qing record available');selectPolity(qing,1800);
+assert(!document.querySelector('#detail .discovery-action'),'territory selection never silently chooses centroid');
+assert(document.querySelector('#detail .discovery-location-hint'),'territory selection explains how to choose a place');
 return 'Phase 2: Rome coverage/events, fixed point, jumps, return and empty history passed';})()`),
 );
 console.log(
