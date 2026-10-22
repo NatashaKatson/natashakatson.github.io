@@ -364,6 +364,7 @@ header .seg{padding:2px;background:#ede8e0;border:1px solid rgba(28,26,23,.1);bo
 @media(max-width:560px){.app header{padding:10px 14px}.brand h1{font-size:21px}.stage{min-height:350px}.readout{top:16px;left:16px}.readout .yr{font-size:58px}.readout .now{max-width:220px}.side-content{padding:16px}.side-intro{padding:17px 16px}.side h2{font-size:29px}.item{grid-template-columns:48px minmax(0,1fr);padding:10px}.fact .row{flex-wrap:wrap}}
 </style>
 <style>body{margin:0}</style>
+<link rel="stylesheet" href="discovery.css">
 </head>
 <body>
 
@@ -753,16 +754,16 @@ const BCS=BIDX.chunkSize,BSET=new Set(BIDX.chunks),BFROM=BIDX.chunks[0],BTO=BIDX
 const STATE_FILLS=["rgba(145,166,139,.84)","rgba(124,151,166,.84)","rgba(181,119,99,.83)","rgba(190,159,83,.84)","rgba(151,136,163,.83)","rgba(169,126,140,.83)","rgba(109,151,143,.84)","rgba(177,153,119,.84)"];
 const bCache=new Map(),bErrors=new Set();
 // Start year of the file holding year y, or null where Cliopatria has nothing.
-function chunkOf(y){if(y<BFROM)return null;const c=BFROM+Math.floor((Math.min(y,BTO)-BFROM)/BCS)*BCS;return BSET.has(c)?c:null}
+function chunkOf(y){if(y<BFROM||y>BTO)return null;const c=BFROM+Math.floor((Math.min(y,BTO)-BFROM)/BCS)*BCS;return BSET.has(c)?c:null}
 const unparen=s=>s.replace(/^\((.*)\)$/,"$1");
 function loadChunk(c){if(bCache.has(c))return Promise.resolve(bCache.get(c));
   const pr=fetch(`borders/c${c}.json`).then(r=>{if(!r.ok)throw new Error(r.status);return r.json()}).then(t=>{
     const fs=topojson.feature(t,t.objects.p).features;
     for(const f of fs){const q=f.properties;f.name=unparen(q.n);f.member=unparen(q.m);f.wiki=q.w||"";
-      f.from=q.f;f.to=q.t;f.area=q.a;f.cen=[q.lx,q.ly];f.bbox=d3.geoBounds(f);f.hue=hueOf(f.name)}
-    bErrors.delete(c);bCache.set(c,fs);if(c===currentChunk())renderStatePicker();return fs}).catch(()=>{bErrors.add(c);bCache.delete(c);if(c===currentChunk()){loadC=null;syncBordersUI()}setTimeout(()=>{if(!bErrors.has(c))return;bErrors.delete(c);if(c===currentChunk()&&state.borders==="history"){loadC=null;draw()}},5000);return null});
+      f.from=q.f;f.to=q.t;f.area=q.a;f.cen=[q.lx,q.ly];f.bbox=d3.geoBounds(f);f.hue=hueOf(f.name);f.shapeKey=JSON.stringify(f.geometry)}
+    bErrors.delete(c);bCache.set(c,fs);if(c===currentChunk())renderStatePicker();return fs}).catch(()=>{bErrors.add(c);bCache.delete(c);if(c===currentChunk()){loadC=null;syncBordersUI()}setTimeout(()=>{if(!bErrors.has(c))return;bErrors.delete(c);if((c===currentChunk()||window.HistoryDiscovery?.keepChunk(c))&&state.borders==="history"){loadC=null;draw()}},5000);return null});
   bCache.set(c,pr);return pr}
-function currentChunk(){return chunkOf(Math.min(state.year,BTO))}
+function currentChunk(){return chunkOf(state.year)}
 function currentBorderFailed(){const c=currentChunk();return c!==null&&bErrors.has(c)}
 // Group states by palette colour so each colour can be filled in a single pass.
 function hueOf(n){let h=0;for(const ch of n)h=(h*31+ch.charCodeAt(0))>>>0;return h%STATE_FILLS.length}
@@ -772,12 +773,12 @@ function settle(c){if(c===loadC)return;loadC=c;clearTimeout(loadT);
   loadT=setTimeout(()=>{loadChunk(c).then(()=>draw());for(const d of[BCS,-BCS,2*BCS]){const n=chunkOf(c+d);if(n!==null&&n!==c)loadChunk(n)}},
     state.playing||!polCache.list.length?0:120)}
 let polCache={y:null,list:[]};
-function polities(){const y=Math.min(state.year,BTO);if(polCache.y===y)return polCache.list;const c=chunkOf(y);
+function polities(){const y=state.year;if(polCache.y===y)return polCache.list;const c=chunkOf(y);
   if(c===null){polCache={y,list:[]};return polCache.list}
-  settle(c);const fs=bCache.get(c);
-  if(!Array.isArray(fs))return polCache.list; // keep the last borders on screen until the file arrives
+  if(!bCache.has(c)&&!bErrors.has(c))loadChunk(c).then(()=>draw());const fs=bCache.get(c);
+  if(!Array.isArray(fs))return []; // Never show a different year while loading.
   // Keep the files near this one in memory, drop the rest.
-  bCache.delete(c);bCache.set(c,fs);for(const k of bCache.keys()){if(bCache.size<=14)break;if(Math.abs(k-c)>2*BCS)bCache.delete(k)}
+  bCache.delete(c);bCache.set(c,fs);for(const k of bCache.keys()){if(bCache.size<=14)break;if(Math.abs(k-c)>2*BCS&&!window.HistoryDiscovery?.keepChunk(k))bCache.delete(k)}
   const seen=new Map();for(const f of fs)if(f.from<=y&&f.to>=y){const o=seen.get(f.name);if(!o||f.from>o.from)seen.set(f.name,f)}
   let list=[...seen.values()];
   // Cliopatria stores the modern Danish realm as one feature and anchors its label in Greenland.
@@ -812,7 +813,8 @@ function alivePeople(){const y=state.year;if(pplMemo.y===y)return pplMemo.v;cons
 
 // Many things ask for a redraw (pointer moves, the slider, the spin); they are folded into one per frame.
 let drawQ=0;function draw(){if(!drawQ)drawQ=requestAnimationFrame(()=>{drawQ=0;render()})}
-function render(){
+function render(){if(window.HistoryDiscovery)window.HistoryDiscovery.render(renderScene);else renderScene()}
+function renderScene(){
   if(!W)return;makeProj();const G=geo();ctx.setTransform(DPR,0,0,DPR,0,0);ctx.clearRect(0,0,W,H);
   const globe=state.mode==="globe",[cx,cy]=proj.translate(),R=proj.scale();
   // stars: fixed to the screen, drift slightly as the globe turns
@@ -834,7 +836,7 @@ function render(){
     for(const f of pols)if(f.territoryOverlay){ctx.beginPath();path(f);ctx.fillStyle=STATE_FILLS[f.hue];ctx.fill()}
     ctx.beginPath();for(const f of pols)path(f);ctx.strokeStyle=C.border;ctx.lineWidth=lw;ctx.stroke();
     if(selectedPolity){const f=pols.find(p=>p.name===selectedPolity.name&&p.from===selectedPolity.from&&p.to===selectedPolity.to);if(f){ctx.beginPath();path(f);ctx.strokeStyle=C.accent;ctx.lineWidth=2.4;ctx.stroke()}}}
-  else if(state.borders==="today"||(state.borders==="history"&&currentBorderFailed())){ctx.beginPath();path(G.borders);ctx.strokeStyle=C.border;ctx.lineWidth=lw;ctx.stroke()}
+  else if(state.borders==="today"){ctx.beginPath();path(G.borders);ctx.strokeStyle=C.border;ctx.lineWidth=lw;ctx.stroke()}
   ctx.beginPath();path(G.land);ctx.strokeStyle=C["land-edge"];ctx.lineWidth=.8;ctx.stroke();
   if(globe){// shade the far side, add a soft highlight and a rim
     const sh=ctx.createRadialGradient(cx-R*.3,cy-R*.35,R*.2,cx,cy,R);sh.addColorStop(0,"rgba(0,0,0,0)");sh.addColorStop(.55,"rgba(0,0,0,0)");sh.addColorStop(1,C.shade);
@@ -895,7 +897,7 @@ function hover(){hoverQ=0;const e=hoverE;if(!e||drag)return;
   const r=cv.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,h=nearest(x,y),m=h?null:mapAt(x,y);cv.classList.toggle("hot",!!(h||m));
   const tip=document.getElementById("tip"),lbl=h?h.label:m&&m.label;
   if(lbl&&e.pointerType==="mouse"){tip.hidden=false;tip.textContent=lbl;tip.classList.toggle("country",!h);tip.style.left=x+"px";tip.style.top=y+"px"}else tip.hidden=true}
-cv.addEventListener("pointerup",e=>{cv.classList.remove("dragging");const d=drag;drag=null;if(d&&!d.moved){const r=cv.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,h=nearest(x,y);if(h)select(h.id,false);else{const m=mapAt(x,y);if(m&&m.polity)selectPolity(m.polity);else if(m&&e.pointerType!=="mouse"){const tip=document.getElementById("tip");tip.hidden=false;tip.textContent=m.label;tip.classList.add("country");tip.style.left=x+"px";tip.style.top=y+"px";clearTimeout(tapT);tapT=setTimeout(()=>tip.hidden=true,2500)}}}});
+cv.addEventListener("pointerup",e=>{cv.classList.remove("dragging");const d=drag;drag=null;if(d&&!d.moved){const r=cv.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,h=nearest(x,y);if(h)select(h.id,false,h.year??null);else{const m=mapAt(x,y);if(m&&m.polity)selectPolity(m.polity,m.year??state.year);else if(m&&e.pointerType!=="mouse"){const tip=document.getElementById("tip");tip.hidden=false;tip.textContent=m.label;tip.classList.add("country");tip.style.left=x+"px";tip.style.top=y+"px";clearTimeout(tapT);tapT=setTimeout(()=>tip.hidden=true,2500)}}}});
 cv.addEventListener("pointerleave",()=>{hoverE=null;document.getElementById("tip").hidden=true});
 cv.addEventListener("wheel",e=>{e.preventDefault();setZoom(zoomK*Math.exp(-e.deltaY*0.0015))},{passive:false});
 let pinch=null;const pts=new Map();
@@ -904,7 +906,8 @@ cv.addEventListener("pointermove",e=>{if(!pts.has(e.pointerId))return;pts.set(e.
 const endPt=e=>{pts.delete(e.pointerId);if(pts.size<2)pinch=null};cv.addEventListener("pointerup",endPt);cv.addEventListener("pointercancel",endPt);
 function setZoom(k){zoomK=Math.max(.7,Math.min(6,k));userMoved=true;needHi();moved();draw()}
 const inBox=(b,ll)=>{const[[w,so],[ea,n]]=b;if(ll[1]<so||ll[1]>n)return false;return w<=ea?(ll[0]>=w&&ll[0]<=ea):(ll[0]>=w||ll[0]<=ea)};
-function mapAt(x,y){if(state.borders==="off")return null;const ll=proj.invert([x,y]);if(!ll||isNaN(ll[0]))return null;
+function mapAt(x,y){if(window.HistoryDiscovery)return window.HistoryDiscovery.mapAt(x,y,mapAtYear);return mapAtYear(x,y)}
+function mapAtYear(x,y){if(state.borders==="off"||(state.borders==="history"&&currentBorderFailed()))return null;const ll=proj.invert([x,y]);if(!ll||isNaN(ll[0]))return null;
   if(state.mode==="globe"&&!visible(ll[0],ll[1]))return null;
   if(state.borders==="history"&&!currentBorderFailed()){const pols=polities();let hit=null;
     for(const f of pols)if(inBox(f.bbox,ll)&&d3.geoContains(f,ll)&&(!hit||f.area<hit.area))hit=f;
@@ -913,14 +916,15 @@ function mapAt(x,y){if(state.borders==="off")return null;const ll=proj.invert([x
     if(d3.geoContains(c,ll))return{label:c.properties.name+" (today)",polity:null}}return null}
 function nearest(x,y){let best=null,bd=16;for(const h of hits){const d=Math.hypot(h.x-x,h.y-y);if(d<bd){bd=d;best=h}}return best}
 function syncBordersUI(){for(const b of document.querySelectorAll(".bseg button"))b.setAttribute("aria-pressed",b.dataset.b===state.borders);
-  document.querySelector('.bseg [data-b="history"]').title=currentBorderFailed()?"Historical borders could not be loaded; showing today's borders while retrying":"";renderStatePicker();draw()}
+  document.querySelector('.bseg [data-b="history"]').title=currentBorderFailed()?"Historical borders unavailable; no modern borders substituted":"";renderStatePicker();draw()}
 for(const b of document.querySelectorAll(".bseg button"))b.onclick=()=>{state.borders=b.dataset.b;selectedPolity=null;bErrors.clear();polCache={y:null,list:[]};loadC=null;renderDetail();renderStatePicker();syncBordersUI()};
 document.getElementById("zin").onclick=()=>setZoom(zoomK*1.4);
 document.getElementById("zout").onclick=()=>setZoom(zoomK/1.4);
-function flyTo(lon,lat){if(state.mode!=="globe")return;const from=rot.slice(),to=[-lon,Math.max(-60,Math.min(60,-lat)),0];
+let flyToken=0;
+function flyTo(lon,lat){const token=++flyToken;if(state.mode!=="globe")return;const from=rot.slice(),to=[-lon,Math.max(-60,Math.min(60,-lat)),0];
   let dl=((to[0]-from[0]+540)%360)-180;const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
   if(reduce){rot=[from[0]+dl,to[1],0];draw();return}
-  const t0=performance.now(),D=700;(function step(n){const t=Math.min(1,(n-t0)/D),k=d3.easeCubicInOut(t);rot=[from[0]+dl*k,from[1]+(to[1]-from[1])*k,0];moved();draw();if(t<1)requestAnimationFrame(step)})(t0)}
+  const t0=performance.now(),D=700;(function step(n){if(token!==flyToken)return;const t=Math.min(1,(n-t0)/D),k=d3.easeCubicInOut(t);rot=[from[0]+dl*k,from[1]+(to[1]-from[1])*k,0];moved();draw();if(t<1)requestAnimationFrame(step)})(t0)}
 function setMode(m){state.mode=m;zoomK=1;flatT={x:0,y:0};document.getElementById("vGlobe").setAttribute("aria-pressed",m==="globe");document.getElementById("vFlat").setAttribute("aria-pressed",m==="flat");if(m==="globe")startSpin();else stopSpin();draw()}
 document.getElementById("vGlobe").onclick=()=>setMode("globe");
 document.getElementById("vFlat").onclick=()=>setMode("flat");
@@ -954,12 +958,13 @@ document.getElementById("gotoInput").addEventListener("input",e=>e.target.setCus
 
 // ---------- side ledger
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-function select(id,fly=true){state.sel=id;selectedPolity=null;const x=byId[id];stopPlay();
-  if(x.kind==="event"&&(state.year<x.start-halfWin(x.start)||state.year>x.end+halfWin(x.start))){state.year=x.start;slider.value=Math.round(tAt(x.start)*SLIDER_STEPS)}
+function select(id,fly=true,recordYear=null){window.HistoryDiscovery?.selectedRecord(recordYear);state.sel=id;selectedPolity=null;const x=byId[id];stopPlay();
+  if(!(recordYear!==null&&window.HistoryDiscovery?.isComparing())&&x.kind==="event"&&(state.year<x.start-halfWin(x.start)||state.year>x.end+halfWin(x.start))){state.year=x.start;slider.value=Math.round(tAt(x.start)*SLIDER_STEPS)}
   if(fly||state.mode==="globe")flyTo(x.lon,x.lat);update();
   if(window.innerWidth<=860)document.getElementById("detail").scrollIntoView({behavior:"smooth",block:"start"})}
-function selectPolity(f){state.sel=null;selectedPolity=f;stopPlay();stopSpin();renderDetail();renderStatePicker();draw();if(window.innerWidth<=860)document.getElementById("detail").scrollIntoView({behavior:"smooth",block:"start"})}
-function renderDetail(){const el=document.getElementById("detail");if(selectedPolity){const f=selectedPolity,member=f.member&&f.member!==f.name?f.member:"Independent or parent state",link=f.wiki?`<a href="${wikiUrl(f.wiki)}" target="_blank" rel="noopener">Read more on Wikipedia ↗</a>`:"";
+function selectPolity(f,year=state.year){if(window.HistoryDiscovery)window.HistoryDiscovery.selectPolityYear(year);state.sel=null;selectedPolity=f;stopPlay();stopSpin();renderDetail();renderStatePicker();draw();if(window.innerWidth<=860)document.getElementById("detail").scrollIntoView({behavior:"smooth",block:"start"})}
+function renderDetail(){renderDetailBase();if(window.HistoryDiscovery)window.HistoryDiscovery.detail()}
+function renderDetailBase(){const el=document.getElementById("detail");if(selectedPolity){const f=selectedPolity,member=f.member&&f.member!==f.name?f.member:"Independent or parent state",link=f.wiki?`<a href="${wikiUrl(f.wiki)}" target="_blank" rel="noopener">Read more on Wikipedia ↗</a>`:"";
     el.innerHTML=`<div class="detail polity"><button class="iconbtn close" aria-label="Close">×</button><div class="kicker"><i></i>State on the map in ${esc(fmt(state.year))}</div><h3>${esc(f.name)}</h3><div class="meta-grid"><div><span>Recorded lifespan</span><strong>${esc(fmtSpan(f.from,f.to))}</strong></div><div><span>Political relationship</span><strong>${esc(member)}</strong></div></div>${link}</div>`;
     el.querySelector(".close").onclick=()=>{selectedPolity=null;renderDetail();draw()};return}
   const x=state.sel&&byId[state.sel];if(!x){el.innerHTML="";return}
@@ -1032,5 +1037,7 @@ reduceMotion.addEventListener?.("change",()=>{if(reduceMotion.matches)stopSpin()
 startSpin();
 </script>
 
+<script src="discovery-core.js"></script>
+<script src="discovery.js"></script>
 </body>
 </html>
