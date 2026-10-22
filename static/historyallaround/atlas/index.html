@@ -59,7 +59,7 @@ header{grid-area:head;display:flex;align-items:center;gap:16px;flex-wrap:wrap;
 .seg{display:inline-flex;border:1px solid var(--rule);border-radius:999px;padding:2px;background:var(--paper-2)}
 .seg button{border:0;background:none;padding:4px 12px;border-radius:999px;cursor:pointer;font-family:var(--display);font-weight:500;font-size:13px;color:var(--muted)}
 .seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
-.goto{display:flex;align-items:center;gap:6px}
+.goto{display:flex;align-items:flex-end;gap:6px}
 .goto input{width:120px;border:1px solid var(--rule);background:var(--paper);border-radius:8px;padding:5px 8px;font-family:var(--mono);font-size:13px}
 
 .stage{grid-area:stage;position:relative;min-height:0;overflow:hidden;background:radial-gradient(ellipse 70% 75% at 50% 48%,#15283e 0%,#0b1626 55%,#060b14 100%)}
@@ -333,7 +333,7 @@ header{padding:0 max(24px,env(safe-area-inset-right,0px)) 0 max(24px,env(safe-ar
 .brand{gap:12px}.brand>svg{width:27px;height:27px}.brand>svg circle:first-child{fill:#1c1a17}.brand>svg [stroke]{stroke:#f0e0d4}.brand>svg circle:last-child{fill:#c4622d}
 .brand-kicker{font-family:var(--body);font-size:8px;font-weight:500;letter-spacing:.18em;color:#c4622d}.brand h1{font-family:var(--display);font-size:22px;font-weight:500;letter-spacing:-.02em;color:#1c1a17}.brand span{font-size:12px;color:#8c8680}
 .head-tools{gap:14px}.tool-label{color:#8c8680;font-size:8px;letter-spacing:.12em}.goto input{height:35px;width:128px;background:#fefcf8;border:1px solid rgba(28,26,23,.15);border-radius:3px;padding:7px 10px;color:#1c1a17;font-family:var(--body);box-shadow:none}.goto input::placeholder{color:#9a948e}
-.goto .iconbtn{width:35px!important;height:35px!important;border:0!important;border-radius:3px!important;background:#1c1a17!important;color:#f7f3ec!important;box-shadow:none}
+.goto .iconbtn{flex-shrink:0;width:35px!important;height:35px!important;border:0!important;border-radius:3px!important;background:#1c1a17!important;color:#f7f3ec!important;box-shadow:none}
 header .seg{padding:2px;background:#ede8e0;border:1px solid rgba(28,26,23,.1);border-radius:4px}header .seg button{min-height:29px;padding:4px 12px;border-radius:3px;color:#6f6963;font-weight:500}header .seg button[aria-pressed="true"]{background:#fefcf8;color:#1c1a17;box-shadow:0 1px 3px rgba(28,26,23,.1)}
 .stage{
   --paper:#f7f3ec;--paper-2:#ede8e0;--ink:#1c1a17;--muted:#746f69;--rule:rgba(28,26,23,.14);
@@ -1013,7 +1013,7 @@ function update(fast){
   yr.innerHTML=y<0?`${Math.abs(y).toLocaleString("en-US")}<small>BC</small>`:y<1000?`<small style="margin:0 .15em 0 0">AD</small>${y}`:`${y}`;
   document.getElementById("era").textContent=eraOf(y);
   {const n=activeEvents().length,r=new Set(activeEvents().map(a=>a.e.region)).size,pp=alivePeople().filter(p=>p.born<=y&&p.died>=y).length;
-   document.getElementById("nowLine").innerHTML=n?`<b>${n} event${n===1?"":"s"}</b> across ${r} region${r===1?"":"s"}`+(pp?` · <b>${pp}</b> ${pp===1?"person":"people"} alive`:""):"A quiet stretch. Move one year at a time or press Play."}
+   document.getElementById("nowLine").innerHTML=n?`<b>${n} event${n===1?"":"s"}</b> across ${r} region${r===1?"":"s"}`+(pp?` · <b>${pp}</b> ${pp===1?"person":"people"} alive`:""):"No recorded events for this year. Try another year or press Play."}
   const t=tAt(y),w=halfWin(y),a=tAt(Math.max(-300000,y-w)),b=tAt(Math.min(NOW,y+w));
   const win=document.getElementById("win");win.style.left=a*100+"%";win.style.width=(b-a)*100+"%";
   document.getElementById("needle").style.left=t*100+"%";
