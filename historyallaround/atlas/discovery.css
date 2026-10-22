@@ -194,3 +194,37 @@
     top: 52px;
   }
 }
+
+.comparison-stories {
+  margin: 12px 0 18px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: var(--paper);
+}
+.comparison-stories summary { cursor: pointer; font-size: 14px; font-weight: 650; }
+.comparison-stories p, .meanwhile-slot p, .meanwhile-card span { font-size: 12px; line-height: 1.55; }
+.comparison-stories h3 { font-size: 17px; margin: 15px 0 8px; }
+.comparison-stories button, .meanwhile-slot button {
+  font: inherit;
+  text-align: left;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 10px;
+  color: var(--ink);
+  cursor: pointer;
+  min-height: 40px;
+}
+.comparison-stories button:hover, .meanwhile-slot button:hover { border-color: var(--accent); }
+.comparison-stories button:focus-visible, .meanwhile-slot button:focus-visible, .share-panel input:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 2px;
+}
+.meanwhile-card { margin: 12px 0; }
+.meanwhile-card span { display: block; margin-top: 6px; }
+.meanwhile-card a, .comparison-explanation a { font-size: 12px; }
+.pinned-event { border-left: 3px solid var(--accent) !important; width: 100%; }
+.share-panel { flex-basis: 100%; min-width: 0; padding: 10px 0; }
+.share-panel label { display: block; }
+.share-panel input { display: block; width: 100%; box-sizing: border-box; margin: 6px 0; }
+.share-panel p { font-size: 12px; margin: 6px 0 0; }
