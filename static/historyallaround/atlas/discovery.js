@@ -396,6 +396,19 @@
   status.className = "discovery-status";
   status.setAttribute("role", "status");
   document.querySelector(".time").append(status);
+  const borderConfidence = document.createElement("details");
+  borderConfidence.id = "borderConfidence";
+  borderConfidence.className = "border-confidence";
+  borderConfidence.innerHTML = '<summary><span aria-hidden="true" class="border-swatch"></span><span data-border-confidence>Approximate historical borders</span></summary><p>Dashed outlines show simplified historical reconstructions. Frontiers could be fluid or disputed; mapped extents may include claims rather than effective control. The source provides no confidence score for individual boundaries. Gaps mean missing coverage, not uninhabited land.</p><a href="https://github.com/Seshat-Global-History-Databank/cliopatria" target="_blank" rel="noopener">Cliopatria / Seshat source ↗</a>';
+  document.querySelector(".borders-control").append(borderConfidence);
+  cv.setAttribute("aria-describedby", "borderConfidence");
+  function renderBorderConfidence() {
+    borderConfidence.hidden = state.borders !== "history";
+    const years = compare.on ? [compare.left, state.year] : [state.year];
+    const available = years.filter((year) => !borderStatus(year)).length;
+    borderConfidence.querySelector("[data-border-confidence]").textContent = available === years.length
+      ? "Approximate historical borders" : available ? "Approximate borders · incomplete coverage" : "Historical borders · coverage unavailable";
+  }
   function withYear(year, fn) {
     const saved = state.year;
     state.year = year;
@@ -683,6 +696,7 @@
   }
   const share = document.createElement("button");
   share.type = "button";
+  share.className = "share-view";
   share.textContent = "Share this view";
   tools.append(share);
   const sharePanel = document.createElement("div");
@@ -825,6 +839,9 @@
     return true;
   }
   window.HistoryDiscovery = {
+    contemporaryAnchor() {
+      return curatedSelection(activeDiscovery)?.story.person;
+    },
     startChallengeMap,
     finishChallengeMap,
     jumpSearch,
@@ -834,6 +851,8 @@
       window.PopulationTimeline?.render(state.year, compare.on ? compare.left : null);
       renderComparisonStory();
       renderCurated();
+      renderBorderConfidence();
+      window.HistoryContemporaries?.render();
       const right = state.year;
       let allHits = [];
       if (compare.on) {
@@ -943,6 +962,8 @@
     },
     detail() {
       renderCurated();
+      renderBorderConfidence();
+      window.HistoryContemporaries?.render();
       if ((selectedPolity || state.sel) && compare.selectedYear !== null)
         withYear(compare.selectedYear, renderDetailBase);
       const x = state.sel && byId[state.sel];
@@ -988,12 +1009,18 @@
     },
     explore,
   };
-  openView(initialAtlasHash);
-  window.addEventListener("hashchange", () => {
-    if (location.hash.includes("view=")) openView(location.hash);
+  function openHash(hash) {
+    if (hash.includes("view=")) openView(hash);
     else {
-      const year = parseYear(location.hash.slice(1));
-      if (year !== null) { stopPlay(); setYear(year); }
+      const id = new URLSearchParams(hash.slice(1)).get("discover");
+      if (discoveries.some((s) => s.id === id)) openCurated(id);
+      else {
+        const year = parseYear(hash.slice(1));
+        if (year !== null) { stopPlay(); setYear(year); }
+      }
     }
-  });
+  }
+  // Preserve old numeric hashes as well as exact views and short discovery links.
+  if (initialAtlasHash.includes("view=") || initialAtlasHash.includes("discover=")) openHash(initialAtlasHash);
+  window.addEventListener("hashchange", () => openHash(location.hash));
 })();

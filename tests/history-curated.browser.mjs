@@ -66,7 +66,7 @@ try {
     shelf.querySelector('[data-curated-prev]').click();
     assert(shelf.querySelector('.curated-stop h4').textContent.includes('Zapotec'),'previous stop');
     setYear(1500);
-    assert(!shelf.querySelector('[data-curated-return]').hidden&&shelf.querySelector('.curated-map-status').textContent.includes('1,500'),'year changes clearly labelled');
+    assert(!shelf.querySelector('[data-curated-return]').hidden&&shelf.querySelector('.curated-map-status').textContent.includes(fmt(1500)),'year changes clearly labelled');
     shelf.querySelector('[data-curated-return]').click();assert(state.year===-50,'return to map year');
     window.curatedHash=HistoryDiscovery.urlHash();
     const payload=JSON.parse(new URLSearchParams(curatedHash.slice(1)).get('view'));

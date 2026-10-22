@@ -270,6 +270,29 @@
 .curated-navigation button:disabled { opacity: .45; cursor: default; }
 .curated-discoveries [hidden] { display: none; }
 
+.contemporaries-card { border-top: 3px solid #577f9c; }
+.contemporaries-card h3 { margin-top: 6px; }
+.contemporary-person { margin-top: 14px; }
+.contemporary-person button { width: 100%; }
+.contemporary-person strong, .contemporary-person small, .contemporary-person button span { display: block; }
+.contemporary-person strong { font-family: var(--display); font-size: 17px; }
+.contemporary-person small, .contemporary-person button span { font-size: 11px; color: var(--muted); }
+.contemporary-person a { font-size: 10px; }
+.lifespan-track { position: relative; height: 7px; background: var(--paper-2); margin: 5px 0; overflow: hidden; }
+.lifespan-track i, .lifespan-track b { position: absolute; top: 0; height: 100%; }
+.lifespan-track i { background: #577f9c66; }
+.lifespan-track b { background: var(--accent); }
+.contemporary-overlap > span { color: var(--accent); }
+.contemporary-examples { margin-top: 14px; }
+.contemporary-examples summary { font-size: 12px; }
+.border-confidence { font-size: 10px; max-width: 225px; line-height: 1.5; margin-top: 7px; color: var(--ink); }
+.border-confidence summary { cursor: pointer; }
+.border-confidence p { margin: 8px 0; }
+.border-confidence a { color: inherit; }
+.border-confidence[hidden] { display: none; }
+.border-swatch { display: inline-block; width: 18px; border-top: 1px dashed currentColor; margin-right: 5px; vertical-align: middle; }
+.contemporaries-card [hidden] { display: none; }
+
 /* Search stays outside the map workspace, with one keyboard-accessible result list. */
 .history-search-trigger {
   border: 1px solid var(--rule); border-radius: 3px; background: #fff;
