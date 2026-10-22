@@ -3,6 +3,31 @@ const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const vm = require("node:vm");
 const core = require("../static/historyallaround/atlas/discovery-core.js");
+const discoveries = require("../static/historyallaround/atlas/curated-discoveries.js");
+
+test("curated discoveries have stable IDs, sourced stops and map years within their lifetime", () => {
+  assert.equal(new Set(discoveries.map((s) => s.id)).size, discoveries.length);
+  const html = fs.readFileSync("static/historyallaround/atlas/index.html", "utf8");
+  assert(html.indexOf('src="curated-discoveries.js"') < html.indexOf('src="discovery.js"'));
+  for (const story of discoveries) {
+    assert.match(story.id, /^[a-z0-9-]{1,80}$/);
+    assert(story.title && story.introduction && story.start <= story.end);
+    assert.equal(new Set(story.stops.map((s) => s.id)).size, story.stops.length);
+    for (const stop of story.stops) {
+      assert.match(stop.id, /^[a-z0-9-]{1,80}$/);
+      assert(Number.isInteger(stop.year) && stop.year !== 0 && stop.year >= story.start && stop.year <= story.end);
+      assert(stop.point.length === 2 && Number.isFinite(stop.point[0]) && Math.abs(stop.point[0]) <= 180 &&
+        Number.isFinite(stop.point[1]) && Math.abs(stop.point[1]) <= 90);
+      assert(["event", "context"].includes(stop.kind));
+      assert(stop.title && stop.location && stop.text && stop.sources.length);
+      for (const [label, url] of [...story.sources, ...stop.sources]) {
+        assert(label);
+        assert.equal(new URL(url).protocol, "https:");
+      }
+    }
+  }
+  new vm.Script(fs.readFileSync("static/historyallaround/atlas/discovery.js", "utf8"));
+});
 
 test("dated features use inclusive intervals and latest version per polity", () => {
   const old = { name: "A", from: -10, to: 20, area: 2 };
@@ -138,9 +163,13 @@ test("shared views reject malformed or unbounded camera and date values", () => 
     polity: null, point: [179, -90], story: 1, pin: null };
   const hash = (v) => "#" + new URLSearchParams({ view: JSON.stringify(v) });
   assert.deepEqual(core.parseView(hash(view), 2026, ["war"]), view);
+  const discovery = { id: "cleopatra-world", stop: "monte-alban" };
+  assert.deepEqual(core.parseView(hash({...view, discovery}), 2026, ["war"]).discovery, discovery);
   for (const invalid of [{year: 0}, {year: 2027}, {zoom: 100}, {pan: [0, null]},
     {point: [0, 91]}, {cats: ["bogus"]}, {record: {wiki: "A", kind: "script", date: 1}},
-    {pin: {wiki: "A", date: 1, year: 0}}, {story: 3}, {v: 2}])
+    {pin: {wiki: "A", date: 1, year: 0}}, {story: 3}, {v: 2},
+    {discovery: {id: "<script>", stop: "rome"}}, {discovery: {id: "cleopatra-world", stop: 4}},
+    {discovery: {id: "x".repeat(81), stop: "rome"}}])
     assert.equal(core.parseView(hash({...view, ...invalid}), 2026, ["war"]), null);
   assert.equal(core.parseView("#view=%7Bbroken", 2026, ["war"]), null);
   assert.equal(core.parseView("#1903", 2026, ["war"]), null);

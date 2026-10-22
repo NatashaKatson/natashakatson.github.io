@@ -74,6 +74,8 @@
             v.location.title.length <= 500 && (v.location.geonameId === null ||
               (Number.isSafeInteger(v.location.geonameId) && v.location.geonameId > 0)))) ||
           !(v.pin == null || (typeof v.pin.wiki === "string" && v.pin.wiki.length <= 300 && year(v.pin.date) && year(v.pin.year))) ||
+          !(v.discovery == null || (typeof v.discovery.id === "string" && /^[a-z0-9-]{1,80}$/.test(v.discovery.id) &&
+            typeof v.discovery.stop === "string" && /^[a-z0-9-]{1,80}$/.test(v.discovery.stop))) ||
           !(v.story === null || (Number.isInteger(v.story) && v.story >= 0 && v.story < 3))) return null;
         return v;
       } catch (_) { return null; }
