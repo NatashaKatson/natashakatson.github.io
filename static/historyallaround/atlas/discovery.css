@@ -143,15 +143,14 @@
   margin-top: 12px;
 }
 .discovery-status {
-  position: absolute;
-  bottom: 110px;
-  left: 8px;
-  right: 8px;
+  flex-basis: 100%;
+  min-width: 0;
   background: var(--paper);
   color: var(--ink);
   font-size: 11px;
-  padding: 4px;
-  pointer-events: none;
+  padding: 6px 8px;
+  border-left: 2px solid var(--accent);
+  overflow-wrap: anywhere;
 }
 .story-trail {
   margin-bottom: 8px;
@@ -189,9 +188,6 @@
   .stage.comparing + .time {
     position: static;
   }
-}
-.discovery-status {
-  z-index: 3;
 }
 @media (min-width: 861px) {
   .comparing .borders-control {

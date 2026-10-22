@@ -359,7 +359,7 @@
   const status = document.createElement("div");
   status.className = "discovery-status";
   status.setAttribute("role", "status");
-  stage.append(status);
+  tools.append(status);
   function withYear(year, fn) {
     const saved = state.year;
     state.year = year;
@@ -371,7 +371,8 @@
   }
   function borderStatus(year) {
     const c = chunkOf(year);
-    if (c === null) return `${fmt(year)}: no historical border coverage`;
+    if (c === null)
+      return `${fmt(year)}: no historical border coverage (available ${fmt(BFROM)}–${fmt(BTO)}).`;
     if (bErrors.has(c)) return `${fmt(year)}: historical borders unavailable`;
     if (!Array.isArray(bCache.get(c)))
       return `${fmt(year)}: loading historical borders`;
@@ -532,6 +533,12 @@
         ctx.stroke();
         ctx.restore();
       }
+      const outlines = document.getElementById("changedOutlines");
+      outlines.disabled = state.borders !== "history" ||
+        [compare.left, right].some((year) => borderStatus(year) !== "");
+      outlines.title = outlines.disabled
+        ? "Changed outlines require loaded historical borders for both years."
+        : "";
       status.textContent = messages.join(" · ");
       status.hidden = !messages.length;
     },
