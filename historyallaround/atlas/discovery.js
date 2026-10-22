@@ -148,6 +148,12 @@
   function pointLabel(point) {
     return `${Math.abs(point[1]).toFixed(2)}°${point[1] < 0 ? "S" : "N"}, ${Math.abs(point[0]).toFixed(2)}°${point[0] < 0 ? "W" : "E"}`;
   }
+  function locationName(point) {
+    const country = lo.countries.find(
+      (f) => inBox(f.bbox, point) && d3.geoContains(f, point),
+    );
+    return country ? country.properties.name : "Open water or unmapped land";
+  }
   function focusPoint(point) {
     flyToken++;
     stopSpin();
@@ -178,7 +184,7 @@
       })),
       ...p.events.map((e) => ({ ...e, type: "event", description: e.blurb })),
     ].sort((a, b) => a.start - b.start);
-    placePanel.innerHTML = `<button type="button" data-return>Return to global timeline</button><h3>History of this place</h3><p>${pointLabel(p.point)} · selected point stays fixed</p><p>Political coverage from Cliopatria, ${fmt(BFROM)}–${fmt(BTO)}. Mapped extents may include claims; they do not establish effective control, settlement, or absence of Indigenous peoples. Nearby events are within 50 km of their recorded marker, not necessarily at this point.</p><p role="status">${p.done ? "Search complete" : `Searching border files: ${p.checked}/${BIDX.chunks.length}`} ${p.failed ? "Some files could not be loaded; this history is incomplete." : ""}</p><div class="place-entries">${
+    placePanel.innerHTML = `<button type="button" data-return>Return to global timeline</button><h3>Location history: ${esc(locationName(p.point))}</h3><p><strong>Present-day location: ${esc(locationName(p.point))}</strong><br>${pointLabel(p.point)} · orange circle on the map</p><p>This timeline follows that exact location through time, not the whole highlighted state or empire. Historical borders may include several present-day countries.</p><p>Political coverage from Cliopatria, ${fmt(BFROM)}–${fmt(BTO)}. Mapped extents may include claims; they do not establish effective control, settlement, or absence of Indigenous peoples. Nearby events are within 50 km of their recorded marker, not necessarily at this point.</p><p role="status">${p.done ? "Search complete" : `Searching border files: ${p.checked}/${BIDX.chunks.length}`} ${p.failed ? "Some files could not be loaded; this history is incomplete." : ""}</p><div class="place-entries">${
       rows.length
         ? rows
             .slice(0, p.limit)
@@ -325,7 +331,7 @@
     const b = document.createElement("button");
     b.type = "button";
     b.className = "discovery-action";
-    b.textContent = "Explore this place's history";
+    b.textContent = "Explore this location: " + locationName(point);
     b.onclick = () => explore(point);
     el.append(b);
   }
@@ -570,15 +576,19 @@
         ? lastPoint
         : x
           ? [x.lon, x.lat]
-          : selectedPolity
-            ? selectedPolity.cen
-            : null;
+          : null;
       if (point)
         addPlaceAction(
           document.querySelector("#detail .detail") ||
             document.getElementById("detail"),
           point,
         );
+      if (selectedPolity && !point) {
+        const hint = document.createElement("p");
+        hint.className = "discovery-location-hint";
+        hint.textContent = "Click a specific location on the map to explore its history. A state or empire can span several present-day countries.";
+        document.querySelector("#detail .detail").append(hint);
+      }
       if (x) addStories(document.querySelector("#detail .detail"), x);
       else if (selectedPolity) {
         const f = selectedPolity;
