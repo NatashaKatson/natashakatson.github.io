@@ -174,10 +174,31 @@
   .app {
     grid-template-rows: 76px minmax(0, 1fr) auto;
   }
+  /* The scrolling ledger must not determine the height of the map or timeline. */
+  .app > .side { contain: size; }
 }
 .discovery-tools {
   padding: 0 0 8px;
   background: transparent;
+}
+.time {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas: "play tools" "population population" "ruler ruler" "status status";
+  gap: 8px 16px;
+  align-content: start;
+}
+.time .controls { grid-area: play; min-width: 0; margin-bottom: 0; }
+.time .time-heading { flex-direction: column; gap: 0; }
+.time .discovery-tools { grid-area: tools; padding: 0; justify-content: flex-end; }
+.time .ruler { grid-area: ruler; }
+.time .discovery-status { grid-area: status; }
+.stage.comparing + .time {
+  grid-template-areas: "tools tools" "play play" "population population" "ruler ruler" "status status";
+}
+.stage.comparing + .time .discovery-tools { justify-content: flex-start; }
+@media (min-width: 861px) and (max-width: 1200px) {
+  .time .time-heading { display: none; }
 }
 .discovery-tools input[type="checkbox"] {
   width: auto;
@@ -186,7 +207,11 @@
   /* The population readout and controls must not cover the map's lower controls. */
   .time {
     position: static;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "tools" "play" "population" "ruler" "status";
   }
+  .time .discovery-tools { justify-content: flex-start; }
+  .stage.comparing + .time { grid-template-areas: "tools" "play" "population" "ruler" "status"; }
 }
 @media (min-width: 861px) {
   .comparing .borders-control {
@@ -359,24 +384,25 @@
 }
 .daily-challenge-dialog .history-search-heading button { font-size: 24px; background: transparent; border: 0; min-width: 40px; }
 
-.population-strip { margin: 6px 0 9px; padding: 9px 11px; border: 1px solid #ded4c8; border-radius: 4px; background: #f1ebe2; color: #2d2420; }
-.population-heading { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 5px 12px; align-items: baseline; }
+.population-strip { grid-area: population; display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; margin: 0; padding: 7px 11px; border: 1px solid #ded4c8; border-radius: 4px; background: #f1ebe2; color: #2d2420; }
+.population-heading { display: contents; }
 .population-heading > b { font-size: 10px; font-weight: 500; letter-spacing: .09em; text-transform: uppercase; }
-.population-heading details { font-size: 11px; color: #756c65; }
+.population-heading details { order: 2; font-size: 11px; color: #756c65; }
 .population-heading summary { cursor: pointer; }
 .population-heading details[open] { flex-basis: 100%; }
 .population-method { max-width: 740px; font-size: 12px; line-height: 1.6; }
 .population-method p { margin: 8px 0; }
 .population-method a { color: #9e5136; }
-.population-values { display: flex; gap: 12px 25px; margin-top: 6px; font-size: 12px; }
-.population-value { flex: 1; min-width: 0; }
-.population-value span, .population-value small { display: block; color: #756c65; font-size: 10px; line-height: 1.5; }
-.population-value strong { display: block; font-family: var(--display); font-size: 21px; line-height: 1.3; font-weight: 500; font-variant-numeric: tabular-nums; }
+.population-values { order: 1; flex: 1; min-width: 0; display: flex; gap: 12px 25px; margin: 0; font-size: 12px; }
+.population-value { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 8px; flex: 1; min-width: 0; }
+.population-value span, .population-value small { color: #756c65; font-size: 10px; line-height: 1.5; }
+.population-value strong { font-family: var(--display); font-size: 18px; line-height: 1.3; font-weight: 500; font-variant-numeric: tabular-nums; }
 .population-retry { margin-top: 8px; min-height: 36px; padding: 7px 10px; background: #fff; border: 1px solid #c9b8a7; border-radius: 3px; color: #2d2420; font: inherit; font-size: 12px; cursor: pointer; }
 .population-strip summary:focus-visible, .population-retry:focus-visible { outline: 2px solid #b45a39; outline-offset: 2px; }
 @media (max-width: 560px) {
-  .population-strip { padding: 7px 9px; }
-  .population-value strong { font-size: 18px; }
+  .population-strip { padding: 7px 9px; gap: 5px 12px; }
+  .population-heading details { order: 1; margin-left: auto; }
+  .population-values { order: 2; flex-basis: 100%; }
   .population-values { gap: 12px; }
 }
 /* Keep the fixed final year visible inside the ruler at every viewport width. */
@@ -386,7 +412,7 @@
 /* Header: one shared control baseline, with deliberate rows on smaller screens. */
 .app { grid-template-rows: auto minmax(0, 1fr) auto; }
 .app > header {
-  min-height: 84px; padding-top: 13px; padding-bottom: 13px;
+  min-height: 72px; padding-top: 8px; padding-bottom: 8px;
   flex-wrap: nowrap; justify-content: space-between; gap: 24px;
 }
 .app > header .brand { align-items: center; gap: 12px; flex-shrink: 0; }
@@ -431,7 +457,9 @@
 /* Credits sit below the timeline, outside the scrolling history ledger. */
 .app {
   grid-template-areas: "head head" "stage side" "time side" "foot foot";
-  grid-template-rows: auto minmax(280px, 1fr) auto auto;
+  grid-template-rows: auto max(420px, calc(100svh - 264px)) min-content auto;
+  height: auto;
+  min-height: 100svh;
 }
 .atlas-footer {
   grid-area: foot; padding: 14px 24px 12px; background: #f0ebe3;
@@ -463,6 +491,7 @@
 .atlas-footer-source-grid strong { display: block; margin-bottom: 4px; font-size: 10px; font-weight: 600; color: #544840; }
 .atlas-footer a:focus-visible, .atlas-footer summary:focus-visible { outline: 2px solid #b45a39; outline-offset: 3px; }
 @media (max-width: 860px) {
+  .app > .stage { height: 72svh; min-height: 350px; }
   .atlas-footer { order: 3; padding: 16px 20px; }
   .app > .side { order: 4; }
   .atlas-footer-main { flex-wrap: wrap; gap: 12px 20px; }
