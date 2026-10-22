@@ -46,6 +46,10 @@ footer{background:var(--cream);border-top:0;color:var(--ink-muted)}.footer-row a
 .button:hover,.cta .button:hover{background:#e99a7d}
 .button.ghost{background:var(--paper);color:var(--ink)}
 .eyebrow,.intro .eyebrow,.year,.story .open{color:#a3482d}
+/* Fit the complete desktop atlas inside the preview at every screen width. */
+.preview{height:calc(35px + 900px * var(--preview-scale, .4) + 48px);min-width:0}
+.preview iframe{top:35px;transform:scale(var(--preview-scale, .4))}
+.preview-badge{left:0;right:0;bottom:0;min-height:48px;display:flex;align-items:center;justify-content:center;padding:10px 12px;text-align:center;line-height:1.4;border-radius:0}
 </style>
 </head>
 <body>
@@ -87,5 +91,13 @@ footer{background:var(--cream);border-top:0;color:var(--ink-muted)}.footer-row a
   <section class="cta"><div class="wrap"><div class="eyebrow" style="justify-content:center"><span style="display:none"></span>Choose a year</div><h2>Where in history will you begin?</h2><p>Drag the timeline from prehistory to the present.</p><a class="button" href="atlas/">Open History All Around <span>→</span></a></div></section>
 </main>
 <footer><div class="wrap footer-row"><span>History All Around · Made by <a href="https://natashakatson.com">Natasha Katson</a></span><span>Maps: Natural Earth · Historical borders: Cliopatria / Seshat</span></div></footer>
+<script>
+const atlasPreview = document.querySelector('.preview');
+const resizeAtlasPreview = () => {
+  atlasPreview.style.setProperty('--preview-scale', atlasPreview.clientWidth / 1440);
+};
+resizeAtlasPreview();
+new ResizeObserver(resizeAtlasPreview).observe(atlasPreview);
+</script>
 </body>
 </html>
