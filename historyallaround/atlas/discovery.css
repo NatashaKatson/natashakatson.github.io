@@ -1,0 +1,200 @@
+/* Discovery controls only: keep the atlas visual design in index.html. */
+.discovery-tools {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 8px 22px;
+  background: var(--paper);
+  border-bottom: 1px solid var(--border);
+  grid-column: 1/-1;
+}
+.discovery-tools button,
+.discovery-panel button,
+.discovery-action {
+  font: inherit;
+  font-size: 12px;
+  padding: 8px;
+  border: 1px solid var(--muted);
+  border-radius: 3px;
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+  min-height: 36px;
+}
+.discovery-tools label {
+  font-size: 12px;
+}
+.discovery-tools input {
+  width: 105px;
+  padding: 7px;
+  font: inherit;
+  font-size: 12px;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--muted);
+}
+.discovery-tools form {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+.discovery-tools [hidden],
+.discovery-panel[hidden] {
+  display: none;
+}
+.discovery-note {
+  font-size: 11px;
+  color: var(--muted);
+  flex-basis: 100%;
+}
+.compare-divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 36px;
+  transform: translateX(-50%);
+  z-index: 4;
+  touch-action: none;
+  cursor: ew-resize;
+  background: transparent;
+  border: 0;
+  color: var(--ink);
+  padding: 0;
+}
+.compare-divider:before {
+  content: "";
+  position: absolute;
+  left: 17px;
+  top: 0;
+  bottom: 0;
+  border-left: 2px solid var(--ink);
+  pointer-events: none;
+}
+.compare-divider span {
+  position: absolute;
+  top: 48%;
+  left: 0;
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  border-radius: 20px;
+  width: 36px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+}
+.compare-divider:focus-visible {
+  outline: 3px solid var(--accent);
+}
+.compare-label {
+  position: absolute;
+  top: 8px;
+  z-index: 3;
+  background: var(--paper);
+  color: var(--ink);
+  padding: 5px;
+  font-size: 12px;
+  pointer-events: none;
+  max-width: 44%;
+}
+.compare-label.left {
+  left: 8px;
+}
+.compare-label.right {
+  right: 8px;
+}
+.comparing .readout {
+  display: none;
+}
+.discovery-panel {
+  border: 1px solid var(--muted);
+  padding: 12px;
+  margin-bottom: 16px;
+  color: var(--ink);
+  background: var(--paper);
+}
+.discovery-panel h3 {
+  margin: 8px 0;
+}
+.discovery-panel p {
+  font-size: 12px;
+  line-height: 1.5;
+}
+.place-entries {
+  max-height: 380px;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+.place-entry,
+.story-card {
+  display: block;
+  width: 100%;
+  text-align: left;
+  margin: 8px 0;
+}
+.place-entry small,
+.story-card small {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+}
+.discovery-action {
+  margin-top: 12px;
+}
+.discovery-status {
+  position: absolute;
+  bottom: 110px;
+  left: 8px;
+  right: 8px;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 11px;
+  padding: 4px;
+  pointer-events: none;
+}
+.story-trail {
+  margin-bottom: 8px;
+  font-size: 12px;
+}
+@media (max-width: 600px) {
+  .discovery-tools {
+    padding: 8px 14px;
+  }
+  .discovery-tools form {
+    gap: 5px;
+  }
+  .discovery-tools input {
+    width: 85px;
+  }
+  .place-entries {
+    max-height: 300px;
+  }
+}
+
+@media (min-width: 861px) {
+  .app {
+    grid-template-rows: 76px minmax(0, 1fr) auto;
+  }
+}
+.discovery-tools {
+  padding: 0 0 8px;
+  background: transparent;
+}
+.discovery-tools input[type="checkbox"] {
+  width: auto;
+}
+@media (max-width: 860px) {
+  /* Expanded comparison controls must not pull a sticky timeline over the map. */
+  .stage.comparing + .time {
+    position: static;
+  }
+}
+.discovery-status {
+  z-index: 3;
+}
+@media (min-width: 861px) {
+  .comparing .borders-control {
+    top: 52px;
+  }
+}
