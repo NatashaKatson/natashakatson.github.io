@@ -386,7 +386,7 @@
   const status = document.createElement("div");
   status.className = "discovery-status";
   status.setAttribute("role", "status");
-  tools.append(status);
+  document.querySelector(".time").append(status);
   function withYear(year, fn) {
     const saved = state.year;
     state.year = year;

@@ -67,6 +67,9 @@ assert(NOW===2026&&yearAt(1)===2026&&new Date().getFullYear()===2035,'fixed endp
 assert(document.querySelector('#ticks .timeline-end').textContent==='2026','endpoint labeled on ruler');
 for(let i=0;i<80&&document.querySelector('.population-values').textContent.includes('Loading');i++)await new Promise(r=>setTimeout(r,100));
 stopSpin();setYear(2026);render();
+assert(stage.getBoundingClientRect().height>=innerHeight*.7,'desktop globe receives most of the viewport height');
+assert(document.querySelector('.time').getBoundingClientRect().height<=240,'desktop timeline stays compact, including coverage notices');
+assert(document.getElementById('ruler').getBoundingClientRect().bottom<=innerHeight,'full timeline remains visible with the larger globe');
 assert(document.querySelector('.population-values').textContent.includes('8.3 billion'),'2026 world population');
 assert(document.querySelector('.population-values').textContent.includes('UN projection'),'2026 explicitly projected');
 setYear(2035);render();assert(state.year===2026,'future year clamped to endpoint');
@@ -80,6 +83,7 @@ assert(entries[0].textContent.includes('Historical estimate')&&entries[1].textCo
 setYear(2023);render();assert(document.querySelectorAll('.population-value')[1].textContent.includes('Historical estimate'),'scrubbing clears projection label');
 const details=document.querySelector('.population-heading details');details.open=true;
 assert(details.textContent.includes('linear interpolation')&&details.querySelector('a[href*="ourworldindata"]'),'source/method disclosure');
+assert(stage.getBoundingClientRect().height>=innerHeight*.7,'expanded comparison and sources preserve globe space');
 details.open=false;
 return 'Population: fixed 2026 endpoint under a 2035 clock, year updates, estimates/projections, interpolation, coverage and comparison passed';
 })()`));
@@ -90,6 +94,7 @@ const assert=(v,m)=>{if(!v)throw Error(m)};
 document.getElementById('compareToggle').click();
 window.scrollTo({top:0,behavior:'instant'});
 const time=document.querySelector('.time').getBoundingClientRect();
+assert(stage.getBoundingClientRect().height>=innerHeight*.7,'mobile globe has a generous viewport height');
 assert(time.top>=stage.getBoundingClientRect().bottom,'ordinary mobile timeline stays below map');
 for(const selector of ['.borders-control button','.legend button','.zoom button']){
  const button=document.querySelector(selector),r=button.getBoundingClientRect();

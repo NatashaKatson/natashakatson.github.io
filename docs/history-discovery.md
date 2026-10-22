@@ -171,6 +171,12 @@ On mobile, the timeline stays below the map so border, category and zoom control
 remain reachable. The pure checks validate that every indexed
 historical target matches an available snapshot and its political membership.
 
+The desktop workspace reserves most of the viewport height for the map, with a
+compact playback/Compare/Share row and inline population estimates below it. The
+history ledger scrolls independently, and credits follow the workspace. Expanding
+comparison options or population sources adds space below the map without reducing
+its height. Phones use a map area of 72% of the stable viewport height.
+
 ## Daily history challenge
 
 The sidebar's **Daily history challenge** opens a set of three questions generated

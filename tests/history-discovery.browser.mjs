@@ -79,7 +79,7 @@ assert(document.querySelector('.discovery-status').textContent.includes('latest 
 const snapshotPolity=polities().find(f=>!f.territoryOverlay);selectPolity(snapshotPolity,NOW);assert(document.getElementById('detail').textContent.includes(snapshotPolity.name),'current territory inspection');
 setYear(BFROM-1);render();
 assert(document.getElementById('changedOutlines').disabled,'missing coverage disables outlines');
-assert(document.querySelector('.discovery-tools .discovery-status'),'coverage status stays below map');
+assert(document.querySelector('.time > .discovery-status'),'coverage status stays below map');
 setYear(2026);assert(!document.getElementById('nowLine').textContent.includes('No recorded events'),'2026 has events');
 assert(document.getElementById('regions').textContent.includes('Artemis II'),'2026 ledger includes current records');
 const currentEvent=ev.find(e=>e.wiki==='Artemis_II');select(currentEvent.id,false);
