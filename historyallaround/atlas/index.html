@@ -779,7 +779,11 @@ function polities(){const y=Math.min(state.year,BTO);if(polCache.y===y)return po
   // Keep the files near this one in memory, drop the rest.
   bCache.delete(c);bCache.set(c,fs);for(const k of bCache.keys()){if(bCache.size<=14)break;if(Math.abs(k-c)>2*BCS)bCache.delete(k)}
   const seen=new Map();for(const f of fs)if(f.from<=y&&f.to>=y){const o=seen.get(f.name);if(!o||f.from>o.from)seen.set(f.name,f)}
-  polCache={y,list:[...seen.values()].sort((a,b)=>b.area-a.area)};return polCache.list}
+  let list=[...seen.values()];
+  // Cliopatria stores the modern Danish realm as one feature and anchors its label in Greenland.
+  // Since Home Rule (1979), show Greenland as its own territory while retaining the realm relationship.
+  if(y>=1979){const den=list.findIndex(f=>f.name==="Denmark");if(den>=0){list[den]={...list[den],cen:[9.5,56.1]};const base=(hi||lo).countries.find(f=>f.properties.name==="Greenland");if(base){const greenland={...base,name:"Greenland",member:"Kingdom of Denmark",wiki:"Greenland",from:1979,to:NOW,area:d3.geoArea(base),cen:[-41.5,72],hue:hueOf("Greenland"),territoryOverlay:true};list.push(greenland)}}}
+  polCache={y,list:list.sort((a,b)=>b.area-a.area)};return polCache.list}
 const grat=d3.geoGraticule10();
 const WATER_LABELS=[["North Atlantic Ocean",-35,30],["South Atlantic Ocean",-18,-25],["North Pacific Ocean",-150,22],["South Pacific Ocean",-130,-27],["Indian Ocean",80,-25],["Arctic Ocean",10,77],["Mediterranean Sea",18,35]];
 let W=0,H=0,DPR=1,proj,path,center;
@@ -826,6 +830,8 @@ function render(){
   if(state.borders==="history"&&!currentBorderFailed()){pols=polities();
     const byHue=Array.from({length:STATE_FILLS.length},()=>[]);for(const f of pols)byHue[f.hue].push(f);
     byHue.forEach((fs,i)=>{if(!fs.length)return;ctx.beginPath();for(const f of fs)path(f);ctx.fillStyle=STATE_FILLS[i%STATE_FILLS.length];ctx.fill()});
+    // Repaint nested self-governing territories after their sovereign realm so both remain legible.
+    for(const f of pols)if(f.territoryOverlay){ctx.beginPath();path(f);ctx.fillStyle=STATE_FILLS[f.hue];ctx.fill()}
     ctx.beginPath();for(const f of pols)path(f);ctx.strokeStyle=C.border;ctx.lineWidth=lw;ctx.stroke();
     if(selectedPolity){const f=pols.find(p=>p.name===selectedPolity.name&&p.from===selectedPolity.from&&p.to===selectedPolity.to);if(f){ctx.beginPath();path(f);ctx.strokeStyle=C.accent;ctx.lineWidth=2.4;ctx.stroke()}}}
   else if(state.borders==="today"||(state.borders==="history"&&currentBorderFailed())){ctx.beginPath();path(G.borders);ctx.strokeStyle=C.border;ctx.lineWidth=lw;ctx.stroke()}
