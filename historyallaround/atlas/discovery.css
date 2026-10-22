@@ -6,7 +6,6 @@
   flex-wrap: wrap;
   padding: 8px 22px;
   background: var(--paper);
-  border-bottom: 1px solid var(--border);
   grid-column: 1/-1;
 }
 .discovery-tools button,
