@@ -92,3 +92,187 @@ recipient's viewport. Old links such as `#1903` and `#500bc` continue to work.
 Malformed or unsupported view payloads are ignored. There is no account or backend.
 
 Release verification: all 10 pure/syntax regression tests and the browser suite passed, including exact-view reload, territory sharing, copyable-link UI, three comparisons, pinned return, and emulated mobile/touch checks. The production build passed with Hugo 0.110.0; the newer installed Hugo retains the previously documented configuration/theme incompatibility.
+
+## Search across history
+
+Open **Search history** in the header, press `/` outside a text field, or use
+Cmd/Ctrl+K. Type at least two characters. All / Events / People / States & empires /
+Places filters narrow results. Names and aliases rank above description mentions;
+matching ignores case, accents and punctuation. All limits each type to six results
+so common city names leave room for historical records; a specific type shows up
+to sixteen results. Arrow keys move between the input and result buttons, Enter
+opens a result, and Escape closes the native modal dialog.
+
+- Events open their start year and enable their category when hidden.
+- People open their birth year, with their recorded lifespan shown in results.
+- Historical states show **mapped coverage**, not definitive founding/dissolution
+  dates. Each result opens a verified available snapshot with the greatest area
+  among its source segments. Gaps and different political memberships remain
+  distinct. Border-load failures keep the current view and offer another attempt.
+- Modern countries/territories and GeoNames cities/populated places focus a marked
+  coordinate while retaining the selected year. Results include present-day region
+  and country labels to distinguish duplicate city names. They do not assert that
+  a settlement or its current name existed in the selected historical year.
+
+Search jumps leave comparison mode, add the previous state to the exploration trail,
+and cancel an in-progress place scan. Changing the query or closing search cancels
+pending navigation. A modern place's label, source ID and point persist in exact-view
+links and Back. Exploring its full location history remains an explicit action.
+
+There are no geocoding requests or API keys. Events, people and country labels reuse
+existing data. `search-states.json` (2,082 coverage periods, about 150 KB) and
+`search-places.json` (34,179 populated places, about 4.3 MB before HTTP compression)
+load once on opening search. Initial map loading does not request these indexes.
+Local records remain usable during loading or after failure; retry loads missing
+indexes. This is not a complete index of every historic place or person.
+
+### Search data and regeneration
+
+Historical coverage derives from the checked-in Cliopatria/Seshat snapshots under
+CC BY 4.0. Coordinates, names, up to eight distinct alternate spellings, and region
+labels for populated places derive from GeoNames's
+[cities15000.zip](https://download.geonames.org/export/dump/cities15000.zip) and
+[admin1CodesASCII.txt](https://download.geonames.org/export/dump/admin1CodesASCII.txt),
+imported October 22, 2026. GeoNames licenses this data under
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), as stated in its
+[readme](https://download.geonames.org/export/dump/readme.txt). The derived index
+rounds coordinates to four decimals, omits unused fields, deduplicates spellings,
+and excludes URL/template artifacts. Natural Earth country labels are public domain.
+Attribution appears in the search dialog, selected-place source links, and footer.
+
+Regenerate historical search data from the checked-in archive:
+
+```sh
+python3 scripts/build-history-search.py
+```
+
+To refresh cities too, download the two GeoNames files and provide their local paths:
+
+```sh
+python3 scripts/build-history-search.py --cities-zip /tmp/cities15000.zip --admin1-file /tmp/admin1CodesASCII.txt
+```
+
+Commit the derived JSON files with any dataset changes; builds require no network
+or regeneration step. Source downloads change over time, so a refresh can alter
+counts, names and coordinates. Run the pure checks above and the search browser suite:
+
+```sh
+node tests/history-search.browser.mjs
+```
+
+The search suite verifies lazy loading, aliases/accents, dated state navigation,
+person/event jumps, category visibility, Back, duplicate place names, shared places,
+keyboard controls, empty results, safe text, canceled navigation, failed download
+recovery, and the 390px mobile layout. The pure checks validate that every indexed
+historical target matches an available snapshot and its political membership.
+
+## Daily history challenge
+
+The sidebar's **Daily history challenge** opens a set of three questions generated
+from the existing Atlas records. The set is deterministic for the browser's local
+calendar date, with no service, account, API key, or extra dataset download:
+
+- **Put history in order:** arrange three events by their recorded start dates.
+  Earlier/later buttons work with a keyboard and touch. Dates appear after checking.
+  Candidates exclude approximate dates and are at least twenty years apart.
+- **Find this place:** guess the existing marker of one event from a bounded pool
+  of landmark/location records. The neutral flat map hides event and person markers.
+  Pan/zoom and click/tap to guess; dragging or pinching does not submit. A coordinate
+  form provides an alternative to pointing. Guesses within 500 km count as correct;
+  the answer includes the great-circle distance. This judges a recorded point, not
+  the full geographic extent of an event. Invalid latitude/longitude is rejected.
+- **Alive at the same time?:** choose between three pairs. Exactly one pair has a
+  recorded lifespan overlap of at least twenty years, and the distractors have gaps
+  of at least twenty years. Approximate lifespan records are excluded. Correct
+  pairs come from different regions. Map links open a year in the shared lifespan;
+  associated person markers do not establish whereabouts in that year or a meeting.
+
+Each answer has original-record source links and **Show … on map** buttons. A map
+banner returns to the answer, and ordinary exploration Back returns to the earlier
+Atlas view. Geographic reveals draw a dashed circle for the guess and a connection
+to the answer marker. The normal selection ring marks the actual event. Hiding the
+banner removes these extra drawing marks.
+
+Map guessing temporarily saves the year, camera, comparison, selection, categories,
+and place panel. Canceling or submitting restores this state before any answer jump.
+The timeline, year form, and sidebar are inert during picking; zoom, pan, map/globe
+switching, coordinate entry and cancellation remain available. Guess mode uses the
+original view's share hash, so refreshing does not reopen an empty-filter puzzle
+map. Starting a search-result jump also cancels guess mode cleanly.
+
+First attempts count; **Reveal answer** records an answered question with no point.
+The final score is out of three, and completed questions remain available for review.
+Only the current day's answers are stored under `atlas.daily-challenge.v1` in local
+storage. Day and question signatures are validated before reuse; scores are derived
+again from the answers, not trusted stored score flags. Missing/corrupt storage
+starts a fresh set. Storage denial/quota errors keep the current visit playable and
+show that progress is temporary. Changes from another tab refresh the progress.
+A new local date resets the set on interaction, visibility return, or the next
+minute tick while visible. An action on a previous day's prompt does not grade a
+new question accidentally.
+
+Challenge code is isolated in `challenge-core.js` and `challenge.js`; the existing
+canvas selection handler delegates taps only while a location guess is active.
+The drawing hook uses the same projection, including flat-map pan and globe zoom.
+
+Validation:
+
+```sh
+node --test tests/history-challenge.test.cjs tests/history-discovery.test.cjs
+node tests/history-challenge.browser.mjs
+```
+
+The pure checks validate a year of generated sets, unique correct answers, inclusive
+lifespan ranges, BC/AD handling, no year zero, deterministic ordering, source-data
+eligibility, the antimeridian, malformed progress and date/signature changes. The
+browser suite uses an isolated profile/page and a controlled local clock to verify
+ordering, sources, map reveals, real mouse/touch guessing, drag-versus-tap behavior,
+coordinate entry, cancellation/restoration, reload persistence, first-attempt
+scoring, a new day, storage failure and mobile layout. It writes a mobile screenshot
+to the OS temporary directory. Physical-device coverage remains outside this check.
+
+## Fixed endpoint and world population
+
+The Atlas intentionally ends at **2026**. `NOW` is a fixed constant, so its timeline,
+year inputs, playback, hashes, search navigation and comparisons cannot extend past
+2026 when a visitor's browser clock advances. The landing page states this range.
+Daily challenge rotation still follows the visitor's local calendar date; that is
+independent of the historical timeline's endpoint.
+
+The timeline's **World population** strip follows the selected year, or shows the
+left and right years separately during comparison. It always represents a global
+total. Rounded historical estimates are distinguished from interpolated estimates
+and UN projections. Values before 10,000 BCE show **No estimate**. There is no
+extrapolation or assumption that missing data means zero population.
+
+`population.json` is a 5.7 KB local extract of the **World** series from
+[Our World in Data's long-run population with projections](https://ourworldindata.org/grapher/population-long-run-with-projections),
+downloaded October 22, 2026 (source update July 15, 2024). Its 264 source samples
+run from 10,000 BCE through 2026. Sources, as described in the dataset's metadata:
+HYDE v3.3 before 1800, Gapminder v7 for 1800–1949, and UN World Population Prospects
+2024 from 1950. Years 2024–2026 are the UN medium-variant **projections**, not observed
+population counts. Attribution and a methodology link appear under **Sources & method**.
+OWID's [population-source article](https://ourworldindata.org/population-sources)
+describes the underlying sources and their limitations.
+
+`population.js` interpolates linearly in elapsed source years between samples.
+It preserves the source's year-0 anchor internally; Atlas visitors still cannot
+select year zero. Estimates before 1800 are rounded to at most two significant
+digits and later values to three. This display precision does not imply exact
+counts or confidence intervals. Cached render keys avoid rewriting the strip during
+camera-only frames. Population download/validation errors leave the Atlas usable and
+provide a retry button. No third-party request runs in the browser for population.
+
+Regenerate the checked-in extract using downloaded OWID CSV and metadata files:
+
+```sh
+python3 scripts/build-world-population.py /tmp/population-long-run-with-projections.csv /tmp/population-long-run-with-projections.metadata.json
+node --test tests/history-population.test.cjs tests/history-discovery.test.cjs tests/history-challenge.test.cjs
+node tests/history-population.browser.mjs
+```
+
+The builder filters `OWID_WRL` and discards years after 2026. Source snapshots change
+over time; refreshing this data is an explicit maintenance task. The browser suite
+checks a simulated 2035 clock, the fixed endpoint, historical samples, interpolation,
+prehistory without coverage, projection labels, comparison, mobile width and failed
+population-download recovery.

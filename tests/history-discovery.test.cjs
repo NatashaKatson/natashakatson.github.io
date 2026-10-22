@@ -145,3 +145,53 @@ test("shared views reject malformed or unbounded camera and date values", () => 
   assert.equal(core.parseView("#view=%7Bbroken", 2026, ["war"]), null);
   assert.equal(core.parseView("#1903", 2026, ["war"]), null);
 });
+
+test("search ranks names before mentions, supports aliases and accents, and filters by type", () => {
+  const records = core.prepareSearch([
+    {kind:"event",title:"A voyage",description:"Leaving São Paulo for Rome"},
+    {kind:"place",title:"São Paulo, Brazil",aliases:["São Paulo"]},
+    {kind:"state",title:"Eastern Roman Empire",aliases:["Byzantine Empire"]},
+    {kind:"person",title:"Cleopatra",description:"Ruler of Egypt"},
+  ]);
+  assert.equal(core.search(records, "SAO PAULO")[0].kind, "place");
+  assert.equal(core.search(records, "byzantine empire")[0].title, "Eastern Roman Empire");
+  assert.equal(core.search(records, "ruler egypt", "person")[0].title, "Cleopatra");
+  assert.deepEqual(core.search(records, "Egypt", "event"), []);
+  assert.deepEqual(core.search(records, "x"), []);
+  assert.deepEqual(core.search(records, "!!!"), []);
+  assert.deepEqual(core.search(records, "<script>no match</script>"), []);
+});
+
+test("every indexed state can open an available dated snapshot with matching membership", () => {
+  const dir = "static/historyallaround/atlas/";
+  const manifest = JSON.parse(fs.readFileSync(dir + "borders/index.json"));
+  const data = JSON.parse(fs.readFileSync(dir + "search-states.json"));
+  const chunks = new Map();
+  const unparen = (s) => s.replace(/^\((.*)\)$/, "$1");
+  assert(data.rows.length > 1000);
+  for (const [name, start, end, year, lon, lat, wiki, member] of data.rows) {
+    assert(start <= year && year <= end && start !== 0 && end !== 0 && year !== 0, name);
+    assert(Number.isFinite(lon) && Math.abs(lon) <= 180 && Math.abs(lat) <= 90, name);
+    const chunk = manifest.chunks[0] + Math.floor((year - manifest.chunks[0]) / manifest.chunkSize) * manifest.chunkSize;
+    if (!chunks.has(chunk)) chunks.set(chunk, JSON.parse(fs.readFileSync(dir + `borders/c${chunk}.json`)).objects.p.geometries);
+    assert(chunks.get(chunk).some(({properties:p}) => unparen(p.n) === name &&
+      unparen(p.m || "") === member && (p.w || "") === wiki && p.f <= year && p.t >= year &&
+      p.lx === lon && p.ly === lat), name + " " + year);
+  }
+});
+
+test("city search includes source attribution, distinct duplicate names, and valid coordinates", () => {
+  const data = JSON.parse(fs.readFileSync("static/historyallaround/atlas/search-places.json"));
+  assert.match(data.source, /GeoNames/);
+  assert.match(data.license, /creativecommons.org\/licenses\/by/);
+  assert(data.rows.length > 30000);
+  const vancouvers = data.rows.filter(([name]) => name === "Vancouver");
+  assert(vancouvers.some((r) => r[1] === "CA"));
+  assert(vancouvers.some((r) => r[1] === "US"));
+  for (const [name, country, lon, lat, population, id, aliases] of data.rows) {
+    assert(name && /^[A-Z]{2}$/.test(country), name);
+    assert(Number.isFinite(lon) && Math.abs(lon) <= 180 && Number.isFinite(lat) && Math.abs(lat) <= 90, name);
+    assert(Number.isSafeInteger(id) && id > 0 && population >= 0 && Array.isArray(aliases), name);
+  }
+  new vm.Script(fs.readFileSync("static/historyallaround/atlas/search.js", "utf8"));
+});

@@ -420,7 +420,7 @@ header .seg{padding:2px;background:#f0ebe3;border:1px solid rgba(45,36,32,.1);bo
     <div class="side-intro"><div class="kicker">At the same time</div><h2>Around the world</h2><div class="sub" id="sideSub"></div></div>
     <div class="side-content"><div id="detail"></div><div id="regions"></div>
     <h3 class="atlas-section-title">People alive at this moment</h3><div class="sub" id="peopleSub" style="margin-bottom:8px"></div><div class="people" id="people"></div>
-    <div class="fact" id="fact"></div><p class="foot">Dates before about 500 BC are approximate, and historians still debate some later ones. Every entry links to Wikipedia; people's dates are checked against Wikidata. Map: Natural Earth (public domain). Historical borders: <a href="https://github.com/Seshat-Global-History-Databank/cliopatria">Cliopatria</a>, Seshat Global History Databank, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> (shapes simplified). Borders are approximate and historians often disagree on them. "Today" borders: Natural Earth. Made by <a href="https://natashakatson.com">Natasha Katson</a>.</p></div>
+    <div class="fact" id="fact"></div><p class="foot">Dates before about 500 BC are approximate, and historians still debate some later ones. Every entry links to Wikipedia; people's dates are checked against Wikidata. Map: Natural Earth (public domain). Place search: <a href="https://www.geonames.org/">GeoNames</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Historical borders: <a href="https://github.com/Seshat-Global-History-Databank/cliopatria">Cliopatria</a>, Seshat Global History Databank, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> (shapes simplified). Borders are approximate and historians often disagree on them. "Today" borders: Natural Earth. Made by <a href="https://natashakatson.com">Natasha Katson</a>.</p></div>
   </aside>
 </div>
 
@@ -717,7 +717,8 @@ const REGIONS={eu:"Europe",me:"Middle East & North Africa",af:"Sub-Saharan Afric
 const REGION_ORDER=["eu","me","af","as","am","oc"];
 const CATS={power:"Power & states",war:"War",ideas:"Science & exploration",culture:"Culture & faith",nature:"People & nature",fashion:"Fashion & dress"};
 const ERAS=[[-300000,"Prehistory"],[-3200,"Ancient"],[-800,"Classical"],[500,"Medieval"],[1500,"Early modern"],[1800,"Modern"]];
-const NOW=new Date().getFullYear(),SLIDER_STEPS=3000000;
+// The atlas intentionally ends in 2026, independently of the browser clock.
+const NOW=2026,SLIDER_STEPS=3000000;
 
 // piecewise scale: slider t (0..1) <-> year
 const SEG=[[0,-300000],[0.10,-10000],[0.17,-3000],[0.40,0],[0.70,1500],[0.83,1800],[1,NOW]];
@@ -883,6 +884,7 @@ function renderScene(){
       ctx.lineWidth=2.5;ctx.strokeStyle=C.halo;ctx.strokeText(t,cx2,ly);ctx.fillStyle=C.ink;ctx.fillText(t,cx2,ly)}
     ctx.textAlign="start"}
   hits=[];
+  if(window.HistoryChallenge?.isPicking())return;
   const people=alivePeople();
   for(const p of people){if(!visible(p.lon,p.lat))continue;const[x,y]=proj([p.lon,p.lat]);
     ctx.save();ctx.translate(x,y);ctx.rotate(Math.PI/4);ctx.strokeStyle=C.ink;ctx.lineWidth=1.4;ctx.fillStyle=C.paper;ctx.beginPath();ctx.rect(-3.5,-3.5,7,7);ctx.fill();ctx.stroke();ctx.restore();
@@ -921,7 +923,7 @@ function hover(){hoverQ=0;const e=hoverE;if(!e||drag)return;
   const r=cv.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,h=nearest(x,y),m=h?null:mapAt(x,y);cv.classList.toggle("hot",!!(h||m));
   const tip=document.getElementById("tip"),lbl=h?h.label:m&&m.label;
   if(lbl&&e.pointerType==="mouse"){tip.hidden=false;tip.textContent=lbl;tip.classList.toggle("country",!h);tip.style.left=x+"px";tip.style.top=y+"px"}else tip.hidden=true}
-cv.addEventListener("pointerup",e=>{cv.classList.remove("dragging");const d=drag;drag=null;if(d&&!d.moved){const r=cv.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,h=nearest(x,y);if(h)select(h.id,false,h.year??null);else{const m=mapAt(x,y);if(m&&m.polity)selectPolity(m.polity,m.year??state.year);else if(m&&e.pointerType!=="mouse"){const tip=document.getElementById("tip");tip.hidden=false;tip.textContent=m.label;tip.classList.add("country");tip.style.left=x+"px";tip.style.top=y+"px";clearTimeout(tapT);tapT=setTimeout(()=>tip.hidden=true,2500)}}}});
+cv.addEventListener("pointerup",e=>{cv.classList.remove("dragging");const d=drag;drag=null;if(d&&!d.moved){if(window.HistoryChallenge?.pickMap(e)){endPt(e);e.stopImmediatePropagation();return}const r=cv.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,h=nearest(x,y);if(h)select(h.id,false,h.year??null);else{const m=mapAt(x,y);if(m&&m.polity)selectPolity(m.polity,m.year??state.year);else if(m&&e.pointerType!=="mouse"){const tip=document.getElementById("tip");tip.hidden=false;tip.textContent=m.label;tip.classList.add("country");tip.style.left=x+"px";tip.style.top=y+"px";clearTimeout(tapT);tapT=setTimeout(()=>tip.hidden=true,2500)}}}});
 cv.addEventListener("pointerleave",()=>{hoverE=null;document.getElementById("tip").hidden=true});
 cv.addEventListener("wheel",e=>{e.preventDefault();setZoom(zoomK*Math.exp(-e.deltaY*0.0015))},{passive:false});
 let pinch=null;const pts=new Map();
@@ -962,7 +964,7 @@ for(const[k,v]of Object.entries(CATS)){const b=document.createElement("button");
 const slider=document.getElementById("slider");
 const eras=document.getElementById("eras"),marks=document.getElementById("marks"),ticks=document.getElementById("ticks");
 ERAS.forEach(([s,n],i)=>{const a=tAt(s),b=i<ERAS.length-1?tAt(ERAS[i+1][0]):1;const d=document.createElement("div");d.className="era-b";const SHORT={Prehistory:"Prehist.","Early modern":"E. modern"};if(window.innerWidth<600&&SHORT[n])n=SHORT[n];d.style.left=a*100+"%";d.style.width=(b-a)*100+"%";d.textContent=n;eras.appendChild(d)});
-[-200000,-10000,-3000,-1000,1,500,1000,1500,1800,1900,2000].forEach(y=>{const s=document.createElement("span");s.style.left=tAt(y)*100+"%";s.textContent=y<0?(Math.abs(y)>=10000?Math.abs(y)/1000+"k":Math.abs(y))+" BC":y===1?"AD 1":y;if(window.innerWidth<600&&![-10000,-1000,1000,1800,2000].includes(y))return;ticks.appendChild(s)});
+[-200000,-10000,-3000,-1000,1,500,1000,1500,1800,1900,NOW].forEach(y=>{const s=document.createElement("span");s.style.left=tAt(y)*100+"%";if(y===NOW)s.className="timeline-end";s.textContent=y<0?(Math.abs(y)>=10000?Math.abs(y)/1000+"k":Math.abs(y))+" BC":y===1?"AD 1":y;if(window.innerWidth<600&&![-10000,-1000,1000,1800,NOW].includes(y))return;ticks.appendChild(s)});
 function buildMarks(){marks.innerHTML="";for(const e of ev){if(!state.cats.has(e.cat))continue;const b=document.createElement("b");b.style.left=tAt(e.start)*100+"%";b.style.height=(8+((e.start*7)%9+9)%9)+"px";b.style.setProperty("--c",`var(--c-${e.cat})`);marks.appendChild(b)}}
 buildMarks();
 slider.addEventListener("input",()=>{state.year=roundYear(yearAt(slider.value/SLIDER_STEPS));selectedPolity=null;stopPlay();update(true)});
@@ -1060,5 +1062,9 @@ startSpin();
 
 <script src="discovery-core.js"></script>
 <script src="discovery.js"></script>
+<script src="search.js"></script>
+<script src="challenge-core.js"></script>
+<script src="challenge.js"></script>
+<script src="population.js"></script>
 </body>
 </html>
