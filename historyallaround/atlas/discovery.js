@@ -64,10 +64,15 @@
     ].slice(0, 4);
   }
   function addStories(el, x) {
+    let connections = storyConnections(x);
+    const context = connections.length ? null : core.storyContext(
+      x, [...ev, ...ppl], x.start ?? x.born ?? compare.selectedYear ?? state.year,
+    );
+    if (context) connections = context.connections;
+    if (!connections.length) return;
     const section = document.createElement("section");
-    const connections = storyConnections(x);
     section.className = "near";
-    section.innerHTML = `<b>Follow the story</b>${connections.length ? connections.map((c, i) => `<div><button type="button" class="story-card" data-story="${i}"><b>${esc(c.record.title || c.record.name)}</b><small>${esc(fmt(c.record.start ?? c.record.born, c.record.approx))} · ${esc(c.reason)}</small></button><a target="_blank" rel="noopener" href="${esc(c.source)}">Source ↗</a></div>`).join("") : "<p>No supported connections recorded yet.</p>"}`;
+    section.innerHTML = `<b>${context ? esc(context.title) : "Follow the story"}</b>${context ? `<p>${esc(context.description)}</p>` : ""}${connections.map((c, i) => `<div><button type="button" class="story-card" data-story="${i}"><b>${esc(c.record.title || c.record.name)}</b><small>${esc(fmt(c.record.start ?? c.record.born, c.record.approx))} · ${esc(c.reason)}</small></button><a target="_blank" rel="noopener" href="${esc(c.source)}">Source ↗</a></div>`).join("")}`;
     el.append(section);
     section.querySelectorAll("[data-story]").forEach(
       (b) =>
@@ -1016,12 +1021,7 @@
         addStories(el, x);
       }
       else if (selectedPolity) {
-        const f = selectedPolity;
-        addStories(document.querySelector("#detail .detail"), {
-          ...f,
-          lon: f.cen[0],
-          lat: f.cen[1],
-        });
+        addStories(document.querySelector("#detail .detail"), selectedPolity);
       }
     },
     keepChunk(c) {

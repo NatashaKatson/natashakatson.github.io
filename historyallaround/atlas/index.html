@@ -676,7 +676,16 @@ const EVENTS = [
 [-31,null,0,"Battle of Actium","Octavian's forces defeat Antony and Cleopatra in a naval battle off western Greece. Cleopatra's reign in Egypt ends the following year.",38.94,20.76,"eu","war","Battle_of_Actium","https://www.metmuseum.org/art/collection/search/251827"],
 [-30,null,0,"Egypt comes under Roman rule","After the deaths of Cleopatra and Antony, Octavian annexes Egypt. The Ptolemaic dynasty ends; this point marks Alexandria rather than the extent of Roman control.",31.2,29.92,"me","power","Roman_Egypt","https://academic.oup.com/edited-volume/61673/chapter-abstract/548065820"],
 [-300,100,1,"Monte Albán's second urban phase","The Zapotec centre in Oaxaca develops its ceremonial core, hillside terraces and water systems. These are broad archaeological phase dates, not construction dates for every monument.",17.043,-96.7675,"am","culture","Monte_Albán","https://whc.unesco.org/en/list/415/"],
-[-206,9,0,"Western Han China","Western Han rule spans 206 BC–AD 9. Its capital Chang'an grew into a great city of palaces, residential wards and markets. The marker locates the capital, not the dynasty's territorial extent.",34.27,108.9,"as","culture","Western_Han","https://www.metmuseum.org/essays/han-dynasty-206-b-c-220-a-d"]
+[-206,9,0,"Western Han China","Western Han rule spans 206 BC–AD 9. Its capital Chang'an grew into a great city of palaces, residential wards and markets. The marker locates the capital, not the dynasty's territorial extent.",34.27,108.9,"as","culture","Western_Han","https://www.metmuseum.org/essays/han-dynasty-206-b-c-220-a-d"],
+// Dinosaurs: approximate fossil-age ranges; coordinates mark representative present-day fossil regions.
+[-228000000,null,1,"Herrerasaurus","An early meat-eating dinosaur from Late Triassic Argentina. Its fossils help document the early history of dinosaurs.",-30.1,-67.9,"am","dinosaurs","Herrerasaurus","https://www.nhm.ac.uk/discover/dino-directory/herrerasaurus.html","Ischigualasto region · Argentina","https://whc.unesco.org/en/list/966/"],
+[-152000000,-145000000,1,"Stegosaurus","A plant-eater with back plates and a spiked tail. Fossils occur in the Morrison Formation of western North America.",40.44,-109.3,"am","dinosaurs","Stegosaurus","https://www.nhm.ac.uk/discover/dino-directory/stegosaurus.html","Dinosaur National Monument region · Utah, USA","https://www.nps.gov/dino/planyourvisit/quarry-exhibit-hall.htm"],
+[-152000000,-145000000,1,"Diplodocus","A long-necked, long-tailed plant-eater. Adults and juveniles are preserved in the Carnegie Quarry at Dinosaur National Monument.",40.44,-109.35,"am","dinosaurs","Diplodocus","https://www.nhm.ac.uk/discover/dino-directory/diplodocus.html","Carnegie Quarry region · Utah, USA","https://www.nps.gov/dino/learn/nature/diplodocus-longus.htm"],
+[-126000000,-122000000,1,"Iguanodon bernissartensis","A large plant-eater known from exceptionally preserved skeletons excavated from a coal mine at Bernissart.",50.47,3.65,"eu","dinosaurs","Iguanodon","https://collections.naturalsciences.be/ssh-paleontology/masterpieces/bernissart","Bernissart region · Belgium","https://www.naturalsciences.be/en/discover-join/discover/the-bernissart-iguanodons-at-a-glance"],
+[-99000000,-93500000,1,"Spinosaurus","A large sail-backed predator from North Africa with adaptations for life around water. Its lifestyle remains a subject of research.",30.8,-4.2,"me","dinosaurs","Spinosaurus","https://www.nhm.ac.uk/discover/dino-directory/spinosaurus.html","Kem Kem region · Morocco","https://doi.org/10.1016/j.cretres.2018.09.012"],
+[-74000000,-70000000,1,"Velociraptor","A small feathered predator from Late Cretaceous Mongolia, much smaller than its famous movie portrayal.",44.14,103.72,"as","dinosaurs","Velociraptor","https://www.nhm.ac.uk/discover/dino-directory/velociraptor.html","Flaming Cliffs region · Mongolia","https://www.amnh.org/exhibitions/fossils-flaming-cliffs-gobi"],
+[-68000000,-66000000,1,"Tyrannosaurus rex","A large Late Cretaceous predator. The specimen SUE, found north of Faith in South Dakota, lived about 67 million years ago.",45.05,-102.03,"am","dinosaurs","Tyrannosaurus","https://www.nhm.ac.uk/discover/dino-directory/tyrannosaurus.html","Faith region · South Dakota, USA","https://www.fieldmuseum.org/collection-item-iconic/sue"],
+[-68000000,-66000000,1,"Triceratops","A plant-eater with three horns and a large bony frill, living in western North America near the end of the Cretaceous.",47.5,-106.5,"am","dinosaurs","Triceratops","https://www.nhm.ac.uk/discover/dino-directory/triceratops.html","Hell Creek region · Montana, USA","https://www.nps.gov/subjects/fossils/famous-dinosaurs.htm"]
 ];
 
 // [name, born, died, approx, role, lat, lon, region, wikiSlug]
@@ -788,32 +797,34 @@ const FACTS = [
 
 const REGIONS={eu:"Europe",me:"Middle East & North Africa",af:"Sub-Saharan Africa",as:"Asia",am:"Americas",oc:"Oceania"};
 const REGION_ORDER=["eu","me","af","as","am","oc"];
-const CATS={power:"Power & states",war:"War",ideas:"Science & exploration",culture:"Culture & faith",nature:"People & nature",fashion:"Fashion & dress"};
-const ERAS=[[-300000,"Prehistory"],[-3200,"Ancient"],[-800,"Classical"],[500,"Medieval"],[1500,"Early modern"],[1800,"Modern"]];
+const CATS={power:"Power & states",war:"War",ideas:"Science & exploration",culture:"Culture & faith",nature:"People & nature",fashion:"Fashion & dress",dinosaurs:"Dinosaurs"};
+const ERAS=[[-252000000,"Dinosaurs"],[-66000000,"Before humans"],[-300000,"Prehistory"],[-3200,"Ancient"],[-800,"Classical"],[500,"Medieval"],[1500,"Early modern"],[1800,"Modern"]];
 // The atlas intentionally ends in 2026, independently of the browser clock.
 const NOW=2026,SLIDER_STEPS=3000000;
 
 // piecewise scale: slider t (0..1) <-> year
-const SEG=[[0,-300000],[0.10,-10000],[0.17,-3000],[0.40,0],[0.70,1500],[0.83,1800],[1,NOW]];
+const SEG=[[0,-252000000],[.06,-201000000],[.12,-145000000],[.22,-66000000],[.24,-300000],[.316,-10000],[.3692,-3000],[.544,0],[.772,1500],[.8708,1800],[1,NOW]];
 function yearAt(t){for(let i=1;i<SEG.length;i++){const[a,ya]=SEG[i-1],[b,yb]=SEG[i];if(t<=b)return ya+(yb-ya)*(t-a)/(b-a)}return NOW}
 function tAt(y){for(let i=1;i<SEG.length;i++){const[a,ya]=SEG[i-1],[b,yb]=SEG[i];if(y<=yb)return a+(b-a)*(y-ya)/(yb-ya)}return 1}
 const SAME_TIME_YEARS=1;
-function halfWin(){return SAME_TIME_YEARS}
+function halfWin(y=state.year){return y < -1000000 ? 1000000 : SAME_TIME_YEARS}
 function roundYear(y){const n=Math.round(y);return n===0?(y<0?-1:1):n}
-function fmt(y,approx){const c=approx?"c. ":"";if(y<0)return c+Math.abs(y).toLocaleString("en-US")+" BC";if(y<1000)return c+"AD "+y;return c+y}
-function fmtSpan(a,b,ap){return b&&b!==a?fmt(a,ap)+"–"+(a<0&&b>0?fmt(b):(b<0?Math.abs(b).toLocaleString("en-US")+" BC":b)):fmt(a,ap)}
+function fmt(y,approx){const c=approx?"c. ":"";if(y<=-1000000)return c+(Math.abs(y)/1000000).toLocaleString("en-US",{maximumFractionDigits:3})+" million years ago";if(y<0)return c+Math.abs(y).toLocaleString("en-US")+" BC";if(y<1000)return c+"AD "+y;return c+y}
+function fmtSpan(a,b,ap){if(a<=-1000000&&b<=-1000000&&a!==b)return (ap?"c. ":"")+(Math.abs(a)/1000000).toLocaleString("en-US",{maximumFractionDigits:3})+"–"+(Math.abs(b)/1000000).toLocaleString("en-US",{maximumFractionDigits:3})+" million years ago";return b&&b!==a?fmt(a,ap)+"–"+(a<0&&b>0?fmt(b):(b<0?Math.abs(b).toLocaleString("en-US")+" BC":b)):fmt(a,ap)}
 function eraOf(y){let e=ERAS[0][1];for(const[s,n]of ERAS)if(y>=s)e=n;return e}
 function parseYear(s){
   s=s.trim().toLowerCase().replace(/,/g,"");
+  const deep=s.match(/^(\d+(?:\.\d+)?)\s*(?:ma|mya|million years ago)$/);
+  if(deep){const age=Number(deep[1])*1000000;return Number.isFinite(age)&&age>=1000000&&age<=252000000?-Math.round(age):null}
   const m=s.match(/^(?:(bc|bce|b\.c\.|ad|ce)\s*)?(-?\d+)\s*(bc|bce|b\.c\.|ad|ce)?$/);
   if(!m||(m[1]&&m[3]))return null;
   const era=m[1]||m[3];let y=Number(m[2]);
   if(!Number.isFinite(y)||y===0)return null;
   if(era){if(era.startsWith("b"))y=-Math.abs(y);else if(y<0)return null}
-  return Math.max(-300000,Math.min(NOW,y));
+  return Math.max(-252000000,Math.min(NOW,y));
 }
 
-const ev=EVENTS.map((e,i)=>({id:"e"+i,kind:"event",start:e[0],end:e[1]??e[0],approx:!!e[2],title:e[3],blurb:e[4],lat:e[5],lon:e[6],region:e[7],cat:e[8],wiki:e[9],source:e[10]}));
+const ev=EVENTS.map((e,i)=>({id:"e"+i,kind:"event",start:e[0],end:e[1]??e[0],approx:!!e[2],title:e[3],blurb:e[4],lat:e[5],lon:e[6],region:e[7],cat:e[8],wiki:e[9],source:e[10],fossilRegion:e[11],locationSource:e[12]}));
 const ppl=PEOPLE.map((p,i)=>({id:"p"+i,kind:"person",name:p[0],born:p[1],died:p[2],approx:!!p[3],role:p[4],lat:p[5],lon:p[6],region:p[7],wiki:p[8],source:p[9]}));
 const byId=Object.fromEntries([...ev,...ppl].map(x=>[x.id,x]));
 const wikiUrl=s=>"https://en.wikipedia.org/wiki/"+encodeURIComponent(s).replace(/%2C/g,",").replace(/%27/g,"'");
@@ -906,7 +917,7 @@ function relevance(e,y,w){const d=y<e.start?e.start-y:y>e.end?y-e.end:0;return d
 // Both are asked for several times per frame, so the last answer is kept until the year or filters change.
 let actMemo={},pplMemo={};
 function activeEvents(){const y=state.year,k=y+"|"+[...state.cats];if(actMemo.k===k)return actMemo.v;const w=halfWin(y);
-  actMemo={k,v:ev.filter(e=>state.cats.has(e.cat)&&relevance(e,y,w)>0).map(e=>({e,r:relevance(e,y,w)})).sort((a,b)=>b.r-a.r||a.e.start-b.e.start)};return actMemo.v}
+  actMemo={k,v:ev.filter(e=>state.cats.has(e.cat)&&(e.cat!=="dinosaurs"||y<=-66000000)&&relevance(e,y,w)>0).map(e=>({e,r:relevance(e,y,w)})).sort((a,b)=>b.r-a.r||a.e.start-b.e.start)};return actMemo.v}
 function alivePeople(){const y=state.year;if(pplMemo.y===y)return pplMemo.v;const w=halfWin(y)*0.25;pplMemo={y,v:ppl.filter(p=>p.born<=y+w&&p.died>=y-w)};return pplMemo.v}
 
 // Many things ask for a redraw (pointer moves, the slider, the spin); they are folded into one per frame.
@@ -962,9 +973,18 @@ function renderScene(){
   for(const p of people){if(!visible(p.lon,p.lat))continue;const[x,y]=proj([p.lon,p.lat]);
     ctx.save();ctx.translate(x,y);ctx.rotate(Math.PI/4);ctx.strokeStyle=C.ink;ctx.lineWidth=1.4;ctx.fillStyle=C.paper;ctx.beginPath();ctx.rect(-3.5,-3.5,7,7);ctx.fill();ctx.stroke();ctx.restore();
     hits.push({x,y,id:p.id,label:p.name+" · "+fmtSpan(p.born,p.died,p.approx)})}
-  const act=activeEvents();
+  const act=activeEvents(),fossilMarks=[];
   const labelled=polLabels.slice();
-  act.slice().reverse().forEach(({e,r})=>{if(!visible(e.lon,e.lat))return;const[x,y]=proj([e.lon,e.lat]);
+  act.slice().reverse().forEach(({e,r})=>{if(!visible(e.lon,e.lat))return;let[x,y]=proj([e.lon,e.lat]);
+    if(e.cat==="dinosaurs"){
+      const origin=[x,y];let offset=0;
+      while(fossilMarks.some(p=>Math.hypot(p[0]-x,p[1]-y)<22)){offset++;x=origin[0]+24*offset}
+      fossilMarks.push([x,y]);ctx.save();
+      if(offset){ctx.beginPath();ctx.moveTo(...origin);ctx.lineTo(x,y);ctx.strokeStyle=C.ink;ctx.lineWidth=1;ctx.stroke()}
+      ctx.translate(x,y);ctx.strokeStyle=C["c-dinosaurs"];ctx.lineWidth=3;ctx.lineCap="round";
+      ctx.beginPath();ctx.moveTo(0,7);ctx.lineTo(0,-7);ctx.moveTo(0,1);ctx.lineTo(-7,-5);ctx.moveTo(0,1);ctx.lineTo(7,-5);ctx.stroke();ctx.restore();
+      hits.push({x,y,id:e.id,label:e.title+" · "+fmtSpan(e.start,e.end,e.approx)+" · fossil region"});return;
+    }
     const col=C["c-"+e.cat],rad=4+3*r;ctx.globalAlpha=.4+.6*r;
     ctx.beginPath();ctx.arc(x,y,rad+2.5,0,7);ctx.fillStyle=C.halo;ctx.fill();
     ctx.shadowColor="rgba(28,26,23,.12)";ctx.shadowBlur=1+2*r;ctx.beginPath();ctx.arc(x,y,rad,0,7);ctx.fillStyle=col;ctx.fill();ctx.shadowBlur=0;ctx.strokeStyle=C.border;ctx.lineWidth=.9;ctx.stroke();
@@ -1037,19 +1057,19 @@ for(const[k,v]of Object.entries(CATS)){const b=document.createElement("button");
 const slider=document.getElementById("slider");
 const eras=document.getElementById("eras"),marks=document.getElementById("marks"),ticks=document.getElementById("ticks");
 ERAS.forEach(([s,n],i)=>{const a=tAt(s),b=i<ERAS.length-1?tAt(ERAS[i+1][0]):1;const d=document.createElement("div");d.className="era-b";const SHORT={Prehistory:"Prehist.","Early modern":"E. modern"};if(window.innerWidth<600&&SHORT[n])n=SHORT[n];d.style.left=a*100+"%";d.style.width=(b-a)*100+"%";d.textContent=n;eras.appendChild(d)});
-[-200000,-10000,-3000,-1000,1,500,1000,1500,1800,1900,NOW].forEach(y=>{const s=document.createElement("span");s.style.left=tAt(y)*100+"%";if(y===NOW)s.className="timeline-end";s.textContent=y<0?(Math.abs(y)>=10000?Math.abs(y)/1000+"k":Math.abs(y))+" BC":y===1?"AD 1":y;if(window.innerWidth<600&&![-10000,-1000,1000,1800,NOW].includes(y))return;ticks.appendChild(s)});
+[-252000000,-145000000,-66000000,-10000,-3000,-1000,1,500,1000,1500,1800,1900,NOW].forEach(y=>{const s=document.createElement("span");s.style.left=tAt(y)*100+"%";if(y===NOW)s.className="timeline-end";s.textContent=y<=-1000000?Math.abs(y)/1000000+" Ma":y<0?(Math.abs(y)>=10000?Math.abs(y)/1000+"k":Math.abs(y))+" BC":y===1?"AD 1":y;if(window.innerWidth<600&&![-252000000,-66000000,-10000,1000,1800,NOW].includes(y))return;ticks.appendChild(s)});
 function buildMarks(){marks.innerHTML="";for(const e of ev){if(!state.cats.has(e.cat))continue;const b=document.createElement("b");b.style.left=tAt(e.start)*100+"%";b.style.height=(8+((e.start*7)%9+9)%9)+"px";b.style.setProperty("--c",`var(--c-${e.cat})`);marks.appendChild(b)}}
 buildMarks();
 slider.addEventListener("input",()=>{state.year=roundYear(yearAt(slider.value/SLIDER_STEPS));selectedPolity=null;stopPlay();update(true)});
 slider.addEventListener("keydown",e=>{if(e.key==="ArrowLeft"&&!e.shiftKey){nudgeYear(-1);e.preventDefault()}if(e.key==="ArrowRight"&&!e.shiftKey){nudgeYear(1);e.preventDefault()}});
-function setYear(y,keepSel){y=roundYear(Math.max(-300000,Math.min(NOW,y)));state.year=y;slider.value=Math.round(tAt(y)*SLIDER_STEPS);if(!keepSel){state.sel=null;selectedPolity=null}update()}
+function setYear(y,keepSel){y=roundYear(Math.max(-252000000,Math.min(NOW,y)));state.year=y;slider.value=Math.round(tAt(y)*SLIDER_STEPS);if(!keepSel){state.sel=null;selectedPolity=null}update()}
 function stepEvent(dir){const list=ev.filter(e=>state.cats.has(e.cat)).map(e=>e.start).sort((a,b)=>a-b);const y=state.year;const t=dir>0?list.find(s=>s>y):[...list].reverse().find(s=>s<y);if(t!==undefined){stopPlay();setYear(t)}}
-function nudgeYear(dir){stopPlay();const y=state.year===-1&&dir>0?1:state.year===1&&dir<0?-1:state.year+dir;setYear(y)}
+function nudgeYear(dir){stopPlay();const y=state.year===-1&&dir>0?1:state.year===1&&dir<0?-1:state.year+dir*(state.year<-1000000?1000000:1);setYear(y)}
 document.getElementById("prev").onclick=()=>nudgeYear(-1);
 document.getElementById("next").onclick=()=>nudgeYear(1);
 let raf=0;const playBtn=document.getElementById("play");
 function stopPlay(){state.playing=false;cancelAnimationFrame(raf);playBtn.innerHTML="▶ Play";playBtn.setAttribute("aria-label","Play")}
-playBtn.onclick=()=>{if(state.playing)return stopPlay();if(state.year>=NOW)setYear(-300000);state.playing=true;playBtn.innerHTML="❚❚ Pause";playBtn.setAttribute("aria-label","Pause");
+playBtn.onclick=()=>{if(state.playing)return stopPlay();if(state.year>=NOW)setYear(-252000000);state.playing=true;playBtn.innerHTML="❚❚ Pause";playBtn.setAttribute("aria-label","Pause");
   let last=performance.now();(function tick(n){const dt=Math.min(64,n-last);last=n;let t=+slider.value/SLIDER_STEPS+dt*0.0000085;if(t>=1){t=1;stopPlay()}slider.value=Math.round(t*SLIDER_STEPS);state.year=roundYear(yearAt(t));update(true);if(state.playing)raf=requestAnimationFrame(tick)})(last)};
 document.addEventListener("keydown",e=>{if(e.target.tagName==="INPUT"&&e.target.type!=="range")return;if(e.key==="ArrowLeft"&&e.shiftKey){stepEvent(-1);e.preventDefault()}if(e.key==="ArrowRight"&&e.shiftKey){stepEvent(1);e.preventDefault()}if(e.key===" "&&e.target===document.body){playBtn.click();e.preventDefault()}});
 document.getElementById("goto").addEventListener("submit",e=>{e.preventDefault();const inp=document.getElementById("gotoInput");const y=parseYear(inp.value);if(y===null){inp.setCustomValidity(/^\s*0\s*(bc|bce|b\.c\.|ad|ce)?\s*$/i.test(inp.value)?"There is no year 0. Try 1 BC or AD 1.":"Try a year like 1492 or 500 BC");inp.reportValidity();return}inp.setCustomValidity("");stopPlay();setYear(y);inp.blur()});
@@ -1067,7 +1087,9 @@ function renderDetailBase(){const el=document.getElementById("detail");if(select
     el.innerHTML=`<div class="detail polity"><button class="iconbtn close" aria-label="Close">×</button><div class="kicker"><i></i>State on the map in ${esc(fmt(state.year))}</div><h3>${esc(f.name)}</h3><div class="meta-grid"><div><span>Mapped coverage</span><strong>${esc(fmtSpan(f.from,f.to))}</strong></div><div><span>Political relationship</span><strong>${esc(member)}</strong></div></div><p>Approximate, simplified reconstruction. Mapped extents may include claims and do not establish effective control. Coverage dates describe this source record.</p>${link}</div>`;
     el.querySelector(".close").onclick=()=>{selectedPolity=null;renderDetail();draw()};return}
   const x=state.sel&&byId[state.sel];if(!x){el.innerHTML="";return}
-  if(x.kind==="event"){
+  if(x.cat==="dinosaurs"){
+    el.innerHTML=`<div class="detail dinosaur-detail" style="--c:var(--c-dinosaurs)"><button class="iconbtn close" aria-label="Close">×</button><div class="kicker">Dinosaur · approximate fossil age</div><h3>${esc(x.title)}</h3><p><strong>${esc(fmtSpan(x.start,x.end,x.approx))}</strong></p><p>${esc(x.blurb)}</p><p><strong>Representative fossil region:</strong> ${esc(x.fossilRegion)}</p><p>Coordinates locate a fossil-bearing region on today's map, not an exact quarry, the animal's full range, or its ancient position. Continents and coastlines were different. Fossil age estimates can change with new research.</p><p><a href="${esc(x.source)}" target="_blank" rel="noopener">Dinosaur &amp; age source ↗</a> · <a href="${esc(x.locationSource)}" target="_blank" rel="noopener">Fossil region source ↗</a></p></div>`}
+  else if(x.kind==="event"){
     el.innerHTML=`<div class="detail" style="--c:var(--c-${x.cat})"><button class="iconbtn close" aria-label="Close">×</button>
     <div class="kicker"><i></i>${esc(fmtSpan(x.start,x.end!==x.start?x.end:null,x.approx))} · ${REGIONS[x.region]}${x.approx?" · Approximate date":""}</div>
     <h3>${esc(x.title)}</h3><p>${esc(x.blurb)}</p>${x.source?`<p><a href="${esc(x.source)}" target="_blank" rel="noopener">Source ↗</a></p>`:""}<a href="${wikiUrl(x.wiki)}" target="_blank" rel="noopener">Read more on Wikipedia ↗</a>
@@ -1079,12 +1101,12 @@ function renderDetailBase(){const el=document.getElementById("detail");if(select
   el.querySelector(".close").onclick=()=>{state.sel=null;selectedPolity=null;update()}}
 function renderSide(){
   const act=activeEvents(),y=state.year;
-  document.getElementById("sideSub").textContent=`Within one year of ${fmt(y)} · ${act.length} event${act.length===1?"":"s"}`;
+  document.getElementById("sideSub").textContent=y<-1000000?`Approximate ages · within 1 million years of the selected date · ${act.length} fossil record${act.length===1?"":"s"}`:`Within one year of ${fmt(y)} · ${act.length} event${act.length===1?"":"s"}`;
   const by={};for(const{e}of act)(by[e.region]??=[]).push(e);
   const reg=document.getElementById("regions");
   const filled=REGION_ORDER.filter(r=>by[r]);
   reg.innerHTML=filled.length?filled.map(r=>`<div class="region"><h4><span>${REGIONS[r]}</span><span>${by[r].length}</span></h4>${by[r].sort((a,b)=>a.start-b.start).map(e=>`<button class="item" data-id="${e.id}" aria-current="${state.sel===e.id}" style="--c:var(--c-${e.cat})"><span class="y">${esc(fmt(e.start,e.approx))}</span><span><span class="t"><i></i>${esc(e.title)}</span><span class="b">${esc(e.blurb)}</span></span></button>`).join("")}</div>`).join("")
-    :`<p class="empty">No events within one year. Move one year at a time, drag the timeline or enter another date.</p>`;
+    :`<p class="empty">${y<-1000000?"No dinosaur records in this time window. Try a dinosaur era or another date.":"No events within one year. Move one year at a time, drag the timeline or enter another date."}</p>`;
   const quiet=REGION_ORDER.filter(r=>!by[r]).map(r=>REGIONS[r]);
   if(filled.length&&quiet.length)reg.insertAdjacentHTML("beforeend",`<p class="empty">Nothing recorded here yet for ${quiet.join(", ")}.</p>`);
   const pp=alivePeople().filter(p=>p.born<=y&&p.died>=y);
@@ -1106,21 +1128,22 @@ function slow(){slowAt=performance.now();renderDetail();renderSide();const y=sta
   try{history.replaceState(null,"",window.HistoryDiscovery?.urlHash() || "#"+(y<0?Math.abs(y)+"bc":y))}catch(_){}}
 function update(fast){
   const y=state.year;const yr=document.getElementById("yr");
-  yr.innerHTML=y<0?`${Math.abs(y).toLocaleString("en-US")}<small>BC</small>`:y<1000?`<small style="margin:0 .15em 0 0">AD</small>${y}`:`${y}`;
+  yr.innerHTML=y<=-1000000?`${(Math.abs(y)/1000000).toLocaleString("en-US",{maximumFractionDigits:2})}<small>million years ago</small>`:y<0?`${Math.abs(y).toLocaleString("en-US")}<small>BC</small>`:y<1000?`<small style="margin:0 .15em 0 0">AD</small>${y}`:`${y}`;
   document.getElementById("era").textContent=eraOf(y);
   {const n=activeEvents().length,r=new Set(activeEvents().map(a=>a.e.region)).size,pp=alivePeople().filter(p=>p.born<=y&&p.died>=y).length;
-   document.getElementById("nowLine").innerHTML=n?`<b>${n} event${n===1?"":"s"}</b> across ${r} region${r===1?"":"s"}`+(pp?` · <b>${pp}</b> ${pp===1?"person":"people"} alive`:""):"No recorded events for this year. Try another year or press Play."}
-  const t=tAt(y),w=halfWin(y),a=tAt(Math.max(-300000,y-w)),b=tAt(Math.min(NOW,y+w));
+   document.getElementById("nowLine").innerHTML=n?`<b>${n} ${y<-1000000?"fossil record":"event"}${n===1?"":"s"}</b> across ${r} region${r===1?"":"s"}`+(pp?` · <b>${pp}</b> ${pp===1?"person":"people"} alive`:""):y<-1000000?"No fossil records in this time window.":"No recorded events for this year. Try another year or press Play."}
+  const t=tAt(y),w=halfWin(y),a=tAt(Math.max(-252000000,y-w)),b=tAt(Math.min(NOW,y+w));
   const win=document.getElementById("win");win.style.left=a*100+"%";win.style.width=(b-a)*100+"%";
   document.getElementById("needle").style.left=t*100+"%";
-  document.getElementById("winLbl").textContent="±1 year";
+  document.getElementById("winLbl").textContent=y<-1000000?"±1 million years":"±1 year";
+  for(const id of ["prev","next"])document.getElementById(id).setAttribute("aria-label",(id==="prev"?"Previous":"Next")+(y<-1000000?" million years":" year"));
   slider.setAttribute("aria-valuetext",fmt(y));
   clearTimeout(slowT);if(!fast||performance.now()-slowAt>200)slow();else slowT=setTimeout(slow,200);
   draw();
 }
 
 // initial state from link, e.g. #1492 or #500bc
-(function(){const h=(location.hash||"").slice(1);const m=h.match(/^(\d+)(bc)?$/i);if(m){const y=m[2]?-+m[1]:+m[1];if(y!==0&&y>=-300000&&y<=NOW)state.year=y}})();
+(function(){const h=(location.hash||"").slice(1);const m=h.match(/^(\d+)(bc)?$/i);if(m){const y=m[2]?-+m[1]:+m[1];if(y!==0&&y>=-252000000&&y<=NOW)state.year=y}})();
 slider.value=Math.round(tAt(state.year)*SLIDER_STEPS);
 renderFact();update();
 // Spin only while an untouched globe is visible; the flat map and offscreen globe use no animation frames.
@@ -1141,5 +1164,6 @@ startSpin();
 <script src="challenge.js"></script>
 <script src="population.js"></script>
 <script src="contemporaries.js"></script>
+<script src="dinosaurs.js"></script>
 </body>
 </html>

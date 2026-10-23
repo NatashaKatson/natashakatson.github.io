@@ -70,7 +70,7 @@
         const encoded = new URLSearchParams(hash.replace(/^#/, "")).get("view");
         if (!encoded || encoded.length > 8000) return null;
         const v = JSON.parse(encoded);
-        const year = (n) => Number.isInteger(n) && n !== 0 && n >= -300000 && n <= maxYear;
+        const year = (n) => Number.isInteger(n) && n !== 0 && n >= -252000000 && n <= maxYear;
         const nums = (a, count, limit) => Array.isArray(a) && a.length === count &&
           a.every((n) => Number.isFinite(n) && Math.abs(n) <= limit);
         if (v.v !== 1 || !year(v.year) || !year(v.left) ||
@@ -152,6 +152,37 @@
           source: "https://en.wikipedia.org/wiki/" + encodeURIComponent(r.wiki),
         }))
         .slice(0, 4);
+    },
+    // Context for exploration when no documented story edge exists.
+    storyContext(record, records, year) {
+      if (!Number.isFinite(year) || year === 0) return null;
+      const candidates = records.filter((r) => r !== record &&
+        !(record.id && r.id === record.id) && (r.source || r.wiki))
+        .flatMap((r) => {
+          const start = r.start ?? r.born, end = r.end ?? r.died ?? start;
+          if (!Number.isFinite(start) || !Number.isFinite(end)) return [];
+          const gap = year < start ? api.yearsBetween(year, start)
+            : year > end ? api.yearsBetween(end, year) : 0;
+          const distance = [record.lon, record.lat, r.lon, r.lat].every(Number.isFinite)
+            ? api.distance([record.lon, record.lat], [r.lon, r.lat]) : Infinity;
+          return [{ record: r, gap, distance,
+            source: r.source || "https://en.wikipedia.org/wiki/" + encodeURIComponent(r.wiki) }];
+        });
+      const nearby = candidates.filter((c) => c.distance <= 250)
+        .sort((a, b) => a.distance - b.distance || a.gap - b.gap);
+      if (nearby.length) return {
+        title: "Explore nearby history",
+        description: "Other recorded markers within 250 km, across different periods. Geographic proximity does not establish a historical connection.",
+        connections: nearby.slice(0, 4).map((c) => ({ ...c,
+          reason: c.distance < 1 ? "Mapped within 1 km" : `Mapped ${Math.round(c.distance)} km away` })),
+      };
+      const period = candidates.filter((c) => c.gap <= 50)
+        .sort((a, b) => a.gap - b.gap || a.distance - b.distance);
+      return period.length ? {
+        title: "Explore the same period",
+        description: "Recorded dates overlap or fall within 50 years of the selected date. These are suggestions for exploration, not documented story links.",
+        connections: period.slice(0, 4).map((c) => ({ ...c, reason: "Same period" })),
+      } : null;
     },
     coverage(rows) {
       const groups = new Map();
