@@ -76,7 +76,51 @@ dashed boundary strokes, missing coverage and the 390px mobile layout. Screensho
 are written to the OS temporary directory. Pure date, pair, source and data checks
 remain in `tests/history-discovery.test.cjs`.
 
-## Compare
+## Dinosaurs and deep time
+
+Choose **Dinosaurs** beside Compare/Share, open **Explore dinosaurs** in the
+sidebar, or visit `atlas/#dinosaurs`. Eight sourced records include Herrerasaurus,
+Stegosaurus, Diplodocus, Iguanodon bernissartensis, Spinosaurus, Velociraptor,
+Tyrannosaurus rex and Triceratops. Triassic/Jurassic/Cretaceous buttons focus
+representative records; the scrollable list opens any dinosaur. A specific short
+link such as `atlas/#dinosaur=Velociraptor` is also supported.
+
+The shared timeline now extends from 252 million years ago to 2026, with more
+space retained for human history. Deep-time dates display in millions of years
+and accept `150 Ma`, `93.5 mya`, or `67 million years ago`. Previous/Next move a
+million years in deep time; the fossil display window is ±1 million years around
+the selected date and recorded intervals. The ordinary historical window remains
+±1 year. Non-avian dinosaur records stop at the 66-million-year boundary. The
+timeline's earliest section has no claim of complete fossil coverage.
+
+Footprint-shaped symbols mark representative fossil regions at modern coordinates.
+Nearby symbols are separated with a short leader line so each can be clicked.
+The **Fossil regions · modern geography** map note remains visible whenever either
+comparison side uses deep time. This is not a paleogeographic reconstruction:
+continents and coastlines were different. Source links distinguish age/taxon
+information from location evidence; all ages are approximate and the location
+is neither a precise quarry nor the dinosaur's full geographic range. Genus age
+ranges should not be interpreted as dating every specimen at the marked location.
+The map's historical political borders have no coverage at these ages.
+
+Search has a Dinosaurs filter and supports `T. rex`. Search or era jumps enable
+the dinosaur category, retain Back navigation and use the existing exact-view
+sharing format. No dinosaur records are added to the daily chronology challenge:
+their approximate dates exclude them from that question's exact-date pool.
+No new runtime downloads, geocoding service, or search-index regeneration is needed.
+
+Additional validation:
+
+```sh
+node --test tests/history-dinosaurs.test.cjs
+node tests/history-dinosaurs.browser.mjs
+```
+
+These cover deep-date parsing/formatting and timeline inversion, source fields,
+category/search navigation, nearby marker hit targets, real map clicks, Back,
+sharing, comparison, the 390px mobile layout and direct links.
+
+## Compare years
 
 Choose **Compare**, enter the left and right years, and apply. BC/BCE, AD/CE, and signed years use the existing parser; year zero is rejected. The existing global timeline drives the right year. Both sides share the same geographic projection, pan, rotation and zoom. The divider supports pointer/touch dragging, arrow keys, Home and End. Clicked territories and people use the year of the clicked side. Clicking a left-side event does not replace the right-side year.
 

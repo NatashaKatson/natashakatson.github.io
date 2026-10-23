@@ -1,14 +1,14 @@
 /* Local search across the Atlas's records, historical coverage, and modern places. */
 (() => {
   const core = DiscoveryCore;
-  const kinds = { all: "All", event: "Events", person: "People", state: "States & empires", place: "Places" };
+  const kinds = { all: "All", event: "Events", dinosaur: "Dinosaurs", person: "People", state: "States & empires", place: "Places" };
   const regionNames = typeof Intl.DisplayNames === "function"
     ? new Intl.DisplayNames(["en"], { type: "region" }) : null;
   const countryName = (code) => {
     try { return regionNames?.of(code) || code; } catch (_) { return code; }
   };
   const localRecords = core.prepareSearch([
-    ...ev.map((r) => ({ kind: "event", title: r.title, aliases: [r.wiki.replaceAll("_", " ")],
+    ...ev.map((r) => ({ kind: r.cat === "dinosaurs" ? "dinosaur" : "event", title: r.title, aliases: [r.wiki.replaceAll("_", " "), ...(r.cat === "dinosaurs" ? ["dinosaur", "dinosaurs"] : []), ...(r.wiki === "Tyrannosaurus" ? ["T. rex", "T rex", "Tyrannosaurus rex"] : [])],
       description: r.blurb, start: r.start, end: r.end, approx: r.approx,
       lon: r.lon, lat: r.lat, recordId: r.id })),
     ...ppl.map((r) => ({ kind: "person", title: r.name, aliases: [r.wiki.replaceAll("_", " ")],
@@ -38,7 +38,7 @@
   dialog.className = "history-search";
   dialog.setAttribute("aria-labelledby", "historySearchTitle");
   dialog.innerHTML = `<div class="history-search-heading"><h2 id="historySearchTitle">Search across history</h2><button type="button" data-search-close aria-label="Close search">×</button></div>
-    <form role="search"><label for="historySearchInput">A place, person, event, or empire</label><input id="historySearchInput" type="search" autocomplete="off" placeholder="Rome, Cleopatra, Silk Road…" maxlength="160" aria-describedby="historySearchHelp" aria-controls="historySearchResults"><button type="submit" class="search-submit">Search</button></form>
+    <form role="search"><label for="historySearchInput">A dinosaur, place, person, event, or empire</label><input id="historySearchInput" type="search" autocomplete="off" placeholder="T. rex, Rome, Cleopatra…" maxlength="160" aria-describedby="historySearchHelp" aria-controls="historySearchResults"><button type="submit" class="search-submit">Search</button></form>
     <div class="history-search-filters" role="group" aria-label="Result type">${Object.entries(kinds).map(([kind, label]) => `<button type="button" data-search-kind="${kind}" aria-pressed="${kind === "all"}">${label}</button>`).join("")}</div>
     <p id="historySearchStatus" role="status" aria-live="polite"></p><button type="button" data-search-retry hidden>Retry loading missing results</button>
     <div id="historySearchResults" aria-label="Search results"></div>
