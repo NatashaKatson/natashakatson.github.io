@@ -32,7 +32,7 @@
   const controls = document.createElement("div");
   controls.className = "dinosaur-map-controls";
   controls.innerHTML = `<button type="button" class="dinosaur-toggle" aria-label="Dinosaurs in the timeline and on the map" aria-pressed="true"><img src="images/dinosaurs/tyrannosaurus.webp" width="38" height="38" alt=""><span>Dinosaurs</span><strong data-dinosaur-state>On</strong><i aria-hidden="true"></i></button><button type="button" class="dinosaur-jump">Explore dinosaur eras →</button>`;
-  document.querySelector(".borders-control").prepend(controls);
+  document.getElementById("eraChoices").before(controls);
   const toggle = controls.querySelector(".dinosaur-toggle");
   function setEnabled(enabled) {
     stopPlay();

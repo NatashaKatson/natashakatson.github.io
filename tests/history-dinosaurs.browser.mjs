@@ -39,7 +39,8 @@ try {
   console.log(await evaluate(`(async()=>{
     const assert=(v,m)=>{if(!v)throw Error(m)};stopSpin();
     const toggle=document.querySelector('.dinosaur-toggle');
-    assert(toggle&&toggle.getAttribute('aria-pressed')==='true','Layers toggle is initially on');
+    assert(toggle&&toggle.getAttribute('aria-pressed')==='true','Era toggle is initially on');
+    assert(toggle.closest('#eraPanel')&&!document.querySelector('#layersPanel .dinosaur-map-controls'),'dinosaur controls belong to Choose era, not Layers');
     assert(document.getElementById('layersPanel').hidden&&document.getElementById('filtersPanel').hidden,'map menus start collapsed');
     document.querySelector('[data-atlas-menu="filtersPanel"]').click();
     assert(document.querySelectorAll('#legend .chip:not([hidden])').length===6&&document.getElementById('filterCount').textContent==='6','human history shows six relevant filters');
@@ -142,15 +143,16 @@ try {
   await send('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });
   await evaluate("document.querySelector('.dinosaur-trigger').click();render()");
   await evaluate("new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))");
-  await evaluate("stage.scrollIntoView({block:'center',behavior:'instant'})");
-  await evaluate("document.querySelector('[data-atlas-menu=layersPanel]').click()");
+  await evaluate("document.querySelector('[data-atlas-menu=eraPanel]').scrollIntoView({block:'end',behavior:'instant'})");
+  await evaluate("document.querySelector('[data-atlas-menu=eraPanel]').click()");
   console.log(await evaluate(`(()=>{
-    const toggle=document.querySelector('.dinosaur-toggle'),r=toggle.getBoundingClientRect(),s=stage.getBoundingClientRect();
-    if(r.left<0||r.right>innerWidth||r.top<s.top||r.bottom>s.bottom||r.top<0||r.bottom>innerHeight||r.height<44)throw Error('Toggle is not visible and touch-sized on mobile');
+    const toggle=document.querySelector('.dinosaur-toggle'),r=toggle.getBoundingClientRect(),p=document.getElementById('eraPanel').getBoundingClientRect();
+    if(r.left<0||r.right>innerWidth||r.top<p.top||r.bottom>p.bottom||r.top<0||r.bottom>innerHeight||r.height<44)throw Error('Era toggle is not visible and touch-sized on mobile');
     toggle.click();render();if(yearAt(0)!==-300000||toggle.getAttribute('aria-pressed')!=='false')throw Error('Mobile off does not hide era');
+    if(toggle.hidden||document.querySelector('[data-dinosaur-destination]:not([hidden])'))throw Error('Off must keep the era toggle available while hiding dinosaur destinations');
     toggle.click();document.querySelector('.dinosaur-trigger').click();render();
-    document.querySelector('[data-atlas-menu=layersPanel]').click();
-    return 'Mobile Layers menu exposes a touch-sized toggle and removes/restores the dinosaur era';
+    document.querySelector('[data-atlas-menu=eraPanel]').click();
+    return 'Mobile Choose era menu exposes a touch-sized toggle and removes/restores the dinosaur era';
   })()`));
   await evaluate("new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))");
   await evaluate("stage.scrollIntoView({block:'center',behavior:'instant'})");

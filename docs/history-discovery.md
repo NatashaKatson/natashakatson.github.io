@@ -78,7 +78,7 @@ remain in `tests/history-discovery.test.cjs`.
 
 ## Dinosaurs and deep time
 
-Use **Layers → Dinosaurs · On/Off** on the map to include
+Use **Choose era → Dinosaurs · On/Off** to include
 or exclude deep time. Off removes dinosaur eras, ticks, fossil entries and avatars
 from the timeline/map and restores the 300,000 BC–2026 human-history scale. If the
 selected year is in deep time, Off returns to the last human-history year (1453 on
@@ -86,10 +86,10 @@ a fresh direct dinosaur visit). The setting is retained by exact-view links and
 Back. An explicit dinosaur search result, era jump or deep-date entry enables the
 range again. Play respects the current enabled range.
 Off also hides the dinosaur browser, exploration shortcuts and dinosaur choices
-in the era picker. The Layers toggle remains available to restore them.
+in the era picker. The Choose era toggle remains available to restore them.
 
-Choose **More → Explore dinosaurs**, use **Layers → Explore dinosaur
-eras**, **Choose era**, or open **Explore dinosaurs** in the
+Choose **More → Explore dinosaurs**, use **Choose era → Explore dinosaur
+eras**, select an era, or open **Explore dinosaurs** in the
 sidebar, or visit `atlas/#dinosaurs`. Eight sourced records include Herrerasaurus,
 Stegosaurus, Diplodocus, Iguanodon bernissartensis, Spinosaurus, Velociraptor,
 Tyrannosaurus rex and Triceratops. Triassic/Jurassic/Cretaceous buttons focus
@@ -154,7 +154,7 @@ node tests/history-slider.browser.mjs
 
 These cover deep-date parsing/formatting and timeline inversion, source fields,
 category/search navigation, nearby marker hit targets, real map clicks, Back,
-sharing, comparison, Layers toggle persistence, timeline removal/restoration, avatar
+sharing, comparison, era toggle persistence, timeline removal/restoration, avatar
 loading, the 390px mobile layout and direct links.
 Slider regressions also cover cold dates, real pointer dragging in both directions
 at desktop/mobile widths, delayed and failed detail downloads, retry, the boundary
@@ -166,7 +166,8 @@ visible canvas land as well as geometry, with detailed map requests intercepted.
 `atlas-ui.js` and `atlas-ui.css` organize existing controls without duplicating
 their state. The date is a compact editable readout; deep time displays rounded,
 approximate millions of years, while editing and sharing retain the exact year.
-**Layers** holds dinosaur visibility, borders and their source disclosure.
+**Layers** holds borders and their source disclosure. **Choose era** holds
+dinosaur visibility and era destinations.
 **Filters** shows human categories, fossils, or both for mixed comparisons, with
 an active-category count. Hidden categories retain their settings.
 
