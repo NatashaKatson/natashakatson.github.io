@@ -1,4 +1,16 @@
 /* Discovery controls only: keep the atlas visual design in index.html. */
+:root { --c-dinosaurs: #427859; }
+.dinosaur-discovery { border-color: var(--rule); border-top: 3px solid var(--c-dinosaurs); }
+.dinosaur-discovery button { border-color: var(--rule); }
+.dinosaur-eras { display: flex; flex-wrap: wrap; gap: 6px; }
+.dinosaur-eras button { flex: 1 1 90px; font-size: 12px; }
+.dinosaur-eras small { display: block; font-size: 10px; }
+.dinosaur-list { max-height: 250px; overflow-y: auto; overscroll-behavior: contain; margin-top: 10px; }
+.deep-time-note { font-size: 10px; line-height: 1.5; max-width: 225px; margin: 8px 0 0; }
+.deep-time-note[hidden] { display: none; }
+.stage .readout .deep-time-year small { display: block; font-size: 14px; line-height: 1.3; margin: 6px 0 0; }
+.stage .readout:has(.deep-time-year)::before { content: "Fossil age"; }
+.dinosaur-detail a { font-size: 12px; }
 .discovery-tools {
   display: flex;
   gap: 8px;

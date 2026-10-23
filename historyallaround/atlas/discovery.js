@@ -356,6 +356,7 @@
       ) > proj.scale()
     )
       return;
+    if (byId[state.sel]?.cat === "dinosaurs" || state.year < -1000000) return;
     lastPoint = p.slice();
     queueMicrotask(() => {
       renderDetail();
@@ -830,7 +831,7 @@
     compare.selectedYear = null;
     state.sel = null;
     selectedPolity = null;
-    if (result.kind === "event" || result.kind === "person") {
+    if (result.kind === "event" || result.kind === "person" || result.kind === "dinosaur") {
       const r = byId[result.recordId];
       if (r.cat) state.cats.add(r.cat);
       buildMarks();
@@ -878,6 +879,7 @@
       renderCurated();
       renderBorderConfidence();
       window.HistoryContemporaries?.render();
+      window.HistoryDinosaurs?.render();
       const right = state.year;
       let allHits = [];
       if (compare.on) {
@@ -985,10 +987,14 @@
     isComparing() {
       return compare.on;
     },
+    displayedYears() {
+      return compare.on ? [compare.left, state.year] : [state.year];
+    },
     detail() {
       renderCurated();
       renderBorderConfidence();
       window.HistoryContemporaries?.render();
+      window.HistoryDinosaurs?.render();
       if ((selectedPolity || state.sel) && compare.selectedYear !== null)
         withYear(compare.selectedYear, renderDetailBase);
       const x = state.sel && byId[state.sel];
@@ -1003,7 +1009,7 @@
         : x
           ? [x.lon, x.lat]
           : null;
-      if (point)
+      if (point && x?.cat !== "dinosaurs")
         addPlaceAction(
           document.querySelector("#detail .detail") ||
             document.getElementById("detail"),
@@ -1015,7 +1021,7 @@
         hint.textContent = "Click a specific location on the map to explore its history. A state or empire can span several present-day countries.";
         document.querySelector("#detail .detail").append(hint);
       }
-      if (x) {
+      if (x && x.cat !== "dinosaurs") {
         const el = document.querySelector("#detail .detail");
         addMeanwhile(el, x);
         addStories(el, x);

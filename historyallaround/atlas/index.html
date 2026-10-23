@@ -5,7 +5,7 @@
 <meta name="theme-color" content="#F8F5F0">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>History All Around</title>
-<meta name="description" content="Scrub through 300,000 years of history on a globe and see what was happening around the world at the same moment, with borders that change over time.">
+<meta name="description" content="Explore dinosaur fossil regions and human history on an interactive globe, with approximate ages, sourced discoveries and borders that change over time.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap">
@@ -442,7 +442,7 @@ header .seg{padding:2px;background:#f0ebe3;border:1px solid rgba(45,36,32,.1);bo
   <footer class="atlas-footer" aria-label="Atlas credits and support">
     <div class="atlas-footer-main">
       <div class="atlas-footer-identity"><a href="../" class="atlas-footer-name">History All Around</a><span>Made by <a href="https://natashakatson.com">Natasha Katson</a></span></div>
-      <p class="atlas-footer-note">A world of stories, from 300,000 BC to 2026.</p>
+      <p class="atlas-footer-note">A world of stories, from dinosaur fossils to 2026.</p>
       <div class="atlas-footer-support" aria-label="Support the atlas">
         <span>Help the atlas grow</span>
         <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="natashakatson" data-color="#FFDD00" data-emoji="☕" data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff"></script>
@@ -452,7 +452,7 @@ header .seg{padding:2px;background:#f0ebe3;border:1px solid rgba(45,36,32,.1);bo
     <details class="atlas-footer-sources">
       <summary>Sources &amp; historical accuracy</summary>
       <div class="atlas-footer-source-grid">
-        <p><strong>Dates &amp; stories</strong>Dates before about 500 BC are approximate; some later dates are debated. Entries link to Wikipedia, and people's dates are checked against Wikidata.</p>
+        <p><strong>Dates &amp; stories</strong>Dates before about 500 BC are approximate; some later dates are debated. Dinosaur entries use approximate fossil ages and representative present-day fossil regions, with museum and research sources. Entries link to their sources, and people's dates are checked against Wikidata.</p>
         <p><strong>Maps &amp; places</strong>Basemap and “Today” borders: <a href="https://www.naturalearthdata.com/">Natural Earth</a> (public domain). Place search: <a href="https://www.geonames.org/">GeoNames</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p>
         <p><strong>Historical borders</strong><a href="https://github.com/Seshat-Global-History-Databank/cliopatria">Cliopatria / Seshat Global History Databank</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Shapes are simplified; mapped borders are approximate and historians often disagree on them.</p>
       </div>
@@ -685,7 +685,7 @@ const EVENTS = [
 [-99000000,-93500000,1,"Spinosaurus","A large sail-backed predator from North Africa with adaptations for life around water. Its lifestyle remains a subject of research.",30.8,-4.2,"me","dinosaurs","Spinosaurus","https://www.nhm.ac.uk/discover/dino-directory/spinosaurus.html","Kem Kem region · Morocco","https://doi.org/10.1016/j.cretres.2018.09.012"],
 [-74000000,-70000000,1,"Velociraptor","A small feathered predator from Late Cretaceous Mongolia, much smaller than its famous movie portrayal.",44.14,103.72,"as","dinosaurs","Velociraptor","https://www.nhm.ac.uk/discover/dino-directory/velociraptor.html","Flaming Cliffs region · Mongolia","https://www.amnh.org/exhibitions/fossils-flaming-cliffs-gobi"],
 [-68000000,-66000000,1,"Tyrannosaurus rex","A large Late Cretaceous predator. The specimen SUE, found north of Faith in South Dakota, lived about 67 million years ago.",45.05,-102.03,"am","dinosaurs","Tyrannosaurus","https://www.nhm.ac.uk/discover/dino-directory/tyrannosaurus.html","Faith region · South Dakota, USA","https://www.fieldmuseum.org/collection-item-iconic/sue"],
-[-68000000,-66000000,1,"Triceratops","A plant-eater with three horns and a large bony frill, living in western North America near the end of the Cretaceous.",47.5,-106.5,"am","dinosaurs","Triceratops","https://www.nhm.ac.uk/discover/dino-directory/triceratops.html","Hell Creek region · Montana, USA","https://www.nps.gov/subjects/fossils/famous-dinosaurs.htm"]
+[-68000000,-66000000,1,"Triceratops","A plant-eater with three horns and a large bony frill, living in western North America near the end of the Cretaceous.",47.5,-106.5,"am","dinosaurs","Triceratops","https://www.nhm.ac.uk/discover/dino-directory/triceratops.html","Hell Creek region · Montana, USA","https://museumoftherockies.org/exhibitions/siebel-dinosaur-complex"]
 ];
 
 // [name, born, died, approx, role, lat, lon, region, wikiSlug]
@@ -834,7 +834,7 @@ let rot=[-25,-22,0],zoomK=1,flatT={x:0,y:0},userMoved=false,selectedPolity=null;
 
 // ---------- styles from tokens
 let starLayer=null;
-let C={};function readColors(){const s=getComputedStyle(document.getElementById("stage"));for(const k of["paper","ink","muted","ocean","ocean-2","land","land-edge","grat","border","atmo","shade","star","water-label","accent","halo","c-power","c-war","c-ideas","c-culture","c-nature","c-fashion"])C[k]=s.getPropertyValue("--"+k).trim();
+let C={};function readColors(){const s=getComputedStyle(document.getElementById("stage"));for(const k of["paper","ink","muted","ocean","ocean-2","land","land-edge","grat","border","atmo","shade","star","water-label","accent","halo","c-power","c-war","c-ideas","c-culture","c-nature","c-fashion","c-dinosaurs"])C[k]=s.getPropertyValue("--"+k).trim();
   C.mono=s.getPropertyValue("--mono");C.display=s.getPropertyValue("--display");starLayer=null}
 readColors();
 const mq=matchMedia("(prefers-color-scheme: dark)");mq.addEventListener?.("change",()=>{readColors();draw()});
@@ -1128,6 +1128,7 @@ function slow(){slowAt=performance.now();renderDetail();renderSide();const y=sta
   try{history.replaceState(null,"",window.HistoryDiscovery?.urlHash() || "#"+(y<0?Math.abs(y)+"bc":y))}catch(_){}}
 function update(fast){
   const y=state.year;const yr=document.getElementById("yr");
+  yr.classList.toggle("deep-time-year",y<=-1000000);
   yr.innerHTML=y<=-1000000?`${(Math.abs(y)/1000000).toLocaleString("en-US",{maximumFractionDigits:2})}<small>million years ago</small>`:y<0?`${Math.abs(y).toLocaleString("en-US")}<small>BC</small>`:y<1000?`<small style="margin:0 .15em 0 0">AD</small>${y}`:`${y}`;
   document.getElementById("era").textContent=eraOf(y);
   {const n=activeEvents().length,r=new Set(activeEvents().map(a=>a.e.region)).size,pp=alivePeople().filter(p=>p.born<=y&&p.died>=y).length;
