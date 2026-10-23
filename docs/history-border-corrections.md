@@ -22,6 +22,48 @@ the interval. The source's Russia realm envelopes also included these regions.
 The correction uses each envelope's corresponding Russia feature to exclude
 them. Areas and label anchors are adjusted; TopoJSON arcs are unchanged.
 
+## Additional dated corrections
+
+The same script applies the following source-backed corrections. Transition
+years are annual snapshots, not day-level assertions of sovereignty or control.
+
+- **France:** remove Algeria from 1962 and Djibouti from 1977, using their
+  disjoint source components. See the [UN's list of former territories](https://www.un.org/dppa/decolonization/fr/history/former-trust-and-nsgts).
+- **United Kingdom:** correct the post-1801 name and remove the independent
+  Gulf components from 1971. Sources: [UK Parliament on the Union](https://www.parliament.uk/about/living-heritage/evolutionofparliament/legislativescrutiny/parliamentandireland/collections/ireland/act-of-union-1800/),
+  [Bahrain](https://history.state.gov/countries/bahrain),
+  [Qatar](https://history.state.gov/countries/qatar) and
+  [UAE](https://history.state.gov/countries/united-arab-emirates).
+  The source's 1969–2023 UK record retained a large UAE/Oman component and the
+  smaller Qatar and Bahrain components. The post-1971 record excludes these
+  components, has its label anchor in Britain, and drops its obsolete British
+  Empire membership. This does not independently validate the pre-1971 record.
+- **Dutch territories:** separate continental Suriname from the Netherlands
+  Antilles geometry, recognize the existing independent Suriname record from
+  1975, and replace the Antilles name after its dissolution in 2010. Sources:
+  [Suriname's independence](https://history.state.gov/countries/suriname) and
+  [the Dutch government's Caribbean overview](https://www.government.nl/themes/government-and-democracy/caribbean-parts-of-the-kingdom).
+- **Mali:** the source's post-1960 Mali Federation record becomes Republic of
+  Mali. See [Mali's UN application of September 1960](https://digitallibrary.un.org/record/620443).
+- **Denmark:** source records after the 1814 breakup are Denmark. See
+  [Norway's Parliament on the Treaty of Kiel](https://stortinget.no/no/Stortinget-og-demokratiet/Grunnloven/grunnloven-18142014/Kieltraktaten-av-14-januar-1814/).
+- **Portugal and Angola:** end the Estado Novo name in 1974, identify the later
+  Cabinda-only source versions under Angola, and apply Republic of Angola from
+  1992. Sources: [Portuguese Parliament](https://www.parlamento.pt/Parlamento/paginas/democracia.aspx),
+  [UN decolonization records](https://www.un.org/dppa/decolonization/fr/history/former-trust-and-nsgts)
+  and [UN terminology effective in 1992](https://digitallibrary.un.org/record/114431/files/ST_CS_SER-F_342-EN.pdf).
+- **North Macedonia and Germany:** apply the 2019 North Macedonia name and
+  correct Federal Republic of Germany. Sources: [UN member-state history](https://www.un.org/en/about-us/member-states/yugoslavia)
+  and [the Bundestag](https://www.bundestag.de/en/parliament/history/parliamentarism/frg_parliamentarism).
+- **Unidentified Syrian groups:** explicitly flag the generic “Mujahideen”
+  source identity as unverified. Preserve its provenance instead of inventing
+  a group identity or front line. See the
+  [source dataset](https://github.com/Seshat-Global-History-Databank/cliopatria).
+
+The constant-latitude rendering correction is described in the
+[accuracy review](history-accuracy-review.md). It adds intermediate GeoJSON
+vertices at load time, while preserving the archive's TopoJSON arcs.
+
 Sources for these corrections:
 
 - [OSCE Mission to Moldova](https://moldova.osce.org/): a settlement based on

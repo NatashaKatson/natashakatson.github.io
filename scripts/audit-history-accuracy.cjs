@@ -22,6 +22,9 @@ function audit() {
   const check = (condition, message) => { if (!condition) errors.push(message); };
   const reviews = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../docs/history-event-corrections.json'))).events;
   const evidence = new Map(reviews.map((r) => [r.wiki, r]));
+  check(evidence.size === reviews.length, 'Duplicate event review keys');
+  const eventKeys = new Set(events.map((row) => row[9]));
+  for (const review of reviews) check(eventKeys.has(review.wiki), `Review references an absent event: ${review.wiki}`);
   const eventRows = events.map((row, i) => {
     const [start, end, approximate, title, blurb, lat, lon, region, category, wiki, source] = row;
     check(Number.isInteger(start) && start !== 0 && start >= -252000000 && start <= 2026, `e${i}: invalid start`);
@@ -31,6 +34,12 @@ function audit() {
     check(['eu', 'me', 'af', 'as', 'am', 'oc'].includes(region), `e${i}: unknown region`);
     check(['power', 'war', 'ideas', 'culture', 'nature', 'fashion', 'dinosaurs'].includes(category), `e${i}: unknown category`);
     check(!source || source.startsWith('https://'), `e${i}: invalid source URL`);
+    const review = evidence.get(wiki);
+    if (review) {
+      const fields = { start: 0, end: 1, approx: 2, title: 3, blurb: 4, lat: 5, lon: 6, source: 10 };
+      for (const [field, index] of Object.entries(fields))
+        if (field in review) check(row[index] === review[field], `e${i}: reviewed ${field} was not applied`);
+    }
     return { id: 'e' + i, title, start, end: end ?? start, approximate: !!approximate, point: [lon, lat], wiki,
       evidence: evidence.has(wiki) ? 'date and principal claim source-reviewed; see review ledger for qualifications' : source ? 'linked source; not independently reverified in this pass' : 'Wikipedia background only; independent verification outstanding',
       review: evidence.get(wiki)?.change || null,
@@ -92,14 +101,15 @@ function audit() {
     check(year >= from && year <= to && Number.isFinite(lon) && Number.isFinite(lat), `Invalid search destination: ${name}`);
   }
   const linked = eventRows.filter((row) => row.source).length;
+  const reviewed = eventRows.filter((row) => evidence.has(row.wiki)).length;
   if (eventRows.length !== linked) warnings.push(`${eventRows.length - linked} events still lack an independent source link.`);
-  if (eventRows.length !== evidence.size) warnings.push(`${eventRows.length - evidence.size} events remain outside the source review.`);
+  if (eventRows.length !== reviewed) warnings.push(`${eventRows.length - reviewed} events remain outside the source review.`);
   warnings.push('An independent source link and a valid year/point do not certify every detail. Ancient dates, representative locations and interpretive claims retain the qualifications in each entry.');
   warnings.push('Border geometries remain approximate source reconstructions; overlapping historical claims and all frontier segments have not been independently certified.');
   warnings.push('2025–2026 display the 2024 border snapshot; it is not a current conflict or occupation map.');
   return { scope: 'Every event summary and principal date reviewed against sources; all border files scanned for integrity. This is not an independent certification of every historical frontier.',
     counts: { events: events.length, people: people.length, eventsWithSourceLinks: linked,
-      sourceReviewedEvents: evidence.size,
+      sourceReviewedEvents: reviewed,
       correctedOrClarifiedEvents: reviews.filter((r) => ['start','end','approx','title','blurb','lat','lon'].some((key) => key in r)).length,
       borderChunks: index.chunks.length, borderFeatureInstances: featureInstances,
       distinctBorderVersions: versions.size, decodedArcs: arcCount, historicalSearchRecords: search.rows.length },
