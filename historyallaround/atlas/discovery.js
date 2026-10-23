@@ -699,6 +699,7 @@
       selectedYear: compare.selectedYear, cats: [...state.cats],
       record: r ? { wiki: r.wiki, kind: r.kind, date: r.start ?? r.born } : null,
       polity: selectedPolity?.name || null,
+      polityMember: selectedPolity?.member ?? null,
       point: place?.point || lastPoint || null,
       location: searchPlace,
       story: activeComparisonStory,
@@ -764,7 +765,8 @@
       if (token !== linkToken) return true;
       // Do not overwrite a selection the visitor made while the border file loaded.
       if (state.year === v.year && !state.sel && !selectedPolity) {
-        const f = core.active(fs || [], borderYear(year)).find((f) => f.name === v.polity);
+        const f = core.active(fs || [], borderYear(year)).find((f) => f.name === v.polity &&
+          (v.polityMember == null || f.member === v.polityMember));
         if (f) selectPolity(f, year);
       }
     }
@@ -910,11 +912,11 @@
               ofs = bCache.get(chunkOf(other));
             if (Array.isArray(fs) && Array.isArray(ofs)) {
               const peers = new Map(
-                core.active(ofs, borderYear(other)).map((f) => [f.name, f]),
+                core.active(ofs, borderYear(other)).map((f) => [core.polityKey(f), f]),
               );
               ctx.beginPath();
               for (const f of core.active(fs, borderYear(year))) {
-                const peer = peers.get(f.name);
+                const peer = peers.get(core.polityKey(f));
                 if (
                   !peer ||
                   peer.member !== f.member ||

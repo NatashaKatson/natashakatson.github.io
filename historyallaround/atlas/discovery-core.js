@@ -88,6 +88,7 @@
           !(v.record === null || (typeof v.record?.wiki === "string" &&
             v.record.wiki.length <= 300 && ["event", "person"].includes(v.record.kind) && year(v.record.date))) ||
           !(v.polity === null || (typeof v.polity === "string" && v.polity.length <= 300)) ||
+          !(v.polityMember == null || (v.polity && typeof v.polityMember === "string" && v.polityMember.length <= 300)) ||
           !(v.point === null || (nums(v.point, 2, 180) && Math.abs(v.point[1]) <= 90)) ||
           !(v.location == null || (v.point && typeof v.location.title === "string" &&
             v.location.title.length <= 500 && (v.location.geonameId === null ||
@@ -102,12 +103,15 @@
         return v;
       } catch (_) { return null; }
     },
+    polityKey(feature) {
+      return JSON.stringify([feature.name, feature.member || ""]);
+    },
     active(features, year) {
       const seen = new Map();
       for (const f of features)
         if (f.from <= year && f.to >= year) {
-          const old = seen.get(f.name);
-          if (!old || f.from > old.from) seen.set(f.name, f);
+          const key = api.polityKey(f), old = seen.get(key);
+          if (!old || f.from > old.from) seen.set(key, f);
         }
       return [...seen.values()].sort((a, b) => b.area - a.area);
     },
