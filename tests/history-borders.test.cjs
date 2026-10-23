@@ -1,6 +1,7 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
+const core = require('../static/historyallaround/atlas/discovery-core.js');
 
 const dir = 'static/historyallaround/atlas/';
 const expected = {
@@ -20,6 +21,45 @@ function ringPoints(topo, ring) {
     return index < 0 ? points.reverse() : points;
   });
 }
+
+test('the western US–Canada border uses 49° even in quantized archive snapshots', () => {
+  for (const chunk of [1950, 1975, 2000]) {
+    const topo = JSON.parse(fs.readFileSync(dir + `borders/c${chunk}.json`));
+    for (const name of ['Canada', 'United States of America']) {
+      const states = topo.objects.p.geometries.filter((g) => g.properties.n === name);
+      assert(states.length, name);
+      for (const state of states) {
+        const polygons = state.type === 'Polygon' ? [state.arcs] : state.arcs;
+        const source = { type: 'MultiPolygon', coordinates: polygons.map((p) => p.map((r) => ringPoints(topo, r))) };
+        const original = JSON.stringify(source);
+        const fixed = core.resampleParallels(source);
+        const parallel = fixed.coordinates.flat(2).filter(([x, y]) => x > -122 && x < -96 && Math.abs(y - 49) < .03);
+        assert(parallel.length > 40, `${name}/${state.properties.f}: parallel is sampled densely`);
+        assert(parallel.every(([, y]) => y === 49), `${name}/${state.properties.f}: parallel is at 49°`);
+        assert.equal(JSON.stringify(source), original, 'source geometry stays unchanged');
+        for (const polygon of fixed.coordinates) for (const ring of polygon) assert.deepEqual(ring[0], ring.at(-1));
+      }
+    }
+  }
+});
+
+test('parallel correction preserves other boundaries and dateline crossings', () => {
+  for (const coordinates of [
+    [[-120, 40], [-100, 40]],
+    [[10, 48.986], [30, 48.986]],
+    [[-120, 48.986], [-100, 49.1]],
+    [[170, 49], [-170, 49]],
+  ]) {
+    const fixed = core.resampleParallels({ type: 'LineString', coordinates }).coordinates;
+    assert.deepEqual(fixed[0], coordinates[0]);
+    assert.deepEqual(fixed.at(-1), coordinates.at(-1));
+    if (coordinates[0][1] !== coordinates[1][1] || Math.abs(coordinates[1][0] - coordinates[0][0]) >= 180) {
+      assert.deepEqual(fixed, coordinates);
+    } else {
+      assert(fixed.every(([, lat]) => lat === coordinates[0][1]));
+    }
+  }
+});
 
 test('Moldovan and Georgian regions have separate identities and stay in their source locations', () => {
   for (const chunk of [1975, 2000]) {

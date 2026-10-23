@@ -905,7 +905,8 @@ function loadChunk(c){if(bCache.has(c))return Promise.resolve(bCache.get(c));
 function currentChunk(){return chunkOf(state.year)}
 function currentBorderFailed(){const c=currentChunk();return c!==null&&bErrors.has(c)}
 // Stable colours for each state or territory.
-function hueOf(n){let h=0;for(const ch of n)h=(h*31+ch.charCodeAt(0))>>>0;return h%STATE_FILLS.length}
+function hueOf(n){if(n==="Canada")return 3; // Avoid its hash collision with the neighbouring United States.
+  let h=0;for(const ch of n)h=(h*31+ch.charCodeAt(0))>>>0;return h%STATE_FILLS.length}
 // Fetch the current file once the timeline rests on it (at once while playing), then its neighbours.
 let loadT=0,loadC=null;
 function settle(c){if(c===loadC)return;loadC=c;clearTimeout(loadT);

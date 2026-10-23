@@ -29,14 +29,24 @@ D3 interprets their connection as a great-circle arc, which bows north into
 Canada. At 110° W, a point at 49.2° N incorrectly selected the United States.
 
 `DiscoveryCore.resampleParallels()` inserts intermediate vertices on long
-constant-latitude segments before projection, preserving the source endpoints.
+constant-latitude segments before projection. A follow-up found that the
+archive's quantization also puts the recent western border at 48.986° N, about
+1.5 km south of the parallel. Long horizontal segments within the western
+border's coordinate range and 0.03° of 49° are now aligned to 49° before
+resampling, including repeated ring endpoints. All other source endpoints remain
+unchanged.
 It is applied to historical polygons and to present-day country polygons and
 border meshes, so drawing, selection and hover use the same geometry. Dateline
 crossings are left untouched. The raw archive is not redrawn or requantized.
 
+Canada also receives a distinct colour: its previous name hash collided with
+the US, making both countries appear as one continuous territory.
+
 Browser checks cover both globe and flat projections in 1950, 1980, 2014, 2024
-and 2026, sampling both sides of the boundary at 120°, 110° and 100° W. The
-49.2° N point now belongs to Canada. A visual preview was also inspected.
+and 2026, sampling seven longitudes on both sides within 600 m of the parallel.
+They check containment, hover and contrasting rendered fills. Archive regression
+checks cover every US and Canada feature in the 1950, 1975 and 2000 chunks,
+including ring closure and preservation of unrelated boundaries.
 
 Sources: [International Boundary Commission, western boundary section](https://www.internationalboundarycommission.org/en/maps-coordinates/maps/section-e.php)
 and [D3's spherical geometry documentation](https://d3js.org/d3-geo).

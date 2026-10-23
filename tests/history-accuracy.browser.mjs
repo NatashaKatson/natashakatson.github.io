@@ -84,14 +84,17 @@ try {
         await loadChunk(chunkOf(year));setYear(year);render();
         const active=polities(),us=active.find(f=>f.name==='United States of America'),canada=active.find(f=>f.name==='Canada');
         assert(us&&canada,'North American states available in '+year);
-        for(const lon of [-120,-110,-100]){
-          assert(!d3.geoContains(us,[lon,49.2]),'US boundary must not bow north of 49 degrees: '+year+'/'+mode+'/'+lon);
-          assert(d3.geoContains(canada,[lon,49.2]),'Canada starts just north of the parallel');
-          assert(d3.geoContains(us,[lon,48.8]),'US remains just south of the parallel');
-          if(mode==='globe'){
-            assert(mapAtYear(...proj([lon,49.2]))?.polity.name==='Canada','hover north of the border agrees with Canada');
-            assert(mapAtYear(...proj([lon,48.8]))?.polity.name==='United States of America','hover south of the border agrees with US');
+        assert(us.hue!==canada.hue,'neighbouring US and Canada have distinct territory colours');
+        for(const lon of [-122,-120,-115,-110,-105,-100,-96]){
+          for(const [lat,own,other] of [[49.005,canada,us],[48.995,us,canada]]){
+            assert(d3.geoContains(own,[lon,lat])&&!d3.geoContains(other,[lon,lat]),'correct territory within 600 m of the parallel: '+year+'/'+mode+'/'+lon+'/'+lat);
+            assert(mapAtYear(...proj([lon,lat]))?.polity.name===own.name,'hover agrees with the corrected parallel: '+year+'/'+mode+'/'+lon+'/'+lat);
           }
+        }
+        if(mode==='globe'){
+          const pixel=lat=>{const [x,y]=proj([-110,lat]);return ctx.getImageData(Math.round(x*DPR),Math.round(y*DPR),1,1).data};
+          const north=pixel(49.5),south=pixel(48.5);
+          assert(north.slice(0,3).some((v,i)=>Math.abs(v-south[i])>20),'rendered fills visibly distinguish Canada from the US');
         }
       }
     }
@@ -116,7 +119,7 @@ try {
     select(holocaust.id,false);render();assert(document.querySelector('#detail a[href*="ushmm.org"]'),'Holocaust cites museum source');
     const covid=ev.find(e=>e.wiki==='COVID-19_pandemic');setYear(2023);select(covid.id,false);render();
     assert(document.getElementById('detail').textContent.includes('emergency'),'COVID date range is labeled as emergency status');
-    return 'Historical accuracy: US–Canada parallel in both projections (1950–2026), Crimea occupation (2014–2026), aggregate selection/sharing, Algeria paint order and sourced event details passed';
+    return 'Historical accuracy: US–Canada parallel within 600 m, distinct rendered fills and hover in both projections (1950–2026), Crimea occupation (2014–2026), aggregate selection/sharing, Algeria paint order and sourced event details passed';
   })()`));
   assert.equal(errors.length,0,JSON.stringify(errors));
 } finally {

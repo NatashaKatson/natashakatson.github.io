@@ -4,8 +4,8 @@
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Natasha Katson",
-  "jobTitle": "B2B SaaS Product Marketing Consultant",
-  "description": "B2B SaaS product marketing consultant specializing in fixing broken go-to-market motions, cross-functional alignment, positioning, and product launches.",
+  "jobTitle": "B2B SaaS & AI Product Marketing Consultant",
+  "description": "I help B2B SaaS teams clarify their positioning, align product, marketing, and sales, and build launch processes that work.",
   "url": "https://natashakatson.com",
   "email": "natasha.katson@gmail.com",
   "image": "https://natashakatson.com/images/profile.jpeg",
@@ -127,6 +127,12 @@
     max-width: 420px;
   }
 
+  .v3-hero-body p + p,
+  .v3-fix-card-body p + p,
+  .v3-faq-answer p + p {
+    margin-top: 0.75rem;
+  }
+
   .v3-hero-ctas {
     display: flex;
     gap: 12px;
@@ -246,7 +252,8 @@
     border-top: 3px solid var(--rust);
   }
 
-  .v3-fix-card-title {
+  .v3-fix-card-title,
+  .v3-faq-question {
     font-family: 'Lora', serif;
     font-size: 1.05rem;
     font-weight: 400;
@@ -256,10 +263,25 @@
     color: var(--ink);
   }
 
-  .v3-fix-card-body {
+  .v3-fix-card-body,
+  .v3-faq-answer {
     font-size: 0.82rem;
     color: var(--ink-soft);
     line-height: 1.7;
+  }
+
+  /* ── FAQ ── */
+  .v3-faq-list {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .v3-faq-item {
+    padding: 1.5rem 0;
+  }
+
+  .v3-faq-item + .v3-faq-item {
+    border-top: 1px solid var(--border);
   }
 
   /* ── TESTIMONIALS ── */
@@ -543,13 +565,16 @@
   <section class="v3-hero">
     <div class="v3-hero-photo">
       <div class="v3-photo-frame">
-        <img src="/images/profile.jpeg" alt="Natasha Katson, B2B SaaS Product Marketing Consultant" />
+        <img src="/images/profile.jpeg" alt="Natasha Katson, B2B SaaS &amp; AI Product Marketing Consultant" />
       </div>
     </div>
     <div class="v3-hero-text">
-      <h1 class="v3-hero-name">Natasha Katson<span class="v3-hero-eyebrow">B2B SaaS Product Marketing Consultant</span></h1>
+      <h1 class="v3-hero-name">Natasha Katson<span class="v3-hero-eyebrow">B2B SaaS &amp; AI Product Marketing Consultant</span></h1>
       <p class="v3-hero-tagline">Creating order out of chaos.</p>
-      <p class="v3-hero-body">When product, marketing, and sales aren't speaking the same language, launches fail and pipeline stalls. I come in, find where things are breaking down, and fix them — from the processes to the positioning.</p>
+      <div class="v3-hero-body">
+        <p>I help B2B SaaS teams clarify their positioning, align product, marketing, and sales, and build launch processes that work.</p>
+        <p>If launches keep slipping, messaging feels disconnected, or ownership is unclear, I help you find what’s getting in the way and put a practical plan into action.</p>
+      </div>
       <div class="v3-hero-ctas">
         <a class="v3-btn-primary" href="mailto:natasha.katson@gmail.com">Get in Touch →</a>
         <a class="v3-btn-secondary" href="#what-i-fix">See What I Fix</a>
@@ -569,28 +594,43 @@
     <div class="v3-section-header">
       <span class="v3-section-label">Where I come in</span>
       <h2 class="v3-section-title">What I Fix</h2>
-      <p class="v3-section-sub">Most GTM problems aren't strategy problems — they're alignment, process, and clarity problems.</p>
+      <p class="v3-section-sub">I help B2B SaaS teams solve the positioning, launch, and collaboration problems that make it harder to bring products to market.</p>
     </div>
     <div class="v3-fix-grid">
       <div class="v3-fix-card">
         <h3 class="v3-fix-card-title">Broken GTM &amp; Launch Processes</h3>
-        <div class="v3-fix-card-body">Launches keep slipping. Nobody owns the timeline. Product ships without sales knowing what to say. I diagnose where your release process breaks down and build the frameworks that get product, marketing, and sales moving together — and keep them moving after I leave.</div>
+        <div class="v3-fix-card-body">
+          <p>Launches keep slipping. Ownership is unclear. Product ships before sales and marketing are ready.</p>
+          <p>I help you find where your go-to-market process breaks down and build a repeatable approach, from launch planning and responsibilities to sales readiness and customer communications.</p>
+        </div>
+      </div>
+      <div class="v3-fix-card">
+        <h3 class="v3-fix-card-title">Positioning &amp; Messaging That Isn’t Working</h3>
+        <div class="v3-fix-card-body">
+          <p>Your product is good, but prospects struggle to understand why they should choose it.</p>
+          <p>I help you define who your product is for, what makes it different, and why that difference matters. Then I turn that positioning into messaging your team can use across your website, campaigns, and sales conversations.</p>
+        </div>
       </div>
       <div class="v3-fix-card">
         <h3 class="v3-fix-card-title">Misaligned Teams</h3>
-        <div class="v3-fix-card-body">Product builds what sales can't sell. Marketing creates content nobody uses. I find the root cause of the disconnect — usually a combination of unclear ownership, poor communication rhythms, and missing shared language — and fix it at the source.</div>
+        <div class="v3-fix-card-body">
+          <p>Product, marketing, and sales are working toward different priorities. Decisions get revisited, handoffs get missed, and customers hear different stories.</p>
+          <p>I help teams clarify ownership, agree on priorities, and build better ways of working together so everyone understands what’s launching, who it’s for, and how to communicate its value.</p>
+        </div>
       </div>
       <div class="v3-fix-card">
-        <h3 class="v3-fix-card-title">Positioning &amp; Messaging That Isn't Working</h3>
-        <div class="v3-fix-card-body">Your product is good, but the market doesn't see it that way. Deals stall, prospects say "interesting but not right now," and nobody can explain what you do in one sentence. I help you find the positioning that actually resonates — and build the messaging that makes it stick.</div>
+        <h3 class="v3-fix-card-title">AI Messaging Lost in the Hype</h3>
+        <div class="v3-fix-card-body">
+          <p>Your AI features get described as “powerful” or “intelligent,” but customers still don’t know what they can actually do with them.</p>
+          <p>I help you explain what your AI does, how customers can use it, and what makes it different, with clear positioning and practical examples grounded in what the product delivers.</p>
+        </div>
       </div>
       <div class="v3-fix-card">
-        <h3 class="v3-fix-card-title">AI &amp; GenAI Product Marketing</h3>
-        <div class="v3-fix-card-body">AI products all sound the same — "AI-powered" everything. The companies winning are the ones who can articulate what their AI actually does differently. I specialize in cutting through the noise to position AI products with clear, credible differentiation.</div>
-      </div>
-      <div class="v3-fix-card">
-        <h3 class="v3-fix-card-title">Sales That Can't Close</h3>
-        <div class="v3-fix-card-body">When deals stall, it's often not the leads — it's unclear value communication and missing frameworks. I build the battlecards, talk tracks, and playbooks that help your sales team articulate differentiation consistently and handle competitive objections confidently.</div>
+        <h3 class="v3-fix-card-title">Sales Teams Missing What They Need</h3>
+        <div class="v3-fix-card-body">
+          <p>Sales reps struggle to explain differentiation, answer competitive questions, or find the right materials for a conversation.</p>
+          <p>I turn product knowledge and competitive insights into battlecards, talk tracks, and playbooks that help your team communicate value and handle objections confidently.</p>
+        </div>
       </div>
       <div class="v3-fix-card">
         <h3 class="v3-fix-card-title">Users Who Don't Stick Around</h3>
@@ -598,7 +638,7 @@
       </div>
     </div>
     <div class="v3-fix-cta">
-      <a href="/work" class="v3-fix-cta-link">See my portfolio →</a>
+      <a href="/work" class="v3-fix-cta-link">See My Portfolio →</a>
     </div>
   </section>
 
@@ -638,13 +678,37 @@
 
   <hr class="v3-divider" />
 
+  <!-- FREQUENTLY ASKED QUESTIONS -->
+  <section class="v3-section" id="faq" aria-labelledby="faq-title">
+    <div class="v3-section-header">
+      <h2 class="v3-section-title" id="faq-title">FAQ</h2>
+    </div>
+    <div class="v3-faq-list">
+      <div class="v3-faq-item">
+        <h3 class="v3-faq-question">What does a B2B SaaS product marketing consultant help with?</h3>
+        <p class="v3-faq-answer">A product marketing consultant helps connect what a product does with why customers should choose it. My work focuses on positioning, messaging, go-to-market planning, product launches, sales enablement, and alignment across product, marketing, and sales.</p>
+      </div>
+      <div class="v3-faq-item">
+        <h3 class="v3-faq-question">Do you work with AI products?</h3>
+        <div class="v3-faq-answer">
+          <p>Yes. I help teams position and market AI products by explaining what they do, who they’re for, and what makes them different.</p>
+          <p>I also help teams use AI tools like Claude and ChatGPT in their day-to-day work. This includes setting up workflows, creating reusable skills, and integrating AI into product marketing processes, from research and messaging to launch planning and content creation.</p>
+        </div>
+      </div>
+      <div class="v3-faq-item">
+        <h3 class="v3-faq-question">Are you available?</h3>
+        <p class="v3-faq-answer">I’m available for consulting projects. I’m based in Vancouver, BC.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA BAND -->
   <div class="v3-cta-band">
-    <h2>Is your GTM broken?<br>Or are you looking for a full-time PMM?</h2>
+    <h2>Let’s Talk About What Your Team Needs</h2>
     <div class="v3-cta-inner">
-      <p>I'm available for consulting projects and open to full-time roles. Let's have a conversation.</p>
-      <a class="v3-btn-light" href="mailto:natasha.katson@gmail.com">Get in Touch →</a>
-      <p class="v3-cta-note">No commitment. Just a conversation.</p>
+      <p>Preparing a launch? Rethinking your positioning? Trying to get product, marketing, and sales working together?</p>
+      <p>Tell me what you’re working on and where you need help.</p>
+      <a class="v3-btn-light" href="mailto:natasha.katson@gmail.com">Get in Touch</a>
     </div>
   </div>
 
@@ -660,7 +724,7 @@
     <div class="v3-beyond-inner">
       <div class="v3-section-header">
         <span class="v3-section-label">Beyond the Office</span>
-        <h2 class="v3-section-title">Mom, Creative Soul &amp; AI Builder</h2>
+        <h2 class="v3-section-title">Mom, Outdoor Explorer &amp; Curious Builder</h2>
       </div>
       <div class="v3-interest-grid">
         <div class="v3-interest-card">
@@ -686,7 +750,14 @@
       </div>
       <div class="v3-blog-card">
         <div>
-          <div class="v3-blog-card-title">Beyond the Boardroom</div>
+          <h3 class="v3-blog-card-title"><span aria-hidden="true">🗺️ 🏛️</span> History All Around</h3>
+          <p class="v3-blog-card-body">History All Around is my personal history exploration project, built with AI. It brings together my curiosity about the past and my love of exploring, helping people discover history through maps and the places around them.</p>
+        </div>
+        <a href="/historyallaround/" class="v3-blog-link" target="_blank" rel="noopener">Explore History All Around →</a>
+      </div>
+      <div class="v3-blog-card">
+        <div>
+          <div class="v3-blog-card-title"><span aria-hidden="true">✍️</span> Beyond the Boardroom</div>
           <p class="v3-blog-card-body">A personal corner of the internet — intentionally separate from my professional world. Adventures in motherhood, creative pursuits, and the everyday moments that bring meaning to life.</p>
         </div>
         <a href="{{ if eq .Lang "ru" }}/ru/blog/{{ else }}/blog/{{ end }}" class="v3-blog-link" target="_blank" rel="noopener">Visit My Blog →</a>
