@@ -179,6 +179,8 @@
     return `${Math.abs(point[1]).toFixed(2)}°${point[1] < 0 ? "S" : "N"}, ${Math.abs(point[0]).toFixed(2)}°${point[0] < 0 ? "W" : "E"}`;
   }
   function locationName(point) {
+    const water = waterAtYear(point);
+    if (water) return water.water.properties.name;
     const country = lo.countries.find(
       (f) => inBox(f.bbox, point) && d3.geoContains(f, point),
     );
@@ -411,10 +413,15 @@
   borderConfidence.className = "border-confidence";
   borderConfidence.innerHTML = '<summary><span aria-hidden="true" class="border-swatch"></span><span data-border-confidence>Approximate historical borders</span></summary><p>Dashed outlines show simplified historical reconstructions. Source extents can combine political claims, military control and administration; they do not define sovereign borders. Frontiers could be fluid or disputed, and effective control could vary within an outline. The source provides no confidence score for individual boundaries. Gaps mean missing coverage, not uninhabited land.</p><a href="https://github.com/Seshat-Global-History-Databank/cliopatria" target="_blank" rel="noopener">Cliopatria / Seshat source ↗</a>';
   document.querySelector(".borders-control").append(borderConfidence);
+  const waterKey = document.createElement("p");
+  waterKey.className = "water-key";
+  waterKey.innerHTML = '<i aria-hidden="true"></i> Inland water · hover or tap for country context';
+  document.querySelector(".borders-control").append(waterKey);
   cv.setAttribute("aria-describedby", "borderConfidence");
   function renderBorderConfidence() {
     const years = compare.on ? [compare.left, state.year] : [state.year];
     borderConfidence.hidden = state.borders !== "history" || years.every((year) => year < -1000000);
+    waterKey.hidden = years.every((year) => year < -1000000);
     const available = years.filter((year) => !borderStatus(year)).length;
     borderConfidence.querySelector("[data-border-confidence]").textContent = available === years.length
       ? "Approximate historical borders" : available ? "Approximate borders · incomplete coverage" : "Historical borders · coverage unavailable";
@@ -768,7 +775,11 @@
       if (state.year === v.year && !state.sel && !selectedPolity) {
         const f = core.active(fs || [], borderYear(year)).find((f) => f.name === v.polity &&
           (v.polityMember == null || f.member === v.polityMember));
-        if (f) selectPolity(f, year);
+        if (f) {
+          selectPolity(f, year);
+          lastPoint = v.point;
+          renderDetail();
+        }
       }
     }
     return true;
@@ -923,7 +934,7 @@
                   peer.member !== f.member ||
                   peer.shapeKey !== f.shapeKey
                 )
-                  path(f);
+                  path(HistoryWater.outline(f));
               }
               ctx.strokeStyle = C.accent;
               ctx.lineWidth = 2;
@@ -991,6 +1002,16 @@
       searchPlace = null;
       compare.selectedYear = year;
     },
+    selectWater(point, year, polity) {
+      lastPoint = point;
+      searchPlace = null;
+      state.sel = null;
+      selectedPolity = polity;
+      compare.selectedYear = year;
+      stopPlay(); stopSpin();
+      renderDetail(); draw();
+      if (innerWidth <= 860) document.getElementById('detail').scrollIntoView({ block: 'start', behavior: 'smooth' });
+    },
     selectedRecord(year) {
       lastPoint = null;
       searchPlace = null;
@@ -1025,6 +1046,18 @@
         : x
           ? [x.lon, x.lat]
           : null;
+      const waterYear = compare.on && [compare.left, state.year].includes(compare.selectedYear)
+        ? compare.selectedYear : state.year;
+      const waterHit = !x && !searchPlace && point
+        ? withYear(waterYear, () => waterAtYear(point)) : null;
+      if (waterHit) {
+        const year = waterYear;
+        const content = `<div class="kicker">Inland water · ${esc(fmt(year))}</div><h4>${esc(waterHit.water.properties.name)}</h4><p><strong>${esc(waterHit.relationship)}</strong></p><p>Blue marks water. Country context follows the selected year.</p><details><summary>Shoreline &amp; source</summary><p>${waterHit.water.properties.historical ? "Generalized lake outline from the historical map; not a dated shoreline survey." : "Modern reference shoreline; historical water levels may differ."} Names are present-day references.</p><a href="${esc(HistoryWater.source)}" target="_blank" rel="noopener">Natural Earth water reference ↗</a></details>`;
+        const detail = document.querySelector('#detail .detail');
+        if (detail) detail.insertAdjacentHTML('afterbegin', `<section class="water-context">${content}</section>`);
+        else document.getElementById('detail').innerHTML = `<div class="detail water-context"><button type="button" class="iconbtn close" aria-label="Close">×</button>${content}</div>`;
+        document.querySelector('#detail .close').onclick = () => { lastPoint = null; selectedPolity = null; update(); };
+      }
       if (point && x?.cat !== "dinosaurs")
         addPlaceAction(
           document.querySelector("#detail .detail") ||

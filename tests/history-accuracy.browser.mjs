@@ -121,6 +121,8 @@ try {
         }
       }
     }
+    // Test water surfaces independently of the new lake-name labels.
+    const textMethods=[ctx.fillText,ctx.strokeText];ctx.fillText=()=>{};ctx.strokeText=()=>{};
     setMode('globe');stopSpin();rot=[84,-44,0];zoomK=6;render();
     const paint=point=>{const [x,y]=proj(point);return [...ctx.getImageData(Math.round(x*DPR),Math.round(y*DPR),1,1).data]};
     for(const point of [[-87,44],[-88.5,47.5],[-87,48],[-82.6,44.5],[-81.5,44.8],[-81,42],[-81,42.4],[-77.8,43.5],[-78,43.7]]){
@@ -134,7 +136,7 @@ try {
       const [x,y]=proj(point),offset=(Math.round(y*DPR)*cv.width+Math.round(x*DPR))*4,off=paint(point);
       assert(off.slice(0,3).every((v,i)=>Math.abs(v-modern[offset+i])<=2),'water stays water when borders are hidden');
     }
-    state.borders=prior;render();
+    state.borders=prior;[ctx.fillText,ctx.strokeText]=textMethods;render();
     // History scans, search selections and shared selections must use the same
     // corrected lake geometry as the rendered map, not the archived shore detour.
     for(const [name,point,country] of [

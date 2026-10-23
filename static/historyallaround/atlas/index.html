@@ -484,6 +484,8 @@ header .seg{padding:2px;background:#f0ebe3;border:1px solid rgba(45,36,32,.1);bo
 <script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
 <script src="discovery-core.js"></script>
 <script src="great-lakes.js"></script>
+<script src="water-data.js"></script>
+<script src="water.js"></script>
 <script>
 // [start, end|null, approx(0/1), title, blurb, lat, lon, region, category, wikiSlug]
 // regions: eu Europe, me Middle East & North Africa, af Sub-Saharan Africa, as Asia, am Americas, oc Oceania
@@ -865,7 +867,7 @@ let rot=[-25,-22,0],zoomK=1,flatT={x:0,y:0},userMoved=false,selectedPolity=null;
 
 // ---------- styles from tokens
 let starLayer=null;
-let C={};function readColors(){const s=getComputedStyle(document.getElementById("stage"));for(const k of["paper","ink","muted","ocean","ocean-2","land","land-edge","grat","border","atmo","shade","star","water-label","accent","halo","c-power","c-war","c-ideas","c-culture","c-nature","c-fashion","c-dinosaurs"])C[k]=s.getPropertyValue("--"+k).trim();
+let C={};function readColors(){const s=getComputedStyle(document.getElementById("stage"));for(const k of["paper","ink","muted","ocean","ocean-2","land","land-edge","lake","lake-edge","lake-ink","grat","border","atmo","shade","star","water-label","accent","halo","c-power","c-war","c-ideas","c-culture","c-nature","c-fashion","c-dinosaurs"])C[k]=s.getPropertyValue("--"+k).trim();
   C.mono=s.getPropertyValue("--mono");C.display=s.getPropertyValue("--display");starLayer=null}
 readColors();
 const mq=matchMedia("(prefers-color-scheme: dark)");mq.addEventListener?.("change",()=>{readColors();draw()});
@@ -980,22 +982,24 @@ function renderScene(){
   ctx.beginPath();path({type:"Sphere"});ctx.fillStyle=og;ctx.fill();
   ctx.beginPath();path(grat);ctx.strokeStyle=C.grat;ctx.lineWidth=.8;ctx.stroke();
   ctx.beginPath();path(G.land);ctx.fillStyle=C.land;ctx.fill();
-  const lw=Math.min(1.35,.68+.11*zoomK);let pols=[];
-  if(!G.ancient&&state.borders==="history"&&!currentBorderFailed()){pols=polities();
+  const lw=Math.min(1.35,.68+.11*zoomK);
+  const pols=!G.ancient&&state.borders==="history"&&!currentBorderFailed()?polities():[];
+  const water=G.ancient?null:HistoryWater.visible(pols.length?HistoryWater.scene(pols):HistoryWater.scene(),proj,W,H,R,globe?center:null);
+  if(!G.ancient&&state.borders==="history"&&!currentBorderFailed()){
     // Preserve area order: a broad realm must never repaint a smaller territory
     // after its fill simply because the realm happens to use a later colour.
     for(const f of pols){ctx.beginPath();path(f);ctx.fillStyle=STATE_FILLS[f.hue];ctx.fill()}
     // Repaint nested self-governing territories after their sovereign realm so both remain legible.
     for(const f of pols)if(f.territoryOverlay){ctx.beginPath();path(f);ctx.fillStyle=STATE_FILLS[f.hue];ctx.fill()}
     // Water has its own shoreline; country boundaries continue across it.
-    ctx.beginPath();path(HistoryGreatLakes.lakes);ctx.fillStyle=og;ctx.fill();
-    ctx.beginPath();for(const f of pols)path(f);ctx.strokeStyle=C.border;ctx.lineWidth=lw;ctx.setLineDash([3,2]);ctx.stroke();ctx.setLineDash([]);
-    if(selectedPolity){const f=pols.find(p=>samePolity(p,selectedPolity));if(f){ctx.beginPath();path(f);ctx.strokeStyle=C.accent;ctx.lineWidth=2.4;ctx.stroke()}}}
+    ctx.beginPath();path(water);ctx.fillStyle=C.lake;ctx.fill();
+    ctx.beginPath();for(const f of pols)path(HistoryWater.outline(f));ctx.strokeStyle=C.border;ctx.lineWidth=lw;ctx.setLineDash([3,2]);ctx.stroke();ctx.setLineDash([]);
+    if(selectedPolity){const f=pols.find(p=>samePolity(p,selectedPolity));if(f){ctx.beginPath();path(HistoryWater.outline(f));ctx.strokeStyle=C.accent;ctx.lineWidth=2.4;ctx.stroke()}}}
   else if(!G.ancient){
-    ctx.beginPath();path(HistoryGreatLakes.lakes);ctx.fillStyle=og;ctx.fill();
+    ctx.beginPath();path(water);ctx.fillStyle=C.lake;ctx.fill();
     if(state.borders==="today"){ctx.beginPath();path(G.borders);ctx.strokeStyle=C.border;ctx.lineWidth=lw;ctx.stroke()}}
-  if(!G.ancient){ctx.beginPath();path(HistoryGreatLakes.lakes);ctx.strokeStyle=C["land-edge"];ctx.lineWidth=.8;ctx.stroke()}
   ctx.beginPath();path(G.land);ctx.strokeStyle=C["land-edge"];ctx.lineWidth=.8;ctx.stroke();
+  if(!G.ancient){ctx.beginPath();path(water);ctx.strokeStyle=C["lake-edge"];ctx.lineWidth=.8;ctx.stroke()}
   if(globe){// shade the far side, add a soft highlight and a rim
     const sh=ctx.createRadialGradient(cx-R*.3,cy-R*.35,R*.2,cx,cy,R);sh.addColorStop(0,"rgba(0,0,0,0)");sh.addColorStop(.55,"rgba(0,0,0,0)");sh.addColorStop(1,C.shade);
     ctx.beginPath();ctx.arc(cx,cy,R,0,7);ctx.fillStyle=sh;ctx.fill();
@@ -1019,6 +1023,18 @@ function renderScene(){
       let ly=null;for(const dy of[0,16,-16,30,-30]){const b=[cx2-tw/2-4,cy2+dy-8,tw+8,16];if(!hitsBox(b)){ly=cy2+dy;polLabels.push(b);break}}if(ly===null)continue;n++;
       ctx.lineWidth=2.5;ctx.strokeStyle=C.halo;ctx.strokeText(t,cx2,ly);ctx.fillStyle=C.ink;ctx.fillText(t,cx2,ly)}
     ctx.textAlign="start"}
+  if(!G.ancient&&zoomK>=2){
+    ctx.save();ctx.font=`italic 500 ${W<600?10:11}px ${C.display}`;ctx.textAlign="center";ctx.textBaseline="middle";
+    const named=new Set();
+    for(const lake of water.features){
+      const name=lake.properties.name,bw=Math.sqrt(lake.area)*R;
+      if(name==="Unnamed lake"||named.has(name)||bw<14||!visible(...lake.point))continue;
+      const p=proj(lake.point),tw=ctx.measureText(name).width,b=[p[0]-tw/2-3,p[1]-8,tw+6,16];
+      if(tw>bw*5||b[0]<6||b[1]<6||b[0]+b[2]>W-6||b[1]+b[3]>H-6)continue;
+      if(polLabels.some(o=>!(b[0]>o[0]+o[2]||b[0]+b[2]<o[0]||b[1]>o[1]+o[3]||b[1]+b[3]<o[1]))||marks.some(([x,y])=>x>b[0]-9&&x<b[0]+b[2]+9&&y>b[1]-9&&y<b[1]+b[3]+9))continue;
+      named.add(name);polLabels.push(b);ctx.lineWidth=3;ctx.strokeStyle=C.halo;ctx.strokeText(name,...p);ctx.fillStyle=C["lake-ink"];ctx.fillText(name,...p);
+    }ctx.restore();
+  }
   hits=[];
   if(window.HistoryChallenge?.isPicking())return;
   const people=alivePeople();
@@ -1063,7 +1079,7 @@ function hover(){hoverQ=0;const e=hoverE;if(!e||drag)return;
   const r=cv.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,h=nearest(x,y),m=h?null:mapAt(x,y);cv.classList.toggle("hot",!!(h||m));
   const tip=document.getElementById("tip"),lbl=h?h.label:m&&m.label;
   if(lbl&&e.pointerType==="mouse"){tip.hidden=false;tip.textContent=lbl;tip.classList.toggle("country",!h);tip.style.left=x+"px";tip.style.top=y+"px"}else tip.hidden=true}
-cv.addEventListener("pointerup",e=>{cv.classList.remove("dragging");const d=drag;drag=null;if(d&&!d.moved){if(window.HistoryChallenge?.pickMap(e)){endPt(e);e.stopImmediatePropagation();return}const r=cv.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,h=nearest(x,y);if(h)select(h.id,false,h.year??null);else{const m=mapAt(x,y);if(m&&m.polity)selectPolity(m.polity,m.year??state.year);else if(m&&e.pointerType!=="mouse"){const tip=document.getElementById("tip");tip.hidden=false;tip.textContent=m.label;tip.classList.add("country");tip.style.left=x+"px";tip.style.top=y+"px";clearTimeout(tapT);tapT=setTimeout(()=>tip.hidden=true,2500)}}}});
+cv.addEventListener("pointerup",e=>{cv.classList.remove("dragging");const d=drag;drag=null;if(d&&!d.moved){if(window.HistoryChallenge?.pickMap(e)){endPt(e);e.stopImmediatePropagation();return}const r=cv.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,h=nearest(x,y);if(h)select(h.id,false,h.year??null);else{const m=mapAt(x,y);if(m?.water&&window.HistoryDiscovery)HistoryDiscovery.selectWater(proj.invert([x,y]),m.year??state.year,m.polity);else if(m&&m.polity)selectPolity(m.polity,m.year??state.year);else if(m&&e.pointerType!=="mouse"){const tip=document.getElementById("tip");tip.hidden=false;tip.textContent=m.label;tip.classList.add("country");tip.style.left=x+"px";tip.style.top=y+"px";clearTimeout(tapT);tapT=setTimeout(()=>tip.hidden=true,2500)}}}});
 cv.addEventListener("pointerleave",()=>{hoverE=null;document.getElementById("tip").hidden=true});
 cv.addEventListener("wheel",e=>{e.preventDefault();setZoom(zoomK*Math.exp(-e.deltaY*0.0015))},{passive:false});
 let pinch=null;const pts=new Map();
@@ -1073,8 +1089,13 @@ const endPt=e=>{pts.delete(e.pointerId);if(pts.size<2)pinch=null};cv.addEventLis
 function setZoom(k){zoomK=Math.max(.7,Math.min(6,k));userMoved=true;needHi();moved();draw()}
 const inBox=(b,ll)=>{const[[w,so],[ea,n]]=b;if(ll[1]<so||ll[1]>n)return false;return w<=ea?(ll[0]>=w&&ll[0]<=ea):(ll[0]>=w||ll[0]<=ea)};
 function mapAt(x,y){if(window.HistoryDiscovery)return window.HistoryDiscovery.mapAt(x,y,mapAtYear);return mapAtYear(x,y)}
-function mapAtYear(x,y){if(window.HistoryPaleogeography?.isDeep(state.year)||state.borders==="off"||(state.borders==="history"&&currentBorderFailed()))return null;const ll=proj.invert([x,y]);if(!ll||isNaN(ll[0]))return null;
+function waterAtYear(point){if(window.HistoryPaleogeography?.isDeep(state.year))return null;
+  const features=state.borders==="history"&&!currentBorderFailed()?polities():state.borders==="today"?(hi||lo).countries:undefined;
+  return HistoryWater.hit(point,features)}
+function mapAtYear(x,y){if(window.HistoryPaleogeography?.isDeep(state.year))return null;const ll=proj.invert([x,y]);if(!ll||isNaN(ll[0]))return null;
   if(state.mode==="globe"&&!visible(ll[0],ll[1]))return null;
+  const water=waterAtYear(ll);if(water)return {...water,polity:state.borders==="history"?water.polity:null};
+  if(state.borders==="off"||(state.borders==="history"&&currentBorderFailed()))return null;
   if(state.borders==="history"&&!currentBorderFailed()){const pols=polities();let hit=null;
     for(const f of pols)if(inBox(f.bbox,ll)&&d3.geoContains(f,ll)&&(!hit||f.area<hit.area))hit=f;
     return hit?{label:hit.name+(hit.member&&hit.member!==hit.name?` · part of ${hit.member}`:"")+(hit.basis?` · ${hit.basis}`:""),polity:hit}:null}

@@ -504,3 +504,47 @@ qualifications without merging them across different periods. Northern New Franc
 and French Louisiana are separate from the source’s other French colonial
 possessions. See [the accuracy review](history-accuracy-review.md#follow-up-review-source-meaning-and-chronology)
 for evidence and remaining source limitations.
+
+
+## Inland water and country context
+
+Lakes use a blue surface and thin blue shoreline, with names at regional zoom.
+Known lake cutouts in historical polygons are painted as water and omitted from
+country-boundary, selection and comparison-change strokes. Actual land enclaves
+keep their political outlines. Country containment geometry is unchanged.
+
+Hover or tap a lake to see its name and context for that side's selected year.
+An explicitly mapped water territory says **Within mapped …**; a lake cutout says
+**Surrounded by mapped …** and opens the surrounding political record beneath
+the water card. This distinguishes a water surface from a coverage gap without
+inferring sovereignty over shared waters. If no political record resolves the
+point, the card says so. A small blue swatch in Layers explains the surface key.
+
+Lake selections retain their point, year and surrounding record in shared views.
+Changing the timeline updates water context. Comparison uses each side's year,
+and water remains identifiable with borders Today or Off. Modern water is excluded
+from deep-time maps. The card's Shoreline & source disclosure distinguishes a
+source-map cutout from a modern reference shoreline; neither is a dated survey
+of water levels. Present-day names are geographic references.
+
+`water-data.js` is a local, rounded 457 KB extract of all 412 Natural Earth 1:50m
+lake/reservoir features (public domain). Undated reservoirs are excluded from the
+reference layer; they can only be recognized when a dated map record already has
+a matching cutout. The smaller modern Aral fragments are grouped for matching the
+larger historical Aral cutout. No country names or ownership are assigned in the
+water dataset. Matching and stroke geometry are cached in `water.js`.
+
+Regenerate from a local Natural Earth file; there is no runtime data service:
+
+```sh
+python3 -B scripts/build-history-water.py /path/to/ne_50m_lakes.geojson
+node tests/history-water.browser.mjs
+```
+
+Source: [Natural Earth 1:50m lakes](https://www.naturalearthdata.com/downloads/50m-physical-vectors/50m-lakes/).
+The dedicated browser suite verifies blue surfaces and labels in both projections,
+Aral/Balkhash/Issyk-Kul/Baikal context, unchanged political geometry, Lesotho's
+land enclave, US/Canada shared-lake sides, exact-view restoration, changing years,
+comparison dates, reservoir exclusion, deep time, real touch selection and the
+390px layout. Screenshots are written to the OS temporary directory as
+`history-water-ui-desktop.png` and `history-water-ui-mobile.png`.
