@@ -155,6 +155,7 @@ def verified_corrections(topo, chunk):
         if name not in {'French Fifth Republic', 'Netherlands Antilles', 'Estado Novo',
                         "People's Republic of Angola", 'Mali Federation', 'Denmark-Norway',
                         'Republic of Suriname', 'Kingdom of Great Britain', '(Kingdom of Great Britain)',
+                        'United Kingdom', '(United Kingdom)', 'Mujahideen',
                         'Former Yugoslav Republic of Macedonia', 'Federated Republic of Germany'}:
             result.append(original)
             continue
@@ -168,7 +169,9 @@ def verified_corrections(topo, chunk):
         elif name == "People's Republic of Angola":
             cuts = [1992]
         elif name in {'Kingdom of Great Britain', '(Kingdom of Great Britain)'}:
-            cuts = [1801]
+            cuts = [1801, 1971]
+        elif name in {'United Kingdom', '(United Kingdom)'}:
+            cuts = [1971]
         elif name == 'Former Yugoslav Republic of Macedonia':
             cuts = [2019]
         edges = [p['f'], *[y for y in cuts if p['f'] < y <= p['t']], p['t'] + 1]
@@ -186,6 +189,10 @@ def verified_corrections(topo, chunk):
                 q.update(n='Republic of North Macedonia', w='North_Macedonia')
             elif name == 'Federated Republic of Germany':
                 q.update(n='Federal Republic of Germany', w='Germany')
+            elif name == 'Mujahideen':
+                q.update(n='Mujahideen (source identity unverified)',
+                         status='This source uses a generic term, not a verified group identity. Its static outlines do not establish which armed group controlled these areas in a given year and must not be read as current front lines.',
+                         source='https://github.com/Seshat-Global-History-Databank/cliopatria')
             elif name == 'Denmark-Norway' and start >= 1815:
                 q.update(n='Denmark', w='Denmark')
             elif name == "People's Republic of Angola" and start >= 1992:
@@ -225,6 +232,14 @@ def verified_corrections(topo, chunk):
                     q.update(n='Dutch Caribbean territories', m='Kingdom of the Netherlands', w='Dutch_Caribbean')
             elif name == 'Republic of Suriname' and start == 1976:
                 q['f'] = 1975
+            if q['n'] in {'United Kingdom', '(United Kingdom)'} and start >= 1971:
+                # The 1969–2023 source version still unions in the Gulf states.
+                # Bahrain, Qatar and the UAE became independent in 1971.
+                set_polygons(topo, g, [part for part in polygons(g)
+                                      if not within(polygon_bounds(topo, part), (49, 15, 61, 28))])
+                q.update(lx=-2.59, ly=53.91)
+                if q['m'] == '(British Empire)':
+                    q['m'] = ''
             result.append(g)
     topo['objects']['p']['geometries'] = result
 

@@ -1,26 +1,27 @@
 {
-  "scope": "Complete local integrity scan; factual verification is explicitly limited to the documented corrections.",
+  "scope": "Every event summary and principal date reviewed against sources; all border files scanned for integrity. This is not an independent certification of every historical frontier.",
   "counts": {
     "events": 221,
     "people": 66,
-    "eventsWithSourceLinks": 45,
-    "sourceCheckedCorrections": 15,
+    "eventsWithSourceLinks": 221,
+    "sourceReviewedEvents": 221,
+    "correctedOrClarifiedEvents": 67,
     "borderChunks": 217,
-    "borderFeatureInstances": 22138,
-    "distinctBorderVersions": 13327,
-    "decodedArcs": 134444,
-    "historicalSearchRecords": 2092
+    "borderFeatureInstances": 22142,
+    "distinctBorderVersions": 13331,
+    "decodedArcs": 134438,
+    "historicalSearchRecords": 2096
   },
   "errors": [],
   "warnings": [
-    "176 events still lack an independent source link. A valid year/point is not a historical fact-check.",
+    "An independent source link and a valid year/point do not certify every detail. Ancient dates, representative locations and interpretive claims retain the qualifications in each entry.",
     "Border geometries remain approximate source reconstructions; overlapping historical claims and all frontier segments have not been independently certified.",
     "2025–2026 display the 2024 border snapshot; it is not a current conflict or occupation map."
   ],
   "events": [
     {
       "id": "e0",
-      "title": "Earliest known Homo sapiens",
+      "title": "Early Homo sapiens at Jebel Irhoud",
       "start": -300000,
       "end": -300000,
       "approximate": true,
@@ -29,8 +30,9 @@
         31.86
       ],
       "wiki": "Jebel_Irhoud",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": null,
+      "source": "https://doi.org/10.1038/nature22336"
     },
     {
       "id": "e1",
@@ -43,7 +45,8 @@
         -34.41
       ],
       "wiki": "Blombos_Cave",
-      "evidence": "source-checked correction or clarification",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": null,
       "source": "https://doi.org/10.1126/science.1067575"
     },
     {
@@ -57,12 +60,13 @@
         -12.4
       ],
       "wiki": "Prehistory_of_Australia",
-      "evidence": "source-checked correction or clarification",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": null,
       "source": "https://www.nature.com/articles/nature22968"
     },
     {
       "id": "e3",
-      "title": "Last Neanderthals",
+      "title": "Neanderthals disappear from Europe",
       "start": -38000,
       "end": -38000,
       "approximate": true,
@@ -71,8 +75,9 @@
         36.14
       ],
       "wiki": "Neanderthal",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": null,
+      "source": "https://pubmed.ncbi.nlm.nih.gov/25143113/"
     },
     {
       "id": "e4",
@@ -85,12 +90,13 @@
         44.39
       ],
       "wiki": "Chauvet_Cave",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://archeologie.culture.gouv.fr/chauvet/en/aurignacian-cave-art"
     },
     {
       "id": "e5",
-      "title": "Monte Verde settlement",
+      "title": "Monte Verde and the early peopling of the Americas",
       "start": -12500,
       "end": -12500,
       "approximate": true,
@@ -99,8 +105,9 @@
         -41.5
       ],
       "wiki": "Monte_Verde",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": null,
+      "source": "https://doi.org/10.1126/science.adw9217"
     },
     {
       "id": "e6",
@@ -113,8 +120,9 @@
         37.22
       ],
       "wiki": "Göbekli_Tepe",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://whc.unesco.org/en/list/1572/"
     },
     {
       "id": "e7",
@@ -127,8 +135,9 @@
         31.87
       ],
       "wiki": "Neolithic_Revolution",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.fhw.gr/chronos/01/en/intro/agriculture.html"
     },
     {
       "id": "e8",
@@ -141,12 +150,13 @@
         37.67
       ],
       "wiki": "Çatalhöyük",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://whc.unesco.org/en/list/1405/"
     },
     {
       "id": "e9",
-      "title": "Writing invented in Sumer",
+      "title": "Early writing at Uruk",
       "start": -3200,
       "end": -3200,
       "approximate": true,
@@ -155,8 +165,9 @@
         31.32
       ],
       "wiki": "Cuneiform",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": null,
+      "source": "https://www.metmuseum.org/essays/the-origins-of-writing"
     },
     {
       "id": "e10",
@@ -169,8 +180,9 @@
         26.18
       ],
       "wiki": "Narmer",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.britishmuseum.org/blog/gaverne-bennetts-highlight-objects-african-kingdoms-timeline"
     },
     {
       "id": "e11",
@@ -183,8 +195,9 @@
         51.18
       ],
       "wiki": "Stonehenge",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.english-heritage.org.uk/visit/places/stonehenge/history-and-stories/history/"
     },
     {
       "id": "e12",
@@ -197,22 +210,24 @@
         27.33
       ],
       "wiki": "Mohenjo-daro",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://whc.unesco.org/en/list/138/"
     },
     {
       "id": "e13",
       "title": "Great Pyramid of Giza",
-      "start": -2560,
-      "end": -2560,
+      "start": -2550,
+      "end": -2550,
       "approximate": true,
       "point": [
         31.13,
         29.98
       ],
       "wiki": "Great_Pyramid_of_Giza",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": null,
+      "source": "https://giza.fas.harvard.edu/gizaintro/"
     },
     {
       "id": "e14",
@@ -225,8 +240,9 @@
         33.1
       ],
       "wiki": "Sargon_of_Akkad",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": null,
+      "source": "https://resources.metmuseum.org/resources/metpublications/pdf/Ancient_Art_in_Miniature_Ancient_Near_Eastern_Seals_from_the_Collection_of_Martin_and_Sarah_Cherkask.pdf"
     },
     {
       "id": "e15",
@@ -239,8 +255,9 @@
         32.54
       ],
       "wiki": "Code_of_Hammurabi",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.louvre.fr/le-code-de-hammurabi"
     },
     {
       "id": "e16",
@@ -253,8 +270,9 @@
         36.4
       ],
       "wiki": "Minoan_eruption",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": null,
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9488803/"
     },
     {
       "id": "e17",
@@ -267,8 +285,9 @@
         34.56
       ],
       "wiki": "Battle_of_Kadesh",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.britishmuseum.org/collection/term/x13949"
     },
     {
       "id": "e18",
@@ -281,8 +300,9 @@
         36.1
       ],
       "wiki": "Oracle_bone_script",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://whc.unesco.org/en/list/1114"
     },
     {
       "id": "e19",
@@ -295,22 +315,24 @@
         17.75
       ],
       "wiki": "Olmecs",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "correction or clarification",
+      "source": "https://www.lacma.org/sites/default/files/module-uploads/E4E_Olmec.pdf"
     },
     {
       "id": "e20",
       "title": "Bronze Age collapse",
-      "start": -1177,
-      "end": -1177,
+      "start": -1200,
+      "end": -1200,
       "approximate": true,
       "point": [
         33.5,
         35.5
       ],
       "wiki": "Late_Bronze_Age_collapse",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "correction or clarification",
+      "source": "https://www.cambridge.org/core/journals/antiquity/article/getting-closer-to-the-late-bronze-age-collapse-in-the-aegean-and-eastern-mediterranean-c-1200-bc/482564326A668899FF183DD949FC520F"
     },
     {
       "id": "e21",
@@ -323,7 +345,8 @@
         6
       ],
       "wiki": "Bantu_expansion",
-      "evidence": "source-checked correction or clarification",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": null,
       "source": "https://www.nature.com/articles/s41586-023-06770-6"
     },
     {
@@ -337,12 +360,13 @@
         -21.1
       ],
       "wiki": "Lapita_culture",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://doi.org/10.1073%2Fpnas.181335398"
     },
     {
       "id": "e23",
-      "title": "First Olympic Games",
+      "title": "Traditional date of the first recorded Olympic Games",
       "start": -776,
       "end": -776,
       "approximate": true,
@@ -351,8 +375,9 @@
         37.64
       ],
       "wiki": "Ancient_Olympic_Games",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": null,
+      "source": "https://www.olympics.com/ioc/ancient-olympic-games/history"
     },
     {
       "id": "e24",
@@ -365,8 +390,9 @@
         41.89
       ],
       "wiki": "Founding_of_Rome",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://museicapitolini.org/en/node/2482"
     },
     {
       "id": "e25",
@@ -379,8 +405,9 @@
         32.54
       ],
       "wiki": "Fall_of_Babylon",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": null,
+      "source": "https://www.metmuseum.org/exhibitions/listings/2013/cyrus-cylinder"
     },
     {
       "id": "e26",
@@ -393,8 +420,9 @@
         37.97
       ],
       "wiki": "Athenian_democracy",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://generales.uprrp.edu/humanidades/wp-content/uploads/sites/5/2018/09/TheDevolpmentoofDemocracyinAthen.pdf"
     },
     {
       "id": "e27",
@@ -407,8 +435,9 @@
         9.5
       ],
       "wiki": "Nok_culture",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "correction or clarification",
+      "source": "https://pure.qub.ac.uk/files/163792990/Safa_2016_Sessions.pdf"
     },
     {
       "id": "e28",
@@ -421,8 +450,9 @@
         38.15
       ],
       "wiki": "Battle_of_Marathon",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.britishmuseum.org/blog/marathons-ancient-origins"
     },
     {
       "id": "e29",
@@ -435,8 +465,9 @@
         37.97
       ],
       "wiki": "Parthenon",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.theacropolismuseum.gr/en/exhibit-halls/parthenon-gallery"
     },
     {
       "id": "e30",
@@ -449,8 +480,9 @@
         36.36
       ],
       "wiki": "Wars_of_Alexander_the_Great",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://weisun.org/apworld/assign/readings/cc_hellenistic_Between334_and_323.pdf"
     },
     {
       "id": "e31",
@@ -463,8 +495,9 @@
         20.3
       ],
       "wiki": "Kalinga_War",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://82nd-and-fifth.metmuseum.org/toah/ht/04/ssa.html"
     },
     {
       "id": "e32",
@@ -477,8 +510,9 @@
         34.33
       ],
       "wiki": "Qin_dynasty",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://asia-archive.si.edu/learn/for-educators/teaching-china-with-the-smithsonian/explore-by-dynasty/qin-dynasty/"
     },
     {
       "id": "e33",
@@ -491,50 +525,54 @@
         45.2
       ],
       "wiki": "Hannibal's_crossing_of_the_Alps",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://doi.org/10.1073/pnas.2612764123"
     },
     {
       "id": "e34",
       "title": "Han dynasty",
-      "start": -202,
-      "end": -202,
+      "start": -206,
+      "end": -206,
       "approximate": false,
       "point": [
         108.9,
         34.27
       ],
       "wiki": "Han_dynasty",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "correction or clarification",
+      "source": "https://82nd-and-fifth.metmuseum.org/toah/ht/05/eac.html"
     },
     {
       "id": "e35",
-      "title": "Silk Road opens",
-      "start": -130,
-      "end": -130,
+      "title": "Zhang Qian journeys west",
+      "start": -138,
+      "end": -138,
       "approximate": true,
       "point": [
-        94.66,
-        40.14
+        108.9,
+        34.27
       ],
       "wiki": "Silk_Road",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "correction or clarification",
+      "source": "https://en.unesco.org/silkroad/sites/default/files/knowledge-bank-article/the%20opening%20of%20the%20silk%20route.pdf"
     },
     {
       "id": "e36",
-      "title": "Teotihuacan rises",
-      "start": -100,
-      "end": -100,
+      "title": "Teotihuacan grows into a great city",
+      "start": 100,
+      "end": 100,
       "approximate": true,
       "point": [
         -98.84,
         19.69
       ],
       "wiki": "Teotihuacan",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "correction or clarification",
+      "source": "https://whc.unesco.org/en/list/414/"
     },
     {
       "id": "e37",
@@ -547,8 +585,9 @@
         41.89
       ],
       "wiki": "Assassination_of_Julius_Caesar",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.smithsonianmag.com/travel/explore-julius-caesars-rome-180950262/"
     },
     {
       "id": "e38",
@@ -561,8 +600,9 @@
         40.75
       ],
       "wiki": "Eruption_of_Mount_Vesuvius_in_79_AD",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://rischi.protezionecivile.gov.it/en/approfondimento/vesuvio-0/"
     },
     {
       "id": "e39",
@@ -575,8 +615,9 @@
         34.62
       ],
       "wiki": "Cai_Lun",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://mci.si.edu/node/1301320"
     },
     {
       "id": "e40",
@@ -589,8 +630,9 @@
         55
       ],
       "wiki": "Hadrian's_Wall",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "clarification",
+      "source": "https://whc.unesco.org/en/list/430/"
     },
     {
       "id": "e41",
@@ -603,8 +645,9 @@
         17.22
       ],
       "wiki": "Tikal",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.britishmuseum.org/collection/term/x298217"
     },
     {
       "id": "e42",
@@ -617,8 +660,9 @@
         45.46
       ],
       "wiki": "Edict_of_Milan",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://sourcebooks.web.fordham.edu/source/edict-milan.asp"
     },
     {
       "id": "e43",
@@ -631,8 +675,9 @@
         25.6
       ],
       "wiki": "Gupta_Empire",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "correction or clarification",
+      "source": "https://jameelcentre.ashmolean.org/collection/921/per_page/50/offset/0/sort_by/date/start/1701/end/1799/object/11150"
     },
     {
       "id": "e44",
@@ -645,8 +690,9 @@
         41.01
       ],
       "wiki": "Constantinople",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.europeana.eu/en/exhibitions/the-silk-and-the-blood/constantinople"
     },
     {
       "id": "e45",
@@ -659,8 +705,9 @@
         14.13
       ],
       "wiki": "Kingdom_of_Aksum",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://journals.sub.uni-hamburg.de/aethiopica/article/download/2433/2360"
     },
     {
       "id": "e46",
@@ -673,8 +720,9 @@
         44.42
       ],
       "wiki": "Fall_of_the_Western_Roman_Empire",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.metmuseum.org/it/toah/ht/05/eust"
     },
     {
       "id": "e47",
@@ -687,8 +735,9 @@
         25.6
       ],
       "wiki": "Aryabhatiya",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://mathshistory.st-andrews.ac.uk/Biographies//Aryabhata_I/"
     },
     {
       "id": "e48",
@@ -701,8 +750,9 @@
         41.01
       ],
       "wiki": "Hagia_Sophia",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "correction or clarification",
+      "source": "https://whc.unesco.org/en/list/356/"
     },
     {
       "id": "e49",
@@ -715,8 +765,9 @@
         41
       ],
       "wiki": "Plague_of_Justinian",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "correction or clarification",
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11433773/"
     },
     {
       "id": "e50",
@@ -729,8 +780,9 @@
         34.27
       ],
       "wiki": "Tang_dynasty",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "correction or clarification",
+      "source": "https://resources.metmuseum.org/resources/metpublications/pdf/The_Metropolitan_Museum_of_Art_Bulletin_v_23_no_9_May_1965.pdf"
     },
     {
       "id": "e51",
@@ -743,8 +795,9 @@
         24.47
       ],
       "wiki": "Hijrah",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://islam.museum/en/journey/hijra-route/"
     },
     {
       "id": "e52",
@@ -757,8 +810,9 @@
         36.5
       ],
       "wiki": "Umayyad_conquest_of_Hispania",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.metmuseum.org/-/media/files/learn/for%20educators/publications%20for%20educators/islamic%20teacher%20resource/unit5.pdf"
     },
     {
       "id": "e53",
@@ -771,8 +825,9 @@
         33.31
       ],
       "wiki": "Baghdad",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.metmuseum.org/ru/essays/the-art-of-the-abbasid-period-750-1258"
     },
     {
       "id": "e54",
@@ -785,8 +840,9 @@
         55.68
       ],
       "wiki": "Lindisfarne",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.english-heritage.org.uk/visit/places/lindisfarne-priory/History/"
     },
     {
       "id": "e55",
@@ -799,8 +855,9 @@
         41.9
       ],
       "wiki": "Charlemagne",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.metmuseum.org/de/essays/carolingian-art"
     },
     {
       "id": "e56",
@@ -813,7 +870,8 @@
         40.14
       ],
       "wiki": "Diamond_Sutra",
-      "evidence": "source-checked correction or clarification",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": null,
       "source": "https://idp.bl.uk/wp-content/uploads/2025/01/BL.SR_.Large_.Print_.Guide_.V3.pdf"
     },
     {
@@ -827,8 +885,9 @@
         50.45
       ],
       "wiki": "Christianization_of_Kievan_Rus'",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://82nd-and-fifth.metmuseum.org/toah/ht/06/eue.html"
     },
     {
       "id": "e58",
@@ -841,7 +900,8 @@
         51.6
       ],
       "wiki": "L'Anse_aux_Meadows",
-      "evidence": "source-checked correction or clarification",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": null,
       "source": "https://www.nature.com/articles/s41586-021-03972-8"
     },
     {
@@ -855,7 +915,8 @@
         38.66
       ],
       "wiki": "Cahokia",
-      "evidence": "source-checked correction or clarification",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": null,
       "source": "https://whc.unesco.org/en/list/198/"
     },
     {
@@ -869,8 +930,9 @@
         41.01
       ],
       "wiki": "East–West_Schism",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.cambridge.org/core/journals/traditio/article/abs/rethinking-the-schism-of-1054-authority-heresy-and-the-latin-rite/5DD029378209D589C69471CBCFFE8F1C"
     },
     {
       "id": "e61",
@@ -883,22 +945,24 @@
         50.91
       ],
       "wiki": "Battle_of_Hastings",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://historicengland.org.uk/listing/the-list/list-entry/1000013"
     },
     {
       "id": "e62",
       "title": "University of Bologna",
       "start": 1088,
       "end": 1088,
-      "approximate": false,
+      "approximate": true,
       "point": [
         11.34,
         44.49
       ],
       "wiki": "University_of_Bologna",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "correction or clarification",
+      "source": "https://www.unibo.it/en/university/who-we-are/university-today/the-university-today-numbers-and-innovation-archive/university-of-bologna-brochure-2021-22/%40%40download/file/Brochure%20Ateneo%202021_22.pdf"
     },
     {
       "id": "e63",
@@ -911,8 +975,9 @@
         31.78
       ],
       "wiki": "First_Crusade",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.metmuseum.org/de/toah/ht/07/wae"
     },
     {
       "id": "e64",
@@ -925,8 +990,9 @@
         -20.27
       ],
       "wiki": "Great_Zimbabwe",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://whc.unesco.org/en/list/364"
     },
     {
       "id": "e65",
@@ -939,8 +1005,9 @@
         13.41
       ],
       "wiki": "Angkor_Wat",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.library.gov.au/learn/digital-classroom/angkorkhmer-empire-802-1431/building-angkor"
     },
     {
       "id": "e66",
@@ -949,12 +1016,13 @@
       "end": 1206,
       "approximate": false,
       "point": [
-        102.8,
-        47.2
+        110.1,
+        48.6
       ],
       "wiki": "Mongol_Empire",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "correction or clarification",
+      "source": "https://en.unesco.org/silkroad/sites/default/files/knowledge-bank-article/vol_IVa%20silk%20road_the%20mongols%20and%20their%20state%20in%20the%20twelfth%20to%20the%20thirteenth%20century.pdf"
     },
     {
       "id": "e67",
@@ -967,8 +1035,9 @@
         51.44
       ],
       "wiki": "Magna_Carta",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.runnymede.gov.uk/discover-history/magna-carta"
     },
     {
       "id": "e68",
@@ -981,8 +1050,9 @@
         11.4
       ],
       "wiki": "Mali_Empire",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://sahistory.org.za/article/empire-mali-1230-1600"
     },
     {
       "id": "e69",
@@ -995,8 +1065,9 @@
         -27.12
       ],
       "wiki": "Moai",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://link.springer.com/article/10.1186/s43238-026-00298-0"
     },
     {
       "id": "e70",
@@ -1009,8 +1080,9 @@
         33.31
       ],
       "wiki": "Siege_of_Baghdad_(1258)",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://82nd-and-fifth.metmuseum.org/toah/ht/07/wam.html"
     },
     {
       "id": "e71",
@@ -1023,8 +1095,9 @@
         39.9
       ],
       "wiki": "Marco_Polo",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.societyforasianart.org/sites/default/files/8.18_Berger.pdf"
     },
     {
       "id": "e72",
@@ -1037,8 +1110,9 @@
         -41
       ],
       "wiki": "History_of_New_Zealand",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://teara.govt.nz/en/when-was-new-zealand-first-settled"
     },
     {
       "id": "e73",
@@ -1051,22 +1125,24 @@
         30.04
       ],
       "wiki": "Mansa_Musa",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.metmuseum.org/de/essays/the-trans-saharan-gold-trade-7th-14th-century"
     },
     {
       "id": "e74",
       "title": "Tenochtitlan founded",
       "start": 1325,
       "end": 1325,
-      "approximate": false,
+      "approximate": true,
       "point": [
         -99.13,
         19.43
       ],
       "wiki": "Tenochtitlan",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "correction or clarification",
+      "source": "https://www.gob.mx/cultura/articulos/el-codice-boturini-del-peregrinaje-de-los-aztecas-a-la-fundacion-de-mexico-tenochtitlan"
     },
     {
       "id": "e75",
@@ -1079,8 +1155,9 @@
         -8.96
       ],
       "wiki": "Kilwa_Kisiwani",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://whc.unesco.org/pg.cfm?CID=31&ID_SITE=144&l=en"
     },
     {
       "id": "e76",
@@ -1093,8 +1170,9 @@
         38.19
       ],
       "wiki": "Black_Death",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "correction or clarification",
+      "source": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/EA9466FE5164149AD4350B7D38222A5C/S0043887121000034a.pdf/pandemics-and-political-development-the-electoral-legacy-of-the-black-death-in-germany.pdf"
     },
     {
       "id": "e77",
@@ -1107,8 +1185,9 @@
         32.06
       ],
       "wiki": "Ming_dynasty",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.getty.edu/publications/resources/virtuallibrary/0892365625.pdf"
     },
     {
       "id": "e78",
@@ -1121,36 +1200,39 @@
         11.25
       ],
       "wiki": "Ming_treasure_voyages",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.metmuseum.org/ja/toah/ht/08/eac"
     },
     {
       "id": "e79",
       "title": "Inca Empire expands",
       "start": 1438,
       "end": 1438,
-      "approximate": false,
+      "approximate": true,
       "point": [
         -71.97,
         -13.53
       ],
       "wiki": "Inca_Empire",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "correction or clarification",
+      "source": "https://82nd-and-fifth.metmuseum.org/toah/ht/08/sanc.html"
     },
     {
       "id": "e80",
-      "title": "Gutenberg's press",
-      "start": 1450,
-      "end": 1450,
+      "title": "Gutenberg's printed Bible",
+      "start": 1455,
+      "end": 1455,
       "approximate": true,
       "point": [
         8.27,
         50
       ],
       "wiki": "Printing_press",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "correction or clarification",
+      "source": "https://guides.loc.gov/gutenberg"
     },
     {
       "id": "e81",
@@ -1163,12 +1245,13 @@
         41.02
       ],
       "wiki": "Fall_of_Constantinople",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.europeana.eu/en/exhibitions/the-silk-and-the-blood/constantinople"
     },
     {
       "id": "e82",
-      "title": "Songhai Empire",
+      "title": "Sunni Ali expands Songhai",
       "start": 1464,
       "end": 1464,
       "approximate": false,
@@ -1177,8 +1260,9 @@
         16.27
       ],
       "wiki": "Songhai_Empire",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "correction or clarification",
+      "source": "https://sahistory.org.za/sites/default/files/archive-files3/nehemia_levtzion_ancient_ghana_and_malibook4you.pdf"
     },
     {
       "id": "e83",
@@ -1191,8 +1275,9 @@
         24.1
       ],
       "wiki": "Voyages_of_Christopher_Columbus",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.bahamas.com/plan-your-trip/things-to-do/columbus-monument"
     },
     {
       "id": "e84",
@@ -1205,8 +1290,9 @@
         11.25
       ],
       "wiki": "Vasco_da_Gama",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.metmuseum.org/exhibitions/listings/2013/interwoven-globe"
     },
     {
       "id": "e85",
@@ -1219,8 +1305,9 @@
         43.77
       ],
       "wiki": "Mona_Lisa",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://collections.louvre.fr/ark%3A/53355/cl010062370"
     },
     {
       "id": "e86",
@@ -1233,8 +1320,9 @@
         51.87
       ],
       "wiki": "Ninety-five_Theses",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.wittenberg.de/portal/seiten/thesentuer-i-theses-door-900000269-36670.html"
     },
     {
       "id": "e87",
@@ -1247,8 +1335,9 @@
         -53.5
       ],
       "wiki": "Magellan_expedition",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.cultura.gob.es/cultura/archivos/difusion/registro-memoria-unesco/2023/vuelta-mundo-magallanes-elcano.html"
     },
     {
       "id": "e88",
@@ -1261,8 +1350,9 @@
         19.44
       ],
       "wiki": "Fall_of_Tenochtitlan",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.gob.mx/agn/articulos/111664"
     },
     {
       "id": "e89",
@@ -1275,8 +1365,9 @@
         29.39
       ],
       "wiki": "Mughal_Empire",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://panipat.gov.in/first-battle/"
     },
     {
       "id": "e90",
@@ -1289,8 +1380,9 @@
         54.36
       ],
       "wiki": "De_revolutionibus_orbium_coelestium",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://wwws.loc.gov/exhibits/exploring-the-early-americas/documenting-new-knowledge.html"
     },
     {
       "id": "e91",
@@ -1303,8 +1395,9 @@
         35.68
       ],
       "wiki": "Tokugawa_shogunate",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "correction or clarification",
+      "source": "https://www.metmuseum.org/exhibitions/samurai-splendor"
     },
     {
       "id": "e92",
@@ -1317,8 +1410,9 @@
         37.21
       ],
       "wiki": "Jamestown,_Virginia",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.nps.gov/jame/learn/historyculture/a-short-history-of-jamestown.htm"
     },
     {
       "id": "e93",
@@ -1331,8 +1425,9 @@
         45.41
       ],
       "wiki": "Sidereus_Nuncius",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.cabinet.ox.ac.uk/sidereus-nuncius-1610"
     },
     {
       "id": "e94",
@@ -1345,8 +1440,9 @@
         27.17
       ],
       "wiki": "Taj_Mahal",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://whc.unesco.org/en/list/252/"
     },
     {
       "id": "e95",
@@ -1359,8 +1455,9 @@
         39.9
       ],
       "wiki": "Qing_dynasty",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.dpm.org.cn/court/event/159873.html"
     },
     {
       "id": "e96",
@@ -1373,8 +1470,9 @@
         51.96
       ],
       "wiki": "Peace_of_Westphalia",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.lwl.org/westfaelische-geschichte/portal/Internet/ku.php?ID=579&tab=web"
     },
     {
       "id": "e97",
@@ -1387,8 +1485,9 @@
         -33.92
       ],
       "wiki": "Dutch_Cape_Colony",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://sahistory.org.za/dated-event/van-riebeeck-lands-cape"
     },
     {
       "id": "e98",
@@ -1401,7 +1500,8 @@
         51.51
       ],
       "wiki": "Philosophiæ_Naturalis_Principia_Mathematica",
-      "evidence": "source-checked correction or clarification",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": null,
       "source": "https://wwwe.lib.cam.ac.uk/CUL/exhibitions/Footprints_of_the_Lion/gravity_glory.html"
     },
     {
@@ -1415,8 +1515,9 @@
         59.94
       ],
       "wiki": "Saint_Petersburg",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.prlib.ru/history/619267"
     },
     {
       "id": "e100",
@@ -1429,8 +1530,9 @@
         53.48
       ],
       "wiki": "Industrial_Revolution",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://blog.sciencemuseumgroup.org.uk/climate-and-the-collection/"
     },
     {
       "id": "e101",
@@ -1443,8 +1545,9 @@
         -34
       ],
       "wiki": "James_Cook",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.nma.gov.au/exhibitions/encounters/places/botany-bay"
     },
     {
       "id": "e102",
@@ -1457,8 +1560,9 @@
         39.95
       ],
       "wiki": "United_States_Declaration_of_Independence",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.archives.gov/milestone-documents/declaration-of-independence"
     },
     {
       "id": "e103",
@@ -1471,8 +1575,9 @@
         -33.86
       ],
       "wiki": "First_Fleet",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www2.sl.nsw.gov.au/archive/discover_collections/history_nation/terra_australis/firstfleet.html"
     },
     {
       "id": "e104",
@@ -1485,8 +1590,9 @@
         49.59
       ],
       "wiki": "Nootka_Crisis",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://text-message.blogs.archives.gov/2017/10/12/225-years-ago-spanish-explorations-of-the-pacific-northwest-and-the-first-spanish-settlement-in-washington-state-nunez-gaona-neah-bay-1792-part-ii-spanish-explorations-of-the-pacific-northwest-a/"
     },
     {
       "id": "e105",
@@ -1499,8 +1605,9 @@
         48.86
       ],
       "wiki": "French_Revolution",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.chateauversailles.fr/sites/default/files/ressources-pedagogiques/IMG/pdf/ressource-pedagogique_commentaire-prise_de_la_bastille_compressed.pdf"
     },
     {
       "id": "e106",
@@ -1513,22 +1620,24 @@
         19
       ],
       "wiki": "Haitian_Revolution",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://history.state.gov/milestones/1784-1800/haitian-rev"
     },
     {
       "id": "e107",
       "title": "Spanish America wins independence",
       "start": 1808,
       "end": 1826,
-      "approximate": false,
+      "approximate": true,
       "point": [
         -74.08,
         4.6
       ],
       "wiki": "Spanish_American_wars_of_independence",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "correction or clarification",
+      "source": "https://www.cultura.gob.es/cultura/archivos/difusion/mc-difusion/bicentenarios/contexto-historico/las-independencias-iberoamericanas/cuarta-fase-1820-1830/triunfo-independencia.html"
     },
     {
       "id": "e108",
@@ -1541,8 +1650,9 @@
         50.68
       ],
       "wiki": "Battle_of_Waterloo",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.nam.ac.uk/explore/battle-waterloo"
     },
     {
       "id": "e109",
@@ -1555,8 +1665,9 @@
         -8.25
       ],
       "wiki": "1815_eruption_of_Mount_Tambora",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://science.nasa.gov/earth/earth-observatory/mount-tambora-volcano-sumbawa-island-indonesia-39412/"
     },
     {
       "id": "e110",
@@ -1569,8 +1680,9 @@
         51
       ],
       "wiki": "Ukase_of_1821",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://history.state.gov/historicaldocuments/frus1890/d291"
     },
     {
       "id": "e111",
@@ -1583,7 +1695,8 @@
         54.52
       ],
       "wiki": "Stockton_and_Darlington_Railway",
-      "evidence": "source-checked correction or clarification",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": null,
       "source": "https://historicengland.org.uk/listing/the-list/list-entry/1484556"
     },
     {
@@ -1597,8 +1710,9 @@
         23.13
       ],
       "wiki": "First_Opium_War",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.nam.ac.uk/explore/first-china-war-1839-1842"
     },
     {
       "id": "e113",
@@ -1611,12 +1725,13 @@
         -35.27
       ],
       "wiki": "Treaty_of_Waitangi",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://nzhistory.govt.nz/the-treaty-of-waitangi-is-signed"
     },
     {
       "id": "e114",
-      "title": "The United States claims most of today's BC",
+      "title": "Oregon Treaty sets the border at the 49th parallel",
       "start": 1846,
       "end": 1846,
       "approximate": false,
@@ -1625,8 +1740,9 @@
         49
       ],
       "wiki": "Oregon_Treaty",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "clarification",
+      "source": "https://history.state.gov//milestones/1830-1860/oregon-territory"
     },
     {
       "id": "e115",
@@ -1639,8 +1755,9 @@
         48.53
       ],
       "wiki": "Pig_War_(1859)",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.nps.gov/sajh/planyourvisit/upload/2012-American_Camp_History_Walk_online_color.pdf"
     },
     {
       "id": "e116",
@@ -1653,8 +1770,9 @@
         51.51
       ],
       "wiki": "On_the_Origin_of_Species",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.nhm.ac.uk/discover/charles-darwin-most-famous-biologist.html"
     },
     {
       "id": "e117",
@@ -1667,8 +1785,9 @@
         55.75
       ],
       "wiki": "Emancipation_reform_of_1861",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://library.law.yale.edu/news/monuments-imperial-russian-law-emancipation-serfs"
     },
     {
       "id": "e118",
@@ -1681,8 +1800,9 @@
         39.83
       ],
       "wiki": "American_Civil_War",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.nps.gov/civilwar/overview.htm"
     },
     {
       "id": "e119",
@@ -1695,8 +1815,9 @@
         35.68
       ],
       "wiki": "Meiji_Restoration",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.slam.org/collection/constituents/3919/"
     },
     {
       "id": "e120",
@@ -1709,8 +1830,9 @@
         30.6
       ],
       "wiki": "Suez_Canal",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.suezcanal.gov.eg/English/Pages/FAQ.aspx"
     },
     {
       "id": "e121",
@@ -1723,8 +1845,9 @@
         42.36
       ],
       "wiki": "Invention_of_the_telephone",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://ptacts.uspto.gov/ptacts/public-informations/petitions/1458577/download-documents?artifactId=KJr_wDpCsWZV8cex4O76s7T02DvYzW1Q-MFNZ-ZulGR-Z5lTUPN9GI8"
     },
     {
       "id": "e122",
@@ -1737,8 +1860,9 @@
         52.52
       ],
       "wiki": "Berlin_Conference",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://archiv.diplo.de/arc-de/das-politische-archiv/generalakte-2683776"
     },
     {
       "id": "e123",
@@ -1751,8 +1875,9 @@
         -43.53
       ],
       "wiki": "Women's_suffrage_in_New_Zealand",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://nzhistory.govt.nz/page/women-vote-first-general-election"
     },
     {
       "id": "e124",
@@ -1765,8 +1890,9 @@
         14.16
       ],
       "wiki": "Battle_of_Adwa",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://adwavictorymemorial.gov.et/about"
     },
     {
       "id": "e125",
@@ -1779,12 +1905,13 @@
         9.89
       ],
       "wiki": "Fashoda_Incident",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "correction or clarification",
+      "source": "https://www.cheminsdememoire.gouv.fr/sites/default/files/2020-09/Expo%20combattants%20Afrique%20VF.pdf"
     },
     {
       "id": "e126",
-      "title": "Canada loses the Alaska boundary dispute",
+      "title": "Alaska boundary dispute settled",
       "start": 1903,
       "end": 1903,
       "approximate": false,
@@ -1793,8 +1920,9 @@
         59.46
       ],
       "wiki": "Alaska_boundary_dispute",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "correction or clarification",
+      "source": "https://www.canada.ca/en/canadian-heritage/services/historical-boundaries-canada.html"
     },
     {
       "id": "e127",
@@ -1807,8 +1935,9 @@
         36.02
       ],
       "wiki": "Wright_Flyer",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "clarification",
+      "source": "https://www.nps.gov/wrbr/learn/historyculture/thefirstflight.htm"
     },
     {
       "id": "e128",
@@ -1821,8 +1950,9 @@
         55
       ],
       "wiki": "Dogger_Bank_incident",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "correction or clarification",
+      "source": "https://www.nationalhistoricships.org.uk/sites/default/files/2023-02/f_maritime_culture-ilovepdf-compressed.pdf"
     },
     {
       "id": "e129",
@@ -1835,22 +1965,24 @@
         46.95
       ],
       "wiki": "Annus_mirabilis_papers",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "correction or clarification",
+      "source": "https://www.einstein.caltech.edu/what-we-do/published-volumes/volume-2"
     },
     {
       "id": "e130",
       "title": "Xinhai Revolution",
       "start": 1911,
-      "end": 1911,
+      "end": 1912,
       "approximate": false,
       "point": [
         114.3,
         30.55
       ],
       "wiki": "1911_Revolution",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "correction or clarification",
+      "source": "https://history.state.gov/milestones/1899-1913/chinese-rev"
     },
     {
       "id": "e131",
@@ -1863,8 +1995,9 @@
         49.16
       ],
       "wiki": "World_War_I",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "correction or clarification",
+      "source": "https://www.ushmm.org/information/press/press-releases/museum-statement-on-world-war-i-centennial"
     },
     {
       "id": "e132",
@@ -1877,8 +2010,9 @@
         59.94
       ],
       "wiki": "Russian_Revolution",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://encyclopedia.ushmm.org/content/en/article/the-russian-revolution-1917"
     },
     {
       "id": "e133",
@@ -1891,8 +2025,9 @@
         51.52
       ],
       "wiki": "Penicillin",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.acs.org/education/whatischemistry/landmarks/flemingpenicillin.html?trk=public_post_reshare-text"
     },
     {
       "id": "e134",
@@ -1905,8 +2040,9 @@
         40.71
       ],
       "wiki": "Wall_Street_crash_of_1929",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.federalreservehistory.org/essays/stock-market-crash-of-1929"
     },
     {
       "id": "e135",
@@ -1919,8 +2055,9 @@
         20.89
       ],
       "wiki": "Salt_March",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://gandhistory.in/collection/collection-details.php?id=99"
     },
     {
       "id": "e136",
@@ -1933,8 +2070,9 @@
         52.23
       ],
       "wiki": "World_War_II",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.nationalww2museum.org/students-teachers/student-resources/explore-wwii-history"
     },
     {
       "id": "e137",
@@ -1947,7 +2085,8 @@
         50.03
       ],
       "wiki": "The_Holocaust",
-      "evidence": "source-checked correction or clarification",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": null,
       "source": "https://encyclopedia.ushmm.org/content/en/article/introduction-to-the-holocaust"
     },
     {
@@ -1961,8 +2100,9 @@
         34.39
       ],
       "wiki": "Atomic_bombings_of_Hiroshima_and_Nagasaki",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://documents.un.org/api/symbol/access?l=en&s=A%2F51%2F218&t=pdf"
     },
     {
       "id": "e139",
@@ -1975,8 +2115,9 @@
         37.78
       ],
       "wiki": "United_Nations",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "clarification",
+      "source": "https://www.un.org/en/about-us/un-charter"
     },
     {
       "id": "e140",
@@ -1989,8 +2130,9 @@
         28.61
       ],
       "wiki": "Partition_of_India",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.nam.ac.uk/explore/independence-and-partition-1947"
     },
     {
       "id": "e141",
@@ -2003,8 +2145,9 @@
         39.91
       ],
       "wiki": "Proclamation_of_the_People's_Republic_of_China",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.mfa.gov.cn/eng/zy/jj/zggcddwjw100ggs/jszgddzg/202406/t20240606_11377939.html"
     },
     {
       "id": "e142",
@@ -2017,8 +2160,9 @@
         52.2
       ],
       "wiki": "Molecular_Structure_of_Nucleic_Acids",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://doi.org/10.1038/171737a0"
     },
     {
       "id": "e143",
@@ -2031,8 +2175,9 @@
         45.92
       ],
       "wiki": "Sputnik_1",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.nasa.gov/history/65-years-ago-sputnik-ushers-in-the-space-age/"
     },
     {
       "id": "e144",
@@ -2045,7 +2190,8 @@
         5.6
       ],
       "wiki": "Decolonisation_of_Africa",
-      "evidence": "source-checked correction or clarification",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": null,
       "source": "https://history.state.gov/countries/ghana"
     },
     {
@@ -2059,8 +2205,9 @@
         45.92
       ],
       "wiki": "Vostok_1",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://science.nasa.gov/resource/yuri-gagarin-first-human-in-space/"
     },
     {
       "id": "e146",
@@ -2073,8 +2220,9 @@
         38.89
       ],
       "wiki": "March_on_Washington_for_Jobs_and_Freedom",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.nps.gov/places/000/lincoln-memorial-i-have-a-dream-marker.htm"
     },
     {
       "id": "e147",
@@ -2087,7 +2235,8 @@
         28.57
       ],
       "wiki": "Apollo_11",
-      "evidence": "source-checked correction or clarification",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": null,
       "source": "https://www.nasa.gov/missions/apollo/apollo-11/apollo-11-mission-overview/"
     },
     {
@@ -2101,8 +2250,9 @@
         -33.86
       ],
       "wiki": "Sydney_Opera_House",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.sydneyoperahouse.com/sites/default/files/collaborodam_assets/soh-cmp-interactive-1.pdf"
     },
     {
       "id": "e149",
@@ -2115,8 +2265,9 @@
         52.52
       ],
       "wiki": "Berlin_Wall",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.bundesstiftung-aufarbeitung.de/de/vermitteln/bildung/aufbruch-umbruch/mauerfall"
     },
     {
       "id": "e150",
@@ -2129,8 +2280,9 @@
         46.23
       ],
       "wiki": "World_Wide_Web",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://home.cern/science/computing/the-birth-of-the-web/"
     },
     {
       "id": "e151",
@@ -2143,8 +2295,9 @@
         55.75
       ],
       "wiki": "Dissolution_of_the_Soviet_Union",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://2001-2009.state.gov/r/pa/ho/time/pcw/108229.htm"
     },
     {
       "id": "e152",
@@ -2157,8 +2310,9 @@
         -25.75
       ],
       "wiki": "1994_South_African_general_election",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.gov.za/nr/issues/milestones-20-years-freedom"
     },
     {
       "id": "e153",
@@ -2171,8 +2325,9 @@
         40.71
       ],
       "wiki": "September_11_attacks",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.911memorial.org/learn/resources/911-primer/module-1-events-day"
     },
     {
       "id": "e154",
@@ -2185,7 +2340,8 @@
         38.98
       ],
       "wiki": "Human_Genome_Project",
-      "evidence": "source-checked correction or clarification",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": null,
       "source": "https://www.genome.gov/about-genomics/educational-resources/fact-sheets/human-genome-project"
     },
     {
@@ -2199,8 +2355,9 @@
         3.3
       ],
       "wiki": "2004_Indian_Ocean_earthquake_and_tsunami",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.ncei.noaa.gov/products/natural-hazards/tsunamis-earthquakes-volcanoes/tsunamis/recent-significant-events"
     },
     {
       "id": "e156",
@@ -2213,8 +2370,9 @@
         37.78
       ],
       "wiki": "IPhone_(1st_generation)",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.apple.com/uk/newsroom/2007/01/09Apple-Reinvents-the-Phone-with-iPhone/"
     },
     {
       "id": "e157",
@@ -2227,8 +2385,9 @@
         40.7
       ],
       "wiki": "2008_financial_crisis",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.federalreservehistory.org/essays/great-recession-of-200709"
     },
     {
       "id": "e158",
@@ -2241,8 +2400,9 @@
         36.8
       ],
       "wiki": "Arab_Spring",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://publications.parliament.uk/pa/cm201012/cmselect/cmfaff/writev/arab/as07.htm"
     },
     {
       "id": "e159",
@@ -2255,7 +2415,8 @@
         46.232
       ],
       "wiki": "COVID-19_pandemic",
-      "evidence": "source-checked correction or clarification",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": null,
       "source": "https://www.who.int/news/item/05-05-2023-statement-on-the-fifteenth-meeting-of-the-international-health-regulations-(2005)-emergency-committee-regarding-the-coronavirus-disease-(covid-19)-pandemic"
     },
     {
@@ -2269,8 +2430,9 @@
         50.45
       ],
       "wiki": "Russian_invasion_of_Ukraine",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://ukraine.un.org/en/173250-statement-secretary-general-%E2%80%93-ukraine"
     },
     {
       "id": "e161",
@@ -2283,22 +2445,24 @@
         39.33
       ],
       "wiki": "James_Webb_Space_Telescope",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "correction or clarification",
+      "source": "https://science.nasa.gov/mission/webb/webbs-first-images/"
     },
     {
       "id": "e162",
       "title": "Needles with eyes",
-      "start": -48000,
-      "end": -48000,
+      "start": -38000,
+      "end": -38000,
       "approximate": true,
       "point": [
         84.68,
         51.4
       ],
       "wiki": "Sewing_needle",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "correction or clarification",
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11212769/"
     },
     {
       "id": "e163",
@@ -2311,22 +2475,24 @@
         42.29
       ],
       "wiki": "History_of_clothing_and_textiles",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "correction or clarification",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/19745144/"
     },
     {
       "id": "e164",
       "title": "Cotton in South Asia",
-      "start": -5000,
-      "end": -5000,
+      "start": -5500,
+      "end": -5500,
       "approximate": true,
       "point": [
         67.61,
         29.39
       ],
       "wiki": "History_of_cotton",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "correction or clarification",
+      "source": "https://www.harappa.com/sites/default/files/pdf/First_Evidence_of_Cotton_at_Mehrgarh.pdf"
     },
     {
       "id": "e165",
@@ -2339,22 +2505,24 @@
         -7.92
       ],
       "wiki": "Huaca_Prieta",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5023320/"
     },
     {
       "id": "e166",
       "title": "Silk woven in China",
-      "start": -3600,
-      "end": -3600,
+      "start": -3500,
+      "end": -3500,
       "approximate": true,
       "point": [
         113.62,
         34.75
       ],
       "wiki": "History_of_silk",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "clarification",
+      "source": "https://www.sciencedirect.com/science/article/pii/S0141813026043734"
     },
     {
       "id": "e167",
@@ -2367,8 +2535,9 @@
         39.73
       ],
       "wiki": "Areni-1_shoe",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://historymuseum.am/en/collections_type/5500-year-old-leather-shoe/"
     },
     {
       "id": "e168",
@@ -2381,8 +2550,9 @@
         29.5
       ],
       "wiki": "Tarkhan_dress",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.ucl.ac.uk/news/2016/feb/ucl-petrie-museums-tarkhan-dress-worlds-oldest-woven-garment"
     },
     {
       "id": "e169",
@@ -2395,22 +2565,24 @@
         46.78
       ],
       "wiki": "Ötzi",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "correction or clarification",
+      "source": "https://www.iceman.it/il_museo/scuola/percorsi_in_autonomia/en/introduction-EN.pdf"
     },
     {
       "id": "e170",
       "title": "Tyrian purple",
-      "start": -1570,
-      "end": -1570,
+      "start": -1000,
+      "end": -1000,
       "approximate": true,
       "point": [
         35.2,
         33.27
       ],
       "wiki": "Tyrian_purple",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "correction or clarification",
+      "source": "https://www.metmuseum.org/fr/essays/the-phoenicians-1500-300-b-c"
     },
     {
       "id": "e171",
@@ -2423,8 +2595,9 @@
         -13.85
       ],
       "wiki": "Paracas_culture",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://textilemuseum.ca/cloth_clay/resources/paracas-2.html"
     },
     {
       "id": "e172",
@@ -2437,8 +2610,9 @@
         41.89
       ],
       "wiki": "Lex_Oppia",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://brill.com/previewpdf/display/book/edcoll/9789004412552/BP000017.xml"
     },
     {
       "id": "e173",
@@ -2451,7 +2625,8 @@
         41.01
       ],
       "wiki": "Byzantine_silk",
-      "evidence": "source-checked correction or clarification",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": null,
       "source": "https://www.metmuseum.org/art/collection/search/450736"
     },
     {
@@ -2465,8 +2640,9 @@
         35.01
       ],
       "wiki": "Jūnihitoe",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://chnm.gmu.edu/wwh/p/222.html"
     },
     {
       "id": "e175",
@@ -2479,8 +2655,9 @@
         19.43
       ],
       "wiki": "Moctezuma's_headdress",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "correction or clarification",
+      "source": "https://www.weltmuseumwien.at/en/the-feather-headdress/"
     },
     {
       "id": "e176",
@@ -2493,8 +2670,9 @@
         23.81
       ],
       "wiki": "Dhaka_muslin",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "correction or clarification",
+      "source": "https://asiainch.org/craft/textiles-of-bangladesh/"
     },
     {
       "id": "e177",
@@ -2507,8 +2685,9 @@
         6.78
       ],
       "wiki": "Kente_cloth",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "correction or clarification",
+      "source": "https://www.metmuseum.org/art/collection/search/894795"
     },
     {
       "id": "e178",
@@ -2521,8 +2700,9 @@
         19.48
       ],
       "wiki": "ʻAhu_ʻula",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.tepapa.govt.nz/about/press-and-media/press-releases/2020-media-releases/feather-cloak-and-helmet-gifted-captain"
     },
     {
       "id": "e179",
@@ -2535,8 +2715,9 @@
         45.76
       ],
       "wiki": "Jacquard_machine",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://collection.sciencemuseumgroup.org.uk/objects/co44888/model-of-a-jacquard-loom-model-jacquard-loom"
     },
     {
       "id": "e180",
@@ -2549,8 +2730,9 @@
         42.37
       ],
       "wiki": "Sewing_machine",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://americanhistory.si.edu/collections/object/nmah_630930"
     },
     {
       "id": "e181",
@@ -2563,8 +2745,9 @@
         48.87
       ],
       "wiki": "Charles_Frederick_Worth",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.petitpalais.paris.fr/sites/default/files/content/press-releases/cp_worth_uk.pdf"
     },
     {
       "id": "e182",
@@ -2577,8 +2760,9 @@
         37.77
       ],
       "wiki": "Jeans",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.levistrauss.com/2019/07/04/the-history-of-denim/"
     },
     {
       "id": "e183",
@@ -2591,8 +2775,9 @@
         5.6
       ],
       "wiki": "African_wax_prints",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.vam.ac.uk/articles/cloth-of-a-continent-africa-fashion"
     },
     {
       "id": "e184",
@@ -2605,8 +2790,9 @@
         23.06
       ],
       "wiki": "Khadi",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.gazetteers.maharashtra.gov.in/cultural.maharashtra.gov.in/english/gazetteer/VOL-IX/1920_21.pdf"
     },
     {
       "id": "e185",
@@ -2615,12 +2801,13 @@
       "end": 1925,
       "approximate": true,
       "point": [
-        121.47,
-        31.23
+        114.17,
+        22.28
       ],
       "wiki": "Cheongsam",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "correction or clarification",
+      "source": "https://hk.history.museum/en/web/mh/exhibition/2013_past_08.html"
     },
     {
       "id": "e186",
@@ -2633,8 +2820,9 @@
         48.87
       ],
       "wiki": "Little_black_dress",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.vam.ac.uk/articles/what-makes-chanel-so-iconic"
     },
     {
       "id": "e187",
@@ -2647,7 +2835,8 @@
         40.71
       ],
       "wiki": "Nylon",
-      "evidence": "source-checked correction or clarification",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": null,
       "source": "https://americanhistory.si.edu/collections/object/nmah_1200996"
     },
     {
@@ -2661,8 +2850,9 @@
         48.86
       ],
       "wiki": "Bikini",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.history.com/this-day-in-history/july-5/bikini-introduced"
     },
     {
       "id": "e189",
@@ -2675,8 +2865,9 @@
         48.87
       ],
       "wiki": "Christian_Dior",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.dior.com/en_int/one/the-new-look"
     },
     {
       "id": "e190",
@@ -2689,8 +2880,9 @@
         51.49
       ],
       "wiki": "Miniskirt",
-      "evidence": "Wikipedia background only; independent verification outstanding",
-      "source": null
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.vam.ac.uk/articles/the-miniskirt-myth"
     },
     {
       "id": "e191",
@@ -2703,8 +2895,9 @@
         13.72
       ],
       "wiki": "Chandrayaan-3",
-      "evidence": "linked source; not independently reverified in this pass",
-      "source": "https://new1.isro.gov.in/ISRO_EN/Release_of_Chandrayaan-3_science_data_to_the_Scientific_Community.html"
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.isro.gov.in/ISRO_EN/Chandrayaan3.html"
     },
     {
       "id": "e192",
@@ -2717,8 +2910,9 @@
         48.86
       ],
       "wiki": "2024_Summer_Olympics",
-      "evidence": "linked source; not independently reverified in this pass",
-      "source": "https://www.paris.fr/en/pages/the-paris-olympic-and-paralympic-games-kick-off-in-one-year-27787"
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "correction or clarification",
+      "source": "https://www.olympedia.org/editions/63"
     },
     {
       "id": "e193",
@@ -2731,7 +2925,8 @@
         -30.24
       ],
       "wiki": "Vera_C._Rubin_Observatory",
-      "evidence": "linked source; not independently reverified in this pass",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
       "source": "https://www.nsf.gov/news/first-imagery-nsf-doe-vera-c-rubin-observatory"
     },
     {
@@ -2745,8 +2940,9 @@
         45.46
       ],
       "wiki": "2026_Winter_Olympics",
-      "evidence": "linked source; not independently reverified in this pass",
-      "source": "https://www.youtube.com/watch?v=LY0XM_DfgDo"
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "correction or clarification",
+      "source": "https://support.olympics.com/hc/en-gb/articles/43002165477267-Where-and-when-will-the-2026-Olympic-Winter-Games-take-place"
     },
     {
       "id": "e195",
@@ -2759,7 +2955,8 @@
         28.61
       ],
       "wiki": "Artemis_II",
-      "evidence": "linked source; not independently reverified in this pass",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
       "source": "https://www.nasa.gov/mission/artemis-ii/"
     },
     {
@@ -2773,8 +2970,9 @@
         31.2
       ],
       "wiki": "Reign_of_Cleopatra",
-      "evidence": "linked source; not independently reverified in this pass",
-      "source": "https://www.ucl.ac.uk/museums-static/digitalegypt/chronology/cleopatravii.html"
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.getty.edu/art/exhibitions/egypt/downloads/egypt_object_checklist.pdf"
     },
     {
       "id": "e197",
@@ -2787,7 +2985,8 @@
         36.865
       ],
       "wiki": "Battle_of_Carrhae",
-      "evidence": "linked source; not independently reverified in this pass",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
       "source": "https://www.iranicaonline.org/articles/carrhae-harran-town-in-mesopotamia-where-in-may-53-b/"
     },
     {
@@ -2801,8 +3000,9 @@
         47.537
       ],
       "wiki": "Battle_of_Alesia",
-      "evidence": "linked source; not independently reverified in this pass",
-      "source": "https://www.alesia.com/wp-content/uploads/2025/06/2025-2026-Programme-Pedagogique.pdf"
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://musee-archeologienationale.fr/sites/archeonat/files/documents/Brochure%20pour%20enseignants%20MAN%202023-2024_def.pdf"
     },
     {
       "id": "e199",
@@ -2815,8 +3015,9 @@
         31.78
       ],
       "wiki": "Glassblowing",
-      "evidence": "linked source; not independently reverified in this pass",
-      "source": "https://exhibitions.kelsey.lsa.umich.edu/galleries/Exhibits/WondrousGlass/RomanGlass-Making.html"
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "correction or clarification",
+      "source": "https://exhibitions.kelsey.lsa.umich.edu/galleries/Exhibits/WondrousGlass/glass.html"
     },
     {
       "id": "e200",
@@ -2829,8 +3030,9 @@
         38.94
       ],
       "wiki": "Battle_of_Actium",
-      "evidence": "linked source; not independently reverified in this pass",
-      "source": "https://www.metmuseum.org/art/collection/search/251827"
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://egymonuments.gov.eg/en/historical-periods/roman-period"
     },
     {
       "id": "e201",
@@ -2843,8 +3045,9 @@
         31.2
       ],
       "wiki": "Roman_Egypt",
-      "evidence": "linked source; not independently reverified in this pass",
-      "source": "https://academic.oup.com/edited-volume/61673/chapter-abstract/548065820"
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://egymonuments.gov.eg/en/historical-periods/roman-period"
     },
     {
       "id": "e202",
@@ -2857,7 +3060,8 @@
         17.043
       ],
       "wiki": "Monte_Albán",
-      "evidence": "linked source; not independently reverified in this pass",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
       "source": "https://whc.unesco.org/en/list/415/"
     },
     {
@@ -2871,8 +3075,9 @@
         34.27
       ],
       "wiki": "Western_Han",
-      "evidence": "linked source; not independently reverified in this pass",
-      "source": "https://www.metmuseum.org/essays/han-dynasty-206-b-c-220-a-d"
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.metmuseum.org/ja/essays/han-dynasty-206-b-c-220-a-d"
     },
     {
       "id": "e204",
@@ -2885,7 +3090,8 @@
         -30.1
       ],
       "wiki": "Herrerasaurus",
-      "evidence": "linked source; not independently reverified in this pass",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
       "source": "https://www.nhm.ac.uk/discover/dino-directory/herrerasaurus.html"
     },
     {
@@ -2899,8 +3105,9 @@
         40.44
       ],
       "wiki": "Stegosaurus",
-      "evidence": "linked source; not independently reverified in this pass",
-      "source": "https://www.nhm.ac.uk/discover/dino-directory/stegosaurus.html"
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.nhm.ac.uk/discover/dino-directory/Stegosaurus.html"
     },
     {
       "id": "e206",
@@ -2913,8 +3120,9 @@
         40.44
       ],
       "wiki": "Diplodocus",
-      "evidence": "linked source; not independently reverified in this pass",
-      "source": "https://www.nhm.ac.uk/discover/dino-directory/diplodocus.html"
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://home.nps.gov/dino/learn/nature/diplodocus-longus.htm"
     },
     {
       "id": "e207",
@@ -2927,7 +3135,8 @@
         50.47
       ],
       "wiki": "Iguanodon",
-      "evidence": "linked source; not independently reverified in this pass",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
       "source": "https://collections.naturalsciences.be/ssh-paleontology/masterpieces/bernissart"
     },
     {
@@ -2941,7 +3150,8 @@
         30.8
       ],
       "wiki": "Spinosaurus",
-      "evidence": "linked source; not independently reverified in this pass",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
       "source": "https://www.nhm.ac.uk/discover/dino-directory/spinosaurus.html"
     },
     {
@@ -2955,7 +3165,8 @@
         44.14
       ],
       "wiki": "Velociraptor",
-      "evidence": "linked source; not independently reverified in this pass",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
       "source": "https://www.nhm.ac.uk/discover/dino-directory/velociraptor.html"
     },
     {
@@ -2969,8 +3180,9 @@
         45.05
       ],
       "wiki": "Tyrannosaurus",
-      "evidence": "linked source; not independently reverified in this pass",
-      "source": "https://www.nhm.ac.uk/discover/dino-directory/tyrannosaurus.html"
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.floridamuseum.ufl.edu/exhibits/blog/past-special-exhibit-sue-2002/"
     },
     {
       "id": "e211",
@@ -2983,7 +3195,8 @@
         47.5
       ],
       "wiki": "Triceratops",
-      "evidence": "linked source; not independently reverified in this pass",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
       "source": "https://www.nhm.ac.uk/discover/dino-directory/triceratops.html"
     },
     {
@@ -2997,7 +3210,8 @@
         46.813
       ],
       "wiki": "Canada_(New_France)",
-      "evidence": "linked source; not independently reverified in this pass",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
       "source": "https://www.historymuseum.ca/virtual-museum-of-new-france/colonies-and-empires/wars-and-imperial-rivalries/"
     },
     {
@@ -3011,8 +3225,9 @@
         46.813
       ],
       "wiki": "History_of_Quebec_City",
-      "evidence": "linked source; not independently reverified in this pass",
-      "source": "https://www.ville.quebec.qc.ca/apropos/portrait/histoire/1608-1755.aspx"
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.quebec.ca/gouvernement/reconnaissance-prix/culture-langue-francaise/prix-3-juillet-1608/a-propos"
     },
     {
       "id": "e214",
@@ -3025,8 +3240,9 @@
         45.502
       ],
       "wiki": "History_of_Montreal",
-      "evidence": "linked source; not independently reverified in this pass",
-      "source": "https://www.pc.gc.ca/apps/dfhd/page_nhs_eng.aspx?i=51190&id=652"
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.pc.gc.ca/apps/dfhd/page_nhs_eng.aspx?id=1523"
     },
     {
       "id": "e215",
@@ -3039,8 +3255,9 @@
         45.502
       ],
       "wiki": "Great_Peace_of_Montreal",
-      "evidence": "linked source; not independently reverified in this pass",
-      "source": "https://www.pc.gc.ca/apps/dfhd/page_nhs_eng.aspx?id=1937"
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.canada.ca/en/department-national-defence/services/military-history/history-heritage/popular-books/aboriginal-people-canadian-military/arrival-europeans-17th-century-wars.html"
     },
     {
       "id": "e216",
@@ -3053,8 +3270,9 @@
         46.801
       ],
       "wiki": "Battle_of_the_Plains_of_Abraham",
-      "evidence": "linked source; not independently reverified in this pass",
-      "source": "https://www.plainsofabraham.ca/history-and-heritage/history-of-the-park/1759-1760-the-battles"
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.pc.gc.ca/apps/dfhd/page_nhs_eng.aspx?id=13017"
     },
     {
       "id": "e217",
@@ -3067,7 +3285,8 @@
         46.813
       ],
       "wiki": "Treaty_of_Paris_(1763)",
-      "evidence": "linked source; not independently reverified in this pass",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
       "source": "https://www.historymuseum.ca/virtual-museum-of-new-france/colonies-and-empires/wars-and-imperial-rivalries/"
     },
     {
@@ -3081,8 +3300,9 @@
         46.813
       ],
       "wiki": "Quebec_Act",
-      "evidence": "linked source; not independently reverified in this pass",
-      "source": "https://justice.canada.ca/eng/csj-sjc/harmonization/services_information/fundamentals-fondements.html"
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://canada.justice.gc.ca/eng/csj-sjc/harmonization/services_information/fundamentals-fondements.html"
     },
     {
       "id": "e219",
@@ -3095,7 +3315,8 @@
         46.813
       ],
       "wiki": "Canadian_Confederation",
-      "evidence": "linked source; not independently reverified in this pass",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
       "source": "https://www.canada.ca/en/intergovernmental-affairs/services/provinces-territories.html"
     },
     {
@@ -3109,7 +3330,8 @@
         46.809
       ],
       "wiki": "Charter_of_the_French_Language",
-      "evidence": "linked source; not independently reverified in this pass",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
       "source": "https://www.quebec.ca/culture/langue-francaise/portrait-francais-quebec/a-propos-francais/a-propos-charte"
     }
   ]

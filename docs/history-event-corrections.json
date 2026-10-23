@@ -1,6 +1,6 @@
 {
   "reviewed": "2026-10-23",
-  "scope": "Source-backed corrections and clarifications; this is not a certification of every event or border.",
+  "scope": "Review of all 221 event summaries and their principal dates, with source links, corrections and explicit qualifications. This does not certify every historical frontier or every detail of an interpretive reconstruction.",
   "events": [
     {
       "wiki": "Göbekli_Tepe",
@@ -699,9 +699,11 @@
     },
     {
       "wiki": "Oregon_Treaty",
-      "change": "source-check",
+      "change": "clarification",
       "source": "https://history.state.gov//milestones/1830-1860/oregon-territory",
-      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event.",
+      "title": "Oregon Treaty sets the border at the 49th parallel",
+      "blurb": "In 1846, Britain and the United States agree to extend their boundary along the 49th parallel, while leaving all of Vancouver Island British. Expansionists had demanded a much more northerly boundary; that demand was not the final settlement."
     },
     {
       "wiki": "Pig_War_(1859)",
@@ -906,9 +908,11 @@
     },
     {
       "wiki": "History_of_silk",
-      "change": "source-check",
+      "change": "clarification",
       "source": "https://www.sciencedirect.com/science/article/pii/S0141813026043734",
-      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event.",
+      "start": -3500,
+      "blurb": "Silk textile remains from Henan are dated to roughly 5,500 years ago. They document early silk weaving in China; this marker represents the region rather than a proven first workshop."
     },
     {
       "wiki": "Jūnihitoe",
@@ -1050,6 +1054,376 @@
       "change": "source-check",
       "source": "https://www.ucl.ac.uk/news/2016/feb/ucl-petrie-museums-tarkhan-dress-worlds-oldest-woven-garment",
       "reason": "Date and main claim checked against the linked museum, archive or originating institution."
+    },
+    {
+      "wiki": "Teotihuacan",
+      "change": "correction or clarification",
+      "start": 100,
+      "title": "Teotihuacan grows into a great city",
+      "blurb": "Between the first and seventh centuries AD, Teotihuacan develops into one of the largest cities in the Americas, with monumental pyramids and a planned urban layout. People occupied the valley earlier; this approximate marker represents its urban growth.",
+      "source": "https://whc.unesco.org/en/list/414/",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "Tikal",
+      "change": "source-check",
+      "source": "https://www.britishmuseum.org/collection/term/x298217",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "Aryabhatiya",
+      "change": "source-check",
+      "source": "https://mathshistory.st-andrews.ac.uk/Biographies//Aryabhata_I/",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "Plague_of_Justinian",
+      "change": "correction or clarification",
+      "blurb": "The first plague pandemic is recorded in Egypt in 541 and reaches Constantinople in 542. The marker locates Constantinople, an affected capital, rather than the first outbreak site. This was not the earliest existence of the plague bacterium.",
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11433773/",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "Mongol_Empire",
+      "change": "correction or clarification",
+      "lat": 48.6,
+      "lon": 110.1,
+      "blurb": "In 1206, a gathering in the Onon River region proclaims Temüjin as Chinggis (Genghis) Khan. The marker represents that region, not an established meeting site or the later Mongol capital at Karakorum.",
+      "source": "https://en.unesco.org/silkroad/sites/default/files/knowledge-bank-article/vol_IVa%20silk%20road_the%20mongols%20and%20their%20state%20in%20the%20twelfth%20to%20the%20thirteenth%20century.pdf",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "Mali_Empire",
+      "change": "source-check",
+      "source": "https://sahistory.org.za/article/empire-mali-1230-1600",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "Black_Death",
+      "change": "correction or clarification",
+      "blurb": "Plague devastates Europe in 1347–1351, with mortality varying greatly between communities. The marker represents Messina, one of the Mediterranean ports affected in 1347, rather than the full extent of the epidemic.",
+      "source": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/EA9466FE5164149AD4350B7D38222A5C/S0043887121000034a.pdf/pandemics-and-political-development-the-electoral-legacy-of-the-black-death-in-germany.pdf",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "Songhai_Empire",
+      "change": "correction or clarification",
+      "title": "Sunni Ali expands Songhai",
+      "blurb": "Sunni Ali, who rules from 1464 to 1492, expands Songhai from Gao into a major West African empire. This marker locates Gao; the empire reaches its greatest extent under later rulers.",
+      "source": "https://sahistory.org.za/sites/default/files/archive-files3/nehemia_levtzion_ancient_ghana_and_malibook4you.pdf",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "Mona_Lisa",
+      "change": "source-check",
+      "source": "https://collections.louvre.fr/ark%3A/53355/cl010062370",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "Nootka_Crisis",
+      "change": "source-check",
+      "source": "https://text-message.blogs.archives.gov/2017/10/12/225-years-ago-spanish-explorations-of-the-pacific-northwest-and-the-first-spanish-settlement-in-washington-state-nunez-gaona-neah-bay-1792-part-ii-spanish-explorations-of-the-pacific-northwest-a/",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "Spanish_American_wars_of_independence",
+      "change": "correction or clarification",
+      "approx": 1,
+      "blurb": "From the crises of 1808 through the wars of the 1820s, Spanish colonies across much of mainland America gain independence. The 1808–1826 span is a conventional overview, not a single shared independence date. The marker represents Bogotá.",
+      "source": "https://www.cultura.gob.es/cultura/archivos/difusion/mc-difusion/bicentenarios/contexto-historico/las-independencias-iberoamericanas/cuarta-fase-1820-1830/triunfo-independencia.html",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "First_Opium_War",
+      "change": "source-check",
+      "source": "https://www.nam.ac.uk/explore/first-china-war-1839-1842",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "Fashoda_Incident",
+      "change": "correction or clarification",
+      "blurb": "British and French forces meet at Fashoda in Sudan in 1898 during rival colonial expansion projects. The confrontation becomes a diplomatic crisis; France withdraws its expedition.",
+      "source": "https://www.cheminsdememoire.gouv.fr/sites/default/files/2020-09/Expo%20combattants%20Afrique%20VF.pdf",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "Alaska_boundary_dispute",
+      "change": "correction or clarification",
+      "title": "Alaska boundary dispute settled",
+      "blurb": "In 1903, a tribunal settles the disputed boundary between Alaska and British North America. The marker locates the Skagway area affected by the dispute, not the tribunal's meeting place.",
+      "source": "https://www.canada.ca/en/canadian-heritage/services/historical-boundaries-canada.html",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "Annus_mirabilis_papers",
+      "change": "correction or clarification",
+      "blurb": "Working in Bern in 1905, Einstein publishes landmark papers on light quanta, Brownian motion, special relativity and the relationship between mass and energy.",
+      "source": "https://www.einstein.caltech.edu/what-we-do/published-volumes/volume-2",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "September_11_attacks",
+      "change": "source-check",
+      "source": "https://www.911memorial.org/learn/resources/911-primer/module-1-events-day",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "History_of_clothing_and_textiles",
+      "change": "correction or clarification",
+      "blurb": "Researchers report twisted and coloured fibres, identified as wild flax, from Upper Palaeolithic layers in Dzudzuana Cave in Georgia. The identification of the fibres has been debated. The approximate date represents the roughly 30,000-year-old material discussed in the original study.",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/19745144/",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "Areni-1_shoe",
+      "change": "source-check",
+      "source": "https://historymuseum.am/en/collections_type/5500-year-old-leather-shoe/",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "Ötzi",
+      "change": "correction or clarification",
+      "blurb": "Ötzi dies in the Alps around 3300 BC. His preserved clothing and equipment include a bearskin cap, leather leggings and woven grass; the grass item's exact function is debated.",
+      "source": "https://www.iceman.it/il_museo/scuola/percorsi_in_autonomia/en/introduction-EN.pdf",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "Tyrian_purple",
+      "change": "correction or clarification",
+      "start": -1000,
+      "blurb": "During the first millennium BC, Phoenician towns including Tyre are known for a prized purple dye extracted from sea snails. Earlier Bronze Age evidence exists elsewhere. This approximate marker illustrates the industry, not a known invention date.",
+      "source": "https://www.metmuseum.org/fr/essays/the-phoenicians-1500-300-b-c",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "Paracas_culture",
+      "change": "source-check",
+      "source": "https://textilemuseum.ca/cloth_clay/resources/paracas-2.html",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "Lex_Oppia",
+      "change": "source-check",
+      "source": "https://brill.com/previewpdf/display/book/edcoll/9789004412552/BP000017.xml",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "Dhaka_muslin",
+      "change": "correction or clarification",
+      "blurb": "Bengal's fine cotton muslins become celebrated under Mughal patronage. Travellers describe cloth so delicate that it could pass through a ring; that is a historical description, not a measured standard. The approximate marker represents Dhaka's weaving tradition.",
+      "source": "https://asiainch.org/craft/textiles-of-bangladesh/",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "Kente_cloth",
+      "change": "correction or clarification",
+      "blurb": "In present-day Ghana, weavers make narrow patterned strips that are sewn together into kente cloth. Such cloth becomes a prestigious part of Asante court culture. This approximate seventeenth-century marker represents a developing tradition, not a documented invention year.",
+      "source": "https://www.metmuseum.org/art/collection/search/894795",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "Khadi",
+      "change": "source-check",
+      "source": "https://www.gazetteers.maharashtra.gov.in/cultural.maharashtra.gov.in/english/gazetteer/VOL-IX/1920_21.pdf",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "Cheongsam",
+      "change": "correction or clarification",
+      "lat": 22.28,
+      "lon": 114.17,
+      "blurb": "The cheongsam becomes fashionable in Hong Kong in the 1920s among students, teachers, performers and other urban women. Its cut continues to change; Shanghai tailors later help shape Hong Kong's cheongsam tradition.",
+      "source": "https://hk.history.museum/en/web/mh/exhibition/2013_past_08.html",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "Bikini",
+      "change": "source-check",
+      "source": "https://www.history.com/this-day-in-history/july-5/bikini-introduced",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "Chandrayaan-3",
+      "change": "source-check",
+      "source": "https://www.isro.gov.in/ISRO_EN/Chandrayaan3.html",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "2024_Summer_Olympics",
+      "change": "correction or clarification",
+      "blurb": "Paris hosts the 2024 Summer Olympics, with the opening ceremony on July 26 and closing on August 11. Some competitions begin before the opening ceremony.",
+      "source": "https://www.olympedia.org/editions/63",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "Vera_C._Rubin_Observatory",
+      "change": "source-check",
+      "source": "https://www.nsf.gov/news/first-imagery-nsf-doe-vera-c-rubin-observatory",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "2026_Winter_Olympics",
+      "change": "correction or clarification",
+      "blurb": "Italy hosts the Milano Cortina Winter Olympic Games from February 6 to 22, 2026. Events take place across several venues; the marker represents Milan.",
+      "source": "https://support.olympics.com/hc/en-gb/articles/43002165477267-Where-and-when-will-the-2026-Olympic-Winter-Games-take-place",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "Artemis_II",
+      "change": "source-check",
+      "source": "https://www.nasa.gov/mission/artemis-ii/",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "Reign_of_Cleopatra",
+      "change": "source-check",
+      "source": "https://www.getty.edu/art/exhibitions/egypt/downloads/egypt_object_checklist.pdf",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "Battle_of_Carrhae",
+      "change": "source-check",
+      "source": "https://www.iranicaonline.org/articles/carrhae-harran-town-in-mesopotamia-where-in-may-53-b/",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "Battle_of_Alesia",
+      "change": "source-check",
+      "source": "https://musee-archeologienationale.fr/sites/archeonat/files/documents/Brochure%20pour%20enseignants%20MAN%202023-2024_def.pdf",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "Glassblowing",
+      "change": "correction or clarification",
+      "blurb": "Around the middle of the first century BC, glassworkers develop free-blowing, inflating molten glass through a blowpipe. The date is approximate and the marker represents the eastern Mediterranean, not a proven single invention site.",
+      "source": "https://exhibitions.kelsey.lsa.umich.edu/galleries/Exhibits/WondrousGlass/glass.html",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "Battle_of_Actium",
+      "change": "source-check",
+      "source": "https://egymonuments.gov.eg/en/historical-periods/roman-period",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "Roman_Egypt",
+      "change": "source-check",
+      "source": "https://egymonuments.gov.eg/en/historical-periods/roman-period",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "Monte_Albán",
+      "change": "source-check",
+      "source": "https://whc.unesco.org/en/list/415/",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "Western_Han",
+      "change": "source-check",
+      "source": "https://www.metmuseum.org/ja/essays/han-dynasty-206-b-c-220-a-d",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "Herrerasaurus",
+      "change": "source-check",
+      "source": "https://www.nhm.ac.uk/discover/dino-directory/herrerasaurus.html",
+      "reason": "Museum or park source checked for the approximate fossil age, anatomy and discovery region. The point is representative, not a precise excavation coordinate."
+    },
+    {
+      "wiki": "Stegosaurus",
+      "change": "source-check",
+      "source": "https://www.nhm.ac.uk/discover/dino-directory/Stegosaurus.html",
+      "reason": "Museum or park source checked for the approximate fossil age, anatomy and discovery region. The point is representative, not a precise excavation coordinate."
+    },
+    {
+      "wiki": "Diplodocus",
+      "change": "source-check",
+      "source": "https://home.nps.gov/dino/learn/nature/diplodocus-longus.htm",
+      "reason": "Museum or park source checked for the approximate fossil age, anatomy and discovery region. The point is representative, not a precise excavation coordinate."
+    },
+    {
+      "wiki": "Iguanodon",
+      "change": "source-check",
+      "source": "https://collections.naturalsciences.be/ssh-paleontology/masterpieces/bernissart",
+      "reason": "Museum or park source checked for the approximate fossil age, anatomy and discovery region. The point is representative, not a precise excavation coordinate."
+    },
+    {
+      "wiki": "Spinosaurus",
+      "change": "source-check",
+      "source": "https://www.nhm.ac.uk/discover/dino-directory/spinosaurus.html",
+      "reason": "Museum or park source checked for the approximate fossil age, anatomy and discovery region. The point is representative, not a precise excavation coordinate."
+    },
+    {
+      "wiki": "Velociraptor",
+      "change": "source-check",
+      "source": "https://www.nhm.ac.uk/discover/dino-directory/velociraptor.html",
+      "reason": "Museum or park source checked for the approximate fossil age, anatomy and discovery region. The point is representative, not a precise excavation coordinate."
+    },
+    {
+      "wiki": "Tyrannosaurus",
+      "change": "source-check",
+      "source": "https://www.floridamuseum.ufl.edu/exhibits/blog/past-special-exhibit-sue-2002/",
+      "reason": "Museum or park source checked for the approximate fossil age, anatomy and discovery region. The point is representative, not a precise excavation coordinate."
+    },
+    {
+      "wiki": "Triceratops",
+      "change": "source-check",
+      "source": "https://www.nhm.ac.uk/discover/dino-directory/triceratops.html",
+      "reason": "Museum or park source checked for the approximate fossil age, anatomy and discovery region. The point is representative, not a precise excavation coordinate."
+    },
+    {
+      "wiki": "Canada_(New_France)",
+      "change": "source-check",
+      "source": "https://www.historymuseum.ca/virtual-museum-of-new-france/colonies-and-empires/wars-and-imperial-rivalries/",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "History_of_Quebec_City",
+      "change": "source-check",
+      "source": "https://www.quebec.ca/gouvernement/reconnaissance-prix/culture-langue-francaise/prix-3-juillet-1608/a-propos",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "History_of_Montreal",
+      "change": "source-check",
+      "source": "https://www.pc.gc.ca/apps/dfhd/page_nhs_eng.aspx?id=1523",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "Great_Peace_of_Montreal",
+      "change": "source-check",
+      "source": "https://www.canada.ca/en/department-national-defence/services/military-history/history-heritage/popular-books/aboriginal-people-canadian-military/arrival-europeans-17th-century-wars.html",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "Battle_of_the_Plains_of_Abraham",
+      "change": "source-check",
+      "source": "https://www.pc.gc.ca/apps/dfhd/page_nhs_eng.aspx?id=13017",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "Treaty_of_Paris_(1763)",
+      "change": "source-check",
+      "source": "https://www.historymuseum.ca/virtual-museum-of-new-france/colonies-and-empires/wars-and-imperial-rivalries/",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "Quebec_Act",
+      "change": "source-check",
+      "source": "https://canada.justice.gc.ca/eng/csj-sjc/harmonization/services_information/fundamentals-fondements.html",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "Canadian_Confederation",
+      "change": "source-check",
+      "source": "https://www.canada.ca/en/intergovernmental-affairs/services/provinces-territories.html",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+    },
+    {
+      "wiki": "Charter_of_the_French_Language",
+      "change": "source-check",
+      "source": "https://www.quebec.ca/culture/langue-francaise/portrait-francais-quebec/a-propos-francais/a-propos-charte",
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
     }
   ]
 }

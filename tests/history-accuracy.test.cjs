@@ -13,6 +13,8 @@ test('every event, person, border arc and historical search destination passes i
   assert.deepEqual(result.errors, []);
   assert.equal(result.counts.events, 221);
   assert.equal(result.counts.people, 66);
+  assert.equal(result.counts.sourceReviewedEvents, 221);
+  assert.equal(result.counts.eventsWithSourceLinks, 221);
   assert.equal(result.counts.borderChunks, 217);
   assert(result.counts.borderFeatureInstances > 22000);
   assert(result.counts.historicalSearchRecords > 2000);
@@ -56,6 +58,12 @@ test('post-independence names do not outlive the Mali Federation, Denmark-Norway
   assert(nineteenth.some((p) => p.n === 'Denmark'));
   assert(!nineteenth.some((p) => p.n === 'Denmark-Norway'));
   assert(current.some((p) => p.n === 'Cabinda' && p.m === 'Republic of Angola'));
+  assert(current.some((p) => p.n === 'Republic of North Macedonia'));
+  assert(current.some((p) => p.n === 'Federal Republic of Germany'));
+  assert(!current.some((p) => p.n === 'Kingdom of Great Britain'));
+  const uk = features(2000, 2000).find((p) => p.n === 'United Kingdom');
+  assert(uk.a < .007 && uk.lx < 0 && uk.ly > 50, 'UK search anchor and area exclude the independent Gulf states');
+  assert(current.some((p) => p.n === 'Mujahideen (source identity unverified)' && p.status.includes('not a verified group identity')));
   assert(features(1975, 1975).some((p) => p.n === 'Republic of Suriname'));
   assert(features(1975, 1980).find((p) => p.n === 'French Fifth Republic').a < .02,
     'the French source record must no longer contain independent Algeria or Djibouti');

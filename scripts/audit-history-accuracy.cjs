@@ -20,7 +20,8 @@ function audit() {
   const { html, events, people } = records();
   const errors = [], warnings = [];
   const check = (condition, message) => { if (!condition) errors.push(message); };
-  const evidence = new Set(JSON.parse(fs.readFileSync(path.resolve(__dirname, '../docs/history-event-corrections.json'))).events.map((r) => r.wiki));
+  const reviews = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../docs/history-event-corrections.json'))).events;
+  const evidence = new Map(reviews.map((r) => [r.wiki, r]));
   const eventRows = events.map((row, i) => {
     const [start, end, approximate, title, blurb, lat, lon, region, category, wiki, source] = row;
     check(Number.isInteger(start) && start !== 0 && start >= -252000000 && start <= 2026, `e${i}: invalid start`);
@@ -31,7 +32,8 @@ function audit() {
     check(['power', 'war', 'ideas', 'culture', 'nature', 'fashion', 'dinosaurs'].includes(category), `e${i}: unknown category`);
     check(!source || source.startsWith('https://'), `e${i}: invalid source URL`);
     return { id: 'e' + i, title, start, end: end ?? start, approximate: !!approximate, point: [lon, lat], wiki,
-      evidence: evidence.has(wiki) ? 'source-checked correction or clarification' : source ? 'linked source; not independently reverified in this pass' : 'Wikipedia background only; independent verification outstanding',
+      evidence: evidence.has(wiki) ? 'date and principal claim source-reviewed; see review ledger for qualifications' : source ? 'linked source; not independently reverified in this pass' : 'Wikipedia background only; independent verification outstanding',
+      review: evidence.get(wiki)?.change || null,
       source: source || null };
   });
   for (const [i, row] of people.entries()) {
@@ -90,12 +92,16 @@ function audit() {
     check(year >= from && year <= to && Number.isFinite(lon) && Number.isFinite(lat), `Invalid search destination: ${name}`);
   }
   const linked = eventRows.filter((row) => row.source).length;
-  warnings.push(`${eventRows.length - linked} events still lack an independent source link. A valid year/point is not a historical fact-check.`);
+  if (eventRows.length !== linked) warnings.push(`${eventRows.length - linked} events still lack an independent source link.`);
+  if (eventRows.length !== evidence.size) warnings.push(`${eventRows.length - evidence.size} events remain outside the source review.`);
+  warnings.push('An independent source link and a valid year/point do not certify every detail. Ancient dates, representative locations and interpretive claims retain the qualifications in each entry.');
   warnings.push('Border geometries remain approximate source reconstructions; overlapping historical claims and all frontier segments have not been independently certified.');
   warnings.push('2025–2026 display the 2024 border snapshot; it is not a current conflict or occupation map.');
-  return { scope: 'Complete local integrity scan; factual verification is explicitly limited to the documented corrections.',
+  return { scope: 'Every event summary and principal date reviewed against sources; all border files scanned for integrity. This is not an independent certification of every historical frontier.',
     counts: { events: events.length, people: people.length, eventsWithSourceLinks: linked,
-      sourceCheckedCorrections: evidence.size, borderChunks: index.chunks.length, borderFeatureInstances: featureInstances,
+      sourceReviewedEvents: evidence.size,
+      correctedOrClarifiedEvents: reviews.filter((r) => ['start','end','approx','title','blurb','lat','lon'].some((key) => key in r)).length,
+      borderChunks: index.chunks.length, borderFeatureInstances: featureInstances,
       distinctBorderVersions: versions.size, decodedArcs: arcCount, historicalSearchRecords: search.rows.length },
     errors, warnings, events: eventRows };
 }

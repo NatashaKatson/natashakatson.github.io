@@ -75,6 +75,9 @@ try {
     const a=ctx.getImageData(Math.round(pixel[0]*DPR),Math.round(pixel[1]*DPR),1,1).data,b=ec.getImageData(0,0,1,1).data;
     assert([...a].every((v,i)=>Math.abs(v-b[i])<=3),'territory fill agrees with area-ordered hover identity');
     assert(!d3.geoContains(polities().find(f=>f.name==='French Fifth Republic'),point),'France geometry excludes independent Algeria');
+    await loadChunk(2000);setYear(2000);render();
+    const uk=polities().find(f=>f.name==='United Kingdom');
+    assert(uk&&!d3.geoContains(uk,[54.5,24.4])&&!d3.geoContains(uk,[51.3,25.3])&&!d3.geoContains(uk,[50.55,26.1]),'UK excludes the independent UAE, Qatar and Bahrain');
     for(const mode of ['globe','flat']){
       setMode(mode);stopSpin();rot=[110,-49,0];zoomK=2.5;
       for(const year of [1950,1980,2014,2024,2026]){
@@ -113,7 +116,7 @@ try {
     select(holocaust.id,false);render();assert(document.querySelector('#detail a[href*="ushmm.org"]'),'Holocaust cites museum source');
     const covid=ev.find(e=>e.wiki==='COVID-19_pandemic');setYear(2023);select(covid.id,false);render();
     assert(document.getElementById('detail').textContent.includes('emergency'),'COVID date range is labeled as emergency status');
-    return 'Historical accuracy: aggregate/constituent selection and sharing, independent Algeria, paint order and corrected event details passed';
+    return 'Historical accuracy: US–Canada parallel in both projections (1950–2026), Crimea occupation (2014–2026), aggregate selection/sharing, Algeria paint order and sourced event details passed';
   })()`));
   assert.equal(errors.length,0,JSON.stringify(errors));
 } finally {
