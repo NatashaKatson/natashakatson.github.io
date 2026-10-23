@@ -1,0 +1,3116 @@
+{
+  "scope": "Complete local integrity scan; factual verification is explicitly limited to the documented corrections.",
+  "counts": {
+    "events": 221,
+    "people": 66,
+    "eventsWithSourceLinks": 45,
+    "sourceCheckedCorrections": 15,
+    "borderChunks": 217,
+    "borderFeatureInstances": 22138,
+    "distinctBorderVersions": 13327,
+    "decodedArcs": 134444,
+    "historicalSearchRecords": 2092
+  },
+  "errors": [],
+  "warnings": [
+    "176 events still lack an independent source link. A valid year/point is not a historical fact-check.",
+    "Border geometries remain approximate source reconstructions; overlapping historical claims and all frontier segments have not been independently certified.",
+    "2025–2026 display the 2024 border snapshot; it is not a current conflict or occupation map."
+  ],
+  "events": [
+    {
+      "id": "e0",
+      "title": "Earliest known Homo sapiens",
+      "start": -300000,
+      "end": -300000,
+      "approximate": true,
+      "point": [
+        -8.87,
+        31.86
+      ],
+      "wiki": "Jebel_Irhoud",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e1",
+      "title": "Blombos Cave engravings",
+      "start": -73000,
+      "end": -73000,
+      "approximate": true,
+      "point": [
+        21.22,
+        -34.41
+      ],
+      "wiki": "Blombos_Cave",
+      "evidence": "source-checked correction or clarification",
+      "source": "https://doi.org/10.1126/science.1067575"
+    },
+    {
+      "id": "e2",
+      "title": "Early occupation of Australia",
+      "start": -48000,
+      "end": -48000,
+      "approximate": true,
+      "point": [
+        132.9,
+        -12.4
+      ],
+      "wiki": "Prehistory_of_Australia",
+      "evidence": "source-checked correction or clarification",
+      "source": "https://www.nature.com/articles/nature22968"
+    },
+    {
+      "id": "e3",
+      "title": "Last Neanderthals",
+      "start": -38000,
+      "end": -38000,
+      "approximate": true,
+      "point": [
+        -5.35,
+        36.14
+      ],
+      "wiki": "Neanderthal",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e4",
+      "title": "Chauvet Cave paintings",
+      "start": -34000,
+      "end": -34000,
+      "approximate": true,
+      "point": [
+        4.42,
+        44.39
+      ],
+      "wiki": "Chauvet_Cave",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e5",
+      "title": "Monte Verde settlement",
+      "start": -12500,
+      "end": -12500,
+      "approximate": true,
+      "point": [
+        -73.2,
+        -41.5
+      ],
+      "wiki": "Monte_Verde",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e6",
+      "title": "Göbekli Tepe",
+      "start": -9500,
+      "end": -9500,
+      "approximate": true,
+      "point": [
+        38.92,
+        37.22
+      ],
+      "wiki": "Göbekli_Tepe",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e7",
+      "title": "Farming begins",
+      "start": -9000,
+      "end": -9000,
+      "approximate": true,
+      "point": [
+        35.44,
+        31.87
+      ],
+      "wiki": "Neolithic_Revolution",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e8",
+      "title": "Çatalhöyük",
+      "start": -7400,
+      "end": -7400,
+      "approximate": true,
+      "point": [
+        32.83,
+        37.67
+      ],
+      "wiki": "Çatalhöyük",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e9",
+      "title": "Writing invented in Sumer",
+      "start": -3200,
+      "end": -3200,
+      "approximate": true,
+      "point": [
+        45.64,
+        31.32
+      ],
+      "wiki": "Cuneiform",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e10",
+      "title": "Egypt is unified",
+      "start": -3100,
+      "end": -3100,
+      "approximate": true,
+      "point": [
+        31.92,
+        26.18
+      ],
+      "wiki": "Narmer",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e11",
+      "title": "Stonehenge begun",
+      "start": -3000,
+      "end": -3000,
+      "approximate": true,
+      "point": [
+        -1.83,
+        51.18
+      ],
+      "wiki": "Stonehenge",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e12",
+      "title": "Indus Valley cities",
+      "start": -2600,
+      "end": -1900,
+      "approximate": true,
+      "point": [
+        68.14,
+        27.33
+      ],
+      "wiki": "Mohenjo-daro",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e13",
+      "title": "Great Pyramid of Giza",
+      "start": -2560,
+      "end": -2560,
+      "approximate": true,
+      "point": [
+        31.13,
+        29.98
+      ],
+      "wiki": "Great_Pyramid_of_Giza",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e14",
+      "title": "Sargon founds the Akkadian Empire",
+      "start": -2334,
+      "end": -2334,
+      "approximate": true,
+      "point": [
+        44.1,
+        33.1
+      ],
+      "wiki": "Sargon_of_Akkad",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e15",
+      "title": "Code of Hammurabi",
+      "start": -1754,
+      "end": -1754,
+      "approximate": true,
+      "point": [
+        44.42,
+        32.54
+      ],
+      "wiki": "Code_of_Hammurabi",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e16",
+      "title": "Thera erupts",
+      "start": -1600,
+      "end": -1600,
+      "approximate": true,
+      "point": [
+        25.4,
+        36.4
+      ],
+      "wiki": "Minoan_eruption",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e17",
+      "title": "Battle of Kadesh",
+      "start": -1274,
+      "end": -1274,
+      "approximate": true,
+      "point": [
+        36.52,
+        34.56
+      ],
+      "wiki": "Battle_of_Kadesh",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e18",
+      "title": "Chinese writing on oracle bones",
+      "start": -1250,
+      "end": -1250,
+      "approximate": true,
+      "point": [
+        114.35,
+        36.1
+      ],
+      "wiki": "Oracle_bone_script",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e19",
+      "title": "Olmec civilization",
+      "start": -1200,
+      "end": -1200,
+      "approximate": true,
+      "point": [
+        -94.76,
+        17.75
+      ],
+      "wiki": "Olmecs",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e20",
+      "title": "Bronze Age collapse",
+      "start": -1177,
+      "end": -1177,
+      "approximate": true,
+      "point": [
+        33.5,
+        35.5
+      ],
+      "wiki": "Late_Bronze_Age_collapse",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e21",
+      "title": "Early Bantu-speaking dispersals",
+      "start": -3000,
+      "end": -3000,
+      "approximate": true,
+      "point": [
+        10,
+        6
+      ],
+      "wiki": "Bantu_expansion",
+      "evidence": "source-checked correction or clarification",
+      "source": "https://www.nature.com/articles/s41586-023-06770-6"
+    },
+    {
+      "id": "e22",
+      "title": "Lapita voyagers reach Tonga",
+      "start": -900,
+      "end": -900,
+      "approximate": true,
+      "point": [
+        -175.2,
+        -21.1
+      ],
+      "wiki": "Lapita_culture",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e23",
+      "title": "First Olympic Games",
+      "start": -776,
+      "end": -776,
+      "approximate": true,
+      "point": [
+        21.63,
+        37.64
+      ],
+      "wiki": "Ancient_Olympic_Games",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e24",
+      "title": "Rome founded (by legend)",
+      "start": -753,
+      "end": -753,
+      "approximate": true,
+      "point": [
+        12.49,
+        41.89
+      ],
+      "wiki": "Founding_of_Rome",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e25",
+      "title": "Cyrus takes Babylon",
+      "start": -539,
+      "end": -539,
+      "approximate": false,
+      "point": [
+        44.42,
+        32.54
+      ],
+      "wiki": "Fall_of_Babylon",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e26",
+      "title": "Democracy in Athens",
+      "start": -508,
+      "end": -508,
+      "approximate": false,
+      "point": [
+        23.72,
+        37.97
+      ],
+      "wiki": "Athenian_democracy",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e27",
+      "title": "Nok culture",
+      "start": -500,
+      "end": -500,
+      "approximate": true,
+      "point": [
+        8,
+        9.5
+      ],
+      "wiki": "Nok_culture",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e28",
+      "title": "Battle of Marathon",
+      "start": -490,
+      "end": -490,
+      "approximate": false,
+      "point": [
+        23.96,
+        38.15
+      ],
+      "wiki": "Battle_of_Marathon",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e29",
+      "title": "Parthenon begun",
+      "start": -447,
+      "end": -447,
+      "approximate": false,
+      "point": [
+        23.73,
+        37.97
+      ],
+      "wiki": "Parthenon",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e30",
+      "title": "Alexander's conquests",
+      "start": -334,
+      "end": -323,
+      "approximate": false,
+      "point": [
+        43.25,
+        36.36
+      ],
+      "wiki": "Wars_of_Alexander_the_Great",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e31",
+      "title": "Kalinga War",
+      "start": -261,
+      "end": -261,
+      "approximate": true,
+      "point": [
+        85.8,
+        20.3
+      ],
+      "wiki": "Kalinga_War",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e32",
+      "title": "Qin unifies China",
+      "start": -221,
+      "end": -221,
+      "approximate": false,
+      "point": [
+        108.7,
+        34.33
+      ],
+      "wiki": "Qin_dynasty",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e33",
+      "title": "Hannibal crosses the Alps",
+      "start": -218,
+      "end": -218,
+      "approximate": false,
+      "point": [
+        6.9,
+        45.2
+      ],
+      "wiki": "Hannibal's_crossing_of_the_Alps",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e34",
+      "title": "Han dynasty",
+      "start": -202,
+      "end": -202,
+      "approximate": false,
+      "point": [
+        108.9,
+        34.27
+      ],
+      "wiki": "Han_dynasty",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e35",
+      "title": "Silk Road opens",
+      "start": -130,
+      "end": -130,
+      "approximate": true,
+      "point": [
+        94.66,
+        40.14
+      ],
+      "wiki": "Silk_Road",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e36",
+      "title": "Teotihuacan rises",
+      "start": -100,
+      "end": -100,
+      "approximate": true,
+      "point": [
+        -98.84,
+        19.69
+      ],
+      "wiki": "Teotihuacan",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e37",
+      "title": "Caesar assassinated",
+      "start": -44,
+      "end": -44,
+      "approximate": false,
+      "point": [
+        12.48,
+        41.89
+      ],
+      "wiki": "Assassination_of_Julius_Caesar",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e38",
+      "title": "Vesuvius buries Pompeii",
+      "start": 79,
+      "end": 79,
+      "approximate": false,
+      "point": [
+        14.49,
+        40.75
+      ],
+      "wiki": "Eruption_of_Mount_Vesuvius_in_79_AD",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e39",
+      "title": "Paper reported to the emperor",
+      "start": 105,
+      "end": 105,
+      "approximate": false,
+      "point": [
+        112.45,
+        34.62
+      ],
+      "wiki": "Cai_Lun",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e40",
+      "title": "Hadrian's Wall",
+      "start": 122,
+      "end": 122,
+      "approximate": false,
+      "point": [
+        -2.3,
+        55
+      ],
+      "wiki": "Hadrian's_Wall",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e41",
+      "title": "Classic Maya era",
+      "start": 250,
+      "end": 250,
+      "approximate": true,
+      "point": [
+        -89.62,
+        17.22
+      ],
+      "wiki": "Tikal",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e42",
+      "title": "Edict of Milan",
+      "start": 313,
+      "end": 313,
+      "approximate": false,
+      "point": [
+        9.19,
+        45.46
+      ],
+      "wiki": "Edict_of_Milan",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e43",
+      "title": "Gupta Empire",
+      "start": 320,
+      "end": 320,
+      "approximate": true,
+      "point": [
+        85.1,
+        25.6
+      ],
+      "wiki": "Gupta_Empire",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e44",
+      "title": "Constantinople founded",
+      "start": 330,
+      "end": 330,
+      "approximate": false,
+      "point": [
+        28.98,
+        41.01
+      ],
+      "wiki": "Constantinople",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e45",
+      "title": "Aksum becomes Christian",
+      "start": 330,
+      "end": 330,
+      "approximate": true,
+      "point": [
+        38.72,
+        14.13
+      ],
+      "wiki": "Kingdom_of_Aksum",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e46",
+      "title": "Western Roman Empire ends",
+      "start": 476,
+      "end": 476,
+      "approximate": false,
+      "point": [
+        12.2,
+        44.42
+      ],
+      "wiki": "Fall_of_the_Western_Roman_Empire",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e47",
+      "title": "Aryabhata's astronomy",
+      "start": 499,
+      "end": 499,
+      "approximate": false,
+      "point": [
+        85.1,
+        25.6
+      ],
+      "wiki": "Aryabhatiya",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e48",
+      "title": "Hagia Sophia completed",
+      "start": 537,
+      "end": 537,
+      "approximate": false,
+      "point": [
+        28.98,
+        41.01
+      ],
+      "wiki": "Hagia_Sophia",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e49",
+      "title": "Plague of Justinian",
+      "start": 541,
+      "end": 541,
+      "approximate": false,
+      "point": [
+        28.96,
+        41
+      ],
+      "wiki": "Plague_of_Justinian",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e50",
+      "title": "Tang dynasty",
+      "start": 618,
+      "end": 618,
+      "approximate": false,
+      "point": [
+        108.95,
+        34.27
+      ],
+      "wiki": "Tang_dynasty",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e51",
+      "title": "The Hijra",
+      "start": 622,
+      "end": 622,
+      "approximate": false,
+      "point": [
+        39.61,
+        24.47
+      ],
+      "wiki": "Hijrah",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e52",
+      "title": "Umayyad conquest of Iberia",
+      "start": 711,
+      "end": 711,
+      "approximate": false,
+      "point": [
+        -5.6,
+        36.5
+      ],
+      "wiki": "Umayyad_conquest_of_Hispania",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e53",
+      "title": "Baghdad founded",
+      "start": 762,
+      "end": 762,
+      "approximate": false,
+      "point": [
+        44.36,
+        33.31
+      ],
+      "wiki": "Baghdad",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e54",
+      "title": "Vikings raid Lindisfarne",
+      "start": 793,
+      "end": 793,
+      "approximate": false,
+      "point": [
+        -1.8,
+        55.68
+      ],
+      "wiki": "Lindisfarne",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e55",
+      "title": "Charlemagne crowned emperor",
+      "start": 800,
+      "end": 800,
+      "approximate": false,
+      "point": [
+        12.45,
+        41.9
+      ],
+      "wiki": "Charlemagne",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e56",
+      "title": "Diamond Sutra printed",
+      "start": 868,
+      "end": 868,
+      "approximate": false,
+      "point": [
+        94.66,
+        40.14
+      ],
+      "wiki": "Diamond_Sutra",
+      "evidence": "source-checked correction or clarification",
+      "source": "https://idp.bl.uk/wp-content/uploads/2025/01/BL.SR_.Large_.Print_.Guide_.V3.pdf"
+    },
+    {
+      "id": "e57",
+      "title": "Baptism of Kievan Rus'",
+      "start": 988,
+      "end": 988,
+      "approximate": false,
+      "point": [
+        30.52,
+        50.45
+      ],
+      "wiki": "Christianization_of_Kievan_Rus'",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e58",
+      "title": "Norse activity in North America",
+      "start": 1021,
+      "end": 1021,
+      "approximate": false,
+      "point": [
+        -55.53,
+        51.6
+      ],
+      "wiki": "L'Anse_aux_Meadows",
+      "evidence": "source-checked correction or clarification",
+      "source": "https://www.nature.com/articles/s41586-021-03972-8"
+    },
+    {
+      "id": "e59",
+      "title": "Cahokia at its peak",
+      "start": 1050,
+      "end": 1150,
+      "approximate": true,
+      "point": [
+        -90.06,
+        38.66
+      ],
+      "wiki": "Cahokia",
+      "evidence": "source-checked correction or clarification",
+      "source": "https://whc.unesco.org/en/list/198/"
+    },
+    {
+      "id": "e60",
+      "title": "East–West Schism",
+      "start": 1054,
+      "end": 1054,
+      "approximate": false,
+      "point": [
+        28.98,
+        41.01
+      ],
+      "wiki": "East–West_Schism",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e61",
+      "title": "Battle of Hastings",
+      "start": 1066,
+      "end": 1066,
+      "approximate": false,
+      "point": [
+        0.49,
+        50.91
+      ],
+      "wiki": "Battle_of_Hastings",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e62",
+      "title": "University of Bologna",
+      "start": 1088,
+      "end": 1088,
+      "approximate": false,
+      "point": [
+        11.34,
+        44.49
+      ],
+      "wiki": "University_of_Bologna",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e63",
+      "title": "First Crusade",
+      "start": 1096,
+      "end": 1099,
+      "approximate": false,
+      "point": [
+        35.23,
+        31.78
+      ],
+      "wiki": "First_Crusade",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e64",
+      "title": "Great Zimbabwe",
+      "start": 1100,
+      "end": 1450,
+      "approximate": true,
+      "point": [
+        30.93,
+        -20.27
+      ],
+      "wiki": "Great_Zimbabwe",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e65",
+      "title": "Angkor Wat",
+      "start": 1113,
+      "end": 1113,
+      "approximate": true,
+      "point": [
+        103.87,
+        13.41
+      ],
+      "wiki": "Angkor_Wat",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e66",
+      "title": "Mongol Empire founded",
+      "start": 1206,
+      "end": 1206,
+      "approximate": false,
+      "point": [
+        102.8,
+        47.2
+      ],
+      "wiki": "Mongol_Empire",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e67",
+      "title": "Magna Carta",
+      "start": 1215,
+      "end": 1215,
+      "approximate": false,
+      "point": [
+        -0.56,
+        51.44
+      ],
+      "wiki": "Magna_Carta",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e68",
+      "title": "Mali Empire",
+      "start": 1235,
+      "end": 1235,
+      "approximate": true,
+      "point": [
+        -8.4,
+        11.4
+      ],
+      "wiki": "Mali_Empire",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e69",
+      "title": "Moai of Rapa Nui",
+      "start": 1250,
+      "end": 1500,
+      "approximate": true,
+      "point": [
+        -109.37,
+        -27.12
+      ],
+      "wiki": "Moai",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e70",
+      "title": "Mongols sack Baghdad",
+      "start": 1258,
+      "end": 1258,
+      "approximate": false,
+      "point": [
+        44.38,
+        33.31
+      ],
+      "wiki": "Siege_of_Baghdad_(1258)",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e71",
+      "title": "Marco Polo's journey",
+      "start": 1271,
+      "end": 1295,
+      "approximate": false,
+      "point": [
+        116.4,
+        39.9
+      ],
+      "wiki": "Marco_Polo",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e72",
+      "title": "Polynesians reach New Zealand",
+      "start": 1280,
+      "end": 1280,
+      "approximate": true,
+      "point": [
+        174,
+        -41
+      ],
+      "wiki": "History_of_New_Zealand",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e73",
+      "title": "Mansa Musa's pilgrimage",
+      "start": 1324,
+      "end": 1324,
+      "approximate": false,
+      "point": [
+        31.24,
+        30.04
+      ],
+      "wiki": "Mansa_Musa",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e74",
+      "title": "Tenochtitlan founded",
+      "start": 1325,
+      "end": 1325,
+      "approximate": false,
+      "point": [
+        -99.13,
+        19.43
+      ],
+      "wiki": "Tenochtitlan",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e75",
+      "title": "Ibn Battuta visits Kilwa",
+      "start": 1331,
+      "end": 1331,
+      "approximate": false,
+      "point": [
+        39.51,
+        -8.96
+      ],
+      "wiki": "Kilwa_Kisiwani",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e76",
+      "title": "Black Death",
+      "start": 1347,
+      "end": 1351,
+      "approximate": false,
+      "point": [
+        15.55,
+        38.19
+      ],
+      "wiki": "Black_Death",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e77",
+      "title": "Ming dynasty",
+      "start": 1368,
+      "end": 1368,
+      "approximate": false,
+      "point": [
+        118.8,
+        32.06
+      ],
+      "wiki": "Ming_dynasty",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e78",
+      "title": "Zheng He's voyages",
+      "start": 1405,
+      "end": 1433,
+      "approximate": false,
+      "point": [
+        75.78,
+        11.25
+      ],
+      "wiki": "Ming_treasure_voyages",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e79",
+      "title": "Inca Empire expands",
+      "start": 1438,
+      "end": 1438,
+      "approximate": false,
+      "point": [
+        -71.97,
+        -13.53
+      ],
+      "wiki": "Inca_Empire",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e80",
+      "title": "Gutenberg's press",
+      "start": 1450,
+      "end": 1450,
+      "approximate": true,
+      "point": [
+        8.27,
+        50
+      ],
+      "wiki": "Printing_press",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e81",
+      "title": "Fall of Constantinople",
+      "start": 1453,
+      "end": 1453,
+      "approximate": false,
+      "point": [
+        28.97,
+        41.02
+      ],
+      "wiki": "Fall_of_Constantinople",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e82",
+      "title": "Songhai Empire",
+      "start": 1464,
+      "end": 1464,
+      "approximate": false,
+      "point": [
+        -0.04,
+        16.27
+      ],
+      "wiki": "Songhai_Empire",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e83",
+      "title": "Columbus reaches the Caribbean",
+      "start": 1492,
+      "end": 1492,
+      "approximate": false,
+      "point": [
+        -74.5,
+        24.1
+      ],
+      "wiki": "Voyages_of_Christopher_Columbus",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e84",
+      "title": "Vasco da Gama reaches India",
+      "start": 1498,
+      "end": 1498,
+      "approximate": false,
+      "point": [
+        75.78,
+        11.25
+      ],
+      "wiki": "Vasco_da_Gama",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e85",
+      "title": "Mona Lisa begun",
+      "start": 1503,
+      "end": 1503,
+      "approximate": false,
+      "point": [
+        11.25,
+        43.77
+      ],
+      "wiki": "Mona_Lisa",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e86",
+      "title": "The Reformation",
+      "start": 1517,
+      "end": 1517,
+      "approximate": false,
+      "point": [
+        12.65,
+        51.87
+      ],
+      "wiki": "Ninety-five_Theses",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e87",
+      "title": "First voyage around the world",
+      "start": 1519,
+      "end": 1522,
+      "approximate": false,
+      "point": [
+        -70.9,
+        -53.5
+      ],
+      "wiki": "Magellan_expedition",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e88",
+      "title": "Fall of Tenochtitlan",
+      "start": 1521,
+      "end": 1521,
+      "approximate": false,
+      "point": [
+        -99.12,
+        19.44
+      ],
+      "wiki": "Fall_of_Tenochtitlan",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e89",
+      "title": "Mughal Empire",
+      "start": 1526,
+      "end": 1526,
+      "approximate": false,
+      "point": [
+        76.97,
+        29.39
+      ],
+      "wiki": "Mughal_Empire",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e90",
+      "title": "Copernicus' heliocentrism",
+      "start": 1543,
+      "end": 1543,
+      "approximate": false,
+      "point": [
+        19.68,
+        54.36
+      ],
+      "wiki": "De_revolutionibus_orbium_coelestium",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e91",
+      "title": "Tokugawa shogunate",
+      "start": 1603,
+      "end": 1603,
+      "approximate": false,
+      "point": [
+        139.69,
+        35.68
+      ],
+      "wiki": "Tokugawa_shogunate",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e92",
+      "title": "Jamestown",
+      "start": 1607,
+      "end": 1607,
+      "approximate": false,
+      "point": [
+        -76.78,
+        37.21
+      ],
+      "wiki": "Jamestown,_Virginia",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e93",
+      "title": "Galileo's telescope",
+      "start": 1610,
+      "end": 1610,
+      "approximate": false,
+      "point": [
+        11.88,
+        45.41
+      ],
+      "wiki": "Sidereus_Nuncius",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e94",
+      "title": "Taj Mahal begun",
+      "start": 1632,
+      "end": 1632,
+      "approximate": false,
+      "point": [
+        78.04,
+        27.17
+      ],
+      "wiki": "Taj_Mahal",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e95",
+      "title": "Qing dynasty takes Beijing",
+      "start": 1644,
+      "end": 1644,
+      "approximate": false,
+      "point": [
+        116.4,
+        39.9
+      ],
+      "wiki": "Qing_dynasty",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e96",
+      "title": "Peace of Westphalia",
+      "start": 1648,
+      "end": 1648,
+      "approximate": false,
+      "point": [
+        7.63,
+        51.96
+      ],
+      "wiki": "Peace_of_Westphalia",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e97",
+      "title": "Cape Colony founded",
+      "start": 1652,
+      "end": 1652,
+      "approximate": false,
+      "point": [
+        18.42,
+        -33.92
+      ],
+      "wiki": "Dutch_Cape_Colony",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e98",
+      "title": "Newton's Principia",
+      "start": 1687,
+      "end": 1687,
+      "approximate": false,
+      "point": [
+        -0.1,
+        51.51
+      ],
+      "wiki": "Philosophiæ_Naturalis_Principia_Mathematica",
+      "evidence": "source-checked correction or clarification",
+      "source": "https://wwwe.lib.cam.ac.uk/CUL/exhibitions/Footprints_of_the_Lion/gravity_glory.html"
+    },
+    {
+      "id": "e99",
+      "title": "St. Petersburg founded",
+      "start": 1703,
+      "end": 1703,
+      "approximate": false,
+      "point": [
+        30.31,
+        59.94
+      ],
+      "wiki": "Saint_Petersburg",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e100",
+      "title": "Industrial Revolution",
+      "start": 1760,
+      "end": 1760,
+      "approximate": true,
+      "point": [
+        -2.24,
+        53.48
+      ],
+      "wiki": "Industrial_Revolution",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e101",
+      "title": "Cook reaches eastern Australia",
+      "start": 1770,
+      "end": 1770,
+      "approximate": false,
+      "point": [
+        151.2,
+        -34
+      ],
+      "wiki": "James_Cook",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e102",
+      "title": "US Declaration of Independence",
+      "start": 1776,
+      "end": 1776,
+      "approximate": false,
+      "point": [
+        -75.15,
+        39.95
+      ],
+      "wiki": "United_States_Declaration_of_Independence",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e103",
+      "title": "First Fleet arrives",
+      "start": 1788,
+      "end": 1788,
+      "approximate": false,
+      "point": [
+        151.21,
+        -33.86
+      ],
+      "wiki": "First_Fleet",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e104",
+      "title": "Spain and Britain nearly fight over Vancouver Island",
+      "start": 1789,
+      "end": 1790,
+      "approximate": false,
+      "point": [
+        -126.62,
+        49.59
+      ],
+      "wiki": "Nootka_Crisis",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e105",
+      "title": "French Revolution",
+      "start": 1789,
+      "end": 1789,
+      "approximate": false,
+      "point": [
+        2.35,
+        48.86
+      ],
+      "wiki": "French_Revolution",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e106",
+      "title": "Haitian Revolution",
+      "start": 1791,
+      "end": 1804,
+      "approximate": false,
+      "point": [
+        -72.3,
+        19
+      ],
+      "wiki": "Haitian_Revolution",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e107",
+      "title": "Spanish America wins independence",
+      "start": 1808,
+      "end": 1826,
+      "approximate": false,
+      "point": [
+        -74.08,
+        4.6
+      ],
+      "wiki": "Spanish_American_wars_of_independence",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e108",
+      "title": "Battle of Waterloo",
+      "start": 1815,
+      "end": 1815,
+      "approximate": false,
+      "point": [
+        4.41,
+        50.68
+      ],
+      "wiki": "Battle_of_Waterloo",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e109",
+      "title": "Tambora erupts",
+      "start": 1815,
+      "end": 1815,
+      "approximate": false,
+      "point": [
+        118,
+        -8.25
+      ],
+      "wiki": "1815_eruption_of_Mount_Tambora",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e110",
+      "title": "Russia claims the coast to 51°N",
+      "start": 1821,
+      "end": 1821,
+      "approximate": false,
+      "point": [
+        -128,
+        51
+      ],
+      "wiki": "Ukase_of_1821",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e111",
+      "title": "Stockton and Darlington Railway opens",
+      "start": 1825,
+      "end": 1825,
+      "approximate": false,
+      "point": [
+        -1.55,
+        54.52
+      ],
+      "wiki": "Stockton_and_Darlington_Railway",
+      "evidence": "source-checked correction or clarification",
+      "source": "https://historicengland.org.uk/listing/the-list/list-entry/1484556"
+    },
+    {
+      "id": "e112",
+      "title": "First Opium War",
+      "start": 1839,
+      "end": 1842,
+      "approximate": false,
+      "point": [
+        113.26,
+        23.13
+      ],
+      "wiki": "First_Opium_War",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e113",
+      "title": "Treaty of Waitangi",
+      "start": 1840,
+      "end": 1840,
+      "approximate": false,
+      "point": [
+        174.08,
+        -35.27
+      ],
+      "wiki": "Treaty_of_Waitangi",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e114",
+      "title": "The United States claims most of today's BC",
+      "start": 1846,
+      "end": 1846,
+      "approximate": false,
+      "point": [
+        -123.5,
+        49
+      ],
+      "wiki": "Oregon_Treaty",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e115",
+      "title": "The Pig War",
+      "start": 1859,
+      "end": 1859,
+      "approximate": false,
+      "point": [
+        -123.09,
+        48.53
+      ],
+      "wiki": "Pig_War_(1859)",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e116",
+      "title": "On the Origin of Species",
+      "start": 1859,
+      "end": 1859,
+      "approximate": false,
+      "point": [
+        -0.13,
+        51.51
+      ],
+      "wiki": "On_the_Origin_of_Species",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e117",
+      "title": "Russia frees the serfs",
+      "start": 1861,
+      "end": 1861,
+      "approximate": false,
+      "point": [
+        37.62,
+        55.75
+      ],
+      "wiki": "Emancipation_reform_of_1861",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e118",
+      "title": "American Civil War",
+      "start": 1861,
+      "end": 1865,
+      "approximate": false,
+      "point": [
+        -77.23,
+        39.83
+      ],
+      "wiki": "American_Civil_War",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e119",
+      "title": "Meiji Restoration",
+      "start": 1868,
+      "end": 1868,
+      "approximate": false,
+      "point": [
+        139.75,
+        35.68
+      ],
+      "wiki": "Meiji_Restoration",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e120",
+      "title": "Suez Canal opens",
+      "start": 1869,
+      "end": 1869,
+      "approximate": false,
+      "point": [
+        32.3,
+        30.6
+      ],
+      "wiki": "Suez_Canal",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e121",
+      "title": "The telephone",
+      "start": 1876,
+      "end": 1876,
+      "approximate": false,
+      "point": [
+        -71.06,
+        42.36
+      ],
+      "wiki": "Invention_of_the_telephone",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e122",
+      "title": "Berlin Conference",
+      "start": 1884,
+      "end": 1885,
+      "approximate": false,
+      "point": [
+        13.4,
+        52.52
+      ],
+      "wiki": "Berlin_Conference",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e123",
+      "title": "New Zealand women vote",
+      "start": 1893,
+      "end": 1893,
+      "approximate": false,
+      "point": [
+        172.63,
+        -43.53
+      ],
+      "wiki": "Women's_suffrage_in_New_Zealand",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e124",
+      "title": "Battle of Adwa",
+      "start": 1896,
+      "end": 1896,
+      "approximate": false,
+      "point": [
+        38.9,
+        14.16
+      ],
+      "wiki": "Battle_of_Adwa",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e125",
+      "title": "Britain and France face off at Fashoda",
+      "start": 1898,
+      "end": 1898,
+      "approximate": false,
+      "point": [
+        32.12,
+        9.89
+      ],
+      "wiki": "Fashoda_Incident",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e126",
+      "title": "Canada loses the Alaska boundary dispute",
+      "start": 1903,
+      "end": 1903,
+      "approximate": false,
+      "point": [
+        -135.31,
+        59.46
+      ],
+      "wiki": "Alaska_boundary_dispute",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e127",
+      "title": "First powered flight",
+      "start": 1903,
+      "end": 1903,
+      "approximate": false,
+      "point": [
+        -75.67,
+        36.02
+      ],
+      "wiki": "Wright_Flyer",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e128",
+      "title": "Russian warships fire on British fishermen",
+      "start": 1904,
+      "end": 1904,
+      "approximate": false,
+      "point": [
+        3,
+        55
+      ],
+      "wiki": "Dogger_Bank_incident",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e129",
+      "title": "Einstein's miracle year",
+      "start": 1905,
+      "end": 1905,
+      "approximate": false,
+      "point": [
+        7.45,
+        46.95
+      ],
+      "wiki": "Annus_mirabilis_papers",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e130",
+      "title": "Xinhai Revolution",
+      "start": 1911,
+      "end": 1911,
+      "approximate": false,
+      "point": [
+        114.3,
+        30.55
+      ],
+      "wiki": "1911_Revolution",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e131",
+      "title": "World War I",
+      "start": 1914,
+      "end": 1918,
+      "approximate": false,
+      "point": [
+        5.38,
+        49.16
+      ],
+      "wiki": "World_War_I",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e132",
+      "title": "Russian Revolution",
+      "start": 1917,
+      "end": 1917,
+      "approximate": false,
+      "point": [
+        30.32,
+        59.94
+      ],
+      "wiki": "Russian_Revolution",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e133",
+      "title": "Penicillin discovered",
+      "start": 1928,
+      "end": 1928,
+      "approximate": false,
+      "point": [
+        -0.17,
+        51.52
+      ],
+      "wiki": "Penicillin",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e134",
+      "title": "Wall Street Crash",
+      "start": 1929,
+      "end": 1929,
+      "approximate": false,
+      "point": [
+        -74.01,
+        40.71
+      ],
+      "wiki": "Wall_Street_crash_of_1929",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e135",
+      "title": "Salt March",
+      "start": 1930,
+      "end": 1930,
+      "approximate": false,
+      "point": [
+        72.8,
+        20.89
+      ],
+      "wiki": "Salt_March",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e136",
+      "title": "World War II",
+      "start": 1939,
+      "end": 1945,
+      "approximate": false,
+      "point": [
+        21.01,
+        52.23
+      ],
+      "wiki": "World_War_II",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e137",
+      "title": "The Holocaust",
+      "start": 1933,
+      "end": 1945,
+      "approximate": false,
+      "point": [
+        19.18,
+        50.03
+      ],
+      "wiki": "The_Holocaust",
+      "evidence": "source-checked correction or clarification",
+      "source": "https://encyclopedia.ushmm.org/content/en/article/introduction-to-the-holocaust"
+    },
+    {
+      "id": "e138",
+      "title": "Hiroshima and Nagasaki",
+      "start": 1945,
+      "end": 1945,
+      "approximate": false,
+      "point": [
+        132.45,
+        34.39
+      ],
+      "wiki": "Atomic_bombings_of_Hiroshima_and_Nagasaki",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e139",
+      "title": "United Nations founded",
+      "start": 1945,
+      "end": 1945,
+      "approximate": false,
+      "point": [
+        -122.42,
+        37.78
+      ],
+      "wiki": "United_Nations",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e140",
+      "title": "Independence and Partition of India",
+      "start": 1947,
+      "end": 1947,
+      "approximate": false,
+      "point": [
+        77.21,
+        28.61
+      ],
+      "wiki": "Partition_of_India",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e141",
+      "title": "People's Republic of China",
+      "start": 1949,
+      "end": 1949,
+      "approximate": false,
+      "point": [
+        116.39,
+        39.91
+      ],
+      "wiki": "Proclamation_of_the_People's_Republic_of_China",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e142",
+      "title": "DNA's double helix",
+      "start": 1953,
+      "end": 1953,
+      "approximate": false,
+      "point": [
+        0.12,
+        52.2
+      ],
+      "wiki": "Molecular_Structure_of_Nucleic_Acids",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e143",
+      "title": "Sputnik",
+      "start": 1957,
+      "end": 1957,
+      "approximate": false,
+      "point": [
+        63.34,
+        45.92
+      ],
+      "wiki": "Sputnik_1",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e144",
+      "title": "Ghana independent",
+      "start": 1957,
+      "end": 1957,
+      "approximate": false,
+      "point": [
+        -0.19,
+        5.6
+      ],
+      "wiki": "Decolonisation_of_Africa",
+      "evidence": "source-checked correction or clarification",
+      "source": "https://history.state.gov/countries/ghana"
+    },
+    {
+      "id": "e145",
+      "title": "First human in space",
+      "start": 1961,
+      "end": 1961,
+      "approximate": false,
+      "point": [
+        63.34,
+        45.92
+      ],
+      "wiki": "Vostok_1",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e146",
+      "title": "March on Washington",
+      "start": 1963,
+      "end": 1963,
+      "approximate": false,
+      "point": [
+        -77.05,
+        38.89
+      ],
+      "wiki": "March_on_Washington_for_Jobs_and_Freedom",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e147",
+      "title": "Moon landing",
+      "start": 1969,
+      "end": 1969,
+      "approximate": false,
+      "point": [
+        -80.65,
+        28.57
+      ],
+      "wiki": "Apollo_11",
+      "evidence": "source-checked correction or clarification",
+      "source": "https://www.nasa.gov/missions/apollo/apollo-11/apollo-11-mission-overview/"
+    },
+    {
+      "id": "e148",
+      "title": "Sydney Opera House opens",
+      "start": 1973,
+      "end": 1973,
+      "approximate": false,
+      "point": [
+        151.21,
+        -33.86
+      ],
+      "wiki": "Sydney_Opera_House",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e149",
+      "title": "Berlin Wall falls",
+      "start": 1989,
+      "end": 1989,
+      "approximate": false,
+      "point": [
+        13.38,
+        52.52
+      ],
+      "wiki": "Berlin_Wall",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e150",
+      "title": "The World Wide Web",
+      "start": 1989,
+      "end": 1989,
+      "approximate": false,
+      "point": [
+        6.05,
+        46.23
+      ],
+      "wiki": "World_Wide_Web",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e151",
+      "title": "Soviet Union dissolves",
+      "start": 1991,
+      "end": 1991,
+      "approximate": false,
+      "point": [
+        37.61,
+        55.75
+      ],
+      "wiki": "Dissolution_of_the_Soviet_Union",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e152",
+      "title": "End of apartheid",
+      "start": 1994,
+      "end": 1994,
+      "approximate": false,
+      "point": [
+        28.19,
+        -25.75
+      ],
+      "wiki": "1994_South_African_general_election",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e153",
+      "title": "September 11 attacks",
+      "start": 2001,
+      "end": 2001,
+      "approximate": false,
+      "point": [
+        -74.01,
+        40.71
+      ],
+      "wiki": "September_11_attacks",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e154",
+      "title": "Human Genome Project completed",
+      "start": 2003,
+      "end": 2003,
+      "approximate": false,
+      "point": [
+        -77.1,
+        38.98
+      ],
+      "wiki": "Human_Genome_Project",
+      "evidence": "source-checked correction or clarification",
+      "source": "https://www.genome.gov/about-genomics/educational-resources/fact-sheets/human-genome-project"
+    },
+    {
+      "id": "e155",
+      "title": "Indian Ocean tsunami",
+      "start": 2004,
+      "end": 2004,
+      "approximate": false,
+      "point": [
+        95.9,
+        3.3
+      ],
+      "wiki": "2004_Indian_Ocean_earthquake_and_tsunami",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e156",
+      "title": "The smartphone era",
+      "start": 2007,
+      "end": 2007,
+      "approximate": false,
+      "point": [
+        -122.4,
+        37.78
+      ],
+      "wiki": "IPhone_(1st_generation)",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e157",
+      "title": "Global financial crisis",
+      "start": 2008,
+      "end": 2008,
+      "approximate": false,
+      "point": [
+        -74,
+        40.7
+      ],
+      "wiki": "2008_financial_crisis",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e158",
+      "title": "Arab Spring",
+      "start": 2010,
+      "end": 2012,
+      "approximate": false,
+      "point": [
+        10.18,
+        36.8
+      ],
+      "wiki": "Arab_Spring",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e159",
+      "title": "COVID-19 global health emergency",
+      "start": 2020,
+      "end": 2023,
+      "approximate": false,
+      "point": [
+        6.134,
+        46.232
+      ],
+      "wiki": "COVID-19_pandemic",
+      "evidence": "source-checked correction or clarification",
+      "source": "https://www.who.int/news/item/05-05-2023-statement-on-the-fifteenth-meeting-of-the-international-health-regulations-(2005)-emergency-committee-regarding-the-coronavirus-disease-(covid-19)-pandemic"
+    },
+    {
+      "id": "e160",
+      "title": "Russia invades Ukraine",
+      "start": 2022,
+      "end": 2022,
+      "approximate": false,
+      "point": [
+        30.52,
+        50.45
+      ],
+      "wiki": "Russian_invasion_of_Ukraine",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e161",
+      "title": "Webb telescope's first images",
+      "start": 2022,
+      "end": 2022,
+      "approximate": false,
+      "point": [
+        -76.62,
+        39.33
+      ],
+      "wiki": "James_Webb_Space_Telescope",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e162",
+      "title": "Needles with eyes",
+      "start": -48000,
+      "end": -48000,
+      "approximate": true,
+      "point": [
+        84.68,
+        51.4
+      ],
+      "wiki": "Sewing_needle",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e163",
+      "title": "Dyed flax threads",
+      "start": -28000,
+      "end": -28000,
+      "approximate": true,
+      "point": [
+        43.28,
+        42.29
+      ],
+      "wiki": "History_of_clothing_and_textiles",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e164",
+      "title": "Cotton in South Asia",
+      "start": -5000,
+      "end": -5000,
+      "approximate": true,
+      "point": [
+        67.61,
+        29.39
+      ],
+      "wiki": "History_of_cotton",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e165",
+      "title": "Indigo blue in Peru",
+      "start": -4000,
+      "end": -4000,
+      "approximate": true,
+      "point": [
+        -79.3,
+        -7.92
+      ],
+      "wiki": "Huaca_Prieta",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e166",
+      "title": "Silk woven in China",
+      "start": -3600,
+      "end": -3600,
+      "approximate": true,
+      "point": [
+        113.62,
+        34.75
+      ],
+      "wiki": "History_of_silk",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e167",
+      "title": "The Areni-1 shoe",
+      "start": -3500,
+      "end": -3500,
+      "approximate": true,
+      "point": [
+        45.2,
+        39.73
+      ],
+      "wiki": "Areni-1_shoe",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e168",
+      "title": "The Tarkhan Dress",
+      "start": -3300,
+      "end": -3300,
+      "approximate": true,
+      "point": [
+        31.23,
+        29.5
+      ],
+      "wiki": "Tarkhan_dress",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e169",
+      "title": "Ötzi's outfit",
+      "start": -3300,
+      "end": -3300,
+      "approximate": true,
+      "point": [
+        10.84,
+        46.78
+      ],
+      "wiki": "Ötzi",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e170",
+      "title": "Tyrian purple",
+      "start": -1570,
+      "end": -1570,
+      "approximate": true,
+      "point": [
+        35.2,
+        33.27
+      ],
+      "wiki": "Tyrian_purple",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e171",
+      "title": "Paracas mantles",
+      "start": -300,
+      "end": -300,
+      "approximate": true,
+      "point": [
+        -76.3,
+        -13.85
+      ],
+      "wiki": "Paracas_culture",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e172",
+      "title": "Rome limits women's finery",
+      "start": -215,
+      "end": -215,
+      "approximate": false,
+      "point": [
+        12.49,
+        41.89
+      ],
+      "wiki": "Lex_Oppia",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e173",
+      "title": "Domestic silk production in Byzantium",
+      "start": 553,
+      "end": 553,
+      "approximate": true,
+      "point": [
+        28.98,
+        41.01
+      ],
+      "wiki": "Byzantine_silk",
+      "evidence": "source-checked correction or clarification",
+      "source": "https://www.metmuseum.org/art/collection/search/450736"
+    },
+    {
+      "id": "e174",
+      "title": "Twelve layers at court",
+      "start": 1000,
+      "end": 1000,
+      "approximate": true,
+      "point": [
+        135.77,
+        35.01
+      ],
+      "wiki": "Jūnihitoe",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e175",
+      "title": "Quetzal feather headdress",
+      "start": 1515,
+      "end": 1515,
+      "approximate": true,
+      "point": [
+        -99.13,
+        19.43
+      ],
+      "wiki": "Moctezuma's_headdress",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e176",
+      "title": "Dhaka muslin",
+      "start": 1600,
+      "end": 1600,
+      "approximate": true,
+      "point": [
+        90.41,
+        23.81
+      ],
+      "wiki": "Dhaka_muslin",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e177",
+      "title": "Kente cloth",
+      "start": 1650,
+      "end": 1650,
+      "approximate": true,
+      "point": [
+        -1.47,
+        6.78
+      ],
+      "wiki": "Kente_cloth",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e178",
+      "title": "Hawaiian feather cloaks",
+      "start": 1779,
+      "end": 1779,
+      "approximate": false,
+      "point": [
+        -155.92,
+        19.48
+      ],
+      "wiki": "ʻAhu_ʻula",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e179",
+      "title": "The Jacquard loom",
+      "start": 1804,
+      "end": 1804,
+      "approximate": false,
+      "point": [
+        4.84,
+        45.76
+      ],
+      "wiki": "Jacquard_machine",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e180",
+      "title": "The sewing machine",
+      "start": 1846,
+      "end": 1846,
+      "approximate": false,
+      "point": [
+        -71.11,
+        42.37
+      ],
+      "wiki": "Sewing_machine",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e181",
+      "title": "The first couture house",
+      "start": 1858,
+      "end": 1858,
+      "approximate": false,
+      "point": [
+        2.33,
+        48.87
+      ],
+      "wiki": "Charles_Frederick_Worth",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e182",
+      "title": "Blue jeans",
+      "start": 1873,
+      "end": 1873,
+      "approximate": false,
+      "point": [
+        -122.42,
+        37.77
+      ],
+      "wiki": "Jeans",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e183",
+      "title": "Wax prints reach West Africa",
+      "start": 1880,
+      "end": 1880,
+      "approximate": true,
+      "point": [
+        -0.19,
+        5.6
+      ],
+      "wiki": "African_wax_prints",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e184",
+      "title": "Gandhi's homespun cloth",
+      "start": 1921,
+      "end": 1921,
+      "approximate": false,
+      "point": [
+        72.58,
+        23.06
+      ],
+      "wiki": "Khadi",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e185",
+      "title": "The qipao",
+      "start": 1925,
+      "end": 1925,
+      "approximate": true,
+      "point": [
+        121.47,
+        31.23
+      ],
+      "wiki": "Cheongsam",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e186",
+      "title": "The little black dress",
+      "start": 1926,
+      "end": 1926,
+      "approximate": false,
+      "point": [
+        2.33,
+        48.87
+      ],
+      "wiki": "Little_black_dress",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e187",
+      "title": "Nylon stockings go on nationwide sale",
+      "start": 1940,
+      "end": 1940,
+      "approximate": false,
+      "point": [
+        -74,
+        40.71
+      ],
+      "wiki": "Nylon",
+      "evidence": "source-checked correction or clarification",
+      "source": "https://americanhistory.si.edu/collections/object/nmah_1200996"
+    },
+    {
+      "id": "e188",
+      "title": "The bikini",
+      "start": 1946,
+      "end": 1946,
+      "approximate": false,
+      "point": [
+        2.35,
+        48.86
+      ],
+      "wiki": "Bikini",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e189",
+      "title": "Dior's New Look",
+      "start": 1947,
+      "end": 1947,
+      "approximate": false,
+      "point": [
+        2.31,
+        48.87
+      ],
+      "wiki": "Christian_Dior",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e190",
+      "title": "The miniskirt",
+      "start": 1964,
+      "end": 1964,
+      "approximate": true,
+      "point": [
+        -0.17,
+        51.49
+      ],
+      "wiki": "Miniskirt",
+      "evidence": "Wikipedia background only; independent verification outstanding",
+      "source": null
+    },
+    {
+      "id": "e191",
+      "title": "Chandrayaan-3 lands on the Moon",
+      "start": 2023,
+      "end": 2023,
+      "approximate": false,
+      "point": [
+        80.23,
+        13.72
+      ],
+      "wiki": "Chandrayaan-3",
+      "evidence": "linked source; not independently reverified in this pass",
+      "source": "https://new1.isro.gov.in/ISRO_EN/Release_of_Chandrayaan-3_science_data_to_the_Scientific_Community.html"
+    },
+    {
+      "id": "e192",
+      "title": "Paris Summer Olympics",
+      "start": 2024,
+      "end": 2024,
+      "approximate": false,
+      "point": [
+        2.35,
+        48.86
+      ],
+      "wiki": "2024_Summer_Olympics",
+      "evidence": "linked source; not independently reverified in this pass",
+      "source": "https://www.paris.fr/en/pages/the-paris-olympic-and-paralympic-games-kick-off-in-one-year-27787"
+    },
+    {
+      "id": "e193",
+      "title": "Rubin Observatory reveals its first images",
+      "start": 2025,
+      "end": 2025,
+      "approximate": false,
+      "point": [
+        -70.74,
+        -30.24
+      ],
+      "wiki": "Vera_C._Rubin_Observatory",
+      "evidence": "linked source; not independently reverified in this pass",
+      "source": "https://www.nsf.gov/news/first-imagery-nsf-doe-vera-c-rubin-observatory"
+    },
+    {
+      "id": "e194",
+      "title": "Milano Cortina Winter Olympics",
+      "start": 2026,
+      "end": 2026,
+      "approximate": false,
+      "point": [
+        9.19,
+        45.46
+      ],
+      "wiki": "2026_Winter_Olympics",
+      "evidence": "linked source; not independently reverified in this pass",
+      "source": "https://www.youtube.com/watch?v=LY0XM_DfgDo"
+    },
+    {
+      "id": "e195",
+      "title": "Artemis II flies around the Moon",
+      "start": 2026,
+      "end": 2026,
+      "approximate": false,
+      "point": [
+        -80.6,
+        28.61
+      ],
+      "wiki": "Artemis_II",
+      "evidence": "linked source; not independently reverified in this pass",
+      "source": "https://www.nasa.gov/mission/artemis-ii/"
+    },
+    {
+      "id": "e196",
+      "title": "Cleopatra VII rules Egypt",
+      "start": -51,
+      "end": -30,
+      "approximate": false,
+      "point": [
+        29.92,
+        31.2
+      ],
+      "wiki": "Reign_of_Cleopatra",
+      "evidence": "linked source; not independently reverified in this pass",
+      "source": "https://www.ucl.ac.uk/museums-static/digitalegypt/chronology/cleopatravii.html"
+    },
+    {
+      "id": "e197",
+      "title": "Parthian victory at Carrhae",
+      "start": -53,
+      "end": -53,
+      "approximate": false,
+      "point": [
+        39.032,
+        36.865
+      ],
+      "wiki": "Battle_of_Carrhae",
+      "evidence": "linked source; not independently reverified in this pass",
+      "source": "https://www.iranicaonline.org/articles/carrhae-harran-town-in-mesopotamia-where-in-may-53-b/"
+    },
+    {
+      "id": "e198",
+      "title": "Siege of Alesia",
+      "start": -52,
+      "end": -52,
+      "approximate": false,
+      "point": [
+        4.501,
+        47.537
+      ],
+      "wiki": "Battle_of_Alesia",
+      "evidence": "linked source; not independently reverified in this pass",
+      "source": "https://www.alesia.com/wp-content/uploads/2025/06/2025-2026-Programme-Pedagogique.pdf"
+    },
+    {
+      "id": "e199",
+      "title": "Glassblowing emerges in the eastern Mediterranean",
+      "start": -50,
+      "end": -50,
+      "approximate": true,
+      "point": [
+        35.23,
+        31.78
+      ],
+      "wiki": "Glassblowing",
+      "evidence": "linked source; not independently reverified in this pass",
+      "source": "https://exhibitions.kelsey.lsa.umich.edu/galleries/Exhibits/WondrousGlass/RomanGlass-Making.html"
+    },
+    {
+      "id": "e200",
+      "title": "Battle of Actium",
+      "start": -31,
+      "end": -31,
+      "approximate": false,
+      "point": [
+        20.76,
+        38.94
+      ],
+      "wiki": "Battle_of_Actium",
+      "evidence": "linked source; not independently reverified in this pass",
+      "source": "https://www.metmuseum.org/art/collection/search/251827"
+    },
+    {
+      "id": "e201",
+      "title": "Egypt comes under Roman rule",
+      "start": -30,
+      "end": -30,
+      "approximate": false,
+      "point": [
+        29.92,
+        31.2
+      ],
+      "wiki": "Roman_Egypt",
+      "evidence": "linked source; not independently reverified in this pass",
+      "source": "https://academic.oup.com/edited-volume/61673/chapter-abstract/548065820"
+    },
+    {
+      "id": "e202",
+      "title": "Monte Albán's second urban phase",
+      "start": -300,
+      "end": 100,
+      "approximate": true,
+      "point": [
+        -96.7675,
+        17.043
+      ],
+      "wiki": "Monte_Albán",
+      "evidence": "linked source; not independently reverified in this pass",
+      "source": "https://whc.unesco.org/en/list/415/"
+    },
+    {
+      "id": "e203",
+      "title": "Western Han China",
+      "start": -206,
+      "end": 9,
+      "approximate": false,
+      "point": [
+        108.9,
+        34.27
+      ],
+      "wiki": "Western_Han",
+      "evidence": "linked source; not independently reverified in this pass",
+      "source": "https://www.metmuseum.org/essays/han-dynasty-206-b-c-220-a-d"
+    },
+    {
+      "id": "e204",
+      "title": "Herrerasaurus",
+      "start": -228000000,
+      "end": -228000000,
+      "approximate": true,
+      "point": [
+        -67.9,
+        -30.1
+      ],
+      "wiki": "Herrerasaurus",
+      "evidence": "linked source; not independently reverified in this pass",
+      "source": "https://www.nhm.ac.uk/discover/dino-directory/herrerasaurus.html"
+    },
+    {
+      "id": "e205",
+      "title": "Stegosaurus",
+      "start": -152000000,
+      "end": -145000000,
+      "approximate": true,
+      "point": [
+        -109.3,
+        40.44
+      ],
+      "wiki": "Stegosaurus",
+      "evidence": "linked source; not independently reverified in this pass",
+      "source": "https://www.nhm.ac.uk/discover/dino-directory/stegosaurus.html"
+    },
+    {
+      "id": "e206",
+      "title": "Diplodocus",
+      "start": -152000000,
+      "end": -145000000,
+      "approximate": true,
+      "point": [
+        -109.35,
+        40.44
+      ],
+      "wiki": "Diplodocus",
+      "evidence": "linked source; not independently reverified in this pass",
+      "source": "https://www.nhm.ac.uk/discover/dino-directory/diplodocus.html"
+    },
+    {
+      "id": "e207",
+      "title": "Iguanodon bernissartensis",
+      "start": -126000000,
+      "end": -122000000,
+      "approximate": true,
+      "point": [
+        3.65,
+        50.47
+      ],
+      "wiki": "Iguanodon",
+      "evidence": "linked source; not independently reverified in this pass",
+      "source": "https://collections.naturalsciences.be/ssh-paleontology/masterpieces/bernissart"
+    },
+    {
+      "id": "e208",
+      "title": "Spinosaurus",
+      "start": -99000000,
+      "end": -93500000,
+      "approximate": true,
+      "point": [
+        -4.2,
+        30.8
+      ],
+      "wiki": "Spinosaurus",
+      "evidence": "linked source; not independently reverified in this pass",
+      "source": "https://www.nhm.ac.uk/discover/dino-directory/spinosaurus.html"
+    },
+    {
+      "id": "e209",
+      "title": "Velociraptor",
+      "start": -74000000,
+      "end": -70000000,
+      "approximate": true,
+      "point": [
+        103.72,
+        44.14
+      ],
+      "wiki": "Velociraptor",
+      "evidence": "linked source; not independently reverified in this pass",
+      "source": "https://www.nhm.ac.uk/discover/dino-directory/velociraptor.html"
+    },
+    {
+      "id": "e210",
+      "title": "Tyrannosaurus rex",
+      "start": -68000000,
+      "end": -66000000,
+      "approximate": true,
+      "point": [
+        -102.03,
+        45.05
+      ],
+      "wiki": "Tyrannosaurus",
+      "evidence": "linked source; not independently reverified in this pass",
+      "source": "https://www.nhm.ac.uk/discover/dino-directory/tyrannosaurus.html"
+    },
+    {
+      "id": "e211",
+      "title": "Triceratops",
+      "start": -68000000,
+      "end": -66000000,
+      "approximate": true,
+      "point": [
+        -106.5,
+        47.5
+      ],
+      "wiki": "Triceratops",
+      "evidence": "linked source; not independently reverified in this pass",
+      "source": "https://www.nhm.ac.uk/discover/dino-directory/triceratops.html"
+    },
+    {
+      "id": "e212",
+      "title": "French Canada in New France",
+      "start": 1608,
+      "end": 1763,
+      "approximate": false,
+      "point": [
+        -71.205,
+        46.813
+      ],
+      "wiki": "Canada_(New_France)",
+      "evidence": "linked source; not independently reverified in this pass",
+      "source": "https://www.historymuseum.ca/virtual-museum-of-new-france/colonies-and-empires/wars-and-imperial-rivalries/"
+    },
+    {
+      "id": "e213",
+      "title": "Champlain establishes Quebec",
+      "start": 1608,
+      "end": 1608,
+      "approximate": false,
+      "point": [
+        -71.205,
+        46.813
+      ],
+      "wiki": "History_of_Quebec_City",
+      "evidence": "linked source; not independently reverified in this pass",
+      "source": "https://www.ville.quebec.qc.ca/apropos/portrait/histoire/1608-1755.aspx"
+    },
+    {
+      "id": "e214",
+      "title": "Ville-Marie: the founding of Montréal",
+      "start": 1642,
+      "end": 1642,
+      "approximate": false,
+      "point": [
+        -73.554,
+        45.502
+      ],
+      "wiki": "History_of_Montreal",
+      "evidence": "linked source; not independently reverified in this pass",
+      "source": "https://www.pc.gc.ca/apps/dfhd/page_nhs_eng.aspx?i=51190&id=652"
+    },
+    {
+      "id": "e215",
+      "title": "Great Peace of Montréal",
+      "start": 1701,
+      "end": 1701,
+      "approximate": false,
+      "point": [
+        -73.554,
+        45.502
+      ],
+      "wiki": "Great_Peace_of_Montreal",
+      "evidence": "linked source; not independently reverified in this pass",
+      "source": "https://www.pc.gc.ca/apps/dfhd/page_nhs_eng.aspx?id=1937"
+    },
+    {
+      "id": "e216",
+      "title": "Battle of the Plains of Abraham",
+      "start": 1759,
+      "end": 1759,
+      "approximate": false,
+      "point": [
+        -71.219,
+        46.801
+      ],
+      "wiki": "Battle_of_the_Plains_of_Abraham",
+      "evidence": "linked source; not independently reverified in this pass",
+      "source": "https://www.plainsofabraham.ca/history-and-heritage/history-of-the-park/1759-1760-the-battles"
+    },
+    {
+      "id": "e217",
+      "title": "France cedes Canada to Britain",
+      "start": 1763,
+      "end": 1763,
+      "approximate": false,
+      "point": [
+        -71.205,
+        46.813
+      ],
+      "wiki": "Treaty_of_Paris_(1763)",
+      "evidence": "linked source; not independently reverified in this pass",
+      "source": "https://www.historymuseum.ca/virtual-museum-of-new-france/colonies-and-empires/wars-and-imperial-rivalries/"
+    },
+    {
+      "id": "e218",
+      "title": "Quebec Act restores French civil law",
+      "start": 1774,
+      "end": 1774,
+      "approximate": false,
+      "point": [
+        -71.205,
+        46.813
+      ],
+      "wiki": "Quebec_Act",
+      "evidence": "linked source; not independently reverified in this pass",
+      "source": "https://justice.canada.ca/eng/csj-sjc/harmonization/services_information/fundamentals-fondements.html"
+    },
+    {
+      "id": "e219",
+      "title": "Quebec becomes a founding province of Canada",
+      "start": 1867,
+      "end": 1867,
+      "approximate": false,
+      "point": [
+        -71.205,
+        46.813
+      ],
+      "wiki": "Canadian_Confederation",
+      "evidence": "linked source; not independently reverified in this pass",
+      "source": "https://www.canada.ca/en/intergovernmental-affairs/services/provinces-territories.html"
+    },
+    {
+      "id": "e220",
+      "title": "Quebec adopts the Charter of the French Language",
+      "start": 1977,
+      "end": 1977,
+      "approximate": false,
+      "point": [
+        -71.214,
+        46.809
+      ],
+      "wiki": "Charter_of_the_French_Language",
+      "evidence": "linked source; not independently reverified in this pass",
+      "source": "https://www.quebec.ca/culture/langue-francaise/portrait-francais-quebec/a-propos-francais/a-propos-charte"
+    }
+  ]
+}

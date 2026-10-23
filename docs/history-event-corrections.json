@@ -1,0 +1,143 @@
+{
+  "reviewed": "2026-10-23",
+  "scope": "Source-backed corrections and clarifications; this is not a certification of every event or border.",
+  "events": [
+    {
+      "wiki": "Göbekli_Tepe",
+      "change": "source-check",
+      "source": "https://whc.unesco.org/en/list/1572/",
+      "reason": "UNESCO places these hunter-gatherer monuments in 9600–8200 BCE; the approximate 9500 BC marker is within that interval."
+    },
+    {
+      "wiki": "Çatalhöyük",
+      "change": "source-check",
+      "source": "https://whc.unesco.org/en/list/1405/",
+      "reason": "UNESCO confirms occupation from 7400 BC, roof access and painted walls."
+    },
+    {
+      "wiki": "Stonehenge",
+      "change": "source-check",
+      "source": "https://www.english-heritage.org.uk/visit/places/stonehenge/history-and-stories/history/",
+      "reason": "English Heritage dates the circular ditch and banks to about 3000 BC, rather than the later stone circle."
+    },
+    {
+      "wiki": "Hadrian's_Wall",
+      "change": "clarification",
+      "blurb": "From about AD 122, Rome builds a wall roughly 118 km long across northern Britain. The marker is one point along the frontier, not its entire extent.",
+      "source": "https://whc.unesco.org/en/list/430/",
+      "reason": "UNESCO confirms the construction date and gives a rounded length of 118 km."
+    },
+    {
+      "wiki": "Blombos_Cave",
+      "start": -73000,
+      "blurb": "Engraved ochre from Blombos Cave, dated to about 75,000 years ago, preserves deliberately scratched geometric patterns. This entry concerns engravings, rather than the separate evidence for a roughly 73,000-year-old drawing.",
+      "source": "https://doi.org/10.1126/science.1067575",
+      "reason": "The old date mixed the age of a drawing with the engraved ochre. Ages before present are expressed as approximate BC dates."
+    },
+    {
+      "wiki": "Prehistory_of_Australia",
+      "title": "Early occupation of Australia",
+      "blurb": "People were established in Sahul, the ancient landmass of Australia and New Guinea, by about 50,000 years ago. Excavations at Madjedbebe suggest occupation about 65,000 years ago, although the timing of first arrival remains debated. This marker represents northern Australia, not a proven first landing.",
+      "source": "https://www.nature.com/articles/nature22968",
+      "reason": "A single 48,000 BC marker cannot establish the date or place of first arrival. Retain the approximate viewing date and distinguish older evidence."
+    },
+    {
+      "wiki": "Bantu_expansion",
+      "start": -3000,
+      "title": "Early Bantu-speaking dispersals",
+      "blurb": "Dispersals of Bantu-speaking communities began in western Central Africa roughly 6,000–4,000 years ago and continued over many centuries. Farming and, in later phases, ironworking spread through different regions. The marker represents the broad Nigeria–Cameroon homeland, not a single departure site.",
+      "lat": 6,
+      "lon": 10,
+      "source": "https://www.nature.com/articles/s41586-023-06770-6",
+      "reason": "The former 1000 BC date was too late for the beginning, the marker was far from the proposed homeland, and ironworking was conflated with the earliest dispersals."
+    },
+    {
+      "wiki": "Diamond_Sutra",
+      "blurb": "A surviving copy of the Diamond Sutra bears a printing date of 11 May 868. It is the oldest complete printed book with a date; it is not evidence that printing itself began that year. The marker locates Dunhuang, where the copy was found.",
+      "source": "https://idp.bl.uk/wp-content/uploads/2025/01/BL.SR_.Large_.Print_.Guide_.V3.pdf",
+      "reason": "Distinguish a surviving dated copy from the invention or first use of printing, and a findspot from its production location."
+    },
+    {
+      "wiki": "L'Anse_aux_Meadows",
+      "start": 1021,
+      "approx": 0,
+      "title": "Norse activity in North America",
+      "blurb": "Tree-ring evidence dates Norse woodcutting at L'Anse aux Meadows to AD 1021. The settlement was active around this period; the evidence does not establish the year of the first voyage or identify Leif Erikson's crew.",
+      "source": "https://www.nature.com/articles/s41586-021-03972-8",
+      "reason": "Use directly dated archaeological evidence instead of attributing a particular crew to the settlement."
+    },
+    {
+      "wiki": "Cahokia",
+      "end": 1150,
+      "blurb": "Cahokia, near today's St. Louis, was a major Indigenous urban centre. UNESCO places its population peak, estimated at 10,000–20,000, between about 1050 and 1150. These are approximate period dates, rather than one precisely dated event.",
+      "source": "https://whc.unesco.org/en/list/198/",
+      "reason": "Represent the population peak as a period and remove the unsupported exact comparison with London."
+    },
+    {
+      "wiki": "Philosophiæ_Naturalis_Principia_Mathematica",
+      "blurb": "Newton's laws of motion and universal gravitation are published in the Principia in London. The marker shows the publication city, rather than Cambridge, where Newton worked.",
+      "lat": 51.51,
+      "lon": -0.1,
+      "source": "https://wwwe.lib.cam.ac.uk/CUL/exhibitions/Footprints_of_the_Lion/gravity_glory.html",
+      "reason": "Make the marker agree with the publication event and explain its meaning."
+    },
+    {
+      "wiki": "Stockton_and_Darlington_Railway",
+      "title": "Stockton and Darlington Railway opens",
+      "blurb": "The railway opens on 27 September 1825, pioneering steam locomotives on a public railway. Horse haulage also remained in use; this was not the invention of rail transport or an entirely steam-operated passenger system.",
+      "source": "https://historicengland.org.uk/listing/the-list/list-entry/1484556",
+      "reason": "Replace the overbroad first claim with the specific, documented railway milestone."
+    },
+    {
+      "wiki": "The_Holocaust",
+      "start": 1933,
+      "blurb": "From 1933 to 1945, Nazi Germany and its allies and collaborators systematically persecute and murder European Jews. Six million Jews are murdered, chiefly during the war. The marker locates the Auschwitz region as one site within a continent-wide genocide, not the entire event.",
+      "source": "https://encyclopedia.ushmm.org/content/en/article/introduction-to-the-holocaust",
+      "reason": "1941 marks an escalation in mass murder, not the beginning of the Holocaust as defined by the United States Holocaust Memorial Museum."
+    },
+    {
+      "wiki": "Decolonisation_of_Africa",
+      "blurb": "Ghana becomes independent on 6 March 1957. This major milestone in African decolonization is marked at Accra; it is not the first independence of any country or colony south of the Sahara.",
+      "source": "https://history.state.gov/countries/ghana",
+      "reason": "Remove an overbroad first claim; Sudan had become independent in 1956, and other states had earlier independence histories."
+    },
+    {
+      "wiki": "Apollo_11",
+      "blurb": "Apollo 11 lands on the Moon in July 1969, and Neil Armstrong and Buzz Aldrin walk on its surface. The Earth marker shows the mission's launch site at Kennedy Space Center, not the lunar landing site.",
+      "source": "https://www.nasa.gov/missions/apollo/apollo-11/apollo-11-mission-overview/",
+      "reason": "An Earth marker for a lunar event must identify the associated launch site."
+    },
+    {
+      "wiki": "Human_Genome_Project",
+      "title": "Human Genome Project completed",
+      "blurb": "The Human Genome Project announces completion in April 2003. Its reference sequence covers about 92% of the total genome; remaining gaps are addressed by later projects. The marker shows the NHGRI research hub, not every participating laboratory.",
+      "source": "https://www.genome.gov/about-genomics/educational-resources/fact-sheets/human-genome-project",
+      "reason": "Project completion did not mean that every base of the genome had been sequenced."
+    },
+    {
+      "wiki": "COVID-19_pandemic",
+      "title": "COVID-19 global health emergency",
+      "blurb": "WHO declares a public health emergency of international concern in January 2020 and ends that designation in May 2023. Ending the emergency designation does not mean that COVID-19 or the pandemic ended. The marker locates WHO in Geneva, rather than the outbreak's origin.",
+      "lat": 46.232,
+      "lon": 6.134,
+      "source": "https://www.who.int/news/item/05-05-2023-statement-on-the-fifteenth-meeting-of-the-international-health-regulations-(2005)-emergency-committee-regarding-the-coronavirus-disease-(covid-19)-pandemic",
+      "reason": "The existing 2020–2023 range describes the PHEIC designation, not the full duration of the pandemic."
+    },
+    {
+      "wiki": "Byzantine_silk",
+      "start": 553,
+      "approx": 1,
+      "title": "Domestic silk production in Byzantium",
+      "blurb": "Silkworm eggs reach Byzantium in the mid-sixth century, traditionally through monks described as smuggling them in their staffs. Domestic production develops under Justinian. Silk was already produced in several parts of Asia, so this did not end a worldwide Chinese monopoly.",
+      "source": "https://www.metmuseum.org/art/collection/search/450736",
+      "reason": "The museum dates domestic production to 553–554; qualify the smuggling account and remove the inaccurate monopoly claim."
+    },
+    {
+      "wiki": "Nylon",
+      "title": "Nylon stockings go on nationwide sale",
+      "blurb": "Nylon stockings go on sale across the United States on 15 May 1940 and are an immediate commercial success. This is the nationwide launch, after earlier introductions and local sales. New York represents the national market.",
+      "source": "https://americanhistory.si.edu/collections/object/nmah_1200996",
+      "reason": "Distinguish the 1940 nationwide launch from the earlier introduction and local sales."
+    }
+  ]
+}
