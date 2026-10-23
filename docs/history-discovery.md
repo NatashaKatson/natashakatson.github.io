@@ -121,8 +121,12 @@ coordinates share the nearest snapshot; era jumps, search and selection focus th
 reconstructed point. Each comparison side chooses its own land and points.
 Modern political borders, country hover targets and modern ocean names are hidden
 in deep time, even when the border setting is Today. Returning to human history
-restores the ordinary geography and border setting. Loading or failed snapshots
-never substitute modern land or another age; failures offer an explicit retry.
+restores the ordinary geography and border setting. Every snapshot includes a
+bundled overview so scrubbing, slow downloads and failed downloads keep matching
+land visible. Detailed coastlines load after the displayed snapshot ages settle
+for 150 ms. Rapid dragging cancels scheduled requests for intermediate ages;
+comparison sides settle together. Loading or failed detail requests retain the
+overview, with an explicit retry after failures.
 Continental outlines are approximate and do not resolve local shorelines, inland
 seas or sea levels. Sources and regeneration instructions are in
 `atlas/paleogeography/README.md` and `scripts/build-history-paleogeography.py`.
@@ -145,12 +149,17 @@ Additional validation:
 node --test tests/history-dinosaurs.test.cjs
 node --test tests/history-paleogeography.test.cjs
 node tests/history-dinosaurs.browser.mjs
+node tests/history-slider.browser.mjs
 ```
 
 These cover deep-date parsing/formatting and timeline inversion, source fields,
 category/search navigation, nearby marker hit targets, real map clicks, Back,
 sharing, comparison, Layers toggle persistence, timeline removal/restoration, avatar
 loading, the 390px mobile layout and direct links.
+Slider regressions also cover cold dates, real pointer dragging in both directions
+at desktop/mobile widths, delayed and failed detail downloads, retry, the boundary
+between deep time and human history, and independent comparison maps. They check
+visible canvas land as well as geometry, with detailed map requests intercepted.
 
 ## Compact atlas workspace
 

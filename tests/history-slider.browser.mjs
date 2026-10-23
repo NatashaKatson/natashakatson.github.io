@@ -64,7 +64,8 @@ try {
   await evaluate(`stopSpin();flyToken++;document.getElementById('vFlat').click();`);
   console.log(await evaluate(`(() => {
     const samples=[];
-    for(const year of [-252000000,-228000000,-210000000,-190000000,-150000000,-124000000,-96000000,-72000000,-67000000,-40000000,-10000000,-1000001,-1000000,-300000,-3000,1453,1903,2026]){
+    const years=[...HISTORY_PALEOGEOGRAPHY.snapshots.map(s=>-s.age*1000000).reverse(),-1000001,-1000000,-300000,-3000,1453,1903,2026];
+    for(const year of years){
       slider.value=Math.round(tAt(year)*SLIDER_STEPS);slider.dispatchEvent(new Event('input',{bubbles:true}));render();
       samples.push(${checkMap});
     }

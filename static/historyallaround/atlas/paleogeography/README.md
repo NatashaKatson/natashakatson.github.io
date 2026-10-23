@@ -11,8 +11,9 @@ PaleoData Plotter Program. PALEOMAP Project.**
 
 These GeoJSON files are derived from GPlates Web Service requests with the model
 explicitly set to `PALEOMAP`, anchor plate 0. `snapshots.js` records the retrieval
-date, snapshot ages and matching reconstructed coordinates for the atlas's eight
-representative fossil regions. Land and points always use the same model and age.
+date, snapshot ages, small overview land layers and matching reconstructed
+coordinates for the atlas's eight representative fossil regions. Land and points
+always use the same model and age.
 
 There are 34 snapshots spanning 1–252 Ma, with a maximum interval of 10 Ma and
 additional ages for dinosaur destinations. The atlas selects the nearest snapshot,
@@ -33,5 +34,13 @@ python3 scripts/build-history-paleogeography.py
 
 The builder caches raw responses in the system temporary directory, simplifies
 rings in unit-sphere coordinates, rounds to three decimals and normalizes mixed
-source winding for D3's spherical polygon convention. Requests are needed only
-when regenerating; the site serves snapshots locally and loads land on demand.
+source winding for D3's spherical polygon convention. Overview rings use coarser
+simplification, two decimals, and omit islands smaller than 0.00005 steradians.
+The bundled overviews add about 0.5 MB gzipped and provide immediate land for every
+snapshot, without downloading detailed maps while the slider moves.
+
+Detailed coastlines load after the displayed snapshot ages settle for 150 ms.
+Comparison sides settle together. A failed or slow detail request leaves the
+matching overview visible, and the map note offers a retry. Returning to human
+history cancels any scheduled ancient detail request. Requests to GPlates are
+needed only when regenerating; the site serves all reconstruction data locally.
