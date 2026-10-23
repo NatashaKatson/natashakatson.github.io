@@ -57,6 +57,7 @@
   for (const [name, date, year, dinosaurEra] of destinations) {
     const button = document.createElement('button');
     button.type = 'button';
+    if (dinosaurEra !== undefined) button.dataset.dinosaurDestination = dinosaurEra;
     button.innerHTML = `<span>${name}</span><small>${date}</small>`;
     button.onclick = () => {
       closeMenus();
@@ -100,7 +101,9 @@
     }
     document.getElementById('filterCount').textContent = relevant.filter((cat) => state.cats.has(cat)).length;
     document.getElementById('filterContext').textContent = deep && human ? 'Categories for both displayed periods.' : deep ? 'Fossil records for this period.' : 'Event categories for this period.';
-    browse.hidden = !deep;
+    const dinosaursEnabled = state.cats.has('dinosaurs');
+    browse.hidden = !deep || !dinosaursEnabled;
+    for (const button of choices.querySelectorAll('[data-dinosaur-destination]')) button.hidden = !dinosaursEnabled;
     historyNote.hidden = !human || state.borders !== 'history';
     document.querySelector('.population-strip').hidden = deep && !human;
     stage.classList.toggle('deep-time-only', deep && !human);

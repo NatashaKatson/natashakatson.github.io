@@ -21,7 +21,7 @@
   const card = document.createElement("section");
   card.className = "dinosaur-discovery comparison-stories";
   card.setAttribute("aria-label", "Explore dinosaurs");
-  card.innerHTML = `<details><summary><span aria-hidden="true">🦖</span> Explore dinosaurs</summary><p>Eight fossil records, millions of years before human history.</p><div class="dinosaur-eras">${eras.map((e, i) => `<button type="button" data-dinosaur-era="${i}">${e.name}<small>${esc(fmt(e.year))}</small></button>`).join("")}</div><p>Illustrated dinosaur avatars locate representative fossil regions on today's continents. These are approximate age ranges, not a reconstruction of ancient habitats or coastlines.</p><div class="dinosaur-list">${fossils.map((e) => `<button type="button" class="story-card dinosaur-list-card" data-dinosaur-id="${e.id}"><img src="${avatarUrl(e)}" width="56" height="56" alt="" loading="lazy"><span><b>${esc(e.title)}</b><small>${esc(fmtSpan(e.start, e.end, true))} · ${esc(e.fossilRegion)}</small></span></button>`).join("")}</div><p class="dinosaur-art-note">Illustrated reconstructions; colours and appearance are speculative.</p></details>`;
+  card.innerHTML = `<details><summary><span aria-hidden="true">🦖</span> Explore dinosaurs</summary><p>Eight fossil records, millions of years before human history.</p><div class="dinosaur-eras">${eras.map((e, i) => `<button type="button" data-dinosaur-era="${i}">${e.name}<small>${esc(fmt(e.year))}</small></button>`).join("")}</div><p>Watch the continents change from the Triassic to the Cretaceous. Dinosaur avatars follow representative fossil regions reconstructed on those ancient continents. Fossil ages and positions are approximate.</p><div class="dinosaur-list">${fossils.map((e) => `<button type="button" class="story-card dinosaur-list-card" data-dinosaur-id="${e.id}"><img src="${avatarUrl(e)}" width="56" height="56" alt="" loading="lazy"><span><b>${esc(e.title)}</b><small>${esc(fmtSpan(e.start, e.end, true))} · ${esc(e.fossilRegion)}</small></span></button>`).join("")}</div><p class="dinosaur-art-note">Illustrated reconstructions; colours and appearance are speculative.</p></details>`;
   document.getElementById("detail").after(card);
   const trigger = document.createElement("button");
   trigger.type = "button";
@@ -44,9 +44,15 @@
   controls.querySelector(".dinosaur-jump").onclick = () => trigger.click();
   const note = document.createElement("details");
   note.className = "deep-time-note";
+  note.id = "ancientGeography";
   note.hidden = true;
-  note.innerHTML = '<summary>Fossil locations on today’s geography <span aria-hidden="true">ⓘ</span></summary><p>These are representative fossil regions on a modern map. Continents and coastlines were different. Ages are approximate.</p>';
+  note.innerHTML = '<summary><span data-paleo-label>Reconstructed continents</span> <span aria-hidden="true">ⓘ</span></summary><div class="paleo-description"><p data-paleo-status role="status"></p><p>Continents and fossil regions move together using the nearest dated PALEOMAP reconstruction. Political borders and modern ocean labels are hidden in deep time. Continental outlines are approximate and do not resolve local shorelines, inland seas or sea levels.</p><a href="https://gwsdoc.gplates.org/models/#paleomap" target="_blank" rel="noopener">Scotese (2016) · PALEOMAP / GPlates ↗</a><button type="button" data-paleo-retry hidden>Retry ancient map</button></div>';
   document.getElementById("mapContext").append(note);
+  cv.setAttribute("aria-describedby", `${cv.getAttribute("aria-describedby") || ""} ancientGeography`.trim());
+  note.querySelector('[data-paleo-retry]').onclick = () => {
+    for (const year of HistoryDiscovery.displayedYears()) HistoryPaleogeography.load(year, true);
+    render();
+  };
   async function open(record, year = Math.round((record.start + record.end) / 2)) {
     await HistoryDiscovery.jumpSearch({ kind: "dinosaur", recordId: record.id,
       start: year, lon: record.lon, lat: record.lat });
@@ -63,11 +69,26 @@
   function render() {
     const deep = HistoryDiscovery.displayedYears().some((year) => year < -1000000);
     const enabled = state.cats.has("dinosaurs");
+    card.hidden = !enabled;
+    trigger.hidden = !enabled;
+    controls.querySelector(".dinosaur-jump").hidden = !enabled;
     toggle.setAttribute("aria-pressed", String(enabled));
     toggle.title = enabled ? "Hide dinosaur eras and avatars" : "Show dinosaur eras and avatars";
     controls.querySelector("[data-dinosaur-state]").textContent = enabled ? "On" : "Off";
     document.querySelector('#legend [data-k="dinosaurs"]').setAttribute("aria-pressed", String(enabled));
     note.hidden = !deep;
+    if (deep) {
+      const years = HistoryDiscovery.displayedYears();
+      const maps = years.map((year, index) => {
+        const map = HistoryPaleogeography.status(year);
+        if (!map) return null;
+        const side = years.length > 1 ? `${index ? "Right" : "Left"}: ` : "";
+        return { ...map, label: `${side}${map.age} Ma` };
+      }).filter(Boolean);
+      note.querySelector('[data-paleo-label]').textContent = `Ancient continents · ${maps.map((map) => map.label + (map.state === "error" ? " unavailable" : map.state === "loading" ? " loading…" : "")).join(" · ")}`;
+      note.querySelector('[data-paleo-status]').textContent = maps.map((map) => `${map.label}: ${map.state === "ready" ? "approximate reconstruction" : map.state === "error" ? "ancient map unavailable; retry below" : "loading ancient map…"}`).join(" · ");
+      note.querySelector('[data-paleo-retry]').hidden = !maps.some((map) => map.state === "error");
+    }
     if (deep && !wasDeep) card.querySelector("details").open = true;
     wasDeep = deep;
   }

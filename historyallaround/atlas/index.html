@@ -882,7 +882,7 @@ function needHi(){if(zoomK<HI_ZOOM||hiReq)return;hiReq=true;
   fetch("land-50m.json").then(r=>{if(!r.ok)throw new Error(r.status);return r.json()}).then(t=>{hi=world(t);draw()}).catch(()=>{hiReq=false})}
 let stillAt=0,stillT=0;
 function moved(){stillAt=performance.now()+160;clearTimeout(stillT);stillT=setTimeout(draw,170)}
-const geo=()=>hi&&zoomK>=HI_ZOOM&&performance.now()>=stillAt?hi:lo;
+const geo=()=>window.HistoryPaleogeography?.geography(state.year)||(hi&&zoomK>=HI_ZOOM&&performance.now()>=stillAt?hi:lo);
 // Historical borders: Cliopatria polities in 25-year files, fetched when the timeline reaches them.
 const BIDX=JSON.parse(document.getElementById("bordersIndex").textContent);
 const BCS=BIDX.chunkSize,BSET=new Set(BIDX.chunks),BFROM=BIDX.chunks[0],BTO=BIDX.to;
@@ -968,14 +968,14 @@ function renderScene(){
   ctx.beginPath();path(grat);ctx.strokeStyle=C.grat;ctx.lineWidth=.8;ctx.stroke();
   ctx.beginPath();path(G.land);ctx.fillStyle=C.land;ctx.fill();
   const lw=Math.min(1.35,.68+.11*zoomK);let pols=[];
-  if(state.borders==="history"&&!currentBorderFailed()){pols=polities();
+  if(!G.ancient&&state.borders==="history"&&!currentBorderFailed()){pols=polities();
     const byHue=Array.from({length:STATE_FILLS.length},()=>[]);for(const f of pols)byHue[f.hue].push(f);
     byHue.forEach((fs,i)=>{if(!fs.length)return;ctx.beginPath();for(const f of fs)path(f);ctx.fillStyle=STATE_FILLS[i%STATE_FILLS.length];ctx.fill()});
     // Repaint nested self-governing territories after their sovereign realm so both remain legible.
     for(const f of pols)if(f.territoryOverlay){ctx.beginPath();path(f);ctx.fillStyle=STATE_FILLS[f.hue];ctx.fill()}
     ctx.beginPath();for(const f of pols)path(f);ctx.strokeStyle=C.border;ctx.lineWidth=lw;ctx.setLineDash([3,2]);ctx.stroke();ctx.setLineDash([]);
     if(selectedPolity){const f=pols.find(p=>p.name===selectedPolity.name&&p.from===selectedPolity.from&&p.to===selectedPolity.to);if(f){ctx.beginPath();path(f);ctx.strokeStyle=C.accent;ctx.lineWidth=2.4;ctx.stroke()}}}
-  else if(state.borders==="today"){ctx.beginPath();path(G.borders);ctx.strokeStyle=C.border;ctx.lineWidth=lw;ctx.stroke()}
+  else if(!G.ancient&&state.borders==="today"){ctx.beginPath();path(G.borders);ctx.strokeStyle=C.border;ctx.lineWidth=lw;ctx.stroke()}
   ctx.beginPath();path(G.land);ctx.strokeStyle=C["land-edge"];ctx.lineWidth=.8;ctx.stroke();
   if(globe){// shade the far side, add a soft highlight and a rim
     const sh=ctx.createRadialGradient(cx-R*.3,cy-R*.35,R*.2,cx,cy,R);sh.addColorStop(0,"rgba(0,0,0,0)");sh.addColorStop(.55,"rgba(0,0,0,0)");sh.addColorStop(1,C.shade);
@@ -985,7 +985,7 @@ function renderScene(){
     ctx.save();ctx.globalAlpha=.45;ctx.beginPath();ctx.arc(cx,cy,R,0,7);ctx.strokeStyle=C["land-edge"];ctx.lineWidth=1;ctx.stroke();ctx.restore()}
   // Quiet italic water names give the map an atlas voice without competing with states or events.
   ctx.save();ctx.font=`italic 400 ${W<600?8.5:10.5}px ${C.display}`;ctx.textAlign="center";ctx.textBaseline="middle";ctx.fillStyle=C["water-label"];
-  for(const[name,lon,lat]of WATER_LABELS){if(W<600&&!name.includes("Ocean"))continue;if(!visible(lon,lat))continue;const p=proj([lon,lat]);if(!p||!Number.isFinite(p[0])||!Number.isFinite(p[1]))continue;if(globe&&Math.hypot(p[0]-cx,p[1]-cy)>R*.84)continue;ctx.fillText(name,p[0],p[1])}ctx.restore();
+  for(const[name,lon,lat]of G.ancient?[]:WATER_LABELS){if(W<600&&!name.includes("Ocean"))continue;if(!visible(lon,lat))continue;const p=proj([lon,lat]);if(!p||!Number.isFinite(p[0])||!Number.isFinite(p[1]))continue;if(globe&&Math.hypot(p[0]-cx,p[1]-cy)>R*.84)continue;ctx.fillText(name,p[0],p[1])}ctx.restore();
   // State names near the map's focus, with collision checks against event markers.
   polLabels=[];
   const marks=pols.length?[...activeEvents().map(a=>a.e),...alivePeople()].filter(o=>visible(o.lon,o.lat)).map(o=>proj([o.lon,o.lat])):[];
@@ -1008,7 +1008,7 @@ function renderScene(){
     hits.push({x,y,id:p.id,label:p.name+" · "+fmtSpan(p.born,p.died,p.approx)})}
   const act=activeEvents(),fossilMarks=[];
   const labelled=polLabels.slice();
-  act.slice().reverse().forEach(({e,r})=>{if(!visible(e.lon,e.lat))return;let[x,y]=proj([e.lon,e.lat]);
+  act.slice().reverse().forEach(({e,r})=>{const point=window.HistoryPaleogeography?.point(e,state.year)||[e.lon,e.lat];if(!visible(...point))return;let[x,y]=proj(point);
     if(e.cat==="dinosaurs"){
       const marker=window.HistoryDinosaurs?.drawMarker(e,[x,y],fossilMarks);
       if(marker){fossilMarks.push(marker);hits.push({...marker,id:e.id,label:e.title+" · "+fmtSpan(e.start,e.end,e.approx)+" · fossil region"})}return;
@@ -1054,7 +1054,7 @@ const endPt=e=>{pts.delete(e.pointerId);if(pts.size<2)pinch=null};cv.addEventLis
 function setZoom(k){zoomK=Math.max(.7,Math.min(6,k));userMoved=true;needHi();moved();draw()}
 const inBox=(b,ll)=>{const[[w,so],[ea,n]]=b;if(ll[1]<so||ll[1]>n)return false;return w<=ea?(ll[0]>=w&&ll[0]<=ea):(ll[0]>=w||ll[0]<=ea)};
 function mapAt(x,y){if(window.HistoryDiscovery)return window.HistoryDiscovery.mapAt(x,y,mapAtYear);return mapAtYear(x,y)}
-function mapAtYear(x,y){if(state.borders==="off"||(state.borders==="history"&&currentBorderFailed()))return null;const ll=proj.invert([x,y]);if(!ll||isNaN(ll[0]))return null;
+function mapAtYear(x,y){if(window.HistoryPaleogeography?.isDeep(state.year)||state.borders==="off"||(state.borders==="history"&&currentBorderFailed()))return null;const ll=proj.invert([x,y]);if(!ll||isNaN(ll[0]))return null;
   if(state.mode==="globe"&&!visible(ll[0],ll[1]))return null;
   if(state.borders==="history"&&!currentBorderFailed()){const pols=polities();let hit=null;
     for(const f of pols)if(inBox(f.bbox,ll)&&d3.geoContains(f,ll)&&(!hit||f.area<hit.area))hit=f;
@@ -1121,7 +1121,7 @@ document.getElementById("gotoInput").addEventListener("input",e=>e.target.setCus
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 function select(id,fly=true,recordYear=null){window.HistoryDiscovery?.selectedRecord(recordYear);state.sel=id;selectedPolity=null;const x=byId[id];stopPlay();
   if(!(recordYear!==null&&window.HistoryDiscovery?.isComparing())&&x.kind==="event"&&(state.year<x.start-halfWin(x.start)||state.year>x.end+halfWin(x.start))){state.year=x.start;slider.value=Math.round(tAt(x.start)*SLIDER_STEPS)}
-  if(fly||state.mode==="globe")flyTo(x.lon,x.lat);update();
+  if(fly||state.mode==="globe"){const point=window.HistoryPaleogeography?.point(x,recordYear??state.year)||[x.lon,x.lat];flyTo(...point)}update();
   if(window.innerWidth<=860)document.getElementById("detail").scrollIntoView({behavior:"smooth",block:"start"})}
 function selectPolity(f,year=state.year){if(window.HistoryDiscovery)window.HistoryDiscovery.selectPolityYear(year);state.sel=null;selectedPolity=f;stopPlay();stopSpin();renderDetail();draw();if(window.innerWidth<=860)document.getElementById("detail").scrollIntoView({behavior:"smooth",block:"start"})}
 function renderDetail(){renderDetailBase();if(window.HistoryDiscovery)window.HistoryDiscovery.detail()}
@@ -1130,7 +1130,7 @@ function renderDetailBase(){const el=document.getElementById("detail");if(select
     el.querySelector(".close").onclick=()=>{selectedPolity=null;renderDetail();draw()};return}
   const x=state.sel&&byId[state.sel];if(!x){el.innerHTML="";return}
   if(x.cat==="dinosaurs"){
-    el.innerHTML=`<div class="detail dinosaur-detail" style="--c:var(--c-dinosaurs)"><button class="iconbtn close" aria-label="Close">×</button><div class="kicker">Dinosaur · approximate fossil age</div><h3>${esc(x.title)}</h3><p><strong>${esc(fmtSpan(x.start,x.end,x.approx))}</strong></p><p>${esc(x.blurb)}</p><p><strong>Representative fossil region:</strong> ${esc(x.fossilRegion)}</p><p>Coordinates locate a fossil-bearing region on today's map, not an exact quarry, the animal's full range, or its ancient position. Continents and coastlines were different. Fossil age estimates can change with new research.</p><p><a href="${esc(x.source)}" target="_blank" rel="noopener">Dinosaur &amp; age source ↗</a> · <a href="${esc(x.locationSource)}" target="_blank" rel="noopener">Fossil region source ↗</a></p></div>`}
+    el.innerHTML=`<div class="detail dinosaur-detail" style="--c:var(--c-dinosaurs)"><button class="iconbtn close" aria-label="Close">×</button><div class="kicker">Dinosaur · approximate fossil age</div><h3>${esc(x.title)}</h3><p><strong>${esc(fmtSpan(x.start,x.end,x.approx))}</strong></p><p>${esc(x.blurb)}</p><p><strong>Representative fossil region:</strong> ${esc(x.fossilRegion)}</p><p>The map reconstructs this present-day fossil region on ancient continents using the same PALEOMAP snapshot as the land. The marker is approximate; it is not an exact quarry or the animal's full range. Continental outlines do not resolve local shorelines or sea levels. Fossil ages and reconstructions can change with new research.</p><p><a href="${esc(x.source)}" target="_blank" rel="noopener">Dinosaur &amp; age source ↗</a> · <a href="${esc(x.locationSource)}" target="_blank" rel="noopener">Fossil region source ↗</a></p></div>`}
   else if(x.kind==="event"){
     el.innerHTML=`<div class="detail" style="--c:var(--c-${x.cat})"><button class="iconbtn close" aria-label="Close">×</button>
     <div class="kicker"><i></i>${esc(fmtSpan(x.start,x.end!==x.start?x.end:null,x.approx))} · ${REGIONS[x.region]}${x.approx?" · Approximate date":""}</div>
@@ -1202,6 +1202,8 @@ reduceMotion.addEventListener?.("change",()=>{if(reduceMotion.matches)stopSpin()
 startSpin();
 </script>
 
+<script src="paleogeography/snapshots.js"></script>
+<script src="paleogeography.js"></script>
 <script src="discovery-core.js"></script>
 <script src="curated-discoveries.js"></script>
 <script src="discovery.js"></script>
