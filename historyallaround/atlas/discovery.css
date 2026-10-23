@@ -320,6 +320,17 @@
 .border-confidence a { color: inherit; }
 .border-confidence[hidden] { display: none; }
 .border-swatch { display: inline-block; width: 18px; border-top: 1px dashed currentColor; margin-right: 5px; vertical-align: middle; }
+.stage { --lake: #b9d5e2; --lake-edge: #608b9d; --lake-ink: #26536a; }
+.water-key { display: flex; align-items: center; gap: 6px; font-size: 10px; color: var(--muted); margin: 6px 0 0; }
+.water-key i { display: inline-block; width: 17px; height: 9px; border: 1px solid var(--lake-edge); background: var(--lake); border-radius: 2px; }
+.water-key[hidden] { display: none; }
+.water-context { margin: 0 0 14px; padding: 12px 14px; border-left: 3px solid #608b9d; background: #eaf3f7; color: #264f63; }
+.water-context .kicker { color: #426c7f; }
+.water-context h3, .water-context h4 { margin: 4px 0 6px; font-size: 19px; }
+.water-context p { margin: 5px 0; font-size: 12px; line-height: 1.5; }
+.water-context details { margin-top: 8px; font-size: 11px; }
+.water-context summary { cursor: pointer; }
+.water-context a { color: inherit; }
 .contemporaries-card [hidden] { display: none; }
 .curated-discoveries, .contemporaries-card,
 .curated-discoveries button, .contemporaries-card button { border-color: var(--rule); }
