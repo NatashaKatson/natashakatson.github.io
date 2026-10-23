@@ -46,7 +46,10 @@
           : names.some((name) => name.includes(q)) ? 60 : 30;
         return [{ record: r, score }];
       }).sort((a, b) => b.score - a.score || (b.record.population || 0) - (a.record.population || 0) ||
-        a.record.title.localeCompare(b.record.title) || (a.record.start || 0) - (b.record.start || 0))
+        a.record.title.localeCompare(b.record.title) ||
+        (a.record.kind === "state" && b.record.kind === "state"
+          ? api.yearsBetween(b.record.start, b.record.end) - api.yearsBetween(a.record.start, a.record.end) : 0) ||
+        (a.record.start || 0) - (b.record.start || 0))
         .filter(({ record }) => {
           const count = counts.get(record.kind) || 0;
           counts.set(record.kind, count + 1);
