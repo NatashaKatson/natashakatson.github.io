@@ -292,6 +292,12 @@
 .border-confidence[hidden] { display: none; }
 .border-swatch { display: inline-block; width: 18px; border-top: 1px dashed currentColor; margin-right: 5px; vertical-align: middle; }
 .contemporaries-card [hidden] { display: none; }
+.curated-discoveries, .contemporaries-card,
+.curated-discoveries button, .contemporaries-card button { border-color: var(--rule); }
+.curated-discoveries { border-top-color: var(--accent); }
+.contemporaries-card { border-top-color: #577f9c; }
+.curated-discoveries a, .contemporaries-card a { color: #a3482d; }
+.curated-discoveries > .kicker, .contemporaries-card > .kicker { font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
 
 /* Search stays outside the map workspace, with one keyboard-accessible result list. */
 .history-search-trigger {

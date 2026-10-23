@@ -92,6 +92,9 @@
           !(v.pin == null || (typeof v.pin.wiki === "string" && v.pin.wiki.length <= 300 && year(v.pin.date) && year(v.pin.year))) ||
           !(v.discovery == null || (typeof v.discovery.id === "string" && /^[a-z0-9-]{1,80}$/.test(v.discovery.id) &&
             typeof v.discovery.stop === "string" && /^[a-z0-9-]{1,80}$/.test(v.discovery.stop))) ||
+          !(v.contemporaries == null || (Array.isArray(v.contemporaries) && v.contemporaries.length === 2 &&
+            v.contemporaries.every((s) => typeof s === "string" && s.length > 0 && s.length <= 300) &&
+            v.contemporaries[0] !== v.contemporaries[1])) ||
           !(v.story === null || (Number.isInteger(v.story) && v.story >= 0 && v.story < 3))) return null;
         return v;
       } catch (_) { return null; }
