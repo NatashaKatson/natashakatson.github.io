@@ -882,9 +882,6 @@
       const from = Math.max(...people.map((p) => p.born)), to = Math.min(...people.map((p) => p.died));
       return from <= state.year && to >= state.year ? { people, from, to, year: state.year } : null;
     },
-    pinContemporaries(people) {
-      activeContemporaries = people.map((p) => p.wiki);
-    },
     contemporaryAnchor() {
       return curatedSelection(activeDiscovery)?.story.person;
     },
