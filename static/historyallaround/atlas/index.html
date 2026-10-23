@@ -1012,15 +1012,16 @@ function renderScene(){
   // State names near the map's focus, with collision checks against event markers.
   polLabels=[];
   const marks=pols.length?[...activeEvents().map(a=>a.e),...alivePeople()].filter(o=>visible(o.lon,o.lat)).map(o=>proj([o.lon,o.lat])):[];
-  if(pols.length){ctx.font=`500 ${W<600?9:10.5}px ${C.display}`;ctx.textAlign="center";ctx.textBaseline="middle";let n=0;
+  if(pols.length){ctx.font=`500 ${W<600?9:10.5}px ${C.display}`;ctx.textAlign="center";ctx.textBaseline="middle";let n=0;const named=new Set();
     // A state's rough on-screen size comes from its stored area, so labels don't need every outline projected again.
     // Small colonies can be legible at regional zoom; always give the selected territory a label slot.
     const labelDistance=f=>{const p=proj(f.cen);return Math.hypot(p[0]-W/2,p[1]-H/2)};
     const labelOrder=[...pols].sort((a,b)=>Number(samePolity(b,selectedPolity))-Number(samePolity(a,selectedPolity))||labelDistance(a)-labelDistance(b));
-    for(const f of labelOrder){if(n>=(W<600?5:9))break;const bw=Math.sqrt(f.area)*R,isSelected=samePolity(f,selectedPolity);if(bw<12&&!isSelected)continue;
+    // Realms and their constituents can share a name; the first placed label wins (selection is ordered first).
+    for(const f of labelOrder){if(n>=(W<600?5:9))break;if(named.has(f.name))continue;const bw=Math.sqrt(f.area)*R,isSelected=samePolity(f,selectedPolity);if(bw<12&&!isSelected)continue;
       const lp=f.cen;if(!visible(lp[0],lp[1]))continue;const[cx2,cy2]=proj(lp);if(globe&&Math.hypot(cx2-cx,cy2-cy)>R*.86)continue;const t=f.name;const tw=ctx.measureText(t).width;if(tw>Math.max(80,bw*1.7)&&!isSelected)continue;
       const hitsBox=b=>polLabels.some(o=>!(b[0]>o[0]+o[2]||b[0]+b[2]<o[0]||b[1]>o[1]+o[3]||b[1]+b[3]<o[1]))||marks.some(([mx,my])=>mx>b[0]-9&&mx<b[0]+b[2]+9&&my>b[1]-9&&my<b[1]+b[3]+9);
-      let ly=null;for(const dy of[0,16,-16,30,-30]){const b=[cx2-tw/2-4,cy2+dy-8,tw+8,16];if(!hitsBox(b)){ly=cy2+dy;polLabels.push(b);break}}if(ly===null)continue;n++;
+      let ly=null;for(const dy of[0,16,-16,30,-30]){const b=[cx2-tw/2-4,cy2+dy-8,tw+8,16];if(!hitsBox(b)){ly=cy2+dy;polLabels.push(b);break}}if(ly===null)continue;named.add(f.name);n++;
       ctx.lineWidth=2.5;ctx.strokeStyle=C.halo;ctx.strokeText(t,cx2,ly);ctx.fillStyle=C.ink;ctx.fillText(t,cx2,ly)}
     ctx.textAlign="start"}
   if(!G.ancient&&zoomK>=2){

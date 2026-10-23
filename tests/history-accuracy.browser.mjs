@@ -48,6 +48,29 @@ try {
   console.log(await evaluate(`(async()=>{
     const assert=(v,m)=>{if(!v)throw Error(m)};
     stopSpin();flyToken++;
+    for(const year of [1700,1750]){
+      await loadChunk(chunkOf(year));setYear(year);
+      for(const mode of ['globe','flat']){
+        setMode(mode);stopSpin();rot=[-10,-48,0];zoomK=4;
+        makeProj();
+        if(mode==='flat'){const p=proj([10,48]);flatT.x+=W/2-p[0];flatT.y+=H/2-p[1];makeProj();}
+        const names=['Kingdom of France','Habsburg Monarchy'];
+        const records=polities().filter(f=>names.includes(f.name));
+        assert(records.length===4,'realm and constituent records remain available');
+        for(const selection of [null,...records]){
+          selectedPolity=selection;
+          const drawn=[],original=ctx.fillText;
+          try{ctx.fillText=function(text,x,y,...args){drawn.push({text,x,y});return original.call(this,text,x,y,...args)};render();}
+          finally{ctx.fillText=original;}
+          for(const name of names){
+            const labels=drawn.filter(d=>d.text===name);
+            assert(labels.length===1,'one '+name+' label in '+mode+'/'+year);
+            if(selection?.name===name)assert(Math.abs(labels[0].x-proj(selection.cen)[0])<.01,'selected record keeps its label anchor');
+          }
+        }
+      }
+    }
+    selectedPolity=null;
     const rows=(await(await fetch('search-states.json')).json()).rows;
     for(const [name,year] of [['Netherlands',1917],['Dutch Republic',1769],['Spanish Empire',1877]]){
       const candidates=rows.filter(r=>r[0]===name&&r[1]<=year&&r[2]>=year);
