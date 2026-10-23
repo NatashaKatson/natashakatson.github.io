@@ -106,6 +106,42 @@ def set_polygons(topo, geometry, parts):
     geometry['properties']['a'] = float(f'{sum(ring_area(ring_points(topo, poly[0])) for poly in parts):.6g}')
 
 
+def crimea_occupation(topo, chunk):
+    """Keep sovereignty and occupation distinct, using the source's Crimea ring.
+
+    UNGA 68/262 affirms Ukraine's territorial integrity; 76/70 identifies Russia
+    as the occupying power. Annual snapshots cannot express the day in 2014.
+    This is a Crimea correction, not a reconstruction of the wider front line.
+    """
+    if not chunk <= 2014 <= chunk + 24:
+        return
+    geometries = topo['objects']['p']['geometries']
+    russia = [g for g in geometries if g['properties']['n'] in
+              {'Russian Federation', '(Russian Federation)'} and g['properties']['f'] >= 2014]
+    box = (32, 44, 37, 46.5)
+    crimea = next((part for g in russia for part in polygons(g)
+                   if within(polygon_bounds(topo, part), box)), None)
+    # On a second run the ring has already been removed from Russia.
+    if crimea is None:
+        return
+    for g in russia:
+        set_polygons(topo, g, [part for part in polygons(g)
+                              if not within(polygon_bounds(topo, part), box)])
+    for g in geometries:
+        if g['properties']['n'] == 'Ukraine' and g['properties']['t'] >= 2014:
+            if not any(within(polygon_bounds(topo, part), box) for part in polygons(g)):
+                set_polygons(topo, g, [*polygons(g), copy.deepcopy(crimea)])
+    if not any(g['properties']['n'] == 'Crimea (occupied by Russia)' for g in geometries):
+        region = {'type': 'Polygon', 'arcs': copy.deepcopy(crimea), 'properties': {
+            'n': 'Crimea (occupied by Russia)', 'm': 'Ukraine', 'f': 2014, 't': 2024,
+            'w': 'Crimea', 'lx': 34.1, 'ly': 45.3,
+            'status': 'Ukrainian territory occupied by Russia since 2014. The UN General Assembly affirms Ukraine\u2019s territorial integrity and does not recognize Russia\u2019s annexation.',
+            'source': 'https://mandates.un.org/mandate/A/RES/76/70',
+        }}
+        set_polygons(topo, region, [crimea])
+        geometries.append(region)
+
+
 def verified_corrections(topo, chunk):
     """Source-backed corrections, reusing existing arcs; see the audit report.
 
@@ -201,6 +237,7 @@ if __name__ == '__main__':
         original = copy.deepcopy(topo)
         correct(topo)
         verified_corrections(topo, int(path.stem[1:]))
+        crimea_occupation(topo, int(path.stem[1:]))
         after = json.dumps(topo, ensure_ascii=False, separators=(',', ':')) + '\n'
         if original != topo:
             path.write_text(after)

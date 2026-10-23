@@ -809,8 +809,8 @@
       const features = chunk === null ? null : await loadChunk(chunk);
       if (!isCurrent()) return false;
       if (!features) throw new Error("Historical borders could not load. Try this result again.");
-      polity = features.find((f) => f.name === result.title && f.member === result.member &&
-        f.from <= result.year && f.to >= result.year);
+      polity = core.active(features, borderYear(result.year)).find((f) =>
+        f.name === result.title && f.member === result.member);
       if (!polity) throw new Error("This historical record is unavailable in that year.");
     }
     if (!isCurrent()) return false;

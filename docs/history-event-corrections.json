@@ -138,6 +138,94 @@
       "blurb": "Nylon stockings go on sale across the United States on 15 May 1940 and are an immediate commercial success. This is the nationwide launch, after earlier introductions and local sales. New York represents the national market.",
       "source": "https://americanhistory.si.edu/collections/object/nmah_1200996",
       "reason": "Distinguish the 1940 nationwide launch from the earlier introduction and local sales."
+    },
+    {
+      "wiki": "Jebel_Irhoud",
+      "title": "Early Homo sapiens at Jebel Irhoud",
+      "source": "https://doi.org/10.1038/nature22336",
+      "reason": "The fossil classification and roughly 300,000-year viewing date agree with Hublin et al.; avoid an absolute earliest-known claim."
+    },
+    {
+      "wiki": "Neanderthal",
+      "title": "Neanderthals disappear from Europe",
+      "blurb": "Neanderthal populations disappear from Europe around 40,000 years ago, although regional timing is debated. The marker shows Gibraltar as a representative Neanderthal archaeological region, not a proven last population. Neanderthal ancestry survives in modern human DNA.",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/25143113/",
+      "reason": "Higham et al. dates the final Mousterian to roughly 40,000 years ago; distinguish a representative site from a proven last refuge."
+    },
+    {
+      "wiki": "Chauvet_Cave",
+      "change": "source-check",
+      "source": "https://archeologie.culture.gouv.fr/chauvet/en/aurignacian-cave-art",
+      "reason": "The French Ministry of Culture dates the earliest occupation to around 36,500 years ago; the approximate 34,000 BC marker and animal motifs are supported."
+    },
+    {
+      "wiki": "Monte_Verde",
+      "title": "Monte Verde and the early peopling of the Americas",
+      "blurb": "Monte Verde in southern Chile has long been interpreted as a settlement around 14,500 years ago. A 2026 study challenged the site chronology and prompted disagreement among researchers. The approximate map date represents the conventional interpretation, not a settled proof of the first arrival in the Americas.",
+      "source": "https://doi.org/10.1126/science.adw9217",
+      "reason": "Reflect the published 2026 challenge rather than presenting a contested chronology as definitive proof."
+    },
+    {
+      "wiki": "Cuneiform",
+      "title": "Early writing at Uruk",
+      "blurb": "Administrative tablets at Uruk preserve proto-cuneiform signs around 3200 BC. Early signs were drawn into clay; the familiar impressed wedge-shaped script developed over time. This is an early stage of writing, not a single precisely dated invention.",
+      "source": "https://www.metmuseum.org/essays/the-origins-of-writing",
+      "reason": "The Met distinguishes early pictographic signs from later wedge-shaped cuneiform and cautions that the origin was complex."
+    },
+    {
+      "wiki": "Narmer",
+      "change": "source-check",
+      "source": "https://www.britishmuseum.org/blog/gaverne-bennetts-highlight-objects-african-kingdoms-timeline",
+      "reason": "The museum places Narmer and the palette around 3100 BC; retain the conventional approximate unification date."
+    },
+    {
+      "wiki": "Mohenjo-daro",
+      "change": "source-check",
+      "source": "https://whc.unesco.org/en/list/138/",
+      "reason": "UNESCO confirms the third-millennium urban site and planned lower town; 2600–1900 BC remains an approximate mature-Harappan interval."
+    },
+    {
+      "wiki": "Great_Pyramid_of_Giza",
+      "start": -2550,
+      "source": "https://giza.fas.harvard.edu/gizaintro/",
+      "reason": "Use the Harvard Giza Project approximate construction chronology rather than imply an exact completion year."
+    },
+    {
+      "wiki": "Sargon_of_Akkad",
+      "blurb": "Sargon establishes Akkadian rule over Mesopotamian city-states, conventionally dated from about 2334 BC. The location of his capital Akkad is not securely identified; the marker represents central Mesopotamia rather than a known foundation site.",
+      "source": "https://resources.metmuseum.org/resources/metpublications/pdf/Ancient_Art_in_Miniature_Ancient_Near_Eastern_Seals_from_the_Collection_of_Martin_and_Sarah_Cherkask.pdf",
+      "reason": "The Met documents the conventional chronology and locates Akkad only broadly north of Sumer."
+    },
+    {
+      "wiki": "Code_of_Hammurabi",
+      "change": "source-check",
+      "source": "https://www.louvre.fr/le-code-de-hammurabi",
+      "reason": "The Louvre dates the law stele to Hammurabi’s reign, 1792–1750 BC; the approximate 1754 BC marker is within that conventional chronology."
+    },
+    {
+      "wiki": "Minoan_eruption",
+      "blurb": "A major eruption of Thera buries Akrotiri on Santorini and affects the Aegean. The exact date remains disputed; about 1600 BC is an approximate viewing date, not a precisely established year.",
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9488803/",
+      "reason": "Published radiocarbon analyses place the eruption in a debated late-seventeenth/early-sixteenth-century BC range."
+    },
+    {
+      "wiki": "Battle_of_Kadesh",
+      "change": "source-check",
+      "source": "https://www.britishmuseum.org/collection/term/x13949",
+      "reason": "The British Museum dates Ramesses II’s battle with the Hittites to 1274 BC; the entry already marks the date approximate."
+    },
+    {
+      "wiki": "Ancient_Olympic_Games",
+      "title": "Traditional date of the first recorded Olympic Games",
+      "blurb": "Ancient tradition dates the first recorded Olympic Games at Olympia to 776 BC. The festival honoured Zeus, and the competition probably had earlier roots; this is not a securely documented invention date.",
+      "source": "https://www.olympics.com/ioc/ancient-olympic-games/history",
+      "reason": "Distinguish the conventional date of the earliest recorded Games from a proven first celebration."
+    },
+    {
+      "wiki": "Fall_of_Babylon",
+      "blurb": "Cyrus conquers Babylon in 539 BC, incorporating the Neo-Babylonian kingdom into the Achaemenid Persian Empire. The marker locates Babylon.",
+      "source": "https://www.metmuseum.org/exhibitions/listings/2013/cyrus-cylinder",
+      "reason": "The museum’s account of the Cyrus Cylinder confirms the conquest date; remove an unnecessary largest-ever superlative."
     }
   ]
 }

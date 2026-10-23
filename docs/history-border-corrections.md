@@ -31,7 +31,24 @@ Sources for these corrections:
 - [OSCE statement on South Ossetia and Abkhazia](https://www.osce.org/cio/50011):
   Georgia's sovereignty and territorial integrity.
 
-This correction does not add a Ukraine occupation layer. The source ends in
+## Crimea from 2014
+
+The source incorrectly includes the Crimea polygon in both Russia's state and
+realm geometries from 2014. The correction removes that polygon from both and
+retains it in Ukraine's internationally recognized territory, including the
+2024 snapshot where the source omitted it from Ukraine. A separate feature,
+**Crimea (occupied by Russia)**, belongs to **Ukraine**, dated 2014–2024. Hover,
+search, selection and shared views use that identity. The detail panel explains
+the occupation and links to the UN resolution. The existing source ring is
+reused; no new boundary coordinates are drawn. The label applies to the annual
+2014 snapshot, without claiming that occupation began on 1 January.
+
+Sources: [UNGA 68/262](https://digitallibrary.un.org/record/767883), affirming
+Ukraine's territorial integrity and rejecting the validity of the Crimea
+referendum, and [UNGA 76/70](https://mandates.un.org/mandate/A/RES/76/70), which
+identifies Russia as the occupying power and calls for an end to the occupation.
+
+This correction does not reconstruct the wider Ukraine front line. The source ends in
 2024, carried forward to 2026 by the atlas; it does not provide a current front
 line. Other source claims, overlaps and simplification errors remain possible.
 Ukraine's occupied territory includes Crimea and areas in the east and south;

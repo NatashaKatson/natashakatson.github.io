@@ -70,3 +70,28 @@ test('state search exposes regional names and recognized country relationships',
     assert.equal(records[0][7], member);
   }
 });
+
+test('Crimea is Ukrainian territory with an occupation label from 2014, outside Russia geometry', () => {
+  const topo = JSON.parse(fs.readFileSync(dir + 'borders/c2000.json'));
+  const geometries = topo.objects.p.geometries;
+  const region = geometries.find((g) => g.properties.n === 'Crimea (occupied by Russia)');
+  assert(region);
+  assert.equal(region.properties.m, 'Ukraine');
+  assert.equal(region.properties.f, 2014);
+  assert.equal(region.properties.t, 2024);
+  assert.match(region.properties.status, /Ukrainian territory occupied by Russia/);
+  assert.match(region.properties.source, /mandates\.un\.org/);
+  const isCrimea = (part) => ringPoints(topo, part[0]).every(([lon, lat]) => lon > 32 && lon < 37 && lat > 44 && lat < 46.5);
+  const parts = (g) => g.type === 'Polygon' ? [g.arcs] : g.arcs;
+  assert(isCrimea(region.arcs));
+  for (const year of [2013, 2014, 2023, 2024]) {
+    const active = geometries.filter((g) => g.properties.f <= year && g.properties.t >= year);
+    assert(active.filter((g) => g.properties.n === 'Ukraine').every((g) => parts(g).some(isCrimea)), 'Crimea stays within recognized Ukraine geometry');
+    assert(active.filter((g) => /Russian Federation/.test(g.properties.n)).every((g) => !parts(g).some(isCrimea)), 'Russia excludes Crimea');
+    assert.equal(active.includes(region), year >= 2014, 'occupation starts in 2014');
+  }
+  const { rows } = JSON.parse(fs.readFileSync(dir + 'search-states.json'));
+  const results = rows.filter((r) => r[0] === region.properties.n);
+  assert.equal(results.length, 1);
+  assert.deepEqual([results[0][1], results[0][2], results[0][7]], [2014, 2024, 'Ukraine']);
+});
