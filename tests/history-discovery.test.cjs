@@ -99,6 +99,30 @@ test("connections distinguish source associations, geographic associations and m
   assert.match(c[1].reason, /not a causal link/);
   assert.deepEqual(core.connections({ lon: 0, lat: 0 }, [shared]), []);
 });
+test("story context offers sourced nearby records, then the same period, without inventing links", () => {
+  const anchor = { id: "anchor", wiki: "Anchor", start: 1900, lon: 0, lat: 0 };
+  const near = { id: "near", wiki: "Nearby", start: -500, lon: 1, lat: 0,
+    source: "https://example.org/nearby" };
+  const contemporary = { id: "person", wiki: "Person", born: 1880, died: 1920, lon: 90, lat: 0 };
+  const unrelated = { wiki: "Other", start: 1700, lon: 90, lat: 0 };
+  const unsourced = { start: 1900, lon: 0.1, lat: 0 };
+  const records = [anchor, { ...anchor }, contemporary, near, unrelated, unsourced];
+  const nearby = core.storyContext(anchor, records, 1900);
+  assert.equal(nearby.title, "Explore nearby history");
+  assert.deepEqual(nearby.connections.map((c) => c.record.id), ["near"]);
+  assert.equal(nearby.connections[0].source, near.source);
+  assert.match(nearby.connections[0].reason, /111 km/);
+  assert.match(nearby.description, /does not establish a historical connection/);
+  // Territory suggestions use the viewed year without treating a centroid as a place.
+  const period = core.storyContext({ name: "Empire" }, records, 1900);
+  assert.equal(period.title, "Explore the same period");
+  assert(period.connections.some((c) => c.record === contemporary));
+  assert(!period.connections.some((c) => c.record === near || c.record === unrelated));
+  assert.equal(core.storyContext(anchor, [anchor, unrelated, unsourced], 1900), null);
+  assert.equal(core.storyContext(anchor, records, 0), null);
+  assert.equal(core.storyContext({}, [{ wiki: "CE", start: 1 }], -50).connections.length, 1);
+  assert.equal(core.storyContext({}, [{ wiki: "CE", start: 1 }], -51), null);
+});
 test("inline atlas scripts remain syntactically valid after integration", () => {
   const html = fs.readFileSync(
     "static/historyallaround/atlas/index.html",

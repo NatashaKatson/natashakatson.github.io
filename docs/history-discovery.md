@@ -99,12 +99,23 @@ The dataset does not systematically distinguish claims from control, contain Ind
 
 ## Connections
 
-Up to four cards appear under **Follow the story**, with fewer or an empty state when evidence is limited. There are two kinds of discovery:
+Up to four cards appear under **Follow the story** when supported links exist. There are two kinds of discovery:
 
 - Explicit, source-backed links between existing records: Oregon Treaty ↔ Pig War, and the Russian ukase ↔ Alaska boundary case. The latter is a documentary association, not a claim of direct causation.
 - Clearly labeled shared-source or same-location associations. The latter requires markers within 2 km and explicitly says it is not a causal link. A shared source article likewise does not assert causality.
 
 No thematic or causal links are inferred from category, nationality, temporal proximity, or modern borders. Each card has a source link. Navigation focuses the record's coordinate and year. Back restores up to thirty exploration steps, including camera, selection, filters and comparison state. A place panel is retained in the trail when navigating away from it.
+
+When no supported link exists, **Explore nearby history** offers up to four sourced
+records with markers within 250 km, ordered by distance and labeled with that
+distance. These can come from different periods; the card explicitly distinguishes
+geographic proximity from a historical connection. If there are no nearby markers,
+**Explore the same period** offers records whose event dates or lifespans overlap
+or fall within 50 years of the selected record's start/birth year. Territory cards
+use the viewed year for period suggestions, without interpreting a territory's
+centroid as a historical place. Context suggestions use the same navigation and
+Back behavior as story cards. If neither kind of context is available, the section
+is omitted.
 
 Sources for the explicit links:
 
