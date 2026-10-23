@@ -3,7 +3,7 @@
   const triggers = [...document.querySelectorAll('[data-atlas-menu]')];
   const options = document.querySelector('.dock-options');
   const optionsContent = options.querySelector('.dock-options-content');
-  optionsContent.append(document.querySelector('.discovery-tools'), document.querySelector('.population-strip'));
+  optionsContent.append(document.querySelector('.discovery-tools'));
 
   function closeMenus(restoreFocus = false) {
     for (const trigger of triggers) {

@@ -66,7 +66,7 @@
 .time, .stage.comparing + .time {
   position: relative; z-index: 7; padding: 14px 24px 12px; gap: 10px 14px;
   grid-template-columns: minmax(0, 1fr) auto;
-  grid-template-areas: 'play actions' 'ruler ruler' 'summary summary' 'status status';
+  grid-template-areas: 'play actions' 'population population' 'ruler ruler' 'summary summary' 'status status';
 }
 .time .controls { gap: 6px; }
 .time .controls .lbl { margin-left: 8px; font: 10px var(--body); color: #81776e; }
@@ -84,7 +84,6 @@
 #eraChoices button:hover { background: #eee7dc; }
 #eraChoices small { display: block; margin-top: 3px; color: #81776e; font: 10px var(--body); }
 .time .dock-options-content .discovery-tools { display: flex; padding: 0 0 16px; justify-content: flex-start; }
-.dock-options-content .population-strip { display: flex; }
 .time-summary { grid-area: summary; display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 12px; font: 11px var(--body); color: #756c65; }
 .time-summary .era { color: #a3482d; }
 .time-summary .now b { font-weight: 500; }
