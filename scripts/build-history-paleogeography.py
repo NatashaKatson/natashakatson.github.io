@@ -71,21 +71,32 @@ def spherical_area(points):
     return (2 * math.fsum(terms)) % (4 * math.pi)
 
 
-def ring(points, hole=False):
+def ring(points, hole=False, tolerance=.002, precision=3):
     # Split a closed ring so RDP has two distinct endpoints. Retain small islands.
     while len(points) > 2 and points[-1] == points[-2]:
         points = points[:-1]
     middle = len(points) // 2
-    result = simplify(points[:middle + 1])[:-1] + simplify(points[middle:])
+    result = simplify(points[:middle + 1], tolerance)[:-1] + simplify(points[middle:], tolerance)
     if len(result) < 4:
         result = points
-    result = [[round(v, 3) for v in p] for p in result]
+    result = [[round(v, precision) for v in p] for p in result]
     # GWS polygons have mixed winding. D3 otherwise fills the entire globe for
     # some islands. Exterior rings must enclose the smaller spherical area;
     # holes use the opposite direction.
     if (spherical_area(result) > 2 * math.pi) != hole:
         result.reverse()
     return result
+
+
+def overview(land):
+    """Small, synchronous land layer for every timeline date, including offline."""
+    polygons = []
+    for feature in land['features']:
+        rings = feature['geometry']['coordinates']
+        if spherical_area(rings[0]) < .00005:
+            continue  # Tiny offshore islands appear when detailed land loads.
+        polygons.append([ring(r, i > 0, tolerance=.008, precision=2) for i, r in enumerate(rings)])
+    return {'type': 'MultiPolygon', 'coordinates': polygons}
 
 
 def build(age, fossils):
@@ -106,7 +117,8 @@ def build(age, fossils):
     if len(coordinates) != len(fossils) or any(p is None or abs(p[0]) > 180 or abs(p[1]) > 90 for p in coordinates):
         raise ValueError(f'Incomplete fossil reconstruction at {age} Ma')
     print(f'{age} Ma: {len(features)} polygons', flush=True)
-    return {'age': age, 'points': {r[9]: p for r, p in zip(fossils, coordinates)}}
+    return {'age': age, 'points': {r[9]: p for r, p in zip(fossils, coordinates)},
+            'overview': overview(land)}
 
 
 def main():

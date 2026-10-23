@@ -85,8 +85,8 @@
         const side = years.length > 1 ? `${index ? "Right" : "Left"}: ` : "";
         return { ...map, label: `${side}${map.age} Ma` };
       }).filter(Boolean);
-      note.querySelector('[data-paleo-label]').textContent = `Ancient continents · ${maps.map((map) => map.label + (map.state === "error" ? " unavailable" : map.state === "loading" ? " loading…" : "")).join(" · ")}`;
-      note.querySelector('[data-paleo-status]').textContent = maps.map((map) => `${map.label}: ${map.state === "ready" ? "approximate reconstruction" : map.state === "error" ? "ancient map unavailable; retry below" : "loading ancient map…"}`).join(" · ");
+      note.querySelector('[data-paleo-label]').textContent = `Ancient continents · ${maps.map((map) => map.label + (map.state === "ready" ? "" : " overview")).join(" · ")}`;
+      note.querySelector('[data-paleo-status]').textContent = maps.map((map) => `${map.label}: ${map.state === "ready" ? "approximate reconstruction" : map.state === "error" ? "overview shown; detailed coastlines unavailable, retry below" : "overview shown; detailed coastlines loading…"}`).join(" · ");
       note.querySelector('[data-paleo-retry]').hidden = !maps.some((map) => map.state === "error");
     }
     if (deep && !wasDeep) card.querySelector("details").open = true;

@@ -17,11 +17,15 @@ test('all bundled snapshots have valid closed land rings and matching fossil coo
     assert(snapshot.age > previous && snapshot.age - previous <= 10);
     previous = snapshot.age;
     const land = JSON.parse(fs.readFileSync(root + snapshot.age + '.json'));
+    assert.equal(snapshot.overview.type, 'MultiPolygon');
+    assert(snapshot.overview.coordinates.length > 50);
     assert.equal(land.type, 'FeatureCollection');
     assert(land.features.length > 100);
-    for (const feature of land.features) {
+    for (const polygon of [...land.features.map((feature) => {
       assert.equal(feature.geometry.type, 'Polygon');
-      for (const ring of feature.geometry.coordinates) {
+      return feature.geometry.coordinates;
+    }), ...snapshot.overview.coordinates]) {
+      for (const ring of polygon) {
         assert(ring.length >= 4);
         assert.deepEqual(ring[0], ring.at(-1));
         for (const [lon, lat] of ring) assert(Number.isFinite(lon) && Math.abs(lon) <= 180 && Number.isFinite(lat) && Math.abs(lat) <= 90);
@@ -46,21 +50,25 @@ test('era destinations and intermediate dates select the nearest matching land a
   assert.equal(map.geography(1903), null);
 });
 
-test('independent comparison snapshots load once and never show modern or stale geography', async () => {
+test('cold comparison snapshots retain their own overview until detailed land loads', async () => {
   const requests = new Map(), calls = [];
   const map = create(data, (path) => {
     calls.push(path);
     return new Promise((resolve) => requests.set(path, resolve));
   });
-  assert.equal(map.geography(-228000000).land.features.length, 0);
-  assert.equal(map.geography(-67000000).land.features.length, 0);
+  const triassicOverview = map.snapshot(-228000000).overview;
+  const cretaceousOverview = map.snapshot(-67000000).overview;
+  assert.equal(map.geography(-228000000).land, triassicOverview);
+  assert.equal(map.geography(-67000000).land, cretaceousOverview);
+  map.load(-228000000);
   const waiting = map.load(-67000000);
+  map.load(-67000000);
   assert.equal(calls.length, 2, 'pending requests are shared');
   const cretaceous = JSON.parse(fs.readFileSync(root + '67.json'));
   requests.get('paleogeography/67.json')({ ok: true, json: async () => cretaceous });
   await waiting;
   assert.equal(map.geography(-67000000).land, cretaceous);
-  assert.equal(map.geography(-228000000).land.features.length, 0, 'another age never inherits the loaded land');
+  assert.equal(map.geography(-228000000).land, triassicOverview, 'another age never inherits the loaded land');
   const triassic = JSON.parse(fs.readFileSync(root + '228.json'));
   const earlier = map.load(-228000000);
   requests.get('paleogeography/228.json')({ ok: true, json: async () => triassic });
@@ -69,7 +77,7 @@ test('independent comparison snapshots load once and never show modern or stale 
   assert.equal(map.geography(-67000000).land, cretaceous);
 });
 
-test('failed reconstructions remain empty, report failure and can be retried', async () => {
+test('failed detailed reconstructions preserve visible land and can be retried', async () => {
   let fail = true, count = 0;
   const land = JSON.parse(fs.readFileSync(root + '150.json'));
   const map = create(data, async () => {
@@ -78,11 +86,31 @@ test('failed reconstructions remain empty, report failure and can be retried', a
   });
   await map.load(-150000000);
   assert.equal(map.status(-150000000).state, 'error');
-  assert.equal(map.geography(-150000000).land.features.length, 0);
+  assert.equal(map.geography(-150000000).land, map.snapshot(-150000000).overview);
   await map.load(-150000000);
   assert.equal(count, 1, 'rendering a failed map does not continuously retry');
   fail = false;
   await map.load(-150000000, true);
   assert.equal(map.status(-150000000).state, 'ready');
   assert.equal(map.geography(-150000000).land, land);
+});
+
+test('scrubbing cancels obsolete detail requests and settles both comparison dates together', async () => {
+  const calls = [];
+  const map = create(data, async (path) => {
+    calls.push(path);
+    return { ok: true, json: async () => JSON.parse(fs.readFileSync('static/historyallaround/atlas/' + path)) };
+  });
+  for (const year of [-252000000, -228000000, -150000000, -67000000, 1903]) map.prepare([year]);
+  await new Promise((resolve) => setTimeout(resolve, 180));
+  assert.deepEqual(calls, [], 'returning to human history cancels intermediate ancient downloads');
+  map.prepare([-228000000]);
+  map.prepare([-150000000]);
+  map.prepare([-228000000, -67000000]);
+  map.prepare([-67000000, -228000000]);
+  await new Promise((resolve) => setTimeout(resolve, 180));
+  assert.deepEqual(calls.sort(), ['paleogeography/228.json', 'paleogeography/67.json']);
+  assert.equal(map.status(-228000000).state, 'ready');
+  assert.equal(map.status(-67000000).state, 'ready');
+  map.prepare([2026]);
 });

@@ -880,6 +880,7 @@
     urlHash,
     openView,
     render(scene) {
+      window.HistoryPaleogeography?.prepare(compare.on ? [compare.left, state.year] : [state.year]);
       window.PopulationTimeline?.render(state.year, compare.on ? compare.left : null);
       renderComparisonStory();
       renderCurated();

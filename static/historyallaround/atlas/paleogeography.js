@@ -7,6 +7,7 @@
   });
 })(typeof window === 'undefined' ? globalThis : window, function (data, fetcher, changed = () => {}) {
   const cache = new Map(), pending = new Map(), errors = new Set();
+  let requestedAges = '', settleTimer = null;
   const empty = { type: 'FeatureCollection', features: [] };
   const isDeep = (year) => year < -1000000;
   function snapshot(year) {
@@ -44,9 +45,22 @@
   function geography(year) {
     const item = snapshot(year);
     if (!item) return null;
-    load(year);
-    // Never substitute a modern coast or a different snapshot while loading.
-    return { ancient: true, land: cache.get(item.age) || empty, borders: empty, countries: [] };
+    // Every age carries a lightweight land layer, so cold or failed downloads
+    // never erase the continents or substitute a different reconstruction.
+    return { ancient: true, land: cache.get(item.age) || item.overview, borders: empty, countries: [] };
+  }
+  function prepare(years) {
+    const items = [...new Map(years.map(snapshot).filter(Boolean).map((item) => [item.age, item])).values()];
+    const key = items.map((item) => item.age).sort((a, b) => a - b).join(',');
+    if (key === requestedAges) return;
+    requestedAges = key;
+    clearTimeout(settleTimer);
+    // Do not download every crossed snapshot while scrubbing. Comparison sides
+    // settle together, so neither side cancels the other's detailed map.
+    if (items.length) settleTimer = setTimeout(() => {
+      settleTimer = null;
+      for (const item of items) load(-item.age * 1000000);
+    }, 150);
   }
   function point(record, year) {
     if (record.cat !== 'dinosaurs' || !isDeep(year)) return [record.lon, record.lat];
@@ -57,5 +71,5 @@
     if (!item) return null;
     return { age: item.age, state: cache.has(item.age) ? 'ready' : errors.has(item.age) ? 'error' : 'loading' };
   }
-  return { isDeep, snapshot, load, geography, point, status };
+  return { isDeep, snapshot, load, geography, point, status, prepare };
 });
