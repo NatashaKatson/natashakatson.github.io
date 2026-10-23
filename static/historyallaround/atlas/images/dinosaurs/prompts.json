@@ -1,0 +1,47 @@
+{
+  "tool": "Built-in image_gen",
+  "purpose": "Illustrated dinosaur avatars; appearances and colours are speculative. Not fossil evidence.",
+  "processing": "Transparent source PNGs encoded as 512px WebP for web delivery, preserving transparency.",
+  "assets": [
+    {
+      "name": "Tyrannosaurus",
+      "file": "tyrannosaurus.webp",
+      "prompt": "Use case: scientific-educational. Asset type: a single dinosaur avatar illustration for an interactive fossil atlas. Subject: A Tyrannosaurus rex: massive deep skull, powerful jaw and small two-fingered forelimbs. Warm rusty ochre scales, cream throat, dark brown mottling. Three-quarter side view head and upper chest, jaws slightly open showing teeth. Style: premium natural-history museum paleoart, realistic textured painted reconstruction, beautiful dimensional lighting, crisp silhouette, engaging and impressive rather than cute or cartoon. Composition: one animal only, generous clear margin, complete described silhouette fits inside the central 80% of a square image, face angled right, recognizable at 64 pixels, no cropped snout/horns/plates/sail. Genuine transparent background, no scenery, no circle or frame, no text, no labels, no logos, no watermark. Extinct-animal reconstruction with plausible anatomy; colors are artistic."
+    },
+    {
+      "name": "Triceratops",
+      "file": "triceratops.webp",
+      "prompt": "Use case: scientific-educational. Asset type: a single dinosaur avatar illustration for an interactive fossil atlas. Subject: A Triceratops: clearly three horns (two long brow horns and one short nasal horn), broad bony frill with scalloped edges, parrot beak. Slate blue-grey scales with warm terracotta accents on frill. Three-quarter side view head and upper chest. Style: premium natural-history museum paleoart, realistic textured painted reconstruction, beautiful dimensional lighting, crisp silhouette, engaging and impressive rather than cute or cartoon. Composition: one animal only, generous clear margin, complete described silhouette fits inside the central 80% of a square image, face angled right, recognizable at 64 pixels, no cropped snout/horns/plates/sail. Genuine transparent background, no scenery, no circle or frame, no text, no labels, no logos, no watermark. Extinct-animal reconstruction with plausible anatomy; colors are artistic."
+    },
+    {
+      "name": "Stegosaurus",
+      "file": "stegosaurus.webp",
+      "prompt": "Use case: scientific-educational. Asset type: a single dinosaur avatar illustration for an interactive fossil atlas. Subject: A Stegosaurus: tiny low elongated head on short neck with a prominent row of large upright alternating triangular bony plates visible along its shoulder and back. Olive and burnt-orange coloration, warm cream underside. Three-quarter side view head and torso emphasizing the iconic back plates. Style: premium natural-history museum paleoart, realistic textured painted reconstruction, beautiful dimensional lighting, crisp silhouette, engaging and impressive rather than cute or cartoon. Composition: one animal only, generous clear margin, complete described silhouette fits inside the central 80% of a square image, face angled right, recognizable at 64 pixels, no cropped snout/horns/plates/sail. Genuine transparent background, no scenery, no circle or frame, no text, no labels, no logos, no watermark. Extinct-animal reconstruction with plausible anatomy; colors are artistic."
+    },
+    {
+      "name": "Diplodocus",
+      "file": "diplodocus.webp",
+      "prompt": "Use case: scientific-educational. Asset type: a single dinosaur avatar illustration for an interactive fossil atlas. Subject: A Diplodocus: long elegant slender upright curving neck, small elongated narrow head, nostrils on snout, no horn or crest, serene sauropod. Sandy golden brown skin with subtle teal-grey shadows. Upper body portrait with long neck curving to fit frame. Style: premium natural-history museum paleoart, realistic textured painted reconstruction, beautiful dimensional lighting, crisp silhouette, engaging and impressive rather than cute or cartoon. Composition: one animal only, generous clear margin, complete described silhouette fits inside the central 80% of a square image, face angled right, recognizable at 64 pixels, no cropped snout/horns/plates/sail. Genuine transparent background, no scenery, no circle or frame, no text, no labels, no logos, no watermark. Extinct-animal reconstruction with plausible anatomy; colors are artistic."
+    },
+    {
+      "name": "Velociraptor",
+      "file": "velociraptor.webp",
+      "prompt": "Use case: scientific-educational. Asset type: a single dinosaur avatar illustration for an interactive fossil atlas. Subject: A scientifically informed Velociraptor: small slender long-snouted dromaeosaur head, feathered neck and upper body with small feathered forelimbs. Rust red and dark charcoal feathers, alert amber eye, no exaggerated monster proportions. Three-quarter side-view head and upper body. Style: premium natural-history museum paleoart, realistic textured painted reconstruction, beautiful dimensional lighting, crisp silhouette, engaging and impressive rather than cute or cartoon. Composition: one animal only, generous clear margin, complete described silhouette fits inside the central 80% of a square image, face angled right, recognizable at 64 pixels, no cropped snout/horns/plates/sail. Genuine transparent background, no scenery, no circle or frame, no text, no labels, no logos, no watermark. Extinct-animal reconstruction with plausible anatomy; colors are artistic."
+    },
+    {
+      "name": "Spinosaurus",
+      "file": "spinosaurus.webp",
+      "prompt": "Use case: scientific-educational. Asset type: a single dinosaur avatar illustration for an interactive fossil atlas. Subject: A Spinosaurus: long narrow crocodile-like snout, conical teeth, very tall prominent curved dorsal sail rising behind head and shoulders. Muted turquoise and dark teal scales with warm ochre sail markings. Head and upper torso portrait, sail fully readable. Style: premium natural-history museum paleoart, realistic textured painted reconstruction, beautiful dimensional lighting, crisp silhouette, engaging and impressive rather than cute or cartoon. Composition: one animal only, generous clear margin, complete described silhouette fits inside the central 80% of a square image, face angled right, recognizable at 64 pixels, no cropped snout/horns/plates/sail. Genuine transparent background, no scenery, no circle or frame, no text, no labels, no logos, no watermark. Extinct-animal reconstruction with plausible anatomy; colors are artistic."
+    },
+    {
+      "name": "Iguanodon",
+      "file": "iguanodon.webp",
+      "prompt": "Use case: scientific-educational. Asset type: a single dinosaur avatar illustration for an interactive fossil atlas. Subject: An Iguanodon bernissartensis: long deep herbivore face, broad keratin beak, no horn or head crest, robust shoulders, one visible forehand with distinctive large conical thumb spike. Mottled chestnut and soft moss green skin. Three-quarter head, upper torso and forehand portrait. Style: premium natural-history museum paleoart, realistic textured painted reconstruction, beautiful dimensional lighting, crisp silhouette, engaging and impressive rather than cute or cartoon. Composition: one animal only, generous clear margin, complete described silhouette fits inside the central 80% of a square image, face angled right, recognizable at 64 pixels, no cropped snout/horns/plates/sail. Genuine transparent background, no scenery, no circle or frame, no text, no labels, no logos, no watermark. Extinct-animal reconstruction with plausible anatomy; colors are artistic."
+    },
+    {
+      "name": "Herrerasaurus",
+      "file": "herrerasaurus.webp",
+      "prompt": "Use case: scientific-educational. Asset type: a single dinosaur avatar illustration for an interactive fossil atlas. Subject: A Herrerasaurus: slender early bipedal predatory dinosaur, narrow elongated toothed skull, agile long neck and strong forelimbs with three principal clawed fingers. Dusky reddish brown scales with pale cream throat and subtle dark striping. Three-quarter head and upper body portrait, distinct from a bulky tyrannosaur. Style: premium natural-history museum paleoart, realistic textured painted reconstruction, beautiful dimensional lighting, crisp silhouette, engaging and impressive rather than cute or cartoon. Composition: one animal only, generous clear margin, complete described silhouette fits inside the central 80% of a square image, face angled right, recognizable at 64 pixels, no cropped snout/horns/plates/sail. Genuine transparent background, no scenery, no circle or frame, no text, no labels, no logos, no watermark. Extinct-animal reconstruction with plausible anatomy; colors are artistic."
+    }
+  ]
+}

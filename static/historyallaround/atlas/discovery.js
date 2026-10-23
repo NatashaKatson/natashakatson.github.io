@@ -508,6 +508,7 @@
       }
     }
     compare.left = vals[0];
+    if(vals.some((year)=>year<-300000))state.cats.add("dinosaurs");
     compare.selectedYear = null;
     stopPlay();
     setYear(vals[1]);
@@ -855,6 +856,10 @@
     return true;
   }
   window.HistoryDiscovery = {
+    limitYearsToHistory(year) {
+      if(compare.left<-300000){compare.left=year;form.elements.left.value=fmt(year)}
+      if(compare.selectedYear!==null&&compare.selectedYear<-300000){compare.selectedYear=null;state.sel=null;selectedPolity=null}
+    },
     contemporaryPair() {
       if (!activeContemporaries) return null;
       const people = activeContemporaries.map((key) => ppl.find((p) => p.wiki === key));
@@ -998,6 +1003,10 @@
       if ((selectedPolity || state.sel) && compare.selectedYear !== null)
         withYear(compare.selectedYear, renderDetailBase);
       const x = state.sel && byId[state.sel];
+      if(x?.cat==="dinosaurs"&&window.HistoryDinosaurs){
+        const detail=document.querySelector("#detail .dinosaur-detail");
+        if(detail&&!detail.querySelector(".dinosaur-portrait"))detail.querySelector("h3").insertAdjacentHTML("afterend",HistoryDinosaurs.portrait(x));
+      }
       if (!x && !selectedPolity && searchPlace && lastPoint) {
         document.getElementById("detail").innerHTML = `<div class="detail search-place-detail"><button type="button" class="iconbtn close" aria-label="Close">×</button><div class="kicker">Present-day place · exploring ${esc(fmt(state.year))}</div><h3>${esc(searchPlace.title)}</h3><p>${pointLabel(lastPoint)}</p><p>This name locates a point on today's map. It does not establish the name, settlement, or political control here in ${esc(fmt(state.year))}.</p><a target="_blank" rel="noopener" href="${searchPlace.geonameId ? `https://www.geonames.org/${searchPlace.geonameId}/` : "https://www.naturalearthdata.com/"}">${searchPlace.geonameId ? "GeoNames" : "Natural Earth"} source ↗</a></div>`;
         document.querySelector("#detail .close").onclick = () => {

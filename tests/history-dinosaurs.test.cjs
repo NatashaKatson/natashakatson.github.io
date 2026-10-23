@@ -6,6 +6,7 @@ const core = require('../static/historyallaround/atlas/discovery-core.js');
 const html = fs.readFileSync('static/historyallaround/atlas/index.html', 'utf8');
 const context = vm.createContext({ state: { year: -67000000 } });
 const declarations = [html.match(/^const NOW=.*$/m)[0], html.match(/^const SEG=.*$/m)[0],
+  html.match(/^const HISTORY_SEG=.*$/m)[0], html.match(/^let dinosaurTimeline=.*$/m)[0],
   'const SAME_TIME_YEARS=1;', ...['yearAt', 'tAt', 'fmt', 'fmtSpan', 'halfWin'].map((name) =>
     html.match(new RegExp('^function ' + name + '\\(.*$', 'm'))[0]),
   html.match(/^function parseYear\(s\)\{[\s\S]*?^\}/m)[0]];
@@ -31,6 +32,18 @@ test('deep time and historic dates share a bounded, reversible timeline', () => 
   assert.equal(vm.runInContext('fmtSpan(-99000000,-93500000,true)', context), 'c. 99–93.5 million years ago');
 });
 
+test('disabling dinosaurs restores the complete human-history timeline scale', () => {
+  vm.runInContext('dinosaurTimeline=false;', context);
+  assert.equal(vm.runInContext('yearAt(0)', context), -300000);
+  assert.equal(vm.runInContext('yearAt(1)', context), 2026);
+  for (const year of [-300000, -10000, -500, 1, 1903, 2026]) {
+    context.year = year;
+    assert(Math.abs(vm.runInContext('yearAt(tAt(year))', context) - year) < .000001);
+  }
+  vm.runInContext('dinosaurTimeline=true;', context);
+  assert.equal(vm.runInContext('yearAt(0)', context), -252000000);
+});
+
 test('dinosaur records have approximate ages, modern fossil regions and source links', () => {
   const data = vm.createContext({});
   vm.runInContext(html.match(/const EVENTS = \[[\s\S]*?\n\];/)[0] + '\nglobalThis.rows=EVENTS;', data);
@@ -45,6 +58,9 @@ test('dinosaur records have approximate ages, modern fossil regions and source l
     assert(Number.isFinite(r[5]) && Math.abs(r[5]) <= 90 && Number.isFinite(r[6]) && Math.abs(r[6]) <= 180);
     assert(r[11].includes('region'));
     for (const url of [r[10], r[12]]) assert.equal(new URL(url).protocol, 'https:');
+    const asset = fs.readFileSync('static/historyallaround/atlas/images/dinosaurs/' + r[9].toLowerCase() + '.webp');
+    assert.equal(asset.toString('ascii', 8, 12), 'WEBP');
+    assert(asset.length < 150000, 'avatar stays compact');
   }
   for (const name of ['dinosaurs.js', 'search.js', 'discovery.js'])
     new vm.Script(fs.readFileSync('static/historyallaround/atlas/' + name, 'utf8'));

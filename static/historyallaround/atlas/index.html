@@ -685,7 +685,17 @@ const EVENTS = [
 [-99000000,-93500000,1,"Spinosaurus","A large sail-backed predator from North Africa with adaptations for life around water. Its lifestyle remains a subject of research.",30.8,-4.2,"me","dinosaurs","Spinosaurus","https://www.nhm.ac.uk/discover/dino-directory/spinosaurus.html","Kem Kem region · Morocco","https://doi.org/10.1016/j.cretres.2018.09.012"],
 [-74000000,-70000000,1,"Velociraptor","A small feathered predator from Late Cretaceous Mongolia, much smaller than its famous movie portrayal.",44.14,103.72,"as","dinosaurs","Velociraptor","https://www.nhm.ac.uk/discover/dino-directory/velociraptor.html","Flaming Cliffs region · Mongolia","https://www.amnh.org/exhibitions/fossils-flaming-cliffs-gobi"],
 [-68000000,-66000000,1,"Tyrannosaurus rex","A large Late Cretaceous predator. The specimen SUE, found north of Faith in South Dakota, lived about 67 million years ago.",45.05,-102.03,"am","dinosaurs","Tyrannosaurus","https://www.nhm.ac.uk/discover/dino-directory/tyrannosaurus.html","Faith region · South Dakota, USA","https://www.fieldmuseum.org/collection-item-iconic/sue"],
-[-68000000,-66000000,1,"Triceratops","A plant-eater with three horns and a large bony frill, living in western North America near the end of the Cretaceous.",47.5,-106.5,"am","dinosaurs","Triceratops","https://www.nhm.ac.uk/discover/dino-directory/triceratops.html","Hell Creek region · Montana, USA","https://museumoftherockies.org/exhibitions/siebel-dinosaur-complex"]
+[-68000000,-66000000,1,"Triceratops","A plant-eater with three horns and a large bony frill, living in western North America near the end of the Cretaceous.",47.5,-106.5,"am","dinosaurs","Triceratops","https://www.nhm.ac.uk/discover/dino-directory/triceratops.html","Hell Creek region · Montana, USA","https://museumoftherockies.org/exhibitions/siebel-dinosaur-complex"],
+// Quebec and French Canada. Append records to preserve shared event IDs.
+[1608,1763,0,"French Canada in New France","From Quebec's establishment in 1608 to France's cession of Canada in 1763, French settlement and the fur trade develop along the St. Lawrence through relationships with Indigenous nations. This is a period overview, not uninterrupted French control: English forces occupy Quebec in 1629–1632, and Britain conquers Canada in 1759–1760. The marker locates Quebec City, not the colony's full extent.",46.813,-71.205,"am","culture","Canada_(New_France)","https://www.historymuseum.ca/virtual-museum-of-new-france/colonies-and-empires/wars-and-imperial-rivalries/"],
+[1608,null,0,"Champlain establishes Quebec","Samuel de Champlain establishes a French settlement at Quebec on July 3, a centre of New France on the St. Lawrence. Indigenous peoples had lived in the region long before the French settlement.",46.813,-71.205,"am","power","History_of_Quebec_City","https://www.ville.quebec.qc.ca/apropos/portrait/histoire/1608-1755.aspx"],
+[1642,null,0,"Ville-Marie: the founding of Montréal","French colonists establish Ville-Marie, the settlement that becomes Montréal, in present-day Quebec. Its founding site is at Pointe-à-Callière beside the St. Lawrence.",45.502,-73.554,"am","culture","History_of_Montreal","https://www.pc.gc.ca/apps/dfhd/page_nhs_eng.aspx?i=51190&id=652"],
+[1701,null,0,"Great Peace of Montréal","On August 4, representatives of the Haudenosaunee and more than 30 other First Nations, together with the governor of New France, sign the Great Peace of Montréal. Indigenous diplomacy is central to this agreement.",45.502,-73.554,"am","power","Great_Peace_of_Montreal","https://www.pc.gc.ca/apps/dfhd/page_nhs_eng.aspx?id=1937"],
+[1759,null,0,"Battle of the Plains of Abraham","British troops defeat French forces outside Quebec City on September 13. The city falls soon afterward; the struggle for Canada continues into 1760.",46.801,-71.219,"am","war","Battle_of_the_Plains_of_Abraham","https://www.plainsofabraham.ca/history-and-heritage/history-of-the-park/1759-1760-the-battles"],
+[1763,null,0,"France cedes Canada to Britain","The Treaty of Paris ends the Seven Years' War and France cedes Canada to Great Britain. The marker shows Quebec, an affected place; the treaty is signed in Paris. French-speaking communities remain after the change of imperial rule.",46.813,-71.205,"am","power","Treaty_of_Paris_(1763)","https://www.historymuseum.ca/virtual-museum-of-new-france/colonies-and-empires/wars-and-imperial-rivalries/"],
+[1774,null,0,"Quebec Act restores French civil law","The Quebec Act restores French civil law for property and civil rights in the Province of Quebec, with exceptions. This helps explain Quebec's distinct legal tradition within British North America. The marker locates Quebec rather than the British Parliament that passes the act.",46.813,-71.205,"am","power","Quebec_Act","https://justice.canada.ca/eng/csj-sjc/harmonization/services_information/fundamentals-fondements.html"],
+[1867,null,0,"Quebec becomes a founding province of Canada","Confederation creates the Dominion of Canada with four provinces: Quebec, Ontario, Nova Scotia and New Brunswick. The former Province of Canada is divided into Quebec and Ontario.",46.813,-71.205,"am","power","Canadian_Confederation","https://www.canada.ca/en/intergovernmental-affairs/services/provinces-territories.html"],
+[1977,null,0,"Quebec adopts the Charter of the French Language","Quebec adopts the Charter of the French Language, known as Bill 101, on August 26. The law makes French central to public life, work and education in Quebec.",46.809,-71.214,"am","culture","Charter_of_the_French_Language","https://www.quebec.ca/culture/langue-francaise/portrait-francais-quebec/a-propos-francais/a-propos-charte"]
 ];
 
 // [name, born, died, approx, role, lat, lon, region, wikiSlug]
@@ -804,8 +814,10 @@ const NOW=2026,SLIDER_STEPS=3000000;
 
 // piecewise scale: slider t (0..1) <-> year
 const SEG=[[0,-252000000],[.06,-201000000],[.12,-145000000],[.22,-66000000],[.24,-300000],[.316,-10000],[.3692,-3000],[.544,0],[.772,1500],[.8708,1800],[1,NOW]];
-function yearAt(t){for(let i=1;i<SEG.length;i++){const[a,ya]=SEG[i-1],[b,yb]=SEG[i];if(t<=b)return ya+(yb-ya)*(t-a)/(b-a)}return NOW}
-function tAt(y){for(let i=1;i<SEG.length;i++){const[a,ya]=SEG[i-1],[b,yb]=SEG[i];if(y<=yb)return a+(b-a)*(y-ya)/(yb-ya)}return 1}
+const HISTORY_SEG=[[0,-300000],[.10,-10000],[.17,-3000],[.40,0],[.70,1500],[.83,1800],[1,NOW]];
+let dinosaurTimeline=true,lastHumanYear=1453;
+function yearAt(t){const segments=dinosaurTimeline?SEG:HISTORY_SEG;for(let i=1;i<segments.length;i++){const[a,ya]=segments[i-1],[b,yb]=segments[i];if(t<=b)return ya+(yb-ya)*(t-a)/(b-a)}return NOW}
+function tAt(y){const segments=dinosaurTimeline?SEG:HISTORY_SEG;for(let i=1;i<segments.length;i++){const[a,ya]=segments[i-1],[b,yb]=segments[i];if(y<=yb)return a+(b-a)*(y-ya)/(yb-ya)}return 1}
 const SAME_TIME_YEARS=1;
 function halfWin(y=state.year){return y < -1000000 ? 1000000 : SAME_TIME_YEARS}
 function roundYear(y){const n=Math.round(y);return n===0?(y<0?-1:1):n}
@@ -956,13 +968,16 @@ function renderScene(){
   // Quiet italic water names give the map an atlas voice without competing with states or events.
   ctx.save();ctx.font=`italic 400 ${W<600?8.5:10.5}px ${C.display}`;ctx.textAlign="center";ctx.textBaseline="middle";ctx.fillStyle=C["water-label"];
   for(const[name,lon,lat]of WATER_LABELS){if(W<600&&!name.includes("Ocean"))continue;if(!visible(lon,lat))continue;const p=proj([lon,lat]);if(!p||!Number.isFinite(p[0])||!Number.isFinite(p[1]))continue;if(globe&&Math.hypot(p[0]-cx,p[1]-cy)>R*.84)continue;ctx.fillText(name,p[0],p[1])}ctx.restore();
-  // names of the largest states in view
+  // State names near the map's focus, with collision checks against event markers.
   polLabels=[];
   const marks=pols.length?[...activeEvents().map(a=>a.e),...alivePeople()].filter(o=>visible(o.lon,o.lat)).map(o=>proj([o.lon,o.lat])):[];
   if(pols.length){ctx.font=`500 ${W<600?9:10.5}px ${C.display}`;ctx.textAlign="center";ctx.textBaseline="middle";let n=0;
     // A state's rough on-screen size comes from its stored area, so labels don't need every outline projected again.
-    for(const f of pols){if(n>=(W<600?5:9))break;const bw=Math.sqrt(f.area)*R;if(bw<56)break;
-      const lp=f.cen;if(!visible(lp[0],lp[1]))continue;const[cx2,cy2]=proj(lp);if(globe&&Math.hypot(cx2-cx,cy2-cy)>R*.86)continue;const t=f.name;const tw=ctx.measureText(t).width;if(tw>bw*1.7)continue;
+    // Small colonies can be legible at regional zoom; always give the selected territory a label slot.
+    const labelDistance=f=>{const p=proj(f.cen);return Math.hypot(p[0]-W/2,p[1]-H/2)};
+    const labelOrder=[...pols].sort((a,b)=>Number(b.name===selectedPolity?.name)-Number(a.name===selectedPolity?.name)||labelDistance(a)-labelDistance(b));
+    for(const f of labelOrder){if(n>=(W<600?5:9))break;const bw=Math.sqrt(f.area)*R,isSelected=f.name===selectedPolity?.name;if(bw<12&&!isSelected)continue;
+      const lp=f.cen;if(!visible(lp[0],lp[1]))continue;const[cx2,cy2]=proj(lp);if(globe&&Math.hypot(cx2-cx,cy2-cy)>R*.86)continue;const t=f.name;const tw=ctx.measureText(t).width;if(tw>Math.max(80,bw*1.7)&&!isSelected)continue;
       const hitsBox=b=>polLabels.some(o=>!(b[0]>o[0]+o[2]||b[0]+b[2]<o[0]||b[1]>o[1]+o[3]||b[1]+b[3]<o[1]))||marks.some(([mx,my])=>mx>b[0]-9&&mx<b[0]+b[2]+9&&my>b[1]-9&&my<b[1]+b[3]+9);
       let ly=null;for(const dy of[0,16,-16,30,-30]){const b=[cx2-tw/2-4,cy2+dy-8,tw+8,16];if(!hitsBox(b)){ly=cy2+dy;polLabels.push(b);break}}if(ly===null)continue;n++;
       ctx.lineWidth=2.5;ctx.strokeStyle=C.halo;ctx.strokeText(t,cx2,ly);ctx.fillStyle=C.ink;ctx.fillText(t,cx2,ly)}
@@ -977,13 +992,8 @@ function renderScene(){
   const labelled=polLabels.slice();
   act.slice().reverse().forEach(({e,r})=>{if(!visible(e.lon,e.lat))return;let[x,y]=proj([e.lon,e.lat]);
     if(e.cat==="dinosaurs"){
-      const origin=[x,y];let offset=0;
-      while(fossilMarks.some(p=>Math.hypot(p[0]-x,p[1]-y)<22)){offset++;x=origin[0]+24*offset}
-      fossilMarks.push([x,y]);ctx.save();
-      if(offset){ctx.beginPath();ctx.moveTo(...origin);ctx.lineTo(x,y);ctx.strokeStyle=C.ink;ctx.lineWidth=1;ctx.stroke()}
-      ctx.translate(x,y);ctx.strokeStyle=C["c-dinosaurs"];ctx.lineWidth=3;ctx.lineCap="round";
-      ctx.beginPath();ctx.moveTo(0,7);ctx.lineTo(0,-7);ctx.moveTo(0,1);ctx.lineTo(-7,-5);ctx.moveTo(0,1);ctx.lineTo(7,-5);ctx.stroke();ctx.restore();
-      hits.push({x,y,id:e.id,label:e.title+" · "+fmtSpan(e.start,e.end,e.approx)+" · fossil region"});return;
+      const marker=window.HistoryDinosaurs?.drawMarker(e,[x,y],fossilMarks);
+      if(marker){fossilMarks.push(marker);hits.push({...marker,id:e.id,label:e.title+" · "+fmtSpan(e.start,e.end,e.approx)+" · fossil region"})}return;
     }
     const col=C["c-"+e.cat],rad=4+3*r;ctx.globalAlpha=.4+.6*r;
     ctx.beginPath();ctx.arc(x,y,rad+2.5,0,7);ctx.fillStyle=C.halo;ctx.fill();
@@ -993,13 +1003,13 @@ function renderScene(){
   // labels for strongest few, avoiding overlap
   ctx.font=`500 ${W<600?10.5:11.5}px ${C.display}`;ctx.textBaseline="middle";
   const maxL=W<600?3:6;let n=0;
-  for(const{e}of act){if(n>=maxL)break;if(!visible(e.lon,e.lat))continue;const[x,y]=proj([e.lon,e.lat]);const tw=ctx.measureText(e.title).width;
+  for(const{e}of act){if(n>=maxL)break;if(e.cat==="dinosaurs"||!visible(e.lon,e.lat))continue;const[x,y]=proj([e.lon,e.lat]);const tw=ctx.measureText(e.title).width;
     let lx=x+11;if(lx+tw>W-8)lx=x-11-tw;const box=[lx-3,y-9,tw+6,18];
     if(labelled.some(b=>!(box[0]>b[0]+b[2]||box[0]+box[2]<b[0]||box[1]>b[1]+b[3]||box[1]+box[3]<b[1])))continue;labelled.push(box);n++;
     ctx.lineWidth=3;ctx.strokeStyle=C.halo;ctx.lineJoin="round";ctx.strokeText(e.title,lx,y);ctx.fillStyle=C.ink;ctx.fillText(e.title,lx,y)}
   // selection ring
   const s=state.sel&&byId[state.sel];
-  if(s&&visible(s.lon,s.lat)){const[x,y]=proj([s.lon,s.lat]);ctx.beginPath();ctx.arc(x,y,13,0,7);ctx.strokeStyle=C.accent;ctx.lineWidth=2.5;ctx.stroke();
+  if(s&&s.cat!=="dinosaurs"&&visible(s.lon,s.lat)){const[x,y]=proj([s.lon,s.lat]);ctx.beginPath();ctx.arc(x,y,13,0,7);ctx.strokeStyle=C.accent;ctx.lineWidth=2.5;ctx.stroke();
     ctx.beginPath();ctx.arc(x,y,19,0,7);ctx.globalAlpha=.35;ctx.lineWidth=1.5;ctx.stroke();ctx.globalAlpha=1}
 }
 
@@ -1033,7 +1043,7 @@ function mapAtYear(x,y){if(state.borders==="off"||(state.borders==="history"&&cu
     return hit?{label:hit.name+(hit.member&&hit.member!==hit.name?` · part of ${hit.member}`:""),polity:hit}:null}
   for(const c of (hi||lo).countries){const[[w,so],[ea,n]]=c.bbox;if(ll[1]<so||ll[1]>n)continue;if(w<=ea?(ll[0]<w||ll[0]>ea):(ll[0]<w&&ll[0]>ea))continue;
     if(d3.geoContains(c,ll))return{label:c.properties.name+" (today)",polity:null}}return null}
-function nearest(x,y){let best=null,bd=16;for(const h of hits){const d=Math.hypot(h.x-x,h.y-y);if(d<bd){bd=d;best=h}}return best}
+function nearest(x,y){let best=null,bd=Infinity;for(const h of hits){const d=Math.hypot(h.x-x,h.y-y);if(d<=(h.radius||16)&&d<bd){bd=d;best=h}}return best}
 function syncBordersUI(){for(const b of document.querySelectorAll(".bseg button"))b.setAttribute("aria-pressed",b.dataset.b===state.borders);
   document.querySelector('.bseg [data-b="history"]').title=currentBorderFailed()?"Historical borders unavailable; no modern borders substituted":"";draw()}
 for(const b of document.querySelectorAll(".bseg button"))b.onclick=()=>{state.borders=b.dataset.b;selectedPolity=null;bErrors.clear();polCache={y:null,list:[]};loadC=null;renderDetail();syncBordersUI()};
@@ -1056,20 +1066,33 @@ for(const[k,v]of Object.entries(CATS)){const b=document.createElement("button");
 // ---------- timeline
 const slider=document.getElementById("slider");
 const eras=document.getElementById("eras"),marks=document.getElementById("marks"),ticks=document.getElementById("ticks");
-ERAS.forEach(([s,n],i)=>{const a=tAt(s),b=i<ERAS.length-1?tAt(ERAS[i+1][0]):1;const d=document.createElement("div");d.className="era-b";const SHORT={Prehistory:"Prehist.","Early modern":"E. modern"};if(window.innerWidth<600&&SHORT[n])n=SHORT[n];d.style.left=a*100+"%";d.style.width=(b-a)*100+"%";d.textContent=n;eras.appendChild(d)});
-[-252000000,-145000000,-66000000,-10000,-3000,-1000,1,500,1000,1500,1800,1900,NOW].forEach(y=>{const s=document.createElement("span");s.style.left=tAt(y)*100+"%";if(y===NOW)s.className="timeline-end";s.textContent=y<=-1000000?Math.abs(y)/1000000+" Ma":y<0?(Math.abs(y)>=10000?Math.abs(y)/1000+"k":Math.abs(y))+" BC":y===1?"AD 1":y;if(window.innerWidth<600&&![-252000000,-66000000,-10000,1000,1800,NOW].includes(y))return;ticks.appendChild(s)});
-function buildMarks(){marks.innerHTML="";for(const e of ev){if(!state.cats.has(e.cat))continue;const b=document.createElement("b");b.style.left=tAt(e.start)*100+"%";b.style.height=(8+((e.start*7)%9+9)%9)+"px";b.style.setProperty("--c",`var(--c-${e.cat})`);marks.appendChild(b)}}
+function buildRuler(){
+eras.innerHTML="";ticks.innerHTML="";
+const shown=dinosaurTimeline?ERAS:ERAS.filter(([y])=>y>=-300000);
+shown.forEach(([s,n],i)=>{const a=tAt(s),b=i<shown.length-1?tAt(shown[i+1][0]):1;const d=document.createElement("div");d.className="era-b";const SHORT={Prehistory:"Prehist.","Early modern":"E. modern"};if(window.innerWidth<600&&SHORT[n])n=SHORT[n];d.style.left=a*100+"%";d.style.width=(b-a)*100+"%";d.textContent=n;eras.appendChild(d)});
+const years=dinosaurTimeline?[-252000000,-145000000,-66000000,-10000,-3000,-1000,1,500,1000,1500,1800,1900,NOW]:[-200000,-10000,-3000,-1000,1,500,1000,1500,1800,1900,NOW];
+years.forEach(y=>{const s=document.createElement("span");s.style.left=tAt(y)*100+"%";if(y===NOW)s.className="timeline-end";s.textContent=y<=-1000000?Math.abs(y)/1000000+" Ma":y<0?(Math.abs(y)>=10000?Math.abs(y)/1000+"k":Math.abs(y))+" BC":y===1?"AD 1":y;if(window.innerWidth<600&&![-252000000,-66000000,-10000,1000,1800,NOW].includes(y))return;ticks.appendChild(s)});
+}
+buildRuler();
+function buildMarks(){marks.innerHTML="";for(const e of ev){if(!state.cats.has(e.cat)||(!dinosaurTimeline&&e.start<-300000))continue;const b=document.createElement("b");b.style.left=tAt(e.start)*100+"%";b.style.height=(8+((e.start*7)%9+9)%9)+"px";b.style.setProperty("--c",`var(--c-${e.cat})`);marks.appendChild(b)}}
+function syncTimelineRange(){
+const enabled=state.cats.has("dinosaurs");
+if(!enabled){if(state.year<-300000){state.year=lastHumanYear;state.sel=null;selectedPolity=null}window.HistoryDiscovery?.limitYearsToHistory(lastHumanYear)}
+if(dinosaurTimeline!==enabled){dinosaurTimeline=enabled;buildRuler();buildMarks()}
+if(state.year>=-300000)lastHumanYear=state.year;
+slider.value=Math.round(tAt(state.year)*SLIDER_STEPS);
+}
 buildMarks();
 slider.addEventListener("input",()=>{state.year=roundYear(yearAt(slider.value/SLIDER_STEPS));selectedPolity=null;stopPlay();update(true)});
 slider.addEventListener("keydown",e=>{if(e.key==="ArrowLeft"&&!e.shiftKey){nudgeYear(-1);e.preventDefault()}if(e.key==="ArrowRight"&&!e.shiftKey){nudgeYear(1);e.preventDefault()}});
-function setYear(y,keepSel){y=roundYear(Math.max(-252000000,Math.min(NOW,y)));state.year=y;slider.value=Math.round(tAt(y)*SLIDER_STEPS);if(!keepSel){state.sel=null;selectedPolity=null}update()}
+function setYear(y,keepSel){y=roundYear(Math.max(-252000000,Math.min(NOW,y)));if(y<-300000)state.cats.add("dinosaurs");state.year=y;slider.value=Math.round(tAt(y)*SLIDER_STEPS);if(!keepSel){state.sel=null;selectedPolity=null}update()}
 function stepEvent(dir){const list=ev.filter(e=>state.cats.has(e.cat)).map(e=>e.start).sort((a,b)=>a-b);const y=state.year;const t=dir>0?list.find(s=>s>y):[...list].reverse().find(s=>s<y);if(t!==undefined){stopPlay();setYear(t)}}
 function nudgeYear(dir){stopPlay();const y=state.year===-1&&dir>0?1:state.year===1&&dir<0?-1:state.year+dir*(state.year<-1000000?1000000:1);setYear(y)}
 document.getElementById("prev").onclick=()=>nudgeYear(-1);
 document.getElementById("next").onclick=()=>nudgeYear(1);
 let raf=0;const playBtn=document.getElementById("play");
 function stopPlay(){state.playing=false;cancelAnimationFrame(raf);playBtn.innerHTML="▶ Play";playBtn.setAttribute("aria-label","Play")}
-playBtn.onclick=()=>{if(state.playing)return stopPlay();if(state.year>=NOW)setYear(-252000000);state.playing=true;playBtn.innerHTML="❚❚ Pause";playBtn.setAttribute("aria-label","Pause");
+playBtn.onclick=()=>{if(state.playing)return stopPlay();if(state.year>=NOW)setYear(dinosaurTimeline?-252000000:-300000);state.playing=true;playBtn.innerHTML="❚❚ Pause";playBtn.setAttribute("aria-label","Pause");
   let last=performance.now();(function tick(n){const dt=Math.min(64,n-last);last=n;let t=+slider.value/SLIDER_STEPS+dt*0.0000085;if(t>=1){t=1;stopPlay()}slider.value=Math.round(t*SLIDER_STEPS);state.year=roundYear(yearAt(t));update(true);if(state.playing)raf=requestAnimationFrame(tick)})(last)};
 document.addEventListener("keydown",e=>{if(e.target.tagName==="INPUT"&&e.target.type!=="range")return;if(e.key==="ArrowLeft"&&e.shiftKey){stepEvent(-1);e.preventDefault()}if(e.key==="ArrowRight"&&e.shiftKey){stepEvent(1);e.preventDefault()}if(e.key===" "&&e.target===document.body){playBtn.click();e.preventDefault()}});
 document.getElementById("goto").addEventListener("submit",e=>{e.preventDefault();const inp=document.getElementById("gotoInput");const y=parseYear(inp.value);if(y===null){inp.setCustomValidity(/^\s*0\s*(bc|bce|b\.c\.|ad|ce)?\s*$/i.test(inp.value)?"There is no year 0. Try 1 BC or AD 1.":"Try a year like 1492 or 500 BC");inp.reportValidity();return}inp.setCustomValidity("");stopPlay();setYear(y);inp.blur()});
@@ -1127,6 +1150,7 @@ const initialAtlasHash=location.hash;
 function slow(){slowAt=performance.now();renderDetail();renderSide();const y=state.year;
   try{history.replaceState(null,"",window.HistoryDiscovery?.urlHash() || "#"+(y<0?Math.abs(y)+"bc":y))}catch(_){}}
 function update(fast){
+  syncTimelineRange();
   const y=state.year;const yr=document.getElementById("yr");
   yr.classList.toggle("deep-time-year",y<=-1000000);
   yr.innerHTML=y<=-1000000?`${(Math.abs(y)/1000000).toLocaleString("en-US",{maximumFractionDigits:2})}<small>million years ago</small>`:y<0?`${Math.abs(y).toLocaleString("en-US")}<small>BC</small>`:y<1000?`<small style="margin:0 .15em 0 0">AD</small>${y}`:`${y}`;

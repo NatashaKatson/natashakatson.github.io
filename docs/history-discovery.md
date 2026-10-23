@@ -78,7 +78,16 @@ remain in `tests/history-discovery.test.cjs`.
 
 ## Dinosaurs and deep time
 
-Choose **Dinosaurs** beside Compare/Share, open **Explore dinosaurs** in the
+Use the permanently visible **Dinosaurs · On/Off** toggle on the map to include
+or exclude deep time. Off removes dinosaur eras, ticks, fossil entries and avatars
+from the timeline/map and restores the 300,000 BC–2026 human-history scale. If the
+selected year is in deep time, Off returns to the last human-history year (1453 on
+a fresh direct dinosaur visit). The setting is retained by exact-view links and
+Back. An explicit dinosaur search result, era jump or deep-date entry enables the
+range again. Play respects the current enabled range.
+
+Choose **Explore dinosaurs** beside Compare/Share, use the map's **Explore dinosaur
+eras** action, open **Explore dinosaurs** in the
 sidebar, or visit `atlas/#dinosaurs`. Eight sourced records include Herrerasaurus,
 Stegosaurus, Diplodocus, Iguanodon bernissartensis, Spinosaurus, Velociraptor,
 Tyrannosaurus rex and Triceratops. Triassic/Jurassic/Cretaceous buttons focus
@@ -93,8 +102,15 @@ the selected date and recorded intervals. The ordinary historical window remains
 ±1 year. Non-avian dinosaur records stop at the 66-million-year boundary. The
 timeline's earliest section has no claim of complete fossil coverage.
 
-Footprint-shaped symbols mark representative fossil regions at modern coordinates.
-Nearby symbols are separated with a short leader line so each can be clicked.
+Species-specific illustrated avatars mark representative fossil regions at modern
+coordinates. Their large click/tap targets are separated with a short leader line
+to the marked region. Matching artwork appears in the dinosaur list and details.
+These are AI-generated reconstructions, with speculative appearance and colours,
+as labeled in the interface; they are not fossil evidence. The built-in imagegen
+tool produced eight transparent illustrations, packaged as 512px WebP assets
+under `atlas/images/dinosaurs/` (about 590 KB total). Exact prompts and provenance
+are recorded in `atlas/images/dinosaurs/prompts.json`. Images are loaded on demand
+or through lazy thumbnails and remain clickable with a text fallback if unavailable.
 The **Fossil regions · modern geography** map note remains visible whenever either
 comparison side uses deep time. This is not a paleogeographic reconstruction:
 continents and coastlines were different. Source links distinguish age/taxon
@@ -107,7 +123,8 @@ Search has a Dinosaurs filter and supports `T. rex`. Search or era jumps enable
 the dinosaur category, retain Back navigation and use the existing exact-view
 sharing format. No dinosaur records are added to the daily chronology challenge:
 their approximate dates exclude them from that question's exact-date pool.
-No new runtime downloads, geocoding service, or search-index regeneration is needed.
+No geocoding service or search-index regeneration is needed; the avatar assets are
+served from the same static site.
 
 Additional validation:
 
@@ -118,7 +135,8 @@ node tests/history-dinosaurs.browser.mjs
 
 These cover deep-date parsing/formatting and timeline inversion, source fields,
 category/search navigation, nearby marker hit targets, real map clicks, Back,
-sharing, comparison, the 390px mobile layout and direct links.
+sharing, comparison, toggle persistence, timeline removal/restoration, avatar
+loading, the 390px mobile layout and direct links.
 
 ## Compare years
 
@@ -256,6 +274,22 @@ Local records remain usable during loading or after failure; retry loads missing
 indexes. This is not a complete index of every historic place or person.
 
 ### Search data and regeneration
+
+Quebec and French Canada have a sourced St. Lawrence period overview (1608–1763)
+and eight events: Quebec's establishment, Ville-Marie/Montréal, the Great Peace,
+the Plains of Abraham, the Treaty of Paris, the Quebec Act, Confederation, and the
+Charter of the French Language. The overview distinguishes its broad chronology
+from uninterrupted French control. These records appear in the map, ledger,
+nearby history and event search. Sources are linked in each record.
+
+State search accepts **Nouvelle-France** and **French Canada** for New France.
+For equally ranked records with the same name, longer mapped coverage sorts
+first: New France opens its 1757 Canadian snapshot rather than the short early
+segment whose source anchor is in Brazil. Existing coverage dates and source
+geometry remain unchanged. Smaller territories can receive map labels at regional
+zoom, and the selected territory receives the first label slot. Collision checks
+still apply. `tests/history-search.browser.mjs` covers the Canadian geometry,
+aliases, event navigation and desktop/mobile label visibility.
 
 Historical coverage derives from the checked-in Cliopatria/Seshat snapshots under
 CC BY 4.0. Coordinates, names, distinct alternate spellings, and region

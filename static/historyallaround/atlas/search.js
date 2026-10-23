@@ -99,7 +99,7 @@
       d.records = core.prepareSearch(d.url === "search-states.json"
         ? data.rows.map(([title, start, end, year, lon, lat, wiki, member]) => ({
           kind: "state", title, start, end, year, lon, lat, wiki, member,
-          aliases: [wiki.replaceAll("_", " ")],
+          aliases: [wiki.replaceAll("_", " "), ...(title === "New France" ? ["Nouvelle-France", "French Canada"] : [])],
           description: member && member !== title ? `Mapped as part of ${member}` : "Historical political coverage",
         }))
         : data.rows.map(([name, country, lon, lat, population, geonameId, aliases, region]) => ({

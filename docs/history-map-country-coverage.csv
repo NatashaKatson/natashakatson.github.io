@@ -1,0 +1,242 @@
+map_entry,country_search_result,human_event_markers,people_markers,detailed_map_centroid_inside_geometry
+Afghanistan,True,0,0,True
+Albania,True,0,0,True
+Algeria,True,0,0,True
+American Samoa,False,0,0,True
+Andorra,False,0,0,True
+Angola,True,0,0,True
+Anguilla,False,0,0,True
+Antarctica,True,0,0,True
+Antigua and Barb.,False,0,0,False
+Argentina,True,0,0,True
+Armenia,True,1,0,True
+Aruba,False,0,0,True
+Ashmore and Cartier Is.,False,0,0,True
+Australia,True,4,0,True
+Austria,True,1,1,True
+Azerbaijan,True,0,0,True
+Bahamas,True,1,0,False
+Bahrain,False,0,0,True
+Bangladesh,True,1,0,True
+Barbados,False,0,0,True
+Belarus,True,0,0,True
+Belgium,True,1,0,True
+Belize,True,0,0,True
+Benin,True,0,0,True
+Bermuda,False,0,0,True
+Bhutan,True,0,0,True
+Bolivia,True,0,0,True
+Bosnia and Herz.,True,0,0,True
+Botswana,True,0,0,True
+Br. Indian Ocean Ter.,False,0,0,False
+Brazil,True,0,0,True
+British Virgin Is.,False,0,0,False
+Brunei,True,0,0,True
+Bulgaria,True,0,0,True
+Burkina Faso,True,0,0,True
+Burundi,True,0,0,True
+Cabo Verde,False,0,0,False
+Cambodia,True,1,0,True
+Cameroon,True,0,0,True
+Canada,True,13,0,True
+Cayman Is.,False,0,0,False
+Central African Rep.,True,0,0,True
+Chad,True,0,0,True
+Chile,True,4,0,True
+China,True,17,6,True
+Colombia,True,1,0,True
+Comoros,False,0,0,False
+Congo,True,0,0,True
+Cook Is.,False,0,0,True
+Costa Rica,True,0,0,True
+Croatia,True,0,0,False
+Cuba,True,0,0,True
+Curaçao,False,0,0,True
+Cyprus,True,0,0,True
+Czechia,True,0,0,True
+Côte d'Ivoire,True,0,0,True
+Dem. Rep. Congo,True,1,0,True
+Denmark,True,0,0,True
+Djibouti,True,0,0,True
+Dominica,False,0,0,True
+Dominican Rep.,True,0,0,True
+Ecuador,True,0,0,True
+Egypt,True,7,3,True
+El Salvador,True,0,0,True
+Eq. Guinea,True,0,0,True
+Eritrea,True,0,0,True
+Estonia,True,0,0,True
+Ethiopia,True,2,1,True
+Faeroe Is.,False,0,0,True
+Falkland Is.,True,0,0,False
+Fiji,True,0,0,False
+Finland,True,0,0,True
+Fr. Polynesia,False,0,1,False
+Fr. S. Antarctic Lands,True,0,0,True
+France,True,11,3,False
+Gabon,True,0,0,True
+Gambia,True,0,0,True
+Georgia,True,1,0,True
+Germany,True,5,2,True
+Ghana,True,3,0,True
+Greece,True,6,3,False
+Greenland,True,0,0,True
+Grenada,False,0,0,True
+Guam,False,0,0,True
+Guatemala,True,1,0,True
+Guernsey,False,0,0,True
+Guinea,True,0,0,True
+Guinea-Bissau,True,0,0,True
+Guyana,True,0,0,True
+Haiti,True,1,1,True
+Heard I. and McDonald Is.,False,0,0,True
+Honduras,True,0,0,True
+Hong Kong,False,0,0,True
+Hungary,True,0,0,True
+Iceland,True,0,0,True
+India,True,11,3,True
+Indian Ocean Ter.,False,0,0,False
+Indonesia,True,1,0,False
+Iran,True,0,1,True
+Iraq,True,7,2,True
+Ireland,True,0,0,True
+Isle of Man,False,0,0,True
+Israel,True,0,1,False
+Italy,True,12,7,True
+Jamaica,True,0,0,True
+Japan,True,4,2,False
+Jersey,False,0,0,True
+Jordan,True,0,0,True
+Kazakhstan,True,2,0,True
+Kenya,True,0,0,True
+Kiribati,False,0,0,False
+Kosovo,True,0,0,True
+Kuwait,True,0,0,True
+Kyrgyzstan,True,0,0,True
+Laos,True,0,0,True
+Latvia,True,0,0,True
+Lebanon,True,1,0,True
+Lesotho,True,0,0,True
+Liberia,True,0,0,True
+Libya,True,0,0,True
+Liechtenstein,False,0,0,True
+Lithuania,True,0,0,True
+Luxembourg,True,0,0,True
+Macao,False,0,0,True
+Macedonia,True,0,0,True
+Madagascar,True,0,0,True
+Malawi,True,0,0,True
+Malaysia,True,0,0,False
+Maldives,False,0,0,False
+Mali,True,2,2,True
+Malta,False,0,0,True
+Marshall Is.,False,0,0,False
+Mauritania,True,0,0,True
+Mauritius,False,0,0,True
+Mexico,True,6,2,True
+Micronesia,False,0,0,False
+Moldova,True,0,0,True
+Monaco,False,0,0,True
+Mongolia,True,1,1,True
+Montenegro,True,0,0,True
+Montserrat,False,0,0,True
+Morocco,True,1,1,True
+Mozambique,True,0,0,True
+Myanmar,True,0,0,True
+N. Cyprus,True,1,0,True
+N. Mariana Is.,False,0,0,False
+Namibia,True,0,0,True
+Nauru,False,0,0,True
+Nepal,True,0,1,True
+Netherlands,True,0,0,True
+New Caledonia,True,0,0,True
+New Zealand,True,3,1,True
+Nicaragua,True,0,0,True
+Niger,True,0,0,True
+Nigeria,True,1,0,True
+Niue,False,0,0,True
+Norfolk Island,False,0,0,True
+North Korea,True,0,0,True
+Norway,True,0,0,False
+Oman,True,0,0,True
+Pakistan,True,2,0,True
+Palau,False,0,0,False
+Palestine,True,3,0,True
+Panama,True,0,0,True
+Papua New Guinea,True,0,0,True
+Paraguay,True,0,0,True
+Peru,True,3,1,True
+Philippines,True,0,0,False
+Pitcairn Is.,False,0,0,True
+Poland,True,3,1,True
+Portugal,True,0,0,True
+Puerto Rico,True,0,0,True
+Qatar,True,0,0,True
+Romania,True,0,0,True
+Russia,True,5,5,True
+Rwanda,True,0,0,True
+S. Geo. and the Is.,False,0,0,True
+S. Sudan,True,1,0,True
+Saint Helena,False,0,0,False
+Saint Lucia,False,0,0,True
+Samoa,False,0,0,False
+San Marino,False,0,0,True
+Saudi Arabia,True,1,1,True
+Senegal,True,0,0,True
+Serbia,True,0,0,True
+Seychelles,False,0,0,True
+Siachen Glacier,False,0,0,True
+Sierra Leone,True,0,0,True
+Singapore,False,0,0,True
+Sint Maarten,False,0,0,True
+Slovakia,True,0,0,True
+Slovenia,True,0,0,True
+Solomon Is.,True,0,0,False
+Somalia,True,0,0,True
+Somaliland,True,0,0,True
+South Africa,True,3,2,True
+South Korea,True,0,0,True
+Spain,True,2,0,True
+Sri Lanka,True,0,0,True
+St-Barthélemy,False,0,0,True
+St-Martin,False,0,0,True
+St. Kitts and Nevis,False,0,0,False
+St. Pierre and Miquelon,False,0,0,True
+St. Vin. and Gren.,False,0,0,True
+Sudan,True,0,0,True
+Suriname,True,0,0,True
+Sweden,True,0,0,True
+Switzerland,True,2,1,True
+Syria,True,1,0,True
+São Tomé and Principe,False,0,0,False
+Taiwan,True,0,0,True
+Tajikistan,True,0,0,True
+Tanzania,True,1,0,True
+Thailand,True,0,0,True
+Timor-Leste,True,0,0,True
+Togo,True,0,0,True
+Tonga,False,1,0,False
+Trinidad and Tobago,True,0,0,True
+Tunisia,True,1,0,True
+Turkey,True,9,1,True
+Turkmenistan,True,0,0,True
+Turks and Caicos Is.,False,0,0,False
+U.S. Virgin Is.,False,0,0,False
+Uganda,True,0,0,True
+Ukraine,True,2,0,True
+United Arab Emirates,True,0,0,True
+United Kingdom,True,12,4,True
+United States of America,True,22,4,True
+Uruguay,True,0,0,True
+Uzbekistan,True,0,0,True
+Vanuatu,True,0,0,False
+Vatican,False,0,0,True
+Venezuela,True,0,1,True
+Vietnam,True,0,0,False
+W. Sahara,True,0,0,True
+Wallis and Futuna Is.,False,0,0,False
+Yemen,True,0,0,True
+Zambia,True,0,0,True
+Zimbabwe,True,1,0,True
+eSwatini,True,0,0,True
+Åland,False,0,0,True

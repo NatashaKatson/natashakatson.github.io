@@ -133,6 +133,33 @@ return 'Search: lazy indexes, keyboard, dated empire, person/event jumps, filter
 })()`));
 console.log(await evaluate(`(async()=>{
 const assert=(v,m)=>{if(!v)throw Error(m)};
+for(const query of ['New France','Nouvelle-France','French Canada']){
+ await searchQuery(query,'state');
+ const first=document.querySelector('[data-search-result]');
+ assert(first?.textContent.includes('open 1757'),'French Canada opens its Canadian snapshot');
+ first.click();
+ for(let i=0;i<100&&document.getElementById('historySearch').open;i++)await new Promise(r=>setTimeout(r,50));
+ assert(selectedPolity?.name==='New France'&&state.year===1757,'New France selected in Canada');
+ assert(d3.geoContains(selectedPolity,[-71.21,46.81]),'source geometry includes Quebec City');
+}
+window.assertNewFranceLabel=()=>{
+ const labels=[],original=ctx.fillText;
+ try{ctx.fillText=function(text,...args){labels.push(text);return original.call(this,text,...args)};render();}
+ finally{ctx.fillText=original;}
+ assert(labels.includes('New France'),'New France label is drawn at search zoom');
+};
+assertNewFranceLabel();
+selectedPolity=null;render();assertNewFranceLabel();
+for(const [query,year] of [['Champlain establishes Quebec',1608],['Ville-Marie',1642],['Great Peace',1701],['Plains of Abraham',1759],['France cedes Canada',1763],['Quebec Act',1774],['founding province',1867],['Charter of the French Language',1977]]){
+ await searchQuery(query,'event');
+ assert(document.querySelector('[data-search-result]'),'Quebec event is searchable: '+query);
+ document.querySelector('[data-search-result]').click();await new Promise(r=>setTimeout(r,50));
+ assert(state.year===year&&byId[state.sel]?.source,'event opens dated sourced history: '+query);
+}
+return 'Quebec: French Canada aliases, Canadian snapshot, visible territory label and eight sourced event jumps passed';
+})()`));
+console.log(await evaluate(`(async()=>{
+const assert=(v,m)=>{if(!v)throw Error(m)};
 await searchQuery('Ottoman Empire','state');
 const original=loadChunk, previous=state.year;
 const row=(await(await fetch('search-states.json')).json()).rows.find(r=>r[0]==='Ottoman Empire');
@@ -178,6 +205,22 @@ return 'Mobile search fits 390px and scrolls inside the dialog';
 })()`));
 const shot=await send('Page.captureScreenshot',{format:'png'});
 (await import('node:fs')).writeFileSync((await import('node:path')).join((await import('node:os')).tmpdir(),'history-search-mobile.png'),Buffer.from(shot.data,'base64'));
+console.log(await evaluate(`(async()=>{
+document.querySelector('[data-search-close]').click();stopSpin();
+const row=(await(await fetch('search-states.json')).json()).rows.find(r=>r[0]==='New France'&&r[3]===1757);
+const [title,start,end,year,lon,lat,wiki,member]=row;
+await HistoryDiscovery.jumpSearch({kind:'state',title,start,end,year,lon,lat,wiki,member},()=>true);
+await new Promise(r=>setTimeout(r,200));
+const labels=[],original=ctx.fillText;
+try{ctx.fillText=function(text,...args){labels.push(text);return original.call(this,text,...args)};render();}
+finally{ctx.fillText=original;}
+if(!labels.includes('New France'))throw Error('New France label missing on mobile');
+if(document.documentElement.scrollWidth>innerWidth)throw Error('Quebec map overflows mobile');
+stage.scrollIntoView({block:'start',behavior:'instant'});
+return 'New France label remains visible on the 390px mobile map';
+})()`));
+const quebecShot=await send('Page.captureScreenshot',{format:'png'});
+(await import('node:fs')).writeFileSync((await import('node:path')).join((await import('node:os')).tmpdir(),'history-quebec-mobile.png'),Buffer.from(quebecShot.data,'base64'));
 console.log('Browser exceptions:',errors);
 await send('Target.closeTarget',{targetId:page.id});ws.close();
 if(errors.length)throw Error(JSON.stringify(errors));

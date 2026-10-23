@@ -264,6 +264,26 @@ test("every indexed state can open an available dated snapshot with matching mem
   }
 });
 
+test("same-name state search prefers sustained coverage over a short early segment", () => {
+  const data = JSON.parse(fs.readFileSync("static/historyallaround/atlas/search-states.json"));
+  const records = core.prepareSearch(data.rows.map(([title, start, end, year]) =>
+    ({ kind: "state", title, start, end, year })));
+  assert.equal(core.search(records, "New France", "state")[0].year, 1757);
+});
+
+test("Quebec history has sourced events and a period overview visible between event years", () => {
+  const html = fs.readFileSync("static/historyallaround/atlas/index.html", "utf8");
+  const context = vm.createContext({});
+  vm.runInContext(html.match(/const EVENTS = \[[\s\S]*?\n\];/)[0] + "\nglobalThis.events=EVENTS;", context);
+  const records = Array.from(context.events).filter((e) => e[5] > 45 && e[5] < 47 && e[6] > -74 && e[6] < -71);
+  for (const year of [1608, 1642, 1701, 1759, 1763, 1774, 1867, 1977]) {
+    assert(records.some((e) => e[0] === year && e[1] === null && e[10]?.startsWith("https://")), String(year));
+  }
+  const period = records.find((e) => e[9] === "Canada_(New_France)");
+  assert(period[0] <= 1650 && period[1] >= 1750);
+  assert.match(period[4], /not uninterrupted French control/);
+});
+
 test("city search includes source attribution, distinct duplicate names, and valid coordinates", () => {
   const data = JSON.parse(fs.readFileSync("static/historyallaround/atlas/search-places.json"));
   assert.match(data.source, /GeoNames/);
