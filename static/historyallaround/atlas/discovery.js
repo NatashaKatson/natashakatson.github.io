@@ -412,8 +412,8 @@
   document.querySelector(".borders-control").append(borderConfidence);
   cv.setAttribute("aria-describedby", "borderConfidence");
   function renderBorderConfidence() {
-    borderConfidence.hidden = state.borders !== "history";
     const years = compare.on ? [compare.left, state.year] : [state.year];
+    borderConfidence.hidden = state.borders !== "history" || years.every((year) => year < -1000000);
     const available = years.filter((year) => !borderStatus(year)).length;
     borderConfidence.querySelector("[data-border-confidence]").textContent = available === years.length
       ? "Approximate historical borders" : available ? "Approximate borders · incomplete coverage" : "Historical borders · coverage unavailable";
@@ -850,7 +850,8 @@
       searchPlace = { title: result.title, geonameId: result.geonameId || null };
     }
     zoomK = result.kind === "state" ? 1.6 : 2.6;
-    focusPoint([result.lon, result.lat]);
+    const record = byId[result.recordId];
+    focusPoint(record && window.HistoryPaleogeography ? HistoryPaleogeography.point(record, state.year) || [result.lon, result.lat] : [result.lon, result.lat]);
     update();
     renderTrail();
     return true;

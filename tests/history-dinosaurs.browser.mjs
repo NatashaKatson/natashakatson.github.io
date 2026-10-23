@@ -9,6 +9,7 @@ const ws = new WebSocket(page.webSocketDebuggerUrl);
 await new Promise((resolve, reject) => { ws.addEventListener('open', resolve, { once: true }); ws.addEventListener('error', reject, { once: true }); });
 let id = 0;
 const pending = new Map(), errors = [];
+const keepAlive = setInterval(() => {}, 1000);
 ws.addEventListener('message', ({ data }) => {
   const msg = JSON.parse(data);
   if (msg.method === 'Runtime.exceptionThrown') errors.push(msg.params.exceptionDetails);
@@ -50,8 +51,11 @@ try {
     assert(!document.getElementById('eras').textContent.includes('Dinosaurs')&&!document.getElementById('ticks').textContent.includes('Ma'),'off removes ancient era labels and ticks');
     assert(state.year===1903&&JSON.stringify(rot)===camera,'human-year toggling keeps the view');
     assert(toggle.textContent.includes('Off')&&toggle.getAttribute('aria-pressed')==='false','off state is visible and accessible');
+    for(const selector of ['.dinosaur-discovery','.dinosaur-trigger','.dinosaur-jump','.browse-dinosaurs','[data-dinosaur-destination]'])
+      assert([...document.querySelectorAll(selector)].every(el=>el.hidden),'off hides dinosaur exploration: '+selector);
     window.dinosaurOffHash=HistoryDiscovery.urlHash();
     toggle.click();render();assert(yearAt(0)===-252000000&&document.getElementById('eras').textContent.includes('Dinosaurs'),'on restores the dinosaur timeline');
+    assert(!document.querySelector('.dinosaur-discovery').hidden&&!document.querySelector('.dinosaur-jump').hidden&&!document.querySelector('[data-dinosaur-destination]').hidden,'on restores dinosaur exploration');
     document.querySelector('.dinosaur-trigger').click();render();
     assert(document.querySelectorAll('#legend .chip:not([hidden])').length===1&&document.getElementById('filterCount').textContent==='1','deep time shows the fossil filter');
     toggle.click();render();assert(state.year===1903&&!dinosaurTimeline&&!hits.some(h=>byId[h.id]?.cat==='dinosaurs'),'turning off during deep time returns to the last human year');
@@ -97,6 +101,37 @@ try {
     assert(document.querySelectorAll('#legend .chip:not([hidden])').length===7,'mixed comparison shows categories for both periods');
     await HistoryDiscovery.openView(dinosaurHash);render();
     return 'Dinosaurs: ages, source context, eras, clickable markers, category search, Back, sharing and comparison passed';
+  })()`));
+  console.log(await evaluate(`(async()=>{
+    const assert=(v,m)=>{if(!v)throw Error(m)};
+    const saved=HistoryDiscovery.urlHash();
+    const areas=[];
+    for(const [index,age,wiki] of [[0,228,'Herrerasaurus'],[1,150,'Stegosaurus'],[2,67,'Tyrannosaurus']]){
+      document.querySelector('[data-dinosaur-era="'+index+'"]').click();
+      await HistoryPaleogeography.load(state.year);render();
+      const geography=geo(),point=HistoryPaleogeography.point(byId[state.sel],state.year);
+      assert(geography.ancient&&geography.land.features.length>100,'era uses reconstructed continents');
+      assert(HistoryPaleogeography.status(state.year).age===age,'era snapshot matches');
+      assert(Math.abs(rot[0]+point[0])<.001&&Math.abs(rot[1]+point[1])<.001,'era camera follows ancient fossil point');
+      assert(hits.some(h=>byId[h.id]?.wiki===wiki),'ancient marker remains visible');
+      assert(geography.land.features.every(f=>d3.geoArea(f)<Math.PI*2),'all reconstructed polygons have D3 winding');
+      const area=d3.geoArea(geography.land);assert(area>1&&area<6,'land does not fill the globe');areas.push(area);
+      state.borders='today';render();
+      assert(mapAtYear(W/2,H/2)===null,'ancient map never hits modern countries');
+      assert(geo().ancient,'modern border setting keeps ancient land');
+      document.querySelector('.deep-time-note').open=true;
+      assert(document.querySelector('.paleo-description').getBoundingClientRect().height>0,'ancient map explanation opens');
+      document.querySelector('.deep-time-note').open=false;
+      state.borders='history';
+    }
+    assert(new Set(areas).size===3,'Triassic, Jurassic and Cretaceous use different land');
+    setYear(1903);render();assert(!geo().ancient&&geo().land===lo.land,'human dates restore modern geography');
+    document.getElementById('compareToggle').click();
+    const form=document.getElementById('compareYears');form.elements.left.value='228 Ma';form.elements.right.value='67 Ma';form.requestSubmit();
+    await Promise.all(HistoryDiscovery.displayedYears().map(y=>HistoryPaleogeography.load(y)));render();
+    assert(document.querySelector('[data-paleo-label]').textContent.includes('Left: 228 Ma')&&document.querySelector('[data-paleo-label]').textContent.includes('Right: 67 Ma'),'comparison labels both reconstructions');
+    await HistoryDiscovery.openView(saved);render();
+    return 'Ancient continents: three eras, matching marker/camera positions, winding, modern return and comparison passed';
   })()`));
   const target = await evaluate(`(()=>{render();const h=hits.find(h=>byId[h.id]?.wiki==='Triceratops');const r=cv.getBoundingClientRect();return h&&{x:r.left+h.x,y:r.top+h.y}})()`);
   if (!target) throw Error('Triceratops marker not visible');
@@ -153,6 +188,7 @@ try {
   if (errors.length) throw Error(JSON.stringify(errors));
   console.log('Browser exceptions: none');
 } finally {
+  clearInterval(keepAlive);
   if (errors.length) console.error(JSON.stringify(errors));
   await send('Target.closeTarget', { targetId: page.id }); ws.close();
 }

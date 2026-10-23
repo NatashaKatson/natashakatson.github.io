@@ -85,6 +85,8 @@ selected year is in deep time, Off returns to the last human-history year (1453 
 a fresh direct dinosaur visit). The setting is retained by exact-view links and
 Back. An explicit dinosaur search result, era jump or deep-date entry enables the
 range again. Play respects the current enabled range.
+Off also hides the dinosaur browser, exploration shortcuts and dinosaur choices
+in the era picker. The Layers toggle remains available to restore them.
 
 Choose **More → Explore dinosaurs**, use **Layers → Explore dinosaur
 eras**, **Choose era**, or open **Explore dinosaurs** in the
@@ -102,8 +104,8 @@ the selected date and recorded intervals. The ordinary historical window remains
 ±1 year. Non-avian dinosaur records stop at the 66-million-year boundary. The
 timeline's earliest section has no claim of complete fossil coverage.
 
-Species-specific illustrated avatars mark representative fossil regions at modern
-coordinates. Their large click/tap targets are separated with a short leader line
+Species-specific illustrated avatars mark representative fossil regions at
+reconstructed ancient coordinates. Their large click/tap targets are separated with a short leader line
 to the marked region. Matching artwork appears in the dinosaur list and details.
 These are AI-generated reconstructions, with speculative appearance and colours,
 as labeled in the interface; they are not fossil evidence. The built-in imagegen
@@ -111,9 +113,20 @@ tool produced eight transparent illustrations, packaged as 512px WebP assets
 under `atlas/images/dinosaurs/` (about 590 KB total). Exact prompts and provenance
 are recorded in `atlas/images/dinosaurs/prompts.json`. Images are loaded on demand
 or through lazy thumbnails and remain clickable with a text fallback if unavailable.
-The **Fossil regions · modern geography** map note remains visible whenever either
-comparison side uses deep time. This is not a paleogeographic reconstruction:
-continents and coastlines were different. Source links distinguish age/taxon
+The **Ancient continents** map note remains visible whenever either comparison
+side uses deep time and labels each snapshot's age. The map uses locally bundled
+GPlates PALEOMAP reconstructions, with 34 snapshots spanning 1–252 Ma at intervals
+of at most 10 Ma, plus additional dinosaur destination dates. Land and fossil
+coordinates share the nearest snapshot; era jumps, search and selection focus the
+reconstructed point. Each comparison side chooses its own land and points.
+Modern political borders, country hover targets and modern ocean names are hidden
+in deep time, even when the border setting is Today. Returning to human history
+restores the ordinary geography and border setting. Loading or failed snapshots
+never substitute modern land or another age; failures offer an explicit retry.
+Continental outlines are approximate and do not resolve local shorelines, inland
+seas or sea levels. Sources and regeneration instructions are in
+`atlas/paleogeography/README.md` and `scripts/build-history-paleogeography.py`.
+Source links distinguish age/taxon
 information from location evidence; all ages are approximate and the location
 is neither a precise quarry nor the dinosaur's full geographic range. Genus age
 ranges should not be interpreted as dating every specimen at the marked location.
@@ -130,6 +143,7 @@ Additional validation:
 
 ```sh
 node --test tests/history-dinosaurs.test.cjs
+node --test tests/history-paleogeography.test.cjs
 node tests/history-dinosaurs.browser.mjs
 ```
 
