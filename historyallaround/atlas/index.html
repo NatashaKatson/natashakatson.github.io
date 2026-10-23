@@ -389,6 +389,7 @@ header .seg{padding:2px;background:#f0ebe3;border:1px solid rgba(45,36,32,.1);bo
 </style>
 <style>body{margin:0}</style>
 <link rel="stylesheet" href="discovery.css">
+<link rel="stylesheet" href="atlas-ui.css">
 </head>
 <body>
 
@@ -407,9 +408,19 @@ header .seg{padding:2px;background:#f0ebe3;border:1px solid rgba(45,36,32,.1);bo
 
   <div class="stage" id="stage">
     <canvas id="cv" aria-label="World map showing events at the selected time"></canvas>
-    <div class="readout"><div class="yr" id="yr"></div><div class="era" id="era"></div><div class="now" id="nowLine"></div></div>
-    <div class="legend" id="legend"></div>
-    <div class="borders-control"><span class="tool-label">Border layer</span><div class="bseg seg" role="group" aria-label="Borders"><button data-b="history" aria-pressed="true">Historical</button><button data-b="today" aria-pressed="false">Today</button><button data-b="off" aria-pressed="false">Off</button></div></div>
+    <div class="readout"><button type="button" id="editDate" aria-label="Edit selected date"><span class="yr" id="yr"></span><span class="date-edit-icon" aria-hidden="true">⌄</span></button></div>
+    <div class="atlas-toolbar" aria-label="Map controls">
+      <div class="atlas-menu"><button type="button" class="atlas-menu-trigger" data-atlas-menu="layersPanel" aria-expanded="false" aria-controls="layersPanel">Layers <span aria-hidden="true">⌄</span></button>
+        <section class="atlas-menu-panel" id="layersPanel" aria-label="Map layers" hidden>
+          <h2>Map layers</h2>
+          <div class="borders-control"><span class="tool-label">Border layer</span><div class="bseg seg" role="group" aria-label="Borders"><button data-b="history" aria-pressed="true">Historical</button><button data-b="today" aria-pressed="false">Today</button><button data-b="off" aria-pressed="false">Off</button></div></div>
+        </section>
+      </div>
+      <div class="atlas-menu"><button type="button" class="atlas-menu-trigger" data-atlas-menu="filtersPanel" aria-expanded="false" aria-controls="filtersPanel">Filters <span id="filterCount"></span><span aria-hidden="true">⌄</span></button>
+        <section class="atlas-menu-panel" id="filtersPanel" aria-label="Event filters" hidden><h2>Show on the map</h2><p id="filterContext"></p><div class="legend" id="legend"></div></section>
+      </div>
+    </div>
+    <div class="map-context" id="mapContext"></div>
     <div class="zoom"><button class="iconbtn" id="zin" aria-label="Zoom in">+</button><button class="iconbtn" id="zout" aria-label="Zoom out">−</button></div>
     <div class="stage-hint">Drag to explore · scroll to zoom · select a state or event</div>
     <div class="tip" id="tip" hidden></div>
@@ -417,11 +428,16 @@ header .seg{padding:2px;background:#f0ebe3;border:1px solid rgba(45,36,32,.1);bo
 
   <div class="time">
     <div class="controls">
-      <div class="time-heading"><b>Move through time</b><span>Drag the ruler or press play</span></div>
       <button class="iconbtn" id="prev" aria-label="Previous year" title="Previous year">‹</button>
       <button class="iconbtn play" id="play" aria-label="Play">▶ Play</button>
       <button class="iconbtn" id="next" aria-label="Next year" title="Next year">›</button>
       <span class="lbl" id="winLbl"></span>
+    </div>
+    <div class="dock-actions">
+      <div class="atlas-menu"><button type="button" class="atlas-menu-trigger" data-atlas-menu="eraPanel" aria-expanded="false" aria-controls="eraPanel">Choose era <span aria-hidden="true">⌄</span></button>
+        <section class="atlas-menu-panel era-panel" id="eraPanel" aria-label="Choose an era" hidden><h2>Where in time?</h2><div id="eraChoices"></div></section>
+      </div>
+      <details class="dock-options"><summary>More <span aria-hidden="true">⌄</span></summary><div class="dock-options-content"></div></details>
     </div>
     <div class="ruler" id="ruler">
       <div class="eras" id="eras"></div>
@@ -431,6 +447,7 @@ header .seg{padding:2px;background:#f0ebe3;border:1px solid rgba(45,36,32,.1);bo
       <div class="needle" id="needle"></div>
       <input type="range" id="slider" min="0" max="3000000" step="1" aria-label="Year">
     </div>
+    <div class="time-summary"><span class="era" id="era"></span><span class="now" id="nowLine"></span><button type="button" class="browse-dinosaurs" hidden>Browse dinosaurs →</button></div>
   </div>
 
   <aside class="side" id="side">
@@ -910,13 +927,14 @@ const grat=d3.geoGraticule10();
 const WATER_LABELS=[["North Atlantic Ocean",-35,30],["South Atlantic Ocean",-18,-25],["North Pacific Ocean",-150,22],["South Pacific Ocean",-130,-27],["Indian Ocean",80,-25],["Arctic Ocean",10,77],["Mediterranean Sea",18,35]];
 let W=0,H=0,DPR=1,proj,path,center;
 const STARS=(()=>{let a=7;const rnd=()=>(a=(a*16807)%2147483647)/2147483647;return Array.from({length:170},()=>[rnd(),rnd(),rnd()<.9?.6:1.1,.15+rnd()*.5])})();
-function baseScale(){return state.mode==="globe"?Math.min(W,H)*0.44:Math.min(W/5.6,H/2.9)}
+function baseScale(){return state.mode==="globe"?Math.min(W,H)*0.39:Math.min(W/5.6,H/2.9)}
 function makeProj(){
   if(state.mode==="globe"){proj=d3.geoOrthographic().rotate(rot).scale(baseScale()*zoomK).translate([W/2,H/2+ (W<600?10:0)]).clipAngle(90).precision(.4)}
   else{proj=d3.geoNaturalEarth1().rotate([-10,0]).scale(baseScale()*zoomK).translate([W/2+flatT.x,H/2+flatT.y]).precision(.4)}
   path=d3.geoPath(proj,ctx);center=state.mode==="globe"?proj.invert([W/2,H/2+(W<600?10:0)]):null
 }
-function resize(){const r=stage.getBoundingClientRect();DPR=Math.min(2,window.devicePixelRatio||1);W=r.width;H=r.height;cv.width=W*DPR;cv.height=H*DPR;draw()}
+let compactRuler=null;
+function resize(){const r=stage.getBoundingClientRect();DPR=Math.min(2,window.devicePixelRatio||1);W=r.width;H=r.height;cv.width=W*DPR;cv.height=H*DPR;if(compactRuler!==(W<600)){compactRuler=W<600;buildRuler()}draw()}
 new ResizeObserver(resize).observe(stage);
 
 function visible(lon,lat){if(state.mode!=="globe")return true;return center&&d3.geoDistance([lon,lat],center)<Math.PI/2-0.02}
@@ -1068,10 +1086,11 @@ const slider=document.getElementById("slider");
 const eras=document.getElementById("eras"),marks=document.getElementById("marks"),ticks=document.getElementById("ticks");
 function buildRuler(){
 eras.innerHTML="";ticks.innerHTML="";
+const compact=stage.clientWidth<600;
 const shown=dinosaurTimeline?ERAS:ERAS.filter(([y])=>y>=-300000);
-shown.forEach(([s,n],i)=>{const a=tAt(s),b=i<shown.length-1?tAt(shown[i+1][0]):1;const d=document.createElement("div");d.className="era-b";const SHORT={Prehistory:"Prehist.","Early modern":"E. modern"};if(window.innerWidth<600&&SHORT[n])n=SHORT[n];d.style.left=a*100+"%";d.style.width=(b-a)*100+"%";d.textContent=n;eras.appendChild(d)});
+shown.forEach(([s,n],i)=>{const a=tAt(s),b=i<shown.length-1?tAt(shown[i+1][0]):1;const d=document.createElement("div");d.className="era-b";const SHORT={Prehistory:"Prehist.","Early modern":"E. modern"};if(compact&&SHORT[n])n=SHORT[n];d.style.left=a*100+"%";d.style.width=(b-a)*100+"%";d.textContent=n;eras.appendChild(d)});
 const years=dinosaurTimeline?[-252000000,-145000000,-66000000,-10000,-3000,-1000,1,500,1000,1500,1800,1900,NOW]:[-200000,-10000,-3000,-1000,1,500,1000,1500,1800,1900,NOW];
-years.forEach(y=>{const s=document.createElement("span");s.style.left=tAt(y)*100+"%";if(y===NOW)s.className="timeline-end";s.textContent=y<=-1000000?Math.abs(y)/1000000+" Ma":y<0?(Math.abs(y)>=10000?Math.abs(y)/1000+"k":Math.abs(y))+" BC":y===1?"AD 1":y;if(window.innerWidth<600&&![-252000000,-66000000,-10000,1000,1800,NOW].includes(y))return;ticks.appendChild(s)});
+years.forEach(y=>{const s=document.createElement("span");s.style.left=tAt(y)*100+"%";if(y===NOW)s.className="timeline-end";s.textContent=y<=-1000000?Math.abs(y)/1000000+" Ma":y<0?(Math.abs(y)>=10000?Math.abs(y)/1000+"k":Math.abs(y))+" BC":y===1?"AD 1":y;if(compact&&!(dinosaurTimeline?[-252000000,-66000000,-10000,1000,NOW]:[-200000,-10000,1,1000,NOW]).includes(y))return;ticks.appendChild(s)});
 }
 buildRuler();
 function buildMarks(){marks.innerHTML="";for(const e of ev){if(!state.cats.has(e.cat)||(!dinosaurTimeline&&e.start<-300000))continue;const b=document.createElement("b");b.style.left=tAt(e.start)*100+"%";b.style.height=(8+((e.start*7)%9+9)%9)+"px";b.style.setProperty("--c",`var(--c-${e.cat})`);marks.appendChild(b)}}
@@ -1153,8 +1172,10 @@ function update(fast){
   syncTimelineRange();
   const y=state.year;const yr=document.getElementById("yr");
   yr.classList.toggle("deep-time-year",y<=-1000000);
-  yr.innerHTML=y<=-1000000?`${(Math.abs(y)/1000000).toLocaleString("en-US",{maximumFractionDigits:2})}<small>million years ago</small>`:y<0?`${Math.abs(y).toLocaleString("en-US")}<small>BC</small>`:y<1000?`<small style="margin:0 .15em 0 0">AD</small>${y}`:`${y}`;
-  document.getElementById("era").textContent=eraOf(y);
+  yr.innerHTML=y<=-1000000?`≈${(Math.abs(y)/1000000).toLocaleString("en-US",{maximumFractionDigits:0})}<small>million years ago</small>`:y<0?`${Math.abs(y).toLocaleString("en-US")}<small>BC</small>`:y<1000?`<small style="margin:0 .15em 0 0">AD</small>${y}`:`${y}`;
+  document.getElementById("editDate").setAttribute("aria-label",`Edit selected date: ${fmt(y)}`);
+  document.getElementById("editDate").title=`${fmt(y)} · Edit date`;
+  document.getElementById("era").textContent=y < -66000000 ? y < -201000000 ? "Triassic" : y < -145000000 ? "Jurassic" : "Cretaceous" : eraOf(y);
   {const n=activeEvents().length,r=new Set(activeEvents().map(a=>a.e.region)).size,pp=alivePeople().filter(p=>p.born<=y&&p.died>=y).length;
    document.getElementById("nowLine").innerHTML=n?`<b>${n} ${y<-1000000?"fossil record":"event"}${n===1?"":"s"}</b> across ${r} region${r===1?"":"s"}`+(pp?` · <b>${pp}</b> ${pp===1?"person":"people"} alive`:""):y<-1000000?"No fossil records in this time window.":"No recorded events for this year. Try another year or press Play."}
   const t=tAt(y),w=halfWin(y),a=tAt(Math.max(-252000000,y-w)),b=tAt(Math.min(NOW,y+w));
@@ -1190,5 +1211,6 @@ startSpin();
 <script src="population.js"></script>
 <script src="contemporaries.js"></script>
 <script src="dinosaurs.js"></script>
+<script src="atlas-ui.js"></script>
 </body>
 </html>

@@ -1,0 +1,124 @@
+/* Globe-first workspace: compact controls, contextual filters and one time dock. */
+.stage .readout {
+  top: 22px; left: 24px; width: auto; max-width: calc(100% - 240px);
+  padding: 0; border: 0; background: transparent; container-type: normal;
+  box-shadow: none; text-shadow: none; pointer-events: auto;
+}
+.stage .readout::before { content: 'EXPLORING'; font-size: 8px; letter-spacing: .16em; margin-bottom: 7px; }
+.stage .readout:has(.deep-time-year)::before { content: 'DEEP TIME'; }
+#editDate { display: flex; align-items: center; gap: 10px; padding: 0; border: 0; background: transparent; cursor: pointer; text-align: left; }
+.stage .readout .yr { display: block; font-size: 34px; line-height: 1.15; letter-spacing: -.035em; }
+.stage .readout .yr small, .stage .readout .deep-time-year small { display: inline; margin: 0 0 0 6px; font-size: 16px; font-style: normal; letter-spacing: -.02em; }
+.date-edit-icon { color: #81776e; font-size: 16px; }
+.atlas-toolbar { position: absolute; z-index: 6; right: 20px; top: 22px; display: flex; gap: 8px; }
+.atlas-menu { position: relative; }
+.atlas-menu-trigger, .dock-options > summary {
+  display: inline-flex; justify-content: center; align-items: center; gap: 9px;
+  min-height: 40px; padding: 8px 12px; border: 1px solid #d9d1c7;
+  border-radius: 5px; background: #f8f5f0; color: #443c35; font: 12px var(--body); cursor: pointer;
+}
+.atlas-menu-trigger[aria-expanded="true"], .dock-options[open] > summary { background: #eee7dc; border-color: #b7aa9a; }
+#filterCount { font-size: 10px; background: #e9e3d9; border-radius: 10px; min-width: 18px; padding: 1px 4px; }
+.atlas-menu-panel, .dock-options-content {
+  position: absolute; z-index: 10; top: calc(100% + 10px); right: 0;
+  width: 280px; max-width: calc(100vw - 32px); padding: 18px;
+  background: #f8f5f0; color: #2d2420; border: 1px solid #d9d1c7; border-radius: 7px;
+  box-shadow: 0 12px 35px #33291e24; max-height: min(65svh, 540px); overflow: auto; overscroll-behavior: contain;
+}
+.atlas-menu-panel h2 { margin: 0 0 14px; font: 20px var(--display); }
+.atlas-menu-panel p { font-size: 11px; line-height: 1.6; color: #756c65; }
+.stage .borders-control, .stage.comparing .borders-control {
+  position: static; padding: 0; background: transparent; border: 0; border-radius: 0; box-shadow: none; backdrop-filter: none;
+}
+.borders-control .tool-label { display: block; font-size: 9px; margin: 14px 0 8px; }
+.borders-control .bseg { position: static; display: flex; width: 100%; }
+.borders-control .bseg button { flex: 1; min-height: 40px; font-size: 12px; padding: 5px 8px; }
+.dinosaur-map-controls { margin-bottom: 14px; padding-bottom: 14px; }
+.dinosaur-toggle { min-height: 44px; background: transparent; border: 0; padding: 0; }
+.dinosaur-toggle img { width: 30px; height: 30px; }
+.dinosaur-toggle strong { font-weight: 400; color: #756c65; }
+.dinosaur-jump { min-height: 36px; padding: 8px 0 0; font-size: 11px; }
+.border-confidence { max-width: none; font-size: 11px; margin-top: 14px; }
+.stage #legend {
+  position: static; display: grid; gap: 5px; max-width: none; overflow: visible;
+  padding: 0; mask-image: none; -webkit-mask-image: none;
+}
+#legend .chip { display: flex; width: 100%; min-height: 40px; padding: 8px; border: 0; background: transparent; font: 12px var(--body); box-shadow: none; backdrop-filter: none; }
+#legend .chip[aria-pressed="false"] { opacity: 1; color: #82786e; }
+#legend .chip::after { content: '✓'; margin-left: auto; font: 14px var(--body); }
+#legend .chip[aria-pressed="false"]::after { content: '○'; color: #a69c90; }
+#legend .chip:hover { background: #eee7dc; }
+.map-context { position: absolute; z-index: 4; left: 24px; bottom: 20px; max-width: calc(100% - 90px); display: flex; flex-wrap: wrap; gap: 6px 16px; }
+.map-context details { margin: 0; max-width: none; font: 10px var(--body); color: #625d55; }
+.map-context summary { list-style: none; cursor: pointer; }
+.map-context summary::-webkit-details-marker { display: none; }
+.map-context summary span { margin-left: 4px; }
+.map-context p { position: absolute; bottom: 24px; left: 0; margin: 0; width: 290px; max-width: calc(100vw - 95px); padding: 14px; border: 1px solid #d9d1c7; border-radius: 5px; background: #f8f5f0; font-size: 11px; line-height: 1.6; box-shadow: 0 8px 24px #33291e18; }
+.stage-hint { display: block; bottom: 22px; right: 78px; font-size: 9px; }
+.map-context:has(details:not([hidden])) ~ .stage-hint { bottom: 45px; }
+.stage .zoom { right: 20px; bottom: 20px; gap: 0; border: 1px solid #d9d1c7; border-radius: 5px; overflow: hidden; }
+.stage .zoom .iconbtn { width: 36px; height: 36px; border: 0; box-shadow: none; border-radius: 0; background: #f8f5f0; }
+.stage .zoom .iconbtn + .iconbtn { border-top: 1px solid #ded6cb; }
+.time, .stage.comparing + .time {
+  position: relative; z-index: 7; padding: 14px 24px 12px; gap: 10px 14px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas: 'play actions' 'ruler ruler' 'summary summary' 'status status';
+}
+.time .controls { gap: 6px; }
+.time .controls .lbl { margin-left: 8px; font: 10px var(--body); color: #81776e; }
+.time .iconbtn { width: 32px; height: 36px; }
+.time .play { width: auto; }
+.dock-actions { grid-area: actions; position: relative; display: flex; gap: 8px; align-items: center; }
+.dock-options > summary { list-style: none; }
+.dock-options > summary::-webkit-details-marker { display: none; }
+.dock-options:not([open]) > .dock-options-content { display: none; }
+.dock-options-content, .era-panel { top: auto; bottom: calc(100% + 14px); }
+.dock-options-content { width: min(440px, calc(100vw - 32px)); }
+.era-panel { width: 340px; }
+#eraChoices { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+#eraChoices button { text-align: left; padding: 9px; min-height: 52px; border: 0; border-radius: 4px; background: transparent; font: 13px var(--display); cursor: pointer; }
+#eraChoices button:hover { background: #eee7dc; }
+#eraChoices small { display: block; margin-top: 3px; color: #81776e; font: 10px var(--body); }
+.time .dock-options-content .discovery-tools { display: flex; padding: 0 0 16px; justify-content: flex-start; }
+.dock-options-content .population-strip { display: flex; }
+.time-summary { grid-area: summary; display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 12px; font: 11px var(--body); color: #756c65; }
+.time-summary .era { color: #a3482d; }
+.time-summary .now b { font-weight: 500; }
+.browse-dinosaurs { margin-left: auto; padding: 0; min-height: 24px; border: 0; background: transparent; font: 11px var(--body); color: #a3482d; cursor: pointer; }
+.time .discovery-status { font-size: 10px; padding: 3px 8px; }
+.stage.comparing .atlas-toolbar { top: 48px; }
+.stage.comparing .readout { display: none; }
+.app:has(.deep-time-only) :is(.contemporaries-card, .comparison-stories:not(.dinosaur-discovery), .curated-discoveries, .daily-challenge-card, .atlas-section-title, #people, #peopleSub, #fact) { display: none; }
+[hidden], #legend .chip[hidden], .map-context details[hidden], .dock-options-content .population-strip[hidden] { display: none !important; }
+@media (max-width: 860px) {
+  .app > .stage { height: 60svh; min-height: 380px; }
+  .stage .readout { top: 18px; left: 18px; max-width: calc(100% - 36px); }
+  .stage .readout .yr { font-size: 30px; }
+  .stage .readout .yr small, .stage .readout .deep-time-year small { font-size: 16px; }
+  .atlas-toolbar, .stage.comparing .atlas-toolbar { top: 86px; right: 16px; }
+  .stage.comparing .atlas-toolbar { top: 48px; }
+  .atlas-toolbar .atlas-menu:first-child .atlas-menu-panel { right: -107px; }
+  .atlas-menu-panel { max-height: min(55svh, 340px); }
+  .borders-control .bseg button[data-b="history"] { font-size: 12px; }
+  .borders-control .bseg button[data-b="history"]::after { content: none; }
+  .time, .stage.comparing + .time { padding: 12px 16px; gap: 9px 8px; }
+  .time .controls .lbl { display: none; }
+  .atlas-menu-trigger, .dock-options > summary { min-height: 44px; padding: 8px 10px; gap: 6px; }
+  .time .iconbtn { min-height: 44px; width: 30px; }
+  .time .play { width: auto; padding: 0 11px; }
+  .dock-actions { gap: 6px; }
+  .era-panel { right: -78px; width: min(340px, calc(100vw - 32px)); }
+  .dock-options-content { max-height: 55svh; }
+  .map-context { left: 18px; bottom: 18px; }
+  .stage .zoom { right: 16px; bottom: 16px; }
+  .stage .zoom .iconbtn { width: 40px; height: 40px; }
+  .stage-hint { display: none; }
+  .time-summary { font-size: 10px; gap: 3px 8px; }
+  .browse-dinosaurs { margin-left: 0; font-size: 10px; }
+}
+@media (max-width: 370px) {
+  .time .controls { gap: 3px; }
+  .time .play { padding: 0 7px; }
+  .time, .stage.comparing + .time { padding-inline: 12px; column-gap: 5px; }
+  .dock-actions { gap: 4px; }
+}

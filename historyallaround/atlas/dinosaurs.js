@@ -42,11 +42,11 @@
   }
   toggle.onclick = () => setEnabled(!state.cats.has("dinosaurs"));
   controls.querySelector(".dinosaur-jump").onclick = () => trigger.click();
-  const note = document.createElement("p");
+  const note = document.createElement("details");
   note.className = "deep-time-note";
   note.hidden = true;
-  note.innerHTML = '<strong>Fossil regions · modern geography</strong><br>Continents and coastlines were different. Ages are approximate.';
-  document.querySelector(".borders-control").append(note);
+  note.innerHTML = '<summary>Fossil locations on today’s geography <span aria-hidden="true">ⓘ</span></summary><p>These are representative fossil regions on a modern map. Continents and coastlines were different. Ages are approximate.</p>';
+  document.getElementById("mapContext").append(note);
   async function open(record, year = Math.round((record.start + record.end) / 2)) {
     await HistoryDiscovery.jumpSearch({ kind: "dinosaur", recordId: record.id,
       start: year, lon: record.lon, lat: record.lat });

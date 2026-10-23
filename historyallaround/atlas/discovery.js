@@ -885,6 +885,7 @@
       renderBorderConfidence();
       window.HistoryContemporaries?.render();
       window.HistoryDinosaurs?.render();
+      window.AtlasUI?.render();
       const right = state.year;
       let allHits = [];
       if (compare.on) {
@@ -942,6 +943,7 @@
           ? [
               ...new Set(
                 (compare.on ? [compare.left, right] : [right])
+                  .filter((year) => year >= -1000000)
                   .map((year) => borderStatus(year) ||
                     (year > BTO ? `${fmt(year)}: showing latest available borders (${fmt(BTO)}).` : ""))
                   .filter(Boolean),
