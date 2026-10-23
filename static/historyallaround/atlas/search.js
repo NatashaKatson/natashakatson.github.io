@@ -97,10 +97,10 @@
       const data = await response.json();
       if (data.version !== 1 || !Array.isArray(data.rows)) throw new Error("Unsupported search index");
       d.records = core.prepareSearch(d.url === "search-states.json"
-        ? data.rows.map(([title, start, end, year, lon, lat, wiki, member]) => ({
+        ? data.rows.map(([title, start, end, year, lon, lat, wiki, member, basis]) => ({
           kind: "state", title, start, end, year, lon, lat, wiki, member,
           aliases: [wiki.replaceAll("_", " "), ...(title === "New France" ? ["Nouvelle-France", "French Canada"] : [])],
-          description: member && member !== title ? `Mapped as part of ${member}` : "Historical political coverage",
+          description: [member && member !== title ? `Mapped as part of ${member}` : "Historical political coverage", basis].filter(Boolean).join(" · "),
         }))
         : data.rows.map(([name, country, lon, lat, population, geonameId, aliases, region]) => ({
           kind: "place", title: [...new Set([name, region, countryName(country)].filter(Boolean))].join(", "), aliases: [name, ...aliases],

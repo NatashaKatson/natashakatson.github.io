@@ -108,3 +108,16 @@ python3 scripts/correct-history-borders.py
 python3 scripts/build-history-search.py
 node --test tests/history-borders.test.cjs tests/history-discovery.test.cjs
 ```
+
+## French colonial identities and historical extent notes
+
+The follow-up in [the accuracy review](history-accuracy-review.md#follow-up-review-source-meaning-and-chronology)
+documents the separation of northern New France and French Louisiana from the
+source’s worldwide colonial aggregate. The original rings are reused, with
+component areas and interior label points recalculated. The residual aggregate
+has an explicit warning about unverified local control and transfer dates.
+
+Israel’s polygons are unchanged. From 1967, historical evidence links explain
+that military control, civil administration and sovereignty differ. A `basis`
+field carries this qualification into hover, search and place history; coverage
+merging does not extend it backward into the pre-1967 period.

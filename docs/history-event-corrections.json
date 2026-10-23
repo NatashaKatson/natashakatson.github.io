@@ -276,9 +276,10 @@
     {
       "wiki": "Nok_culture",
       "change": "correction or clarification",
-      "source": "https://pure.qub.ac.uk/files/163792990/Safa_2016_Sessions.pdf",
-      "reason": "The source supports this qualified chronology or description; the former wording implied greater precision or an unsupported claim.",
-      "blurb": "Nok communities in central Nigeria make distinctive terracotta sculptures. Iron smelting is evidenced in later Nok phases; it is not securely dated by this approximate 900 BC marker."
+      "source": "https://doi.org/10.1007/s00334-022-00902-0",
+      "reason": "Champion and colleagues (2023), Introduction and regional chronology, place the terracotta tradition after about 900 cal BC. Use an approximate Middle Nok viewing date consistently in the record and description; this is neither the start of all Nok culture nor a dated invention of iron smelting.",
+      "blurb": "Nok communities in central Nigeria develop distinctive terracotta sculptures during the Middle Nok period, beginning around 900 BC. The wider Nok archaeological tradition is older. This approximate marker represents the terracotta tradition, not a securely dated invention of iron smelting.",
+      "start": -900
     },
     {
       "wiki": "Battle_of_Marathon",
@@ -504,9 +505,10 @@
     },
     {
       "wiki": "Mansa_Musa",
-      "change": "source-check",
+      "change": "correction or clarification",
       "source": "https://www.metmuseum.org/de/essays/the-trans-saharan-gold-trade-7th-14th-century",
-      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+      "reason": "The Met describes a fall in the market value of gold after Musa’s arrival. The former wording said prices fell in general, confusing gold’s value with prices of goods.",
+      "blurb": "Mali’s ruler passes through Cairo on pilgrimage in 1324. Historical accounts associate his lavish distribution of gold with a fall in gold’s value in Egypt."
     },
     {
       "wiki": "Tenochtitlan",

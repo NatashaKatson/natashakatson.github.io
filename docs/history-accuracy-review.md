@@ -3,18 +3,19 @@
 The review covers the dates and principal claims of all **221 event summaries**
 (213 human-history entries and eight dinosaur entries). Every entry now has a
 source link and an entry in the [review ledger](history-event-corrections.json).
-**67 entries received a correction or qualification**; the remaining entries
+**68 entries received a correction or qualification**; the remaining entries
 received source checks. Representative coordinates locate a site, city, region,
 launch facility or institution, rather than every place affected by an event.
 
-The complete border archive was also scanned: **217 files, 22,142 feature
-instances, 13,331 distinct dated versions and 2,096 historical search records**.
+The complete border archive was also scanned: **217 files, 22,190 feature
+instances, 13,372 distinct dated versions and 2,100 historical search records**.
 The [machine-readable inventory](history-accuracy-audit.json) reports no integrity
 errors. It checks date ranges, coordinates, polygon closure, arc references,
 manifest consistency and whether each search destination selects a rendered
 record with the correct political membership. The 66 person records passed
-date/coordinate integrity checks; this review does not claim a new independent
-biographical review of each person.
+date/coordinate integrity checks. A follow-up marks Ibn Battuta’s uncertain death
+year as approximate and links the BnF authority record; this review does not claim
+a new independent biographical review of each person.
 
 These checks do **not** certify every historical frontier. The source archive
 contains simplified shapes, uncertain reconstructions and political claims.
@@ -61,6 +62,11 @@ those exteriors incorrectly made the shorelines look like international borders.
 When both Canada and the US are present from 1932, the atlas replaces only that
 regional stretch of their mainland exteriors with the same shared Natural Earth
 1:50m boundary. Other polygon components and the raw archive remain unchanged.
+The correction now runs when border files load, so location-history scans,
+comparison outlines, search and restored shared selections use the same geometry
+as drawing and hover. Records spanning 1932 are split at that year in memory;
+earlier views retain the earlier geometry.
+
 Lake Michigan is entirely US territory; the international boundary crosses
 Superior, Huron, Erie and Ontario and their connecting rivers. Containment,
 hover, selection and drawing use the corrected polygons. Earlier historical
@@ -197,3 +203,43 @@ node --test tests/history-*.test.cjs
 
 Browser checks use the dedicated local Chrome and server described in
 [history-discovery.md](history-discovery.md).
+
+## Follow-up review: source meaning and chronology
+
+- **Israel:** the first follow-up finding was too categorical about the meaning
+  of a source polygon. Geometry is unchanged. Records from 1967 explain that the
+  archive combines Israel with some areas brought under military control, and
+  distinguish control, civil administration and sovereignty. Hover, state search
+  and location history retain the qualification. Search and coverage merging
+  keep the pre-1967 period separate. Evidence is the archival
+  [FRUS 1967 collection](https://history.state.gov/historicaldocuments/frus1964-68v19)
+  and [12 December 1967 telegram](https://history.state.gov/historicaldocuments/frus1964-68v20/d17).
+  These documents do not independently verify every later year's administration,
+  precise border or local control. No contemporary political or legal ruling was
+  used to redraw this geometry.
+- **French colonies:** the source’s worldwide “New France” record is separated
+  into northern New France, French Louisiana, and a clearly qualified French
+  colonial aggregate. No ring is clipped or redrawn. New France no longer labels
+  Brazil, Caribbean islands or African possessions, and the name ends before
+  1763 in the available coverage. French Canada aliases apply to the northern
+  records. Search anchors are interior points of the largest retained component.
+  The remaining aggregate still has unverified local control/transfer dates,
+  explicitly stated in its details; relabeling it does not certify its borders.
+  Sources: Canadian Museum of History on
+  [distinct colonies](https://www.historymuseum.ca/virtual-museum-of-new-france/colonies-and-empires/other-virtual-museum-of-new-frances/)
+  and [the 1763 cessions](https://www.historymuseum.ca/virtual-museum-of-new-france/colonies-and-empires/wars-and-imperial-rivalries/).
+- **Nok:** the record and description now consistently use an approximate
+  900 BC viewing date for the terracotta tradition, distinguishing it from the
+  older archaeological culture and from an invention date for ironworking.
+  [Champion et al. (2023)](https://doi.org/10.1007/s00334-022-00902-0), Introduction
+  and regional chronology, support this distinction.
+- **Mansa Musa:** the summary refers to a fall in gold’s value rather than a
+  general fall in goods prices, following the
+  [Met’s account](https://www.metmuseum.org/de/essays/the-trans-saharan-gold-trade-7th-14th-century).
+- **Ibn Battuta:** the
+  [BnF authority record](https://catalogue.bnf.fr/ark:/12148/cb11908143b)
+  gives an uncertain death year. The approximate flag now keeps this lifespan
+  out of exact-date challenge questions and qualifies the contemporaries display.
+
+The follow-up re-runs the complete structural audit and targeted browser checks;
+it does not newly certify every historical frontier or biography.

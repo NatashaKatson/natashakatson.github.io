@@ -85,7 +85,7 @@ function audit() {
         check(points.length >= 4, `${chunk}: short ring ${p.n}`);
         if (points.length) check(Math.hypot(points[0][0] - points.at(-1)[0], points[0][1] - points.at(-1)[1]) < .02, `${chunk}: open ring ${p.n}`);
       }
-      const feature = { name: unparen(p.n), member: unparen(p.m), from: p.f, to: p.t, area: p.a };
+      const feature = { name: unparen(p.n), member: unparen(p.m), from: p.f, to: p.t, area: p.a, basis: p.basis || '' };
       features.push(feature);
       versions.set(JSON.stringify([p.n, p.m, p.f, p.t]), feature);
     }
@@ -94,10 +94,11 @@ function audit() {
   }
   const search = read('search-states.json');
   for (const row of search.rows) {
-    const [name, from, to, year, lon, lat, wiki, member] = row;
+    const [name, from, to, year, lon, lat, wiki, member, basis] = row;
     const chunk = index.chunks[0] + Math.floor((year - index.chunks[0]) / index.chunkSize) * index.chunkSize;
     const matches = core.active(byChunk.get(chunk) || [], year).filter((f) => f.name === name && f.member === member);
     check(matches.length === 1, `Search record is not uniquely rendered: ${name} / ${member} in ${year}`);
+    check((basis || '') === matches[0]?.basis, `Search loses extent qualification: ${name} in ${year}`);
     check(year >= from && year <= to && Number.isFinite(lon) && Number.isFinite(lat), `Invalid search destination: ${name}`);
   }
   const linked = eventRows.filter((row) => row.source).length;

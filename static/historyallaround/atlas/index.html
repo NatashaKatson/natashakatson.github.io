@@ -516,7 +516,7 @@ const EVENTS = [
 [-753,null,1,"Rome founded (by legend)","Romans later counted their years from this date.",41.89,12.49,"eu","power","Founding_of_Rome","https://museicapitolini.org/en/node/2482"],
 [-539,null,0,"Cyrus takes Babylon","Cyrus conquers Babylon in 539 BC, incorporating the Neo-Babylonian kingdom into the Achaemenid Persian Empire. The marker locates Babylon.",32.54,44.42,"me","power","Fall_of_Babylon","https://www.metmuseum.org/exhibitions/listings/2013/cyrus-cylinder"],
 [-508,null,0,"Democracy in Athens","Cleisthenes' reforms give power to an assembly of citizens.",37.97,23.72,"eu","power","Athenian_democracy","https://generales.uprrp.edu/humanidades/wp-content/uploads/sites/5/2018/09/TheDevolpmentoofDemocracyinAthen.pdf"],
-[-500,null,1,"Nok culture","Nok communities in central Nigeria make distinctive terracotta sculptures. Iron smelting is evidenced in later Nok phases; it is not securely dated by this approximate 900 BC marker.",9.5,8.0,"af","culture","Nok_culture","https://pure.qub.ac.uk/files/163792990/Safa_2016_Sessions.pdf"],
+[-900,null,1,"Nok culture","Nok communities in central Nigeria develop distinctive terracotta sculptures during the Middle Nok period, beginning around 900 BC. The wider Nok archaeological tradition is older. This approximate marker represents the terracotta tradition, not a securely dated invention of iron smelting.",9.5,8.0,"af","culture","Nok_culture","https://doi.org/10.1007/s00334-022-00902-0"],
 [-490,null,0,"Battle of Marathon","Athens defeats a Persian invasion force.",38.15,23.96,"eu","war","Battle_of_Marathon","https://www.britishmuseum.org/blog/marathons-ancient-origins"],
 [-447,null,0,"Parthenon begun","Work starts on the temple of Athena on the Acropolis.",37.97,23.73,"eu","culture","Parthenon","https://www.theacropolismuseum.gr/en/exhibit-halls/parthenon-gallery"],
 [-334,-323,0,"Alexander's conquests","In eleven years, Alexander's army marches from Greece to India.",36.36,43.25,"me","war","Wars_of_Alexander_the_Great","https://weisun.org/apworld/assign/readings/cc_hellenistic_Between334_and_323.pdf"],
@@ -562,7 +562,7 @@ const EVENTS = [
 [1258,null,0,"Mongols sack Baghdad","The Abbasid capital and its libraries are destroyed.",33.31,44.38,"me","war","Siege_of_Baghdad_(1258)","https://82nd-and-fifth.metmuseum.org/toah/ht/07/wam.html"],
 [1271,1295,0,"Marco Polo's journey","A Venetian merchant travels to the court of Kublai Khan.",39.9,116.4,"as","ideas","Marco_Polo","https://www.societyforasianart.org/sites/default/files/8.18_Berger.pdf"],
 [1280,null,1,"Polynesians reach New Zealand","The last major land mass on Earth to be settled by people.",-41.0,174.0,"oc","nature","History_of_New_Zealand","https://teara.govt.nz/en/when-was-new-zealand-first-settled"],
-[1324,null,0,"Mansa Musa's pilgrimage","Mali's ruler passes through Cairo, spending so much gold that prices fall.",30.04,31.24,"af","power","Mansa_Musa","https://www.metmuseum.org/de/essays/the-trans-saharan-gold-trade-7th-14th-century"],
+[1324,null,0,"Mansa Musa's pilgrimage","Mali’s ruler passes through Cairo on pilgrimage in 1324. Historical accounts associate his lavish distribution of gold with a fall in gold’s value in Egypt.",30.04,31.24,"af","power","Mansa_Musa","https://www.metmuseum.org/de/essays/the-trans-saharan-gold-trade-7th-14th-century"],
 [1325,null,1,"Tenochtitlan founded","Mexica tradition dates the founding of Tenochtitlan on an island in Lake Texcoco to 1325. The precise foundation date is debated.",19.43,-99.13,"am","power","Tenochtitlan","https://www.gob.mx/cultura/articulos/el-codice-boturini-del-peregrinaje-de-los-aztecas-a-la-fundacion-de-mexico-tenochtitlan"],
 [1331,null,0,"Ibn Battuta visits Kilwa","He calls it one of the most beautiful cities in the world.",-8.96,39.51,"af","ideas","Kilwa_Kisiwani","https://whc.unesco.org/pg.cfm?CID=31&ID_SITE=144&l=en"],
 [1347,1351,0,"Black Death","Plague devastates Europe in 1347–1351, with mortality varying greatly between communities. The marker represents Messina, one of the Mediterranean ports affected in 1347, rather than the full extent of the epidemic.",38.19,15.55,"eu","nature","Black_Death","https://www.cambridge.org/core/services/aop-cambridge-core/content/view/EA9466FE5164149AD4350B7D38222A5C/S0043887121000034a.pdf/pandemics-and-political-development-the-electoral-legacy-of-the-black-death-in-germany.pdf"],
@@ -743,7 +743,7 @@ const PEOPLE = [
 ["Sundiata Keita",1217,1255,1,"Founder of the Mali Empire",11.4,-8.4,"af","Sundiata_Keita"],
 ["Marco Polo",1254,1324,0,"Venetian traveller",45.44,12.33,"eu","Marco_Polo"],
 ["Mansa Musa",1280,1337,1,"Ruler of Mali",11.4,-8.4,"af","Mansa_Musa"],
-["Ibn Battuta",1304,1369,0,"Traveller",35.76,-5.83,"me","Ibn_Battuta"],
+["Ibn Battuta",1304,1369,1,"Traveller; death year uncertain",35.76,-5.83,"me","Ibn_Battuta","https://catalogue.bnf.fr/ark:/12148/cb11908143b"],
 ["Zheng He",1371,1433,0,"Admiral",32.06,118.8,"as","Zheng_He"],
 ["Joan of Arc",1412,1431,0,"French military leader",48.44,5.67,"eu","Joan_of_Arc"],
 ["Pachacuti",1418,1471,1,"Inca emperor",-13.53,-71.97,"am","Pachacuti"],
@@ -898,9 +898,19 @@ const unparen=s=>s.replace(/^\((.*)\)$/,"$1");
 const samePolity=(a,b)=>!!a&&!!b&&DiscoveryCore.polityKey(a)===DiscoveryCore.polityKey(b)&&a.from===b.from&&a.to===b.to;
 function loadChunk(c){if(bCache.has(c))return Promise.resolve(bCache.get(c));
   const pr=fetch(`borders/c${c}.json`).then(r=>{if(!r.ok)throw new Error(r.status);return r.json()}).then(t=>{
-    const fs=topojson.feature(t,t.objects.p).features;
-    for(const f of fs){f.geometry=DiscoveryCore.resampleParallels(f.geometry);const q=f.properties;f.name=unparen(q.n);f.member=unparen(q.m);f.wiki=q.w||"";f.status=q.status||"";f.source=q.source||"";
-      f.from=q.f;f.to=q.t;f.area=q.a;f.cen=[q.lx,q.ly];f.bbox=d3.geoBounds(f);f.hue=hueOf(f.name);f.shapeKey=JSON.stringify(f.geometry)}
+    // Split records spanning the correction's start so every consumer sees the
+    // same dated geometry: drawing, scans, comparisons, search and shared views.
+    const fs=topojson.feature(t,t.objects.p).features.flatMap(f=>{
+      const q=f.properties,from=HistoryGreatLakes.from;
+      return ["Canada","United States of America"].includes(q.n)&&q.f<from&&q.t>=from
+        ? [{...f,properties:{...q,t:from-1}},{...f,properties:{...q,f:from}}] : [f];
+    });
+    for(const f of fs){const q=f.properties;f.geometry=DiscoveryCore.resampleParallels(f.geometry);let area=q.a;
+      if(q.f>=HistoryGreatLakes.from&&["Canada","United States of America"].includes(q.n)){
+        const geometry=DiscoveryCore.greatLakesGeometry(f.geometry,HistoryGreatLakes.boundary.coordinates);
+        if(geometry!==f.geometry){f.geometry=geometry;area=d3.geoArea(f)}}
+      f.name=unparen(q.n);f.member=unparen(q.m);f.wiki=q.w||"";f.status=q.status||"";f.source=q.source||"";f.basis=q.basis||"";
+      f.from=q.f;f.to=q.t;f.area=area;f.cen=[q.lx,q.ly];f.bbox=d3.geoBounds(f);f.hue=hueOf(f.name);f.shapeKey=JSON.stringify(f.geometry)}
     bErrors.delete(c);bCache.set(c,fs);return fs}).catch(()=>{bErrors.add(c);bCache.delete(c);if(c===currentChunk()){loadC=null;syncBordersUI()}setTimeout(()=>{if(!bErrors.has(c))return;bErrors.delete(c);if((c===currentChunk()||window.HistoryDiscovery?.keepChunk(c))&&state.borders==="history"){loadC=null;draw()}},5000);return null});
   bCache.set(c,pr);return pr}
 function currentChunk(){return chunkOf(state.year)}
@@ -914,12 +924,6 @@ function settle(c){if(c===loadC)return;loadC=c;clearTimeout(loadT);
   loadT=setTimeout(()=>{loadChunk(c).then(()=>draw());for(const d of[BCS,-BCS,2*BCS]){const n=chunkOf(c+d);if(n!==null&&n!==c)loadChunk(n)}},
     state.playing||!polCache.list.length?0:120)}
 let polCache={y:null,list:[]};
-const lakePolityCache=new WeakMap();
-function lakePolity(f){if(f.name!=="Canada"&&f.name!=="United States of America")return f;
-  if(lakePolityCache.has(f))return lakePolityCache.get(f);
-  const geometry=DiscoveryCore.greatLakesGeometry(f.geometry,HistoryGreatLakes.boundary.coordinates);
-  const corrected=geometry===f.geometry?f:{...f,geometry,bbox:d3.geoBounds(geometry),area:d3.geoArea(geometry),shapeKey:JSON.stringify(geometry)};
-  lakePolityCache.set(f,corrected);return corrected}
 function polities(){const y=state.year;if(polCache.y===y)return polCache.list;const c=chunkOf(y);
   if(c===null){polCache={y,list:[]};return polCache.list}
   if(!bCache.has(c)&&!bErrors.has(c))loadChunk(c).then(()=>draw());const fs=bCache.get(c);
@@ -928,7 +932,6 @@ function polities(){const y=state.year;if(polCache.y===y)return polCache.list;co
   bCache.delete(c);bCache.set(c,fs);for(const k of bCache.keys()){if(bCache.size<=14)break;if(Math.abs(k-c)>2*BCS&&!window.HistoryDiscovery?.keepChunk(k))bCache.delete(k)}
   const sourceYear=borderYear(y);
   let list=DiscoveryCore.active(fs,sourceYear);
-  if(y>=HistoryGreatLakes.from&&list.some(f=>f.name==="Canada")&&list.some(f=>f.name==="United States of America"))list=list.map(lakePolity);
   // Cliopatria stores the modern Danish realm as one feature and anchors its label in Greenland.
   // Since Home Rule (1979), show Greenland as its own territory while retaining the realm relationship.
   if(y>=1979){const den=list.findIndex(f=>f.name==="Denmark");if(den>=0){list[den]={...list[den],cen:[9.5,56.1]};const base=(hi||lo).countries.find(f=>f.properties.name==="Greenland");if(base){const greenland={...base,name:"Greenland",member:"Kingdom of Denmark",wiki:"Greenland",from:1979,to:NOW,area:d3.geoArea(base),cen:[-41.5,72],hue:hueOf("Greenland"),territoryOverlay:true};list.push(greenland)}}}
@@ -1074,7 +1077,7 @@ function mapAtYear(x,y){if(window.HistoryPaleogeography?.isDeep(state.year)||sta
   if(state.mode==="globe"&&!visible(ll[0],ll[1]))return null;
   if(state.borders==="history"&&!currentBorderFailed()){const pols=polities();let hit=null;
     for(const f of pols)if(inBox(f.bbox,ll)&&d3.geoContains(f,ll)&&(!hit||f.area<hit.area))hit=f;
-    return hit?{label:hit.name+(hit.member&&hit.member!==hit.name?` · part of ${hit.member}`:""),polity:hit}:null}
+    return hit?{label:hit.name+(hit.member&&hit.member!==hit.name?` · part of ${hit.member}`:"")+(hit.basis?` · ${hit.basis}`:""),polity:hit}:null}
   for(const c of (hi||lo).countries){const[[w,so],[ea,n]]=c.bbox;if(ll[1]<so||ll[1]>n)continue;if(w<=ea?(ll[0]<w||ll[0]>ea):(ll[0]<w&&ll[0]>ea))continue;
     if(d3.geoContains(c,ll))return{label:c.properties.name+" (today)",polity:null}}return null}
 function nearest(x,y){let best=null,bd=Infinity;for(const h of hits){const d=Math.hypot(h.x-x,h.y-y);if(d<=(h.radius||16)&&d<bd){bd=d;best=h}}return best}
@@ -1141,8 +1144,8 @@ function select(id,fly=true,recordYear=null){window.HistoryDiscovery?.selectedRe
   if(window.innerWidth<=860)document.getElementById("detail").scrollIntoView({behavior:"smooth",block:"start"})}
 function selectPolity(f,year=state.year){if(window.HistoryDiscovery)window.HistoryDiscovery.selectPolityYear(year);state.sel=null;selectedPolity=f;stopPlay();stopSpin();renderDetail();draw();if(window.innerWidth<=860)document.getElementById("detail").scrollIntoView({behavior:"smooth",block:"start"})}
 function renderDetail(){renderDetailBase();if(window.HistoryDiscovery)window.HistoryDiscovery.detail()}
-function renderDetailBase(){const el=document.getElementById("detail");if(selectedPolity){const f=selectedPolity,member=f.member?(f.member===f.name?`Constituent of ${f.member}`:f.member):"Independent or parent state",link=f.wiki?`<a href="${wikiUrl(f.wiki)}" target="_blank" rel="noopener">Read more on Wikipedia ↗</a>`:"";
-    el.innerHTML=`<div class="detail polity"><button class="iconbtn close" aria-label="Close">×</button><div class="kicker"><i></i>State on the map in ${esc(fmt(state.year))}</div><h3>${esc(f.name)}</h3><div class="meta-grid"><div><span>Mapped coverage</span><strong>${esc(fmtSpan(f.from,f.to))}</strong></div><div><span>Political relationship</span><strong>${esc(member)}</strong></div></div>${f.status?`<p>${esc(f.status)}</p>`:""}<p>Approximate, simplified reconstruction. Mapped extents may include claims and do not establish effective control. Coverage dates describe this source record.</p>${f.source?`<p><a href="${esc(f.source)}" target="_blank" rel="noopener">Source ↗</a></p>`:""}${link}</div>`;
+function renderDetailBase(){const el=document.getElementById("detail");if(selectedPolity){const f=selectedPolity,member=f.member?(f.member===f.name?`Constituent of ${f.member}`:f.member):"No parent recorded",link=f.wiki?`<a href="${wikiUrl(f.wiki)}" target="_blank" rel="noopener">Read more on Wikipedia ↗</a>`:"";
+    el.innerHTML=`<div class="detail polity"><button class="iconbtn close" aria-label="Close">×</button><div class="kicker"><i></i>Political coverage in ${esc(fmt(state.year))}</div><h3>${esc(f.name)}</h3><div class="meta-grid"><div><span>Mapped coverage</span><strong>${esc(fmtSpan(f.from,f.to))}</strong></div><div><span>Political relationship</span><strong>${esc(member)}</strong></div></div>${f.status?`<p>${esc(f.status)}</p>`:""}<p>Approximate, simplified reconstruction. Mapped extents may include claims and do not establish effective control. Coverage dates describe this source record.</p>${f.source?`<p><a href="${esc(f.source)}" target="_blank" rel="noopener">Source ↗</a></p>`:""}${link}</div>`;
     el.querySelector(".close").onclick=()=>{selectedPolity=null;renderDetail();draw()};return}
   const x=state.sel&&byId[state.sel];if(!x){el.innerHTML="";return}
   if(x.cat==="dinosaurs"){

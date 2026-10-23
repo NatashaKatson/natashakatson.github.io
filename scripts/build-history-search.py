@@ -41,13 +41,13 @@ def build_states():
             member = p.get('m', '')
             if member.startswith('(') and member.endswith(')'):
                 member = member[1:-1]
-            key = (name, p.get('w', ''), member)
+            key = (name, p.get('w', ''), member, p.get('basis', ''))
             groups.setdefault(key, []).append({
                 'start': start, 'end': end, 'year': start,
                 'lon': p['lx'], 'lat': p['ly'], 'area': p['a'],
             })
     rows = []
-    for (name, wiki, member), segments in sorted(groups.items()):
+    for (name, wiki, member, basis), segments in sorted(groups.items()):
         merged = []
         for segment in sorted(segments, key=lambda s: (s['start'], s['end'])):
             previous = merged[-1] if merged else None
@@ -62,11 +62,11 @@ def build_states():
             else:
                 merged.append(dict(segment))
         for s in merged:
-            rows.append([name, s['start'], s['end'], s['year'], s['lon'], s['lat'], wiki, member])
+            rows.append([name, s['start'], s['end'], s['year'], s['lon'], s['lat'], wiki, member, basis])
     write('search-states.json', {
         'version': 1, 'source': manifest['source'],
         'license': 'https://creativecommons.org/licenses/by/4.0/',
-        'fields': ['name', 'from', 'to', 'year', 'longitude', 'latitude', 'wiki', 'member'],
+        'fields': ['name', 'from', 'to', 'year', 'longitude', 'latitude', 'wiki', 'member', 'basis'],
         'rows': rows,
     })
 

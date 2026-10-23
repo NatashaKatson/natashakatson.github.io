@@ -311,7 +311,7 @@ pending navigation. A modern place's label, source ID and point persist in exact
 links and Back. Exploring its full location history remains an explicit action.
 
 There are no geocoding requests or API keys. Events, people and country labels reuse
-existing data. `search-states.json` (2,082 coverage periods, about 150 KB) and
+existing data. `search-states.json` (2,100 coverage periods, about 157 KB) and
 `search-places.json` (34,179 populated places, about 7 MB before HTTP compression)
 load once on opening search. Initial map loading does not request these indexes.
 Local records remain usable during loading or after failure; retry loads missing
@@ -494,3 +494,13 @@ over time; refreshing this data is an explicit maintenance task. The browser sui
 checks a simulated 2035 clock, the fixed endpoint, historical samples, interpolation,
 prehistory without coverage, projection labels, comparison, mobile width and failed
 population-download recovery.
+
+
+Follow-up accuracy changes: Great Lakes corrections are applied on border load,
+including dated splits at 1932, so location history, comparison, search and shared
+selections agree with the map. The state index includes an optional `basis` field;
+search descriptions and location histories retain historically sourced extent
+qualifications without merging them across different periods. Northern New France
+and French Louisiana are separate from the source’s other French colonial
+possessions. See [the accuracy review](history-accuracy-review.md#follow-up-review-source-meaning-and-chronology)
+for evidence and remaining source limitations.

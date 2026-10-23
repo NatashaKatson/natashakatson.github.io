@@ -5,12 +5,12 @@
     "people": 66,
     "eventsWithSourceLinks": 221,
     "sourceReviewedEvents": 221,
-    "correctedOrClarifiedEvents": 67,
+    "correctedOrClarifiedEvents": 68,
     "borderChunks": 217,
-    "borderFeatureInstances": 22142,
-    "distinctBorderVersions": 13331,
+    "borderFeatureInstances": 22190,
+    "distinctBorderVersions": 13372,
     "decodedArcs": 134438,
-    "historicalSearchRecords": 2096
+    "historicalSearchRecords": 2100
   },
   "errors": [],
   "warnings": [
@@ -427,8 +427,8 @@
     {
       "id": "e27",
       "title": "Nok culture",
-      "start": -500,
-      "end": -500,
+      "start": -900,
+      "end": -900,
       "approximate": true,
       "point": [
         8,
@@ -437,7 +437,7 @@
       "wiki": "Nok_culture",
       "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
       "review": "correction or clarification",
-      "source": "https://pure.qub.ac.uk/files/163792990/Safa_2016_Sessions.pdf"
+      "source": "https://doi.org/10.1007/s00334-022-00902-0"
     },
     {
       "id": "e28",
@@ -1126,7 +1126,7 @@
       ],
       "wiki": "Mansa_Musa",
       "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
-      "review": "source-check",
+      "review": "correction or clarification",
       "source": "https://www.metmuseum.org/de/essays/the-trans-saharan-gold-trade-7th-14th-century"
     },
     {

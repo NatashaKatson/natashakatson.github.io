@@ -135,6 +135,51 @@ try {
       assert(off.slice(0,3).every((v,i)=>Math.abs(v-modern[offset+i])<=2),'water stays water when borders are hidden');
     }
     state.borders=prior;render();
+    // History scans, search selections and shared selections must use the same
+    // corrected lake geometry as the rendered map, not the archived shore detour.
+    for(const [name,point,country] of [
+      ['Toronto',[-79.38,43.65],'Canada'],
+      ['Chicago',[-87.63,41.88],'United States of America'],
+      ['Lake Michigan',[-87,44],'United States of America'],
+    ]){
+      await HistoryDiscovery.explore(point);
+      const panel=document.querySelector('.discovery-panel');
+      assert(panel.textContent.includes('Search complete'),'place scan completed: '+name);
+      assert([...panel.querySelectorAll('.place-entry')].some(b=>b.querySelector('b').textContent.includes(country)),
+        'correct political coverage in location history: '+name);
+      panel.querySelector('[data-return]').click();
+      const row=rows.find(r=>r[0]===country&&r[1]<=2024&&r[2]>=2024);
+      await HistoryDiscovery.jumpSearch({kind:'state',title:country,year:2024,lon:point[0],lat:point[1],member:row[7]});
+      assert(d3.geoContains(selectedPolity,point),'search selection uses corrected geometry: '+name);
+      const saved=HistoryDiscovery.urlHash();setYear(1453);await HistoryDiscovery.openView(saved);
+      assert(d3.geoContains(selectedPolity,point),'shared selection uses corrected geometry: '+name);
+    }
+    const spanning=await loadChunk(1925);
+    const usBefore=DiscoveryCore.active(spanning,1931).find(f=>f.name==='United States of America');
+    const usAfter=DiscoveryCore.active(spanning,1932).find(f=>f.name==='United States of America');
+    assert(usBefore&&usAfter&&usBefore.to===1931&&usAfter.from===1932,
+      'a source record spanning 1932 is split at the correction date');
+    assert(d3.geoContains(usAfter,[-87,44]),'corrected Lake Michigan coverage starts in 1932');
+    for(const [year,point] of [[1615,[-44.3,-2.6]],[1780,[-72.3,18.6]]]){
+      await loadChunk(chunkOf(year));setYear(year);setMode('flat');render();
+      const hit=mapAtYear(...proj(point));
+      assert(hit?.polity.name==='French colonial possessions (source aggregate)',
+        'Brazil and post-1763 Saint-Domingue are not labeled French Canada');
+    }
+    for(const year of [1966,1967,2024,2026]){
+      await loadChunk(chunkOf(year));setYear(year);setMode('flat');render();
+      const israel=polities().find(f=>f.name==='State of Israel');
+      assert(!!israel.basis===(year>=1967),'historical extent note starts in 1967');
+      if(year>=1967){
+        const hit=mapAtYear(...proj([35.203,31.904]));
+        assert(hit?.label.includes('Control and sovereignty differ'),'Ramallah hover qualifies the source extent');
+        selectPolity(israel,year);
+        assert(document.querySelector('#detail a[href="https://history.state.gov/historicaldocuments/frus1964-68v19"]'),
+          'extent explanation cites historical documents');
+        assert(document.getElementById('detail').textContent.includes('not conditions in every later year'),
+          '1967 evidence is not presented as a verification of later administration');
+      }
+    }
     setMode('flat');
     for(const year of [2013,2014,2023,2024,2026]){
       await loadChunk(chunkOf(year));setYear(year);render();

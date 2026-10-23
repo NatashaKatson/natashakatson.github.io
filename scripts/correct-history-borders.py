@@ -106,6 +106,79 @@ def set_polygons(topo, geometry, parts):
     geometry['properties']['a'] = float(f'{sum(ring_area(ring_points(topo, poly[0])) for poly in parts):.6g}')
 
 
+def polygon_anchor(topo, parts):
+    """Choose an interior point of the largest retained regional polygon."""
+    part = max(parts, key=lambda poly: ring_area(ring_points(topo, poly[0])))
+    rings = [ring_points(topo, ring) for ring in part]
+    _, south, _, north = polygon_bounds(topo, part)
+    y = (south + north) / 2
+    crossings = sorted(a[0] + (y - a[1]) * (b[0] - a[0]) / (b[1] - a[1])
+                       for ring in rings for a, b in zip(ring, ring[1:])
+                       if (a[1] > y) != (b[1] > y))
+    intervals = list(zip(crossings[::2], crossings[1::2]))
+    if not intervals:
+        raise ValueError('Cannot locate a colonial polygon interior')
+    west, east = max(intervals, key=lambda pair: pair[1] - pair[0])
+    return round((west + east) / 2, 6), round(y, 6)
+
+
+def colonial_identities(topo):
+    """Separate the source's worldwide New France aggregate, reusing its rings.
+
+    The regional boxes classify disjoint polygons; they never clip an edge.
+    Coverage remains source coverage, not a new reconstruction of local control.
+    """
+    result = []
+    source = 'https://www.historymuseum.ca/virtual-museum-of-new-france/colonies-and-empires/'
+    aggregate = 'French colonial possessions (source aggregate)'
+    for original in topo['objects']['p']['geometries']:
+        p = original['properties']
+        # Already separated northern records must not be classified again.
+        if p['n'] != 'New France' or p.get('source') == source + 'wars-and-imperial-rivalries/':
+            result.append(original)
+            continue
+        groups = {}
+        for part in polygons(original):
+            bounds = polygon_bounds(topo, part)
+            name = aggregate
+            if p['t'] < 1763:
+                if within(bounds, (-100, 40, -45, 85)):
+                    name = 'New France'
+                elif within(bounds, (-100, 25, -75, 40)):
+                    name = 'French Louisiana'
+            groups.setdefault(name, []).append(part)
+        for name, parts in groups.items():
+            g = copy.deepcopy(original)
+            set_polygons(topo, g, parts)
+            q = g['properties']
+            q.update(n=name)
+            if name == 'New France':
+                q.update(w='New_France',
+                         status='Northern North American coverage of New France. Canada, Acadia and Louisiana had distinct histories; the Louisiana components are shown separately. France ceded Canada to Britain in 1763. These simplified source extents do not establish continuous French control or Indigenous sovereignty.',
+                         source=source + 'wars-and-imperial-rivalries/')
+            elif name == 'French Louisiana':
+                q.update(w='Louisiana_(New_France)',
+                         status='Louisiana was a distinct part of New France. These source polygons show selected settlements and claims, not its full extent or continuous effective control.',
+                         source=source + 'wars-and-imperial-rivalries/')
+            else:
+                q.update(w='French_colonial_empire',
+                         status='This source aggregates distinct French colonial possessions outside the northern New France records. From 1763 it must not be read as French Canada. Some components retain outdated colonial extents; local control and transfer dates are not independently verified by this aggregate.',
+                         source=source + 'other-virtual-museum-of-new-frances/')
+            q['lx'], q['ly'] = polygon_anchor(topo, parts)
+            result.append(g)
+    topo['objects']['p']['geometries'] = result
+
+
+def historical_extent_notes(topo):
+    """Explain source extents using historical records, without redrawing them."""
+    for g in topo['objects']['p']['geometries']:
+        p = g['properties']
+        if p['n'] == 'State of Israel' and p['f'] >= 1967:
+            p.update(basis='Control and sovereignty differ',
+                     status='In June 1967, Israel captured the West Bank, East Jerusalem, Gaza, Sinai and the Golan Heights. This source combines Israel with some areas brought under military control; its changing outlines do not distinguish military control, civil administration and sovereignty. They do not reconstruct later local administrative arrangements or establish agreed borders. The linked historical documents concern 1967, not conditions in every later year.',
+                     source='https://history.state.gov/historicaldocuments/frus1964-68v19')
+
+
 def crimea_occupation(topo, chunk):
     """Keep sovereignty and occupation distinct, using the source's Crimea ring.
 
@@ -253,6 +326,8 @@ if __name__ == '__main__':
         correct(topo)
         verified_corrections(topo, int(path.stem[1:]))
         crimea_occupation(topo, int(path.stem[1:]))
+        colonial_identities(topo)
+        historical_extent_notes(topo)
         after = json.dumps(topo, ensure_ascii=False, separators=(',', ':')) + '\n'
         if original != topo:
             path.write_text(after)

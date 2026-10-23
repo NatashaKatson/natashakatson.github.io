@@ -265,7 +265,7 @@
     coverage(rows) {
       const groups = new Map();
       for (const r of rows) {
-        const key = [r.name, r.member, r.wiki].join("|");
+        const key = JSON.stringify([r.name, r.member, r.wiki, r.basis || ""]);
         if (!groups.has(key)) groups.set(key, []);
         groups.get(key).push({ ...r });
       }

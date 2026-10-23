@@ -40,6 +40,38 @@ test('dated evidence is distinguished from first-arrival and complete-genome cla
   assert.match(event('Human_Genome_Project')[4], /92%/);
   assert.equal(event('Blombos_Cave')[0], -73000);
   assert.match(event('Apollo_11')[4], /launch site/);
+  assert.equal(event('Nok_culture')[0], -900);
+  assert.equal(event('Nok_culture')[2], 1);
+  assert.match(event('Nok_culture')[4], /around 900 BC/);
+  assert.match(event('Nok_culture')[10], /10\.1007\/s00334-022-00902-0/);
+  assert.match(event('Mansa_Musa')[4], /gold’s value/);
+  assert.doesNotMatch(event('Mansa_Musa')[4], /prices fall/);
+  const ibn = records().people.find((p) => p[8] === 'Ibn_Battuta');
+  assert.equal(ibn[3], 1, 'uncertain death year must exclude Ibn Battuta from exact-date quizzes');
+  assert.match(ibn[9], /catalogue\.bnf\.fr/);
+});
+
+test('historical qualifications survive coverage merging and dated state search', () => {
+  const original = { name: 'State of Israel', member: '', wiki: 'Israel', start: 1948, end: 1966 };
+  const qualified = { ...original, start: 1967, end: 1972, basis: 'Control and sovereignty differ' };
+  const periods = core.coverage([original, qualified, { ...qualified, start: 1973, end: 2024 }]);
+  assert.equal(periods.length, 2);
+  assert.deepEqual(periods.map((r) => [r.start, r.end]), [[1948, 1966], [1967, 2024]]);
+  const rows = JSON.parse(fs.readFileSync('static/historyallaround/atlas/search-states.json')).rows
+    .filter((r) => r[0] === 'State of Israel');
+  assert(rows.some((r) => r[2] === 1966 && !r[8]));
+  assert(rows.some((r) => r[1] === 1967 && r[8] === qualified.basis));
+  for (const chunk of [1950, 1975, 2000]) {
+    const states = JSON.parse(fs.readFileSync(`static/historyallaround/atlas/borders/c${chunk}.json`))
+      .objects.p.geometries.map((g) => g.properties).filter((p) => p.n === original.name);
+    for (const p of states) {
+      assert.equal(!!p.basis, p.f >= 1967);
+      if (p.basis) {
+        assert.match(p.status, /military control, civil administration and sovereignty/);
+        assert.match(p.source, /history\.state\.gov\/historicaldocuments\/frus1964-68v19$/);
+      }
+    }
+  }
 });
 
 test('aggregate realms and constituents retain separate identities at overlapping dates', () => {

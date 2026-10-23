@@ -23,6 +23,37 @@ function ringPoints(topo, ring) {
   });
 }
 
+test('New France is distinct from Louisiana and other French colonial possessions', () => {
+  let northern = 0, louisiana = 0, aggregate = 0;
+  for (const chunk of [1600, 1625, 1650, 1675, 1700, 1725, 1750, 1775]) {
+    const topo = JSON.parse(fs.readFileSync(dir + `borders/c${chunk}.json`));
+    for (const g of topo.objects.p.geometries) {
+      const p = g.properties;
+      if (!['New France', 'French Louisiana', 'French colonial possessions (source aggregate)'].includes(p.n)) continue;
+      const parts = g.type === 'Polygon' ? [g.arcs] : g.arcs;
+      const points = parts.flatMap((poly) => ringPoints(topo, poly[0]));
+      if (p.n === 'New France') {
+        northern++;
+        assert(p.t < 1763);
+        assert(points.every(([x, y]) => x >= -100 && x <= -45 && y >= 40 && y <= 85));
+        assert(p.ly >= 40 && p.lx < -45, 'Canadian search anchor never lands in Brazil');
+      } else if (p.n === 'French Louisiana') {
+        louisiana++;
+        assert(p.t < 1763);
+        assert(points.every(([x, y]) => x >= -100 && x <= -75 && y >= 25 && y <= 40));
+      } else {
+        aggregate++;
+        assert.equal(p.w, 'French_colonial_empire');
+        assert.match(p.status, /local control and transfer dates are not independently verified/);
+      }
+      assert.match(p.source, /historymuseum\.ca/);
+    }
+  }
+  assert(northern > 20 && louisiana > 5 && aggregate > 20);
+  const rows = JSON.parse(fs.readFileSync(dir + 'search-states.json')).rows;
+  assert(rows.filter((r) => r[0] === 'New France').every((r) => r[2] < 1763 && r[5] >= 40));
+});
+
 test('US and Canada share one boundary through the Great Lakes while other geometry stays unchanged', () => {
   const boundary = greatLakes.boundary.coordinates;
   for (const chunk of [1925, 1950, 1975, 2000]) {

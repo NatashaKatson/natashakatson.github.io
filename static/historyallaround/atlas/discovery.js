@@ -220,7 +220,7 @@
             .slice(0, p.limit)
             .map(
               (r, i) =>
-                `<button class="place-entry" type="button" data-place-row="${i}"><b>${esc(fmtSpan(r.start, r.end, r.approx))} · ${esc(r.title)}</b><small>${r.type === "coverage" ? "Mapped coverage · " : ""}${esc(r.description)}</small></button>`,
+                `<button class="place-entry" type="button" data-place-row="${i}"><b>${esc(fmtSpan(r.start, r.end, r.approx))} · ${esc(r.title)}</b><small>${r.type === "coverage" ? "Mapped coverage · " : ""}${esc(r.description)}${r.basis ? " · " + esc(r.basis) : ""}</small></button>`,
             )
             .join("")
         : "<p>No records found here so far. Missing records do not imply this place was uninhabited.</p>"
@@ -298,6 +298,7 @@
                   name: f.name,
                   member: f.member,
                   wiki: f.wiki,
+                  basis: f.basis,
                 });
             }
           if (
@@ -408,7 +409,7 @@
   const borderConfidence = document.createElement("details");
   borderConfidence.id = "borderConfidence";
   borderConfidence.className = "border-confidence";
-  borderConfidence.innerHTML = '<summary><span aria-hidden="true" class="border-swatch"></span><span data-border-confidence>Approximate historical borders</span></summary><p>Dashed outlines show simplified historical reconstructions. Frontiers could be fluid or disputed; mapped extents may include claims rather than effective control. The source provides no confidence score for individual boundaries. Gaps mean missing coverage, not uninhabited land.</p><a href="https://github.com/Seshat-Global-History-Databank/cliopatria" target="_blank" rel="noopener">Cliopatria / Seshat source ↗</a>';
+  borderConfidence.innerHTML = '<summary><span aria-hidden="true" class="border-swatch"></span><span data-border-confidence>Approximate historical borders</span></summary><p>Dashed outlines show simplified historical reconstructions. Source extents can combine political claims, military control and administration; they do not define sovereign borders. Frontiers could be fluid or disputed, and effective control could vary within an outline. The source provides no confidence score for individual boundaries. Gaps mean missing coverage, not uninhabited land.</p><a href="https://github.com/Seshat-Global-History-Databank/cliopatria" target="_blank" rel="noopener">Cliopatria / Seshat source ↗</a>';
   document.querySelector(".borders-control").append(borderConfidence);
   cv.setAttribute("aria-describedby", "borderConfidence");
   function renderBorderConfidence() {
