@@ -106,6 +106,14 @@
     polityKey(feature) {
       return JSON.stringify([feature.name, feature.member || ""]);
     },
+    politicalStatus(feature) {
+      if (feature.member) return feature.member === feature.name
+        ? `Constituent of ${feature.member}` : `Part of ${feature.member}`;
+      if (/unverified/i.test(feature.name)) return "Unverified";
+      if (feature.name === "Commonwealth of Nations") return "Association of countries";
+      if (/culture|civilization|regional system/i.test(feature.name)) return "Cultural region";
+      return "Independent";
+    },
     greatLakesGeometry(geometry, boundary) {
       // Cliopatria follows the lake shores here, excluding water and even
       // some shore cities. Splice in the same shared water boundary for both
