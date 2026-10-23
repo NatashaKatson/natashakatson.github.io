@@ -63,6 +63,10 @@ years are annual snapshots, not day-level assertions of sovereignty or control.
 The constant-latitude rendering correction is described in the
 [accuracy review](history-accuracy-review.md). It adds intermediate GeoJSON
 vertices at load time, while preserving the archive's TopoJSON arcs.
+The same review documents the separate Great Lakes correction: shared political
+boundary geometry crosses the lakes, while independent lake polygons supply
+water and shorelines. Its source data and regeneration script are bundled with
+the atlas; the archived country records are preserved.
 
 Sources for these corrections:
 

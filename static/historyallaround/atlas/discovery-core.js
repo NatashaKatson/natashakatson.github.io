@@ -106,6 +106,43 @@
     polityKey(feature) {
       return JSON.stringify([feature.name, feature.member || ""]);
     },
+    greatLakesGeometry(geometry, boundary) {
+      // Cliopatria follows the lake shores here, excluding water and even
+      // some shore cities. Splice in the same shared water boundary for both
+      // countries, retaining the rest of each historical polygon.
+      const inside = ([x, y]) => x > -93 && x < -74 && y > 40 && y < 50;
+      let changed = false;
+      const exterior = (ring) => {
+        const points = ring.slice(0, -1), n = points.length;
+        const nearest = (target) => {
+          let best = -1, distance = .25 ** 2;
+          points.forEach((p, i) => {
+            const d = (p[0] - target[0]) ** 2 + (p[1] - target[1]) ** 2;
+            if (d < distance) { best = i; distance = d; }
+          });
+          return best;
+        };
+        const west = nearest(boundary[0]), east = nearest(boundary.at(-1));
+        if (west < 0 || east < 0 || west === east) return ring;
+        const walk = (a, b) => {
+          const path = [points[a]];
+          for (let i = (a + 1) % n; i !== b; i = (i + 1) % n) path.push(points[i]);
+          path.push(points[b]);
+          return path;
+        };
+        const forward = walk(west, east), backward = walk(east, west);
+        let replacement, rest;
+        if (forward.every(inside)) { replacement = boundary; rest = backward; }
+        else if (backward.every(inside)) { replacement = [...boundary].reverse(); rest = forward; }
+        else return ring;
+        changed = true;
+        return [...replacement, ...rest.slice(1, -1), replacement[0]];
+      };
+      const polygon = (rings) => [exterior(rings[0]), ...rings.slice(1)];
+      const coordinates = geometry.type === 'Polygon' ? polygon(geometry.coordinates)
+        : geometry.type === 'MultiPolygon' ? geometry.coordinates.map(polygon) : geometry.coordinates;
+      return changed ? { ...geometry, coordinates } : geometry;
+    },
     resampleParallels(geometry) {
       // D3 joins sparse vertices with great-circle arcs. A boundary following
       // a latitude parallel needs intermediate vertices to keep that latitude.

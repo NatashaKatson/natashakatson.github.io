@@ -51,6 +51,37 @@ including ring closure and preservation of unrelated boundaries.
 Sources: [International Boundary Commission, western boundary section](https://www.internationalboundarycommission.org/en/maps-coordinates/maps/section-e.php)
 and [D3's spherical geometry documentation](https://d3js.org/d3-geo).
 
+### Great Lakes border and shorelines
+
+The western parallel fix did not address the Great Lakes. Cliopatria's country
+exteriors detour along the lake shores, omit the water from both countries, and
+also exclude shore locations including Chicago, Toronto and Buffalo. Stroking
+those exteriors incorrectly made the shorelines look like international borders.
+
+When both Canada and the US are present from 1932, the atlas replaces only that
+regional stretch of their mainland exteriors with the same shared Natural Earth
+1:50m boundary. Other polygon components and the raw archive remain unchanged.
+Lake Michigan is entirely US territory; the international boundary crosses
+Superior, Huron, Erie and Ontario and their connecting rivers. Containment,
+hover, selection and drawing use the corrected polygons. Earlier historical
+records retain their source geometry.
+
+Six independently sourced Natural Earth lake polygons, including Saint Clair,
+provide water fills and solid shorelines in human-history views, whether borders
+are historical, Today or Off. Political boundaries are drawn across the water.
+Deep-time maps do not use these modern lakes. Both sources remain cartographic
+approximations, not navigation or survey data.
+
+`great-lakes.js` bundles the shared boundary and water separately. Regenerate it
+with `scripts/build-history-great-lakes.py` and a local copy of Natural Earth's
+`ne_50m_lakes.geojson`; boundary coordinates come from the existing
+`land-50m.json`. Browser regressions check shore cities, both sides of the shared
+lakes, water rendering and hover in both projections from 1932 through 2026.
+
+Sources: [International Boundary Commission, St. Lawrence River and Great Lakes](https://www.internationalboundarycommission.org/en/maps-coordinates/maps/section-c.php),
+[Natural Earth country boundaries](https://www.naturalearthdata.com/downloads/50m-cultural-vectors/50m-admin-0-countries-2/)
+and [Natural Earth lake polygons](https://github.com/nvkelso/natural-earth-vector/blob/master/geojson/ne_50m_lakes.geojson).
+
 ### Crimea
 
 From the annual 2014 snapshot, the feature is **Crimea (occupied by Russia)**,

@@ -483,6 +483,7 @@ header .seg{padding:2px;background:#f0ebe3;border:1px solid rgba(45,36,32,.1);bo
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
 <script src="discovery-core.js"></script>
+<script src="great-lakes.js"></script>
 <script>
 // [start, end|null, approx(0/1), title, blurb, lat, lon, region, category, wikiSlug]
 // regions: eu Europe, me Middle East & North Africa, af Sub-Saharan Africa, as Asia, am Americas, oc Oceania
@@ -913,6 +914,12 @@ function settle(c){if(c===loadC)return;loadC=c;clearTimeout(loadT);
   loadT=setTimeout(()=>{loadChunk(c).then(()=>draw());for(const d of[BCS,-BCS,2*BCS]){const n=chunkOf(c+d);if(n!==null&&n!==c)loadChunk(n)}},
     state.playing||!polCache.list.length?0:120)}
 let polCache={y:null,list:[]};
+const lakePolityCache=new WeakMap();
+function lakePolity(f){if(f.name!=="Canada"&&f.name!=="United States of America")return f;
+  if(lakePolityCache.has(f))return lakePolityCache.get(f);
+  const geometry=DiscoveryCore.greatLakesGeometry(f.geometry,HistoryGreatLakes.boundary.coordinates);
+  const corrected=geometry===f.geometry?f:{...f,geometry,bbox:d3.geoBounds(geometry),area:d3.geoArea(geometry),shapeKey:JSON.stringify(geometry)};
+  lakePolityCache.set(f,corrected);return corrected}
 function polities(){const y=state.year;if(polCache.y===y)return polCache.list;const c=chunkOf(y);
   if(c===null){polCache={y,list:[]};return polCache.list}
   if(!bCache.has(c)&&!bErrors.has(c))loadChunk(c).then(()=>draw());const fs=bCache.get(c);
@@ -921,6 +928,7 @@ function polities(){const y=state.year;if(polCache.y===y)return polCache.list;co
   bCache.delete(c);bCache.set(c,fs);for(const k of bCache.keys()){if(bCache.size<=14)break;if(Math.abs(k-c)>2*BCS&&!window.HistoryDiscovery?.keepChunk(k))bCache.delete(k)}
   const sourceYear=borderYear(y);
   let list=DiscoveryCore.active(fs,sourceYear);
+  if(y>=HistoryGreatLakes.from&&list.some(f=>f.name==="Canada")&&list.some(f=>f.name==="United States of America"))list=list.map(lakePolity);
   // Cliopatria stores the modern Danish realm as one feature and anchors its label in Greenland.
   // Since Home Rule (1979), show Greenland as its own territory while retaining the realm relationship.
   if(y>=1979){const den=list.findIndex(f=>f.name==="Denmark");if(den>=0){list[den]={...list[den],cen:[9.5,56.1]};const base=(hi||lo).countries.find(f=>f.properties.name==="Greenland");if(base){const greenland={...base,name:"Greenland",member:"Kingdom of Denmark",wiki:"Greenland",from:1979,to:NOW,area:d3.geoArea(base),cen:[-41.5,72],hue:hueOf("Greenland"),territoryOverlay:true};list.push(greenland)}}}
@@ -976,9 +984,14 @@ function renderScene(){
     for(const f of pols){ctx.beginPath();path(f);ctx.fillStyle=STATE_FILLS[f.hue];ctx.fill()}
     // Repaint nested self-governing territories after their sovereign realm so both remain legible.
     for(const f of pols)if(f.territoryOverlay){ctx.beginPath();path(f);ctx.fillStyle=STATE_FILLS[f.hue];ctx.fill()}
+    // Water has its own shoreline; country boundaries continue across it.
+    ctx.beginPath();path(HistoryGreatLakes.lakes);ctx.fillStyle=og;ctx.fill();
     ctx.beginPath();for(const f of pols)path(f);ctx.strokeStyle=C.border;ctx.lineWidth=lw;ctx.setLineDash([3,2]);ctx.stroke();ctx.setLineDash([]);
     if(selectedPolity){const f=pols.find(p=>samePolity(p,selectedPolity));if(f){ctx.beginPath();path(f);ctx.strokeStyle=C.accent;ctx.lineWidth=2.4;ctx.stroke()}}}
-  else if(!G.ancient&&state.borders==="today"){ctx.beginPath();path(G.borders);ctx.strokeStyle=C.border;ctx.lineWidth=lw;ctx.stroke()}
+  else if(!G.ancient){
+    ctx.beginPath();path(HistoryGreatLakes.lakes);ctx.fillStyle=og;ctx.fill();
+    if(state.borders==="today"){ctx.beginPath();path(G.borders);ctx.strokeStyle=C.border;ctx.lineWidth=lw;ctx.stroke()}}
+  if(!G.ancient){ctx.beginPath();path(HistoryGreatLakes.lakes);ctx.strokeStyle=C["land-edge"];ctx.lineWidth=.8;ctx.stroke()}
   ctx.beginPath();path(G.land);ctx.strokeStyle=C["land-edge"];ctx.lineWidth=.8;ctx.stroke();
   if(globe){// shade the far side, add a soft highlight and a rim
     const sh=ctx.createRadialGradient(cx-R*.3,cy-R*.35,R*.2,cx,cy,R);sh.addColorStop(0,"rgba(0,0,0,0)");sh.addColorStop(.55,"rgba(0,0,0,0)");sh.addColorStop(1,C.shade);

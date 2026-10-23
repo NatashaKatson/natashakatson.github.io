@@ -2,6 +2,7 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const core = require('../static/historyallaround/atlas/discovery-core.js');
+const greatLakes = require('../static/historyallaround/atlas/great-lakes.js');
 
 const dir = 'static/historyallaround/atlas/';
 const expected = {
@@ -21,6 +22,31 @@ function ringPoints(topo, ring) {
     return index < 0 ? points.reverse() : points;
   });
 }
+
+test('US and Canada share one boundary through the Great Lakes while other geometry stays unchanged', () => {
+  const boundary = greatLakes.boundary.coordinates;
+  for (const chunk of [1925, 1950, 1975, 2000]) {
+    const topo = JSON.parse(fs.readFileSync(dir + `borders/c${chunk}.json`));
+    for (const state of topo.objects.p.geometries.filter((g) =>
+      ['Canada', 'United States of America'].includes(g.properties.n) && g.properties.t >= greatLakes.from)) {
+      const polygons = state.type === 'Polygon' ? [state.arcs] : state.arcs;
+      const source = { type: 'MultiPolygon', coordinates: polygons.map((p) => p.map((r) => ringPoints(topo, r))) };
+      const original = JSON.stringify(source);
+      const corrected = core.greatLakesGeometry(source, boundary);
+      assert.notEqual(corrected, source, `${state.properties.n}/${state.properties.f}: regional boundary replaced`);
+      const changed = corrected.coordinates.filter((p, i) => p[0] !== source.coordinates[i][0]);
+      assert.equal(changed.length, 1, 'only the mainland exterior changes');
+      const shared = changed[0][0].slice(0, boundary.length);
+      assert.deepEqual(shared, state.properties.n === 'Canada' ? [...boundary].reverse() : boundary);
+      for (const polygon of corrected.coordinates) for (const ring of polygon) assert.deepEqual(ring[0], ring.at(-1));
+      assert.equal(JSON.stringify(source), original, 'raw historical source is preserved');
+    }
+  }
+  const unrelated = { type: 'Polygon', coordinates: [[[0, 0], [0, 1], [1, 1], [0, 0]]] };
+  assert.equal(core.greatLakesGeometry(unrelated, boundary), unrelated);
+  assert.deepEqual(greatLakes.lakes.features.map((f) => f.properties.name).sort(),
+    ['Lake Erie', 'Lake Huron', 'Lake Michigan', 'Lake Ontario', 'Lake Saint Clair', 'Lake Superior']);
+});
 
 test('the western US–Canada border uses 49° even in quantized archive snapshots', () => {
   for (const chunk of [1950, 1975, 2000]) {
