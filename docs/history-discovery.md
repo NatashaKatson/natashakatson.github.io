@@ -36,7 +36,7 @@ the displayed year, with aligned lifespan bars, highlighted overlap and individu
 source links. Approximate lifespans and overlaps are labeled. These are associated
 map locations, not verified whereabouts or evidence the people met.
 
-Selecting either person preserves the year and pair. **Share this moment** retains
+Selecting either person preserves the year and pair. **Share this view** retains
 the exact pair in the view link, including after reload; Back restores it as well.
 Without a chosen pair, the card prefers the selected person or the tour's anchor,
 then exact lifespan records and longer overlaps. Years without a supported pair

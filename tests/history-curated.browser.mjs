@@ -101,7 +101,7 @@ try {
     card.querySelector('[data-contemporary="1"]').click();
     await new Promise(r=>setTimeout(r,0));
     assert(state.year===-50&&names()===before,'visiting a contemporary keeps the year and pair');
-    card.querySelector('[data-contemporary-share]').click();
+    document.querySelector('.share-view').click();
     const shared=new URL(document.querySelector('.share-panel input').value).hash;
     const saved=JSON.parse(new URLSearchParams(shared.slice(1)).get('view'));
     assert(saved.contemporaries.length===2,'shared view retains chosen pair');
