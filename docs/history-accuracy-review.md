@@ -241,5 +241,11 @@ Browser checks use the dedicated local Chrome and server described in
   gives an uncertain death year. The approximate flag now keeps this lifespan
   out of exact-date challenge questions and qualifies the contemporaries display.
 
-The follow-up re-runs the complete structural audit and targeted browser checks;
-it does not newly certify every historical frontier or biography.
+Follow-up validation passed: all 52 unit tests, the full structural audit, and
+the accuracy, search and discovery browser suites. Browser coverage includes
+Toronto/Chicago/Lake Michigan location history and search/shared selections,
+the 1932 geometry transition, French colonial identities, Israel's dated
+historical notes, comparisons and mobile navigation. All three data generators
+are idempotent. The Hugo 0.110.0 production build also passed, with the existing
+`google_news` deprecation warnings. These checks do not newly certify every
+historical frontier or biography.
