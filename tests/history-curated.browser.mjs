@@ -31,6 +31,8 @@ const evaluate = async (expression) => {
 };
 try {
   await send("Runtime.enable");
+  await send("Network.enable");
+  await send("Network.setCacheDisabled", { cacheDisabled: true });
   await send("Emulation.setDeviceMetricsOverride", { width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false });
   await send("Page.navigate", { url: (process.env.ATLAS_TEST_URL || "http://127.0.0.1:8891/atlas/") + "#1903" });
   for (let i = 0; i < 100; i++) {
@@ -90,6 +92,42 @@ try {
     await HistoryDiscovery.openView(curatedHash);
     return 'Curated discovery: five stops, dates, sources, focus, category independence, sharing, unknown IDs, search and Back passed';
   })()`));
+  console.log(await evaluate(`(async()=>{
+    const assert=(value,message)=>{if(!value)throw Error(message)};
+    const card=document.querySelector('.contemporaries-card');
+    assert(card.textContent.includes('Cleopatra')&&card.textContent.includes('Emperor Yuan'),'tour suggests cross-cultural contemporaries');
+    const names=()=>[...card.querySelectorAll('.contemporary-person strong')].map(el=>el.textContent).sort().join('/');
+    const before=names();
+    card.querySelector('[data-contemporary="1"]').click();
+    await new Promise(r=>setTimeout(r,0));
+    assert(state.year===-50&&names()===before,'visiting a contemporary keeps the year and pair');
+    card.querySelector('[data-contemporary-share]').click();
+    const shared=new URL(document.querySelector('.share-panel input').value).hash;
+    const saved=JSON.parse(new URLSearchParams(shared.slice(1)).get('view'));
+    assert(saved.contemporaries.length===2,'shared view retains chosen pair');
+    setYear(1500);await HistoryDiscovery.openView(shared);
+    assert(state.year===-50&&names()===before,'shared view restores same pair');
+    document.querySelector('.share-panel button').click();
+    card.querySelector('[data-contemporary-example="0"]').click();await new Promise(r=>setTimeout(r,0));
+    assert(state.year===1610&&card.textContent.includes('William Shakespeare')&&card.textContent.includes('Tokugawa Ieyasu'),'featured Shakespeare pair');
+    card.querySelector('[data-contemporary-example="1"]').click();await new Promise(r=>setTimeout(r,0));
+    assert(state.year===1690&&card.textContent.includes('Isaac Newton')&&card.textContent.includes('Kangxi Emperor'),'featured Newton pair');
+    setYear(-300000);assert(!card.querySelector('[data-contemporary]')&&card.textContent.includes('No cross-region pair'),'sparse years retain honest empty state');
+    await HistoryDiscovery.openView(curatedHash);await loadChunk(chunkOf(state.year));render();
+    const cue=document.getElementById('borderConfidence');
+    assert(!cue.hidden&&cue.textContent.includes('Approximate historical borders'),'uncertainty is on the map');
+    cue.open=true;assert(cue.textContent.includes('no confidence score')&&cue.textContent.includes('claims'),'uncertainty explanation');cue.open=false;
+    const stroke=ctx.stroke;let dashed=0;
+    try{ctx.stroke=function(...args){if(this.getLineDash().length)dashed++;return stroke.apply(this,args)};render();}finally{ctx.stroke=stroke;}
+    assert(dashed>0&&ctx.getLineDash().length===0,'historical borders dashed without leaking canvas style');
+    state.borders='today';syncBordersUI();render();assert(cue.hidden,'modern overlay does not claim historical uncertainty');
+    state.borders='off';syncBordersUI();render();assert(cue.hidden,'off layer hides border cue');
+    state.borders='history';syncBordersUI();render();
+    const chunk=chunkOf(state.year);bErrors.add(chunk);render();
+    assert(cue.textContent.includes('coverage unavailable'),'failed coverage is identified on map');bErrors.delete(chunk);render();
+    await HistoryDiscovery.openView(curatedHash);
+    return 'Contemporaries: exact pair sharing, same-year navigation, examples, empty years; map uncertainty, dashed strokes and missing coverage passed';
+  })()`));
   await send("Page.reload", { ignoreCache: true });
   for (let i = 0; i < 100; i++) {
     if (await evaluate("!!window.HistoryChallenge && !!document.querySelector('.curated-stop')")) break;
@@ -103,6 +141,8 @@ try {
     shelf.querySelector('[data-curated-next]').click();
     if(state.year!==-44||document.documentElement.scrollWidth>innerWidth||shelf.scrollWidth>shelf.clientWidth)
       throw Error('Mobile tour navigation or width');
+    const cue=document.getElementById('borderConfidence').getBoundingClientRect();
+    if(cue.left<0||cue.right>innerWidth)throw Error('Mobile border cue overflows');
     const r=stage.getBoundingClientRect();
     if(r.bottom<=0||r.top>=innerHeight)throw Error('Mobile jump does not reveal map');
     shelf.scrollIntoView({block:'start'});
@@ -110,6 +150,23 @@ try {
   })()`));
   const shot = await send("Page.captureScreenshot", { format: "png" });
   fs.writeFileSync(path.join(os.tmpdir(), "history-curated-mobile.png"), Buffer.from(shot.data, "base64"));
+  await send("Emulation.setDeviceMetricsOverride", { width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false });
+  await send("Page.navigate", { url: (process.env.ATLAS_TEST_URL || "http://127.0.0.1:8891/atlas/") + "#people=1610&person=William_Shakespeare" });
+  for (let i = 0; i < 100; i++) {
+    if (await evaluate("!!window.HistoryContemporaries && state.year===1610")) break;
+    await new Promise((r) => setTimeout(r, 100));
+  }
+  if (!await evaluate("byId[state.sel]?.wiki==='William_Shakespeare'&&document.querySelector('.contemporaries-card').textContent.includes('Tokugawa Ieyasu')"))
+    throw Error("Landing page contemporaries link failed");
+  await send("Page.navigate", { url: (process.env.ATLAS_TEST_URL || "http://127.0.0.1:8891/atlas/") + "#discover=cleopatra-world" });
+  for (let i = 0; i < 100; i++) {
+    if (await evaluate("!!window.HistoryContemporaries && state.year===-51")) break;
+    await new Promise((r) => setTimeout(r, 100));
+  }
+  if (!await evaluate("!!document.querySelector('.curated-stop')&&state.year===-51")) throw Error("Landing page discovery link failed");
+  console.log("Landing-page discovery and contemporaries links passed");
+  const desktop = await send("Page.captureScreenshot", { format: "png" });
+  fs.writeFileSync(path.join(os.tmpdir(), "history-curated-desktop.png"), Buffer.from(desktop.data, "base64"));
   if (errors.length) throw Error(JSON.stringify(errors));
   console.log("Browser exceptions: none");
 } finally {

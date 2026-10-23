@@ -371,6 +371,21 @@ header .seg{padding:2px;background:#f0ebe3;border:1px solid rgba(45,36,32,.1);bo
 .brand-kicker,.readout .era,.side-intro .kicker{color:#a3482d}
 .brand{color:inherit;text-decoration:none}
 .brand:focus-visible{outline:2px solid #b45a39;outline-offset:5px;border-radius:3px}
+
+/* Keep globe labels from showing through the year and its context, even when zoomed. */
+.stage .readout{
+  width:min(300px,calc(100% - 32px));padding:14px 16px;
+  background:var(--paper);border:1px solid var(--rule);border-radius:4px;
+  container-type:inline-size;
+}
+.stage .readout .yr{font-size:clamp(32px,22cqi,60px)}
+.stage .readout .now{max-width:100%;overflow-wrap:break-word}
+@media(min-width:861px) and (max-width:1050px){
+  .stage .readout{width:min(260px,calc(100% - 310px))}
+}
+@media(max-width:860px){
+  .stage .readout{width:min(260px,calc(100% - 32px));padding:12px 14px}
+}
 </style>
 <style>body{margin:0}</style>
 <link rel="stylesheet" href="discovery.css">

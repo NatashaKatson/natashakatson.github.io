@@ -5,6 +5,34 @@ const vm = require("node:vm");
 const core = require("../static/historyallaround/atlas/discovery-core.js");
 const discoveries = require("../static/historyallaround/atlas/curated-discoveries.js");
 
+test("contemporaries require inclusive lifespan overlap and different regions", () => {
+  const a = { wiki: "A", born: -10, died: 10, region: "eu" };
+  const b = { wiki: "B", born: -5, died: 5, region: "as" };
+  const local = { wiki: "Local", born: -100, died: 100, region: "eu" };
+  const uncertain = { wiki: "Uncertain", born: -200, died: 200, region: "am", approx: true };
+  assert.deepEqual(core.contemporaryPair([a, b, local, uncertain], -5, "A").people, [a, b]);
+  assert.equal(core.contemporaryPair([a, b], 5).to, 5);
+  assert.equal(core.contemporaryPair([a, b], 6), null);
+  assert.equal(core.contemporaryPair([a, local], 1), null);
+  assert.equal(core.contemporaryPair([], 1), null);
+  assert.equal(core.yearsBetween(-1, 1), 1);
+  assert.equal(core.yearsBetween(-10, -5), 5);
+  assert.equal(core.yearsBetween(-10, 10), 19);
+  new vm.Script(fs.readFileSync("static/historyallaround/atlas/contemporaries.js", "utf8"));
+});
+
+test("Cleopatra's period has sourced records across regions and cross-cultural contemporaries", () => {
+  const html = fs.readFileSync("static/historyallaround/atlas/index.html", "utf8");
+  const context = vm.createContext({});
+  vm.runInContext(html.match(/const EVENTS = \[[\s\S]*?\n\];/)[0] + "\n" +
+    html.match(/const PEOPLE = \[[\s\S]*?\n\];/)[0] + "\nglobalThis.data={EVENTS,PEOPLE};", context);
+  const active = Array.from(context.data.EVENTS).filter((e) => e[0] <= -50 && (e[1] ?? e[0]) >= -50);
+  for (const region of ["me", "as", "am"]) assert(active.some((e) => e[7] === region && e[10]?.startsWith("https:")));
+  const people = Array.from(context.data.PEOPLE, (p) => ({ wiki: p[8], born: p[1], died: p[2], region: p[7], approx: !!p[3] }));
+  const pair = core.contemporaryPair(people.filter((p) => discoveries[0].contemporaries.includes(p.wiki)), -50, "Cleopatra");
+  assert.deepEqual(pair.people.map((p) => p.wiki), ["Cleopatra", "Emperor_Yuan_of_Han"]);
+});
+
 test("curated discoveries have stable IDs, sourced stops and map years within their lifetime", () => {
   assert.equal(new Set(discoveries.map((s) => s.id)).size, discoveries.length);
   const html = fs.readFileSync("static/historyallaround/atlas/index.html", "utf8");
@@ -165,11 +193,14 @@ test("shared views reject malformed or unbounded camera and date values", () => 
   assert.deepEqual(core.parseView(hash(view), 2026, ["war"]), view);
   const discovery = { id: "cleopatra-world", stop: "monte-alban" };
   assert.deepEqual(core.parseView(hash({...view, discovery}), 2026, ["war"]).discovery, discovery);
+  const contemporaries = ["Cleopatra", "Emperor_Yuan_of_Han"];
+  assert.deepEqual(core.parseView(hash({...view, contemporaries}), 2026, ["war"]).contemporaries, contemporaries);
   for (const invalid of [{year: 0}, {year: 2027}, {zoom: 100}, {pan: [0, null]},
     {point: [0, 91]}, {cats: ["bogus"]}, {record: {wiki: "A", kind: "script", date: 1}},
     {pin: {wiki: "A", date: 1, year: 0}}, {story: 3}, {v: 2},
     {discovery: {id: "<script>", stop: "rome"}}, {discovery: {id: "cleopatra-world", stop: 4}},
-    {discovery: {id: "x".repeat(81), stop: "rome"}}])
+    {discovery: {id: "x".repeat(81), stop: "rome"}}, {contemporaries: ["A"]},
+    {contemporaries: ["A", "A"]}, {contemporaries: ["A", 3]}])
     assert.equal(core.parseView(hash({...view, ...invalid}), 2026, ["war"]), null);
   assert.equal(core.parseView("#view=%7Bbroken", 2026, ["war"]), null);
   assert.equal(core.parseView("#1903", 2026, ["war"]), null);

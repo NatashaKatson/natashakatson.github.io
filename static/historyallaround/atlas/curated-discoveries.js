@@ -5,6 +5,7 @@
   const discoveries = [{
     id: "cleopatra-world",
     person: "Cleopatra",
+    contemporaries: ["Cleopatra", "Emperor_Yuan_of_Han"],
     title: "What was happening in the world when Cleopatra lived?",
     subtitle: "One lifetime. Five places. A much bigger world.",
     start: -69, end: -30,

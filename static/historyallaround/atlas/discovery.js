@@ -9,6 +9,7 @@
     placeReturn = null;
   const trail = [];
   let activeDiscovery = null;
+  let activeContemporaries = null;
   const discoveries = window.CuratedDiscoveries || [];
   function curatedSelection(value) {
     const story = discoveries.find((s) => s.id === value?.id);
@@ -105,6 +106,7 @@
       pinned,
       activeComparisonStory,
       activeDiscovery,
+      activeContemporaries,
       year: state.year,
       sel: state.sel,
       polity: selectedPolity,
@@ -131,6 +133,7 @@
     pinned = s.pinned ?? null;
     activeComparisonStory = s.activeComparisonStory ?? null;
     activeDiscovery = curatedSelection(s.activeDiscovery) ? s.activeDiscovery : null;
+    activeContemporaries = s.activeContemporaries ?? null;
     place = s.placeState;
     placeReturn = s.placeReturn;
     placePanel.hidden = !place;
@@ -522,6 +525,9 @@
   function renderCurated() {
     const selected = curatedSelection(activeDiscovery);
     const key = selected ? `${selected.story.id}/${selected.stop.id}` : "";
+    const contemporariesCard = document.querySelector(".contemporaries-card");
+    if (selected && curatedShelf.previousElementSibling === contemporariesCard) curatedShelf.after(contemporariesCard);
+    else if (!selected && curatedShelf.nextElementSibling === contemporariesCard) curatedShelf.before(contemporariesCard);
     curatedReader.hidden = !selected;
     curatedShelf.querySelector(".curated-catalog").hidden = !!selected;
     if (!selected) { curatedReader.dataset.selection = ""; return; }
@@ -559,6 +565,7 @@
     stopPlay(); stopSpin(); flyToken++; userMoved = true;
     if (compare.on) document.getElementById("compareToggle").click();
     activeDiscovery = { id, stop: stop.id };
+    activeContemporaries = story.contemporaries || null;
     compare.selectedYear = null;
     state.borders = "history";
     syncBordersUI();
@@ -615,6 +622,7 @@
     if (trail.length > 30) trail.shift();
     activeComparisonStory = index;
     activeDiscovery = null;
+    activeContemporaries = null;
     pinned = null;
     placeToken++;
     place = null;
@@ -688,6 +696,7 @@
       location: searchPlace,
       story: activeComparisonStory,
       discovery: activeDiscovery,
+      contemporaries: activeContemporaries,
       pin: pinned ? { wiki: pinned.wiki, date: pinned.start, year: pinned.year } : null,
     };
   }
@@ -733,7 +742,7 @@
     activeComparisonStory = v.story;
     activeDiscovery = curatedSelection(v.discovery) ? v.discovery : null;
     const saved = { ...snapshot(), ...v, sel: r?.id || null, polity: null,
-      activeComparisonStory: v.story, activeDiscovery, pinned,
+      activeComparisonStory: v.story, activeDiscovery, activeContemporaries: v.contemporaries || null, pinned,
       flatT: { x: v.pan[0] * W, y: v.pan[1] * H }, searchPlace: v.location || null,
       lastPoint: v.point, placeState: null, placeReturn: null };
     placeToken++;
@@ -765,7 +774,7 @@
     linkToken++;
     place = null; placeReturn = null; searchPlace = null; lastPoint = null;
     placePanel.hidden = true;
-    pinned = null; activeComparisonStory = null; activeDiscovery = null;
+    pinned = null; activeComparisonStory = null; activeDiscovery = null; activeContemporaries = null;
     stopPlay(); stopSpin(); flyToken++; userMoved = true;
     if (compare.on) document.getElementById("compareToggle").click();
     state.sel = null; selectedPolity = null; compare.selectedYear = null;
@@ -807,6 +816,7 @@
     searchPlace = null;
     activeComparisonStory = null;
     activeDiscovery = null;
+    activeContemporaries = result.contemporaries || null;
     lastPoint = null;
     stopPlay();
     stopSpin();
@@ -839,6 +849,16 @@
     return true;
   }
   window.HistoryDiscovery = {
+    contemporaryPair() {
+      if (!activeContemporaries) return null;
+      const people = activeContemporaries.map((key) => ppl.find((p) => p.wiki === key));
+      if (people.some((p) => !p) || people[0].region === people[1].region) return null;
+      const from = Math.max(...people.map((p) => p.born)), to = Math.min(...people.map((p) => p.died));
+      return from <= state.year && to >= state.year ? { people, from, to, year: state.year } : null;
+    },
+    pinContemporaries(people) {
+      activeContemporaries = people.map((p) => p.wiki);
+    },
     contemporaryAnchor() {
       return curatedSelection(activeDiscovery)?.story.person;
     },

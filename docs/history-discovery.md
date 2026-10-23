@@ -1,6 +1,80 @@
 # History All Around discovery
 
-The implementation is local to `static/historyallaround/atlas/`. It adds no runtime dependencies and does not change the historical datasets. The original D3 projection, canvas, timeline, filters, globe, and ledger remain in use. Integration hooks in `index.html` delegate to `discovery.js`; pure date/coverage/distance/association helpers live in `discovery-core.js`. `discovery.css` styles only the new controls and panels, plus the timeline space they require.
+The implementation is local to `static/historyallaround/atlas/`. It adds no runtime dependencies and does not change the historical border datasets. The original D3 projection, canvas, timeline, filters, globe, and ledger remain in use. Integration hooks in `index.html` delegate to `discovery.js`; pure date/coverage/distance/association helpers live in `discovery-core.js`. `discovery.css` styles only the new controls and panels, plus the timeline space they require.
+
+## Curated discoveries and focused depth
+
+**Curated discoveries** introduces an authored Cleopatra tour with five stops:
+Alexandria, Chang’an, Meroë, Monte Albán and Rome. Each stop focuses the existing
+map on its coordinate and year, with source links, Previous/Next and direct stop
+buttons. Dated events and broader period snapshots are explicitly distinguished;
+50 BC is a viewing date for the context stops, not a precise date for their entire
+description. Moving the timeline keeps the reader open and offers a return to the
+stop's year. Back restores the earlier camera, selection, filters and comparison.
+The active reader appears ahead of the contemporaries card while following a tour.
+
+The period also has eight additional sourced event/period records and two people,
+available to the ordinary map, ledger and search. This concentrates depth around
+one discovery instead of filling every year with loosely dated events. Long
+archaeological periods retain their ranges and approximate-date flags. Existing
+record arrays are appended to preserve their earlier IDs. No border or place
+search index needs regeneration for these additions.
+
+Authored tours live in `curated-discoveries.js`. Each needs a permanent ID, an
+introduction, a dated scope, source links, and permanent stop IDs with a coordinate,
+map year, `event`/`context` kind and independently sourced text. Keep map years
+inside the tour's scope. Optional `contemporaries` source keys select a featured
+pair. Existing shared URLs retain the tour and stop by ID; unknown IDs open the
+ordinary saved map. A short link, `atlas/#discover=cleopatra-world`, opens the tour
+directly and is used on the landing page.
+
+## Contemporaries across cultures
+
+**They were alive together** appears prominently above the ordinary ledger. It
+shows two people from different Atlas regions whose recorded lifespans include
+the displayed year, with aligned lifespan bars, highlighted overlap and individual
+source links. Approximate lifespans and overlaps are labeled. These are associated
+map locations, not verified whereabouts or evidence the people met.
+
+Selecting either person preserves the year and pair. **Share this moment** retains
+the exact pair in the view link, including after reload; Back restores it as well.
+Without a chosen pair, the card prefers the selected person or the tour's anchor,
+then exact lifespan records and longer overlaps. Years without a supported pair
+show an empty state with examples instead of inventing contemporaries. Examples
+include Shakespeare/Tokugawa Ieyasu, Newton/Kangxi and Cleopatra/Emperor Yuan of Han.
+In comparison mode this card explicitly follows the right-hand year.
+
+The landing-page link `atlas/#people=1610&person=William_Shakespeare` opens a
+person in a year within their lifetime. Invalid person/year combinations are
+ignored. No external API, extra runtime dataset or account is required.
+
+## Uncertainty on the map
+
+Historical boundary strokes are dashed, with an always-visible **Approximate
+historical borders** disclosure in the map's border control. It explains simplified
+reconstructions, fluid/disputed frontiers, claims versus effective control, and
+coverage gaps. It also explicitly states that the source has no confidence score
+for individual boundaries. This is one visual convention for all historical
+coverage; it does not assign invented certainty to particular regions or periods.
+Today and Off hide the disclosure. Failed or missing historical coverage changes
+its visible label, including partial comparison coverage.
+
+Territory details label dates as mapped coverage and repeat the reconstruction
+context. Event/person hover labels include dates and approximation markers;
+approximate events also identify that status in their details.
+
+Run the added browser coverage with the same server and isolated Chrome setup
+described below:
+
+```sh
+node tests/history-curated.browser.mjs
+```
+
+It verifies the five tour stops, sources, focus, Back, exact-view reload, pinned
+contemporary pairs, landing-page links, same-year navigation, sparse-year states,
+dashed boundary strokes, missing coverage and the 390px mobile layout. Screenshots
+are written to the OS temporary directory. Pure date, pair, source and data checks
+remain in `tests/history-discovery.test.cjs`.
 
 ## Compare
 
