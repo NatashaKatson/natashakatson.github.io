@@ -75,6 +75,24 @@ try {
     const a=ctx.getImageData(Math.round(pixel[0]*DPR),Math.round(pixel[1]*DPR),1,1).data,b=ec.getImageData(0,0,1,1).data;
     assert([...a].every((v,i)=>Math.abs(v-b[i])<=3),'territory fill agrees with area-ordered hover identity');
     assert(!d3.geoContains(polities().find(f=>f.name==='French Fifth Republic'),point),'France geometry excludes independent Algeria');
+    for(const mode of ['globe','flat']){
+      setMode(mode);stopSpin();rot=[110,-49,0];zoomK=2.5;
+      for(const year of [1950,1980,2014,2024,2026]){
+        await loadChunk(chunkOf(year));setYear(year);render();
+        const active=polities(),us=active.find(f=>f.name==='United States of America'),canada=active.find(f=>f.name==='Canada');
+        assert(us&&canada,'North American states available in '+year);
+        for(const lon of [-120,-110,-100]){
+          assert(!d3.geoContains(us,[lon,49.2]),'US boundary must not bow north of 49 degrees: '+year+'/'+mode+'/'+lon);
+          assert(d3.geoContains(canada,[lon,49.2]),'Canada starts just north of the parallel');
+          assert(d3.geoContains(us,[lon,48.8]),'US remains just south of the parallel');
+          if(mode==='globe'){
+            assert(mapAtYear(...proj([lon,49.2]))?.polity.name==='Canada','hover north of the border agrees with Canada');
+            assert(mapAtYear(...proj([lon,48.8]))?.polity.name==='United States of America','hover south of the border agrees with US');
+          }
+        }
+      }
+    }
+    setMode('flat');
     for(const year of [2013,2014,2023,2024,2026]){
       await loadChunk(chunkOf(year));setYear(year);render();
       const crimeaPoint=[34.1,45.3],active=polities(),region=active.find(f=>f.name==='Crimea (occupied by Russia)');

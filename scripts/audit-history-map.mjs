@@ -67,7 +67,7 @@ const allFeatures=new Map();
 for(const chunk of BIDX.chunks){
  const t=await(await fetch('borders/c'+chunk+'.json')).json();
  const fs=topojson.feature(t,t.objects.p).features;
- for(const f of fs){const p=f.properties;f.name=unparen(p.n);f.member=unparen(p.m);f.from=p.f;f.to=p.t;f.area=p.a;f.cen=[p.lx,p.ly];f.bbox=d3.geoBounds(f);f.hue=hueOf(f.name);f.shapeKey=JSON.stringify(f.geometry);}
+ for(const f of fs){f.geometry=DiscoveryCore.resampleParallels(f.geometry);const p=f.properties;f.name=unparen(p.n);f.member=unparen(p.m);f.from=p.f;f.to=p.t;f.area=p.a;f.cen=[p.lx,p.ly];f.bbox=d3.geoBounds(f);f.hue=hueOf(f.name);f.shapeKey=JSON.stringify(f.geometry);}
  allFeatures.set(chunk,fs);
 }
 const unique=new Map();for(const fs of allFeatures.values())for(const f of fs)unique.set([f.properties.n,f.member,f.from,f.to].join('|'),f);
@@ -75,7 +75,7 @@ results.versions=unique.size;
 for(const f of unique.values())if(!d3.geoContains(f,f.cen))results.badStateAnchors.push({name:f.name,from:f.from,to:f.to,point:f.cen,area:f.area,member:f.member});
 for(const [name,from,to,year,lon,lat,wiki,member] of states){
  const active=DiscoveryCore.active(allFeatures.get(chunkOf(year)),year);
- const shown=active.find(f=>f.name===name),target=allFeatures.get(chunkOf(year)).find(f=>f.name===name&&f.member===member&&f.from<=year&&f.to>=year);
+ const shown=active.find(f=>f.name===name&&f.member===member),target=allFeatures.get(chunkOf(year)).find(f=>f.name===name&&f.member===member&&f.from<=year&&f.to>=year);
  if(shown&&target&&shown!==target&&JSON.stringify(shown.geometry)!==JSON.stringify(target.geometry))results.shadowedStateRows.push({name,year,point:[lon,lat],member,shownMember:shown.member,shownArea:shown.area,targetArea:target.area});
 }
 for(const f of lo.countries){const point=d3.geoCentroid(f);if(!d3.geoContains(f,point))results.coarseCountryAnchors.push({name:f.properties.name,point});}

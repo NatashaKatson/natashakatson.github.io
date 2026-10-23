@@ -226,6 +226,830 @@
       "blurb": "Cyrus conquers Babylon in 539 BC, incorporating the Neo-Babylonian kingdom into the Achaemenid Persian Empire. The marker locates Babylon.",
       "source": "https://www.metmuseum.org/exhibitions/listings/2013/cyrus-cylinder",
       "reason": "The museum’s account of the Cyrus Cylinder confirms the conquest date; remove an unnecessary largest-ever superlative."
+    },
+    {
+      "wiki": "Neolithic_Revolution",
+      "change": "source-check",
+      "source": "https://www.fhw.gr/chronos/01/en/intro/agriculture.html",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Oracle_bone_script",
+      "change": "source-check",
+      "source": "https://whc.unesco.org/en/list/1114",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Olmecs",
+      "change": "correction or clarification",
+      "source": "https://www.lacma.org/sites/default/files/module-uploads/E4E_Olmec.pdf",
+      "reason": "The source supports this qualified chronology or description; the former wording implied greater precision or an unsupported claim.",
+      "start": -1200,
+      "blurb": "San Lorenzo in present-day Mexico is a major Olmec centre, known for its colossal carved stone heads. The marker represents the site during its early flourishing."
+    },
+    {
+      "wiki": "Late_Bronze_Age_collapse",
+      "change": "correction or clarification",
+      "source": "https://www.cambridge.org/core/journals/antiquity/article/getting-closer-to-the-late-bronze-age-collapse-in-the-aegean-and-eastern-mediterranean-c-1200-bc/482564326A668899FF183DD949FC520F",
+      "reason": "The source supports this qualified chronology or description; the former wording implied greater precision or an unsupported claim.",
+      "start": -1200,
+      "blurb": "Around 1200 BC, several eastern Mediterranean kingdoms and trade networks collapse over a period of decades. The date and Cyprus marker represent a regional process, not one simultaneous destruction."
+    },
+    {
+      "wiki": "Lapita_culture",
+      "change": "source-check",
+      "source": "https://doi.org/10.1073%2Fpnas.181335398",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Founding_of_Rome",
+      "change": "source-check",
+      "source": "https://museicapitolini.org/en/node/2482",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Athenian_democracy",
+      "change": "source-check",
+      "source": "https://generales.uprrp.edu/humanidades/wp-content/uploads/sites/5/2018/09/TheDevolpmentoofDemocracyinAthen.pdf",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Nok_culture",
+      "change": "correction or clarification",
+      "source": "https://pure.qub.ac.uk/files/163792990/Safa_2016_Sessions.pdf",
+      "reason": "The source supports this qualified chronology or description; the former wording implied greater precision or an unsupported claim.",
+      "blurb": "Nok communities in central Nigeria make distinctive terracotta sculptures. Iron smelting is evidenced in later Nok phases; it is not securely dated by this approximate 900 BC marker."
+    },
+    {
+      "wiki": "Battle_of_Marathon",
+      "change": "source-check",
+      "source": "https://www.britishmuseum.org/blog/marathons-ancient-origins",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Parthenon",
+      "change": "source-check",
+      "source": "https://www.theacropolismuseum.gr/en/exhibit-halls/parthenon-gallery",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Wars_of_Alexander_the_Great",
+      "change": "source-check",
+      "source": "https://weisun.org/apworld/assign/readings/cc_hellenistic_Between334_and_323.pdf",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Kalinga_War",
+      "change": "source-check",
+      "source": "https://82nd-and-fifth.metmuseum.org/toah/ht/04/ssa.html",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Qin_dynasty",
+      "change": "source-check",
+      "source": "https://asia-archive.si.edu/learn/for-educators/teaching-china-with-the-smithsonian/explore-by-dynasty/qin-dynasty/",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Hannibal's_crossing_of_the_Alps",
+      "change": "source-check",
+      "source": "https://doi.org/10.1073/pnas.2612764123",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Han_dynasty",
+      "change": "correction or clarification",
+      "source": "https://82nd-and-fifth.metmuseum.org/toah/ht/05/eac.html",
+      "reason": "The source supports this qualified chronology or description; the former wording implied greater precision or an unsupported claim.",
+      "start": -206,
+      "blurb": "The Han dynasty, conventionally dated from 206 BC, establishes an enduring model of imperial government. Its name survives in the term Han Chinese."
+    },
+    {
+      "wiki": "Silk_Road",
+      "change": "correction or clarification",
+      "source": "https://en.unesco.org/silkroad/sites/default/files/knowledge-bank-article/the%20opening%20of%20the%20silk%20route.pdf",
+      "reason": "The source supports this qualified chronology or description; the former wording implied greater precision or an unsupported claim.",
+      "start": -138,
+      "title": "Zhang Qian journeys west",
+      "lat": 34.27,
+      "lon": 108.9,
+      "blurb": "In 138 BC, the Han envoy Zhang Qian sets out from Chang'an for Central Asia. His journeys strengthen connections that later become known as the Silk Roads; these networks have no single opening date. The marker locates his departure city."
+    },
+    {
+      "wiki": "Assassination_of_Julius_Caesar",
+      "change": "source-check",
+      "source": "https://www.smithsonianmag.com/travel/explore-julius-caesars-rome-180950262/",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Eruption_of_Mount_Vesuvius_in_79_AD",
+      "change": "source-check",
+      "source": "https://rischi.protezionecivile.gov.it/en/approfondimento/vesuvio-0/",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Cai_Lun",
+      "change": "source-check",
+      "source": "https://mci.si.edu/node/1301320",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Edict_of_Milan",
+      "change": "source-check",
+      "source": "https://sourcebooks.web.fordham.edu/source/edict-milan.asp",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Gupta_Empire",
+      "change": "correction or clarification",
+      "source": "https://jameelcentre.ashmolean.org/collection/921/per_page/50/offset/0/sort_by/date/start/1701/end/1799/object/11150",
+      "reason": "The source supports this qualified chronology or description; the former wording implied greater precision or an unsupported claim.",
+      "blurb": "The Gupta dynasty rises in northern India around AD 320, during a period known for major developments in art, literature and science."
+    },
+    {
+      "wiki": "Constantinople",
+      "change": "source-check",
+      "source": "https://www.europeana.eu/en/exhibitions/the-silk-and-the-blood/constantinople",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Kingdom_of_Aksum",
+      "change": "source-check",
+      "source": "https://journals.sub.uni-hamburg.de/aethiopica/article/download/2433/2360",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Fall_of_the_Western_Roman_Empire",
+      "change": "source-check",
+      "source": "https://www.metmuseum.org/it/toah/ht/05/eust",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Hagia_Sophia",
+      "change": "correction or clarification",
+      "source": "https://whc.unesco.org/en/list/356/",
+      "reason": "The source supports this qualified chronology or description; the former wording implied greater precision or an unsupported claim.",
+      "blurb": "Justinian's Hagia Sophia is completed at Constantinople in 537. Its vast dome makes it a landmark of Byzantine architecture."
+    },
+    {
+      "wiki": "Tang_dynasty",
+      "change": "correction or clarification",
+      "source": "https://resources.metmuseum.org/resources/metpublications/pdf/The_Metropolitan_Museum_of_Art_Bulletin_v_23_no_9_May_1965.pdf",
+      "reason": "The source supports this qualified chronology or description; the former wording implied greater precision or an unsupported claim.",
+      "blurb": "The Tang dynasty begins in 618, with its capital at Chang'an, one of the great cities of the medieval world."
+    },
+    {
+      "wiki": "Hijrah",
+      "change": "source-check",
+      "source": "https://islam.museum/en/journey/hijra-route/",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Umayyad_conquest_of_Hispania",
+      "change": "source-check",
+      "source": "https://www.metmuseum.org/-/media/files/learn/for%20educators/publications%20for%20educators/islamic%20teacher%20resource/unit5.pdf",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Baghdad",
+      "change": "source-check",
+      "source": "https://www.metmuseum.org/ru/essays/the-art-of-the-abbasid-period-750-1258",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Lindisfarne",
+      "change": "source-check",
+      "source": "https://www.english-heritage.org.uk/visit/places/lindisfarne-priory/History/",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Charlemagne",
+      "change": "source-check",
+      "source": "https://www.metmuseum.org/de/essays/carolingian-art",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Christianization_of_Kievan_Rus'",
+      "change": "source-check",
+      "source": "https://82nd-and-fifth.metmuseum.org/toah/ht/06/eue.html",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "East–West_Schism",
+      "change": "source-check",
+      "source": "https://www.cambridge.org/core/journals/traditio/article/abs/rethinking-the-schism-of-1054-authority-heresy-and-the-latin-rite/5DD029378209D589C69471CBCFFE8F1C",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Battle_of_Hastings",
+      "change": "source-check",
+      "source": "https://historicengland.org.uk/listing/the-list/list-entry/1000013",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "University_of_Bologna",
+      "change": "correction or clarification",
+      "source": "https://www.unibo.it/en/university/who-we-are/university-today/the-university-today-numbers-and-innovation-archive/university-of-bologna-brochure-2021-22/%40%40download/file/Brochure%20Ateneo%202021_22.pdf",
+      "reason": "The source supports this qualified chronology or description; the former wording implied greater precision or an unsupported claim.",
+      "approx": 1,
+      "blurb": "Bologna traditionally dates its university's origins to 1088. It is among the oldest universities in continuous operation; the date is a conventional foundation year."
+    },
+    {
+      "wiki": "First_Crusade",
+      "change": "source-check",
+      "source": "https://www.metmuseum.org/de/toah/ht/07/wae",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Great_Zimbabwe",
+      "change": "source-check",
+      "source": "https://whc.unesco.org/en/list/364",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Angkor_Wat",
+      "change": "source-check",
+      "source": "https://www.library.gov.au/learn/digital-classroom/angkorkhmer-empire-802-1431/building-angkor",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Magna_Carta",
+      "change": "source-check",
+      "source": "https://www.runnymede.gov.uk/discover-history/magna-carta",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Moai",
+      "change": "source-check",
+      "source": "https://link.springer.com/article/10.1186/s43238-026-00298-0",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Siege_of_Baghdad_(1258)",
+      "change": "source-check",
+      "source": "https://82nd-and-fifth.metmuseum.org/toah/ht/07/wam.html",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Marco_Polo",
+      "change": "source-check",
+      "source": "https://www.societyforasianart.org/sites/default/files/8.18_Berger.pdf",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "History_of_New_Zealand",
+      "change": "source-check",
+      "source": "https://teara.govt.nz/en/when-was-new-zealand-first-settled",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Mansa_Musa",
+      "change": "source-check",
+      "source": "https://www.metmuseum.org/de/essays/the-trans-saharan-gold-trade-7th-14th-century",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Tenochtitlan",
+      "change": "correction or clarification",
+      "source": "https://www.gob.mx/cultura/articulos/el-codice-boturini-del-peregrinaje-de-los-aztecas-a-la-fundacion-de-mexico-tenochtitlan",
+      "reason": "The source supports this qualified chronology or description; the former wording implied greater precision or an unsupported claim.",
+      "approx": 1,
+      "blurb": "Mexica tradition dates the founding of Tenochtitlan on an island in Lake Texcoco to 1325. The precise foundation date is debated."
+    },
+    {
+      "wiki": "Kilwa_Kisiwani",
+      "change": "source-check",
+      "source": "https://whc.unesco.org/pg.cfm?CID=31&ID_SITE=144&l=en",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Ming_dynasty",
+      "change": "source-check",
+      "source": "https://www.getty.edu/publications/resources/virtuallibrary/0892365625.pdf",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Ming_treasure_voyages",
+      "change": "source-check",
+      "source": "https://www.metmuseum.org/ja/toah/ht/08/eac",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Inca_Empire",
+      "change": "correction or clarification",
+      "source": "https://82nd-and-fifth.metmuseum.org/toah/ht/08/sanc.html",
+      "reason": "The source supports this qualified chronology or description; the former wording implied greater precision or an unsupported claim.",
+      "approx": 1,
+      "blurb": "Around the fifteenth century, Inca rulers expand their state from Cusco across the Andes. The conventional date 1438 is associated with Pachacuti's rise, rather than a precisely dated beginning of all Inca expansion."
+    },
+    {
+      "wiki": "Printing_press",
+      "change": "correction or clarification",
+      "source": "https://guides.loc.gov/gutenberg",
+      "reason": "The source supports this qualified chronology or description; the former wording implied greater precision or an unsupported claim.",
+      "start": 1455,
+      "approx": 1,
+      "title": "Gutenberg's printed Bible",
+      "blurb": "Around 1454–1455, Gutenberg and his collaborators print the Bible in Mainz using movable metal type. The method helps transform book production in Europe."
+    },
+    {
+      "wiki": "Fall_of_Constantinople",
+      "change": "source-check",
+      "source": "https://www.europeana.eu/en/exhibitions/the-silk-and-the-blood/constantinople",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Voyages_of_Christopher_Columbus",
+      "change": "source-check",
+      "source": "https://www.bahamas.com/plan-your-trip/things-to-do/columbus-monument",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Vasco_da_Gama",
+      "change": "source-check",
+      "source": "https://www.metmuseum.org/exhibitions/listings/2013/interwoven-globe",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Ninety-five_Theses",
+      "change": "source-check",
+      "source": "https://www.wittenberg.de/portal/seiten/thesentuer-i-theses-door-900000269-36670.html",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Magellan_expedition",
+      "change": "source-check",
+      "source": "https://www.cultura.gob.es/cultura/archivos/difusion/registro-memoria-unesco/2023/vuelta-mundo-magallanes-elcano.html",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Fall_of_Tenochtitlan",
+      "change": "source-check",
+      "source": "https://www.gob.mx/agn/articulos/111664",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Mughal_Empire",
+      "change": "source-check",
+      "source": "https://panipat.gov.in/first-battle/",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "De_revolutionibus_orbium_coelestium",
+      "change": "source-check",
+      "source": "https://wwws.loc.gov/exhibits/exploring-the-early-americas/documenting-new-knowledge.html",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Tokugawa_shogunate",
+      "change": "correction or clarification",
+      "source": "https://www.metmuseum.org/exhibitions/samurai-splendor",
+      "reason": "The source supports this qualified chronology or description; the former wording implied greater precision or an unsupported claim.",
+      "blurb": "The Tokugawa shoguns establish their government at Edo in the early 1600s. Their rule lasts more than 250 years, with prolonged internal stability."
+    },
+    {
+      "wiki": "Jamestown,_Virginia",
+      "change": "source-check",
+      "source": "https://www.nps.gov/jame/learn/historyculture/a-short-history-of-jamestown.htm",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Sidereus_Nuncius",
+      "change": "source-check",
+      "source": "https://www.cabinet.ox.ac.uk/sidereus-nuncius-1610",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Taj_Mahal",
+      "change": "source-check",
+      "source": "https://whc.unesco.org/en/list/252/",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Qing_dynasty",
+      "change": "source-check",
+      "source": "https://www.dpm.org.cn/court/event/159873.html",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Peace_of_Westphalia",
+      "change": "source-check",
+      "source": "https://www.lwl.org/westfaelische-geschichte/portal/Internet/ku.php?ID=579&tab=web",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Dutch_Cape_Colony",
+      "change": "source-check",
+      "source": "https://sahistory.org.za/dated-event/van-riebeeck-lands-cape",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Saint_Petersburg",
+      "change": "source-check",
+      "source": "https://www.prlib.ru/history/619267",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Industrial_Revolution",
+      "change": "source-check",
+      "source": "https://blog.sciencemuseumgroup.org.uk/climate-and-the-collection/",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "James_Cook",
+      "change": "source-check",
+      "source": "https://www.nma.gov.au/exhibitions/encounters/places/botany-bay",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "First_Fleet",
+      "change": "source-check",
+      "source": "https://www2.sl.nsw.gov.au/archive/discover_collections/history_nation/terra_australis/firstfleet.html",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "French_Revolution",
+      "change": "source-check",
+      "source": "https://www.chateauversailles.fr/sites/default/files/ressources-pedagogiques/IMG/pdf/ressource-pedagogique_commentaire-prise_de_la_bastille_compressed.pdf",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Battle_of_Waterloo",
+      "change": "source-check",
+      "source": "https://www.nam.ac.uk/explore/battle-waterloo",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "1815_eruption_of_Mount_Tambora",
+      "change": "source-check",
+      "source": "https://science.nasa.gov/earth/earth-observatory/mount-tambora-volcano-sumbawa-island-indonesia-39412/",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Ukase_of_1821",
+      "change": "source-check",
+      "source": "https://history.state.gov/historicaldocuments/frus1890/d291",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Treaty_of_Waitangi",
+      "change": "source-check",
+      "source": "https://nzhistory.govt.nz/the-treaty-of-waitangi-is-signed",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Oregon_Treaty",
+      "change": "source-check",
+      "source": "https://history.state.gov//milestones/1830-1860/oregon-territory",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Pig_War_(1859)",
+      "change": "source-check",
+      "source": "https://www.nps.gov/sajh/planyourvisit/upload/2012-American_Camp_History_Walk_online_color.pdf",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Emancipation_reform_of_1861",
+      "change": "source-check",
+      "source": "https://library.law.yale.edu/news/monuments-imperial-russian-law-emancipation-serfs",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Meiji_Restoration",
+      "change": "source-check",
+      "source": "https://www.slam.org/collection/constituents/3919/",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Suez_Canal",
+      "change": "source-check",
+      "source": "https://www.suezcanal.gov.eg/English/Pages/FAQ.aspx",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Berlin_Conference",
+      "change": "source-check",
+      "source": "https://archiv.diplo.de/arc-de/das-politische-archiv/generalakte-2683776",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Women's_suffrage_in_New_Zealand",
+      "change": "source-check",
+      "source": "https://nzhistory.govt.nz/page/women-vote-first-general-election",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Battle_of_Adwa",
+      "change": "source-check",
+      "source": "https://adwavictorymemorial.gov.et/about",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Dogger_Bank_incident",
+      "change": "correction or clarification",
+      "source": "https://www.nationalhistoricships.org.uk/sites/default/files/2023-02/f_maritime_culture-ilovepdf-compressed.pdf",
+      "reason": "The source supports this qualified chronology or description; the former wording implied greater precision or an unsupported claim.",
+      "blurb": "In October 1904, Russia's Baltic Fleet fires on British fishing trawlers in the North Sea after mistaking them for hostile vessels. The incident causes a diplomatic crisis."
+    },
+    {
+      "wiki": "1911_Revolution",
+      "change": "correction or clarification",
+      "source": "https://history.state.gov/milestones/1899-1913/chinese-rev",
+      "reason": "The source supports this qualified chronology or description; the former wording implied greater precision or an unsupported claim.",
+      "end": 1912,
+      "blurb": "Revolution begins at Wuchang in October 1911. The Republic of China is proclaimed and the Qing emperor abdicates in 1912."
+    },
+    {
+      "wiki": "World_War_I",
+      "change": "correction or clarification",
+      "source": "https://www.ushmm.org/information/press/press-releases/museum-statement-on-world-war-i-centennial",
+      "reason": "The source supports this qualified chronology or description; the former wording implied greater precision or an unsupported claim.",
+      "blurb": "World War I devastates Europe and other regions from 1914 to 1918. Nearly ten million soldiers die, alongside immense civilian losses. The marker represents one part of the Western Front."
+    },
+    {
+      "wiki": "Russian_Revolution",
+      "change": "source-check",
+      "source": "https://encyclopedia.ushmm.org/content/en/article/the-russian-revolution-1917",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Penicillin",
+      "change": "source-check",
+      "source": "https://www.acs.org/education/whatischemistry/landmarks/flemingpenicillin.html?trk=public_post_reshare-text",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Wall_Street_crash_of_1929",
+      "change": "source-check",
+      "source": "https://www.federalreservehistory.org/essays/stock-market-crash-of-1929",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Salt_March",
+      "change": "source-check",
+      "source": "https://gandhistory.in/collection/collection-details.php?id=99",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "World_War_II",
+      "change": "source-check",
+      "source": "https://www.nationalww2museum.org/students-teachers/student-resources/explore-wwii-history",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Atomic_bombings_of_Hiroshima_and_Nagasaki",
+      "change": "source-check",
+      "source": "https://documents.un.org/api/symbol/access?l=en&s=A%2F51%2F218&t=pdf",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Partition_of_India",
+      "change": "source-check",
+      "source": "https://www.nam.ac.uk/explore/independence-and-partition-1947",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Proclamation_of_the_People's_Republic_of_China",
+      "change": "source-check",
+      "source": "https://www.mfa.gov.cn/eng/zy/jj/zggcddwjw100ggs/jszgddzg/202406/t20240606_11377939.html",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Molecular_Structure_of_Nucleic_Acids",
+      "change": "source-check",
+      "source": "https://doi.org/10.1038/171737a0",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "March_on_Washington_for_Jobs_and_Freedom",
+      "change": "source-check",
+      "source": "https://www.nps.gov/places/000/lincoln-memorial-i-have-a-dream-marker.htm",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Sydney_Opera_House",
+      "change": "source-check",
+      "source": "https://www.sydneyoperahouse.com/sites/default/files/collaborodam_assets/soh-cmp-interactive-1.pdf",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Berlin_Wall",
+      "change": "source-check",
+      "source": "https://www.bundesstiftung-aufarbeitung.de/de/vermitteln/bildung/aufbruch-umbruch/mauerfall",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Dissolution_of_the_Soviet_Union",
+      "change": "source-check",
+      "source": "https://2001-2009.state.gov/r/pa/ho/time/pcw/108229.htm",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "1994_South_African_general_election",
+      "change": "source-check",
+      "source": "https://www.gov.za/nr/issues/milestones-20-years-freedom",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "2004_Indian_Ocean_earthquake_and_tsunami",
+      "change": "source-check",
+      "source": "https://www.ncei.noaa.gov/products/natural-hazards/tsunamis-earthquakes-volcanoes/tsunamis/recent-significant-events",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "2008_financial_crisis",
+      "change": "source-check",
+      "source": "https://www.federalreservehistory.org/essays/great-recession-of-200709",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Arab_Spring",
+      "change": "source-check",
+      "source": "https://publications.parliament.uk/pa/cm201012/cmselect/cmfaff/writev/arab/as07.htm",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Russian_invasion_of_Ukraine",
+      "change": "source-check",
+      "source": "https://ukraine.un.org/en/173250-statement-secretary-general-%E2%80%93-ukraine",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "James_Webb_Space_Telescope",
+      "change": "correction or clarification",
+      "source": "https://science.nasa.gov/mission/webb/webbs-first-images/",
+      "reason": "The source supports this qualified chronology or description; the former wording implied greater precision or an unsupported claim.",
+      "blurb": "NASA releases the James Webb Space Telescope's first science images in July 2022. The marker locates the Space Telescope Science Institute in Baltimore, which supports the mission; the telescope operates in space."
+    },
+    {
+      "wiki": "Sewing_needle",
+      "change": "correction or clarification",
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11212769/",
+      "reason": "The source supports this qualified chronology or description; the former wording implied greater precision or an unsupported claim.",
+      "start": -38000,
+      "blurb": "Eyed bone needles from Denisova Cave in Siberia are reported from layers around 40,000 years old in a 2024 scholarly review. Such tools allow thread to be drawn through material; they do not prove the precise form of the clothing sewn."
+    },
+    {
+      "wiki": "History_of_cotton",
+      "change": "correction or clarification",
+      "source": "https://www.harappa.com/sites/default/files/pdf/First_Evidence_of_Cotton_at_Mehrgarh.pdf",
+      "reason": "The source supports this qualified chronology or description; the former wording implied greater precision or an unsupported claim.",
+      "start": -5500,
+      "blurb": "Cotton fibres preserved by corrosion inside a copper bead at Mehrgarh, in present-day Pakistan, come from a grave dated to the first half of the sixth millennium BC."
+    },
+    {
+      "wiki": "Huaca_Prieta",
+      "change": "source-check",
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5023320/",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "History_of_silk",
+      "change": "source-check",
+      "source": "https://www.sciencedirect.com/science/article/pii/S0141813026043734",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Jūnihitoe",
+      "change": "source-check",
+      "source": "https://chnm.gmu.edu/wwh/p/222.html",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Moctezuma's_headdress",
+      "change": "correction or clarification",
+      "source": "https://www.weltmuseumwien.at/en/the-feather-headdress/",
+      "reason": "The source supports this qualified chronology or description; the former wording implied greater precision or an unsupported claim.",
+      "blurb": "An elaborate quetzal-feather headdress with gold ornaments survives in Vienna. Its association with Moctezuma is unproven. The date and central Mexico marker represent its early-sixteenth-century cultural setting, not a known production year or workshop."
+    },
+    {
+      "wiki": "ʻAhu_ʻula",
+      "change": "source-check",
+      "source": "https://www.tepapa.govt.nz/about/press-and-media/press-releases/2020-media-releases/feather-cloak-and-helmet-gifted-captain",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Charles_Frederick_Worth",
+      "change": "source-check",
+      "source": "https://www.petitpalais.paris.fr/sites/default/files/content/press-releases/cp_worth_uk.pdf",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Jeans",
+      "change": "source-check",
+      "source": "https://www.levistrauss.com/2019/07/04/the-history-of-denim/",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "African_wax_prints",
+      "change": "source-check",
+      "source": "https://www.vam.ac.uk/articles/cloth-of-a-continent-africa-fashion",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "Miniskirt",
+      "change": "source-check",
+      "source": "https://www.vam.ac.uk/articles/the-miniskirt-myth",
+      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+    },
+    {
+      "wiki": "United_States_Declaration_of_Independence",
+      "change": "source-check",
+      "source": "https://www.archives.gov/milestone-documents/declaration-of-independence",
+      "reason": "Date and main claim checked against the linked museum, archive or originating institution."
+    },
+    {
+      "wiki": "Haitian_Revolution",
+      "change": "source-check",
+      "source": "https://history.state.gov/milestones/1784-1800/haitian-rev",
+      "reason": "Date and main claim checked against the linked museum, archive or originating institution."
+    },
+    {
+      "wiki": "On_the_Origin_of_Species",
+      "change": "source-check",
+      "source": "https://www.nhm.ac.uk/discover/charles-darwin-most-famous-biologist.html",
+      "reason": "Date and main claim checked against the linked museum, archive or originating institution."
+    },
+    {
+      "wiki": "American_Civil_War",
+      "change": "source-check",
+      "source": "https://www.nps.gov/civilwar/overview.htm",
+      "reason": "Date and main claim checked against the linked museum, archive or originating institution."
+    },
+    {
+      "wiki": "Invention_of_the_telephone",
+      "change": "source-check",
+      "source": "https://ptacts.uspto.gov/ptacts/public-informations/petitions/1458577/download-documents?artifactId=KJr_wDpCsWZV8cex4O76s7T02DvYzW1Q-MFNZ-ZulGR-Z5lTUPN9GI8",
+      "reason": "Date and main claim checked against the linked museum, archive or originating institution."
+    },
+    {
+      "wiki": "Wright_Flyer",
+      "change": "clarification",
+      "source": "https://www.nps.gov/wrbr/learn/historyculture/thefirstflight.htm",
+      "reason": "Date and main claim checked against the linked museum, archive or originating institution.",
+      "blurb": "On 17 December 1903, the Wright brothers make their first successful powered flights at Kill Devil Hills, near Kitty Hawk. The first flight lasts 12 seconds."
+    },
+    {
+      "wiki": "United_Nations",
+      "change": "clarification",
+      "source": "https://www.un.org/en/about-us/un-charter",
+      "reason": "Date and main claim checked against the linked museum, archive or originating institution.",
+      "blurb": "The UN Charter is signed in San Francisco on 26 June 1945. The United Nations formally comes into existence on 24 October, when the Charter enters into force. The marker locates the signing city."
+    },
+    {
+      "wiki": "Sputnik_1",
+      "change": "source-check",
+      "source": "https://www.nasa.gov/history/65-years-ago-sputnik-ushers-in-the-space-age/",
+      "reason": "Date and main claim checked against the linked museum, archive or originating institution."
+    },
+    {
+      "wiki": "Vostok_1",
+      "change": "source-check",
+      "source": "https://science.nasa.gov/resource/yuri-gagarin-first-human-in-space/",
+      "reason": "Date and main claim checked against the linked museum, archive or originating institution."
+    },
+    {
+      "wiki": "World_Wide_Web",
+      "change": "source-check",
+      "source": "https://home.cern/science/computing/the-birth-of-the-web/",
+      "reason": "Date and main claim checked against the linked museum, archive or originating institution."
+    },
+    {
+      "wiki": "IPhone_(1st_generation)",
+      "change": "source-check",
+      "source": "https://www.apple.com/uk/newsroom/2007/01/09Apple-Reinvents-the-Phone-with-iPhone/",
+      "reason": "Date and main claim checked against the linked museum, archive or originating institution."
+    },
+    {
+      "wiki": "Jacquard_machine",
+      "change": "source-check",
+      "source": "https://collection.sciencemuseumgroup.org.uk/objects/co44888/model-of-a-jacquard-loom-model-jacquard-loom",
+      "reason": "Date and main claim checked against the linked museum, archive or originating institution."
+    },
+    {
+      "wiki": "Sewing_machine",
+      "change": "source-check",
+      "source": "https://americanhistory.si.edu/collections/object/nmah_630930",
+      "reason": "Date and main claim checked against the linked museum, archive or originating institution."
+    },
+    {
+      "wiki": "Little_black_dress",
+      "change": "source-check",
+      "source": "https://www.vam.ac.uk/articles/what-makes-chanel-so-iconic",
+      "reason": "Date and main claim checked against the linked museum, archive or originating institution."
+    },
+    {
+      "wiki": "Christian_Dior",
+      "change": "source-check",
+      "source": "https://www.dior.com/en_int/one/the-new-look",
+      "reason": "Date and main claim checked against the linked museum, archive or originating institution."
+    },
+    {
+      "wiki": "Tarkhan_dress",
+      "change": "source-check",
+      "source": "https://www.ucl.ac.uk/news/2016/feb/ucl-petrie-museums-tarkhan-dress-worlds-oldest-woven-garment",
+      "reason": "Date and main claim checked against the linked museum, archive or originating institution."
     }
   ]
 }

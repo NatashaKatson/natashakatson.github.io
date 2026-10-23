@@ -106,6 +106,24 @@
     polityKey(feature) {
       return JSON.stringify([feature.name, feature.member || ""]);
     },
+    resampleParallels(geometry) {
+      // D3 joins sparse vertices with great-circle arcs. A boundary following
+      // a latitude parallel needs intermediate vertices to keep that latitude.
+      // Preserve the source endpoints and leave dateline crossings untouched.
+      const line = (points) => points.flatMap((point, i) => {
+        const next = points[i + 1];
+        if (!next) return [point];
+        const dx = next[0] - point[0];
+        if (Math.abs(next[1] - point[1]) > 1e-9 || Math.abs(dx) <= .5 || Math.abs(dx) >= 180) return [point];
+        const steps = Math.ceil(Math.abs(dx) / .5);
+        return Array.from({ length: steps }, (_, k) => [point[0] + dx * k / steps, point[1]]);
+      });
+      const coordinates = geometry.type === "Polygon" || geometry.type === "MultiLineString"
+        ? geometry.coordinates.map(line)
+        : geometry.type === "MultiPolygon" ? geometry.coordinates.map((polygon) => polygon.map(line))
+        : geometry.type === "LineString" ? line(geometry.coordinates) : geometry.coordinates;
+      return { ...geometry, coordinates };
+    },
     active(features, year) {
       const seen = new Map();
       for (const f of features)
