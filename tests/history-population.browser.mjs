@@ -81,6 +81,7 @@ const entries=document.querySelectorAll('.population-value');
 assert(entries.length===2&&entries[0].textContent.includes('Left · 1800')&&entries[1].textContent.includes('Right · 2026'),'both comparison years explicit');
 assert(entries[0].textContent.includes('Historical estimate')&&entries[1].textContent.includes('UN projection'),'estimate and projection remain distinct');
 setYear(2023);render();assert(document.querySelectorAll('.population-value')[1].textContent.includes('Historical estimate'),'scrubbing clears projection label');
+document.querySelector('.dock-options').open=true;
 const details=document.querySelector('.population-heading details');details.open=true;
 assert(details.textContent.includes('linear interpolation')&&details.querySelector('a[href*="ourworldindata"]'),'source/method disclosure');
 assert(stage.getBoundingClientRect().height>=innerHeight*.7,'expanded comparison and sources preserve globe space');
@@ -94,11 +95,14 @@ const assert=(v,m)=>{if(!v)throw Error(m)};
 document.getElementById('compareToggle').click();
 window.scrollTo({top:0,behavior:'instant'});
 const time=document.querySelector('.time').getBoundingClientRect();
-assert(stage.getBoundingClientRect().height>=innerHeight*.7,'mobile globe has a generous viewport height');
+assert(stage.getBoundingClientRect().height>=innerHeight*.58,'mobile globe leaves room for the compact time dock');
 assert(time.top>=stage.getBoundingClientRect().bottom,'ordinary mobile timeline stays below map');
-for(const selector of ['.borders-control button','.legend button','.zoom button']){
+stage.scrollIntoView({block:'start',behavior:'instant'});
+for(const [selector,menu] of [['.borders-control button','layersPanel'],['.legend button','filtersPanel'],['.zoom button',null]]){
+ if(menu)document.querySelector('[data-atlas-menu="'+menu+'"]').click();
  const button=document.querySelector(selector),r=button.getBoundingClientRect();
  assert(document.elementFromPoint(r.x+r.width/2,r.y+r.height/2)?.closest('button')===button,'mobile map control is reachable: '+selector);
+ if(menu)document.querySelector('[data-atlas-menu="'+menu+'"]').click();
 }
 const style=getComputedStyle(document.getElementById('play'));
 const luminance=color=>{const c=color.match(/[0-9.]+/g).slice(0,3).map(n=>{const v=+n/255;return v<=.04045?v/12.92:((v+.055)/1.055)**2.4});return c[0]*.2126+c[1]*.7152+c[2]*.0722};
@@ -108,7 +112,8 @@ document.getElementById('compareToggle').click();
 return 'Mobile map controls remain reachable and Play text has sufficient contrast';
 })()`));
 console.log(await evaluate(`(()=>{
-render();const s=document.querySelector('.population-strip'),r=s.getBoundingClientRect();
+render();document.querySelector('.dock-options').open=true;
+const s=document.querySelector('.population-strip'),r=s.getBoundingClientRect();
 if(document.documentElement.scrollWidth>innerWidth||r.right>innerWidth||s.scrollWidth>s.clientWidth)throw Error('Population overflows mobile');
 s.scrollIntoView({block:'center'});
 return 'Mobile population comparison fits 390px';

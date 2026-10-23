@@ -38,7 +38,13 @@ try {
   console.log(await evaluate(`(async()=>{
     const assert=(v,m)=>{if(!v)throw Error(m)};stopSpin();
     const toggle=document.querySelector('.dinosaur-toggle');
-    assert(toggle&&toggle.getAttribute('aria-pressed')==='true','visible toggle is initially on');
+    assert(toggle&&toggle.getAttribute('aria-pressed')==='true','Layers toggle is initially on');
+    assert(document.getElementById('layersPanel').hidden&&document.getElementById('filtersPanel').hidden,'map menus start collapsed');
+    document.querySelector('[data-atlas-menu="filtersPanel"]').click();
+    assert(document.querySelectorAll('#legend .chip:not([hidden])').length===6&&document.getElementById('filterCount').textContent==='6','human history shows six relevant filters');
+    document.querySelector('#legend .chip').focus();
+    document.activeElement.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',bubbles:true}));
+    assert(document.getElementById('filtersPanel').hidden&&document.activeElement.dataset.atlasMenu==='filtersPanel','Escape closes the menu and restores focus');
     const camera=JSON.stringify(rot);toggle.click();render();
     assert(!state.cats.has('dinosaurs')&&!dinosaurTimeline&&yearAt(0)===-300000,'off removes the deep-time timeline range');
     assert(!document.getElementById('eras').textContent.includes('Dinosaurs')&&!document.getElementById('ticks').textContent.includes('Ma'),'off removes ancient era labels and ticks');
@@ -47,6 +53,7 @@ try {
     window.dinosaurOffHash=HistoryDiscovery.urlHash();
     toggle.click();render();assert(yearAt(0)===-252000000&&document.getElementById('eras').textContent.includes('Dinosaurs'),'on restores the dinosaur timeline');
     document.querySelector('.dinosaur-trigger').click();render();
+    assert(document.querySelectorAll('#legend .chip:not([hidden])').length===1&&document.getElementById('filterCount').textContent==='1','deep time shows the fossil filter');
     toggle.click();render();assert(state.year===1903&&!dinosaurTimeline&&!hits.some(h=>byId[h.id]?.cat==='dinosaurs'),'turning off during deep time returns to the last human year');
     toggle.click();await HistoryDiscovery.openView(dinosaurOffHash);render();assert(!dinosaurTimeline&&toggle.getAttribute('aria-pressed')==='false','shared off state restores the human timeline');
     toggle.click();
@@ -57,6 +64,7 @@ try {
     document.querySelector('.dinosaur-trigger').click();render();
     assert(state.year===-67000000&&byId[state.sel]?.wiki==='Tyrannosaurus','dinosaur jump');
     assert(document.getElementById('yr').textContent.includes('million years ago'),'readable deep-time date');
+    assert(document.querySelector('.dinosaur-discovery').getBoundingClientRect().height>0,'dinosaur browser remains visible during deep time');
     assert(document.querySelector('.dinosaur-detail').textContent.includes('Representative fossil region'),'fossil location context');
     await document.querySelector('.dinosaur-portrait img').decode();
     assert(document.querySelector('.dinosaur-portrait img').naturalWidth===512,'real illustrated avatar loads');
@@ -86,6 +94,7 @@ try {
     document.getElementById('compareToggle').click();
     const form=document.getElementById('compareYears');form.elements.left.value='150 Ma';form.elements.right.value='1903';form.requestSubmit();render();
     assert(state.year===1903&&!document.querySelector('.deep-time-note').hidden,'deep-time note follows either comparison side');
+    assert(document.querySelectorAll('#legend .chip:not([hidden])').length===7,'mixed comparison shows categories for both periods');
     await HistoryDiscovery.openView(dinosaurHash);render();
     return 'Dinosaurs: ages, source context, eras, clickable markers, category search, Back, sharing and comparison passed';
   })()`));
@@ -99,12 +108,14 @@ try {
   await evaluate("document.querySelector('.dinosaur-trigger').click();render()");
   await evaluate("new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))");
   await evaluate("stage.scrollIntoView({block:'center',behavior:'instant'})");
+  await evaluate("document.querySelector('[data-atlas-menu=layersPanel]').click()");
   console.log(await evaluate(`(()=>{
     const toggle=document.querySelector('.dinosaur-toggle'),r=toggle.getBoundingClientRect(),s=stage.getBoundingClientRect();
     if(r.left<0||r.right>innerWidth||r.top<s.top||r.bottom>s.bottom||r.top<0||r.bottom>innerHeight||r.height<44)throw Error('Toggle is not visible and touch-sized on mobile');
     toggle.click();render();if(yearAt(0)!==-300000||toggle.getAttribute('aria-pressed')!=='false')throw Error('Mobile off does not hide era');
     toggle.click();document.querySelector('.dinosaur-trigger').click();render();
-    return 'Mobile toggle stays on the map and removes/restores the dinosaur era';
+    document.querySelector('[data-atlas-menu=layersPanel]').click();
+    return 'Mobile Layers menu exposes a touch-sized toggle and removes/restores the dinosaur era';
   })()`));
   await evaluate("new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))");
   await evaluate("stage.scrollIntoView({block:'center',behavior:'instant'})");
@@ -112,6 +123,27 @@ try {
     throw Error('Mobile dinosaur layout overflows');
   const screenshot = await send('Page.captureScreenshot', { format: 'png' });
   fs.writeFileSync(path.join(os.tmpdir(), 'history-dinosaurs-mobile.png'), Buffer.from(screenshot.data, 'base64'));
+  console.log(await evaluate(`(()=>{
+    const assert=(v,m)=>{if(!v)throw Error(m)};
+    setYear(-90380000);render();
+    assert(document.getElementById('yr').textContent.startsWith('≈90'),'map date is rounded and approximate');
+    document.getElementById('editDate').click();
+    assert(document.activeElement.id==='gotoInput'&&document.activeElement.value==='90.38 Ma','editing preserves the exact deep-time year');
+    assert(state.year===-90380000,'rounding the readout does not change the selected year');
+    assert(document.getElementById('ticks').children.length<=5,'mobile ruler has a readable number of ticks after resize');
+    document.querySelector('[data-atlas-menu="eraPanel"]').click();
+    assert(!document.getElementById('eraPanel').hidden,'Choose era opens destinations');
+    document.querySelector('#eraChoices button:nth-child(2)').click();render();
+    assert(state.year===-150000000&&document.getElementById('eraPanel').hidden,'era selection navigates and closes the picker');
+    assert(document.activeElement.dataset.atlasMenu==='eraPanel','era selection returns focus');
+    const options=document.querySelector('.dock-options');options.open=true;
+    document.querySelector('[data-atlas-menu="filtersPanel"]').click();
+    assert(!options.open,'map menu closes the expanded dock');
+    cv.dispatchEvent(new PointerEvent('pointerdown',{bubbles:true,pointerId:1}));
+    assert(document.getElementById('filtersPanel').hidden,'outside interaction closes the menu');
+    cv.dispatchEvent(new PointerEvent('pointerup',{bubbles:true,pointerId:1}));
+    return 'Compact workspace: precise editing, responsive ruler, era navigation, focus and outside dismissal passed';
+  })()`));
   const offHash=await evaluate('dinosaurOffHash');
   await navigate('#dinosaurs');
   if (!await evaluate("state.year===-67000000&&byId[state.sel]?.wiki==='Tyrannosaurus'")) throw Error('Direct dinosaur link failed');

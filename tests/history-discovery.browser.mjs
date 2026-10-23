@@ -171,7 +171,7 @@ await send("Emulation.setDeviceMetricsOverride", {
 await new Promise((r) => setTimeout(r, 300));
 console.log(
   await evaluate(
-    `(()=>{const assert=(v,m)=>{if(!v)throw Error(m)};assert(document.documentElement.scrollWidth<=390,'no mobile horizontal overflow');const d=document.querySelector('.compare-divider');assert(d.getBoundingClientRect().width>=36,'touch handle');assert(document.getElementById('compareToggle').getBoundingClientRect().height>=36,'touch control');return 'Mobile: 390px layout, accessible controls, and divider passed'})()`,
+    `(()=>{const assert=(v,m)=>{if(!v)throw Error(m)};assert(document.documentElement.scrollWidth<=390,'no mobile horizontal overflow');const d=document.querySelector('.compare-divider');assert(d.getBoundingClientRect().width>=36,'touch handle');const options=document.querySelector('.dock-options');options.open=true;assert(document.getElementById('compareToggle').getBoundingClientRect().height>=36,'touch control in expanded dock');options.open=false;return 'Mobile: 390px layout, accessible controls, and divider passed'})()`,
   ),
 );
 await evaluate("window.scrollTo(0,0)");

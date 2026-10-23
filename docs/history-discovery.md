@@ -50,8 +50,8 @@ ignored. No external API, extra runtime dataset or account is required.
 
 ## Uncertainty on the map
 
-Historical boundary strokes are dashed, with an always-visible **Approximate
-historical borders** disclosure in the map's border control. It explains simplified
+Historical boundary strokes are dashed, with a short **Approximate
+historical borders** disclosure on the map and full context under **Layers**. It explains simplified
 reconstructions, fluid/disputed frontiers, claims versus effective control, and
 coverage gaps. It also explicitly states that the source has no confidence score
 for individual boundaries. This is one visual convention for all historical
@@ -78,7 +78,7 @@ remain in `tests/history-discovery.test.cjs`.
 
 ## Dinosaurs and deep time
 
-Use the permanently visible **Dinosaurs · On/Off** toggle on the map to include
+Use **Layers → Dinosaurs · On/Off** on the map to include
 or exclude deep time. Off removes dinosaur eras, ticks, fossil entries and avatars
 from the timeline/map and restores the 300,000 BC–2026 human-history scale. If the
 selected year is in deep time, Off returns to the last human-history year (1453 on
@@ -86,8 +86,8 @@ a fresh direct dinosaur visit). The setting is retained by exact-view links and
 Back. An explicit dinosaur search result, era jump or deep-date entry enables the
 range again. Play respects the current enabled range.
 
-Choose **Explore dinosaurs** beside Compare/Share, use the map's **Explore dinosaur
-eras** action, open **Explore dinosaurs** in the
+Choose **More → Explore dinosaurs**, use **Layers → Explore dinosaur
+eras**, **Choose era**, or open **Explore dinosaurs** in the
 sidebar, or visit `atlas/#dinosaurs`. Eight sourced records include Herrerasaurus,
 Stegosaurus, Diplodocus, Iguanodon bernissartensis, Spinosaurus, Velociraptor,
 Tyrannosaurus rex and Triceratops. Triassic/Jurassic/Cretaceous buttons focus
@@ -135,8 +135,28 @@ node tests/history-dinosaurs.browser.mjs
 
 These cover deep-date parsing/formatting and timeline inversion, source fields,
 category/search navigation, nearby marker hit targets, real map clicks, Back,
-sharing, comparison, toggle persistence, timeline removal/restoration, avatar
+sharing, comparison, Layers toggle persistence, timeline removal/restoration, avatar
 loading, the 390px mobile layout and direct links.
+
+## Compact atlas workspace
+
+`atlas-ui.js` and `atlas-ui.css` organize existing controls without duplicating
+their state. The date is a compact editable readout; deep time displays rounded,
+approximate millions of years, while editing and sharing retain the exact year.
+**Layers** holds dinosaur visibility, borders and their source disclosure.
+**Filters** shows human categories, fossils, or both for mixed comparisons, with
+an active-category count. Hidden categories retain their settings.
+
+Playback, the responsive ruler, **Choose era**, and the era/record summary share
+one bottom dock. **More** opens an expandable panel with comparison, sharing,
+dinosaur navigation and population estimates/sources. Population estimates and
+human discovery cards are hidden during exclusively deep-time views. The fossil
+geography caveat stays on the map with an expandable explanation; historical
+views retain a short border-uncertainty disclosure. Coverage warnings for human
+history remain below the ruler. Menus close on outside interaction or Escape;
+Escape returns focus to the trigger. On phones, the dock's panels expand upward
+and the ruler uses fewer ticks. Guidance disappears after interacting with the
+map or after seven seconds.
 
 ## Compare years
 
