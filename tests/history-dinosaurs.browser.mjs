@@ -126,13 +126,25 @@ try {
       state.borders='history';
     }
     assert(new Set(areas).size===3,'Triassic, Jurassic and Cretaceous use different land');
-    setYear(1903);render();assert(!geo().ancient&&geo().land===lo.land,'human dates restore modern geography');
+    setYear(1903);render();
+    // The modern map can already be detailed after a zoom-triggered download.
+    assert(!geo().ancient&&(geo()===lo||geo()===hi),'human dates restore modern geography');
+    const restoredZoom=zoomK;
+    setZoom(1);render();assert(geo()===lo,'human dates use the overview when zoomed out');
+    setZoom(2);
+    const detailDeadline=performance.now()+10000;
+    while(!hi||performance.now()<stillAt){
+      assert(performance.now()<detailDeadline,'detailed modern geography loads and the camera settles');
+      await new Promise(resolve=>setTimeout(resolve,20));
+    }
+    render();assert(geo()===hi&&!geo().ancient,'human dates use detailed modern geography after zooming');
+    setZoom(restoredZoom);
     document.getElementById('compareToggle').click();
     const form=document.getElementById('compareYears');form.elements.left.value='228 Ma';form.elements.right.value='67 Ma';form.requestSubmit();
     await Promise.all(HistoryDiscovery.displayedYears().map(y=>HistoryPaleogeography.load(y)));render();
     assert(document.querySelector('[data-paleo-label]').textContent.includes('Left: 228 Ma')&&document.querySelector('[data-paleo-label]').textContent.includes('Right: 67 Ma'),'comparison labels both reconstructions');
     await HistoryDiscovery.openView(saved);render();
-    return 'Ancient continents: three eras, matching marker/camera positions, winding, modern return and comparison passed';
+    return 'Ancient continents: three eras, matching marker/camera positions, winding, modern return at both resolutions and comparison passed';
   })()`));
   const target = await evaluate(`(()=>{render();const h=hits.find(h=>byId[h.id]?.wiki==='Triceratops');const r=cv.getBoundingClientRect();return h&&{x:r.left+h.x,y:r.top+h.y}})()`);
   if (!target) throw Error('Triceratops marker not visible');
