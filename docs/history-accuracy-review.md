@@ -1,5 +1,14 @@
 # Atlas accuracy review — 23 October 2026
 
+Follow-up, 24 October: 34 sourced medical and pandemic records bring the atlas to
+**282 events** (274 human-history entries and eight dinosaur entries). These
+include vaccine development/use/approval milestones, medical inventions and
+treatments, pandemic waves and recognition events, and smallpox eradication.
+All additions have source checks in the review ledger and generated inventory.
+Descriptions qualify representative locations, uncertain origins and the
+difference between a pandemic milestone and its full duration. WHO’s existing
+COVID emergency marker in Geneva is now grouped under Europe.
+
 The review covers the dates and principal claims of all **221 event summaries**
 (213 human-history entries and eight dinosaur entries). Every entry now has a
 source link and an entry in the [review ledger](history-event-corrections.json).

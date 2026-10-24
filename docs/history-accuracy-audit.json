@@ -1,11 +1,11 @@
 {
   "scope": "Every event summary and principal date reviewed against sources; all border files scanned for integrity. This is not an independent certification of every historical frontier.",
   "counts": {
-    "events": 221,
+    "events": 282,
     "people": 66,
-    "eventsWithSourceLinks": 221,
-    "sourceReviewedEvents": 221,
-    "correctedOrClarifiedEvents": 68,
+    "eventsWithSourceLinks": 282,
+    "sourceReviewedEvents": 282,
+    "correctedOrClarifiedEvents": 133,
     "borderChunks": 217,
     "borderFeatureInstances": 22190,
     "distinctBorderVersions": 13372,
@@ -916,7 +916,7 @@
       ],
       "wiki": "Cahokia",
       "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
-      "review": null,
+      "review": "source-check",
       "source": "https://whc.unesco.org/en/list/198/"
     },
     {
@@ -1101,18 +1101,18 @@
     },
     {
       "id": "e72",
-      "title": "Polynesians reach New Zealand",
-      "start": 1280,
-      "end": 1280,
+      "title": "Polynesian settlement of Aotearoa New Zealand",
+      "start": 1250,
+      "end": 1300,
       "approximate": true,
       "point": [
-        174,
-        -41
+        173.2,
+        -41.3
       ],
       "wiki": "History_of_New_Zealand",
       "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
       "review": "source-check",
-      "source": "https://teara.govt.nz/en/when-was-new-zealand-first-settled"
+      "source": "https://teara.govt.nz/en/when-was-new-zealand-first-settled/page-1"
     },
     {
       "id": "e73",
@@ -1141,7 +1141,7 @@
       ],
       "wiki": "Tenochtitlan",
       "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
-      "review": "correction or clarification",
+      "review": "source-check",
       "source": "https://www.gob.mx/cultura/articulos/el-codice-boturini-del-peregrinaje-de-los-aztecas-a-la-fundacion-de-mexico-tenochtitlan"
     },
     {
@@ -1216,7 +1216,7 @@
       ],
       "wiki": "Inca_Empire",
       "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
-      "review": "correction or clarification",
+      "review": "source-check",
       "source": "https://82nd-and-fifth.metmuseum.org/toah/ht/08/sanc.html"
     },
     {
@@ -3333,6 +3333,921 @@
       "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
       "review": "source-check",
       "source": "https://www.quebec.ca/culture/langue-francaise/portrait-francais-quebec/a-propos-francais/a-propos-charte"
+    },
+    {
+      "id": "e221",
+      "title": "Poverty Point: Indigenous earthworks and exchange",
+      "start": -1700,
+      "end": -1100,
+      "approximate": true,
+      "point": [
+        -91.403,
+        32.636
+      ],
+      "wiki": "Poverty_Point",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.crt.state.la.us/dataprojects/archaeology/povertypoint/assets/poverty-point-pdf-1.0.pdf"
+    },
+    {
+      "id": "e222",
+      "title": "Hopewell earthworks in the Ohio Valley",
+      "start": -200,
+      "end": 500,
+      "approximate": true,
+      "point": [
+        -82.988,
+        39.376
+      ],
+      "wiki": "Hopewell_tradition",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.nps.gov/im/htln/hocu.htm"
+    },
+    {
+      "id": "e223",
+      "title": "Ancestral Pueblo communities at Chaco",
+      "start": 850,
+      "end": 1250,
+      "approximate": true,
+      "point": [
+        -107.962,
+        36.06
+      ],
+      "wiki": "Chaco_Culture",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://whc.unesco.org/en/list/353/"
+    },
+    {
+      "id": "e224",
+      "title": "Musqueam: a continuing community at the Fraser River",
+      "start": 500,
+      "end": 2026,
+      "approximate": true,
+      "point": [
+        -123.196,
+        49.228
+      ],
+      "wiki": "Musqueam_Indian_Band",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.musqueam.bc.ca/portion-of-c%CC%93%C9%99sna%CA%94%C9%99m-village-and-burial-site-returned-to-musqueam-indian-band/"
+    },
+    {
+      "id": "e225",
+      "title": "Haudenosaunee: confederacy, councils and continuity",
+      "start": 1600,
+      "end": 2026,
+      "approximate": false,
+      "point": [
+        -76.145,
+        42.93
+      ],
+      "wiki": "Haudenosaunee",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.haudenosauneeconfederacy.com/who-we-are/"
+    },
+    {
+      "id": "e226",
+      "title": "Lenape and Mahican trade in Native New York",
+      "start": 1614,
+      "end": 1626,
+      "approximate": false,
+      "point": [
+        -74.01,
+        40.71
+      ],
+      "wiki": "Lenape",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://americanindian.si.edu/nk360/manhattan/native-people/native-people.cshtml"
+    },
+    {
+      "id": "e227",
+      "title": "Pueblo Revolt: communities resist Spanish rule",
+      "start": 1680,
+      "end": 1680,
+      "approximate": false,
+      "point": [
+        -105.938,
+        35.687
+      ],
+      "wiki": "Pueblo_Revolt",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://indianpueblo.org/faqs/"
+    },
+    {
+      "id": "e228",
+      "title": "Haida houses and carved poles at SG̱ang Gwaay",
+      "start": 1800,
+      "end": 1880,
+      "approximate": true,
+      "point": [
+        -131.217,
+        52.098
+      ],
+      "wiki": "SGang_Gwaay",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://whc.unesco.org/en/list/157/"
+    },
+    {
+      "id": "e229",
+      "title": "Kiks.ádi Tlingit defend Sitka",
+      "start": 1804,
+      "end": 1804,
+      "approximate": false,
+      "point": [
+        -135.316,
+        57.047
+      ],
+      "wiki": "Battle_of_Sitka",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.nps.gov/sitk/learn/historyculture/battle1804.htm"
+    },
+    {
+      "id": "e230",
+      "title": "New Echota: a Cherokee national capital",
+      "start": 1825,
+      "end": 1838,
+      "approximate": false,
+      "point": [
+        -84.909,
+        34.541
+      ],
+      "wiki": "New_Echota",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://umbraco.cherokee.org/about-the-nation/remember-the-removal/sites-on-the-trail/agency/"
+    },
+    {
+      "id": "e231",
+      "title": "Cherokee Nation: rebuilding at Tahlequah",
+      "start": 1839,
+      "end": 2026,
+      "approximate": false,
+      "point": [
+        -94.97,
+        35.912
+      ],
+      "wiki": "Cherokee_Nation",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://umbraco.cherokee.org/about-the-nation/history/"
+    },
+    {
+      "id": "e232",
+      "title": "Cherokee Advocate publishes in two languages",
+      "start": 1844,
+      "end": 1844,
+      "approximate": false,
+      "point": [
+        -94.97,
+        35.912
+      ],
+      "wiki": "Cherokee_Advocate",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://umbraco.cherokee.org/about-the-nation/history/"
+    },
+    {
+      "id": "e233",
+      "title": "Red River Métis establish a provisional government",
+      "start": 1869,
+      "end": 1870,
+      "approximate": false,
+      "point": [
+        -97.134,
+        49.884
+      ],
+      "wiki": "Red_River_Resistance",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.mmf.mb.ca/the-red-river-metis-la-nouvelle-nation"
+    },
+    {
+      "id": "e234",
+      "title": "Inuit and the creation of Nunavut",
+      "start": 1999,
+      "end": 2026,
+      "approximate": false,
+      "point": [
+        -68.517,
+        63.747
+      ],
+      "wiki": "Nunavut",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.tunngavik.com/documents/SSPB-EPD-2018_NILFA-Report-20181210-V04.pdf"
+    },
+    {
+      "id": "e235",
+      "title": "Nenets reindeer herding on Yamal",
+      "start": 1600,
+      "end": 2009,
+      "approximate": true,
+      "point": [
+        70,
+        69
+      ],
+      "wiki": "Nenets_people",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.geobotany.org/library/pubs/ForbesBC2009_pnas_52_22041.pdf"
+    },
+    {
+      "id": "e236",
+      "title": "Sakha storytellers sustain the Olonkho epic tradition",
+      "start": 2005,
+      "end": 2026,
+      "approximate": false,
+      "point": [
+        129.73,
+        62.03
+      ],
+      "wiki": "Olonkho",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://ich.unesco.org/en/RL/olonkho-yakut-heroic-epos-00145"
+    },
+    {
+      "id": "e237",
+      "title": "Chukchi and Yupik homelands in eastern Chukotka",
+      "start": 2013,
+      "end": 2026,
+      "approximate": false,
+      "point": [
+        -173.23,
+        64.42
+      ],
+      "wiki": "Beringia_National_Park",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.nps.gov/articles/000/aps-20-2-10.htm"
+    },
+    {
+      "id": "e238",
+      "title": "Sámi cooperation across Sápmi",
+      "start": 1956,
+      "end": 2026,
+      "approximate": false,
+      "point": [
+        25.5,
+        69.4
+      ],
+      "wiki": "Saami_Council",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.saamicouncil.net/en/home/"
+    },
+    {
+      "id": "e239",
+      "title": "Ainu communities transmit traditional dance",
+      "start": 2009,
+      "end": 2026,
+      "approximate": false,
+      "point": [
+        141.36,
+        42.55
+      ],
+      "wiki": "Ainu_culture",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://ich.unesco.org/en/decisions/4.COM/13.57"
+    },
+    {
+      "id": "e240",
+      "title": "Gunditjmara water engineering at Budj Bim",
+      "start": -4500,
+      "end": 2026,
+      "approximate": true,
+      "point": [
+        141.83,
+        -38.08
+      ],
+      "wiki": "Budj_Bim_heritage_areas",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://whc.unesco.org/en/list/1577/"
+    },
+    {
+      "id": "e241",
+      "title": "San and Hambukushu relationships with Tsodilo",
+      "start": 2001,
+      "end": 2026,
+      "approximate": false,
+      "point": [
+        21.73,
+        -18.75
+      ],
+      "wiki": "Tsodilo",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://whc.unesco.org/en/list/1021/"
+    },
+    {
+      "id": "e242",
+      "title": "Wajãpi graphic and oral knowledge in Amazonia",
+      "start": 2003,
+      "end": 2026,
+      "approximate": false,
+      "point": [
+        -52.7,
+        1.3
+      ],
+      "wiki": "Wayampi",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://ich.unesco.org/en/RL/oral-and-graphic-expressions-of-the-wajapi-00049"
+    },
+    {
+      "id": "e243",
+      "title": "Quechua communities renew the Q’eswachaka bridge",
+      "start": 2013,
+      "end": 2026,
+      "approximate": false,
+      "point": [
+        -71.484,
+        -14.381
+      ],
+      "wiki": "Queshuachaca",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://ich.unesco.org/en/RL/knowledge-skills-and-rituals-related-to-the-annual-renewal-of-the-q-eswachaka-bridge-00594"
+    },
+    {
+      "id": "e244",
+      "title": "People at Yana in Arctic Siberia",
+      "start": -29650,
+      "end": -29650,
+      "approximate": true,
+      "point": [
+        135.42,
+        70.73
+      ],
+      "wiki": "Yana_RHS",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://doi.org/10.1038/s41586-019-1279-z"
+    },
+    {
+      "id": "e245",
+      "title": "Human footprints at White Sands",
+      "start": -21000,
+      "end": -19000,
+      "approximate": true,
+      "point": [
+        -106.15,
+        32.86
+      ],
+      "wiki": "White_Sands_fossil_footprints",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.usgs.gov/publications/independent-age-estimates-resolve-controversy-ancient-human-footprints-white-sands"
+    },
+    {
+      "id": "e246",
+      "title": "Early occupation at Swan Point, Alaska",
+      "start": -12250,
+      "end": -12250,
+      "approximate": true,
+      "point": [
+        -146,
+        64.3
+      ],
+      "wiki": "Swan_Point_Archaeological_Site",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://experts.arizona.edu/en/publications/the-swan-point-site-alaska-the-chronology-of-a-multi-component-ar/"
+    },
+    {
+      "id": "e247",
+      "title": "Ancient Beringian lives at Upward Sun River",
+      "start": -9550,
+      "end": -9550,
+      "approximate": true,
+      "point": [
+        -149.42,
+        64.25
+      ],
+      "wiki": "Upward_Sun_River_site",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7473743/"
+    },
+    {
+      "id": "e248",
+      "title": "Smallpox vaccine: Jenner’s experiment",
+      "start": 1796,
+      "end": 1796,
+      "approximate": false,
+      "point": [
+        -2.46,
+        51.69
+      ],
+      "wiki": "Smallpox_vaccine",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.who.int/news-room/spotlight/history-of-vaccination/a-brief-history-of-vaccination"
+    },
+    {
+      "id": "e249",
+      "title": "Rabies vaccine: successful post-exposure treatment",
+      "start": 1885,
+      "end": 1885,
+      "approximate": false,
+      "point": [
+        2.34,
+        48.84
+      ],
+      "wiki": "Rabies_vaccine",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.pasteur.fr/en/whats-new/latest-news/news/history-first-rabies-vaccination-1885"
+    },
+    {
+      "id": "e250",
+      "title": "BCG tuberculosis vaccine first used in humans",
+      "start": 1921,
+      "end": 1921,
+      "approximate": false,
+      "point": [
+        2.35,
+        48.85
+      ],
+      "wiki": "BCG_vaccine",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.pasteur.fr/fr/en-ce-moment/nos-actualites/actualites/vaccin-bcg-il-y-100-ans-la-premiere-vaccination-contre-la-tuberculose"
+    },
+    {
+      "id": "e251",
+      "title": "Influenza vaccine approved for US military use",
+      "start": 1945,
+      "end": 1945,
+      "approximate": false,
+      "point": [
+        -83.74,
+        42.28
+      ],
+      "wiki": "Influenza_vaccine",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.who.int/news-room/spotlight/history-of-vaccination/a-brief-history-of-vaccination"
+    },
+    {
+      "id": "e252",
+      "title": "Salk polio vaccine trial results announced",
+      "start": 1955,
+      "end": 1955,
+      "approximate": false,
+      "point": [
+        -83.74,
+        42.28
+      ],
+      "wiki": "Inactivated_polio_vaccine",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://sph.umich.edu/podcast/season7/commemorating-a-milestone-the-70th-anniversary-of-the-polio-vaccine-announcement.html"
+    },
+    {
+      "id": "e253",
+      "title": "Measles vaccine licensed in the United States",
+      "start": 1963,
+      "end": 1963,
+      "approximate": false,
+      "point": [
+        -71.1,
+        42.34
+      ],
+      "wiki": "Measles_vaccine",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.cdc.gov/measles/about/history.html"
+    },
+    {
+      "id": "e254",
+      "title": "Combined MMR vaccine licensed",
+      "start": 1971,
+      "end": 1971,
+      "approximate": false,
+      "point": [
+        -75.28,
+        40.1
+      ],
+      "wiki": "MMR_vaccine",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.cdc.gov/pinkbook/hcp/table-of-contents/chapter-13-measles.html"
+    },
+    {
+      "id": "e255",
+      "title": "Recombinant hepatitis B vaccine licensed",
+      "start": 1986,
+      "end": 1986,
+      "approximate": false,
+      "point": [
+        -77.04,
+        38.9
+      ],
+      "wiki": "Hepatitis_B_vaccine",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.fda.gov/about-fda/histories-product-regulation/science-and-regulation-biological-products"
+    },
+    {
+      "id": "e256",
+      "title": "First HPV vaccine approved in the United States",
+      "start": 2006,
+      "end": 2006,
+      "approximate": false,
+      "point": [
+        -77.04,
+        38.9
+      ],
+      "wiki": "HPV_vaccine",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.fda.gov/downloads/BiologicsBloodVaccines/Vaccines/ApprovedProducts/UCM622941.pdf"
+    },
+    {
+      "id": "e257",
+      "title": "mRNA COVID-19 vaccine authorised in the UK",
+      "start": 2020,
+      "end": 2020,
+      "approximate": false,
+      "point": [
+        -0.13,
+        51.51
+      ],
+      "wiki": "Pfizer–BioNTech_COVID-19_vaccine",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.gov.uk/government/news/uk-medicines-regulator-gives-approval-for-first-uk-covid-19-vaccine"
+    },
+    {
+      "id": "e258",
+      "title": "WHO recommends the first malaria vaccine",
+      "start": 2021,
+      "end": 2021,
+      "approximate": false,
+      "point": [
+        6.134,
+        46.232
+      ],
+      "wiki": "RTS,S",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.who.int/news/item/06-10-2021-who-recommends-groundbreaking-malaria-vaccine-for-children-at-risk"
+    },
+    {
+      "id": "e259",
+      "title": "The stethoscope is invented",
+      "start": 1816,
+      "end": 1816,
+      "approximate": false,
+      "point": [
+        2.35,
+        48.85
+      ],
+      "wiki": "Stethoscope",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://collection.sciencemuseumgroup.org.uk/objects/co90986/laennecs-stethoscope"
+    },
+    {
+      "id": "e260",
+      "title": "Ether anaesthesia publicly demonstrated",
+      "start": 1846,
+      "end": 1846,
+      "approximate": false,
+      "point": [
+        -71.07,
+        42.36
+      ],
+      "wiki": "Ether_Dome",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.massgeneral.org/assets/MGH/pdf/pathology/pathology_chap1.pdf"
+    },
+    {
+      "id": "e261",
+      "title": "Semmelweis introduces clinical hand disinfection",
+      "start": 1847,
+      "end": 1847,
+      "approximate": false,
+      "point": [
+        16.35,
+        48.22
+      ],
+      "wiki": "Ignaz_Semmelweis",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.who.int/europe/news/item/19-06-2018-commemorating-the-impact-of-semmelweis-work-on-global-health"
+    },
+    {
+      "id": "e262",
+      "title": "Lister publishes antiseptic surgery results",
+      "start": 1867,
+      "end": 1867,
+      "approximate": false,
+      "point": [
+        -4.25,
+        55.86
+      ],
+      "wiki": "Antiseptic_surgery",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.rcseng.ac.uk/library-and-publications/library/blog/lord-lister-of-lyme-regis/"
+    },
+    {
+      "id": "e263",
+      "title": "X-rays discovered",
+      "start": 1895,
+      "end": 1895,
+      "approximate": false,
+      "point": [
+        9.93,
+        49.79
+      ],
+      "wiki": "X-ray",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.nobelprize.org/prizes/physics/1901/rontgen/facts/"
+    },
+    {
+      "id": "e264",
+      "title": "Human blood groups explained",
+      "start": 1901,
+      "end": 1901,
+      "approximate": false,
+      "point": [
+        16.37,
+        48.21
+      ],
+      "wiki": "ABO_blood_group_system",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.nobelprize.org/laureate/321"
+    },
+    {
+      "id": "e265",
+      "title": "Insulin successfully treats a diabetes patient",
+      "start": 1922,
+      "end": 1922,
+      "approximate": false,
+      "point": [
+        -79.39,
+        43.66
+      ],
+      "wiki": "Insulin",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://fisherdigitus.library.utoronto.ca/exhibits/show/insulin100/early-patients/leonard-thompson"
+    },
+    {
+      "id": "e266",
+      "title": "First lasting successful human kidney transplant",
+      "start": 1954,
+      "end": 1954,
+      "approximate": false,
+      "point": [
+        -71.11,
+        42.34
+      ],
+      "wiki": "Kidney_transplantation",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.nobelprize.org/prizes/medicine/1990/murray/lecture/"
+    },
+    {
+      "id": "e267",
+      "title": "First fully implanted pacemaker",
+      "start": 1958,
+      "end": 1958,
+      "approximate": false,
+      "point": [
+        18.07,
+        59.33
+      ],
+      "wiki": "Artificial_cardiac_pacemaker",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://ki.se/om-ki/historia-och-kulturarv/medicinens-historia-och-kulturarv/karolinska-institutets-historia/betydande-upptackter-vid-ki"
+    },
+    {
+      "id": "e268",
+      "title": "First human-to-human heart transplant",
+      "start": 1967,
+      "end": 1967,
+      "approximate": false,
+      "point": [
+        18.46,
+        -33.94
+      ],
+      "wiki": "Heart_transplantation",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://health.uct.ac.za/cardiothoracic-surgery/historical/first-human-heart-transplant"
+    },
+    {
+      "id": "e269",
+      "title": "First clinical CT scan",
+      "start": 1971,
+      "end": 1971,
+      "approximate": false,
+      "point": [
+        -0.23,
+        51.42
+      ],
+      "wiki": "CT_scan",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.stgeorges.nhs.uk/newsitem/st-georges-celebrates-40-years-of-ct-scanning/"
+    },
+    {
+      "id": "e270",
+      "title": "Artemisinin isolated for malaria research",
+      "start": 1972,
+      "end": 1972,
+      "approximate": false,
+      "point": [
+        116.4,
+        39.91
+      ],
+      "wiki": "Artemisinin",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.nobelprize.org/prizes/medicine/2015/tu/biographical/"
+    },
+    {
+      "id": "e271",
+      "title": "Lauterbur publishes early MRI images",
+      "start": 1973,
+      "end": 1973,
+      "approximate": false,
+      "point": [
+        -73.12,
+        40.91
+      ],
+      "wiki": "Magnetic_resonance_imaging",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://news.stonybrook.edu/university/university-honors-paul-lauterbur-father-of-the-mri/"
+    },
+    {
+      "id": "e272",
+      "title": "First birth following IVF",
+      "start": 1978,
+      "end": 1978,
+      "approximate": false,
+      "point": [
+        -2.12,
+        53.54
+      ],
+      "wiki": "In_vitro_fertilisation",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.nobelprize.org/prizes/medicine/2010/popular-information/"
+    },
+    {
+      "id": "e273",
+      "title": "First cholera pandemic begins",
+      "start": 1817,
+      "end": 1817,
+      "approximate": false,
+      "point": [
+        88.36,
+        22.57
+      ],
+      "wiki": "First_cholera_pandemic",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://wwwnc.cdc.gov/eid/article/17/11/11-1109_article"
+    },
+    {
+      "id": "e274",
+      "title": "Third plague pandemic: Hong Kong outbreak",
+      "start": 1894,
+      "end": 1894,
+      "approximate": false,
+      "point": [
+        114.16,
+        22.28
+      ],
+      "wiki": "Third_plague_pandemic",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.pasteur.fr/en/whats-new/latest-news/news/alexandre-yersin-man-who-discovered-bacterium-responsible-plague"
+    },
+    {
+      "id": "e275",
+      "title": "1918 influenza pandemic (Spanish flu)",
+      "start": 1918,
+      "end": 1919,
+      "approximate": false,
+      "point": [
+        -96.81,
+        39.1
+      ],
+      "wiki": "Spanish_flu",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://archive.cdc.gov/www_cdc_gov/flu/pandemic-resources/1918-pandemic-h1n1.html"
+    },
+    {
+      "id": "e276",
+      "title": "1957–1958 influenza pandemic (Asian flu)",
+      "start": 1957,
+      "end": 1958,
+      "approximate": false,
+      "point": [
+        103.85,
+        1.29
+      ],
+      "wiki": "1957–1958_influenza_pandemic",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://archive.cdc.gov/www_cdc_gov/flu/pandemic-resources/1957-1958-pandemic.html"
+    },
+    {
+      "id": "e277",
+      "title": "Seventh cholera pandemic begins",
+      "start": 1961,
+      "end": 1961,
+      "approximate": false,
+      "point": [
+        119.43,
+        -5.14
+      ],
+      "wiki": "Seventh_cholera_pandemic",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://iris.who.int/bitstream/10665/66485/1/"
+    },
+    {
+      "id": "e278",
+      "title": "1968 influenza pandemic (Hong Kong flu)",
+      "start": 1968,
+      "end": 1970,
+      "approximate": false,
+      "point": [
+        114.16,
+        22.28
+      ],
+      "wiki": "1968_influenza_pandemic",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://wwwnc.cdc.gov/eid/article/12/1/05-1254_article"
+    },
+    {
+      "id": "e279",
+      "title": "HIV/AIDS pandemic: first recognised AIDS reports",
+      "start": 1981,
+      "end": 1981,
+      "approximate": false,
+      "point": [
+        -118.24,
+        34.05
+      ],
+      "wiki": "HIV/AIDS",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.hiv.gov/hiv-basics/overview/history/hiv-and-aids-timeline"
+    },
+    {
+      "id": "e280",
+      "title": "2009–2010 H1N1 influenza pandemic (swine flu)",
+      "start": 2009,
+      "end": 2010,
+      "approximate": false,
+      "point": [
+        6.134,
+        46.232
+      ],
+      "wiki": "2009_swine_flu_pandemic",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.who.int/europe/news-room/fact-sheets/item/evaluation-of-the-response-to-pandemic-%28h1n1%29-2009-in-the-european-region"
+    },
+    {
+      "id": "e281",
+      "title": "Smallpox declared eradicated worldwide",
+      "start": 1980,
+      "end": 1980,
+      "approximate": false,
+      "point": [
+        6.134,
+        46.232
+      ],
+      "wiki": "Eradication_of_smallpox",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.who.int/news-room/spotlight/history-of-vaccination/a-brief-history-of-vaccination"
     }
   ]
 }

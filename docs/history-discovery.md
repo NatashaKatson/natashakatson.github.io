@@ -2,6 +2,30 @@
 
 The implementation is local to `static/historyallaround/atlas/`. It adds no runtime dependencies and does not change the historical border datasets. The original D3 projection, canvas, timeline, filters, globe, and ledger remain in use. Integration hooks in `index.html` delegate to `discovery.js`; pure date/coverage/distance/association helpers live in `discovery-core.js`. `discovery.css` styles only the new controls and panels, plus the timeline space they require.
 
+## Medicine, vaccination and pandemic history
+
+The atlas includes 34 additional sourced events: 11 vaccine milestones, 14 medical
+inventions and treatment milestones, eight pandemic onset/recognition or wave
+records, and the 1980 smallpox eradication declaration. Search **vaccines**,
+**medical inventions**, **pandemics**, or a disease/invention name, then choose
+**Events** to focus the results. Medical advances appear under
+**Science & exploration** and pandemic records under **People & nature**. Existing plague
+and COVID emergency records remain available.
+
+Dates distinguish development, publication, successful treatment, trial results,
+licensure and recommendations. Pandemic wave intervals are summaries, not proof
+that a pathogen disappeared. Cholera onset and AIDS recognition are single-year
+milestones, with no invented end date. Descriptions explain representative map
+locations, including regulatory or announcement locations and uncertain origins.
+
+Records are appended to `EVENTS` to preserve existing shared IDs. Optional field
+14 supplies generic search aliases, separately from field 13's Indigenous
+context. Events are read directly by search; the place and state indexes need no
+regeneration. Source checks are recorded in `history-event-corrections.json` and
+the generated accuracy inventory. Validate with `node --test
+tests/history-medicine.test.cjs tests/history-accuracy.test.cjs
+tests/history-discovery.test.cjs tests/history-challenge.test.cjs`.
+
 ## Curated discoveries and focused depth
 
 **Curated discoveries** introduces an authored Cleopatra tour with five stops:
