@@ -181,7 +181,7 @@
   function locationName(point) {
     const water = waterAtYear(point);
     if (water) return water.water.properties.name;
-    const country = lo.countries.find(
+    const country = (hi || lo).countries.find(
       (f) => inBox(f.bbox, point) && d3.geoContains(f, point),
     );
     return country ? country.properties.name : "Open water or unmapped land";
@@ -707,7 +707,7 @@
     const section = el.querySelector(".meanwhile-slot");
     if (!section) return;
     section.className = "near meanwhile-slot";
-    section.innerHTML = `<b>Meanwhile… in ${esc(fmt(year))}</b><p>Events recorded in the same year, elsewhere. Coincidence in time does not imply a causal connection; approximate dates remain approximate.</p>${pinned && pinned.id !== record.id ? `<button type="button" class="pinned-event">← Return to ${esc(pinned.title)} · ${esc(fmt(pinned.year))}</button>` : ""}${others.length ? others.map((r, i) => `<div class="meanwhile-card"><button type="button" class="story-card" data-meanwhile="${i}"><b>${esc(r.title)}</b><small>${esc(REGIONS[r.region])} · ${esc(fmtSpan(r.start, r.end !== r.start ? r.end : null, r.approx))}</small><span>${esc(r.blurb)}</span></button><a href="${esc(r.source || wikiUrl(r.wiki))}" target="_blank" rel="noopener">Source ↗</a></div>`).join("") : "<p>No same-year events in other regions are recorded here yet.</p>"}`;
+    section.innerHTML = `<b>Meanwhile… in ${esc(fmt(year))}</b><p>Records elsewhere in this year, including continuing histories and dated events. Coincidence in time does not imply a causal connection; approximate dates remain approximate.</p>${pinned && pinned.id !== record.id ? `<button type="button" class="pinned-event">← Return to ${esc(pinned.title)} · ${esc(fmt(pinned.year))}</button>` : ""}${others.length ? others.map((r, i) => `<div class="meanwhile-card"><button type="button" class="story-card" data-meanwhile="${i}"><b>${esc(r.title)}</b><small>${esc(REGIONS[r.region])} · ${esc(fmtSpan(r.start, r.end !== r.start ? r.end : null, r.approx))}${core.isHistoricalContext(r, year) ? " · historical context" : ""}</small><span>${esc(r.blurb)}</span></button><a href="${esc(r.source || wikiUrl(r.wiki))}" target="_blank" rel="noopener">Source ↗</a></div>`).join("") : "<p>No records in other regions are available for this year.</p>"}`;
     section.querySelector(".pinned-event")?.addEventListener("click", () => {
       const anchor = pinned;
       trail.push(snapshot());
@@ -899,6 +899,7 @@
       searchPlace = { title: result.title, geonameId: result.geonameId || null };
     }
     zoomK = result.kind === "state" ? 1.6 : 2.6;
+    needHi();
     const record = byId[result.recordId];
     focusPoint(record && window.HistoryPaleogeography ? HistoryPaleogeography.point(record, state.year) || [result.lon, result.lat] : [result.lon, result.lat]);
     update();
@@ -1071,7 +1072,7 @@
       if (!x && !selectedPolity && searchPlace && lastPoint) {
         document.getElementById("detail").innerHTML = `<div class="detail search-place-detail"><button type="button" class="iconbtn close" aria-label="Close">×</button><div class="kicker">Present-day place · exploring ${esc(fmt(state.year))}</div><h3>${esc(searchPlace.title)}</h3><p>${pointLabel(lastPoint)}</p><p>This name locates a point on today's map. It does not establish the name, settlement, or political control here in ${esc(fmt(state.year))}.</p><a target="_blank" rel="noopener" href="${searchPlace.geonameId ? `https://www.geonames.org/${searchPlace.geonameId}/` : "https://www.naturalearthdata.com/"}">${searchPlace.geonameId ? "GeoNames" : "Natural Earth"} source ↗</a></div>`;
         document.querySelector("#detail .close").onclick = () => {
-          searchPlace = null; lastPoint = null; update();
+          searchPlace = null; lastPoint = null; closeSelection();
         };
       }
       const point = Array.isArray(lastPoint)

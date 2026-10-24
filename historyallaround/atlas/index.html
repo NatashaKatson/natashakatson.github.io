@@ -462,7 +462,7 @@ header .seg{padding:2px;background:#f0ebe3;border:1px solid rgba(45,36,32,.1);bo
       <p class="atlas-footer-note">A world of stories, from dinosaur fossils to 2026.</p>
       <div class="atlas-footer-support" aria-label="Support the atlas">
         <span>Help the atlas grow</span>
-        <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="natashakatson" data-color="#FFDD00" data-emoji="☕" data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff"></script>
+        <script defer type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="natashakatson" data-color="#FFDD00" data-emoji="☕" data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff"></script>
         <noscript><a href="https://www.buymeacoffee.com/natashakatson" target="_blank" rel="noopener">☕ Buy me a coffee</a></noscript>
       </div>
     </div>
@@ -1215,7 +1215,7 @@ slider.value=Math.round(tAt(state.year)*SLIDER_STEPS);
 buildMarks();
 slider.addEventListener("input",()=>{state.year=roundYear(yearAt(slider.value/SLIDER_STEPS));selectedPolity=null;stopPlay();update(true)});
 slider.addEventListener("keydown",e=>{if(e.key==="ArrowLeft"&&!e.shiftKey){nudgeYear(-1);e.preventDefault()}if(e.key==="ArrowRight"&&!e.shiftKey){nudgeYear(1);e.preventDefault()}});
-function setYear(y,keepSel){y=roundYear(Math.max(-252000000,Math.min(NOW,y)));if(y<-300000)state.cats.add("dinosaurs");state.year=y;slider.value=Math.round(tAt(y)*SLIDER_STEPS);if(!keepSel){state.sel=null;selectedPolity=null}update()}
+function setYear(y,keepSel){y=roundYear(Math.max(-252000000,Math.min(NOW,y)));if(y!==state.year)sidebarReturn=null;if(y<-300000)state.cats.add("dinosaurs");state.year=y;slider.value=Math.round(tAt(y)*SLIDER_STEPS);if(!keepSel){state.sel=null;selectedPolity=null}update()}
 function stepEvent(dir){const list=ev.filter(e=>state.cats.has(e.cat)).map(e=>e.start).sort((a,b)=>a-b);const y=state.year;const t=dir>0?list.find(s=>s>y):[...list].reverse().find(s=>s<y);if(t!==undefined){stopPlay();setYear(t)}}
 function nudgeYear(dir){stopPlay();const y=state.year===-1&&dir>0?1:state.year===1&&dir<0?-1:state.year+dir*(state.year<-1000000?1000000:1);setYear(y)}
 document.getElementById("prev").onclick=()=>nudgeYear(-1);
@@ -1230,36 +1230,48 @@ document.getElementById("gotoInput").addEventListener("input",e=>e.target.setCus
 
 // ---------- side ledger
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-function select(id,fly=true,recordYear=null){window.HistoryDiscovery?.selectedRecord(recordYear);state.sel=id;selectedPolity=null;const x=byId[id];stopPlay();
+let sidebarReturn=null;
+function revealDetail(){const el=document.getElementById("detail"),side=document.getElementById("side");el.setAttribute("tabindex","-1");
+  if(window.innerWidth<=860)el.scrollIntoView({behavior:reduceMotion.matches?"instant":"smooth",block:"start"});
+  else side.scrollTop=Math.max(0,side.scrollTop+el.getBoundingClientRect().top-side.getBoundingClientRect().top-side.querySelector(".side-intro").offsetHeight-12);
+  el.focus({preventScroll:true})}
+function closeSelection(){const saved=sidebarReturn;sidebarReturn=null;state.sel=null;selectedPolity=null;update();
+  const row=saved&&saved.year===state.year&&document.querySelector(`#side [data-id="${saved.id}"]`);
+  if(row){document.getElementById("side").scrollTop=saved.scroll;row.focus({preventScroll:true})}else slider.focus({preventScroll:true})}
+function historicalContextNote(x,year){return DiscoveryCore.isHistoricalContext(x,year)?`<p class="timeline-context-note"><strong>Historical context for ${esc(fmt(year))}</strong><br>This record covers ${esc(fmtSpan(x.start,x.end,x.approx))}. Its date range describes a historical period, rather than an event dated ${esc(fmt(year))}.</p>`:""}
+function select(id,fly=true,recordYear=null){sidebarReturn=null;window.HistoryDiscovery?.selectedRecord(recordYear);state.sel=id;selectedPolity=null;const x=byId[id];stopPlay();
   if(!(recordYear!==null&&window.HistoryDiscovery?.isComparing())&&x.kind==="event"&&(state.year<x.start-halfWin(x.start)||state.year>x.end+halfWin(x.start))){state.year=x.start;slider.value=Math.round(tAt(x.start)*SLIDER_STEPS)}
   if(fly||state.mode==="globe"){const point=window.HistoryPaleogeography?.point(x,recordYear??state.year)||[x.lon,x.lat];flyTo(...point)}update();
-  if(window.innerWidth<=860)document.getElementById("detail").scrollIntoView({behavior:"smooth",block:"start"})}
-function selectPolity(f,year=state.year){if(window.HistoryDiscovery)window.HistoryDiscovery.selectPolityYear(year);state.sel=null;selectedPolity=f;stopPlay();stopSpin();renderDetail();draw();if(window.innerWidth<=860)document.getElementById("detail").scrollIntoView({behavior:"smooth",block:"start"})}
+  revealDetail()}
+function selectPolity(f,year=state.year){sidebarReturn=null;if(window.HistoryDiscovery)window.HistoryDiscovery.selectPolityYear(year);state.sel=null;selectedPolity=f;stopPlay();stopSpin();renderDetail();draw();revealDetail()}
 function renderDetail(){renderDetailBase();if(window.HistoryDiscovery)window.HistoryDiscovery.detail()}
 function renderDetailBase(){const el=document.getElementById("detail");if(selectedPolity){const f=selectedPolity,member=DiscoveryCore.politicalStatus(f),link=f.wiki?`<a href="${wikiUrl(f.wiki)}" target="_blank" rel="noopener">Read more on Wikipedia ↗</a>`:"";
     el.innerHTML=`<div class="detail polity"><button class="iconbtn close" aria-label="Close">×</button><div class="kicker"><i></i>Political coverage in ${esc(fmt(state.year))}</div><h3>${esc(f.name)}</h3><div class="meta-grid"><div><span>Mapped coverage</span><strong>${esc(fmtSpan(f.from,f.to))}</strong></div><div><span>Political status</span><strong>${esc(member)}</strong></div></div>${f.status?`<p>${esc(f.status)}</p>`:""}<p>Approximate, simplified reconstruction. Mapped extents may include claims and do not establish effective control. Coverage dates describe this source record.</p>${f.source?`<p><a href="${esc(f.source)}" target="_blank" rel="noopener">Source ↗</a></p>`:""}${link}</div>`;
-    el.querySelector(".close").onclick=()=>{selectedPolity=null;renderDetail();draw()};return}
+    el.querySelector(".close").onclick=closeSelection;return}
   const x=state.sel&&byId[state.sel];if(!x){el.innerHTML="";return}
   if(x.cat==="dinosaurs"){
     el.innerHTML=`<div class="detail dinosaur-detail" style="--c:var(--c-dinosaurs)"><button class="iconbtn close" aria-label="Close">×</button><div class="kicker">Dinosaur · approximate fossil age</div><h3>${esc(x.title)}</h3><p><strong>${esc(fmtSpan(x.start,x.end,x.approx))}</strong></p><p>${esc(x.blurb)}</p><p><strong>Representative fossil region:</strong> ${esc(x.fossilRegion)}</p><p>The map reconstructs this present-day fossil region on ancient continents using the same PALEOMAP snapshot as the land. The marker is approximate; it is not an exact quarry or the animal's full range. Continental outlines do not resolve local shorelines or sea levels. Fossil ages and reconstructions can change with new research.</p><p><a href="${esc(x.source)}" target="_blank" rel="noopener">Dinosaur &amp; age source ↗</a> · <a href="${esc(x.locationSource)}" target="_blank" rel="noopener">Fossil region source ↗</a></p></div>`}
   else if(x.kind==="event"){
     el.innerHTML=`<div class="detail" style="--c:var(--c-${x.cat})"><button class="iconbtn close" aria-label="Close">×</button>
     <div class="kicker"><i></i>${esc(fmtSpan(x.start,x.end!==x.start?x.end:null,x.approx))} · ${REGIONS[x.region]}${x.approx?" · Approximate date":""}</div>
-    <h3>${esc(x.title)}</h3><p>${esc(x.blurb)}</p>${x.indigenous?`<p class="indigenous-context"><strong>${x.indigenous.evidence?"Archaeological evidence · dated site":"Indigenous history · documented place"}</strong><br>${x.indigenous.evidence?"Dates represent rounded evidence ages. Site locations do not establish a migration track or a modern national identity.":"This marker locates a community or site, not a territorial boundary. Overview dates describe the selected period, not the lifetime of a people. Colonial map fills can overlap Indigenous homelands."}${x.indigenous.territorySource?` <a href="${esc(x.indigenous.territorySource)}" target="_blank" rel="noopener">Territory &amp; community reference ↗</a>`:""}</p>`:""}${x.source?`<p><a href="${esc(x.source)}" target="_blank" rel="noopener">Source ↗</a></p>`:""}<a href="${wikiUrl(x.wiki)}" target="_blank" rel="noopener">Read more on Wikipedia ↗</a>
+    <h3>${esc(x.title)}</h3>${historicalContextNote(x,state.year)}<p>${esc(x.blurb)}</p>${x.indigenous?`<p class="indigenous-context"><strong>${x.indigenous.evidence?"Archaeological evidence · dated site":"Indigenous history · documented place"}</strong><br>${x.indigenous.evidence?"Dates represent rounded evidence ages. Site locations do not establish a migration track or a modern national identity.":"This marker locates a community or site, not a territorial boundary. Overview dates describe the selected period, not the lifetime of a people. Colonial map fills can overlap Indigenous homelands."}${x.indigenous.territorySource?` <a href="${esc(x.indigenous.territorySource)}" target="_blank" rel="noopener">Territory &amp; community reference ↗</a>`:""}</p>`:""}${x.source?`<p><a href="${esc(x.source)}" target="_blank" rel="noopener">Source ↗</a></p>`:""}<a href="${wikiUrl(x.wiki)}" target="_blank" rel="noopener">Read more on Wikipedia ↗</a>
     <div class="meanwhile-slot"></div></div>`}
   else{const age=state.year-x.born;el.innerHTML=`<div class="detail" style="--c:var(--ink)"><button class="iconbtn close" aria-label="Close">×</button>
     <div class="kicker"><i></i>${esc(fmt(x.born,x.approx))} – ${esc(fmt(x.died,x.approx))} · ${REGIONS[x.region]}</div>
     <h3>${esc(x.name)}</h3><p>${esc(x.role)}.${state.year>=x.born&&state.year<=x.died?` In ${esc(fmt(state.year))}, about ${age} years old.`:""}</p>
     <a href="${esc(x.source||wikiUrl(x.wiki))}" target="_blank" rel="noopener">${x.source?"Source":"Read more on Wikipedia"} ↗</a></div>`}
-  el.querySelector(".close").onclick=()=>{state.sel=null;selectedPolity=null;update()}}
+  el.querySelector(".close").onclick=closeSelection}
+function eventRegions(records,showRanges=false){const by={};for(const{e}of records)(by[e.region]??=[]).push(e);
+  return REGION_ORDER.filter(r=>by[r]).map(r=>`<div class="region"><h4><span>${REGIONS[r]}</span><span>${by[r].length}</span></h4>${by[r].sort((a,b)=>a.start-b.start).map(e=>`<button class="item" data-id="${e.id}" aria-current="${state.sel===e.id}" style="--c:var(--c-${e.cat})"><span class="y">${esc(showRanges?fmtSpan(e.start,e.end,e.approx):fmt(e.start,e.approx))}</span><span><span class="t"><i></i>${esc(e.title)}</span><span class="b">${esc(e.blurb)}</span></span></button>`).join("")}</div>`).join("")}
 function renderSide(){
   const act=activeEvents(),y=state.year;
-  document.getElementById("sideSub").textContent=y<-1000000?`Approximate ages · within 1 million years of the selected date · ${act.length} fossil record${act.length===1?"":"s"}`:`Within one year of ${fmt(y)} · ${act.length} event${act.length===1?"":"s"}`;
+  const context=act.filter(({e})=>DiscoveryCore.isHistoricalContext(e,y)),dated=act.filter(({e})=>!DiscoveryCore.isHistoricalContext(e,y));
+  document.getElementById("sideSub").textContent=y<-1000000?`Approximate ages · within 1 million years of the selected date · ${act.length} fossil record${act.length===1?"":"s"}`:`${dated.length} dated event${dated.length===1?"":"s"} within one year of ${fmt(y)}`+(context.length?` · ${context.length} historical context record${context.length===1?"":"s"}`:"");
   const by={};for(const{e}of act)(by[e.region]??=[]).push(e);
   const reg=document.getElementById("regions");
   const filled=REGION_ORDER.filter(r=>by[r]);
-  reg.innerHTML=filled.length?filled.map(r=>`<div class="region"><h4><span>${REGIONS[r]}</span><span>${by[r].length}</span></h4>${by[r].sort((a,b)=>a.start-b.start).map(e=>`<button class="item" data-id="${e.id}" aria-current="${state.sel===e.id}" style="--c:var(--c-${e.cat})"><span class="y">${esc(fmt(e.start,e.approx))}</span><span><span class="t"><i></i>${esc(e.title)}</span><span class="b">${esc(e.blurb)}</span></span></button>`).join("")}</div>`).join("")
-    :`<p class="empty">${y<-1000000?"No dinosaur records in this time window. Try a dinosaur era or another date.":"No events within one year. Move one year at a time, drag the timeline or enter another date."}</p>`;
+  reg.innerHTML=dated.length?eventRegions(dated):`<p class="empty">${y<-1000000?"No dinosaur records in this time window. Try a dinosaur era or another date.":"No dated events within one year. Move the timeline or explore the historical context below."}</p>`;
+  if(context.length)reg.insertAdjacentHTML("beforeend",`<section class="timeline-context-list" aria-label="Historical context"><h3>Historical context in ${esc(fmt(y))}</h3><p>Continuing histories and periods whose date ranges overlap this time window.</p>${eventRegions(context,true)}</section>`);
   const quiet=REGION_ORDER.filter(r=>!by[r]).map(r=>REGIONS[r]);
   if(filled.length&&quiet.length)reg.insertAdjacentHTML("beforeend",`<p class="empty">Nothing recorded here yet for ${quiet.join(", ")}.</p>`);
   const pp=alivePeople().filter(p=>p.born<=y&&p.died>=y);
@@ -1267,7 +1279,7 @@ function renderSide(){
   document.getElementById("people").innerHTML=pp.length?pp.map(p=>`<button class="person" data-id="${p.id}">${esc(p.name)}<em>${y-p.born}</em></button>`).join(""):`<p class="empty">None of the people in this atlas were alive in ${esc(fmt(y))}.</p>`;
 
 }
-document.getElementById("side").addEventListener("click",e=>{const b=e.target.closest("[data-id]");if(b)select(b.dataset.id)});
+document.getElementById("side").addEventListener("click",e=>{const b=e.target.closest("[data-id]");if(b){const saved={id:b.dataset.id,year:state.year,scroll:document.getElementById("side").scrollTop};select(b.dataset.id);sidebarReturn=saved}});
 function renderFact(){const[fy,ft]=FACTS[state.factI];const el=document.getElementById("fact");
   el.innerHTML=`<b>Same time, different worlds</b><p>${esc(ft)}</p><div class="row"><button id="fGo">Go to ${esc(fmt(fy))}</button><button id="fNext">Another fact</button></div>`;
   document.getElementById("fGo").onclick=()=>{stopPlay();setYear(fy)};
@@ -1288,7 +1300,7 @@ function update(fast){
   document.getElementById("editDate").title=`${fmt(y)} · Edit date`;
   document.getElementById("era").textContent=y < -66000000 ? y < -201000000 ? "Triassic" : y < -145000000 ? "Jurassic" : "Cretaceous" : eraOf(y);
   {const n=activeEvents().length,r=new Set(activeEvents().map(a=>a.e.region)).size,pp=alivePeople().filter(p=>p.born<=y&&p.died>=y).length;
-   document.getElementById("nowLine").innerHTML=n?`<b>${n} ${y<-1000000?"fossil record":"event"}${n===1?"":"s"}</b> across ${r} region${r===1?"":"s"}`+(pp?` · <b>${pp}</b> ${pp===1?"person":"people"} alive`:""):y<-1000000?"No fossil records in this time window.":"No recorded events for this year. Try another year or press Play."}
+   document.getElementById("nowLine").innerHTML=n?`<b>${n} ${y<-1000000?"fossil record":"record"}${n===1?"":"s"}</b> across ${r} region${r===1?"":"s"}`+(pp?` · <b>${pp}</b> ${pp===1?"person":"people"} alive`:""):y<-1000000?"No fossil records in this time window.":"No records for this year. Try another year or press Play."}
   const t=tAt(y),w=halfWin(y),a=tAt(Math.max(-252000000,y-w)),b=tAt(Math.min(NOW,y+w));
   const win=document.getElementById("win");win.style.left=a*100+"%";win.style.width=(b-a)*100+"%";
   document.getElementById("needle").style.left=t*100+"%";
@@ -1319,6 +1331,7 @@ startSpin();
 <script src="beringia.js"></script>
 <script src="indigenous-tours.js"></script>
 <script src="discovery.js"></script>
+<script src="search-countries.js"></script>
 <script src="search.js"></script>
 <script src="challenge-core.js"></script>
 <script src="challenge.js"></script>

@@ -14,11 +14,8 @@
     ...ppl.map((r) => ({ kind: "person", title: r.name, aliases: [r.wiki.replaceAll("_", " ")],
       description: r.role, start: r.born, end: r.died, approx: r.approx,
       lon: r.lon, lat: r.lat, recordId: r.id })),
-    ...lo.countries.map((f) => {
-      const [lon, lat] = d3.geoCentroid(f);
-      return { kind: "place", title: f.properties.name, aliases: [],
-        description: "Present-day country or territory", lon, lat };
-    }),
+    ...HistoryCountries.rows.map(([title, lon, lat]) => ({ kind: "place", title, aliases: [],
+      description: "Present-day country or territory", lon, lat })),
   ]);
   const datasets = [
     { url: "search-states.json", label: "states and empires", records: [], loaded: false, error: false },
@@ -36,6 +33,15 @@
     <p id="historySearchHelp">Search the Atlas's recorded history. Present-day place names locate a point at your chosen year; they do not establish when a settlement existed.</p>
     <p class="history-search-credits">Places: <a href="https://www.geonames.org/" target="_blank" rel="noopener">GeoNames</a> and Natural Earth. Historical coverage: Cliopatria / Seshat. GeoNames and Cliopatria: <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>.</p>`;
   document.body.append(dialog);
+  const trigger = document.createElement('button');
+  trigger.type = 'button';
+  trigger.className = 'history-search-trigger';
+  trigger.textContent = 'Search';
+  trigger.setAttribute('aria-label', 'Search history, people, and places');
+  trigger.setAttribute('aria-haspopup', 'dialog');
+  trigger.setAttribute('aria-controls', dialog.id);
+  trigger.onclick = openSearch;
+  document.querySelector('.head-tools').prepend(trigger);
   const input = dialog.querySelector("input");
   const results = dialog.querySelector("#historySearchResults");
   const status = dialog.querySelector("#historySearchStatus");
@@ -131,9 +137,7 @@
       if (opened && token === requestToken) {
         closeSearch();
         // Map navigation finishes before moving keyboard focus out of the dialog.
-        document.getElementById("detail").setAttribute("tabindex", "-1");
-        document.getElementById("detail").focus({ preventScroll: true });
-        if (innerWidth <= 860) document.getElementById("detail").scrollIntoView({ block: "start", behavior: "smooth" });
+        revealDetail();
       }
     } catch (error) {
       if (token === requestToken) status.textContent = error.message;
