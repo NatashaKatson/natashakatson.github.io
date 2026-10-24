@@ -62,12 +62,13 @@ await new Promise((r) => setTimeout(r, 2500));
 console.log(await evaluate(`(async()=>{
 const assert=(v,m)=>{if(!v)throw Error(m)};
 assert(window.HistoryDiscovery,'Atlas loaded');stopSpin();
+assert(!document.querySelector('.history-search-trigger'),'header search button removed');
 assert(!performance.getEntriesByType('resource').some(r=>/search-(states|places).json/.test(r.name)),'indexes are lazy');
 const originalFetch=window.fetch,indexLoads=new Map();
 window.fetch=(url,...args)=>/^search-/.test(url)
  ? new Promise((resolve,reject)=>indexLoads.set(url,()=>originalFetch(url,...args).then(resolve,reject)))
  : originalFetch(url,...args);
-document.querySelector('.history-search-trigger').click();
+document.dispatchEvent(new KeyboardEvent('keydown',{key:'k',ctrlKey:true,bubbles:true}));
 assert(document.getElementById('historySearch').open,'search opens');
 assert(document.activeElement.id==='historySearchInput','search receives focus');
 const input=document.getElementById('historySearchInput');
@@ -91,7 +92,7 @@ await new Promise(r=>setTimeout(r,160));
 for(let i=0;i<100;i++){await new Promise(r=>setTimeout(r,100));if(!document.getElementById('historySearchStatus').textContent.includes('Loading'))break;}
 assert(document.querySelector('[data-search-retry]').hidden,'both indexes loaded');
 window.searchQuery=async(q,kind='all')=>{
- document.querySelector('.history-search-trigger').click();
+ document.dispatchEvent(new KeyboardEvent('keydown',{key:'k',ctrlKey:true,bubbles:true}));
  document.querySelector('[data-search-kind="'+kind+'"]').click();
  input.value=q;input.dispatchEvent(new Event('input',{bubbles:true}));await new Promise(r=>setTimeout(r,160));
 };
@@ -128,7 +129,7 @@ await searchQuery('zzzz_no_such_history_123');assert(!document.querySelector('[d
 input.value='<img src=x onerror=alert(1)>';input.dispatchEvent(new Event('input',{bubbles:true}));await new Promise(r=>setTimeout(r,150));
 assert(!document.querySelector('#historySearchResults img'),'query is never interpreted as markup');
 document.querySelector('[data-search-close]').click();
-assert(document.activeElement.classList.contains('history-search-trigger'),'closing restores trigger focus');
+assert(!document.getElementById('historySearch').contains(document.activeElement),'closing returns focus outside search');
 return 'Search: lazy indexes, keyboard, dated empire, person/event jumps, filter reveal, Back, cities, aliases, sharing, empty results and safe text passed';
 })()`));
 console.log(await evaluate(`(async()=>{
@@ -181,7 +182,7 @@ console.log(await evaluate(`(async()=>{
 const assert=(v,m)=>{if(!v)throw Error(m)};
 const original=window.fetch;
 window.fetch=(url,...args)=>url==='search-places.json'?Promise.reject(new Error('Test city download failure')):original(url,...args);
-document.querySelector('.history-search-trigger').click();
+document.dispatchEvent(new KeyboardEvent('keydown',{key:'k',ctrlKey:true,bubbles:true}));
 const input=document.getElementById('historySearchInput');
 input.value='Pig War';input.dispatchEvent(new Event('input',{bubbles:true}));
 for(let i=0;i<80;i++){await new Promise(r=>setTimeout(r,100));if(!document.getElementById('historySearchStatus').textContent.includes('Loading'))break;}

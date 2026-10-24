@@ -338,8 +338,8 @@ Release verification: all 10 pure/syntax regression tests and the browser suite 
 
 ## Search across history
 
-Open **Search history** in the header, press `/` outside a text field, or use
-Cmd/Ctrl+K. Type at least two characters. All / Events / People / States & empires /
+Press `/` outside a text field, or use Cmd/Ctrl+K to open search. Type at least
+two characters. All / Events / People / States & empires /
 Places filters narrow results. Names and aliases rank above description mentions;
 matching ignores case, accents and punctuation. All limits each type to six results
 so common city names leave room for historical records; a specific type shows up

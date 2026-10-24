@@ -49,7 +49,7 @@ try{
       assert(shelf.querySelector('.curated-stop a').href===record.source,'source for '+stop.id);
     }
     shelf.querySelector('[data-curated-close]').click();
-    document.querySelector('.history-search-trigger').click();
+    document.dispatchEvent(new KeyboardEvent('keydown',{key:'k',ctrlKey:true,bubbles:true}));
     const input=document.getElementById('historySearchInput');input.value='Indigenous Russia';input.dispatchEvent(new Event('input',{bubbles:true}));
     return 'Indigenous world tours, dated map markers and community source links passed';
   })()`));

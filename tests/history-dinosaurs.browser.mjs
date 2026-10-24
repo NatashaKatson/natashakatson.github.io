@@ -86,7 +86,7 @@ try {
     document.querySelector('[data-dinosaur-era="0"]').click();assert(state.year===-228000000&&byId[state.sel]?.wiki==='Herrerasaurus','Triassic jump');
     document.getElementById('next').click();assert(state.year===-227000000,'deep-time next advances a million years');
     setYear(-65000000);assert(!activeEvents().some(({e})=>e.cat==='dinosaurs'),'no non-avian dinosaurs after extinction boundary');
-    document.querySelector('.history-search-trigger').click();
+    document.dispatchEvent(new KeyboardEvent('keydown',{key:'k',ctrlKey:true,bubbles:true}));
     document.querySelector('[data-search-kind="dinosaur"]').click();
     const input=document.getElementById('historySearchInput');input.value='T. rex';input.dispatchEvent(new Event('input',{bubbles:true}));
     await new Promise(r=>setTimeout(r,160));
