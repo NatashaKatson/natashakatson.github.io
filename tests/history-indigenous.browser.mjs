@@ -32,13 +32,24 @@ try{
     const assert=(v,m)=>{if(!v)throw Error(m)};
     stopSpin();userMoved=true;flyToken++;
     for(const id of ['indigenous-north-america','indigenous-world','beringia-evidence'])assert(document.querySelector('[data-discovery="'+id+'"]'),'visible discovery '+id);
-    await loadChunk(chunkOf(1700));setYear(1700);rot=[123.196,-49.228,0];zoomK=2.5;
+    await loadChunk(chunkOf(500));setYear(500);rot=[123.196,-49.228,0];zoomK=2.5;
     const drawn=[],original=ctx.fillText;
     try{ctx.fillText=function(t,...a){drawn.push(t);return original.call(this,t,...a)};render();}finally{ctx.fillText=original;}
     const musqueam=ev.find(r=>r.wiki==='Musqueam_Indian_Band');
-    assert(drawn.includes('Musqueam')&&hits.some(h=>h.id===musqueam.id),'Musqueam visible and selectable alongside historical borders');
+    assert(drawn.includes('Musqueam')&&hits.some(h=>h.id===musqueam.id),'Musqueam movement visible at its approximate event date');
     select(musqueam.id,false);render();
     assert(document.querySelector('.indigenous-context a[href*="musqueam.bc.ca"]'),'own territory reference');
+    const cherokee=ev.find(r=>r.wiki==='Cherokee_Nation');
+    setYear(1956);render();
+    assert(!activeEvents().some(({e})=>e===cherokee||e===musqueam),'old milestones are absent in 1956');
+    assert(!document.querySelector('#regions [data-id="'+cherokee.id+'"]'),'unrelated Cherokee record absent from sidebar');
+    assert(activeEvents().some(({e})=>e.wiki==='Saami_Council'),'1956 Saami Council founding remains relevant');
+    select(cherokee.id,false);render();
+    assert(state.year===1839&&document.querySelector('#detail .kicker').textContent.includes('1839'),'selecting Cherokee from another date visits 1839');
+    assert(!document.querySelector('.timeline-context-note'),'constitution is a dated event, not continuing context');
+    document.querySelector('#detail .close').click();
+    setYear(1956);render();
+    assert(!activeEvents().some(({e})=>e===cherokee),'moving the slider leaves the constitution behind');
     const shelf=document.querySelector('.curated-discoveries');
     shelf.querySelector('[data-discovery="indigenous-world"]').click();
     const story=CuratedDiscoveries.find(s=>s.id==='indigenous-world');

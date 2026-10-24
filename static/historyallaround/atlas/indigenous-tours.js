@@ -7,10 +7,11 @@
   function stop(id, wiki, year, location) {
     const r=records.find((r)=>r.wiki===wiki);
     if(!r)throw Error("Missing sourced discovery record: "+wiki);
+    if(year<r.start||year>r.end)throw Error("Discovery stop falls outside its dated record: "+wiki);
     return {id,year,location,title:r.title,point:[r.lon,r.lat],text:r.blurb,
       kind:r.start===r.end?"event":"context",sources:[["Evidence & context",r.source]]};
   }
-  const note="These stops visit different periods and distinct peoples. Markers locate documented communities or sites, not territorial boundaries. Overview dates do not mark the origins or disappearance of a people. This is a selection, not complete coverage.";
+  const note="These stops visit sourced events and archaeological periods of distinct peoples. Dates belong to the event or evidence described, not the lifetime of a people. Markers locate associated places, not territorial boundaries. This is a selection, not complete coverage.";
   return [{
     id:"indigenous-north-america",title:"Indigenous North America",subtitle:"Cities, diplomacy, languages and continuing communities.",
     start:-1700,end:2026,note,
@@ -19,11 +20,11 @@
     stops:[
       stop("poverty-point","Poverty_Point",-1500,"Lower Mississippi Valley · North America"),
       stop("chaco","Chaco_Culture",1100,"Chaco Canyon · Southwest North America"),
-      stop("musqueam","Musqueam_Indian_Band",1700,"Fraser River estuary · Musqueam territory"),
-      stop("haudenosaunee","Haudenosaunee",1700,"Onondaga · Haudenosaunee homelands"),
+      stop("musqueam","Musqueam_Indian_Band",500,"Fraser River estuary · Musqueam territory"),
+      stop("haudenosaunee","Haudenosaunee",1794,"Canandaigua · Haudenosaunee diplomacy"),
       stop("pueblo-revolt","Pueblo_Revolt",1680,"Santa Fe region · Pueblo homelands"),
       stop("tlingit","Battle_of_Sitka",1804,"Sitka · Tlingit homelands"),
-      stop("haida","SGang_Gwaay",1850,"SG̱ang Gwaay · Haida Gwaii"),
+      stop("haida","SGang_Gwaay",1981,"SG̱ang Gwaay · Haida Gwaii"),
       stop("cherokee-publishing","Cherokee_Advocate",1844,"Tahlequah · Cherokee Nation"),
       stop("red-river","Red_River_Resistance",1870,"Red River · Métis homeland"),
       stop("nunavut","Nunavut",1999,"Iqaluit · Nunavut"),
@@ -31,15 +32,15 @@
   },{
     id:"indigenous-world",title:"Indigenous histories around the world",subtitle:"Siberia, Sápmi, the Pacific, Africa and South America.",
     start:-4500,end:2026,note,
-    introduction:"Indigenous histories cross today's state borders. Explore a checked selection of cultural practices, community institutions and places. Several modern overview dates begin with a documented recognition or institution, not with the much older histories of the peoples concerned.",
+    introduction:"Indigenous histories cross today's state borders. Explore dated milestones in cultural practices, community institutions and archaeology. Founding, publication and heritage recognition dates refer to those specific events; older community histories continue beyond them.",
     sources:[["UNESCO · living heritage","https://ich.unesco.org/en/lists"],["Saami Council · cross-border cooperation","https://www.saamicouncil.net/en/home/"]],
     stops:[
-      stop("nenets","Nenets_people",1700,"Yamal · West Siberia"),
-      stop("sakha","Olonkho",2008,"Yakutsk region · Sakha"),
+      stop("nenets","Nenets_people",2009,"Yamal · West Siberia"),
+      stop("sakha","Olonkho",2005,"Yakutsk region · Sakha"),
       stop("chukchi-yupik","Beringia_National_Park",2013,"Eastern Chukotka · Bering Strait"),
       stop("sapmi","Saami_Council",1956,"Sápmi · northern Europe"),
       stop("ainu","Ainu_culture",2009,"Hokkaido · Japan"),
-      stop("gunditjmara","Budj_Bim_heritage_areas",1700,"Budj Bim · Gunditjmara Country"),
+      stop("gunditjmara","Budj_Bim_heritage_areas",-4500,"Budj Bim · Gunditjmara Country"),
       stop("aotearoa","History_of_New_Zealand",1280,"Aotearoa · New Zealand"),
       stop("tsodilo","Tsodilo",2001,"Tsodilo · Botswana"),
       stop("wajapi","Wayampi",2003,"Amapá · Amazonia"),

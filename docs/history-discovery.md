@@ -16,11 +16,13 @@ keyboard focus to the reader. Closing an event opened from the list restores
 the list position and focused row. The original timeline scale and controls
 remain in use.
 
-Long-running histories and older multi-year periods appear separately under
-**Historical context**. Their source intervals remain intact, but they are not
-counted as events dated within one year of the viewing date. Selected cards
-explain the range; meanwhile cards label contextual records. For example, in
-1992 the Musqueam overview (c. AD 500–2026) appears as historical context.
+Older multi-year historical and archaeological periods appear separately under
+**Historical context**. Selected cards explain the range; meanwhile cards label
+contextual records. Indigenous milestones use the same date rules as other
+events: the Cherokee constitution is dated 1839, the Saami Council founding
+1956, and the Musqueam movement approximately AD 500. These entries no longer
+extend to 2026, so none appears as context for 1992. The source review documents
+which archaeological ranges retain meaningful uncertainty or period coverage.
 
 The optional support-button script is deferred so a slow or blocked request
 cannot delay atlas initialization. The deployment workflow runs unit tests,
@@ -632,4 +634,4 @@ comparison dates, reservoir exclusion, deep time, real touch selection and the
 
 ## Indigenous histories and Beringia
 
-The atlas includes sourced Indigenous community and site markers across the Americas, Siberia, Sápmi, Japan, Africa and the Pacific. Curated discoveries provide North America, world and Beringia entry points. The Beringia research overview distinguishes dated archaeological sites from schematic proposed corridors; it does not reconstruct Ice Age shorelines or claim one established journey. Overview intervals are scoped periods, not national founding or extinction dates. See [the source review and map limits](history-indigenous-sources.md) for evidence, dates, attribution and verification.
+The atlas includes sourced Indigenous events and archaeological site markers across the Americas, Siberia, Sápmi, Japan, Africa and the Pacific. Curated discoveries provide North America, world and Beringia entry points. The Beringia research overview distinguishes dated archaeological sites from schematic proposed corridors; it does not reconstruct Ice Age shorelines or claim one established journey. Event dates describe specific milestones; archaeological intervals describe evidence or site phases, not national founding or extinction dates. See [the source review and map limits](history-indigenous-sources.md) for evidence, dates, attribution and verification.

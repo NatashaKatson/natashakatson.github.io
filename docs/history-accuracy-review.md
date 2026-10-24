@@ -9,6 +9,14 @@ Descriptions qualify representative locations, uncertain origins and the
 difference between a pandemic milestone and its full duration. WHO’s existing
 COVID emergency marker in Geneva is now grouped under Europe.
 
+Indigenous date follow-up, 24 October: 16 community or cultural overview windows
+have been replaced with sourced milestones and matching titles and summaries.
+The Cherokee constitution is dated 1839, the Haudenosaunee treaty 1794, and the
+Saami Council founding 1956. Indigenous metadata uses the same date rules as
+other events. Genuine archaeological periods and approximate evidence dates
+retain their qualifications. Tours, the prototype and data exports use the
+corrected records; see the [Indigenous source review](history-indigenous-sources.md).
+
 The review covers the dates and principal claims of all **221 event summaries**
 (213 human-history entries and eight dinosaur entries). Every entry now has a
 source link and an entry in the [review ledger](history-event-corrections.json).

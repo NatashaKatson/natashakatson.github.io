@@ -5,13 +5,13 @@ const countries = require('../static/historyallaround/atlas/search-countries.js'
 const { events } = require('../scripts/audit-history-accuracy.cjs').records();
 const records = Array.from(events, (r) => ({ kind: 'event', cat: r[8], start: r[0], end: r[1] ?? r[0], wiki: r[9], indigenous: r[13] }));
 
-test('1992 separates continuing histories from nearby dated events without changing date intervals', () => {
+test('1992 contains nearby dated events without unrelated Indigenous community overviews', () => {
   const active = records.filter((r) => r.start <= 1993 && r.end >= 1991);
   const context = active.filter((r) => core.isHistoricalContext(r, 1992));
   const dated = active.filter((r) => !core.isHistoricalContext(r, 1992));
-  assert.equal(context.length, 6);
+  assert.equal(context.length, 0);
   assert.deepEqual(dated.map((r) => r.wiki), ['Dissolution_of_the_Soviet_Union']);
-  assert(context.some((r) => r.wiki === 'Musqueam_Indian_Band' && r.start === 500 && r.end === 2026));
+  assert(!active.some((r) => r.indigenous));
   assert.equal(core.isHistoricalContext(records.find((r) => r.wiki === 'Penicillin'), 1928), false);
   assert.equal(core.isHistoricalContext(records.find((r) => r.wiki === 'Tyrannosaurus'), -67000000), false);
   assert.equal(core.isHistoricalContext(records.find((r) => r.wiki === 'Treaty_of_Waitangi'), 1840), false);

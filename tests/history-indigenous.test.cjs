@@ -7,7 +7,7 @@ const challenge=require('../static/historyallaround/atlas/challenge-core.js');
 const beringia=require('../static/historyallaround/atlas/beringia.js');
 const buildTours=require('../static/historyallaround/atlas/indigenous-tours.js');
 const rows=Array.from(require('../scripts/audit-history-accuracy.cjs').records().events,r=>Array.from(r));
-const records=rows.map((r,i)=>({id:'e'+i,start:r[0],end:r[1]??r[0],title:r[3],blurb:r[4],lat:r[5],lon:r[6],region:r[7],wiki:r[9],source:r[10],indigenous:r[13]}));
+const records=rows.map((r,i)=>({id:'e'+i,kind:'event',cat:r[8],start:r[0],end:r[1]??r[0],title:r[3],blurb:r[4],lat:r[5],lon:r[6],region:r[7],wiki:r[9],source:r[10],indigenous:r[13]}));
 const tours=buildTours(records,beringia);
 const row=(wiki)=>rows.find(r=>r[9]===wiki);
 
@@ -27,15 +27,47 @@ test('Indigenous map and search coverage includes multiple world regions and rev
   assert(core.search(searchable,'Indigenous Russia').length>=3);
 });
 
-test('relocation and documented period windows retain distinct dated places',()=>{
-  assert.deepEqual(row('New_Echota').slice(0,2),[1825,1838]);
-  assert.deepEqual(row('Cherokee_Nation').slice(0,2),[1839,2026]);
+test('Indigenous milestones use event dates rather than continuing-community windows',()=>{
+  const milestones={
+    Musqueam_Indian_Band:500,Haudenosaunee:1794,Lenape:1614,SGang_Gwaay:1981,
+    New_Echota:1825,Cherokee_Nation:1839,Nunavut:1999,Nenets_people:2009,
+    Olonkho:2005,Beringia_National_Park:2013,Saami_Council:1956,Ainu_culture:2009,
+    Budj_Bim_heritage_areas:-4500,Tsodilo:2001,Wayampi:2003,Queshuachaca:2013,
+  };
+  for(const [wiki,year] of Object.entries(milestones)){
+    assert.deepEqual(row(wiki).slice(0,2),[year,null],wiki);
+    assert.equal(core.isHistoricalContext(records.find(r=>r.wiki===wiki),year),false,wiki);
+  }
+  assert.equal(records.filter(r=>r.indigenous&&r.end===2026).length,0);
+  assert.match(row('Cherokee_Nation')[3],/constitution/);
+  assert.match(row('Haudenosaunee')[3],/Treaty of Canandaigua/);
+  assert.match(row('Nenets_people')[4],/publication/);
+  assert.equal(row('Musqueam_Indian_Band')[2],1,'rounded archaeological date remains approximate');
+  assert.equal(row('Budj_Bim_heritage_areas')[2],1,'early aquaculture date remains approximate');
   assert(row('New_Echota')[6]>-90&&row('Cherokee_Nation')[6]<-90);
-  assert.deepEqual(row('Haudenosaunee').slice(0,2),[1600,2026]);
-  assert.match(row('Haudenosaunee')[4],/not a foundation date/);
+  assert(row('Lenape')[5]>42,'Fort Nassau is on the upper Hudson, not Manhattan');
+});
+
+test('genuine archaeological periods and dating uncertainty are preserved',()=>{
+  assert.deepEqual(row('Poverty_Point').slice(0,2),[-1700,-1100]);
+  assert.deepEqual(row('Chaco_Culture').slice(0,2),[850,1250]);
   assert.deepEqual(row('History_of_New_Zealand').slice(0,2),[1250,1300]);
   assert.equal(rows.filter(r=>r[9]==='History_of_New_Zealand').length,1);
   assert(!rows.some(r=>r[9]==='Māori_history'),'settlement is not duplicated as a new event');
+});
+
+test('same-year suggestions exclude unrelated community histories and treat short events consistently',()=>{
+  const anchor={id:'anchor',kind:'event',region:'af',start:1956,end:1956};
+  const contemporary=core.meanwhile(anchor,records,1956);
+  const saami=records.find(r=>r.wiki==='Saami_Council');
+  assert.deepEqual(core.meanwhile(anchor,[saami],1956),[saami]);
+  for(const wiki of ['Cherokee_Nation','Musqueam_Indian_Band','Haudenosaunee','Nenets_people','Budj_Bim_heritage_areas']){
+    assert(!contemporary.some(r=>r.wiki===wiki),wiki);
+    assert.deepEqual(core.meanwhile(anchor,[records.find(r=>r.wiki===wiki)],1956),[],wiki);
+  }
+  const resistance=records.find(r=>r.wiki==='Red_River_Resistance');
+  assert.equal(core.isHistoricalContext(resistance,1870),false,'a two-year Indigenous event is dated like any other event');
+  assert.equal(core.isHistoricalContext({...resistance,indigenous:undefined},1870),false);
 });
 
 test('all discovery stops reuse dated records and their primary source links',()=>{

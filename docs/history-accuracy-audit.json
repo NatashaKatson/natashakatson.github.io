@@ -3381,9 +3381,9 @@
     },
     {
       "id": "e224",
-      "title": "Musqueam: a continuing community at the Fraser River",
+      "title": "Musqueam ancestors move to xʷməθkʷəy̓əm",
       "start": 500,
-      "end": 2026,
+      "end": 500,
       "approximate": true,
       "point": [
         -123.196,
@@ -3391,37 +3391,37 @@
       ],
       "wiki": "Musqueam_Indian_Band",
       "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
-      "review": "source-check",
+      "review": "dated-milestone",
       "source": "https://www.musqueam.bc.ca/portion-of-c%CC%93%C9%99sna%CA%94%C9%99m-village-and-burial-site-returned-to-musqueam-indian-band/"
     },
     {
       "id": "e225",
-      "title": "Haudenosaunee: confederacy, councils and continuity",
-      "start": 1600,
-      "end": 2026,
+      "title": "Haudenosaunee and the United States sign the Treaty of Canandaigua",
+      "start": 1794,
+      "end": 1794,
       "approximate": false,
       "point": [
-        -76.145,
-        42.93
+        -77.281,
+        42.887
       ],
       "wiki": "Haudenosaunee",
       "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
-      "review": "source-check",
-      "source": "https://www.haudenosauneeconfederacy.com/who-we-are/"
+      "review": "dated-milestone",
+      "source": "https://www.onondaganation.org/government/the-canandaigua-treaty-of-1794/"
     },
     {
       "id": "e226",
-      "title": "Lenape and Mahican trade in Native New York",
+      "title": "Fort Nassau opens for trade with Hudson Valley Native communities",
       "start": 1614,
-      "end": 1626,
+      "end": 1614,
       "approximate": false,
       "point": [
-        -74.01,
-        40.71
+        -73.755,
+        42.636
       ],
       "wiki": "Lenape",
       "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
-      "review": "source-check",
+      "review": "dated-milestone",
       "source": "https://americanindian.si.edu/nk360/manhattan/native-people/native-people.cshtml"
     },
     {
@@ -3441,17 +3441,17 @@
     },
     {
       "id": "e228",
-      "title": "Haida houses and carved poles at SG̱ang Gwaay",
-      "start": 1800,
-      "end": 1880,
-      "approximate": true,
+      "title": "Haida village SG̱ang Gwaay enters the World Heritage List",
+      "start": 1981,
+      "end": 1981,
+      "approximate": false,
       "point": [
         -131.217,
         52.098
       ],
       "wiki": "SGang_Gwaay",
       "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
-      "review": "source-check",
+      "review": "dated-milestone",
       "source": "https://whc.unesco.org/en/list/157/"
     },
     {
@@ -3471,9 +3471,9 @@
     },
     {
       "id": "e230",
-      "title": "New Echota: a Cherokee national capital",
+      "title": "Cherokee legislature establishes New Echota as its capital",
       "start": 1825,
-      "end": 1838,
+      "end": 1825,
       "approximate": false,
       "point": [
         -84.909,
@@ -3481,14 +3481,14 @@
       ],
       "wiki": "New_Echota",
       "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
-      "review": "source-check",
-      "source": "https://umbraco.cherokee.org/about-the-nation/remember-the-removal/sites-on-the-trail/agency/"
+      "review": "dated-milestone",
+      "source": "https://remembertheremoval.cherokee.gov/sites-on-the-trail/new-echota/"
     },
     {
       "id": "e231",
-      "title": "Cherokee Nation: rebuilding at Tahlequah",
+      "title": "Cherokee Nation adopts a constitution at Tahlequah",
       "start": 1839,
-      "end": 2026,
+      "end": 1839,
       "approximate": false,
       "point": [
         -94.97,
@@ -3496,8 +3496,8 @@
       ],
       "wiki": "Cherokee_Nation",
       "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
-      "review": "source-check",
-      "source": "https://umbraco.cherokee.org/about-the-nation/history/"
+      "review": "dated-milestone",
+      "source": "https://www.loc.gov/item/06021615/"
     },
     {
       "id": "e232",
@@ -3531,9 +3531,9 @@
     },
     {
       "id": "e234",
-      "title": "Inuit and the creation of Nunavut",
+      "title": "Nunavut is created following Inuit negotiations",
       "start": 1999,
-      "end": 2026,
+      "end": 1999,
       "approximate": false,
       "point": [
         -68.517,
@@ -3541,29 +3541,29 @@
       ],
       "wiki": "Nunavut",
       "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
-      "review": "source-check",
-      "source": "https://www.tunngavik.com/documents/SSPB-EPD-2018_NILFA-Report-20181210-V04.pdf"
+      "review": "dated-milestone",
+      "source": "https://www.assembly.nu.ca/faq/how-was-nunavut-created"
     },
     {
       "id": "e235",
-      "title": "Nenets reindeer herding on Yamal",
-      "start": 1600,
+      "title": "Study documents Nenets herding resilience on Yamal",
+      "start": 2009,
       "end": 2009,
-      "approximate": true,
+      "approximate": false,
       "point": [
         70,
         69
       ],
       "wiki": "Nenets_people",
       "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
-      "review": "source-check",
+      "review": "dated-milestone",
       "source": "https://www.geobotany.org/library/pubs/ForbesBC2009_pnas_52_22041.pdf"
     },
     {
       "id": "e236",
-      "title": "Sakha storytellers sustain the Olonkho epic tradition",
+      "title": "UNESCO proclaims the Sakha Olonkho epic tradition",
       "start": 2005,
-      "end": 2026,
+      "end": 2005,
       "approximate": false,
       "point": [
         129.73,
@@ -3571,14 +3571,14 @@
       ],
       "wiki": "Olonkho",
       "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
-      "review": "source-check",
+      "review": "dated-milestone",
       "source": "https://ich.unesco.org/en/RL/olonkho-yakut-heroic-epos-00145"
     },
     {
       "id": "e237",
-      "title": "Chukchi and Yupik homelands in eastern Chukotka",
+      "title": "Beringia National Park is established in Chukchi and Yupik homelands",
       "start": 2013,
-      "end": 2026,
+      "end": 2013,
       "approximate": false,
       "point": [
         -173.23,
@@ -3586,14 +3586,14 @@
       ],
       "wiki": "Beringia_National_Park",
       "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
-      "review": "source-check",
+      "review": "dated-milestone",
       "source": "https://www.nps.gov/articles/000/aps-20-2-10.htm"
     },
     {
       "id": "e238",
-      "title": "Sámi cooperation across Sápmi",
+      "title": "Saami Council is founded for cross-border Sámi cooperation",
       "start": 1956,
-      "end": 2026,
+      "end": 1956,
       "approximate": false,
       "point": [
         25.5,
@@ -3601,14 +3601,14 @@
       ],
       "wiki": "Saami_Council",
       "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
-      "review": "source-check",
+      "review": "dated-milestone",
       "source": "https://www.saamicouncil.net/en/home/"
     },
     {
       "id": "e239",
-      "title": "Ainu communities transmit traditional dance",
+      "title": "Traditional Ainu dance receives UNESCO inscription",
       "start": 2009,
-      "end": 2026,
+      "end": 2009,
       "approximate": false,
       "point": [
         141.36,
@@ -3616,14 +3616,14 @@
       ],
       "wiki": "Ainu_culture",
       "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
-      "review": "source-check",
+      "review": "dated-milestone",
       "source": "https://ich.unesco.org/en/decisions/4.COM/13.57"
     },
     {
       "id": "e240",
-      "title": "Gunditjmara water engineering at Budj Bim",
+      "title": "Early Gunditjmara aquaculture at Budj Bim",
       "start": -4500,
-      "end": 2026,
+      "end": -4500,
       "approximate": true,
       "point": [
         141.83,
@@ -3631,14 +3631,14 @@
       ],
       "wiki": "Budj_Bim_heritage_areas",
       "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
-      "review": "source-check",
+      "review": "dated-milestone",
       "source": "https://whc.unesco.org/en/list/1577/"
     },
     {
       "id": "e241",
-      "title": "San and Hambukushu relationships with Tsodilo",
+      "title": "Tsodilo sacred landscape enters the World Heritage List",
       "start": 2001,
-      "end": 2026,
+      "end": 2001,
       "approximate": false,
       "point": [
         21.73,
@@ -3646,14 +3646,14 @@
       ],
       "wiki": "Tsodilo",
       "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
-      "review": "source-check",
+      "review": "dated-milestone",
       "source": "https://whc.unesco.org/en/list/1021/"
     },
     {
       "id": "e242",
-      "title": "Wajãpi graphic and oral knowledge in Amazonia",
+      "title": "UNESCO proclaims Wajãpi oral and graphic expressions",
       "start": 2003,
-      "end": 2026,
+      "end": 2003,
       "approximate": false,
       "point": [
         -52.7,
@@ -3661,14 +3661,14 @@
       ],
       "wiki": "Wayampi",
       "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
-      "review": "source-check",
+      "review": "dated-milestone",
       "source": "https://ich.unesco.org/en/RL/oral-and-graphic-expressions-of-the-wajapi-00049"
     },
     {
       "id": "e243",
-      "title": "Quechua communities renew the Q’eswachaka bridge",
+      "title": "Q’eswachaka bridge-renewal knowledge receives UNESCO inscription",
       "start": 2013,
-      "end": 2026,
+      "end": 2013,
       "approximate": false,
       "point": [
         -71.484,
@@ -3676,7 +3676,7 @@
       ],
       "wiki": "Queshuachaca",
       "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
-      "review": "source-check",
+      "review": "dated-milestone",
       "source": "https://ich.unesco.org/en/RL/knowledge-skills-and-rituals-related-to-the-annual-renewal-of-the-q-eswachaka-bridge-00594"
     },
     {

@@ -4,7 +4,7 @@ Open **[preview.html](preview.html)** directly in your browser. This prototype k
 
 **Event emojis** appear on map markers, event-list titles, and selected event titles. Examples: vaccines 💉, medicines 💊, stethoscope 🩺, X-rays 🩻, blood groups 🩸, MRI 🧲, DNA 🧬, heart procedures 🫀, hygiene 🧼, and pandemics 🦠. Other events have category or subject icons. Source text and dinosaur art are unchanged.
 
-**Date clarity:** continuing community histories and older multi-year periods appear under “Historical context,” separate from events dated near the selected year. Counts distinguish these groups, selected context cards explain their range, and “Meanwhile” cards identify historical context. The original date filtering and source intervals are preserved. For example, the Musqueam record covers approximately AD 500–2026 and is valid context for 1992; it is not counted as an event dated 1992. AD includes modern years as well as earlier positive years.
+**Event dates:** Indigenous entries use specific sourced milestones, rather than extending community histories to the present. Examples: the Cherokee constitution in 1839, the Saami Council's founding in 1956, and the approximate Musqueam movement around AD 500. These events appear near their dates, not in every later year. Genuine archaeological periods retain their source-supported ranges and appear under “Historical context” when appropriate. Indigenous events follow the same date rules as other events.
 
 Try years **1928**, **1955**, **1816**, or **1918** to see the medical icons. The original slider and year controls work as before.
 
@@ -30,4 +30,4 @@ With an isolated Chrome debugging instance on port 9231:
 node prototypes/atlas-ui/verify.mjs
 ```
 
-The check opens the standalone file with external network requests blocked and verifies original features, medical icons, map selection, historical-context separation in 1992, date boundaries, desktop/mobile slider dragging, BC/AD stepping, playback, historical borders, and ancient geography. Screenshots are saved in `previews/`.
+The check opens the standalone file with external network requests blocked and verifies original features, medical icons, map selection, corrected Indigenous dates in 1956 and 1992, date boundaries, desktop/mobile slider dragging, BC/AD stepping, playback, historical borders, and ancient geography. Screenshots are saved in `previews/`.

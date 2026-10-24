@@ -1,10 +1,13 @@
 # Indigenous histories and Beringia evidence
 
-Checked October 23, 2026. The atlas adds 27 records and enriches six existing
+Updated October 24, 2026. The atlas adds 27 records and enriches six existing
 records with Indigenous place labels and search aliases. The earlier New Zealand
 arrival marker becomes a sourced settlement interval, keeping its original ID
-and avoiding a duplicate event. There are now 30 Indigenous context records and
-four separately identified archaeological evidence records.
+and avoiding a duplicate event. There are now 30 Indigenous history records and
+four separately identified archaeological evidence records. Sixteen entries
+previously used community or cultural overview windows. They now describe
+specific dated milestones, with revised titles and summaries rather than simply
+truncating ranges.
 
 This is a sourced selection across world regions, not a complete inventory of
 Indigenous peoples or countries. Communities cross national borders; a country
@@ -21,13 +24,21 @@ unchanged; European colonial fills can overlap Indigenous homelands. The detail
 card explains this and links to community territory references where available.
 No traditional-territory polygons have been guessed from a name or a point.
 
-Intervals are scoped overviews. For example, 1600 starts the selected
-Haudenosaunee overview, not the Confederacy's foundation. The Confederacy says
-its exact founding date is unknown. New Echota (1825–1838) and Tahlequah
-(from 1839) retain distinct Cherokee places across forced removal. Several
-modern cultural overviews begin with a documented institution or heritage
-recognition, not the origins of a people. Approximate archaeological dates and
-chosen viewing windows are explained in the entry. Periods are excluded from
+Event dates describe the named act, not the lifetime of a community. New Echota
+is dated to its establishment as a capital in 1825; the Tahlequah constitution
+is dated 1839. The Haudenosaunee entry now records the 1794 Treaty of Canandaigua
+at Canandaigua, replacing an arbitrary seventeenth-century starting year.
+Founding and heritage-recognition milestones end in their event year; they do
+not remain active until 2026. Nenets coverage dates the cited study's publication
+in 2009, rather than treating its discussion of herding after 1600 as a single
+409-year event.
+
+Some archaeological entries genuinely concern site phases or uncertain dates:
+Poverty Point, Hopewell, Chaco, Cahokia, Rapa Nui, settlement of Aotearoa and
+White Sands retain their evidence-based ranges. The Musqueam movement and early
+Budj Bim aquaculture retain rounded approximate dates. The date rules are shared
+with all other events; Indigenous metadata never makes an event automatically
+become historical context. Approximate dates and periods remain excluded from
 exact-date quiz questions.
 
 ## Checked source groups
@@ -38,14 +49,14 @@ stored in `history-event-corrections.json` and checked by the accuracy audit.
 | Coverage | Evidence and limits |
 | --- | --- |
 | Musqueam | [Musqueam's village history](https://www.musqueam.bc.ca/portion-of-c%CC%93%C9%99sna%CA%94%C9%99m-village-and-burial-site-returned-to-musqueam-indian-band/) places the move to the present community about 1,500 years ago. The AD 500 anchor is rounded. [Musqueam's own territory reference](https://www.musqueam.bc.ca/our-story/our-territory/) supplies further place context. |
-| Haudenosaunee | [The Confederacy](https://www.haudenosauneeconfederacy.com/who-we-are/) describes councils, Clan Mothers, the Onondaga meeting place and uncertainty about the founding date. [Smithsonian's educator guide](https://americanindian.si.edu/sites/1/files/pdf/education/HaudenosauneeGuide.pdf) documents seventeenth-century trade and changing homelands. |
+| Haudenosaunee | [The Onondaga Nation's treaty text](https://www.onondaganation.org/government/the-canandaigua-treaty-of-1794/) dates the Treaty of Canandaigua to November 11, 1794. The marker now locates Canandaigua, not the Confederacy's traditional meeting place at Onondaga. |
 | North American earthworks and Pueblo histories | [Louisiana archaeology](https://www.crt.state.la.us/dataprojects/archaeology/povertypoint/assets/poverty-point-pdf-1.0.pdf), [NPS Hopewell](https://www.nps.gov/im/htln/hocu.htm), [UNESCO Chaco](https://whc.unesco.org/en/list/353/) and the [Indian Pueblo Cultural Center](https://indianpueblo.org/faqs/) support the selected periods and 1680 revolt. Archaeological traditions are not silently turned into bounded nation states. |
 | Lenape, Mahican, Haida and Tlingit | [Smithsonian Native New York](https://americanindian.si.edu/nk360/manhattan/native-people/native-people.cshtml), [UNESCO SG̱ang Gwaay](https://whc.unesco.org/en/list/157/) and [NPS Sitka](https://www.nps.gov/sitk/learn/historyculture/battle1804.htm) support local histories rather than continent-wide territorial claims. |
-| Cherokee, Métis and Inuit | [Cherokee Nation history](https://umbraco.cherokee.org/about-the-nation/history/), the [Manitoba Métis Federation](https://www.mmf.mb.ca/the-red-river-metis-la-nouvelle-nation) and [Nunavut Tunngavik's report](https://www.tunngavik.com/documents/SSPB-EPD-2018_NILFA-Report-20181210-V04.pdf) support rebuilding, diplomacy and institutions. Nunavut's public government is distinguished from Inuit rights under the Agreement. |
-| Nenets | [Forbes and colleagues, PNAS 2009](https://www.geobotany.org/library/pubs/ForbesBC2009_pnas_52_22041.pdf) describes more intensive herding after 1600, seasonal movement, Indigenous knowledge, industry and environmental pressures. The historical overview ends with the study; this is not an assertion that Nenets history ended then or that their seasonal movements reached Alaska. |
+| Cherokee, Métis and Inuit | [Cherokee Nation's New Echota account](https://remembertheremoval.cherokee.gov/sites-on-the-trail/new-echota/), the [1839 constitution held by the Library of Congress](https://www.loc.gov/item/06021615/), the [Manitoba Métis Federation](https://www.mmf.mb.ca/the-red-river-metis-la-nouvelle-nation) and [Nunavut Legislative Assembly](https://www.assembly.nu.ca/faq/how-was-nunavut-created) support specific acts and institutions. Nunavut is dated to its April 1, 1999 creation; its public government is distinguished from Inuit rights under the Agreement. |
+| Nenets | [Forbes and colleagues, PNAS 2009](https://www.geobotany.org/library/pubs/ForbesBC2009_pnas_52_22041.pdf) documents seasonal movement, Indigenous knowledge, industry and environmental pressures. The event is publication of that study in 2009, not the whole history of herding or a migration to Alaska. |
 | Sakha, Chukchi and Yupik | [UNESCO Olonkho](https://ich.unesco.org/en/RL/olonkho-yakut-heroic-epos-00145) documents Sakha epic tradition and recognition in 2005/2008. [Beringia National Park's account](https://www.nps.gov/articles/000/aps-20-2-10.htm) documents Chukchi and Yupik homelands and local participation. These peoples are not assigned as the identities of Ice Age migrants. |
 | Sámi and Ainu | The [Saami Council](https://www.saamicouncil.net/en/home/) supports cross-border cooperation from 1956. [UNESCO's 2009 decision](https://ich.unesco.org/en/decisions/4.COM/13.57) supports community transmission of Ainu dance. Neither recognition date is a people's origin. |
-| Gunditjmara and Māori | [UNESCO Budj Bim](https://whc.unesco.org/en/list/1577/) describes long-term aquaculture and continuing Country relationships. The c. 4500 BC label is a rounded overview. [Te Ara](https://teara.govt.nz/en/when-was-new-zealand-first-settled/page-1) supports late-thirteenth-century Polynesian settlement, without identifying a single landing place. |
+| Gunditjmara and Māori | [UNESCO Budj Bim](https://whc.unesco.org/en/list/1577/) describes long-term aquaculture and continuing Country relationships. The c. 4500 BC label is a rounded early-evidence marker, not one known construction year. [Te Ara](https://teara.govt.nz/en/when-was-new-zealand-first-settled/page-1) supports late-thirteenth-century Polynesian settlement, without identifying a single landing place. |
 | San, Hambukushu, Wajãpi and Quechua | [UNESCO Tsodilo](https://whc.unesco.org/en/list/1021/), [Wajãpi](https://ich.unesco.org/en/RL/oral-and-graphic-expressions-of-the-wajapi-00049) and [Q’eswachaka](https://ich.unesco.org/en/RL/knowledge-skills-and-rituals-related-to-the-annual-renewal-of-the-q-eswachaka-bridge-00594) support sacred landscape and living cultural practices. Tsodilo's entire archaeological record is not assigned to current communities. |
 
 ## Beringia research view
@@ -87,7 +98,8 @@ node tests/history-indigenous.browser.mjs
 
 The browser test defaults to isolated Chrome at port 9242 and a static server at
 8876; `ATLAS_CDP_URL` and `ATLAS_TEST_URL` override them. It checks source links,
-world tour markers, Musqueam visibility in 1700, Indigenous Russia search,
+world tour markers, Musqueam visibility near AD 500, Cherokee's absence in 1956,
+selection returning to 1839, Indigenous Russia search,
 four-site evidence rendering, both projections, shared-view reload, time-bound
 overlay visibility and the 390px layout. Screenshots go to the OS temporary
 directory as `history-beringia-desktop.png` and `history-beringia-mobile.png`.
