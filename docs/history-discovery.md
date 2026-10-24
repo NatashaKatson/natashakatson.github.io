@@ -183,7 +183,7 @@ space retained for human history. Deep-time dates display in millions of years
 and accept `150 Ma`, `93.5 mya`, or `67 million years ago`. Previous/Next move a
 million years in deep time; the fossil display window is ±1 million years around
 the selected date and recorded intervals. The ordinary historical window remains
-±1 year. Non-avian dinosaur records stop at the 66-million-year boundary. The
+±2 years. Non-avian dinosaur records stop at the 66-million-year boundary. The
 timeline's earliest section has no claim of complete fossil coverage.
 
 Species-specific illustrated avatars mark representative fossil regions at
@@ -298,9 +298,9 @@ When no supported link exists, **Explore nearby history** offers up to four sour
 records with markers within 250 km, ordered by distance and labeled with that
 distance. These can come from different periods; the card explicitly distinguishes
 geographic proximity from a historical connection. If there are no nearby markers,
-**Explore the same period** offers records whose event dates or lifespans overlap
-or fall within 50 years of the selected record's start/birth year. Territory cards
-use the viewed year for period suggestions, without interpreting a territory's
+**Explore the same period** offers records whose displayed event start or birth dates
+fall within 2 years of the viewed year. Territory cards
+also use the viewed year for period suggestions, without interpreting a territory's
 centroid as a historical place. Context suggestions use the same navigation and
 Back behavior as story cards. If neither kind of context is available, the section
 is omitted.

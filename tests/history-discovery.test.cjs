@@ -140,12 +140,13 @@ test("story context offers sourced nearby records, then the same period, without
   // Territory suggestions use the viewed year without treating a centroid as a place.
   const period = core.storyContext({ name: "Empire" }, records, 1900);
   assert.equal(period.title, "Explore the same period");
-  assert(period.connections.some((c) => c.record === contemporary));
+  assert(period.connections.some((c) => c.record === anchor));
+  assert(!period.connections.some((c) => c.record === contemporary));
   assert(!period.connections.some((c) => c.record === near || c.record === unrelated));
   assert.equal(core.storyContext(anchor, [anchor, unrelated, unsourced], 1900), null);
   assert.equal(core.storyContext(anchor, records, 0), null);
-  assert.equal(core.storyContext({}, [{ wiki: "CE", start: 1 }], -50).connections.length, 1);
-  assert.equal(core.storyContext({}, [{ wiki: "CE", start: 1 }], -51), null);
+  assert.equal(core.storyContext({}, [{ wiki: "CE", start: 1 }], -2).connections.length, 1);
+  assert.equal(core.storyContext({}, [{ wiki: "CE", start: 1 }], -3), null);
 });
 test("inline atlas scripts remain syntactically valid after integration", () => {
   const html = fs.readFileSync(
@@ -208,7 +209,8 @@ test("recent years contain sourced events visible to the timeline", () => {
   const active = html.slice(html.indexOf("function relevance("), html.indexOf("function alivePeople("));
   const context = vm.createContext({
     state: { year: 2026, cats: new Set(["ideas", "culture", "nature", "war", "power", "fashion"]) },
-    halfWin: () => 1,
+    DiscoveryCore: core,
+    halfWin: () => core.sameTimeYears,
   });
   vm.runInContext(events + "\n" + mapping + "\n" + active, context);
   for (const year of [2023, 2024, 2025, 2026]) {
@@ -221,14 +223,15 @@ test("recent years contain sourced events visible to the timeline", () => {
   assert.equal(vm.runInContext("activeEvents().length", context), 0);
 });
 
-test("meanwhile uses inclusive same-year dates, other regions, and preserves sparse coverage", () => {
+test("meanwhile uses inclusive two-year dates, other regions, and preserves sparse coverage", () => {
   const anchor = { wiki: "Anchor", region: "am" };
   const ongoing = { wiki: "Ongoing", region: "as", start: 1810, end: 1820, approx: false };
   const exact = { wiki: "Exact", region: "eu", start: 1815, end: 1815, approx: false };
-  const nearbyYear = { wiki: "Next", region: "af", start: 1816, end: 1816 };
+  const nearbyYear = { wiki: "Next", region: "af", start: 1817, end: 1817, approx: false };
   const sameRegion = { wiki: "Local", region: "am", start: 1815, end: 1815 };
   const events = [ongoing, exact, nearbyYear, sameRegion, { ...exact, wiki: "Duplicate region" }];
-  assert.deepEqual(core.meanwhile(anchor, events, 1815), [ongoing, exact]);
+  assert.deepEqual(core.meanwhile(anchor, events, 1815), [ongoing, exact, nearbyYear]);
+  assert.deepEqual(core.meanwhile(anchor, [{ ...nearbyYear, start: 1818, end: 1818 }], 1815), []);
   assert.deepEqual(core.meanwhile(anchor, events, 1850), []);
 });
 
@@ -331,4 +334,19 @@ test("city search retains common exonyms and names across scripts", () => {
   for (const [query, expected] of [["Kiev", "Kyiv"], ["Москва", "Moscow"],
     ["東京", "Tokyo"], ["Peking", "Beijing"], ["Лондон", "London"]])
     assert.equal(core.search(records, query, "place")[0]?.title, expected, query);
+});
+test("same-period suggestions use displayed dates within two years, not overlapping lifespans", () => {
+  const anchor = { wiki: "Anchor", start: 1819 };
+  const records = [
+    { wiki: "Before", start: 1817 }, { wiki: "After", start: 1821 },
+    { wiki: "TooEarly", start: 1816 }, { wiki: "TooLate", start: 1822 },
+    { wiki: "Simon_Bolivar", born: 1783, died: 1830 },
+    { wiki: "Napoleon", born: 1769, died: 1821 },
+    { wiki: "OlderPeriod", start: 1800, end: 1830 },
+    { wiki: "Newborn", born: 1819, died: 1900 },
+  ];
+  const context = core.storyContext(anchor, records, 1819);
+  assert.deepEqual(context.connections.map((c) => c.record.wiki), ["Newborn", "Before", "After"]);
+  assert.match(context.description, /within 2 years/);
+  assert.equal(core.storyContext(anchor, records.slice(2, 7), 1819), null);
 });

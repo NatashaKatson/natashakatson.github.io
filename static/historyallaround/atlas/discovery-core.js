@@ -1,12 +1,17 @@
 /* Pure discovery helpers, shared by the browser and regression tests. */
 (function (root) {
   const api = {
+    sameTimeYears: 2,
     yearsBetween(from, to) {
       return to - from - (from < 0 && to > 0 ? 1 : 0);
     },
+    yearGap(start, end, year) {
+      return year < start ? api.yearsBetween(year, start)
+        : year > end ? api.yearsBetween(end, year) : 0;
+    },
     isHistoricalContext(record, year) {
       return record.kind === 'event' && record.cat !== 'dinosaurs' && record.end > record.start &&
-        record.start < year - 1;
+        api.yearsBetween(record.start, year) > api.sameTimeYears;
     },
     contemporaryPair(people, year, anchorWiki) {
       const alive = people.filter((p) => p.born <= year && p.died >= year);
@@ -64,7 +69,7 @@
     meanwhile(record, events, year) {
       const regions = new Set();
       return events.filter((e) => e.wiki !== record.wiki && e.region !== record.region &&
-        e.start <= year && e.end >= year).sort((a, b) =>
+        api.yearGap(e.start, e.end, year) <= api.sameTimeYears).sort((a, b) =>
           Number(a.approx) - Number(b.approx) || a.start - b.start
         ).filter((e) => {
           if (regions.has(e.region)) return false;
@@ -249,10 +254,10 @@
       const candidates = records.filter((r) => r !== record &&
         !(record.id && r.id === record.id) && (r.source || r.wiki))
         .flatMap((r) => {
-          const start = r.start ?? r.born, end = r.end ?? r.died ?? start;
-          if (!Number.isFinite(start) || !Number.isFinite(end)) return [];
-          const gap = year < start ? api.yearsBetween(year, start)
-            : year > end ? api.yearsBetween(end, year) : 0;
+          // Match the date displayed on the card and visited by its link.
+          const start = r.start ?? r.born;
+          if (!Number.isFinite(start)) return [];
+          const gap = api.yearGap(start, start, year);
           const distance = [record.lon, record.lat, r.lon, r.lat].every(Number.isFinite)
             ? api.distance([record.lon, record.lat], [r.lon, r.lat]) : Infinity;
           return [{ record: r, gap, distance,
@@ -266,11 +271,11 @@
         connections: nearby.slice(0, 4).map((c) => ({ ...c,
           reason: c.distance < 1 ? "Mapped within 1 km" : `Mapped ${Math.round(c.distance)} km away` })),
       };
-      const period = candidates.filter((c) => c.gap <= 50)
+      const period = candidates.filter((c) => c.gap <= api.sameTimeYears)
         .sort((a, b) => a.gap - b.gap || a.distance - b.distance);
       return period.length ? {
         title: "Explore the same period",
-        description: "Recorded dates overlap or fall within 50 years of the selected date. These are suggestions for exploration, not documented story links.",
+        description: "Recorded dates fall within 2 years of the selected date. These are suggestions for exploration, not documented story links.",
         connections: period.slice(0, 4).map((c) => ({ ...c, reason: "Same period" })),
       } : null;
     },

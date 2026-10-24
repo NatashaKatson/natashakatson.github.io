@@ -1303,12 +1303,17 @@ window.fetch = async function(input, init) {
 <script>/* Pure discovery helpers, shared by the browser and regression tests. */
 (function (root) {
   const api = {
+    sameTimeYears: 2,
     yearsBetween(from, to) {
       return to - from - (from < 0 && to > 0 ? 1 : 0);
     },
+    yearGap(start, end, year) {
+      return year < start ? api.yearsBetween(year, start)
+        : year > end ? api.yearsBetween(end, year) : 0;
+    },
     isHistoricalContext(record, year) {
       return record.kind === 'event' && record.cat !== 'dinosaurs' && record.end > record.start &&
-        record.start < year - 1;
+        api.yearsBetween(record.start, year) > api.sameTimeYears;
     },
     contemporaryPair(people, year, anchorWiki) {
       const alive = people.filter((p) => p.born <= year && p.died >= year);
@@ -1366,7 +1371,7 @@ window.fetch = async function(input, init) {
     meanwhile(record, events, year) {
       const regions = new Set();
       return events.filter((e) => e.wiki !== record.wiki && e.region !== record.region &&
-        e.start <= year && e.end >= year).sort((a, b) =>
+        api.yearGap(e.start, e.end, year) <= api.sameTimeYears).sort((a, b) =>
           Number(a.approx) - Number(b.approx) || a.start - b.start
         ).filter((e) => {
           if (regions.has(e.region)) return false;
@@ -1551,10 +1556,10 @@ window.fetch = async function(input, init) {
       const candidates = records.filter((r) => r !== record &&
         !(record.id && r.id === record.id) && (r.source || r.wiki))
         .flatMap((r) => {
-          const start = r.start ?? r.born, end = r.end ?? r.died ?? start;
-          if (!Number.isFinite(start) || !Number.isFinite(end)) return [];
-          const gap = year < start ? api.yearsBetween(year, start)
-            : year > end ? api.yearsBetween(end, year) : 0;
+          // Match the date displayed on the card and visited by its link.
+          const start = r.start ?? r.born;
+          if (!Number.isFinite(start)) return [];
+          const gap = api.yearGap(start, start, year);
           const distance = [record.lon, record.lat, r.lon, r.lat].every(Number.isFinite)
             ? api.distance([record.lon, record.lat], [r.lon, r.lat]) : Infinity;
           return [{ record: r, gap, distance,
@@ -1568,11 +1573,11 @@ window.fetch = async function(input, init) {
         connections: nearby.slice(0, 4).map((c) => ({ ...c,
           reason: c.distance < 1 ? "Mapped within 1 km" : `Mapped ${Math.round(c.distance)} km away` })),
       };
-      const period = candidates.filter((c) => c.gap <= 50)
+      const period = candidates.filter((c) => c.gap <= api.sameTimeYears)
         .sort((a, b) => a.gap - b.gap || a.distance - b.distance);
       return period.length ? {
         title: "Explore the same period",
-        description: "Recorded dates overlap or fall within 50 years of the selected date. These are suggestions for exploration, not documented story links.",
+        description: "Recorded dates fall within 2 years of the selected date. These are suggestions for exploration, not documented story links.",
         connections: period.slice(0, 4).map((c) => ({ ...c, reason: "Same period" })),
       } : null;
     },
@@ -2128,7 +2133,7 @@ const HISTORY_SEG=[[0,-300000],[.10,-10000],[.17,-3000],[.40,0],[.70,1500],[.83,
 let dinosaurTimeline=true,lastHumanYear=1453;
 function yearAt(t){const segments=dinosaurTimeline?SEG:HISTORY_SEG;for(let i=1;i<segments.length;i++){const[a,ya]=segments[i-1],[b,yb]=segments[i];if(t<=b)return ya+(yb-ya)*(t-a)/(b-a)}return NOW}
 function tAt(y){const segments=dinosaurTimeline?SEG:HISTORY_SEG;for(let i=1;i<segments.length;i++){const[a,ya]=segments[i-1],[b,yb]=segments[i];if(y<=yb)return a+(b-a)*(y-ya)/(yb-ya)}return 1}
-const SAME_TIME_YEARS=1;
+const SAME_TIME_YEARS=DiscoveryCore.sameTimeYears;
 function halfWin(y=state.year){return y < -1000000 ? 1000000 : SAME_TIME_YEARS}
 function roundYear(y){const n=Math.round(y);return n===0?(y<0?-1:1):n}
 function fmt(y,approx){const c=approx?"c. ":"";if(y<=-1000000)return c+(Math.abs(y)/1000000).toLocaleString("en-US",{maximumFractionDigits:3})+" million years ago";if(y<0)return c+Math.abs(y).toLocaleString("en-US")+" BC";if(y<1000)return c+"AD "+y;return c+y}
@@ -2247,7 +2252,7 @@ function stars(){const w=Math.round(W*DPR),h=Math.round(H*DPR);if(starLayer&&sta
   const c=document.createElement("canvas");c.width=w;c.height=h;const x=c.getContext("2d");x.scale(DPR,DPR);x.fillStyle=C.star;
   for(const[sx,sy,sr,sa]of STARS){x.globalAlpha=sa;x.beginPath();x.arc(sx*W,sy*H,sr,0,7);x.fill()}return starLayer=c}
 let hits=[],polLabels=[];
-function relevance(e,y,w){const d=y<e.start?e.start-y:y>e.end?y-e.end:0;return d<=w?1-0.55*(d/w):0}
+function relevance(e,y,w){const d=DiscoveryCore.yearGap(e.start,e.end,y);return d<=w?1-0.55*(d/w):0}
 // Both are asked for several times per frame, so the last answer is kept until the year or filters change.
 let actMemo={},pplMemo={};
 function activeEvents(){const y=state.year,k=y+"|"+[...state.cats];if(actMemo.k===k)return actMemo.v;const w=halfWin(y);
@@ -2492,11 +2497,11 @@ function eventRegions(records,showRanges=false){const by={};for(const{e}of recor
 function renderSide(){
   const act=activeEvents(),y=state.year;
   const context=act.filter(({e})=>DiscoveryCore.isHistoricalContext(e,y)),dated=act.filter(({e})=>!DiscoveryCore.isHistoricalContext(e,y));
-  document.getElementById("sideSub").textContent=y<-1000000?`Approximate ages · within 1 million years of the selected date · ${act.length} fossil record${act.length===1?"":"s"}`:`${dated.length} dated event${dated.length===1?"":"s"} within one year of ${fmt(y)}`+(context.length?` · ${context.length} historical context record${context.length===1?"":"s"}`:"");
+  document.getElementById("sideSub").textContent=y<-1000000?`Approximate ages · within 1 million years of the selected date · ${act.length} fossil record${act.length===1?"":"s"}`:`${dated.length} dated event${dated.length===1?"":"s"} within 2 years of ${fmt(y)}`+(context.length?` · ${context.length} historical context record${context.length===1?"":"s"}`:"");
   const by={};for(const{e}of act)(by[e.region]??=[]).push(e);
   const reg=document.getElementById("regions");
   const filled=REGION_ORDER.filter(r=>by[r]);
-  reg.innerHTML=dated.length?eventRegions(dated):`<p class="empty">${y<-1000000?"No dinosaur records in this time window. Try a dinosaur era or another date.":"No dated events within one year. Move the timeline or search for another event."}</p>`;
+  reg.innerHTML=dated.length?eventRegions(dated):`<p class="empty">${y<-1000000?"No dinosaur records in this time window. Try a dinosaur era or another date.":"No dated events within 2 years. Move the timeline or search for another event."}</p>`;
   if(context.length)reg.insertAdjacentHTML("beforeend",`<section class="timeline-context-list" aria-label="Historical context"><h3>Historical context in ${esc(fmt(y))}</h3><p>Historical periods whose recorded date ranges overlap this time window.</p>${eventRegions(context,true)}</section>`);
   const quiet=REGION_ORDER.filter(r=>!by[r]).map(r=>REGIONS[r]);
   if(filled.length&&quiet.length)reg.insertAdjacentHTML("beforeend",`<p class="empty">Nothing recorded here yet for ${quiet.join(", ")}.</p>`);
@@ -2939,7 +2944,7 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
   function addStories(el, x) {
     let connections = storyConnections(x);
     const context = connections.length ? null : core.storyContext(
-      x, [...ev, ...ppl], x.start ?? x.born ?? compare.selectedYear ?? state.year,
+      x, [...ev, ...ppl], compare.selectedYear ?? state.year,
     );
     if (context) connections = context.connections;
     if (!connections.length) return;
@@ -3580,7 +3585,7 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
     const section = el.querySelector(".meanwhile-slot");
     if (!section) return;
     section.className = "near meanwhile-slot";
-    section.innerHTML = `<b>Meanwhile… in ${esc(fmt(year))}</b><p>Dated events and recorded historical periods elsewhere in this year. Coincidence in time does not imply a causal connection; approximate dates remain approximate.</p>${pinned && pinned.id !== record.id ? `<button type="button" class="pinned-event">← Return to ${esc(pinned.title)} · ${esc(fmt(pinned.year))}</button>` : ""}${others.length ? others.map((r, i) => `<div class="meanwhile-card"><button type="button" class="story-card" data-meanwhile="${i}"><b>${esc(r.title)}</b><small>${esc(REGIONS[r.region])} · ${esc(fmtSpan(r.start, r.end !== r.start ? r.end : null, r.approx))}${core.isHistoricalContext(r, year) ? " · historical context" : ""}</small><span>${esc(r.blurb)}</span></button><a href="${esc(r.source || wikiUrl(r.wiki))}" target="_blank" rel="noopener">Source ↗</a></div>`).join("") : "<p>No records in other regions are available for this year.</p>"}`;
+    section.innerHTML = `<b>Meanwhile… in ${esc(fmt(year))}</b><p>Dated events within 2 years and recorded historical periods elsewhere in this time window. Coincidence in time does not imply a causal connection; approximate dates remain approximate.</p>${pinned && pinned.id !== record.id ? `<button type="button" class="pinned-event">← Return to ${esc(pinned.title)} · ${esc(fmt(pinned.year))}</button>` : ""}${others.length ? others.map((r, i) => `<div class="meanwhile-card"><button type="button" class="story-card" data-meanwhile="${i}"><b>${esc(r.title)}</b><small>${esc(REGIONS[r.region])} · ${esc(fmtSpan(r.start, r.end !== r.start ? r.end : null, r.approx))}${core.isHistoricalContext(r, year) ? " · historical context" : ""}</small><span>${esc(r.blurb)}</span></button><a href="${esc(r.source || wikiUrl(r.wiki))}" target="_blank" rel="noopener">Source ↗</a></div>`).join("") : "<p>No records in other regions are available within 2 years of this date.</p>"}`;
     section.querySelector(".pinned-event")?.addEventListener("click", () => {
       const anchor = pinned;
       trail.push(snapshot());

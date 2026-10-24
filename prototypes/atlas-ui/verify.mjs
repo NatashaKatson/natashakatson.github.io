@@ -56,7 +56,7 @@ try {
   await check(`polities().length>0`, 'Historical borders load from the embedded original datasets offline');
   await evaluate(`setYear(1992);stopSpin();globalThis.musqueam=ev.find(e=>e.wiki==='Musqueam_Indian_Band');`);
   await check(`musqueam.start===500 && musqueam.end===500 && !activeEvents().some(({e})=>e===musqueam)`, 'Musqueam movement has one approximate date and is absent in 1992');
-  await check(`document.getElementById('sideSub').textContent==='1 dated event within one year of 1992'`, '1992 shows the nearby dated event without unrelated continuing histories');
+  await check(`document.getElementById('sideSub').textContent==='2 dated events within 2 years of 1992'`, '1992 shows the nearby dated event without unrelated continuing histories');
   await check(`!document.querySelector('#regions [data-id="'+musqueam.id+'"]') && !document.querySelector('.timeline-context-list') && !!document.querySelector('#regions > .region [data-id="'+ev.find(e=>e.wiki==='Dissolution_of_the_Soviet_Union').id+'"]')`, 'Only contemporary records appear in the 1992 ledger');
   await check(`!activeEvents().some(({e})=>['Black_Death','COVID-19_pandemic','Inactivated_polio_vaccine'].includes(e.wiki))`, 'Unrelated past and future events do not appear in 1992');
   await screenshot('context-1992');
