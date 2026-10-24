@@ -71,8 +71,15 @@ try {
     assert(document.activeElement===detail,'Selected reader receives keyboard focus');
     detail.querySelector('.close').click();
     assert(document.activeElement.dataset.id===event.id&&Math.abs(side.scrollTop-saved)<2,'Close restores list focus and scroll');
+    for(const [year,visible] of [[1926,true],[1930,true],[1925,false],[1931,false]]){
+      setYear(year);
+      assert(!!document.querySelector('#regions [data-id="'+event.id+'"]')===visible,'Penicillin follows the inclusive two-year window in '+year);
+    }
     setYear(1992);const musqueam=ev.find(e=>e.wiki==='Musqueam_Indian_Band');
-    assert(document.getElementById('sideSub').textContent==='1 dated event within one year of 1992','1992 contains the nearby dated event');
+    assert(document.getElementById('sideSub').textContent==='2 dated events within 2 years of 1992','1992 contains both events within two years');
+    for(const wiki of ['Dissolution_of_the_Soviet_Union','1994_South_African_general_election']){
+      assert(document.querySelector('#regions [data-id="'+ev.find(e=>e.wiki===wiki).id+'"]'),'1992 includes '+wiki);
+    }
     assert(!activeEvents().some(({e})=>e.indigenous)&&!document.querySelector('.timeline-context-list'),'No unrelated continuing Indigenous overviews');
     select(musqueam.id,false);
     assert(state.year===500&&!document.querySelector('.timeline-context-note'),'Selecting Musqueam visits its approximate movement date');
