@@ -28,6 +28,27 @@
 .dinosaur-portrait { margin: 12px 0; text-align: center; background: var(--paper-2); border-radius: 5px; padding: 12px; }
 .dinosaur-portrait img { display: block; max-width: 100%; height: auto; margin: auto; object-fit: contain; }
 .dinosaur-portrait figcaption, .dinosaur-art-note { font-size: 10px; line-height: 1.5; color: var(--muted); }
+.beringia-key {
+  position: absolute;
+  bottom: 68px;
+  left: 18px;
+  right: 65px;
+  max-width: 430px;
+  padding: 9px 12px;
+  border: 1px solid var(--muted);
+  border-radius: 4px;
+  background: var(--paper);
+  color: var(--ink);
+  font: 11px/1.5 var(--body);
+  pointer-events: none;
+}
+.beringia-key[hidden] { display: none; }
+.beringia-corridors { display: flex; flex-wrap: wrap; gap: 4px 12px; margin-top: 5px; }
+.beringia-corridors span::before { content: ""; display: inline-block; width: 16px; margin-right: 4px; vertical-align: middle; border-top: 2px dashed var(--corridor-color); }
+.indigenous-context { font-size: 12px; line-height: 1.6; }
+@media (max-width: 600px) {
+  .beringia-key { left: 10px; right: 58px; bottom: 58px; padding: 6px 8px; font-size: 9px; }
+}
 .discovery-tools {
   display: flex;
   gap: 8px;
@@ -298,6 +319,25 @@
 .curated-navigation { display: flex; gap: 8px; justify-content: space-between; margin: 12px 0; }
 .curated-navigation button:disabled { opacity: .45; cursor: default; }
 .curated-discoveries [hidden] { display: none; }
+
+.same-year-preview { display: grid !important; grid-template-columns: 1fr 1fr; gap: 4px; margin: 0 0 12px !important; }
+.same-year-preview img { width: 100%; height: 76px; object-fit: cover; border-radius: 3px; }
+.same-year-heading { border-block: 1px solid var(--border); padding: 14px 0; margin: 16px 0; text-align: center; }
+.same-year-heading > span { font: 32px var(--display); color: var(--accent); }
+.same-year-heading p { margin: 4px 0 0; }
+.same-year-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.same-year-place { min-width: 0; }
+.same-year-place figure { margin: 0 0 14px; }
+.same-year-place img { display: block; width: 100%; height: auto; border-radius: 4px; }
+.same-year-place figcaption { font-size: 10px; line-height: 1.4; color: var(--muted); margin-top: 4px; }
+.same-year-place h4 { font: 20px/1.25 var(--display); margin: 8px 0; }
+.same-year-place button { width: 100%; font-size: 12px; }
+.same-year-place [aria-current] { border-color: var(--accent); background: var(--paper-2); }
+.same-year-context { border-left: 2px solid var(--accent); padding: 10px 12px; margin-top: 16px; background: var(--paper-2); }
+.same-year-context > strong { font-size: 13px; }
+@media (max-width: 480px) {
+  .same-year-pair { grid-template-columns: 1fr; gap: 22px; }
+}
 
 .contemporaries-card { border-top: 3px solid #577f9c; }
 .contemporaries-card h3 { margin-top: 6px; }

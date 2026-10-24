@@ -8,7 +8,7 @@
     try { return regionNames?.of(code) || code; } catch (_) { return code; }
   };
   const localRecords = core.prepareSearch([
-    ...ev.map((r) => ({ kind: r.cat === "dinosaurs" ? "dinosaur" : "event", title: r.title, aliases: [r.wiki.replaceAll("_", " "), ...(r.cat === "dinosaurs" ? ["dinosaur", "dinosaurs"] : []), ...(r.wiki === "Tyrannosaurus" ? ["T. rex", "T rex", "Tyrannosaurus rex"] : [])],
+    ...ev.map((r) => ({ kind: r.cat === "dinosaurs" ? "dinosaur" : "event", title: r.title, aliases: [r.wiki.replaceAll("_", " "), ...(r.indigenous?.aliases || []), ...(r.cat === "dinosaurs" ? ["dinosaur", "dinosaurs"] : []), ...(r.wiki === "Tyrannosaurus" ? ["T. rex", "T rex", "Tyrannosaurus rex"] : [])],
       description: r.blurb, start: r.start, end: r.end, approx: r.approx,
       lon: r.lon, lat: r.lat, recordId: r.id })),
     ...ppl.map((r) => ({ kind: "person", title: r.name, aliases: [r.wiki.replaceAll("_", " ")],

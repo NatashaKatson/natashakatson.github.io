@@ -35,7 +35,8 @@
     daily(events, people, day) {
       const rng = random(hash("atlas-daily-v1:" + day));
       const puzzles = [];
-      const exactEvents = events.filter((r) => !r.approx && r.start !== 0 &&
+      // A period overview's first year is not necessarily an event date.
+      const exactEvents = events.filter((r) => !r.approx && r.start === r.end && r.start !== 0 &&
         r.start <= 2024 && Number.isInteger(r.start)).sort((a, b) => key(a).localeCompare(key(b)));
       const ordered = [];
       for (const r of shuffle(exactEvents, rng)) {
