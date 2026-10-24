@@ -62,13 +62,14 @@ await new Promise((r) => setTimeout(r, 2500));
 console.log(await evaluate(`(async()=>{
 const assert=(v,m)=>{if(!v)throw Error(m)};
 assert(window.HistoryDiscovery,'Atlas loaded');stopSpin();
-assert(!document.querySelector('.history-search-trigger'),'header search button removed');
+const trigger=document.querySelector('.history-search-trigger');
+assert(trigger&&trigger.getBoundingClientRect().height>=40,'visible search button is available');
 assert(!performance.getEntriesByType('resource').some(r=>/search-(states|places).json/.test(r.name)),'indexes are lazy');
 const originalFetch=window.fetch,indexLoads=new Map();
 window.fetch=(url,...args)=>/^search-/.test(url)
  ? new Promise((resolve,reject)=>indexLoads.set(url,()=>originalFetch(url,...args).then(resolve,reject)))
  : originalFetch(url,...args);
-document.dispatchEvent(new KeyboardEvent('keydown',{key:'k',ctrlKey:true,bubbles:true}));
+trigger.click();
 assert(document.getElementById('historySearch').open,'search opens');
 assert(document.activeElement.id==='historySearchInput','search receives focus');
 const input=document.getElementById('historySearchInput');

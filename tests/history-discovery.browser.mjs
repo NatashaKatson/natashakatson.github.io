@@ -132,14 +132,14 @@ const e=ev.find(e=>e.wiki==='Oregon_Treaty');setYear(e.start);select(e.id,false)
 state.cats.delete('war');buildMarks();const marksBefore=marks.children.length;const card=[...document.querySelectorAll('[data-story]')].find(b=>b.textContent.includes('Pig War'));assert(card,'verified Oregon/Pig War edge');card.click();assert(state.cats.has('war')&&marks.children.length>marksBefore,'story navigation restores category marks');assert(document.querySelector('#regions')?.textContent.includes('Pig War')||document.querySelector('.side-content').textContent.includes('The Pig War'),'story target remains visible');assert(state.sel===ev.find(e=>e.wiki==='Pig_War_(1859)').id&&state.year===1859,'story navigation');
 document.querySelector('.story-trail button').click();assert(state.sel===initial.sel&&state.year===initial.year&&rot[0]===initial.rot[0]&&zoomK===initial.zoom,'back restores full camera/selection');
 select(ev.find(e=>e.wiki==='Charlemagne').id,false);assert(document.querySelectorAll('[data-story]').length>=1,'person/event association');document.querySelector('[data-story]').click();assert(byId[state.sel].kind==='person','event to person');document.querySelector('[data-story]').click();document.querySelector('.story-trail button').click();assert(byId[state.sel].kind==='person','multi-step back');
-const covid=ev.find(e=>e.wiki==='COVID-19_pandemic');setYear(covid.start);select(covid.id,false);
-const context=document.querySelector('#detail .story-card').closest('section');
+const contextEvent=ev.find(e=>e.wiki==='Stonehenge');setYear(contextEvent.start);select(contextEvent.id,false);
+const context=document.querySelector('#detail [data-story]').closest('section');
 assert(context.textContent.includes('Explore nearby history'),'sparse stories offer nearby context');
 assert(!context.textContent.includes('Follow the story')&&!document.getElementById('detail').textContent.includes('No supported connections'),'context distinguished from story links');
 assert([...context.querySelectorAll('a')].every(a=>a.href.startsWith('https://')),'context sources');
 const contextYear=state.year;context.querySelector('[data-story]').click();
-assert(state.sel!==covid.id,'context navigation opens another record');
-document.querySelector('.story-trail button').click();assert(state.sel===covid.id&&state.year===contextYear,'context Back restores selection and date');
+assert(state.sel!==contextEvent.id,'context navigation opens another record');
+document.querySelector('.story-trail button').click();assert(state.sel===contextEvent.id&&state.year===contextYear,'context Back restores selection and date');
 const moon=ev.find(e=>e.wiki==='Chandrayaan-3');select(moon.id,false);
 assert(document.getElementById('detail').textContent.includes('Explore the same period'),'period context for geographically isolated story');
 setMode('flat');setYear(1453);document.getElementById('changedOutlines').checked=true;await loadChunk(chunkOf(1453));render();

@@ -62,7 +62,8 @@ const audit=await evaluate(`(async()=>{
 stopSpin();
 const high=world(await(await fetch('land-50m.json')).json());
 const states=(await(await fetch('search-states.json')).json()).rows;
-const results={stateRows:states.length,chunks:BIDX.chunks.length,countries:[],missingCountrySearch:high.countries.filter(f=>!lo.countries.some(g=>g.properties.name===f.properties.name)).map(f=>f.properties.name),badStateAnchors:[],shadowedStateRows:[],modernLabels:[],versions:0,historicalLabels:[],coarseCountryAnchors:[]};
+const countryCatalog=new Map(HistoryCountries.rows.map(([name,lon,lat])=>[name,[lon,lat]]));
+const results={stateRows:states.length,chunks:BIDX.chunks.length,countries:[],missingCountrySearch:high.countries.filter(f=>!countryCatalog.has(f.properties.name)).map(f=>f.properties.name),badStateAnchors:[],shadowedStateRows:[],modernLabels:[],versions:0,historicalLabels:[],countrySearchAnchors:[]};
 const allFeatures=new Map();
 for(const chunk of BIDX.chunks){
  const t=await(await fetch('borders/c'+chunk+'.json')).json();
@@ -78,7 +79,7 @@ for(const [name,from,to,year,lon,lat,wiki,member] of states){
  const shown=active.find(f=>f.name===name&&f.member===member),target=allFeatures.get(chunkOf(year)).find(f=>f.name===name&&f.member===member&&f.from<=year&&f.to>=year);
  if(shown&&target&&shown!==target&&JSON.stringify(shown.geometry)!==JSON.stringify(target.geometry))results.shadowedStateRows.push({name,year,point:[lon,lat],member,shownMember:shown.member,shownArea:shown.area,targetArea:target.area});
 }
-for(const f of lo.countries){const point=d3.geoCentroid(f);if(!d3.geoContains(f,point))results.coarseCountryAnchors.push({name:f.properties.name,point});}
+for(const f of high.countries){const point=countryCatalog.get(f.properties.name);if(point&&!d3.geoContains(f,point))results.countrySearchAnchors.push({name:f.properties.name,point});}
 if(!${skipRender}) for(const [name,from,to,year,lon,lat,wiki,member] of states){
  const fs=allFeatures.get(chunkOf(year)),target=fs.find(f=>f.name===name&&f.member===member&&f.from<=year&&f.to>=year);
  bCache.set(chunkOf(year),fs);polCache={y:null,list:[]};state.year=year;selectedPolity=target;rot=[-lon,-lat,0];zoomK=1.6;
@@ -105,7 +106,7 @@ const assignRecord=r=>{
 const eventCountries=ev.filter(e=>e.cat!=='dinosaurs').map(assignRecord),peopleCountries=ppl.map(assignRecord);
 for(const f of high.countries){
  const name=f.properties.name,point=d3.geoCentroid(f);
- results.countries.push({name,point,centroidInside:d3.geoContains(f,point),events:eventCountries.filter(n=>n===name).length,people:peopleCountries.filter(n=>n===name).length,searchableCountry:lo.countries.some(g=>g.properties.name===name)});
+ results.countries.push({name,point,centroidInside:d3.geoContains(f,point),events:eventCountries.filter(n=>n===name).length,people:peopleCountries.filter(n=>n===name).length,searchableCountry:countryCatalog.has(name)});
 }
 await loadChunk(2000);setYear(2026);
 const original=ctx.fillText;
@@ -122,7 +123,7 @@ console.log(JSON.stringify({
   historicalSearchRows: audit.stateRows,
   historicalChunks: audit.chunks,
   missingCountrySearchEntries: audit.missingCountrySearch.length,
-  countrySearchAnchorsOutsideGeometry: audit.coarseCountryAnchors.length,
+  countrySearchAnchorsOutsideGeometry: audit.countrySearchAnchors.length,
   historicalVersions: audit.versions,
   historicalAnchorsOutsideGeometry: audit.badStateAnchors.length,
   shadowedHistoricalSearchRows: audit.shadowedStateRows.length,

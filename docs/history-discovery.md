@@ -2,6 +2,34 @@
 
 The implementation is local to `static/historyallaround/atlas/`. It adds no runtime dependencies and does not change the historical border datasets. The original D3 projection, canvas, timeline, filters, globe, and ledger remain in use. Integration hooks in `index.html` delegate to `discovery.js`; pure date/coverage/distance/association helpers live in `discovery-core.js`. `discovery.css` styles only the new controls and panels, plus the timeline space they require.
 
+## Browser access and timeline context
+
+The header's **Search** button opens the same local search as `/` or Ctrl/Cmd+K,
+including on touch devices. Country destinations come from all 241 entries in
+the detailed Natural Earth map. `scripts/build-history-countries.py` generates
+`search-countries.js` with interior points on each country's largest land
+component; `--check` verifies the generated file is current. Browser regressions
+check every point against D3's actual polygon containment.
+
+Selecting an event reveals its reader within the desktop sidebar and moves
+keyboard focus to the reader. Closing an event opened from the list restores
+the list position and focused row. The original timeline scale and controls
+remain in use.
+
+Long-running histories and older multi-year periods appear separately under
+**Historical context**. Their source intervals remain intact, but they are not
+counted as events dated within one year of the viewing date. Selected cards
+explain the range; meanwhile cards label contextual records. For example, in
+1992 the Musqueam overview (c. AD 500–2026) appears as historical context.
+
+The optional support-button script is deferred so a slow or blocked request
+cannot delay atlas initialization. The deployment workflow runs unit tests,
+generated-country checks, and every browser regression serially before a main
+branch deployment. Pull requests run the same validation without deployment.
+
+Additional validation: `node --test tests/history-ui.test.cjs` and
+`node tests/history-ui.browser.mjs`, using the browser/server environment below.
+
 ## Medicine, vaccination and pandemic history
 
 The atlas includes 34 additional sourced events: 11 vaccine milestones, 14 medical

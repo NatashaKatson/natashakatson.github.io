@@ -1,12 +1,53 @@
 name: github pages
 
 on:
+  pull_request:
   push:
     branches:
       - main
 
 jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: browser-actions/setup-chrome@v2
+        id: chrome
+        with:
+          chrome-version: stable
+      - name: Unit tests and generated country data
+        run: |
+          node --test tests/*.test.cjs
+          python3 scripts/build-history-countries.py --check
+      - name: Browser regression tests
+        env:
+          ATLAS_CDP_URL: http://127.0.0.1:9231
+          ATLAS_TEST_URL: http://127.0.0.1:8891/atlas/
+          ATLAS_CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+        run: |
+          python3 -m http.server 8891 --bind 127.0.0.1 --directory static/historyallaround > "$RUNNER_TEMP/atlas-server.log" 2>&1 &
+          atlas_server_pid=$!
+          "$ATLAS_CHROME_BIN" --headless=new --no-sandbox --disable-dev-shm-usage --disable-background-timer-throttling --disable-renderer-backgrounding --remote-debugging-port=9231 --user-data-dir="$RUNNER_TEMP/atlas-chrome" about:blank > "$RUNNER_TEMP/atlas-chrome.log" 2>&1 &
+          atlas_chrome_pid=$!
+          trap 'kill "$atlas_chrome_pid" "$atlas_server_pid" 2>/dev/null || true' EXIT
+          for attempt in {1..60}; do
+            if curl -fsS "$ATLAS_CDP_URL/json/version" > /dev/null && curl -fsS "$ATLAS_TEST_URL" > /dev/null; then break; fi
+            sleep 1
+          done
+          curl -fsS "$ATLAS_CDP_URL/json/version" > /dev/null
+          for test in tests/*.browser.mjs; do
+            echo "Running $test"
+            timeout 120s node "$test"
+          done
   deploy:
+    needs: validate
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

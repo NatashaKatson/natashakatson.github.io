@@ -13,7 +13,7 @@ test('medical and pandemic aliases reach real event destinations through the sea
   // Execute the actual browser adapter so a lost aliases field cannot silently pass.
   const script = fs.readFileSync('static/historyallaround/atlas/search.js', 'utf8');
   const prepare = script.slice(script.indexOf('const localRecords ='), script.indexOf('  const datasets ='));
-  const sandbox = vm.createContext({ DiscoveryCore: core, core, ev: context.events, ppl: [], lo: { countries: [] } });
+  const sandbox = vm.createContext({ DiscoveryCore: core, core, ev: context.events, ppl: [], HistoryCountries: require('../static/historyallaround/atlas/search-countries.js') });
   vm.runInContext(prepare + '\nglobalThis.searchRecords=localRecords;', sandbox);
   for (const [query, wiki, year] of [
     ['vaccines', 'Smallpox_vaccine', 1796],
