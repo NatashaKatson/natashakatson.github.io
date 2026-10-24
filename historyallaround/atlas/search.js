@@ -24,15 +24,6 @@
     { url: "search-states.json", label: "states and empires", records: [], loaded: false, error: false },
     { url: "search-places.json", label: "cities", records: [], loaded: false, error: false },
   ];
-  const trigger = document.createElement("button");
-  trigger.type = "button";
-  trigger.className = "history-search-trigger";
-  trigger.textContent = "Search history";
-  trigger.setAttribute("aria-haspopup", "dialog");
-  trigger.setAttribute("aria-controls", "historySearch");
-  trigger.setAttribute("aria-keyshortcuts", "Control+K Meta+K /");
-  trigger.title = "Search history (⌘/Ctrl K or /)";
-  document.querySelector(".head-tools").prepend(trigger);
   const dialog = document.createElement("dialog");
   dialog.id = "historySearch";
   dialog.className = "history-search";
@@ -50,6 +41,7 @@
   const status = dialog.querySelector("#historySearchStatus");
   const retry = dialog.querySelector("[data-search-retry]");
   let filter = "all", matches = [], requestToken = 0, timer, navigating = false;
+  let returnFocus;
 
   function dateLabel(r) {
     if (r.kind === "place") return `Present-day place · explore ${fmt(state.year)}`;
@@ -112,6 +104,7 @@
   }
   function openSearch() {
     if (dialog.open) { input.focus(); return; }
+    returnFocus = document.activeElement;
     stopPlay();
     dialog.showModal();
     input.focus();
@@ -124,7 +117,7 @@
     navigating = false;
     clearTimeout(timer);
     dialog.close();
-    trigger.focus({ preventScroll: true });
+    returnFocus?.focus({ preventScroll: true });
   }
   async function navigate(index) {
     const record = matches[index];
@@ -148,7 +141,6 @@
       if (token === requestToken) { navigating = false; results.setAttribute("aria-busy", "false"); }
     }
   }
-  trigger.onclick = openSearch;
   dialog.querySelector("[data-search-close]").onclick = closeSearch;
   dialog.addEventListener("cancel", (e) => { e.preventDefault(); closeSearch(); });
   dialog.addEventListener("click", (e) => { if (e.target === dialog) {
