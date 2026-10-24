@@ -45,6 +45,7 @@ try {
   await send('Emulation.setDeviceMetricsOverride',{width:1440,height:1000,deviceScaleFactor:1,mobile:false});
   await send('Page.navigate',{url:url+'#1980'});
   await waitFor(()=>evaluate('!!window.HistoryDiscovery'),'Atlas did not load');
+  await waitFor(()=>evaluate('W>0&&H>0'),'Atlas canvas layout did not settle');
   console.log(await evaluate(`(async()=>{
     const assert=(v,m)=>{if(!v)throw Error(m)};
     stopSpin();flyToken++;

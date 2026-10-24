@@ -28,6 +28,34 @@ pair. Existing shared URLs retain the tour and stop by ID; unknown IDs open the
 ordinary saved map. A short link, `atlas/#discover=cleopatra-world`, opens the tour
 directly and is used on the landing page.
 
+## Same-year comparisons
+
+**Meanwhile, elsewhere** compares the same everyday need across countries:
+1961 diaper care (a US disposable option / Soviet cloth and gauze) and menstrual
+care around 1980 (US packaged disposable pads / Soviet cloth and cotton wool).
+Both places stay visible together, with separate sources, evidence dates and map
+buttons. The diaper comparison distinguishes the 1961 brand launch from the
+invention of disposables, and uses a Soviet 1959 manual as period evidence rather
+than claiming a precise survey of 1961. A later note documents Soviet diaper
+production by January 1986 without inventing a first import or brand launch date.
+The menstrual comparison uses 1980 as a viewing year, explicitly labels its broader
+period and identifies the geographical limits of the interview evidence.
+
+These use existing curated stop IDs, URL sharing, reload and Back restoration.
+Moving the timeline leaves the comparison's authored year visible and offers a
+return to that year. On narrow screens the articles stack. Original local SVG
+illustrations are labeled; they do not represent archival photographs. Map
+captions distinguish product test markets, publication cities and museum locations
+from the extent of a nationwide practice.
+
+Add future comparisons with `format: "same-year"`, a common `topic`, two stops
+in a single viewing year, independently sourced claims, `evidenceLabel`, image
+descriptions and map captions. Period evidence must state its actual dates; avoid
+turning a documented routine into a claim that everyone used the same method.
+
+Validation: `node --test tests/history-discovery.test.cjs` and
+`node tests/history-meanwhile.browser.mjs` using the isolated browser setup below.
+
 ## Contemporaries across cultures
 
 **They were alive together** appears prominently above the ordinary ledger. It
@@ -548,3 +576,8 @@ land enclave, US/Canada shared-lake sides, exact-view restoration, changing year
 comparison dates, reservoir exclusion, deep time, real touch selection and the
 390px layout. Screenshots are written to the OS temporary directory as
 `history-water-ui-desktop.png` and `history-water-ui-mobile.png`.
+
+
+## Indigenous histories and Beringia
+
+The atlas includes sourced Indigenous community and site markers across the Americas, Siberia, Sápmi, Japan, Africa and the Pacific. Curated discoveries provide North America, world and Beringia entry points. The Beringia research overview distinguishes dated archaeological sites from schematic proposed corridors; it does not reconstruct Ice Age shorelines or claim one established journey. Overview intervals are scoped periods, not national founding or extinction dates. See [the source review and map limits](history-indigenous-sources.md) for evidence, dates, attribution and verification.

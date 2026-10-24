@@ -531,13 +531,40 @@
   const curatedShelf = document.createElement("section");
   curatedShelf.className = "curated-discoveries comparison-stories";
   curatedShelf.setAttribute("aria-label", "Curated discoveries");
-  curatedShelf.innerHTML = `<div class="kicker">Curated discoveries</div><div class="curated-catalog">${discoveries.map((s) => `<button type="button" class="story-card curated-cover" data-discovery="${esc(s.id)}"><b>${esc(s.title)}</b><span>${esc(s.subtitle)}</span><small>${esc(fmtSpan(s.start, s.end))} · ${s.stops.length} stops <span aria-hidden="true">↗</span></small></button>`).join("")}</div><div class="curated-reader" hidden></div>`;
+  function discoveryCover(s) {
+    const sameYear = s.format === "same-year";
+    return `<button type="button" class="story-card curated-cover" data-discovery="${esc(s.id)}">${sameYear ? `<span class="same-year-preview" aria-hidden="true">${s.stops.map((stop) => `<img src="${esc(stop.image)}" alt="" width="120" height="80" loading="lazy">`).join("")}</span>` : ""}<b>${esc(s.title)}</b><span>${esc(s.subtitle)}</span><small>${esc(sameYear ? fmt(s.start) : fmtSpan(s.start, s.end))} · ${sameYear ? "Two places, one year" : `${s.stops.length} stops`} <span aria-hidden="true">↗</span></small></button>`;
+  }
+  curatedShelf.innerHTML = `<div class="kicker">Curated discoveries</div><div class="curated-catalog">${discoveries.filter((s) => s.format !== "same-year").map(discoveryCover).join("")}<h3>Meanwhile, elsewhere</h3><p>The same everyday need, in different countries. What supplies did people have?</p>${discoveries.filter((s) => s.format === "same-year").map(discoveryCover).join("")}</div><div class="curated-reader" hidden></div>`;
   document.getElementById("regions").before(curatedShelf);
   const curatedReader = curatedShelf.querySelector(".curated-reader");
   function sourceLinks(sources) {
     return sources.map(([label, url]) => `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(label)} ↗</a>`).join(" · ");
   }
+  function sameYearContent(story, index) {
+    return `<div class="same-year-heading"><span>${esc(fmt(story.start))}</span><p>Same need · same year · two places</p></div><div class="same-year-pair">${story.stops.map((s, i) => `<article class="same-year-place"><figure><img src="${esc(s.image)}" alt="${esc(s.imageAlt)}" width="360" height="240"><figcaption>Illustration · not an archival photograph</figcaption></figure><div class="kicker">${esc(s.location)} · ${esc(s.evidenceLabel || (s.kind === "event" ? "Dated event" : "Period snapshot"))}</div><h4>${esc(s.title)}</h4><p>${esc(s.text)}</p><p class="curated-sources">${sourceLinks(s.sources)}</p><button type="button" data-curated-stop="${i}" ${i === index ? 'aria-current="location"' : ""}>Show on map · ${esc(s.location)}</button><p class="curated-context-note">${esc(s.mapNote)}</p></article>`).join("")}</div>${story.context ? `<aside class="same-year-context"><strong>${esc(story.contextTitle || "About this comparison")}</strong><p>${esc(story.context)}</p><p class="curated-sources">${sourceLinks(story.sources)}</p></aside>` : ""}`;
+  }
+  const evidenceLegend = document.createElement("div");
+  evidenceLegend.className = "beringia-key";
+  evidenceLegend.hidden = true;
+  evidenceLegend.textContent = "Dated sites from different times; dashed corridors are hypotheses. Modern coastlines only, without reconstructed Ice Age land or ice.";
+  const corridorKey = document.createElement("div");
+  corridorKey.className = "beringia-corridors";
+  for (const route of window.BeringiaEvidence?.routes || []) {
+    const item = document.createElement("span");
+    item.style.setProperty("--corridor-color", route.color);
+    item.textContent = route.name;
+    corridorKey.appendChild(item);
+  }
+  evidenceLegend.appendChild(corridorKey);
+  stage.appendChild(evidenceLegend);
+  function isEvidenceView() {
+    const selected = curatedSelection(activeDiscovery);
+    return !!selected && selected.story.id === "beringia-evidence" &&
+      selected.stop.year === state.year && !compare.on;
+  }
   function renderCurated() {
+    evidenceLegend.hidden = !isEvidenceView();
     const selected = curatedSelection(activeDiscovery);
     const key = selected ? `${selected.story.id}/${selected.stop.id}` : "";
     const contemporariesCard = document.querySelector(".contemporaries-card");
@@ -549,7 +576,13 @@
     const { story, stop, index } = selected;
     if (curatedReader.dataset.selection !== key) {
       curatedReader.dataset.selection = key;
-      curatedReader.innerHTML = `<button type="button" data-curated-close>← All discoveries</button><h3 tabindex="-1" data-curated-heading>${esc(story.title)}</h3><p>${esc(story.introduction)}</p><p class="curated-sources">${sourceLinks(story.sources)}</p><nav class="curated-stops" aria-label="Discovery stops">${story.stops.map((s, i) => `<button type="button" data-curated-stop="${i}" ${i === index ? 'aria-current="step"' : ""}><span>${i + 1}</span> ${esc(s.location)}</button>`).join("")}</nav><div class="curated-stop"><div class="kicker">Stop ${index + 1} of ${story.stops.length} · ${stop.kind === "context" ? "Period snapshot" : "Dated event"} · ${esc(fmt(stop.year))}</div><h4>${esc(stop.title)}</h4><p>${esc(stop.text)}</p>${stop.kind === "context" ? "<p class=\"curated-context-note\">The map year is a window into this period, not an exact date for everything described here.</p>" : ""}<p class="curated-sources">${sourceLinks(stop.sources)}</p></div><p class="curated-map-status" role="status"></p><button type="button" data-curated-return hidden>Show this stop on the map</button><div class="curated-navigation"><button type="button" data-curated-prev ${index === 0 ? "disabled" : ""}>← Previous</button><button type="button" data-curated-next ${index === story.stops.length - 1 ? "disabled" : ""}>Next stop →</button></div><p class="curated-context-note">A selection of contemporary histories, not a complete world survey or a claim that these places were connected. The circle locates a city or site; borders follow the Atlas's available coverage.</p>`;
+      curatedReader.innerHTML = `<button type="button" data-curated-close>← All discoveries</button><h3 tabindex="-1" data-curated-heading>${esc(story.title)}</h3><p>${esc(story.introduction)}</p><p class="curated-sources">${sourceLinks(story.sources)}</p><nav class="curated-stops" aria-label="Discovery stops">${story.stops.map((s, i) => `<button type="button" data-curated-stop="${i}" ${i === index ? 'aria-current="step"' : ""}><span>${i + 1}</span> ${esc(s.location)}</button>`).join("")}</nav><div class="curated-stop"><div class="kicker">Stop ${index + 1} of ${story.stops.length} · ${stop.kind === "context" ? "Period snapshot" : "Dated event"} · ${esc(fmt(stop.year))}</div><h4>${esc(stop.title)}</h4><p>${esc(stop.text)}</p>${stop.kind === "context" ? "<p class=\"curated-context-note\">The map year is a window into this period, not an exact date for everything described here.</p>" : ""}<p class="curated-sources">${sourceLinks(stop.sources)}</p></div><p class="curated-map-status" role="status"></p><button type="button" data-curated-return hidden>Show this stop on the map</button><div class="curated-navigation"><button type="button" data-curated-prev ${index === 0 ? "disabled" : ""}>← Previous</button><button type="button" data-curated-next ${index === story.stops.length - 1 ? "disabled" : ""}>Next stop →</button></div><p class="curated-context-note">${esc(story.note || "A selection of contemporary histories, not a complete world survey or a claim that these places were connected. The circle locates a city or site; borders follow the Atlas's available coverage.")}</p>`;
+      if (story.format === "same-year") {
+        curatedReader.querySelector(".curated-stops").remove();
+        curatedReader.querySelector(".curated-stop").outerHTML = sameYearContent(story, index);
+        curatedReader.querySelector(".curated-navigation").hidden = true;
+        curatedReader.querySelector(":scope > .curated-sources").hidden = true;
+      }
       curatedReader.querySelectorAll("[data-curated-stop]").forEach((b) => b.onclick = () => openCurated(story.id, +b.dataset.curatedStop));
       curatedReader.querySelector("[data-curated-prev]").onclick = () => openCurated(story.id, index - 1);
       curatedReader.querySelector("[data-curated-next]").onclick = () => openCurated(story.id, index + 1);
@@ -583,9 +616,11 @@
     activeContemporaries = story.contemporaries || null;
     compare.selectedYear = null;
     state.borders = "history";
+    state.sel = null;
+    selectedPolity = null;
     syncBordersUI();
     setYear(stop.year);
-    zoomK = 1.8;
+    zoomK = stop.zoom || 1.8;
     focusPoint(stop.point);
     update(); renderTrail();
     curatedReader.querySelector("[data-curated-heading]").focus({ preventScroll: true });
@@ -871,6 +906,7 @@
     return true;
   }
   window.HistoryDiscovery = {
+    evidenceView: isEvidenceView,
     limitYearsToHistory(year) {
       if(compare.left<-300000){compare.left=year;form.elements.left.value=fmt(year)}
       if(compare.selectedYear!==null&&compare.selectedYear<-300000){compare.selectedYear=null;state.sel=null;selectedPolity=null}

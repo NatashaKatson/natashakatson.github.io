@@ -57,6 +57,30 @@ test("curated discoveries have stable IDs, sourced stops and map years within th
   new vm.Script(fs.readFileSync("static/historyallaround/atlas/discovery.js", "utf8"));
 });
 
+test("same-year discoveries compare sourced places with local, labeled illustrations", () => {
+  const pairs = discoveries.filter((s) => s.format === "same-year");
+  assert(pairs.length >= 2);
+  for (const story of pairs) {
+    assert(story.topic);
+    assert.equal(story.start, story.end);
+    assert.equal(story.stops.length, 2);
+    assert.equal(new Set(story.stops.map((s) => s.location)).size, 2);
+    for (const stop of story.stops) {
+      assert.equal(stop.year, story.start);
+      assert(stop.mapNote && stop.imageAlt.startsWith("Illustration"));
+      assert.match(stop.image, /^images\/meanwhile\/[a-z-]+\.svg$/);
+      assert(fs.existsSync("static/historyallaround/atlas/" + stop.image));
+    }
+  }
+  const diapers = pairs.find((s) => s.id === "diaper-care-1961");
+  assert.match(diapers.stops[1].text, /1959/);
+  assert.match(diapers.context, /1986/);
+  assert.equal(diapers.stops[1].kind, "context");
+  const periods = pairs.find((s) => s.id === "period-care-1980");
+  assert(periods.stops.every((s) => s.kind === "context"));
+  assert.match(periods.context, /viewing year/);
+});
+
 test("dated features use inclusive intervals and latest version per polity", () => {
   const old = { name: "A", from: -10, to: 20, area: 2 };
   const newer = { ...old, from: 10 };
