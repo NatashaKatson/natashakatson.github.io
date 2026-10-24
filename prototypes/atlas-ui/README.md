@@ -8,7 +8,7 @@ Open **[preview.html](preview.html)** directly in your browser. This prototype k
 
 Try years **1928**, **1955**, **1816**, or **1918** to see the medical icons. The original slider and year controls work as before.
 
-`preview.html` is generated from the current files in `static/historyallaround/atlas/` and includes production bug fixes. It adds the proposed event emojis without publishing a deployment. The earlier redesigned browser is no longer used.
+`preview.html` is generated from the current files in `static/historyallaround/atlas/` and includes production bug fixes. Event emojis are rendered by the shared production code. Rebuilding the preview does not publish a deployment. The earlier redesigned browser is no longer used.
 
 ## Rebuild
 
@@ -18,7 +18,7 @@ From the repository root:
 node prototypes/atlas-ui/build-preview.cjs
 ```
 
-Edit `event-emojis.js` for prototype icon mappings. Date-context presentation now lives in the production renderer and `DiscoveryCore.isHistoricalContext`, so the preview inherits it directly. Scripts, styles, images, and compressed copies of the original map/search datasets are bundled so the preview can open from disk without a server. Optional fonts and the existing support button use their original external services.
+Edit `static/historyallaround/atlas/event-emojis.js` for shared icon mappings. Date-context presentation now lives in the production renderer and `DiscoveryCore.isHistoricalContext`, so the preview inherits it directly. Scripts, styles, images, and compressed copies of the original map/search datasets are bundled so the preview can open from disk without a server. Optional fonts and the existing support button use their original external services.
 
 The bundled D3 7.8.5 and TopoJSON client 3.1.0 are the same versions as the atlas. Licenses are retained in `vendor/` and embedded in the preview. All event sources and map attribution remain in the original UI.
 

@@ -10,6 +10,10 @@
   };
   const categories = { power: '👑', war: '⚔️', ideas: '🔭', culture: '🎨', nature: '🌿', fashion: '🧵' };
   window.AtlasEventEmojis = {
+    icon(event) {
+      const emoji = this.get(event);
+      return emoji ? `<span class="event-emoji" aria-hidden="true">${emoji}</span>` : '';
+    },
     get(event) {
       if (!event || event.kind !== 'event' || event.cat === 'dinosaurs') return '';
       if (medical[event.wiki]) return medical[event.wiki];

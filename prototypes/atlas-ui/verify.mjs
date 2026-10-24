@@ -2,6 +2,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 const root = path.dirname(fileURLToPath(import.meta.url));
+const testURL = process.env.ATLAS_TEST_URL || pathToFileURL(path.join(root, 'preview.html')).href;
+const screenshotDir = process.env.ATLAS_SCREENSHOT_DIR || path.join(root, 'previews');
 const cdp = process.env.ATLAS_CDP_URL || 'http://127.0.0.1:9231';
 const tab = await (await fetch(cdp + '/json/new?about:blank', { method: 'PUT' })).json();
 const ws = new WebSocket(tab.webSocketDebuggerUrl);
@@ -30,15 +32,15 @@ const pause = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const waitFor = async (expression) => { for (let i = 0; i < 120; i++) { if (await evaluate(expression)) return; await pause(70); } throw Error('Timed out: ' + expression); };
 const check = async (expression, label) => { if (!await evaluate(expression)) throw Error(label); console.log('PASS ' + label); checks++; };
 const screenshot = async (name) => {
-  fs.mkdirSync(path.join(root, 'previews'), { recursive: true });
+  fs.mkdirSync(screenshotDir, { recursive: true });
   const result = await send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: false });
-  fs.writeFileSync(path.join(root, 'previews', name + '.png'), Buffer.from(result.data, 'base64'));
+  fs.writeFileSync(path.join(screenshotDir, name + '.png'), Buffer.from(result.data, 'base64'));
 };
 try {
   await send('Page.enable'); await send('Runtime.enable'); await send('Network.enable');
-  await send('Network.setBlockedURLs', { urls: ['http://*', 'https://*'] });
+  await send('Network.setBlockedURLs', { urls: process.env.ATLAS_TEST_URL ? ['https://*'] : ['http://*', 'https://*'] });
   await send('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false });
-  await send('Page.navigate', { url: pathToFileURL(path.join(root, 'preview.html')).href + '#1928' });
+  await send('Page.navigate', { url: testURL + '#1928' });
   await waitFor(`!!window.AtlasUI && !!window.HistoryDinosaurs && !!window.AtlasEventEmojis`);
   await evaluate('stopSpin();');
   await check(`ev.length===282 && ppl.length===66`, 'All original events, dinosaurs, and people are retained');
@@ -47,8 +49,10 @@ try {
   await check(`AtlasEventEmojis.get(ev.find(e=>e.wiki==='Penicillin'))==='💊' && AtlasEventEmojis.get(ev.find(e=>e.wiki==='Smallpox_vaccine'))==='💉' && AtlasEventEmojis.get(ev.find(e=>e.wiki==='Stethoscope'))==='🩺' && AtlasEventEmojis.get(ev.find(e=>e.wiki==='Spanish_flu'))==='🦠'`, 'Medical discoveries, vaccines, diagnostics, and pandemics have specific emojis');
   await check(`ev.filter(e=>e.cat==='dinosaurs').every(e=>AtlasEventEmojis.get(e)==='')`, 'Dinosaur portraits and markers retain their original rendering');
   await check(`[...document.querySelectorAll('#regions .item')].some(b=>b.textContent.includes('Penicillin discovered') && b.querySelector('.event-emoji')?.textContent==='💊')`, 'Event list adds emojis while keeping original event text');
+  await check(`(()=>{const icon=document.querySelector('#regions .event-emoji'),r=icon.getBoundingClientRect(),style=getComputedStyle(icon);return r.width>=18&&r.height>=18&&style.fontFamily.includes('Apple Color Emoji')&&style.visibility==='visible'&&style.display!=='none'})()`, 'Event emojis have visible dimensions and an explicit emoji font');
   await evaluate(`select(ev.find(e=>e.wiki==='Penicillin').id,false);`);
   await check(`document.querySelector('#detail h3 .event-emoji').textContent==='💊' && !!document.querySelector('#detail .close')`, 'Original detail card shows the new event emoji');
+  await check(`(()=>{const icon=document.querySelector('#detail [data-meanwhile] .event-emoji');return icon&&getComputedStyle(icon).display==='inline-block'})()`, 'Related-event cards show their event emojis inline with titles');
   await screenshot('desktop');
   await evaluate(`document.querySelector('#detail .close').click();setMode('flat');globalThis.drawnEmoji=[];const originalFillText=ctx.fillText;ctx.fillText=function(text,...args){drawnEmoji.push(text);return originalFillText.call(this,text,...args)};render();ctx.fillText=originalFillText;`);
   await check(`drawnEmoji.includes('💊') && hits.some(h=>h.id===ev.find(e=>e.wiki==='Penicillin').id)`, 'Map draws the emoji and preserves the original selectable event');
@@ -98,7 +102,7 @@ try {
   await evaluate(`setYear(1955);stopSpin();window.scrollTo(0,0);`); await pause(200);
   await screenshot('mobile');
   await check(`errors.length===0`.replace('errors.length', String(errors.length)), 'No browser runtime errors');
-  console.log(`Validated ${checks} checks against the standalone atlas prototype.`);
+  console.log(`Validated ${checks} checks against ${testURL}.`);
 } finally {
   await send('Page.close').catch(() => {}); ws.close();
 }
