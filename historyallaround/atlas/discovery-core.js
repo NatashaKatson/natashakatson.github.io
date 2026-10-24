@@ -6,7 +6,7 @@
     },
     isHistoricalContext(record, year) {
       return record.kind === 'event' && record.cat !== 'dinosaurs' && record.end > record.start &&
-        ((record.indigenous && !record.indigenous.evidence) || record.start < year - 1);
+        record.start < year - 1;
     },
     contemporaryPair(people, year, anchorWiki) {
       const alive = people.filter((p) => p.born <= year && p.died >= year);
