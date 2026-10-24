@@ -17,6 +17,20 @@ other events. Genuine archaeological periods and approximate evidence dates
 retain their qualifications. Tours, the prototype and data exports use the
 corrected records; see the [Indigenous source review](history-indigenous-sources.md).
 
+Draft corrections, 24 October: Blombos uses an approximate 75000 BC marker.
+The cited 2002 paper reports a mean age of 77,000 years; the authors' 2009
+follow-up describes the original engraved pieces as about 75,000 years old.
+The marker and prose remain approximate rather than equating years BP with BC.
+Monte Albán now spans Late I and II (300 BC–AD 200), following AMNH's research
+chronology; UNESCO supplies the architectural context. Descriptions qualify the
+Milan toleration agreement, gradual East–West church division, Constantinople's
+dedication and Angkor Wat's reign-based date. Kilwa's visit is approximate and
+the Buddha's role labels his lifespan as traditional dates. The crash summary
+describes a deepening downturn rather than its onset. Monte Verde notes the
+site researchers' 2026 rebuttal, and the needle entry distinguishes earlier
+press ages from the adopted 2024 review. Supporting sources and qualifications
+are recorded in the review ledger, including additional references.
+
 The review covers the dates and principal claims of all **221 event summaries**
 (213 human-history entries and eight dinosaur entries). Every entry now has a
 source link and an entry in the [review ledger](history-event-corrections.json).

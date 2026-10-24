@@ -5,7 +5,7 @@
     "people": 66,
     "eventsWithSourceLinks": 282,
     "sourceReviewedEvents": 282,
-    "correctedOrClarifiedEvents": 133,
+    "correctedOrClarifiedEvents": 140,
     "borderChunks": 217,
     "borderFeatureInstances": 22190,
     "distinctBorderVersions": 13372,
@@ -37,8 +37,8 @@
     {
       "id": "e1",
       "title": "Blombos Cave engravings",
-      "start": -73000,
-      "end": -73000,
+      "start": -75000,
+      "end": -75000,
       "approximate": true,
       "point": [
         21.22,
@@ -46,7 +46,7 @@
       ],
       "wiki": "Blombos_Cave",
       "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
-      "review": null,
+      "review": "clarification",
       "source": "https://doi.org/10.1126/science.1067575"
     },
     {
@@ -106,7 +106,7 @@
       ],
       "wiki": "Monte_Verde",
       "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
-      "review": null,
+      "review": "clarification",
       "source": "https://doi.org/10.1126/science.adw9217"
     },
     {
@@ -661,7 +661,7 @@
       ],
       "wiki": "Edict_of_Milan",
       "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
-      "review": "source-check",
+      "review": "clarification",
       "source": "https://sourcebooks.web.fordham.edu/source/edict-milan.asp"
     },
     {
@@ -691,7 +691,7 @@
       ],
       "wiki": "Constantinople",
       "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
-      "review": "source-check",
+      "review": "clarification",
       "source": "https://www.europeana.eu/en/exhibitions/the-silk-and-the-blood/constantinople"
     },
     {
@@ -931,7 +931,7 @@
       ],
       "wiki": "East–West_Schism",
       "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
-      "review": "source-check",
+      "review": "clarification",
       "source": "https://www.cambridge.org/core/journals/traditio/article/abs/rethinking-the-schism-of-1054-authority-heresy-and-the-latin-rite/5DD029378209D589C69471CBCFFE8F1C"
     },
     {
@@ -1006,7 +1006,7 @@
       ],
       "wiki": "Angkor_Wat",
       "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
-      "review": "source-check",
+      "review": "clarification",
       "source": "https://www.library.gov.au/learn/digital-classroom/angkorkhmer-empire-802-1431/building-angkor"
     },
     {
@@ -1149,14 +1149,14 @@
       "title": "Ibn Battuta visits Kilwa",
       "start": 1331,
       "end": 1331,
-      "approximate": false,
+      "approximate": true,
       "point": [
         39.51,
         -8.96
       ],
       "wiki": "Kilwa_Kisiwani",
       "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
-      "review": "source-check",
+      "review": "clarification",
       "source": "https://whc.unesco.org/pg.cfm?CID=31&ID_SITE=144&l=en"
     },
     {
@@ -2041,7 +2041,7 @@
       ],
       "wiki": "Wall_Street_crash_of_1929",
       "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
-      "review": "source-check",
+      "review": "clarification",
       "source": "https://www.federalreservehistory.org/essays/stock-market-crash-of-1929"
     },
     {
@@ -2461,7 +2461,7 @@
       ],
       "wiki": "Sewing_needle",
       "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
-      "review": "correction or clarification",
+      "review": "clarification",
       "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11212769/"
     },
     {
@@ -3051,9 +3051,9 @@
     },
     {
       "id": "e202",
-      "title": "Monte Albán's second urban phase",
+      "title": "Monte Albán grows as a Zapotec capital",
       "start": -300,
-      "end": 100,
+      "end": 200,
       "approximate": true,
       "point": [
         -96.7675,
@@ -3061,8 +3061,8 @@
       ],
       "wiki": "Monte_Albán",
       "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
-      "review": "source-check",
-      "source": "https://whc.unesco.org/en/list/415/"
+      "review": "clarification",
+      "source": "https://www.amnh.org/research/anthropology/curatorial-research/meso-american-archaeology/projects/10.-trace-element-analysis"
     },
     {
       "id": "e203",

@@ -1,7 +1,7 @@
 id,name,bornYear,diedYear,approximate,role,latitude,longitude,region,wikipediaSlug,wikipediaUrl,sourceUrl
 p0,Hammurabi,-1810,-1750,true,King of Babylon,32.54,44.42,me,Hammurabi,https://en.wikipedia.org/wiki/Hammurabi,
 p1,Ramesses II,-1303,-1213,true,Pharaoh of Egypt,25.7,32.64,me,Ramesses_II,https://en.wikipedia.org/wiki/Ramesses_II,
-p2,Siddhartha Gautama,-563,-483,true,The Buddha,27.47,83.28,as,The_Buddha,https://en.wikipedia.org/wiki/The_Buddha,
+p2,Siddhartha Gautama,-563,-483,true,The Buddha (traditional dates),27.47,83.28,as,The_Buddha,https://en.wikipedia.org/wiki/The_Buddha,
 p3,Confucius,-551,-479,false,Philosopher,35.6,116.99,as,Confucius,https://en.wikipedia.org/wiki/Confucius,
 p4,Socrates,-470,-399,true,Philosopher,37.97,23.72,eu,Socrates,https://en.wikipedia.org/wiki/Socrates,
 p5,Aristotle,-384,-322,false,Philosopher,40.52,23.75,eu,Aristotle,https://en.wikipedia.org/wiki/Aristotle,

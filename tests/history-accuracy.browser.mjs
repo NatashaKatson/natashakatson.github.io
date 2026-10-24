@@ -39,6 +39,21 @@ const waitFor = async (check, message) => {
   }
   throw Error(message);
 };
+// Each section gets its own CDP deadline instead of sharing 20 seconds for the
+// entire accuracy suite. Keep the workflow's overall test timeout as a backstop.
+const checkSection = async (name, body) => {
+  console.log('Checking ' + name);
+  const started = performance.now();
+  try {
+    await evaluate(`(async()=>{
+      const assert=(v,m)=>{if(!v)throw Error(m)};
+      ${body}
+    })()`);
+  } catch (error) {
+    throw new Error(name + ': ' + error.message, { cause: error });
+  }
+  console.log(name + ' passed (' + ((performance.now() - started) / 1000).toFixed(1) + 's)');
+};
 
 try {
   await send('Runtime.enable');await send('Network.enable');await send('Network.setCacheDisabled',{cacheDisabled:true});
@@ -46,8 +61,7 @@ try {
   await send('Page.navigate',{url:url+'#1980'});
   await waitFor(()=>evaluate('!!window.HistoryDiscovery'),'Atlas did not load');
   await waitFor(()=>evaluate('W>0&&H>0'),'Atlas canvas layout did not settle');
-  console.log(await evaluate(`(async()=>{
-    const assert=(v,m)=>{if(!v)throw Error(m)};
+  await checkSection('Realm and constituent labels', `
     stopSpin();flyToken++;
     for(const year of [1700,1750]){
       await loadChunk(chunkOf(year));setYear(year);
@@ -72,6 +86,8 @@ try {
       }
     }
     selectedPolity=null;
+  `);
+  await checkSection('Aggregate selection and sharing', `
     const rows=(await(await fetch('search-states.json')).json()).rows;
     for(const [name,year] of [['Netherlands',1917],['Dutch Republic',1769],['Spanish Empire',1877]]){
       const candidates=rows.filter(r=>r[0]===name&&r[1]<=year&&r[2]>=year);
@@ -88,6 +104,8 @@ try {
         assert(selectedPolity?.member===expected&&polities().some(f=>samePolity(f,selectedPolity)),'shared view restores the same territorial record');
       }
     }
+  `);
+  await checkSection('Independent territories and paint order', `
     await loadChunk(chunkOf(1980));setYear(1980);setMode('flat');render();
     const algeria=polities().find(f=>f.name==="People's Democratic Republic of Algeria");
     assert(algeria,'independent Algeria is mapped');
@@ -102,6 +120,8 @@ try {
     await loadChunk(2000);setYear(2000);render();
     const uk=polities().find(f=>f.name==='United Kingdom');
     assert(uk&&!d3.geoContains(uk,[54.5,24.4])&&!d3.geoContains(uk,[51.3,25.3])&&!d3.geoContains(uk,[50.55,26.1]),'UK excludes the independent UAE, Qatar and Bahrain');
+  `);
+  await checkSection('US–Canada parallel, fills and hover (1950–2026)', `
     for(const mode of ['globe','flat']){
       setMode(mode);stopSpin();rot=[110,-49,0];zoomK=2.5;
       for(const year of [1950,1980,2014,2024,2026]){
@@ -122,6 +142,8 @@ try {
         }
       }
     }
+  `);
+  await checkSection('Great Lakes ownership and hover (1932–2026)', `
     // Lake shorelines are water outlines, not international boundaries.
     // The former archive polygons missed these shore cities and all lake water.
     const lakePoints=[
@@ -145,6 +167,8 @@ try {
         }
       }
     }
+  `);
+  await checkSection('Great Lakes water rendering', `
     // Test water surfaces independently of the new lake-name labels.
     const textMethods=[ctx.fillText,ctx.strokeText];ctx.fillText=()=>{};ctx.strokeText=()=>{};
     setMode('globe');stopSpin();rot=[84,-44,0];zoomK=6;render();
@@ -161,8 +185,11 @@ try {
       assert(off.slice(0,3).every((v,i)=>Math.abs(v-modern[offset+i])<=2),'water stays water when borders are hidden');
     }
     state.borders=prior;[ctx.fillText,ctx.strokeText]=textMethods;render();
+  `);
+  await checkSection('Great Lakes location history, search and sharing', `
     // History scans, search selections and shared selections must use the same
     // corrected lake geometry as the rendered map, not the archived shore detour.
+    const rows=(await(await fetch('search-states.json')).json()).rows;
     for(const [name,point,country] of [
       ['Toronto',[-79.38,43.65],'Canada'],
       ['Chicago',[-87.63,41.88],'United States of America'],
@@ -186,6 +213,8 @@ try {
     assert(usBefore&&usAfter&&usBefore.to===1931&&usAfter.from===1932,
       'a source record spanning 1932 is split at the correction date');
     assert(d3.geoContains(usAfter,[-87,44]),'corrected Lake Michigan coverage starts in 1932');
+  `);
+  await checkSection('Colonial labels and historical extent sources', `
     for(const [year,point] of [[1615,[-44.3,-2.6]],[1780,[-72.3,18.6]]]){
       await loadChunk(chunkOf(year));setYear(year);setMode('flat');render();
       const hit=mapAtYear(...proj(point));
@@ -206,6 +235,8 @@ try {
           '1967 evidence is not presented as a verification of later administration');
       }
     }
+  `);
+  await checkSection('Crimea occupation, search and sharing (2013–2026)', `
     setMode('flat');
     for(const year of [2013,2014,2023,2024,2026]){
       await loadChunk(chunkOf(year));setYear(year);render();
@@ -223,12 +254,13 @@ try {
         assert(selectedPolity?.name===region.name&&selectedPolity.member==='Ukraine','Crimea shared view restores occupation label');
       }
     }
+  `);
+  await checkSection('Sourced event details', `
     const holocaust=ev.find(e=>e.wiki==='The_Holocaust');setYear(1935);assert(activeEvents().some(a=>a.e.id===holocaust.id),'Holocaust visible before 1941');
     select(holocaust.id,false);render();assert(document.querySelector('#detail a[href*="ushmm.org"]'),'Holocaust cites museum source');
     const covid=ev.find(e=>e.wiki==='COVID-19_pandemic');setYear(2023);select(covid.id,false);render();
     assert(document.getElementById('detail').textContent.includes('emergency'),'COVID date range is labeled as emergency status');
-    return 'Historical accuracy: US–Canada parallel within 600 m, distinct rendered fills and hover in both projections (1950–2026), Crimea occupation (2014–2026), aggregate selection/sharing, Algeria paint order and sourced event details passed';
-  })()`));
+  `);
   assert.equal(errors.length,0,JSON.stringify(errors));
   await evaluate(`(async()=>{await loadChunk(2000);setYear(2026);setMode('globe');stopSpin();rot=[84,-44,0];zoomK=6;render()})()`);
   const screenshot=await send('Page.captureScreenshot',{format:'png'});

@@ -29,10 +29,14 @@
     },
     {
       "wiki": "Blombos_Cave",
-      "start": -73000,
+      "start": -75000,
       "blurb": "Engraved ochre from Blombos Cave, dated to about 75,000 years ago, preserves deliberately scratched geometric patterns. This entry concerns engravings, rather than the separate evidence for a roughly 73,000-year-old drawing.",
       "source": "https://doi.org/10.1126/science.1067575",
-      "reason": "The old date mixed the age of a drawing with the engraved ochre. Ages before present are expressed as approximate BC dates."
+      "reason": "The 2002 paper reports a mean layer age of 77,000 years, approximately 75,000 BC using the atlas calendar-year convention. The authors' 2009 follow-up describes the original engraved pieces as about 75,000 years old. Keep the approximate flag and existing rounded description, and distinguish this from the separate 73,000-year-old drawing.",
+      "additionalSources": [
+        "https://doi.org/10.1016/j.jhevol.2009.01.005"
+      ],
+      "change": "clarification"
     },
     {
       "wiki": "Prehistory_of_Australia",
@@ -167,9 +171,13 @@
     {
       "wiki": "Monte_Verde",
       "title": "Monte Verde and the early peopling of the Americas",
-      "blurb": "Monte Verde in southern Chile has long been interpreted as a settlement around 14,500 years ago. A 2026 study challenged the site chronology and prompted disagreement among researchers. The approximate map date represents the conventional interpretation, not a settled proof of the first arrival in the Americas.",
+      "blurb": "Monte Verde in southern Chile has long been interpreted as a settlement around 14,500 years ago. A 2026 study challenged the site chronology and prompted disagreement among researchers. The approximate map date represents the conventional interpretation, not a settled proof of the first arrival in the Americas. Site researchers published a rebuttal later in 2026, and the debate continues.",
       "source": "https://doi.org/10.1126/science.adw9217",
-      "reason": "Reflect the published 2026 challenge rather than presenting a contested chronology as definitive proof."
+      "reason": "Retain the conventional approximate date and the 2026 challenge, and add the site researchers' rebuttal deposited on May 3, 2026. Describe a verified rebuttal in the singular and do not imply that the deposit is a peer-reviewed resolution of the debate.",
+      "additionalSources": [
+        "https://doi.org/10.5281/zenodo.20014451"
+      ],
+      "change": "clarification"
     },
     {
       "wiki": "Cuneiform",
@@ -362,9 +370,13 @@
     },
     {
       "wiki": "Edict_of_Milan",
-      "change": "source-check",
+      "change": "clarification",
       "source": "https://sourcebooks.web.fordham.edu/source/edict-milan.asp",
-      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+      "reason": "The translated 311 and 313 texts distinguish Galerius' earlier toleration from the agreement of Constantine and Licinius. Say that Galerius granted toleration rather than claiming all persecution everywhere ended in 311. Scholarship debates the traditional edict designation.",
+      "blurb": "Constantine and Licinius agree to extend religious toleration across the Roman Empire, including to Christians. Galerius had already granted toleration to Christians in 311, and historians debate whether Milan was a formal edict.",
+      "additionalSources": [
+        "https://www.persee.fr/doc/rebyz_0766-5598_1967_num_25_1_1383"
+      ]
     },
     {
       "wiki": "Gupta_Empire",
@@ -375,9 +387,10 @@
     },
     {
       "wiki": "Constantinople",
-      "change": "source-check",
+      "change": "clarification",
       "source": "https://www.europeana.eu/en/exhibitions/the-silk-and-the-blood/constantinople",
-      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+      "reason": "Europeana dates the inauguration on the existing site of Byzantion to 330. Describe the dedication rather than implying that the pre-existing city was created from nothing or that every capital function moved in one act.",
+      "blurb": "Constantine dedicates Constantinople as the new capital of the Roman Empire."
     },
     {
       "wiki": "Kingdom_of_Aksum",
@@ -443,9 +456,10 @@
     },
     {
       "wiki": "East–West_Schism",
-      "change": "source-check",
+      "change": "clarification",
       "source": "https://www.cambridge.org/core/journals/traditio/article/abs/rethinking-the-schism-of-1054-authority-heresy-and-the-latin-rite/5DD029378209D589C69471CBCFFE8F1C",
-      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+      "reason": "The cited research describes the 1054 excommunications of the patriarch and his supporters and of the legates, while discussing disputes over the historical significance of that year. Avoid presenting a gradual division as one instantaneous split of entire churches.",
+      "blurb": "Mutual excommunications between papal legates and the patriarch of Constantinople become a symbol of the break between the Latin and Greek churches. The division developed gradually, and historians debate how much weight 1054 itself deserves."
     },
     {
       "wiki": "Battle_of_Hastings",
@@ -475,9 +489,10 @@
     },
     {
       "wiki": "Angkor_Wat",
-      "change": "source-check",
+      "change": "clarification",
       "source": "https://www.library.gov.au/learn/digital-classroom/angkorkhmer-empire-802-1431/building-angkor",
-      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+      "reason": "The National Library of Australia places the commissioning of Angkor Wat under Suryavarman II (1113–1150) in the early twelfth century. Clarify that the approximate 1113 marker represents the start of his reign, not a precise completion date.",
+      "blurb": "The Khmer build the largest religious monument in the world. The date marks the accession of Suryavarman II, under whom construction began."
     },
     {
       "wiki": "Magna_Carta",
@@ -545,9 +560,10 @@
     },
     {
       "wiki": "Kilwa_Kisiwani",
-      "change": "source-check",
+      "change": "clarification",
       "source": "https://whc.unesco.org/pg.cfm?CID=31&ID_SITE=144&l=en",
-      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+      "reason": "Keep 1331 as an approximate visit marker. UNESCO gives 1331–1332, while other chronologies use 1330 or 1331; the exact-year flag was too strong and could admit an uncertain date into exact-date quiz questions.",
+      "approx": 1
     },
     {
       "wiki": "Ming_dynasty",
@@ -822,9 +838,10 @@
     },
     {
       "wiki": "Wall_Street_crash_of_1929",
-      "change": "source-check",
+      "change": "clarification",
       "source": "https://www.federalreservehistory.org/essays/stock-market-crash-of-1929",
-      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+      "reason": "Federal Reserve History describes a downturn before the October crash and the crash's contribution to subsequent contraction. Use deepens rather than opens to avoid making the crash the start or sole cause of the worldwide depression.",
+      "blurb": "The crash deepens an economic downturn that develops into the worldwide Great Depression."
     },
     {
       "wiki": "Salt_March",
@@ -925,11 +942,14 @@
     },
     {
       "wiki": "Sewing_needle",
-      "change": "correction or clarification",
+      "change": "clarification",
       "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11212769/",
-      "reason": "The source supports this qualified chronology or description; the former wording implied greater precision or an unsupported claim.",
+      "reason": "The 2024 scholarly review places early eyed needles at Denisova at about 40,000 calibrated years BP. Archaeology magazine's August 23, 2016 report documents the earlier 50,000-year press claim. Distinguish the adopted research chronology from that earlier reporting.",
       "start": -38000,
-      "blurb": "Eyed bone needles from Denisova Cave in Siberia are reported from layers around 40,000 years old in a 2024 scholarly review. Such tools allow thread to be drawn through material; they do not prove the precise form of the clothing sewn."
+      "blurb": "Eyed bone needles from Denisova Cave in Siberia are reported from layers around 40,000 years old in a 2024 scholarly review. Such tools allow thread to be drawn through material; they do not prove the precise form of the clothing sewn. Earlier press reports gave about 50,000 years; this entry follows the 2024 review.",
+      "additionalSources": [
+        "https://archaeology.org/news/2016/08/23/160823-denisova-cave-needle/"
+      ]
     },
     {
       "wiki": "History_of_cotton",
@@ -1359,9 +1379,16 @@
     },
     {
       "wiki": "Monte_Albán",
-      "change": "source-check",
-      "source": "https://whc.unesco.org/en/list/415/",
-      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+      "change": "clarification",
+      "source": "https://www.amnh.org/research/anthropology/curatorial-research/meso-american-archaeology/projects/10.-trace-element-analysis",
+      "reason": "Use the recommended combined Late I and II framing. AMNH's research chronology puts Late I at 300–100 BC and II at 100 BC–AD 200; UNESCO describes the ceremonial core, terraces, dams and conduits but uses a different phase chronology. The combined interval is approximate and does not date every monument individually.",
+      "start": -300,
+      "end": 200,
+      "title": "Monte Albán grows as a Zapotec capital",
+      "blurb": "Across its Late I and II phases, about 300 BC to AD 200, the Zapotec centre in Oaxaca develops its ceremonial core, hillside terraces and water systems. These are broad archaeological phase dates, not construction dates for every monument.",
+      "additionalSources": [
+        "https://whc.unesco.org/en/list/415/"
+      ]
     },
     {
       "wiki": "Western_Han",

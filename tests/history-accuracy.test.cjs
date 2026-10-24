@@ -38,7 +38,13 @@ test('dated evidence is distinguished from first-arrival and complete-genome cla
   assert.match(event("L'Anse_aux_Meadows")[4], /woodcutting/);
   assert.match(event('Prehistory_of_Australia')[4], /65,000/);
   assert.match(event('Human_Genome_Project')[4], /92%/);
-  assert.equal(event('Blombos_Cave')[0], -73000);
+  assert.equal(event('Blombos_Cave')[0], -75000);
+  assert.equal(event('Blombos_Cave')[2], 1);
+  assert.deepEqual(Array.from(event('Monte_Albán').slice(0, 3)), [-300, 200, 1]);
+  assert.equal(event('Kilwa_Kisiwani')[2], 1, 'uncertain Kilwa visit dates must be excluded from exact-date quizzes');
+  const buddha = records().people.find((p) => p[8] === 'The_Buddha');
+  assert.equal(buddha[3], 1);
+  assert.match(buddha[4], /traditional dates/);
   assert.match(event('Apollo_11')[4], /launch site/);
   assert.equal(event('Nok_culture')[0], -900);
   assert.equal(event('Nok_culture')[2], 1);
