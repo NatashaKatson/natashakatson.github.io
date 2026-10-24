@@ -139,3 +139,9 @@
   .time, .stage.comparing + .time { padding-inline: 12px; column-gap: 5px; }
   .dock-actions { gap: 4px; }
 }
+
+/* Keep event icons visible in list, detail and related-event cards. */
+.event-emoji { display: inline-block; flex: none; min-width: 1.3em; margin-right: 5px; font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif; font-style: normal; font-weight: 400; line-height: 1.25; vertical-align: baseline; }
+.item .t .event-emoji { font-size: 18px; margin-right: 0; }
+.detail h3 .event-emoji { font-size: .95em; }
+.near .story-card .event-emoji { display: inline-block; font-size: 16px; }
