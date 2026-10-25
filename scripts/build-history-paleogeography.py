@@ -6,6 +6,7 @@ Raw responses are cached outside the repository so interrupted builds can resume
 """
 import concurrent.futures
 import datetime
+import hashlib
 import json
 import math
 from pathlib import Path
@@ -23,14 +24,21 @@ BASE = 'https://gws.gplates.org/reconstruct/'
 
 
 def fetch(endpoint, age, **params):
-    path = CACHE / f'{endpoint}-{age}.json'
+    url = BASE + endpoint + '/?' + urlencode(sorted(dict(time=age, model=MODEL, **params).items()))
+    fingerprint = hashlib.sha256(url.encode('utf-8')).hexdigest()
+    path = CACHE / f'{endpoint}-{age}-{fingerprint}.json'
     if not path.exists():
-        url = BASE + endpoint + '/?' + urlencode(dict(time=age, model=MODEL, **params))
-        subprocess.run(['curl', '--silent', '--show-error', '--fail', '--retry', '2',
-                        '--max-time', '90', '-o', str(path.with_suffix('.tmp')), url], check=True)
-        # Validate before caching; never keep an error page as data.
-        json.loads(path.with_suffix('.tmp').read_text())
-        path.with_suffix('.tmp').replace(path)
+        CACHE.mkdir(parents=True, exist_ok=True)
+        with tempfile.NamedTemporaryFile(dir=CACHE, suffix='.tmp', delete=False) as temporary:
+            temporary_path = Path(temporary.name)
+        try:
+            subprocess.run(['curl', '--silent', '--show-error', '--fail', '--retry', '2',
+                            '--max-time', '90', '-o', str(temporary_path), url], check=True)
+            # Validate before caching; never keep an error page as data.
+            json.loads(temporary_path.read_text())
+            temporary_path.replace(path)
+        finally:
+            temporary_path.unlink(missing_ok=True)
     return json.loads(path.read_text())
 
 

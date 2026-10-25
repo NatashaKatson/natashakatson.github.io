@@ -438,6 +438,11 @@ Regenerate historical search data from the checked-in archive:
 python3 scripts/build-history-search.py
 ```
 
+Historical search destinations use interior points on the largest land component
+of the chosen snapshot, with holes and antimeridian crossings accounted for.
+Source label coordinates and border geometry remain unchanged. The regression
+suite checks every generated point against the actual D3 geometry.
+
 To refresh cities too, download the two GeoNames files and provide their local paths:
 
 ```sh

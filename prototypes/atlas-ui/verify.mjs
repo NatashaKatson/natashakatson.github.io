@@ -38,7 +38,11 @@ const screenshot = async (name) => {
 };
 try {
   await send('Page.enable'); await send('Runtime.enable'); await send('Network.enable');
-  await send('Network.setBlockedURLs', { urls: process.env.ATLAS_TEST_URL ? ['https://*'] : ['http://*', 'https://*'] });
+  // The standalone preview embeds dependencies; the served atlas loads D3 and
+  // TopoJSON from HTTPS CDNs. Only optional services are blocked in URL mode.
+  await send('Network.setBlockedURLs', { urls: process.env.ATLAS_TEST_URL
+    ? ['https://fonts.googleapis.com/*', 'https://fonts.gstatic.com/*', 'https://cdnjs.buymeacoffee.com/*']
+    : ['http://*', 'https://*'] });
   await send('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false });
   await send('Page.navigate', { url: testURL + '#1928' });
   await waitFor(`!!window.AtlasUI && !!window.HistoryDinosaurs && !!window.AtlasEventEmojis`);

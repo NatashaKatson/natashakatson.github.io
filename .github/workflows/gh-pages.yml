@@ -6,6 +6,10 @@ on:
     branches:
       - main
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   validate:
     runs-on: ubuntu-latest
@@ -24,6 +28,7 @@ jobs:
       - name: Unit tests and generated country data
         run: |
           node --test tests/*.test.cjs
+          python3 -B -m unittest discover -s tests -p '*test.py'
           python3 scripts/build-history-countries.py --check
       - name: Browser regression tests
         env:
@@ -63,7 +68,20 @@ jobs:
       - name: Build
         run: hugo --minify
 
+      - name: Check deployment commit
+        id: deployment-head
+        shell: bash
+        run: |
+          latest_commit=$(git ls-remote origin refs/heads/main | cut -f1)
+          if [[ "$latest_commit" == "$GITHUB_SHA" ]]; then
+            echo "current=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "current=false" >> "$GITHUB_OUTPUT"
+            echo "Skipping deployment because main has a newer commit."
+          fi
+
       - name: Deploy
+        if: steps.deployment-head.outputs.current == 'true'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}

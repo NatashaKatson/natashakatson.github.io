@@ -5,10 +5,12 @@ Historical entries come from the checked-in Cliopatria snapshots. Optionally pas
 --cities-zip /path/to/cities15000.zip to regenerate the GeoNames city index.
 """
 import argparse
+from functools import lru_cache
 import json
 from pathlib import Path
 import zipfile
 import unicodedata
+from history_geometry import interior_anchor
 
 ROOT = Path(__file__).resolve().parents[1] / 'static/historyallaround/atlas'
 
@@ -21,10 +23,14 @@ def write(name, data):
 
 def build_states():
     manifest = json.loads((ROOT / 'borders/index.json').read_text())
+    @lru_cache(maxsize=8)
+    def snapshot(chunk):
+        return json.loads((ROOT / f'borders/c{chunk}.json').read_text())
+
     groups = {}
     for chunk in manifest['chunks']:
-        topo = json.loads((ROOT / f'borders/c{chunk}.json').read_text())
-        for geometry in topo['objects']['p']['geometries']:
+        topo = snapshot(chunk)
+        for index, geometry in enumerate(topo['objects']['p']['geometries']):
             p = geometry['properties']
             start = max(chunk, p['f'])
             end = min(chunk + manifest['chunkSize'] - 1, p['t'], manifest['to'])
@@ -44,7 +50,7 @@ def build_states():
             key = (name, p.get('w', ''), member, p.get('basis', ''))
             groups.setdefault(key, []).append({
                 'start': start, 'end': end, 'year': start,
-                'lon': p['lx'], 'lat': p['ly'], 'area': p['a'],
+                'chunk': chunk, 'geometry': index, 'area': p['a'],
             })
     rows = []
     for (name, wiki, member, basis), segments in sorted(groups.items()):
@@ -57,12 +63,15 @@ def build_states():
                 previous['end'] = max(previous['end'], segment['end'])
                 # Land at an available snapshot with the largest recorded extent.
                 if segment['area'] > previous['area']:
-                    for field in ('year', 'lon', 'lat', 'area'):
+                    for field in ('year', 'chunk', 'geometry', 'area'):
                         previous[field] = segment[field]
             else:
                 merged.append(dict(segment))
         for s in merged:
-            rows.append([name, s['start'], s['end'], s['year'], s['lon'], s['lat'], wiki, member, basis])
+            topo = snapshot(s['chunk'])
+            geometry = topo['objects']['p']['geometries'][s['geometry']]
+            lon, lat = interior_anchor(topo, geometry)
+            rows.append([name, s['start'], s['end'], s['year'], lon, lat, wiki, member, basis])
     write('search-states.json', {
         'version': 1, 'source': manifest['source'],
         'license': 'https://creativecommons.org/licenses/by/4.0/',

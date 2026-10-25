@@ -112,6 +112,16 @@ test("coverage merges adjacent records without bridging gaps or political relati
     ],
   );
 });
+test("coverage normalizes year-zero endpoints and joins adjacent BC and AD intervals", () => {
+  const record = { name: "Polity", member: "", wiki: "Polity" };
+  assert.deepEqual(core.coverage([{ ...record, start: -77, end: 0 }]),
+    [{ ...record, start: -77, end: -1 }]);
+  assert.deepEqual(core.coverage([
+    { ...record, start: -5, end: 0 }, { ...record, start: 0, end: 5 },
+  ]), [{ ...record, start: -5, end: 5 }]);
+  assert.deepEqual(core.coverage([{ ...record, start: 0, end: 0 }]), []);
+  assert.deepEqual(core.historicalInterval(0, 24), { start: 1, end: 24 });
+});
 test("connections distinguish source associations, geographic associations and missing evidence", () => {
   const a = { wiki: "A", lon: 0, lat: 0 };
   const shared = { wiki: "A", lon: 90, lat: 0 };
@@ -274,6 +284,8 @@ test("search ranks names before mentions, supports aliases and accents, and filt
 });
 
 test("every indexed state can open an available dated snapshot with matching membership", () => {
+  const d3 = require('../prototypes/atlas-ui/vendor/d3.min.js');
+  const topojson = require('../prototypes/atlas-ui/vendor/topojson-client.min.js');
   const dir = "static/historyallaround/atlas/";
   const manifest = JSON.parse(fs.readFileSync(dir + "borders/index.json"));
   const data = JSON.parse(fs.readFileSync(dir + "search-states.json"));
@@ -284,10 +296,18 @@ test("every indexed state can open an available dated snapshot with matching mem
     assert(start <= year && year <= end && start !== 0 && end !== 0 && year !== 0, name);
     assert(Number.isFinite(lon) && Math.abs(lon) <= 180 && Math.abs(lat) <= 90, name);
     const chunk = manifest.chunks[0] + Math.floor((year - manifest.chunks[0]) / manifest.chunkSize) * manifest.chunkSize;
-    if (!chunks.has(chunk)) chunks.set(chunk, JSON.parse(fs.readFileSync(dir + `borders/c${chunk}.json`)).objects.p.geometries);
-    assert(chunks.get(chunk).some(({properties:p}) => unparen(p.n) === name &&
-      unparen(p.m || "") === member && (p.w || "") === wiki && p.f <= year && p.t >= year &&
-      p.lx === lon && p.ly === lat), name + " " + year);
+    if (!chunks.has(chunk)) {
+      const topology = JSON.parse(fs.readFileSync(dir + `borders/c${chunk}.json`));
+      chunks.set(chunk, topojson.feature(topology, topology.objects.p).features.map((f) => ({
+        ...f, geometry: core.resampleParallels(f.geometry), name: unparen(f.properties.n),
+        member: unparen(f.properties.m || ''), from: f.properties.f, to: f.properties.t,
+        area: f.properties.a,
+      })));
+    }
+    const target = core.active(chunks.get(chunk), year).find((f) => f.name === name &&
+      f.member === member && (f.properties.w || '') === wiki);
+    assert(target, name + " " + year);
+    assert(d3.geoContains(target, [lon, lat]), name + " " + year + ' search point is inside the rendered geometry');
   }
 });
 

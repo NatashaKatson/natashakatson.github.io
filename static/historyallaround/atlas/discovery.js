@@ -291,12 +291,11 @@
         else {
           for (const f of fs)
             if (inBox(f.bbox, point) && d3.geoContains(f, point)) {
-              const start = Math.max(f.from, c),
-                end = Math.min(f.to, c + BCS - 1, BTO);
-              if (start <= end)
+              const interval = core.historicalInterval(
+                Math.max(f.from, c), Math.min(f.to, c + BCS - 1, BTO));
+              if (interval)
                 p.coverage.push({
-                  start,
-                  end,
+                  ...interval,
                   name: f.name,
                   member: f.member,
                   wiki: f.wiki,
@@ -808,7 +807,7 @@
       if (token !== linkToken) return true;
       // Do not overwrite a selection the visitor made while the border file loaded.
       if (state.year === v.year && !state.sel && !selectedPolity) {
-        const f = core.active(fs || [], borderYear(year)).find((f) => f.name === v.polity &&
+        const f = (fs ? withYear(year, polities) : []).find((f) => f.name === v.polity &&
           (v.polityMember == null || f.member === v.polityMember));
         if (f) {
           selectPolity(f, year);

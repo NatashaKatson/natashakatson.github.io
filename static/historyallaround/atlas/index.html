@@ -1117,8 +1117,7 @@ function renderScene(){
       if(marker){fossilMarks.push(marker);hits.push({...marker,id:e.id,label:e.title+" · "+fmtSpan(e.start,e.end,e.approx)+" · fossil region"})}return;
     }
     const emoji=AtlasEventEmojis.get(e);
-    ctx.save();ctx.globalAlpha=.65+.35*r;
-    ctx.beginPath();ctx.arc(x,y,12,0,7);ctx.fillStyle=C.paper;ctx.fill();ctx.strokeStyle=C.border;ctx.lineWidth=.9;ctx.stroke();
+    ctx.save();ctx.globalAlpha=.65+.35*r;ctx.fillStyle=C.ink;
     ctx.font='20px "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif';ctx.textAlign="center";ctx.textBaseline="middle";
     ctx.fillText(emoji,x,y+.5);ctx.restore();
     hits.push({x,y,id:e.id,label:e.title+" · "+fmtSpan(e.start,e.end!==e.start?e.end:null,e.approx)})});

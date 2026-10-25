@@ -279,9 +279,17 @@
         connections: period.slice(0, 4).map((c) => ({ ...c, reason: "Same period" })),
       } : null;
     },
+    historicalInterval(start, end) {
+      if (start === 0) start = 1;
+      if (end === 0) end = -1;
+      return start <= end ? { start, end } : null;
+    },
     coverage(rows) {
       const groups = new Map();
-      for (const r of rows) {
+      for (const source of rows) {
+        const interval = api.historicalInterval(source.start, source.end);
+        if (!interval) continue;
+        const r = { ...source, ...interval };
         const key = JSON.stringify([r.name, r.member, r.wiki, r.basis || ""]);
         if (!groups.has(key)) groups.set(key, []);
         groups.get(key).push({ ...r });
@@ -291,7 +299,7 @@
         group.sort((a, b) => a.start - b.start);
         let last = null;
         for (const row of group) {
-          if (last && row.start <= last.end + 1)
+          if (last && (row.start <= last.end + 1 || (last.end === -1 && row.start === 1)))
             last.end = Math.max(last.end, row.end);
           else {
             last = row;

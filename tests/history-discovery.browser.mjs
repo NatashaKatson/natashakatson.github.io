@@ -294,6 +294,25 @@ document.querySelector('.share-panel button').click();
 assert(document.querySelector('.share-panel').hidden,'share panel closes');
 return 'Territory sharing and copyable-link UI passed';
 })()`));
+console.log(await evaluate(`(async()=>{
+const assert=(v,m)=>{if(!v)throw Error(m)};
+if(HistoryDiscovery.isComparing())document.getElementById('compareToggle').click();
+setYear(2026);await loadChunk(chunkOf(2026));
+const greenland=polities().find(f=>f.name==='Greenland');
+assert(greenland?.territoryOverlay,'derived Greenland territory is available');
+selectPolity(greenland,2026);
+const hash=HistoryDiscovery.urlHash();
+setYear(1800);await HistoryDiscovery.openView(hash);
+assert(selectedPolity?.name==='Greenland'&&selectedPolity.member==='Kingdom of Denmark','shared links restore the derived territory and membership');
+assert(document.querySelector('#detail h3').textContent==='Greenland','restored Greenland detail is visible');
+await HistoryDiscovery.explore([72,32]);
+const panel=document.querySelector('[aria-label="History of this place"]');
+let more=panel.querySelector('[data-more]');while(more){more.click();more=panel.querySelector('[data-more]')}
+const row=[...panel.querySelectorAll('[data-place-row]')].find(b=>b.textContent.includes('Indo-Scythians'));
+assert(row&&row.textContent.includes('77 BC–1 BC'),'location history retains the normalized end date instead of a single start date');
+panel.querySelector('[data-return]').click();
+return 'Derived Greenland sharing and no-year-zero location intervals passed';
+})()`));
 const shot = await send("Page.captureScreenshot", {
   format: "png",
   captureBeyondViewport: true,
