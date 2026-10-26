@@ -145,3 +145,58 @@
 .item .t .event-emoji { font-size: 18px; margin-right: 0; }
 .detail h3 .event-emoji { font-size: .95em; }
 .near .story-card .event-emoji { display: inline-block; font-size: 16px; }
+
+/* The ledger reads from the chosen time to optional discoveries. */
+.side { --muted: #655d56; font-size: 14px; line-height: 1.6; scroll-padding-top: 145px; }
+.side-intro .kicker { font-size: 10px; }
+.side .sub, .sidebar-scope { font-size: 12px; line-height: 1.5; color: var(--muted); }
+.sidebar-scope { margin: 7px 0 0; }
+.side .region h4, .side .atlas-section-title { font-size: 12px; font-weight: 500; letter-spacing: .04em; color: var(--muted); }
+.side .item { padding: 12px; grid-template-columns: 64px minmax(0, 1fr); }
+.side .item .y { font-size: 12px; color: var(--muted); overflow-wrap: anywhere; }
+.side .item .t { font-size: 18px; line-height: 1.4; }
+.side .item .b { font-size: 14px; line-height: 1.6; color: var(--muted); }
+.side .item[aria-current="true"] { border-color: #a3482d; box-shadow: inset 3px 0 #a3482d; }
+.side .timeline-context-list .item { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+.side .detail p, .side .comparison-stories p, .side .meanwhile-card span, .side .discovery-panel p { font-size: 14px; line-height: 1.65; }
+.side .detail .kicker { font-size: 12px; line-height: 1.5; flex-wrap: wrap; letter-spacing: .02em; color: var(--muted); }
+.side .detail .close { width: 44px; height: 44px; right: 4px; top: 4px; }
+.side .detail > .kicker, .side .selection-scope { padding-right: 32px; }
+.side .detail h3 { line-height: 1.35; }
+.side .detail .meta-grid { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
+.side .person { min-height: 44px; padding: 8px 10px; font-size: 13px; }
+.side .person em { font-size: 12px; }
+.side .empty { color: var(--muted); font-size: 14px; line-height: 1.6; }
+.side :is(button, summary) { min-height: 44px; }
+.side summary { align-content: center; cursor: pointer; line-height: 1.5; }
+.side :is(button, summary, a, [tabindex]):focus-visible { outline: 2px solid #a3482d; outline-offset: 3px; }
+.side :is(a, button, h3, h4, p) { overflow-wrap: break-word; }
+.side .near > details > summary { font-size: 14px; font-weight: 500; }
+.side .near > details > b { display: none; }
+.side .near .story-card b { font: 500 17px/1.4 var(--display); letter-spacing: normal; text-transform: none; color: var(--ink); }
+.side .story-card small, .side .place-entry small { font-size: 12px; line-height: 1.6; }
+.side .comparison-stories h3 { font-size: 20px; line-height: 1.4; }
+.side .comparison-stories a { display: inline-block; min-height: 24px; font-size: 12px; line-height: 1.6; }
+.side .curated-stops button { font-size: 13px; }
+.side .contemporary-person :is(small, button span) { font-size: 12px; line-height: 1.6; }
+.side .same-year-pair { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+.side .same-year-place figcaption { font-size: 12px; }
+.sidebar-extras { border-top: 1px solid var(--rule); margin-top: 28px; padding-top: 20px; }
+.sidebar-extras-intro h3 { margin: 0; font: 500 22px/1.4 var(--display); }
+.sidebar-extras-intro p { font-size: 13px; color: var(--muted); margin: 6px 0 18px; }
+.side .curated-discoveries { margin-bottom: 0; }
+.side .fact { margin-bottom: 18px; }
+.side .fact b { font-size: 11px; }
+.side .fact button { font-size: 13px; }
+.side .fact .row { flex-wrap: wrap; }
+.side .selection-scope, .side .place-current-year { font-weight: 500; color: #a3482d; }
+.side .place-entry[aria-current="date"] { border-color: #a3482d; border-left: 3px solid #a3482d; }
+.side .place-entries { scroll-padding: 8px; }
+.app:has(.deep-time-only) .sidebar-extras-intro { display: none; }
+@media (max-width: 860px) {
+  .side { scroll-padding-top: 16px; }
+  .side .place-entries { max-height: none; overflow: visible; }
+}
+@media (max-width: 370px) {
+  .side .item { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+}

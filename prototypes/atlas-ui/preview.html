@@ -1163,6 +1163,61 @@ header .seg{padding:2px;background:#f0ebe3;border:1px solid rgba(45,36,32,.1);bo
 .item .t .event-emoji { font-size: 18px; margin-right: 0; }
 .detail h3 .event-emoji { font-size: .95em; }
 .near .story-card .event-emoji { display: inline-block; font-size: 16px; }
+
+/* The ledger reads from the chosen time to optional discoveries. */
+.side { --muted: #655d56; font-size: 14px; line-height: 1.6; scroll-padding-top: 145px; }
+.side-intro .kicker { font-size: 10px; }
+.side .sub, .sidebar-scope { font-size: 12px; line-height: 1.5; color: var(--muted); }
+.sidebar-scope { margin: 7px 0 0; }
+.side .region h4, .side .atlas-section-title { font-size: 12px; font-weight: 500; letter-spacing: .04em; color: var(--muted); }
+.side .item { padding: 12px; grid-template-columns: 64px minmax(0, 1fr); }
+.side .item .y { font-size: 12px; color: var(--muted); overflow-wrap: anywhere; }
+.side .item .t { font-size: 18px; line-height: 1.4; }
+.side .item .b { font-size: 14px; line-height: 1.6; color: var(--muted); }
+.side .item[aria-current="true"] { border-color: #a3482d; box-shadow: inset 3px 0 #a3482d; }
+.side .timeline-context-list .item { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+.side .detail p, .side .comparison-stories p, .side .meanwhile-card span, .side .discovery-panel p { font-size: 14px; line-height: 1.65; }
+.side .detail .kicker { font-size: 12px; line-height: 1.5; flex-wrap: wrap; letter-spacing: .02em; color: var(--muted); }
+.side .detail .close { width: 44px; height: 44px; right: 4px; top: 4px; }
+.side .detail > .kicker, .side .selection-scope { padding-right: 32px; }
+.side .detail h3 { line-height: 1.35; }
+.side .detail .meta-grid { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
+.side .person { min-height: 44px; padding: 8px 10px; font-size: 13px; }
+.side .person em { font-size: 12px; }
+.side .empty { color: var(--muted); font-size: 14px; line-height: 1.6; }
+.side :is(button, summary) { min-height: 44px; }
+.side summary { align-content: center; cursor: pointer; line-height: 1.5; }
+.side :is(button, summary, a, [tabindex]):focus-visible { outline: 2px solid #a3482d; outline-offset: 3px; }
+.side :is(a, button, h3, h4, p) { overflow-wrap: break-word; }
+.side .near > details > summary { font-size: 14px; font-weight: 500; }
+.side .near > details > b { display: none; }
+.side .near .story-card b { font: 500 17px/1.4 var(--display); letter-spacing: normal; text-transform: none; color: var(--ink); }
+.side .story-card small, .side .place-entry small { font-size: 12px; line-height: 1.6; }
+.side .comparison-stories h3 { font-size: 20px; line-height: 1.4; }
+.side .comparison-stories a { display: inline-block; min-height: 24px; font-size: 12px; line-height: 1.6; }
+.side .curated-stops button { font-size: 13px; }
+.side .contemporary-person :is(small, button span) { font-size: 12px; line-height: 1.6; }
+.side .same-year-pair { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+.side .same-year-place figcaption { font-size: 12px; }
+.sidebar-extras { border-top: 1px solid var(--rule); margin-top: 28px; padding-top: 20px; }
+.sidebar-extras-intro h3 { margin: 0; font: 500 22px/1.4 var(--display); }
+.sidebar-extras-intro p { font-size: 13px; color: var(--muted); margin: 6px 0 18px; }
+.side .curated-discoveries { margin-bottom: 0; }
+.side .fact { margin-bottom: 18px; }
+.side .fact b { font-size: 11px; }
+.side .fact button { font-size: 13px; }
+.side .fact .row { flex-wrap: wrap; }
+.side .selection-scope, .side .place-current-year { font-weight: 500; color: #a3482d; }
+.side .place-entry[aria-current="date"] { border-color: #a3482d; border-left: 3px solid #a3482d; }
+.side .place-entries { scroll-padding: 8px; }
+.app:has(.deep-time-only) .sidebar-extras-intro { display: none; }
+@media (max-width: 860px) {
+  .side { scroll-padding-top: 16px; }
+  .side .place-entries { max-height: none; overflow: visible; }
+}
+@media (max-width: 370px) {
+  .side .item { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+}
 </style>
 </head>
 <body>
@@ -1224,11 +1279,11 @@ header .seg{padding:2px;background:#f0ebe3;border:1px solid rgba(45,36,32,.1);bo
     <div class="time-summary"><span class="era" id="era"></span><span class="now" id="nowLine"></span><button type="button" class="browse-dinosaurs" hidden>Browse dinosaurs →</button></div>
   </div>
 
-  <aside class="side" id="side">
-    <div class="side-intro"><div class="kicker">At the same time</div><h2>Around the world</h2><div class="sub" id="sideSub"></div></div>
+  <aside class="side" id="side" aria-labelledby="sideTitle">
+    <div class="side-intro"><div class="kicker">At the same time</div><h2 id="sideTitle">Around the world</h2><div class="sub" id="sideSub"></div><p class="sidebar-scope" id="sideScope">Worldwide records. Open a place’s history for a local timeline.</p></div>
     <div class="side-content"><div id="detail"></div><div id="regions"></div>
     <h3 class="atlas-section-title">People alive at this moment</h3><div class="sub" id="peopleSub" style="margin-bottom:8px"></div><div class="people" id="people"></div>
-    <div class="fact" id="fact"></div></div>
+    <section class="sidebar-extras" aria-labelledby="sidebarExtrasTitle"><div class="sidebar-extras-intro"><h3 id="sidebarExtrasTitle">Explore other times</h3><p>These suggestions have their own dates. Opening one changes the timeline.</p></div><div class="fact" id="fact"></div></section></div>
   </aside>
   <footer class="atlas-footer" aria-label="Atlas credits and support">
     <div class="atlas-footer-main">
@@ -2266,6 +2321,8 @@ function makeProj(){
 let compactRuler=null;
 function resize(){const r=stage.getBoundingClientRect();DPR=Math.min(2,window.devicePixelRatio||1);W=r.width;H=r.height;cv.width=W*DPR;cv.height=H*DPR;if(compactRuler!==(W<600)){compactRuler=W<600;buildRuler()}draw()}
 new ResizeObserver(resize).observe(stage);
+// Browser pinch zoom can invalidate Safari's canvas without resizing the stage.
+window.visualViewport?.addEventListener("resize",draw);
 
 function visible(lon,lat){if(state.mode!=="globe")return true;return center&&d3.geoDistance([lon,lat],center)<Math.PI/2-0.02}
 // Stars are drawn once into their own canvas, then slid sideways as the globe turns.
@@ -2388,26 +2445,45 @@ function renderScene(){
 }
 
 // pan / rotate / zoom
-let drag=null,tapT=0;
-cv.addEventListener("pointerdown",e=>{drag={x:e.clientX,y:e.clientY,moved:false,rot:rot.slice(),ft:{...flatT}};cv.setPointerCapture(e.pointerId)});
+let drag=null,tapT=0,pinch=null;const pts=new Map();
+function startDrag(id,[x,y],moved=false){drag={id,x,y,moved,rot:rot.slice(),ft:{...flatT}}}
+function startPinch(){const[a,b]=[...pts.values()];pinch={d:Math.hypot(a[0]-b[0],a[1]-b[1]),k:zoomK};drag=null}
+cv.addEventListener("pointerdown",e=>{
+  if(e.pointerType==="mouse"&&e.button!==0)return;
+  pts.set(e.pointerId,[e.clientX,e.clientY]);cv.setPointerCapture(e.pointerId);
+  hoverE=null;document.getElementById("tip").hidden=true;
+  if(pts.size===1)startDrag(e.pointerId,pts.get(e.pointerId));else startPinch();
+});
 cv.addEventListener("pointermove",e=>{
+  if(pts.has(e.pointerId)){
+    pts.set(e.pointerId,[e.clientX,e.clientY]);
+    if(pts.size>1){
+      const[a,b]=[...pts.values()],distance=Math.hypot(a[0]-b[0],a[1]-b[1]);
+      // Coincident touches have no usable scale ratio; wait for them to separate.
+      if(pinch.d>0)setZoom(pinch.k*distance/pinch.d);else if(distance>0)startPinch();
+      return;
+    }
+  }
   if(drag){const dx=e.clientX-drag.x,dy=e.clientY-drag.y;if(Math.hypot(dx,dy)>3){drag.moved=true;cv.classList.add("dragging");userMoved=true}
     if(drag.moved){if(state.mode==="globe"){const k=75/(baseScale()*zoomK);rot=[drag.rot[0]+dx*k,Math.max(-80,Math.min(80,drag.rot[1]-dy*k)),0]}else{flatT={x:drag.ft.x+dx,y:drag.ft.y+dy}}moved();draw()}return}
   // Mice can report 120+ moves a second; look up what is under the pointer at most once per frame.
-  hoverE=e;if(!hoverQ)hoverQ=requestAnimationFrame(hover)});
+  if(e.pointerType==="mouse"){hoverE=e;if(!hoverQ)hoverQ=requestAnimationFrame(hover)}});
 let hoverE=null,hoverQ=0;
-function hover(){hoverQ=0;const e=hoverE;if(!e||drag)return;
+function hover(){hoverQ=0;const e=hoverE;if(!e||pts.size)return;
   const r=cv.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,h=nearest(x,y),m=h?null:mapAt(x,y);cv.classList.toggle("hot",!!(h||m));
   const tip=document.getElementById("tip"),lbl=h?h.label:m&&m.label;
   if(lbl&&e.pointerType==="mouse"){tip.hidden=false;tip.textContent=lbl;tip.classList.toggle("country",!h);tip.style.left=x+"px";tip.style.top=y+"px"}else tip.hidden=true}
-cv.addEventListener("pointerup",e=>{cv.classList.remove("dragging");const d=drag;drag=null;if(d&&!d.moved){if(window.HistoryChallenge?.pickMap(e)){endPt(e);e.stopImmediatePropagation();return}const r=cv.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,h=nearest(x,y);if(h)select(h.id,false,h.year??null);else{const m=mapAt(x,y);if(m?.water&&window.HistoryDiscovery)HistoryDiscovery.selectWater(proj.invert([x,y]),m.year??state.year,m.polity);else if(m&&m.polity)selectPolity(m.polity,m.year??state.year);else if(m&&e.pointerType!=="mouse"){const tip=document.getElementById("tip");tip.hidden=false;tip.textContent=m.label;tip.classList.add("country");tip.style.left=x+"px";tip.style.top=y+"px";clearTimeout(tapT);tapT=setTimeout(()=>tip.hidden=true,2500)}}}});
+function endPt(e){
+  if(!pts.delete(e.pointerId))return;
+  cv.classList.remove("dragging");pinch=null;drag=null;
+  // Continue from the remaining finger's current position, without treating it as a tap.
+  if(pts.size===1){const[id,point]=[...pts][0];startDrag(id,point,true)}else if(pts.size>1)startPinch();
+}
+cv.addEventListener("pointerup",e=>{const d=drag,tap=pts.size===1&&d?.id===e.pointerId&&!d.moved;endPt(e);if(tap){if(window.HistoryChallenge?.pickMap(e)){e.stopImmediatePropagation();return}const r=cv.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,h=nearest(x,y);if(h)select(h.id,false,h.year??null);else{const m=mapAt(x,y);if(m?.water&&window.HistoryDiscovery)HistoryDiscovery.selectWater(proj.invert([x,y]),m.year??state.year,m.polity);else if(m&&m.polity)selectPolity(m.polity,m.year??state.year);else if(m&&e.pointerType!=="mouse"){const tip=document.getElementById("tip");tip.hidden=false;tip.textContent=m.label;tip.classList.add("country");tip.style.left=x+"px";tip.style.top=y+"px";clearTimeout(tapT);tapT=setTimeout(()=>tip.hidden=true,2500)}}}});
+cv.addEventListener("pointercancel",endPt);cv.addEventListener("lostpointercapture",endPt);
 cv.addEventListener("pointerleave",()=>{hoverE=null;document.getElementById("tip").hidden=true});
 cv.addEventListener("wheel",e=>{e.preventDefault();setZoom(zoomK*Math.exp(-e.deltaY*0.0015))},{passive:false});
-let pinch=null;const pts=new Map();
-cv.addEventListener("pointerdown",e=>{pts.set(e.pointerId,[e.clientX,e.clientY]);if(pts.size===2){const[a,b]=[...pts.values()];pinch={d:Math.hypot(a[0]-b[0],a[1]-b[1]),k:zoomK};drag=null}});
-cv.addEventListener("pointermove",e=>{if(!pts.has(e.pointerId))return;pts.set(e.pointerId,[e.clientX,e.clientY]);if(pinch&&pts.size===2){const[a,b]=[...pts.values()];setZoom(pinch.k*Math.hypot(a[0]-b[0],a[1]-b[1])/pinch.d)}});
-const endPt=e=>{pts.delete(e.pointerId);if(pts.size<2)pinch=null};cv.addEventListener("pointerup",endPt);cv.addEventListener("pointercancel",endPt);
-function setZoom(k){zoomK=Math.max(.7,Math.min(6,k));userMoved=true;needHi();moved();draw()}
+function setZoom(k){if(!Number.isFinite(k)||k<=0)return;zoomK=Math.max(.7,Math.min(6,k));userMoved=true;needHi();moved();draw()}
 const inBox=(b,ll)=>{const[[w,so],[ea,n]]=b;if(ll[1]<so||ll[1]>n)return false;return w<=ea?(ll[0]>=w&&ll[0]<=ea):(ll[0]>=w||ll[0]<=ea)};
 function mapAt(x,y){if(window.HistoryDiscovery)return window.HistoryDiscovery.mapAt(x,y,mapAtYear);return mapAtYear(x,y)}
 function waterAtYear(point){if(window.HistoryPaleogeography?.isDeep(state.year))return null;
@@ -2463,9 +2539,10 @@ if(state.year>=-300000)lastHumanYear=state.year;
 slider.value=Math.round(tAt(state.year)*SLIDER_STEPS);
 }
 buildMarks();
-slider.addEventListener("input",()=>{state.year=roundYear(yearAt(slider.value/SLIDER_STEPS));selectedPolity=null;stopPlay();update(true)});
+slider.addEventListener("input",()=>{const year=roundYear(yearAt(slider.value/SLIDER_STEPS));if(year!==state.year)clearTimelineSelection();state.year=year;stopPlay();update(true)});
 slider.addEventListener("keydown",e=>{if(e.key==="ArrowLeft"&&!e.shiftKey){nudgeYear(-1);e.preventDefault()}if(e.key==="ArrowRight"&&!e.shiftKey){nudgeYear(1);e.preventDefault()}});
-function setYear(y,keepSel){y=roundYear(Math.max(-252000000,Math.min(NOW,y)));if(y!==state.year)sidebarReturn=null;if(y<-300000)state.cats.add("dinosaurs");state.year=y;slider.value=Math.round(tAt(y)*SLIDER_STEPS);if(!keepSel){state.sel=null;selectedPolity=null}update()}
+function clearTimelineSelection(){sidebarReturn=null;state.sel=null;selectedPolity=null;window.HistoryDiscovery?.timelineChanged()}
+function setYear(y,keepSel){y=roundYear(Math.max(-252000000,Math.min(NOW,y)));if(y!==state.year)sidebarReturn=null;if(y<-300000)state.cats.add("dinosaurs");state.year=y;slider.value=Math.round(tAt(y)*SLIDER_STEPS);if(!keepSel)clearTimelineSelection();update()}
 function stepEvent(dir){const list=ev.filter(e=>state.cats.has(e.cat)).map(e=>e.start).sort((a,b)=>a-b);const y=state.year;const t=dir>0?list.find(s=>s>y):[...list].reverse().find(s=>s<y);if(t!==undefined){stopPlay();setYear(t)}}
 function nudgeYear(dir){stopPlay();const y=state.year===-1&&dir>0?1:state.year===1&&dir<0?-1:state.year+dir*(state.year<-1000000?1000000:1);setYear(y)}
 document.getElementById("prev").onclick=()=>nudgeYear(-1);
@@ -2473,7 +2550,7 @@ document.getElementById("next").onclick=()=>nudgeYear(1);
 let raf=0;const playBtn=document.getElementById("play");
 function stopPlay(){state.playing=false;cancelAnimationFrame(raf);playBtn.innerHTML="▶ Play";playBtn.setAttribute("aria-label","Play")}
 playBtn.onclick=()=>{if(state.playing)return stopPlay();if(state.year>=NOW)setYear(dinosaurTimeline?-252000000:-300000);state.playing=true;playBtn.innerHTML="❚❚ Pause";playBtn.setAttribute("aria-label","Pause");
-  let last=performance.now();(function tick(n){const dt=Math.min(64,n-last);last=n;let t=+slider.value/SLIDER_STEPS+dt*0.0000085;if(t>=1){t=1;stopPlay()}slider.value=Math.round(t*SLIDER_STEPS);state.year=roundYear(yearAt(t));update(true);if(state.playing)raf=requestAnimationFrame(tick)})(last)};
+  let last=performance.now();(function tick(n){const dt=Math.min(64,n-last);last=n;let t=+slider.value/SLIDER_STEPS+dt*0.0000085;if(t>=1){t=1;stopPlay()}slider.value=Math.round(t*SLIDER_STEPS);const year=roundYear(yearAt(t));if(year!==state.year)clearTimelineSelection();state.year=year;update(true);if(state.playing)raf=requestAnimationFrame(tick)})(last)};
 document.addEventListener("keydown",e=>{if(e.target.tagName==="INPUT"&&e.target.type!=="range")return;if(e.key==="ArrowLeft"&&e.shiftKey){stepEvent(-1);e.preventDefault()}if(e.key==="ArrowRight"&&e.shiftKey){stepEvent(1);e.preventDefault()}if(e.key===" "&&e.target===document.body){playBtn.click();e.preventDefault()}});
 document.getElementById("goto").addEventListener("submit",e=>{e.preventDefault();const inp=document.getElementById("gotoInput");const y=parseYear(inp.value);if(y===null){inp.setCustomValidity(/^\s*0\s*(bc|bce|b\.c\.|ad|ce)?\s*$/i.test(inp.value)?"There is no year 0. Try 1 BC or AD 1.":"Try a year like 1492 or 500 BC");inp.reportValidity();return}inp.setCustomValidity("");stopPlay();setYear(y);inp.blur()});
 document.getElementById("gotoInput").addEventListener("input",e=>e.target.setCustomValidity(""));
@@ -2481,10 +2558,10 @@ document.getElementById("gotoInput").addEventListener("input",e=>e.target.setCus
 // ---------- side ledger
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 let sidebarReturn=null;
-function revealDetail(){const el=document.getElementById("detail"),side=document.getElementById("side");el.setAttribute("tabindex","-1");
+function revealInSidebar(el){const side=document.getElementById("side");
   if(window.innerWidth<=860)el.scrollIntoView({behavior:reduceMotion.matches?"instant":"smooth",block:"start"});
-  else side.scrollTop=Math.max(0,side.scrollTop+el.getBoundingClientRect().top-side.getBoundingClientRect().top-side.querySelector(".side-intro").offsetHeight-12);
-  el.focus({preventScroll:true})}
+  else side.scrollTop=Math.max(0,side.scrollTop+el.getBoundingClientRect().top-side.getBoundingClientRect().top-side.querySelector(".side-intro").offsetHeight-12)}
+function revealDetail(){const el=document.getElementById("detail");el.setAttribute("tabindex","-1");revealInSidebar(el);el.focus({preventScroll:true})}
 function closeSelection(){const saved=sidebarReturn;sidebarReturn=null;state.sel=null;selectedPolity=null;update();
   const row=saved&&saved.year===state.year&&document.querySelector(`#side [data-id="${saved.id}"]`);
   if(row){document.getElementById("side").scrollTop=saved.scroll;row.focus({preventScroll:true})}else slider.focus({preventScroll:true})}
@@ -2506,7 +2583,7 @@ function renderDetailBase(){const el=document.getElementById("detail");if(select
     <div class="kicker"><i></i>${esc(fmtSpan(x.start,x.end!==x.start?x.end:null,x.approx))} · ${REGIONS[x.region]}${x.approx?" · Approximate date":""}</div>
     <h3>${AtlasEventEmojis.icon(x)}${esc(x.title)}</h3>${historicalContextNote(x,state.year)}<p>${esc(x.blurb)}</p>${x.indigenous?`<p class="indigenous-context"><strong>${x.indigenous.evidence?"Archaeological evidence · dated site":"Indigenous history · documented place"}</strong><br>${x.indigenous.evidence?"Dates represent rounded evidence ages. Site locations do not establish a migration track or a modern national identity.":"This marker locates a community or site, not a territorial boundary. Dates refer to the described event or archaeological evidence, not the lifetime of a people. Colonial map fills can overlap Indigenous homelands."}${x.indigenous.territorySource?` <a href="${esc(x.indigenous.territorySource)}" target="_blank" rel="noopener">Territory &amp; community reference ↗</a>`:""}</p>`:""}${x.source?`<p><a href="${esc(x.source)}" target="_blank" rel="noopener">Source ↗</a></p>`:""}<a href="${wikiUrl(x.wiki)}" target="_blank" rel="noopener">Read more on Wikipedia ↗</a>
     <div class="meanwhile-slot"></div></div>`}
-  else{const age=state.year-x.born;el.innerHTML=`<div class="detail" style="--c:var(--ink)"><button class="iconbtn close" aria-label="Close">×</button>
+  else{const age=DiscoveryCore.yearsBetween(x.born,state.year);el.innerHTML=`<div class="detail" style="--c:var(--ink)"><button class="iconbtn close" aria-label="Close">×</button>
     <div class="kicker"><i></i>${esc(fmt(x.born,x.approx))} – ${esc(fmt(x.died,x.approx))} · ${REGIONS[x.region]}</div>
     <h3>${esc(x.name)}</h3><p>${esc(x.role)}.${state.year>=x.born&&state.year<=x.died?` In ${esc(fmt(state.year))}, about ${age} years old.`:""}</p>
     <a href="${esc(x.source||wikiUrl(x.wiki))}" target="_blank" rel="noopener">${x.source?"Source":"Read more on Wikipedia"} ↗</a></div>`}
@@ -2526,7 +2603,7 @@ function renderSide(){
   if(filled.length&&quiet.length)reg.insertAdjacentHTML("beforeend",`<p class="empty">Nothing recorded here yet for ${quiet.join(", ")}.</p>`);
   const pp=alivePeople().filter(p=>p.born<=y&&p.died>=y);
   document.getElementById("peopleSub").textContent=pp.length?`${pp.length} of the people in this atlas`:"";
-  document.getElementById("people").innerHTML=pp.length?pp.map(p=>`<button class="person" data-id="${p.id}">${esc(p.name)}<em>${y-p.born}</em></button>`).join(""):`<p class="empty">None of the people in this atlas were alive in ${esc(fmt(y))}.</p>`;
+  document.getElementById("people").innerHTML=pp.length?pp.map(p=>`<button class="person" data-id="${p.id}">${esc(p.name)}<em>age ≈${DiscoveryCore.yearsBetween(p.born,y)}</em></button>`).join(""):`<p class="empty">None of the people in this atlas were alive in ${esc(fmt(y))}.</p>`;
 
 }
 document.getElementById("side").addEventListener("click",e=>{const b=e.target.closest("[data-id]");if(b){const saved={id:b.dataset.id,year:state.year,scroll:document.getElementById("side").scrollTop};select(b.dataset.id);sidebarReturn=saved}});
@@ -2903,7 +2980,8 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
     placeToken = 0,
     lastPoint = null,
     pendingPoint = null,
-    placeReturn = null;
+    placeReturn = null,
+    selectingPlaceRow = false;
   const trail = [];
   let activeDiscovery = null;
   let activeContemporaries = null;
@@ -2970,6 +3048,11 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
     const section = document.createElement("section");
     section.className = "near";
     section.innerHTML = `<b>${context ? esc(context.title) : "Follow the story"}</b>${context ? `<p>${esc(context.description)}</p>` : ""}${connections.map((c, i) => `<div><button type="button" class="story-card" data-story="${i}"><b>${AtlasEventEmojis.icon(c.record)}${esc(c.record.title || c.record.name)}</b><small>${esc(fmt(c.record.start ?? c.record.born, c.record.approx))} · ${esc(c.reason)}</small></button><a target="_blank" rel="noopener" href="${esc(c.source)}">Source ↗</a></div>`).join("")}`;
+    const disclosure = document.createElement("details");
+    const summary = document.createElement("summary");
+    summary.textContent = `${context ? context.title : "Follow the story"} · explore other records`;
+    disclosure.append(summary, ...section.childNodes);
+    section.append(disclosure);
     el.append(section);
     section.querySelectorAll("[data-story]").forEach(
       (b) =>
@@ -3100,6 +3183,14 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
   function renderPlace() {
     if (!place) return;
     const p = place;
+    const focused = placePanel.contains(document.activeElement) ? document.activeElement : null;
+    const focusKey = focused?.getAttribute("data-place-key");
+    const focusAction = focused?.hasAttribute("data-more") ? "[data-more]"
+      : focused?.hasAttribute("data-return") ? "[data-return]"
+      : focused?.tagName === "H3" ? "h3"
+      : focused?.matches(".place-method summary") ? ".place-method summary" : null;
+    const listScroll = placePanel.querySelector(".place-entries")?.scrollTop || 0;
+    const methodOpen = placePanel.querySelector(".place-method")?.open || false;
     placePanel.hidden = false;
     const rows = [
       ...core.coverage(p.coverage).map((r) => ({
@@ -3113,17 +3204,24 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
       })),
       ...p.events.map((e) => ({ ...e, type: "event", description: e.blurb })),
     ].sort((a, b) => a.start - b.start);
-    placePanel.innerHTML = `<button type="button" data-return>Return to global timeline</button><h3>Location history: ${esc(locationName(p.point))}</h3><p><strong>Present-day location: ${esc(locationName(p.point))}</strong><br>${pointLabel(p.point)} · orange circle on the map</p><p>This timeline follows that exact location through time, not the whole highlighted state or empire. Historical borders may include several present-day countries.</p><p>Political coverage from Cliopatria, ${fmt(BFROM)}–${fmt(BTO)}. Mapped extents may include claims; they do not establish effective control, settlement, or absence of Indigenous peoples. Nearby events are within 50 km of their recorded marker, not necessarily at this point.</p><p role="status">${p.done ? "Search complete" : `Searching border files: ${p.checked}/${BIDX.chunks.length}`} ${p.failed ? "Some files could not be loaded; this history is incomplete." : ""}</p><div class="place-entries">${
+    placePanel.innerHTML = `<button type="button" data-return>Close local history</button><h3 tabindex="-1">Location history: ${esc(locationName(p.point))}</h3><p><strong>Present-day location: ${esc(locationName(p.point))}</strong><br>${pointLabel(p.point)} · orange circle on the map</p><p class="place-scope">All recorded periods at this point. Choose a row to change the map year. The worldwide list below follows the selected year.</p><p class="place-current-year"></p><details class="place-method"><summary>Coverage, nearby events &amp; sources</summary><p>This timeline follows that exact location through time, not the whole highlighted state or empire. Historical borders may include several present-day countries.</p><p>Political coverage from Cliopatria, ${fmt(BFROM)}–${fmt(BTO)}. Mapped extents may include claims; they do not establish effective control, settlement, or absence of Indigenous peoples. Nearby events are within 50 km of their recorded marker, not necessarily at this point.</p><p>Names and cultural or settlement history appear only where existing records describe them. This is not a complete local history.</p></details><p role="status">${p.done ? "Search complete" : `Searching border files: ${p.checked}/${BIDX.chunks.length}`} ${p.failed ? "Some files could not be loaded; this history is incomplete." : ""}</p><div class="place-entries" tabindex="0" role="region" aria-label="Local history across all recorded periods">${
       rows.length
         ? rows
             .slice(0, p.limit)
             .map(
               (r, i) =>
-                `<button class="place-entry" type="button" data-place-row="${i}"><b>${esc(fmtSpan(r.start, r.end, r.approx))} · ${esc(r.title)}</b><small>${r.type === "coverage" ? "Mapped coverage · " : ""}${esc(r.description)}${r.basis ? " · " + esc(r.basis) : ""}</small></button>`,
+                `<button class="place-entry" type="button" data-place-row="${i}" data-place-key="${esc(JSON.stringify([r.type,r.id || r.name,r.start,r.end]))}" data-place-start="${r.start}" data-place-end="${r.end}"><b>${esc(fmtSpan(r.start, r.end, r.approx))} · ${esc(r.title)}</b><small>${r.type === "coverage" ? "Mapped coverage · " : ""}${esc(r.description)}${r.basis ? " · " + esc(r.basis) : ""}</small></button>`,
             )
             .join("")
         : "<p>No records found here so far. Missing records do not imply this place was uninhabited.</p>"
-    }</div>${rows.length > p.limit ? '<button type="button" data-more>Show more periods</button>' : ""}<p>Names and cultural or settlement history appear only where existing records describe them. This is not a complete local history.</p>`;
+    }</div>${rows.length > p.limit ? '<button type="button" data-more>Show more periods</button>' : ""}`;
+    placePanel.querySelector(".place-entries").scrollTop = listScroll;
+    placePanel.querySelector(".place-method").open = methodOpen;
+    const focusTarget = focusKey ? [...placePanel.querySelectorAll("[data-place-key]")].find((b) => b.dataset.placeKey === focusKey) || placePanel.querySelector(".place-entries")
+      : focusAction ? placePanel.querySelector(focusAction) || placePanel.querySelector(".place-entries")
+      : focused?.classList.contains("place-entries") ? placePanel.querySelector(".place-entries") : null;
+    focusTarget?.focus({ preventScroll: true });
+    syncPlaceYear(true);
     placePanel.querySelector("[data-return]").onclick = () => {
       placeToken++;
       place = null;
@@ -3131,6 +3229,7 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
       const s = placeReturn;
       placeReturn = null;
       restore(s);
+      revealDetail();
     };
     placePanel.querySelector("[data-more]")?.addEventListener("click", () => {
       p.limit += 20;
@@ -3145,13 +3244,31 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
           state.borders = "history";
           syncBordersUI();
           if (r.type === "event") {
-            state.sel = r.id;
-            selectedPolity = null;
-            renderDetail();
+            selectingPlaceRow = true;
+            try { select(r.id, false); }
+            finally { selectingPlaceRow = false; }
           }
           focusPoint(p.point);
         }),
     );
+  }
+  function syncPlaceYear(force = false) {
+    if (!place) return;
+    if (!force && place.renderedYear === state.year) return;
+    place.renderedYear = state.year;
+    const label = placePanel.querySelector(".place-current-year");
+    if (label) label.textContent = `Map year: ${fmt(state.year)}`;
+    for (const row of placePanel.querySelectorAll("[data-place-start]")) {
+      if (+row.dataset.placeStart <= state.year && +row.dataset.placeEnd >= state.year) row.setAttribute("aria-current", "date");
+      else row.removeAttribute("aria-current");
+    }
+  }
+  function clearPlaceForSelection() {
+    if (!place || selectingPlaceRow) return;
+    placeToken++;
+    place = null;
+    placeReturn = null;
+    placePanel.hidden = true;
   }
   async function explore(point) {
     if (!point) return;
@@ -3168,7 +3285,8 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
     };
     focusPoint(point);
     renderPlace();
-    placePanel.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    placePanel.querySelector("h3").focus({ preventScroll: true });
+    revealInSidebar(placePanel);
     await scanPlace(place);
   }
   async function scanPlace(p) {
@@ -3221,7 +3339,7 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
     (e) => {
       flyToken++;
       const r = cv.getBoundingClientRect();
-      pendingPoint = {
+      pendingPoint = pts.size ? null : {
         x: e.clientX,
         y: e.clientY,
         point: proj.invert([e.clientX - r.left, e.clientY - r.top]),
@@ -3229,6 +3347,13 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
     },
     true,
   );
+  // A pinch, canceled touch, or drag back to its origin must never select a place.
+  cv.addEventListener("pointermove", (e) => {
+    if (pendingPoint && Math.hypot(e.clientX - pendingPoint.x, e.clientY - pendingPoint.y) > 3)
+      pendingPoint = null;
+  });
+  cv.addEventListener("pointercancel", () => { pendingPoint = null; });
+  cv.addEventListener("lostpointercapture", () => { pendingPoint = null; });
   cv.addEventListener("pointerup", (e) => {
     if (
       !pendingPoint ||
@@ -3256,6 +3381,7 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
     )
       return;
     if (byId[state.sel]?.cat === "dinosaurs" || state.year < -1000000) return;
+    clearPlaceForSelection();
     lastPoint = p.slice();
     queueMicrotask(() => {
       renderDetail();
@@ -3330,6 +3456,14 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
     } finally {
       state.year = saved;
     }
+  }
+  function renderSidebarScope() {
+    const label = document.getElementById("sideScope");
+    const text = compare.on
+      ? `Worldwide records for ${fmt(state.year)} · right-hand map. Local history opens separately.`
+      : "Worldwide records. Open a place’s history for a local timeline.";
+    if (label.textContent !== text) label.textContent = text;
+    syncPlaceYear();
   }
   function borderStatus(year) {
     const c = chunkOf(year);
@@ -3432,7 +3566,7 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
     return `<button type="button" class="story-card curated-cover" data-discovery="${esc(s.id)}">${sameYear ? `<span class="same-year-preview" aria-hidden="true">${s.stops.map((stop) => `<img src="${esc(stop.image)}" alt="" width="120" height="80" loading="lazy">`).join("")}</span>` : ""}<b>${esc(s.title)}</b><span>${esc(s.subtitle)}</span><small>${esc(sameYear ? fmt(s.start) : fmtSpan(s.start, s.end))} · ${sameYear ? "Two places, one year" : `${s.stops.length} stops`} <span aria-hidden="true">↗</span></small></button>`;
   }
   curatedShelf.innerHTML = `<div class="kicker">Curated discoveries</div><div class="curated-catalog">${discoveries.filter((s) => s.format !== "same-year").map(discoveryCover).join("")}<h3>Meanwhile, elsewhere</h3><p>The same everyday need, in different countries. What supplies did people have?</p>${discoveries.filter((s) => s.format === "same-year").map(discoveryCover).join("")}</div><div class="curated-reader" hidden></div>`;
-  document.getElementById("regions").before(curatedShelf);
+  document.querySelector(".sidebar-extras").append(curatedShelf);
   const curatedReader = curatedShelf.querySelector(".curated-reader");
   function sourceLinks(sources) {
     return sources.map(([label, url]) => `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(label)} ↗</a>`).join(" · ");
@@ -3463,9 +3597,6 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
     evidenceLegend.hidden = !isEvidenceView();
     const selected = curatedSelection(activeDiscovery);
     const key = selected ? `${selected.story.id}/${selected.stop.id}` : "";
-    const contemporariesCard = document.querySelector(".contemporaries-card");
-    if (selected && curatedShelf.previousElementSibling === contemporariesCard) curatedShelf.after(contemporariesCard);
-    else if (!selected && curatedShelf.nextElementSibling === contemporariesCard) curatedShelf.before(contemporariesCard);
     curatedReader.hidden = !selected;
     curatedShelf.querySelector(".curated-catalog").hidden = !!selected;
     if (!selected) { curatedReader.dataset.selection = ""; return; }
@@ -3486,7 +3617,9 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
       curatedReader.querySelector("[data-curated-close]").onclick = () => {
         activeDiscovery = null;
         renderCurated(); update();
-        curatedShelf.querySelector(`[data-discovery="${story.id}"]`).focus({ preventScroll: true });
+        const cover = curatedShelf.querySelector(`[data-discovery="${story.id}"]`);
+        cover.focus({ preventScroll: true });
+        revealInSidebar(cover);
       };
     }
     const atYear = state.year === stop.year && !compare.on;
@@ -3521,6 +3654,7 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
     update(); renderTrail();
     curatedReader.querySelector("[data-curated-heading]").focus({ preventScroll: true });
     if (window.innerWidth <= 860) stage.scrollIntoView({ block: "center", behavior: "auto" });
+    else revealInSidebar(curatedShelf);
   }
   curatedShelf.querySelectorAll("[data-discovery]").forEach((b) => b.onclick = () => openCurated(b.dataset.discovery));
   renderCurated();
@@ -3548,7 +3682,7 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
   discoveryShelf.className = "comparison-stories";
   discoveryShelf.setAttribute("aria-label", "Curated comparison stories");
   discoveryShelf.innerHTML = `<details><summary>Three stories to explore</summary><p>Follow changing claims and boundaries in the Pacific Northwest.</p>${comparisonStories.map((s, i) => `<button type="button" class="story-card" data-comparison-story="${i}"><b>${esc(s.title)}</b><small>${fmt(s.left)} → ${fmt(s.right)}</small></button>`).join("")}</details><div class="comparison-explanation" hidden></div>`;
-  document.getElementById("regions").before(discoveryShelf);
+  curatedShelf.before(discoveryShelf);
   const storyExplanation = discoveryShelf.querySelector(".comparison-explanation");
   function renderComparisonStory() {
     const s = comparisonStories[activeComparisonStory];
@@ -3824,6 +3958,7 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
     urlHash,
     openView,
     render(scene) {
+      renderSidebarScope();
       window.HistoryPaleogeography?.prepare(compare.on ? [compare.left, state.year] : [state.year]);
       window.PopulationTimeline?.render(state.year, compare.on ? compare.left : null);
       renderComparisonStory();
@@ -3928,11 +4063,13 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
       return hit ? { ...hit, year: compare.hoverYear } : null;
     },
     selectPolityYear(year) {
+      clearPlaceForSelection();
       lastPoint = null;
       searchPlace = null;
       compare.selectedYear = year;
     },
     selectWater(point, year, polity) {
+      clearPlaceForSelection();
       lastPoint = point;
       searchPlace = null;
       state.sel = null;
@@ -3940,9 +4077,10 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
       compare.selectedYear = year;
       stopPlay(); stopSpin();
       renderDetail(); draw();
-      if (innerWidth <= 860) document.getElementById('detail').scrollIntoView({ block: 'start', behavior: 'smooth' });
+      revealDetail();
     },
     selectedRecord(year) {
+      clearPlaceForSelection();
       lastPoint = null;
       searchPlace = null;
       compare.selectedYear = year;
@@ -3950,16 +4088,28 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
     isComparing() {
       return compare.on;
     },
+    timelineChanged() {
+      compare.selectedYear = null;
+      if (!searchPlace) lastPoint = null;
+    },
     displayedYears() {
       return compare.on ? [compare.left, state.year] : [state.year];
     },
     detail() {
+      renderSidebarScope();
       renderCurated();
       renderBorderConfidence();
       window.HistoryContemporaries?.render();
       window.HistoryDinosaurs?.render();
       if ((selectedPolity || state.sel) && compare.selectedYear !== null)
         withYear(compare.selectedYear, renderDetailBase);
+      if (compare.on && compare.selectedYear !== null) {
+        const detail = document.querySelector("#detail .detail");
+        const label = document.createElement("p");
+        label.className = "selection-scope";
+        label.textContent = `Selected on the ${compare.selectedYear === compare.left ? "left" : "right"}-hand map · ${fmt(compare.selectedYear)}`;
+        detail?.prepend(label);
+      }
       const x = state.sel && byId[state.sel];
       if(x?.cat==="dinosaurs"&&window.HistoryDinosaurs){
         const detail=document.querySelector("#detail .dinosaur-detail");
@@ -3986,7 +4136,7 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
         const detail = document.querySelector('#detail .detail');
         if (detail) detail.insertAdjacentHTML('afterbegin', `<section class="water-context">${content}</section>`);
         else document.getElementById('detail').innerHTML = `<div class="detail water-context"><button type="button" class="iconbtn close" aria-label="Close">×</button>${content}</div>`;
-        document.querySelector('#detail .close').onclick = () => { lastPoint = null; selectedPolity = null; update(); };
+        document.querySelector('#detail .close').onclick = () => { lastPoint = null; closeSelection(); };
       }
       if (point && x?.cat !== "dinosaurs")
         addPlaceAction(
@@ -4337,7 +4487,7 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
   const card = document.createElement("section");
   card.className = "daily-challenge-card";
   card.setAttribute("aria-label", "Daily history challenge");
-  document.querySelector(".side-content").append(card);
+  document.querySelector(".curated-discoveries").before(card);
   const dialog = document.createElement("dialog");
   dialog.className = "history-search daily-challenge-dialog";
   dialog.id = "dailyChallenge";
@@ -4667,9 +4817,7 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
   const card = document.createElement("section");
   card.className = "contemporaries-card comparison-stories";
   card.setAttribute("aria-label", "Contemporaries across cultures");
-  const shelf = document.querySelector(".curated-discoveries");
-  if (shelf.querySelector(".curated-reader").hidden) shelf.before(card);
-  else shelf.after(card);
+  document.getElementById("people").after(card);
   const examples = [
     { year: 1610, person: "William_Shakespeare", text: "Shakespeare & Tokugawa Ieyasu" },
     { year: 1690, person: "Isaac_Newton", text: "Newton & the Kangxi Emperor" },
@@ -4698,7 +4846,7 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
       const left = core.yearsBetween(min, pair.from) / span * 100;
       const width = core.yearsBetween(pair.from, pair.to) / span * 100;
       return `<p class="contemporary-year">${esc(fmt(state.year))}${HistoryDiscovery.isComparing() ? " · right-hand map" : ""}</p>${pair.people.map((p, i) => `<div class="contemporary-person"><button type="button" data-contemporary="${i}"><strong>${esc(p.name)}</strong><small>${esc(p.role)} · ${esc(REGIONS[p.region])}</small><span>${esc(fmtSpan(p.born, p.died, p.approx))}</span></button><div class="lifespan-track" aria-hidden="true"><i style="left:${core.yearsBetween(min, p.born) / span * 100}%;width:${core.yearsBetween(p.born, p.died) / span * 100}%"></i><b style="left:${left}%;width:${Math.max(.5, width)}%"></b></div><a href="${esc(p.source || wikiUrl(p.wiki))}" target="_blank" rel="noopener">Lifespan source ↗</a></div>`).join("")}<p class="contemporary-overlap"><span aria-hidden="true">━</span> ${approximate ? "Approximate recorded overlap" : "Recorded lifespan overlap"}: <strong>${esc(fmtSpan(pair.from, pair.to, approximate))}</strong></p><p>Shared years do not imply they met. Markers show associated places, not their whereabouts that year.${approximate ? " At least one lifespan has approximate dates." : ""}</p>`;
-    })() : `<p>No cross-region pair is recorded for ${esc(fmt(state.year))} yet. Start with one of these moments:</p>`}<details class="contemporary-examples" ${pair ? "" : "open"}><summary>Explore another moment</summary>${examples.map((e, i) => `<button class="story-card" type="button" data-contemporary-example="${i}">${esc(e.text)}<small>${esc(fmt(e.year))}</small></button>`).join("")}</details>`;
+    })() : `<p>No cross-region pair is recorded for ${esc(fmt(state.year))} yet.</p>`}<details class="contemporary-examples"><summary>Explore another moment · changes the year</summary>${examples.map((e, i) => `<button class="story-card" type="button" data-contemporary-example="${i}">${esc(e.text)}<small>${esc(fmt(e.year))}</small></button>`).join("")}</details>`;
     card.querySelectorAll("[data-contemporary]").forEach((b) => b.onclick = () => show(pair.people[+b.dataset.contemporary], pair.year, pair));
     card.querySelectorAll("[data-contemporary-example]").forEach((b) => b.onclick = () => {
       const example = examples[+b.dataset.contemporaryExample];
@@ -4743,7 +4891,7 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
   card.className = "dinosaur-discovery comparison-stories";
   card.setAttribute("aria-label", "Explore dinosaurs");
   card.innerHTML = `<details><summary><span aria-hidden="true">🦖</span> Explore dinosaurs</summary><p>Eight fossil records, millions of years before human history.</p><div class="dinosaur-eras">${eras.map((e, i) => `<button type="button" data-dinosaur-era="${i}">${e.name}<small>${esc(fmt(e.year))}</small></button>`).join("")}</div><p>Watch the continents change from the Triassic to the Cretaceous. Dinosaur avatars follow representative fossil regions reconstructed on those ancient continents. Fossil ages and positions are approximate.</p><div class="dinosaur-list">${fossils.map((e) => `<button type="button" class="story-card dinosaur-list-card" data-dinosaur-id="${e.id}"><img src="${avatarUrl(e)}" width="56" height="56" alt="" loading="lazy"><span><b>${esc(e.title)}</b><small>${esc(fmtSpan(e.start, e.end, true))} · ${esc(e.fossilRegion)}</small></span></button>`).join("")}</div><p class="dinosaur-art-note">Illustrated reconstructions; colours and appearance are speculative.</p></details>`;
-  document.getElementById("detail").after(card);
+  document.getElementById("fact").before(card);
   const trigger = document.createElement("button");
   trigger.type = "button";
   trigger.className = "dinosaur-trigger";

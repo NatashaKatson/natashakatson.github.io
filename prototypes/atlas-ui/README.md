@@ -34,4 +34,4 @@ To check the served atlas instead, set `ATLAS_TEST_URL` to its local URL. Requir
 D3 and TopoJSON downloads are allowed in this mode; optional fonts and the support
 widget remain blocked. Set `ATLAS_SCREENSHOT_DIR` to save screenshots elsewhere.
 
-The check opens the standalone file with external network requests blocked and verifies original features, medical icons, map selection, corrected Indigenous dates in 1956 and 1992, date boundaries, desktop/mobile slider dragging, BC/AD stepping, playback, historical borders, and ancient geography. Screenshots are saved in `previews/`.
+The check opens the standalone file with external network requests blocked and verifies original features, medical icons, map selection, corrected Indigenous dates in 1956 and 1992, date boundaries, desktop/mobile slider dragging, BC/AD stepping, playback, historical borders, and ancient geography. Mobile gesture checks cover pinch-to-drag transitions, canceled touches, lost pointer capture, coincident touches, and browser page zoom. Screenshots are saved in `previews/`.

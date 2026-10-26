@@ -105,6 +105,53 @@ try {
   await check(`geo().ancient && d3.geoArea(geo().land)>1`, 'Original dinosaur timeline and reconstructed continents work offline');
   await evaluate(`setYear(1955);stopSpin();window.scrollTo(0,0);`); await pause(200);
   await screenshot('mobile');
+  await send('Emulation.setTouchEmulationEnabled', { enabled: true, maxTouchPoints: 3 });
+  const touch = async (type, touchPoints) => {
+    await send('Input.dispatchTouchEvent', { type, touchPoints });
+    await pause(40); // Allow compositor-delivered touch events to reach the page.
+  };
+  for (const mode of ['globe', 'flat']) {
+    await evaluate(`setMode('${mode}');stopSpin();window.scrollTo(0,0);`); await pause(100);
+    const point = await evaluate(`(()=>{const r=cv.getBoundingClientRect();return{x:r.left+r.width/2,y:r.top+r.height/2}})()`);
+    const a = { id: 1, x: point.x - 45, y: point.y }, b = { id: 2, x: point.x + 45, y: point.y };
+    await touch('touchStart', [a]);
+    await touch('touchMove', [{ ...a, x: a.x + 20 }]);
+    await touch('touchCancel', []);
+    await check(`drag===null && pinch===null && pts.size===0 && !cv.classList.contains('dragging')`, `Canceled ${mode} drag clears the gesture`);
+    await touch('touchStart', [a, b]);
+    await touch('touchMove', [{ ...a, x: a.x - 25 }, { ...b, x: b.x + 25 }]);
+    await check(`Number.isFinite(zoomK) && zoomK>1 && visualViewport.scale===1`, `${mode} pinch zooms the map without zooming the page`);
+    await touch('touchEnd', [{ ...b, x: b.x + 25 }]);
+    await evaluate(`globalThis.beforePan={rot:rot.slice(),flatT:{...flatT},selection:state.sel,polity:selectedPolity};`);
+    await touch('touchMove', [{ ...a, x: a.x - 20 }]);
+    await check(mode === 'globe'
+      ? `rot[0]>beforePan.rot[0] && rot[0]-beforePan.rot[0]<3`
+      : `Math.abs(flatT.x-beforePan.flatT.x-5)<1`, `${mode} pinch continues as a smooth one-finger drag`);
+    await touch('touchEnd', []);
+    await check(`pts.size===0 && drag===null && state.sel===beforePan.selection && selectedPolity===beforePan.polity`, `${mode} pinch release does not select a map feature`);
+    await touch('touchStart', [a]);
+    await touch('touchMove', [{ ...a, x: a.x + 1 }]);
+    await evaluate(`cv.releasePointerCapture([...pts.keys()][0]);`);
+    await touch('touchMove', [{ ...a, x: a.x + 2 }]);
+    await check(`pts.size===0 && drag===null && pinch===null`, `Lost ${mode} pointer capture clears the gesture`);
+    await touch('touchEnd', []);
+    await touch('touchStart', [a, { ...a, id: 2 }]);
+    await touch('touchMove', [a, { ...a, id: 2 }]);
+    await check(`Number.isFinite(zoomK) && rot.every(Number.isFinite)`, `Coincident ${mode} touches keep valid map coordinates`);
+    await touch('touchMove', [a, b]);
+    await touch('touchMove', [{ ...a, x: a.x - 10 }, { ...b, x: b.x + 10 }]);
+    await check(`Number.isFinite(zoomK) && zoomK>=.7 && zoomK<=6`, `${mode} zoom recovers when coincident touches separate`);
+    await touch('touchCancel', []);
+  }
+  await evaluate(`globalThis.validZoom=zoomK;setZoom(NaN);setZoom(Infinity);setZoom(0);`);
+  await check(`zoomK===validZoom`, 'Invalid zoom values cannot blank the canvas');
+  await evaluate(`setMode('globe');stopSpin();globalThis.zoomRedraws=0;globalThis.savedRender=render;render=function(){zoomRedraws++;return savedRender()};`);
+  await send('Emulation.setPageScaleFactor', { pageScaleFactor: 2 });
+  await waitFor(`visualViewport.scale===2 && zoomRedraws>0`);
+  await check(`(()=>{const p=ctx.getImageData(Math.floor(cv.width/2),Math.floor(cv.height/2),1,1).data;return p[3]>0 && Number.isFinite(zoomK)})()`, 'Browser page zoom redraws a visible globe');
+  await screenshot('mobile-page-zoom');
+  await send('Emulation.setPageScaleFactor', { pageScaleFactor: 1 });
+  await evaluate(`render=savedRender;`);
   await check(`errors.length===0`.replace('errors.length', String(errors.length)), 'No browser runtime errors');
   console.log(`Validated ${checks} checks against ${testURL}.`);
 } finally {

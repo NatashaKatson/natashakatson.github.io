@@ -32,6 +32,35 @@ branch deployment. Pull requests run the same validation without deployment.
 Additional validation: `node --test tests/history-ui.test.cjs` and
 `node tests/history-ui.browser.mjs`, using the browser/server environment below.
 
+### Sidebar scope and reading order
+
+The sidebar starts with the selected record, then worldwide events near the
+selected year, historical context whose recorded intervals overlap that window,
+people alive that year, and a contemporary pair. The worldwide list is filtered
+by time and event categories; selecting a country does not turn it into a local
+list. In comparison mode, the list identifies the right-hand year, while a
+selected record identifies which map it came from.
+
+**Location history** is a separate timeline for an exact point across all recorded
+periods, with nearby event markers within 50 km. Its rows change the map year;
+source qualifications live in a disclosure. Loading preserves the source
+disclosure and keyboard focus. Selecting another location closes the previous
+local timeline. Scrubbing and playback clear obsolete selected-record details.
+
+**Explore other times** groups optional facts, dinosaur browsing, comparison
+stories, and the daily challenge below the current-period content. Curated
+discoveries stay last even while a story is open. Other-record suggestions in a
+selected reader are collapsed until requested. Two-place stories stack within
+the sidebar on desktop as well as phones.
+
+`node tests/history-sidebar.browser.mjs` checks relevance, date changes, BC/AD
+ages, comparison labels, local loading/navigation, keyboard focus, and widths
+from 320 to 1440 pixels. It uses the standalone prototype by default; rebuild
+with `node prototypes/atlas-ui/build-preview.cjs` first. The usual `ATLAS_CDP_URL`
+and `ATLAS_TEST_URL` overrides also work. Screenshots go to the OS temporary
+directory. This is interaction and layout verification, not a full accessibility
+conformance audit.
+
 ## Medicine, vaccination and pandemic history
 
 The atlas includes 34 additional sourced events: 11 vaccine milestones, 14 medical
@@ -65,7 +94,7 @@ buttons. Dated events and broader period snapshots are explicitly distinguished;
 50 BC is a viewing date for the context stops, not a precise date for their entire
 description. Moving the timeline keeps the reader open and offers a return to the
 stop's year. Back restores the earlier camera, selection, filters and comparison.
-The active reader appears ahead of the contemporaries card while following a tour.
+The active reader stays at the bottom of the sidebar while following a tour.
 
 The period also has eight additional sourced event/period records and two people,
 available to the ordinary map, ledger and search. This concentrates depth around
