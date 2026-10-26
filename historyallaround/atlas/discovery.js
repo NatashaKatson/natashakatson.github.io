@@ -6,7 +6,8 @@
     placeToken = 0,
     lastPoint = null,
     pendingPoint = null,
-    placeReturn = null;
+    placeReturn = null,
+    selectingPlaceRow = false;
   const trail = [];
   let activeDiscovery = null;
   let activeContemporaries = null;
@@ -73,6 +74,11 @@
     const section = document.createElement("section");
     section.className = "near";
     section.innerHTML = `<b>${context ? esc(context.title) : "Follow the story"}</b>${context ? `<p>${esc(context.description)}</p>` : ""}${connections.map((c, i) => `<div><button type="button" class="story-card" data-story="${i}"><b>${AtlasEventEmojis.icon(c.record)}${esc(c.record.title || c.record.name)}</b><small>${esc(fmt(c.record.start ?? c.record.born, c.record.approx))} · ${esc(c.reason)}</small></button><a target="_blank" rel="noopener" href="${esc(c.source)}">Source ↗</a></div>`).join("")}`;
+    const disclosure = document.createElement("details");
+    const summary = document.createElement("summary");
+    summary.textContent = `${context ? context.title : "Follow the story"} · explore other records`;
+    disclosure.append(summary, ...section.childNodes);
+    section.append(disclosure);
     el.append(section);
     section.querySelectorAll("[data-story]").forEach(
       (b) =>
@@ -203,6 +209,14 @@
   function renderPlace() {
     if (!place) return;
     const p = place;
+    const focused = placePanel.contains(document.activeElement) ? document.activeElement : null;
+    const focusKey = focused?.getAttribute("data-place-key");
+    const focusAction = focused?.hasAttribute("data-more") ? "[data-more]"
+      : focused?.hasAttribute("data-return") ? "[data-return]"
+      : focused?.tagName === "H3" ? "h3"
+      : focused?.matches(".place-method summary") ? ".place-method summary" : null;
+    const listScroll = placePanel.querySelector(".place-entries")?.scrollTop || 0;
+    const methodOpen = placePanel.querySelector(".place-method")?.open || false;
     placePanel.hidden = false;
     const rows = [
       ...core.coverage(p.coverage).map((r) => ({
@@ -216,17 +230,24 @@
       })),
       ...p.events.map((e) => ({ ...e, type: "event", description: e.blurb })),
     ].sort((a, b) => a.start - b.start);
-    placePanel.innerHTML = `<button type="button" data-return>Return to global timeline</button><h3>Location history: ${esc(locationName(p.point))}</h3><p><strong>Present-day location: ${esc(locationName(p.point))}</strong><br>${pointLabel(p.point)} · orange circle on the map</p><p>This timeline follows that exact location through time, not the whole highlighted state or empire. Historical borders may include several present-day countries.</p><p>Political coverage from Cliopatria, ${fmt(BFROM)}–${fmt(BTO)}. Mapped extents may include claims; they do not establish effective control, settlement, or absence of Indigenous peoples. Nearby events are within 50 km of their recorded marker, not necessarily at this point.</p><p role="status">${p.done ? "Search complete" : `Searching border files: ${p.checked}/${BIDX.chunks.length}`} ${p.failed ? "Some files could not be loaded; this history is incomplete." : ""}</p><div class="place-entries">${
+    placePanel.innerHTML = `<button type="button" data-return>Close local history</button><h3 tabindex="-1">Location history: ${esc(locationName(p.point))}</h3><p><strong>Present-day location: ${esc(locationName(p.point))}</strong><br>${pointLabel(p.point)} · orange circle on the map</p><p class="place-scope">All recorded periods at this point. Choose a row to change the map year. The worldwide list below follows the selected year.</p><p class="place-current-year"></p><details class="place-method"><summary>Coverage, nearby events &amp; sources</summary><p>This timeline follows that exact location through time, not the whole highlighted state or empire. Historical borders may include several present-day countries.</p><p>Political coverage from Cliopatria, ${fmt(BFROM)}–${fmt(BTO)}. Mapped extents may include claims; they do not establish effective control, settlement, or absence of Indigenous peoples. Nearby events are within 50 km of their recorded marker, not necessarily at this point.</p><p>Names and cultural or settlement history appear only where existing records describe them. This is not a complete local history.</p></details><p role="status">${p.done ? "Search complete" : `Searching border files: ${p.checked}/${BIDX.chunks.length}`} ${p.failed ? "Some files could not be loaded; this history is incomplete." : ""}</p><div class="place-entries" tabindex="0" role="region" aria-label="Local history across all recorded periods">${
       rows.length
         ? rows
             .slice(0, p.limit)
             .map(
               (r, i) =>
-                `<button class="place-entry" type="button" data-place-row="${i}"><b>${esc(fmtSpan(r.start, r.end, r.approx))} · ${esc(r.title)}</b><small>${r.type === "coverage" ? "Mapped coverage · " : ""}${esc(r.description)}${r.basis ? " · " + esc(r.basis) : ""}</small></button>`,
+                `<button class="place-entry" type="button" data-place-row="${i}" data-place-key="${esc(JSON.stringify([r.type,r.id || r.name,r.start,r.end]))}" data-place-start="${r.start}" data-place-end="${r.end}"><b>${esc(fmtSpan(r.start, r.end, r.approx))} · ${esc(r.title)}</b><small>${r.type === "coverage" ? "Mapped coverage · " : ""}${esc(r.description)}${r.basis ? " · " + esc(r.basis) : ""}</small></button>`,
             )
             .join("")
         : "<p>No records found here so far. Missing records do not imply this place was uninhabited.</p>"
-    }</div>${rows.length > p.limit ? '<button type="button" data-more>Show more periods</button>' : ""}<p>Names and cultural or settlement history appear only where existing records describe them. This is not a complete local history.</p>`;
+    }</div>${rows.length > p.limit ? '<button type="button" data-more>Show more periods</button>' : ""}`;
+    placePanel.querySelector(".place-entries").scrollTop = listScroll;
+    placePanel.querySelector(".place-method").open = methodOpen;
+    const focusTarget = focusKey ? [...placePanel.querySelectorAll("[data-place-key]")].find((b) => b.dataset.placeKey === focusKey) || placePanel.querySelector(".place-entries")
+      : focusAction ? placePanel.querySelector(focusAction) || placePanel.querySelector(".place-entries")
+      : focused?.classList.contains("place-entries") ? placePanel.querySelector(".place-entries") : null;
+    focusTarget?.focus({ preventScroll: true });
+    syncPlaceYear(true);
     placePanel.querySelector("[data-return]").onclick = () => {
       placeToken++;
       place = null;
@@ -234,6 +255,7 @@
       const s = placeReturn;
       placeReturn = null;
       restore(s);
+      revealDetail();
     };
     placePanel.querySelector("[data-more]")?.addEventListener("click", () => {
       p.limit += 20;
@@ -248,13 +270,31 @@
           state.borders = "history";
           syncBordersUI();
           if (r.type === "event") {
-            state.sel = r.id;
-            selectedPolity = null;
-            renderDetail();
+            selectingPlaceRow = true;
+            try { select(r.id, false); }
+            finally { selectingPlaceRow = false; }
           }
           focusPoint(p.point);
         }),
     );
+  }
+  function syncPlaceYear(force = false) {
+    if (!place) return;
+    if (!force && place.renderedYear === state.year) return;
+    place.renderedYear = state.year;
+    const label = placePanel.querySelector(".place-current-year");
+    if (label) label.textContent = `Map year: ${fmt(state.year)}`;
+    for (const row of placePanel.querySelectorAll("[data-place-start]")) {
+      if (+row.dataset.placeStart <= state.year && +row.dataset.placeEnd >= state.year) row.setAttribute("aria-current", "date");
+      else row.removeAttribute("aria-current");
+    }
+  }
+  function clearPlaceForSelection() {
+    if (!place || selectingPlaceRow) return;
+    placeToken++;
+    place = null;
+    placeReturn = null;
+    placePanel.hidden = true;
   }
   async function explore(point) {
     if (!point) return;
@@ -271,7 +311,8 @@
     };
     focusPoint(point);
     renderPlace();
-    placePanel.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    placePanel.querySelector("h3").focus({ preventScroll: true });
+    revealInSidebar(placePanel);
     await scanPlace(place);
   }
   async function scanPlace(p) {
@@ -324,7 +365,7 @@
     (e) => {
       flyToken++;
       const r = cv.getBoundingClientRect();
-      pendingPoint = {
+      pendingPoint = pts.size ? null : {
         x: e.clientX,
         y: e.clientY,
         point: proj.invert([e.clientX - r.left, e.clientY - r.top]),
@@ -332,6 +373,13 @@
     },
     true,
   );
+  // A pinch, canceled touch, or drag back to its origin must never select a place.
+  cv.addEventListener("pointermove", (e) => {
+    if (pendingPoint && Math.hypot(e.clientX - pendingPoint.x, e.clientY - pendingPoint.y) > 3)
+      pendingPoint = null;
+  });
+  cv.addEventListener("pointercancel", () => { pendingPoint = null; });
+  cv.addEventListener("lostpointercapture", () => { pendingPoint = null; });
   cv.addEventListener("pointerup", (e) => {
     if (
       !pendingPoint ||
@@ -359,6 +407,7 @@
     )
       return;
     if (byId[state.sel]?.cat === "dinosaurs" || state.year < -1000000) return;
+    clearPlaceForSelection();
     lastPoint = p.slice();
     queueMicrotask(() => {
       renderDetail();
@@ -433,6 +482,14 @@
     } finally {
       state.year = saved;
     }
+  }
+  function renderSidebarScope() {
+    const label = document.getElementById("sideScope");
+    const text = compare.on
+      ? `Worldwide records for ${fmt(state.year)} · right-hand map. Local history opens separately.`
+      : "Worldwide records. Open a place’s history for a local timeline.";
+    if (label.textContent !== text) label.textContent = text;
+    syncPlaceYear();
   }
   function borderStatus(year) {
     const c = chunkOf(year);
@@ -535,7 +592,7 @@
     return `<button type="button" class="story-card curated-cover" data-discovery="${esc(s.id)}">${sameYear ? `<span class="same-year-preview" aria-hidden="true">${s.stops.map((stop) => `<img src="${esc(stop.image)}" alt="" width="120" height="80" loading="lazy">`).join("")}</span>` : ""}<b>${esc(s.title)}</b><span>${esc(s.subtitle)}</span><small>${esc(sameYear ? fmt(s.start) : fmtSpan(s.start, s.end))} · ${sameYear ? "Two places, one year" : `${s.stops.length} stops`} <span aria-hidden="true">↗</span></small></button>`;
   }
   curatedShelf.innerHTML = `<div class="kicker">Curated discoveries</div><div class="curated-catalog">${discoveries.filter((s) => s.format !== "same-year").map(discoveryCover).join("")}<h3>Meanwhile, elsewhere</h3><p>The same everyday need, in different countries. What supplies did people have?</p>${discoveries.filter((s) => s.format === "same-year").map(discoveryCover).join("")}</div><div class="curated-reader" hidden></div>`;
-  document.getElementById("regions").before(curatedShelf);
+  document.querySelector(".sidebar-extras").append(curatedShelf);
   const curatedReader = curatedShelf.querySelector(".curated-reader");
   function sourceLinks(sources) {
     return sources.map(([label, url]) => `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(label)} ↗</a>`).join(" · ");
@@ -566,9 +623,6 @@
     evidenceLegend.hidden = !isEvidenceView();
     const selected = curatedSelection(activeDiscovery);
     const key = selected ? `${selected.story.id}/${selected.stop.id}` : "";
-    const contemporariesCard = document.querySelector(".contemporaries-card");
-    if (selected && curatedShelf.previousElementSibling === contemporariesCard) curatedShelf.after(contemporariesCard);
-    else if (!selected && curatedShelf.nextElementSibling === contemporariesCard) curatedShelf.before(contemporariesCard);
     curatedReader.hidden = !selected;
     curatedShelf.querySelector(".curated-catalog").hidden = !!selected;
     if (!selected) { curatedReader.dataset.selection = ""; return; }
@@ -589,7 +643,9 @@
       curatedReader.querySelector("[data-curated-close]").onclick = () => {
         activeDiscovery = null;
         renderCurated(); update();
-        curatedShelf.querySelector(`[data-discovery="${story.id}"]`).focus({ preventScroll: true });
+        const cover = curatedShelf.querySelector(`[data-discovery="${story.id}"]`);
+        cover.focus({ preventScroll: true });
+        revealInSidebar(cover);
       };
     }
     const atYear = state.year === stop.year && !compare.on;
@@ -624,6 +680,7 @@
     update(); renderTrail();
     curatedReader.querySelector("[data-curated-heading]").focus({ preventScroll: true });
     if (window.innerWidth <= 860) stage.scrollIntoView({ block: "center", behavior: "auto" });
+    else revealInSidebar(curatedShelf);
   }
   curatedShelf.querySelectorAll("[data-discovery]").forEach((b) => b.onclick = () => openCurated(b.dataset.discovery));
   renderCurated();
@@ -651,7 +708,7 @@
   discoveryShelf.className = "comparison-stories";
   discoveryShelf.setAttribute("aria-label", "Curated comparison stories");
   discoveryShelf.innerHTML = `<details><summary>Three stories to explore</summary><p>Follow changing claims and boundaries in the Pacific Northwest.</p>${comparisonStories.map((s, i) => `<button type="button" class="story-card" data-comparison-story="${i}"><b>${esc(s.title)}</b><small>${fmt(s.left)} → ${fmt(s.right)}</small></button>`).join("")}</details><div class="comparison-explanation" hidden></div>`;
-  document.getElementById("regions").before(discoveryShelf);
+  curatedShelf.before(discoveryShelf);
   const storyExplanation = discoveryShelf.querySelector(".comparison-explanation");
   function renderComparisonStory() {
     const s = comparisonStories[activeComparisonStory];
@@ -927,6 +984,7 @@
     urlHash,
     openView,
     render(scene) {
+      renderSidebarScope();
       window.HistoryPaleogeography?.prepare(compare.on ? [compare.left, state.year] : [state.year]);
       window.PopulationTimeline?.render(state.year, compare.on ? compare.left : null);
       renderComparisonStory();
@@ -1031,11 +1089,13 @@
       return hit ? { ...hit, year: compare.hoverYear } : null;
     },
     selectPolityYear(year) {
+      clearPlaceForSelection();
       lastPoint = null;
       searchPlace = null;
       compare.selectedYear = year;
     },
     selectWater(point, year, polity) {
+      clearPlaceForSelection();
       lastPoint = point;
       searchPlace = null;
       state.sel = null;
@@ -1043,9 +1103,10 @@
       compare.selectedYear = year;
       stopPlay(); stopSpin();
       renderDetail(); draw();
-      if (innerWidth <= 860) document.getElementById('detail').scrollIntoView({ block: 'start', behavior: 'smooth' });
+      revealDetail();
     },
     selectedRecord(year) {
+      clearPlaceForSelection();
       lastPoint = null;
       searchPlace = null;
       compare.selectedYear = year;
@@ -1053,16 +1114,28 @@
     isComparing() {
       return compare.on;
     },
+    timelineChanged() {
+      compare.selectedYear = null;
+      if (!searchPlace) lastPoint = null;
+    },
     displayedYears() {
       return compare.on ? [compare.left, state.year] : [state.year];
     },
     detail() {
+      renderSidebarScope();
       renderCurated();
       renderBorderConfidence();
       window.HistoryContemporaries?.render();
       window.HistoryDinosaurs?.render();
       if ((selectedPolity || state.sel) && compare.selectedYear !== null)
         withYear(compare.selectedYear, renderDetailBase);
+      if (compare.on && compare.selectedYear !== null) {
+        const detail = document.querySelector("#detail .detail");
+        const label = document.createElement("p");
+        label.className = "selection-scope";
+        label.textContent = `Selected on the ${compare.selectedYear === compare.left ? "left" : "right"}-hand map · ${fmt(compare.selectedYear)}`;
+        detail?.prepend(label);
+      }
       const x = state.sel && byId[state.sel];
       if(x?.cat==="dinosaurs"&&window.HistoryDinosaurs){
         const detail=document.querySelector("#detail .dinosaur-detail");
@@ -1089,7 +1162,7 @@
         const detail = document.querySelector('#detail .detail');
         if (detail) detail.insertAdjacentHTML('afterbegin', `<section class="water-context">${content}</section>`);
         else document.getElementById('detail').innerHTML = `<div class="detail water-context"><button type="button" class="iconbtn close" aria-label="Close">×</button>${content}</div>`;
-        document.querySelector('#detail .close').onclick = () => { lastPoint = null; selectedPolity = null; update(); };
+        document.querySelector('#detail .close').onclick = () => { lastPoint = null; closeSelection(); };
       }
       if (point && x?.cat !== "dinosaurs")
         addPlaceAction(

@@ -4,9 +4,7 @@
   const card = document.createElement("section");
   card.className = "contemporaries-card comparison-stories";
   card.setAttribute("aria-label", "Contemporaries across cultures");
-  const shelf = document.querySelector(".curated-discoveries");
-  if (shelf.querySelector(".curated-reader").hidden) shelf.before(card);
-  else shelf.after(card);
+  document.getElementById("people").after(card);
   const examples = [
     { year: 1610, person: "William_Shakespeare", text: "Shakespeare & Tokugawa Ieyasu" },
     { year: 1690, person: "Isaac_Newton", text: "Newton & the Kangxi Emperor" },
@@ -35,7 +33,7 @@
       const left = core.yearsBetween(min, pair.from) / span * 100;
       const width = core.yearsBetween(pair.from, pair.to) / span * 100;
       return `<p class="contemporary-year">${esc(fmt(state.year))}${HistoryDiscovery.isComparing() ? " · right-hand map" : ""}</p>${pair.people.map((p, i) => `<div class="contemporary-person"><button type="button" data-contemporary="${i}"><strong>${esc(p.name)}</strong><small>${esc(p.role)} · ${esc(REGIONS[p.region])}</small><span>${esc(fmtSpan(p.born, p.died, p.approx))}</span></button><div class="lifespan-track" aria-hidden="true"><i style="left:${core.yearsBetween(min, p.born) / span * 100}%;width:${core.yearsBetween(p.born, p.died) / span * 100}%"></i><b style="left:${left}%;width:${Math.max(.5, width)}%"></b></div><a href="${esc(p.source || wikiUrl(p.wiki))}" target="_blank" rel="noopener">Lifespan source ↗</a></div>`).join("")}<p class="contemporary-overlap"><span aria-hidden="true">━</span> ${approximate ? "Approximate recorded overlap" : "Recorded lifespan overlap"}: <strong>${esc(fmtSpan(pair.from, pair.to, approximate))}</strong></p><p>Shared years do not imply they met. Markers show associated places, not their whereabouts that year.${approximate ? " At least one lifespan has approximate dates." : ""}</p>`;
-    })() : `<p>No cross-region pair is recorded for ${esc(fmt(state.year))} yet. Start with one of these moments:</p>`}<details class="contemporary-examples" ${pair ? "" : "open"}><summary>Explore another moment</summary>${examples.map((e, i) => `<button class="story-card" type="button" data-contemporary-example="${i}">${esc(e.text)}<small>${esc(fmt(e.year))}</small></button>`).join("")}</details>`;
+    })() : `<p>No cross-region pair is recorded for ${esc(fmt(state.year))} yet.</p>`}<details class="contemporary-examples"><summary>Explore another moment · changes the year</summary>${examples.map((e, i) => `<button class="story-card" type="button" data-contemporary-example="${i}">${esc(e.text)}<small>${esc(fmt(e.year))}</small></button>`).join("")}</details>`;
     card.querySelectorAll("[data-contemporary]").forEach((b) => b.onclick = () => show(pair.people[+b.dataset.contemporary], pair.year, pair));
     card.querySelectorAll("[data-contemporary-example]").forEach((b) => b.onclick = () => {
       const example = examples[+b.dataset.contemporaryExample];

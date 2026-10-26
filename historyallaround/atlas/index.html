@@ -450,11 +450,11 @@ header .seg{padding:2px;background:#f0ebe3;border:1px solid rgba(45,36,32,.1);bo
     <div class="time-summary"><span class="era" id="era"></span><span class="now" id="nowLine"></span><button type="button" class="browse-dinosaurs" hidden>Browse dinosaurs →</button></div>
   </div>
 
-  <aside class="side" id="side">
-    <div class="side-intro"><div class="kicker">At the same time</div><h2>Around the world</h2><div class="sub" id="sideSub"></div></div>
+  <aside class="side" id="side" aria-labelledby="sideTitle">
+    <div class="side-intro"><div class="kicker">At the same time</div><h2 id="sideTitle">Around the world</h2><div class="sub" id="sideSub"></div><p class="sidebar-scope" id="sideScope">Worldwide records. Open a place’s history for a local timeline.</p></div>
     <div class="side-content"><div id="detail"></div><div id="regions"></div>
     <h3 class="atlas-section-title">People alive at this moment</h3><div class="sub" id="peopleSub" style="margin-bottom:8px"></div><div class="people" id="people"></div>
-    <div class="fact" id="fact"></div></div>
+    <section class="sidebar-extras" aria-labelledby="sidebarExtrasTitle"><div class="sidebar-extras-intro"><h3 id="sidebarExtrasTitle">Explore other times</h3><p>These suggestions have their own dates. Opening one changes the timeline.</p></div><div class="fact" id="fact"></div></section></div>
   </aside>
   <footer class="atlas-footer" aria-label="Atlas credits and support">
     <div class="atlas-footer-main">
@@ -1017,6 +1017,8 @@ function makeProj(){
 let compactRuler=null;
 function resize(){const r=stage.getBoundingClientRect();DPR=Math.min(2,window.devicePixelRatio||1);W=r.width;H=r.height;cv.width=W*DPR;cv.height=H*DPR;if(compactRuler!==(W<600)){compactRuler=W<600;buildRuler()}draw()}
 new ResizeObserver(resize).observe(stage);
+// Browser pinch zoom can invalidate Safari's canvas without resizing the stage.
+window.visualViewport?.addEventListener("resize",draw);
 
 function visible(lon,lat){if(state.mode!=="globe")return true;return center&&d3.geoDistance([lon,lat],center)<Math.PI/2-0.02}
 // Stars are drawn once into their own canvas, then slid sideways as the globe turns.
@@ -1139,26 +1141,45 @@ function renderScene(){
 }
 
 // pan / rotate / zoom
-let drag=null,tapT=0;
-cv.addEventListener("pointerdown",e=>{drag={x:e.clientX,y:e.clientY,moved:false,rot:rot.slice(),ft:{...flatT}};cv.setPointerCapture(e.pointerId)});
+let drag=null,tapT=0,pinch=null;const pts=new Map();
+function startDrag(id,[x,y],moved=false){drag={id,x,y,moved,rot:rot.slice(),ft:{...flatT}}}
+function startPinch(){const[a,b]=[...pts.values()];pinch={d:Math.hypot(a[0]-b[0],a[1]-b[1]),k:zoomK};drag=null}
+cv.addEventListener("pointerdown",e=>{
+  if(e.pointerType==="mouse"&&e.button!==0)return;
+  pts.set(e.pointerId,[e.clientX,e.clientY]);cv.setPointerCapture(e.pointerId);
+  hoverE=null;document.getElementById("tip").hidden=true;
+  if(pts.size===1)startDrag(e.pointerId,pts.get(e.pointerId));else startPinch();
+});
 cv.addEventListener("pointermove",e=>{
+  if(pts.has(e.pointerId)){
+    pts.set(e.pointerId,[e.clientX,e.clientY]);
+    if(pts.size>1){
+      const[a,b]=[...pts.values()],distance=Math.hypot(a[0]-b[0],a[1]-b[1]);
+      // Coincident touches have no usable scale ratio; wait for them to separate.
+      if(pinch.d>0)setZoom(pinch.k*distance/pinch.d);else if(distance>0)startPinch();
+      return;
+    }
+  }
   if(drag){const dx=e.clientX-drag.x,dy=e.clientY-drag.y;if(Math.hypot(dx,dy)>3){drag.moved=true;cv.classList.add("dragging");userMoved=true}
     if(drag.moved){if(state.mode==="globe"){const k=75/(baseScale()*zoomK);rot=[drag.rot[0]+dx*k,Math.max(-80,Math.min(80,drag.rot[1]-dy*k)),0]}else{flatT={x:drag.ft.x+dx,y:drag.ft.y+dy}}moved();draw()}return}
   // Mice can report 120+ moves a second; look up what is under the pointer at most once per frame.
-  hoverE=e;if(!hoverQ)hoverQ=requestAnimationFrame(hover)});
+  if(e.pointerType==="mouse"){hoverE=e;if(!hoverQ)hoverQ=requestAnimationFrame(hover)}});
 let hoverE=null,hoverQ=0;
-function hover(){hoverQ=0;const e=hoverE;if(!e||drag)return;
+function hover(){hoverQ=0;const e=hoverE;if(!e||pts.size)return;
   const r=cv.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,h=nearest(x,y),m=h?null:mapAt(x,y);cv.classList.toggle("hot",!!(h||m));
   const tip=document.getElementById("tip"),lbl=h?h.label:m&&m.label;
   if(lbl&&e.pointerType==="mouse"){tip.hidden=false;tip.textContent=lbl;tip.classList.toggle("country",!h);tip.style.left=x+"px";tip.style.top=y+"px"}else tip.hidden=true}
-cv.addEventListener("pointerup",e=>{cv.classList.remove("dragging");const d=drag;drag=null;if(d&&!d.moved){if(window.HistoryChallenge?.pickMap(e)){endPt(e);e.stopImmediatePropagation();return}const r=cv.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,h=nearest(x,y);if(h)select(h.id,false,h.year??null);else{const m=mapAt(x,y);if(m?.water&&window.HistoryDiscovery)HistoryDiscovery.selectWater(proj.invert([x,y]),m.year??state.year,m.polity);else if(m&&m.polity)selectPolity(m.polity,m.year??state.year);else if(m&&e.pointerType!=="mouse"){const tip=document.getElementById("tip");tip.hidden=false;tip.textContent=m.label;tip.classList.add("country");tip.style.left=x+"px";tip.style.top=y+"px";clearTimeout(tapT);tapT=setTimeout(()=>tip.hidden=true,2500)}}}});
+function endPt(e){
+  if(!pts.delete(e.pointerId))return;
+  cv.classList.remove("dragging");pinch=null;drag=null;
+  // Continue from the remaining finger's current position, without treating it as a tap.
+  if(pts.size===1){const[id,point]=[...pts][0];startDrag(id,point,true)}else if(pts.size>1)startPinch();
+}
+cv.addEventListener("pointerup",e=>{const d=drag,tap=pts.size===1&&d?.id===e.pointerId&&!d.moved;endPt(e);if(tap){if(window.HistoryChallenge?.pickMap(e)){e.stopImmediatePropagation();return}const r=cv.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,h=nearest(x,y);if(h)select(h.id,false,h.year??null);else{const m=mapAt(x,y);if(m?.water&&window.HistoryDiscovery)HistoryDiscovery.selectWater(proj.invert([x,y]),m.year??state.year,m.polity);else if(m&&m.polity)selectPolity(m.polity,m.year??state.year);else if(m&&e.pointerType!=="mouse"){const tip=document.getElementById("tip");tip.hidden=false;tip.textContent=m.label;tip.classList.add("country");tip.style.left=x+"px";tip.style.top=y+"px";clearTimeout(tapT);tapT=setTimeout(()=>tip.hidden=true,2500)}}}});
+cv.addEventListener("pointercancel",endPt);cv.addEventListener("lostpointercapture",endPt);
 cv.addEventListener("pointerleave",()=>{hoverE=null;document.getElementById("tip").hidden=true});
 cv.addEventListener("wheel",e=>{e.preventDefault();setZoom(zoomK*Math.exp(-e.deltaY*0.0015))},{passive:false});
-let pinch=null;const pts=new Map();
-cv.addEventListener("pointerdown",e=>{pts.set(e.pointerId,[e.clientX,e.clientY]);if(pts.size===2){const[a,b]=[...pts.values()];pinch={d:Math.hypot(a[0]-b[0],a[1]-b[1]),k:zoomK};drag=null}});
-cv.addEventListener("pointermove",e=>{if(!pts.has(e.pointerId))return;pts.set(e.pointerId,[e.clientX,e.clientY]);if(pinch&&pts.size===2){const[a,b]=[...pts.values()];setZoom(pinch.k*Math.hypot(a[0]-b[0],a[1]-b[1])/pinch.d)}});
-const endPt=e=>{pts.delete(e.pointerId);if(pts.size<2)pinch=null};cv.addEventListener("pointerup",endPt);cv.addEventListener("pointercancel",endPt);
-function setZoom(k){zoomK=Math.max(.7,Math.min(6,k));userMoved=true;needHi();moved();draw()}
+function setZoom(k){if(!Number.isFinite(k)||k<=0)return;zoomK=Math.max(.7,Math.min(6,k));userMoved=true;needHi();moved();draw()}
 const inBox=(b,ll)=>{const[[w,so],[ea,n]]=b;if(ll[1]<so||ll[1]>n)return false;return w<=ea?(ll[0]>=w&&ll[0]<=ea):(ll[0]>=w||ll[0]<=ea)};
 function mapAt(x,y){if(window.HistoryDiscovery)return window.HistoryDiscovery.mapAt(x,y,mapAtYear);return mapAtYear(x,y)}
 function waterAtYear(point){if(window.HistoryPaleogeography?.isDeep(state.year))return null;
@@ -1214,9 +1235,10 @@ if(state.year>=-300000)lastHumanYear=state.year;
 slider.value=Math.round(tAt(state.year)*SLIDER_STEPS);
 }
 buildMarks();
-slider.addEventListener("input",()=>{state.year=roundYear(yearAt(slider.value/SLIDER_STEPS));selectedPolity=null;stopPlay();update(true)});
+slider.addEventListener("input",()=>{const year=roundYear(yearAt(slider.value/SLIDER_STEPS));if(year!==state.year)clearTimelineSelection();state.year=year;stopPlay();update(true)});
 slider.addEventListener("keydown",e=>{if(e.key==="ArrowLeft"&&!e.shiftKey){nudgeYear(-1);e.preventDefault()}if(e.key==="ArrowRight"&&!e.shiftKey){nudgeYear(1);e.preventDefault()}});
-function setYear(y,keepSel){y=roundYear(Math.max(-252000000,Math.min(NOW,y)));if(y!==state.year)sidebarReturn=null;if(y<-300000)state.cats.add("dinosaurs");state.year=y;slider.value=Math.round(tAt(y)*SLIDER_STEPS);if(!keepSel){state.sel=null;selectedPolity=null}update()}
+function clearTimelineSelection(){sidebarReturn=null;state.sel=null;selectedPolity=null;window.HistoryDiscovery?.timelineChanged()}
+function setYear(y,keepSel){y=roundYear(Math.max(-252000000,Math.min(NOW,y)));if(y!==state.year)sidebarReturn=null;if(y<-300000)state.cats.add("dinosaurs");state.year=y;slider.value=Math.round(tAt(y)*SLIDER_STEPS);if(!keepSel)clearTimelineSelection();update()}
 function stepEvent(dir){const list=ev.filter(e=>state.cats.has(e.cat)).map(e=>e.start).sort((a,b)=>a-b);const y=state.year;const t=dir>0?list.find(s=>s>y):[...list].reverse().find(s=>s<y);if(t!==undefined){stopPlay();setYear(t)}}
 function nudgeYear(dir){stopPlay();const y=state.year===-1&&dir>0?1:state.year===1&&dir<0?-1:state.year+dir*(state.year<-1000000?1000000:1);setYear(y)}
 document.getElementById("prev").onclick=()=>nudgeYear(-1);
@@ -1224,7 +1246,7 @@ document.getElementById("next").onclick=()=>nudgeYear(1);
 let raf=0;const playBtn=document.getElementById("play");
 function stopPlay(){state.playing=false;cancelAnimationFrame(raf);playBtn.innerHTML="▶ Play";playBtn.setAttribute("aria-label","Play")}
 playBtn.onclick=()=>{if(state.playing)return stopPlay();if(state.year>=NOW)setYear(dinosaurTimeline?-252000000:-300000);state.playing=true;playBtn.innerHTML="❚❚ Pause";playBtn.setAttribute("aria-label","Pause");
-  let last=performance.now();(function tick(n){const dt=Math.min(64,n-last);last=n;let t=+slider.value/SLIDER_STEPS+dt*0.0000085;if(t>=1){t=1;stopPlay()}slider.value=Math.round(t*SLIDER_STEPS);state.year=roundYear(yearAt(t));update(true);if(state.playing)raf=requestAnimationFrame(tick)})(last)};
+  let last=performance.now();(function tick(n){const dt=Math.min(64,n-last);last=n;let t=+slider.value/SLIDER_STEPS+dt*0.0000085;if(t>=1){t=1;stopPlay()}slider.value=Math.round(t*SLIDER_STEPS);const year=roundYear(yearAt(t));if(year!==state.year)clearTimelineSelection();state.year=year;update(true);if(state.playing)raf=requestAnimationFrame(tick)})(last)};
 document.addEventListener("keydown",e=>{if(e.target.tagName==="INPUT"&&e.target.type!=="range")return;if(e.key==="ArrowLeft"&&e.shiftKey){stepEvent(-1);e.preventDefault()}if(e.key==="ArrowRight"&&e.shiftKey){stepEvent(1);e.preventDefault()}if(e.key===" "&&e.target===document.body){playBtn.click();e.preventDefault()}});
 document.getElementById("goto").addEventListener("submit",e=>{e.preventDefault();const inp=document.getElementById("gotoInput");const y=parseYear(inp.value);if(y===null){inp.setCustomValidity(/^\s*0\s*(bc|bce|b\.c\.|ad|ce)?\s*$/i.test(inp.value)?"There is no year 0. Try 1 BC or AD 1.":"Try a year like 1492 or 500 BC");inp.reportValidity();return}inp.setCustomValidity("");stopPlay();setYear(y);inp.blur()});
 document.getElementById("gotoInput").addEventListener("input",e=>e.target.setCustomValidity(""));
@@ -1232,10 +1254,10 @@ document.getElementById("gotoInput").addEventListener("input",e=>e.target.setCus
 // ---------- side ledger
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 let sidebarReturn=null;
-function revealDetail(){const el=document.getElementById("detail"),side=document.getElementById("side");el.setAttribute("tabindex","-1");
+function revealInSidebar(el){const side=document.getElementById("side");
   if(window.innerWidth<=860)el.scrollIntoView({behavior:reduceMotion.matches?"instant":"smooth",block:"start"});
-  else side.scrollTop=Math.max(0,side.scrollTop+el.getBoundingClientRect().top-side.getBoundingClientRect().top-side.querySelector(".side-intro").offsetHeight-12);
-  el.focus({preventScroll:true})}
+  else side.scrollTop=Math.max(0,side.scrollTop+el.getBoundingClientRect().top-side.getBoundingClientRect().top-side.querySelector(".side-intro").offsetHeight-12)}
+function revealDetail(){const el=document.getElementById("detail");el.setAttribute("tabindex","-1");revealInSidebar(el);el.focus({preventScroll:true})}
 function closeSelection(){const saved=sidebarReturn;sidebarReturn=null;state.sel=null;selectedPolity=null;update();
   const row=saved&&saved.year===state.year&&document.querySelector(`#side [data-id="${saved.id}"]`);
   if(row){document.getElementById("side").scrollTop=saved.scroll;row.focus({preventScroll:true})}else slider.focus({preventScroll:true})}
@@ -1257,7 +1279,7 @@ function renderDetailBase(){const el=document.getElementById("detail");if(select
     <div class="kicker"><i></i>${esc(fmtSpan(x.start,x.end!==x.start?x.end:null,x.approx))} · ${REGIONS[x.region]}${x.approx?" · Approximate date":""}</div>
     <h3>${AtlasEventEmojis.icon(x)}${esc(x.title)}</h3>${historicalContextNote(x,state.year)}<p>${esc(x.blurb)}</p>${x.indigenous?`<p class="indigenous-context"><strong>${x.indigenous.evidence?"Archaeological evidence · dated site":"Indigenous history · documented place"}</strong><br>${x.indigenous.evidence?"Dates represent rounded evidence ages. Site locations do not establish a migration track or a modern national identity.":"This marker locates a community or site, not a territorial boundary. Dates refer to the described event or archaeological evidence, not the lifetime of a people. Colonial map fills can overlap Indigenous homelands."}${x.indigenous.territorySource?` <a href="${esc(x.indigenous.territorySource)}" target="_blank" rel="noopener">Territory &amp; community reference ↗</a>`:""}</p>`:""}${x.source?`<p><a href="${esc(x.source)}" target="_blank" rel="noopener">Source ↗</a></p>`:""}<a href="${wikiUrl(x.wiki)}" target="_blank" rel="noopener">Read more on Wikipedia ↗</a>
     <div class="meanwhile-slot"></div></div>`}
-  else{const age=state.year-x.born;el.innerHTML=`<div class="detail" style="--c:var(--ink)"><button class="iconbtn close" aria-label="Close">×</button>
+  else{const age=DiscoveryCore.yearsBetween(x.born,state.year);el.innerHTML=`<div class="detail" style="--c:var(--ink)"><button class="iconbtn close" aria-label="Close">×</button>
     <div class="kicker"><i></i>${esc(fmt(x.born,x.approx))} – ${esc(fmt(x.died,x.approx))} · ${REGIONS[x.region]}</div>
     <h3>${esc(x.name)}</h3><p>${esc(x.role)}.${state.year>=x.born&&state.year<=x.died?` In ${esc(fmt(state.year))}, about ${age} years old.`:""}</p>
     <a href="${esc(x.source||wikiUrl(x.wiki))}" target="_blank" rel="noopener">${x.source?"Source":"Read more on Wikipedia"} ↗</a></div>`}
@@ -1277,7 +1299,7 @@ function renderSide(){
   if(filled.length&&quiet.length)reg.insertAdjacentHTML("beforeend",`<p class="empty">Nothing recorded here yet for ${quiet.join(", ")}.</p>`);
   const pp=alivePeople().filter(p=>p.born<=y&&p.died>=y);
   document.getElementById("peopleSub").textContent=pp.length?`${pp.length} of the people in this atlas`:"";
-  document.getElementById("people").innerHTML=pp.length?pp.map(p=>`<button class="person" data-id="${p.id}">${esc(p.name)}<em>${y-p.born}</em></button>`).join(""):`<p class="empty">None of the people in this atlas were alive in ${esc(fmt(y))}.</p>`;
+  document.getElementById("people").innerHTML=pp.length?pp.map(p=>`<button class="person" data-id="${p.id}">${esc(p.name)}<em>age ≈${DiscoveryCore.yearsBetween(p.born,y)}</em></button>`).join(""):`<p class="empty">None of the people in this atlas were alive in ${esc(fmt(y))}.</p>`;
 
 }
 document.getElementById("side").addEventListener("click",e=>{const b=e.target.closest("[data-id]");if(b){const saved={id:b.dataset.id,year:state.year,scroll:document.getElementById("side").scrollTop};select(b.dataset.id);sidebarReturn=saved}});

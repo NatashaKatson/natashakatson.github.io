@@ -22,7 +22,7 @@
   card.className = "dinosaur-discovery comparison-stories";
   card.setAttribute("aria-label", "Explore dinosaurs");
   card.innerHTML = `<details><summary><span aria-hidden="true">🦖</span> Explore dinosaurs</summary><p>Eight fossil records, millions of years before human history.</p><div class="dinosaur-eras">${eras.map((e, i) => `<button type="button" data-dinosaur-era="${i}">${e.name}<small>${esc(fmt(e.year))}</small></button>`).join("")}</div><p>Watch the continents change from the Triassic to the Cretaceous. Dinosaur avatars follow representative fossil regions reconstructed on those ancient continents. Fossil ages and positions are approximate.</p><div class="dinosaur-list">${fossils.map((e) => `<button type="button" class="story-card dinosaur-list-card" data-dinosaur-id="${e.id}"><img src="${avatarUrl(e)}" width="56" height="56" alt="" loading="lazy"><span><b>${esc(e.title)}</b><small>${esc(fmtSpan(e.start, e.end, true))} · ${esc(e.fossilRegion)}</small></span></button>`).join("")}</div><p class="dinosaur-art-note">Illustrated reconstructions; colours and appearance are speculative.</p></details>`;
-  document.getElementById("detail").after(card);
+  document.getElementById("fact").before(card);
   const trigger = document.createElement("button");
   trigger.type = "button";
   trigger.className = "dinosaur-trigger";
