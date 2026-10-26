@@ -20,6 +20,9 @@
       if (medical[event.wiki]) return medical[event.wiki];
       if (/vaccine/i.test(event.wiki)) return '💉';
       const text = `${event.wiki} ${event.title} ${(event.aliases || []).join(' ')}`.toLowerCase();
+      if (/arab[ _-]+winter/.test(text)) return '😢';
+      if (/arab[ _-]+spring/.test(text)) return '✊';
+      if (/(economic|financial)[ _-]+(crisis|crises|collapse|crash)|(stock[ _-]+market|wall[ _-]+street)[ _-]+crash|great[ _-]+(depression|recession)|\brecession\b/.test(text)) return '😨';
       if (/pandemic|epidemic|plague|black.death|disease history/.test(text)) return '🦠';
       if (/medical history|medicine/.test(text)) return '🩺';
       if (/apollo|chandrayaan|artemis|sputnik|space|moon landing/.test(text)) return '🚀';
