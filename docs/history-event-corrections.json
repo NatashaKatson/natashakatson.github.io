@@ -1,6 +1,6 @@
 {
   "reviewed": "2026-10-26",
-  "scope": "Review of all 322 event summaries and principal dates, including medical milestones, pandemic history, sourced Indigenous histories and archaeological evidence. Sourced archaeological periods and representative points do not certify territorial boundaries, continuous government or migration tracks. Pandemic intervals include qualified historical waves, ancient precursors and ongoing coverage through 2026.",
+  "scope": "Review of all 346 event summaries and principal dates, including medical milestones, pandemic history, sourced Indigenous histories and archaeological evidence. Sourced archaeological periods and representative points do not certify territorial boundaries, continuous government or migration tracks. Pandemic intervals include qualified historical waves, ancient precursors and ongoing coverage through 2026.",
   "events": [
     {
       "wiki": "Göbekli_Tepe",
@@ -2835,6 +2835,366 @@
       "lon": -121.96,
       "source": "https://www.computerhistory.org/siliconengine/timeline/",
       "reason": "Source supports this period or milestone. Dates and representative map locations retain the qualifications in the description; route coordinates are hand-drawn schematic connections, not source GIS tracks."
+    },
+    {
+      "wiki": "Expulsion_of_the_Loyalists",
+      "change": "addition",
+      "start": 1783,
+      "end": 1785,
+      "approx": 0,
+      "title": "American Revolution: Loyalist departures",
+      "blurb": "After the American Revolution, Loyalists leave the United States for British North America and other destinations. Black Loyalists seek freedom as well as refuge, while some enslaved people are transported by their owners. The New York marker and Nova Scotia connection show one departure corridor. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",
+      "lat": 40.71,
+      "lon": -74.01,
+      "source": "https://www.canada.ca/en/immigration-refugees-citizenship/services/refugees/about-refugee-system/how-system-works/history.html",
+      "reason": "Canadian immigration history identifies 1783–1785 Loyalist arrivals, including Black Loyalists. The route is a selected evacuation connection, not every Loyalist destination."
+    },
+    {
+      "wiki": "French_emigration_(1789–1815)",
+      "change": "addition",
+      "start": 1789,
+      "end": 1800,
+      "approx": 0,
+      "title": "French Revolution: émigré flight",
+      "blurb": "Revolutionary upheaval and persecution drive people from France to neighbouring countries and farther afield. Their backgrounds and motives vary. The 1789–1800 interval follows the French National Archives’ account of departures; exile and return continue beyond it. Paris and London represent one connection. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",
+      "lat": 48.86,
+      "lon": 2.35,
+      "source": "https://girophares.archives-nationales.culture.gouv.fr/emigres-de-la-revolution-francaise",
+      "reason": "The French National Archives dates the departures discussed in its émigré collection to 1789–1800."
+    },
+    {
+      "wiki": "Haitian_Americans",
+      "change": "addition",
+      "start": 1791,
+      "end": 1810,
+      "approx": 0,
+      "title": "Haitian Revolution: Saint-Domingue displacement",
+      "blurb": "The Haitian Revolution and its aftermath displace white colonists, free people of colour and enslaved people taken by owners. Some people reach New Orleans through Cuba, including a further exodus in 1809. These groups face very different circumstances; the corridor does not represent voluntary movement for everyone. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",
+      "lat": 19.76,
+      "lon": -72.2,
+      "source": "https://heritage.bnf.fr/france-ameriques/refugies-saint-domingue-nouvelle-orleans",
+      "reason": "BnF describes Saint-Domingue refugee arrivals in New Orleans in 1791–1810 and their heterogeneous status, including enslaved people."
+    },
+    {
+      "wiki": "Mexican_immigration_to_the_United_States",
+      "change": "addition",
+      "start": 1910,
+      "end": 1920,
+      "approx": 0,
+      "title": "Mexican Revolution: refugees and political exile",
+      "blurb": "Violence during the Mexican Revolution drives refugees and political exiles toward the United States. Employment also shapes migration, so not everyone follows the same cause or path. Ciudad Juárez and El Paso represent one border corridor; movement also occurs elsewhere and after the revolution. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",
+      "lat": 31.69,
+      "lon": -106.42,
+      "source": "https://blogs.loc.gov/kluge/2015/03/the-history-of-mexican-immigration-to-the-u-s-in-the-early-20th-century/",
+      "reason": "The Library of Congress identifies the 1910–1920 revolution as increasing the movement of war refugees and political exiles."
+    },
+    {
+      "wiki": "Belgian_refugees_in_the_First_World_War",
+      "change": "addition",
+      "start": 1914,
+      "end": 1918,
+      "approx": 0,
+      "title": "World War I: Belgian refugees",
+      "blurb": "Germany’s invasion and the fighting force Belgian civilians to seek safety abroad, including in Britain and the Netherlands. Antwerp represents an affected city. The lines show selected directions of flight, not military advances; some refugees stay abroad or return after the war. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",
+      "lat": 51.22,
+      "lon": 4.4,
+      "source": "https://hackney-museum.hackney.gov.uk/2025/05/30/belgian-refugees-hackney/",
+      "reason": "Hackney Museum documents flight after the 1914 invasion and Belgian refuge in Britain during 1914–1918. The Netherlands branch is also documented in IWM’s refugee history.",
+      "additionalSources": [
+        "https://www.iwm.org.uk/history/first-world-war/participation/belgian-refugees"
+      ]
+    },
+    {
+      "wiki": "Armenian_genocide",
+      "change": "addition",
+      "start": 1915,
+      "end": 1916,
+      "approx": 0,
+      "title": "Armenian genocide: forced deportations",
+      "blurb": "Ottoman authorities deport Armenian civilians and carry out mass killing during the genocide of 1915–1916. Deportations toward Syria and the desert expose people to lethal violence and deprivation. The eastern Anatolia–Aleppo–Deir ez-Zor line represents forced displacement, not a safe migration route or the full geography of the genocide. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",
+      "lat": 39.75,
+      "lon": 39.49,
+      "source": "https://www.ushmm.org/genocide/armenia",
+      "reason": "USHMM dates the genocide discussed to spring 1915–autumn 1916. Sciences Po’s detailed chronology documents deportations toward Aleppo and the Syrian desert.",
+      "additionalSources": [
+        "https://www.sciencespo.fr/mass-violence-war-massacre-resistance/en/news/the-extermination-of-ottoman-armenians-by-the-young-turk-regime-1915-1916/"
+      ]
+    },
+    {
+      "wiki": "White_émigré",
+      "change": "addition",
+      "start": 1917,
+      "end": 1923,
+      "approx": 1,
+      "title": "Russian Revolution and Civil War: refugee exodus",
+      "blurb": "Revolution, civil war, persecution and famine displace people from the former Russian Empire. Some flee through Black Sea ports toward Constantinople, while others head east toward Harbin. The approximate interval covers the revolution and early refugee crisis, not the end of exile or all later Soviet-era flight. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",
+      "lat": 44.62,
+      "lon": 33.53,
+      "source": "https://www.unhcr.org/sites/default/files/legacy-pdf/3ebf9ba80.pdf",
+      "reason": "UNHCR’s historical account describes Russian Civil War refugees and the League of Nations response beginning in 1921. The qualified 1917–1923 window covers revolution, war and the early protection response."
+    },
+    {
+      "wiki": "Population_exchange_between_Greece_and_Turkey",
+      "change": "addition",
+      "start": 1923,
+      "end": 1924,
+      "approx": 0,
+      "title": "Compulsory Greek–Turkish population exchange",
+      "blurb": "The 1923 Lausanne convention requires an exchange based principally on religion: Greek Orthodox people leave Türkiye for Greece, and Muslims leave Greece for Türkiye, with specified exceptions. The paired Aegean arrows represent selected directions of compulsory transfer; earlier wartime flight and later resettlement extend beyond this interval. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",
+      "lat": 38.42,
+      "lon": 27.14,
+      "source": "https://www.mfa.gov.tr/lausanne-peace-treaty-vi_-convention-concerning-the-exchange-of-greek-and-turkish-populations-signed-at-lausanne_.en.mfa",
+      "reason": "The treaty specifies compulsory transfer and exceptions. The German Federal Agency for Civic Education dates the exchange phase to 1923–1924.",
+      "additionalSources": [
+        "https://www.bpb.de/themen/migration-integration/regionalprofile/541532/der-griechisch-tuerkische-bevoelkerungsaustausch-1923-24/"
+      ]
+    },
+    {
+      "wiki": "Retirada",
+      "change": "addition",
+      "start": 1936,
+      "end": 1939,
+      "approx": 0,
+      "title": "Spanish Civil War: flight and La Retirada",
+      "blurb": "Civilians and defeated Republicans flee the Spanish Civil War; the fall of Catalonia produces a major crossing into France in early 1939. Many encounter internment and harsh conditions there. The Barcelona–Pyrenees–France connection is one corridor; exile continues after the war. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",
+      "lat": 41.39,
+      "lon": 2.17,
+      "source": "https://www.histoire-immigration.fr/caracteristiques-migratoires-selon-les-pays-d-origine/la-retirada-ou-l-exil-republicain-espagnol-d-apres-guerre",
+      "reason": "The French immigration museum documents refugee crossings beginning in 1936 and the mass Retirada in 1939."
+    },
+    {
+      "wiki": "Displaced_persons_camps_in_post–World_War_II_Europe",
+      "change": "addition",
+      "start": 1945,
+      "end": 1952,
+      "approx": 0,
+      "title": "World War II aftermath: displaced persons in Europe",
+      "blurb": "After World War II, survivors of persecution and other uprooted people live in displaced-persons camps and cities while seeking homes, return or resettlement. Jewish survivors are a major group in the cited account. Germany, Austria and Italy are representative centres; the Atlantic line shows one resettlement direction, not every destination. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",
+      "lat": 48.14,
+      "lon": 11.58,
+      "source": "https://encyclopedia.ushmm.org/content/en/article/displaced-persons",
+      "reason": "USHMM explicitly dates the displaced-persons experience discussed to 1945–1952. The interval is not a claim that all displacement or camps ended simultaneously."
+    },
+    {
+      "wiki": "Retreat_of_the_government_of_the_Republic_of_China_to_Taiwan",
+      "change": "addition",
+      "start": 1949,
+      "end": 1950,
+      "approx": 1,
+      "title": "Chinese Civil War: mainland-to-Taiwan displacement",
+      "blurb": "The Nationalist government, military personnel and civilians relocate or flee from mainland China to Taiwan around 1949. The approximate interval highlights this major phase and its immediate aftermath. Shanghai and Taipei represent one connection; people leave from many places and later movements continue. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",
+      "lat": 31.23,
+      "lon": 121.47,
+      "source": "https://1997-2001.state.gov/background_notes/taiwan_0010_bgn.html",
+      "reason": "The US State Department’s historical background describes the 1949 refugee movement to Taiwan; Taiwan’s immigration agency dates the government’s relocation to 1949. The viewing interval is explicitly approximate.",
+      "additionalSources": [
+        "https://www.immigration.gov.tw/7120/143220/143223/143241/143297/cp"
+      ]
+    },
+    {
+      "wiki": "Hungnam_evacuation",
+      "change": "addition",
+      "start": 1950,
+      "end": 1953,
+      "approx": 0,
+      "title": "Korean War: civilian flight and evacuation",
+      "blurb": "War displaces Korean civilians across the peninsula. The December 1950 Hungnam evacuation is one major example of civilians escaping by sea toward southern ports. The line represents that selected evacuation connection, while the viewing interval covers the 1950–1953 war; displacement does not end with the armistice. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",
+      "lat": 39.83,
+      "lon": 127.62,
+      "source": "https://www.history.navy.mil/content/history/nhhc/about-us/leadership/director/directors-corner/h-grams/h-gram-056/h-056-1.html",
+      "reason": "US Naval History documents the December 1950 evacuation of civilians from Hungnam. The 1950–1953 interval is a wartime viewing phase, with no claim of a return date for every refugee."
+    },
+    {
+      "wiki": "Hungarian_Revolution_of_1956",
+      "change": "addition",
+      "start": 1956,
+      "end": 1957,
+      "approx": 0,
+      "title": "Hungarian Revolution: refugee flight",
+      "blurb": "The suppression of the 1956 Hungarian uprising drives refugees into Austria and Yugoslavia. Many subsequently resettle elsewhere, while some return. Budapest represents an origin region and the arrows show two selected directions of escape; they do not assign the same route or political identity to every refugee. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",
+      "lat": 47.5,
+      "lon": 19.04,
+      "source": "https://medialib.iom.int/en/gallery/664/hungarianrefugeecrisis-19561957",
+      "reason": "IOM explicitly dates the Hungarian refugee crisis to 1956–1957 and identifies Austria and Yugoslavia as the main first destinations.",
+      "additionalSources": [
+        "https://www.unhcr.org/node/1442"
+      ]
+    },
+    {
+      "wiki": "Vietnamese_boat_people",
+      "change": "addition",
+      "start": 1975,
+      "end": 1996,
+      "approx": 0,
+      "title": "Vietnam War aftermath: Vietnamese refugee departures",
+      "blurb": "After the Vietnam War, people leave Viet Nam by sea and other routes amid political persecution, hardship and regional conflict. Malaysia and Hong Kong represent first-asylum destinations, followed in many cases by resettlement elsewhere. The 1996 cutoff marks the formal end of the regional Comprehensive Plan of Action, not the end of Vietnamese migration. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",
+      "lat": 10.77,
+      "lon": 106.7,
+      "source": "https://www.unhcr.org/us/sites/en-us/files/legacy-pdf/3ebf9bad0.pdf",
+      "reason": "UNHCR’s Flight from Indochina describes the exodus beginning in 1975; its regional update records the CPA’s formal conclusion on 30 June 1996.",
+      "additionalSources": [
+        "https://www.unhcr.org/publications/update-regional-developments-asia-and-pacific"
+      ]
+    },
+    {
+      "wiki": "Afghan_refugees",
+      "change": "addition",
+      "start": 1979,
+      "end": 1989,
+      "approx": 0,
+      "title": "Soviet–Afghan War: refugees in Pakistan and Iran",
+      "blurb": "War and repression drive Afghans into Pakistan, Iran and other countries. Flight begins before the Soviet invasion and continues after the Soviet withdrawal. The 1979–1989 interval highlights the Soviet-war phase; the Kabul marker and two arrows represent selected connections rather than all origins or border crossings. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",
+      "lat": 34.56,
+      "lon": 69.21,
+      "source": "https://unama.unmissions.org/en/news/unhcr-marks-30-years-of-helping-afghan-refugees",
+      "reason": "The UN mission’s UNHCR history links large-scale flight to the Soviet occupation beginning in 1979. The window isolates the war phase and explicitly leaves subsequent displacement open."
+    },
+    {
+      "wiki": "Bosnian_War",
+      "change": "addition",
+      "start": 1992,
+      "end": 1995,
+      "approx": 0,
+      "title": "Bosnian War: refugees and internal displacement",
+      "blurb": "War, ethnic cleansing and persecution uproot people across Bosnia and Herzegovina. Some seek refuge in neighbouring countries or farther away; others remain displaced within Bosnia. Sarajevo represents an affected city. The lines show selected outward connections, and the war-end cutoff does not imply that refugees have returned. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",
+      "lat": 43.86,
+      "lon": 18.41,
+      "source": "https://encyclopedia.ushmm.org/content/en/article/bosnia",
+      "reason": "USHMM dates the Bosnian War to 1992–1995 and documents displacement. Bosnia’s migration research records Croatia and Germany among host countries.",
+      "additionalSources": [
+        "https://www.mhrr.gov.ba/iseljenistvo/Istrazivanja/default.aspx?id=5132&langTag=bs-BA"
+      ]
+    },
+    {
+      "wiki": "Great_Lakes_refugee_crisis",
+      "change": "addition",
+      "start": 1994,
+      "end": 1996,
+      "approx": 0,
+      "title": "Rwandan genocide and war: regional refugee crisis",
+      "blurb": "The genocide against the Tutsi and armed conflict cause mass displacement within Rwanda and across its borders. Refugees flee toward Zaire, now the Democratic Republic of the Congo, and Tanzania, among other destinations. The interval highlights the 1994 exodus and major 1996 returns; people’s circumstances and later movements vary. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",
+      "lat": -1.94,
+      "lon": 30.06,
+      "source": "https://www.unhcr.org/news/eight-year-rwandan-refugee-saga-tanzania-comes-end",
+      "reason": "UNHCR describes the mid-1990s exodus into Tanzania and Zaire and large-scale returns in 1996; the selected interval is not the whole history of Rwandan exile."
+    },
+    {
+      "wiki": "Refugees_of_the_Syrian_civil_war",
+      "change": "addition",
+      "start": 2011,
+      "end": 2026,
+      "approx": 0,
+      "title": "Syrian war: refugee displacement and continuing exile",
+      "blurb": "Conflict from 2011 forces Syrians to seek safety within the country and abroad, including in Lebanon, Türkiye and Jordan. Refugees and returnees continue to need protection after later political changes. These outward arrows summarise selected displacement connections; they do not depict current traffic or return flows. The 2026 endpoint is the atlas coverage limit. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",
+      "lat": 33.51,
+      "lon": 36.29,
+      "source": "https://www.unhcr.org/asia/emergencies/syria-emergency",
+      "reason": "UNHCR dates the emergency to 2011 and identifies neighbouring host countries. Its 2026 reporting documents continuing refugee, displacement and return needs.",
+      "ongoing": true,
+      "additionalSources": [
+        "https://data.unhcr.org/en/country/syr",
+        "https://www.unhcr.org/sites/default/files/2026-01/unhcr-regional-flash-update-61-syria-situation.pdf"
+      ]
+    },
+    {
+      "wiki": "Ukrainian_refugee_crisis",
+      "change": "addition",
+      "start": 2022,
+      "end": 2026,
+      "approx": 0,
+      "title": "Russia’s full-scale invasion: flight from Ukraine",
+      "blurb": "Russia’s full-scale invasion in February 2022 causes major new displacement in Ukraine and across its borders, intensifying a crisis already under way since 2014. The arrows show selected routes toward Poland and Moldova, not all destinations or present-day traffic. Refugees and displaced people remain in need of protection; 2026 is the atlas coverage limit. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",
+      "lat": 50.45,
+      "lon": 30.52,
+      "source": "https://www.unhcr.org/ukraine",
+      "reason": "UNHCR distinguishes the February 2022 full-scale invasion from earlier displacement and continues to report refugee and internal-displacement needs in 2026.",
+      "ongoing": true,
+      "additionalSources": [
+        "https://www.unhcr.ca/our-work/emergencies/ukraine-emergency/",
+        "https://www.refworld.org/sites/default/files/2026-05/unhcr_transitioning_from_temporary_protection_may_2026.pdf"
+      ]
+    },
+    {
+      "wiki": "Belarusian_diaspora",
+      "change": "addition",
+      "start": 2020,
+      "end": 2026,
+      "approx": 0,
+      "title": "Belarus after 2020: political exile in Poland",
+      "blurb": "Repression following Belarus’s 2020 presidential election drives people to seek safety in Poland, alongside migration for other reasons. Not every Belarusian resident in Poland is a political exile or has refugee status. The Minsk–Poland connection summarises this continuing displacement phase through the atlas’s 2026 coverage limit; it is not a picture of present-day traffic. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",
+      "lat": 53.9,
+      "lon": 27.56,
+      "source": "https://www.euaa.europa.eu/news-events/belarus-new-report-highlights-deteriorating-human-rights-situation",
+      "reason": "EUAA’s 2026 account describes repression of 2020 protesters, forced exile and asylum applications concentrated in Poland. University of Warsaw and National Bank of Poland research distinguish political and other migration motivations.",
+      "additionalSources": [
+        "https://www.migracje.uw.edu.pl/publikacje/polityka-polski-wobec-migracji-z-bialorusi-po-2020-roku-2/",
+        "https://nbp.pl/wp-content/uploads/2026/02/Sytuacja_uchodzcow_z_Bialorusi-ANG-2025-WWW.pdf"
+      ],
+      "ongoing": true
+    },
+    {
+      "wiki": "Jewish_refugees_from_Nazi_Germany_and_German-occupied_Europe",
+      "change": "addition",
+      "start": 1933,
+      "end": 1945,
+      "approx": 0,
+      "title": "Jewish escape from Nazi persecution",
+      "blurb": "Nazi persecution drives Jews to seek refuge from Germany and later from German-occupied Europe. Admission restrictions and tightening Nazi controls leave many unable to escape. Berlin–France and Vienna–Switzerland represent selected directions of refuge across the period; they do not imply a safe or continuously open passage. Wartime deportation and postwar resettlement have separate records. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",
+      "lat": 52.52,
+      "lon": 13.4,
+      "source": "https://encyclopedia.ushmm.org/content/en/article/refugees",
+      "reason": "USHMM documents Jewish refugee flight and barriers to admission from Nazi Germany and occupied Europe, before and during the war. The selected connections are interval summaries; no continuously available escape route is claimed.",
+      "additionalSources": [
+        "https://encyclopedia.ushmm.org/content/en/article/german-jewish-refugees-1933-1939"
+      ]
+    },
+    {
+      "wiki": "Kindertransport",
+      "change": "addition",
+      "start": 1938,
+      "end": 1940,
+      "approx": 0,
+      "title": "Kindertransport: refugee children escape to Britain",
+      "blurb": "Rescue efforts bring predominantly Jewish children from Nazi-controlled territory to Britain, usually without their parents. Most transports take place before World War II begins; the broader 1938–1940 chronology includes the final escape from the Netherlands. The line represents a selected Germany–Netherlands–Harwich–London connection, not every child’s journey. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",
+      "lat": 52.52,
+      "lon": 13.4,
+      "source": "https://encyclopedia.ushmm.org/content/en/article/kindertransport-1938-40",
+      "reason": "USHMM dates the rescue efforts to 1938–1940. The Kindertransport Association documents early arrivals at Harwich and the last departure from the Netherlands in May 1940.",
+      "additionalSources": [
+        "https://kindertransport.org/history/historical-timeline/"
+      ]
+    },
+    {
+      "wiki": "Holocaust_trains",
+      "change": "addition",
+      "start": 1942,
+      "end": 1944,
+      "approx": 0,
+      "title": "Holocaust: forced deportations to killing centres",
+      "blurb": "Nazi authorities forcibly deport Jews to killing centres as part of the genocide. The Drancy–Auschwitz-Birkenau and Warsaw–Treblinka lines represent selected deportation connections during the main mass-deportation phase of 1942–1944. These are transports to persecution and murder, not refugee escape. Deportation and forced marches also occur outside this selected interval. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",
+      "lat": 48.93,
+      "lon": 2.45,
+      "source": "https://encyclopedia.ushmm.org/content/en/article/deportations-to-killing-centers",
+      "reason": "USHMM documents mass deportations from Drancy to Auschwitz-Birkenau and from Warsaw to Treblinka. The viewing interval is a selected mass-deportation phase, with no claim to cover all Holocaust-era forced movements.",
+      "additionalSources": [
+        "https://encyclopedia.ushmm.org/content/en/article/deportations-to-and-from-the-warsaw-ghetto"
+      ]
+    },
+    {
+      "wiki": "Pale_of_Settlement",
+      "change": "addition",
+      "start": 1791,
+      "end": 1917,
+      "approx": 0,
+      "title": "Pale of Settlement: Jewish residency restrictions",
+      "blurb": "From 1791, the Russian Empire confines most Jewish permanent residence to a changing western region. Boundaries, exemptions and restrictions within the Pale vary over time; it is not an independent state. Wartime measures weaken the restrictions before their legal abolition by the Provisional Government in 1917. The Mogilev marker identifies one community associated with the Pale, rather than outlining its full extent. This entry supplies residency-policy context for Jewish migration; it does not depict a migration journey.",
+      "lat": 53.9,
+      "lon": 30.33,
+      "source": "https://encyclopedia.yivo.org/article/246",
+      "reason": "YIVO traces the Pale’s emergence from the 1791 legislation, changing boundaries, exceptions and restrictions within the region, wartime relaxation, and formal abolition in 1917. Mogilev is a representative community, not a polygon or departure point. No movement geometry is assigned to a legal residency regime.",
+      "additionalSources": [
+        "https://en.wikipedia.org/wiki/Pale_of_Settlement"
+      ]
     }
   ]
 }

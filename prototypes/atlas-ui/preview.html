@@ -1028,7 +1028,26 @@ header .seg{padding:2px;background:#f0ebe3;border:1px solid rgba(45,36,32,.1);bo
 .thematic-layer button:focus-visible { outline: 2px solid #a3482d; outline-offset: 2px; }
 .layer-route-key { display: flex; flex-wrap: wrap; gap: 4px 10px; }
 .layer-route-key span:first-child { color: #92602f; }
-.layer-route-key span:last-child { color: #626da3; }
+.atlas-menu-panel.migrations-panel { width: 360px; height: min(65svh, 540px, var(--atlas-menu-space, 540px)); padding: 14px 16px 12px; overflow: hidden; }
+.migrations-panel:not([hidden]) { display: flex; flex-direction: column; }
+.migrations-heading { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex: none; }
+.migrations-heading h2 { margin: 0; }
+.migrations-close { width: 44px; height: 44px; border: 0; border-radius: 4px; background: transparent; color: inherit; font: 24px var(--body); cursor: pointer; }
+.migrations-visibility { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 44px; flex: none; cursor: pointer; font: 13px var(--body); }
+.migrations-visibility input { width: 19px; height: 19px; margin: 0 5px 0 0; accent-color: #626da3; cursor: pointer; }
+.migrations-search-label { margin: 5px 0 6px; flex: none; font: 11px var(--body); color: #756c65; }
+#migrationSearch { width: 100%; min-height: 44px; flex: none; border: 1px solid #c8bdaf; border-radius: 5px; padding: 9px 10px; background: #fffdf9; color: #2d2420; font: 14px var(--body); }
+.migrations-panel .migrations-status { margin: 10px 0; flex: none; font-size: 11px; }
+.migrations-results { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; border-block: 1px solid #e4dcd0; }
+.migration-group h3 { margin: 0; padding: 10px 2px 6px; font: 11px var(--body); color: #756c65; }
+.migration-group h3 span { margin-left: 5px; color: #626da3; }
+.migration-result { position: relative; display: block; width: 100%; min-height: 56px; padding: 10px 22px 10px 4px; text-align: left; color: inherit; background: transparent; border: 0; border-bottom: 1px solid #e4dcd0; font: 13px/1.5 var(--body); cursor: pointer; }
+.migration-result::after { content: '→'; position: absolute; right: 4px; top: 14px; color: #81776e; }
+.migration-result small { display: block; margin-top: 2px; color: #756c65; font-size: 11px; }
+.migration-result[aria-current="true"] { box-shadow: inset 2px 0 #626da3; padding-left: 8px; background: #eee7dc; }
+.migration-result:hover, .migrations-close:hover { background: #eee7dc; }
+.migrations-panel :is(button, input):focus-visible { outline: 2px solid #626da3; outline-offset: -2px; }
+.migrations-panel .migrations-hint { margin: 8px 0 0; flex: none; font-size: 10px; }
 .stage .readout {
   top: 22px; left: 24px; width: auto; max-width: calc(100% - 240px);
   padding: 0; border: 0; background: transparent; container-type: normal;
@@ -1053,8 +1072,10 @@ header .seg{padding:2px;background:#f0ebe3;border:1px solid rgba(45,36,32,.1);bo
   position: absolute; z-index: 10; top: calc(100% + 10px); right: 0;
   width: 280px; max-width: calc(100vw - 32px); padding: 18px;
   background: #f8f5f0; color: #2d2420; border: 1px solid #d9d1c7; border-radius: 7px;
-  box-shadow: 0 12px 35px #33291e24; max-height: min(65svh, 540px); overflow: auto; overscroll-behavior: contain;
+  box-shadow: 0 12px 35px #33291e24; max-height: min(65svh, 540px, var(--atlas-menu-space, 540px)); overflow: auto; overscroll-behavior: contain;
 }
+.atlas-toolbar .atlas-menu-panel { position: fixed; top: var(--atlas-menu-top); right: var(--atlas-menu-right); }
+.stage:has(.atlas-toolbar .atlas-menu-panel:not([hidden])) { z-index: 50; }
 .atlas-menu-panel h2 { margin: 0 0 14px; font: 20px var(--display); }
 .atlas-menu-panel p { font-size: 11px; line-height: 1.6; color: #756c65; }
 .stage .borders-control, .stage.comparing .borders-control {
@@ -1182,15 +1203,21 @@ header .seg{padding:2px;background:#f0ebe3;border:1px solid rgba(45,36,32,.1);bo
   .stage .readout { top: 18px; left: 18px; max-width: calc(100% - 36px); }
   .stage .readout .yr { font-size: 30px; }
   .stage .readout .yr small, .stage .readout .deep-time-year small { font-size: 16px; }
-  .atlas-toolbar, .stage.comparing .atlas-toolbar { top: 86px; right: 16px; }
+  .atlas-toolbar, .stage.comparing .atlas-toolbar { top: 86px; right: 16px; left: 16px; justify-content: flex-end; gap: 6px; }
   .stage.comparing .atlas-toolbar { top: 48px; }
-  .atlas-toolbar .atlas-menu:first-child .atlas-menu-panel { right: -107px; }
-  .atlas-menu-panel { max-height: min(55svh, 340px); }
+  .atlas-toolbar .atlas-menu { position: static; }
+  .atlas-menu-panel { max-height: min(55svh, 340px, var(--atlas-menu-space, 340px)); }
   .borders-control .bseg button[data-b="history"] { font-size: 12px; }
   .borders-control .bseg button[data-b="history"]::after { content: none; }
   .time, .stage.comparing + .time { padding: 12px 16px; gap: 9px 8px; }
   .time .controls .lbl { display: none; }
   .atlas-menu-trigger, .dock-options > summary { min-height: 44px; padding: 8px 10px; gap: 6px; }
+  .atlas-toolbar .atlas-menu-trigger { padding-inline: 8px; gap: 4px; }
+  .atlas-menu-panel.migrations-panel {
+    position: fixed; top: auto; left: 12px; right: 12px; bottom: max(12px, env(safe-area-inset-bottom));
+    width: auto; max-width: none; height: min(75svh, 600px); max-height: min(75svh, 600px); border-radius: 12px;
+  }
+  #migrationSearch { font-size: 16px; }
   .time .iconbtn { min-height: 44px; width: 30px; }
   .time .play { width: auto; padding: 0 11px; }
   .dock-actions { gap: 6px; }
@@ -1205,6 +1232,13 @@ header .seg{padding:2px;background:#f0ebe3;border:1px solid rgba(45,36,32,.1);bo
 }
 @media (max-width: 560px) {
   .app > header .head-tools { grid-template-columns: auto minmax(0, 1fr); }
+}
+@media (min-width: 861px) and (max-width: 1050px) {
+  .atlas-toolbar { top: 84px; }
+}
+@media (max-width: 860px) and (max-height: 520px) {
+  .migrations-panel .migrations-search-label, .migrations-panel .migrations-hint { display: none; }
+  #migrationSearch { margin-top: 6px; }
 }
 @media (max-width: 370px) {
   .time .controls { gap: 3px; }
@@ -1294,6 +1328,9 @@ header .seg{padding:2px;background:#f0ebe3;border:1px solid rgba(45,36,32,.1);bo
     <canvas id="cv" aria-label="World map showing events at the selected time"></canvas>
     <div class="readout"><button type="button" id="editDate" aria-label="Edit selected date"><span class="yr" id="yr"></span><span class="date-edit-icon" aria-hidden="true">⌄</span></button></div>
     <div class="atlas-toolbar" aria-label="Map controls">
+      <div class="atlas-menu"><button type="button" class="atlas-menu-trigger" data-atlas-menu="migrationsPanel" aria-expanded="false" aria-controls="migrationsPanel">Migrations <span aria-hidden="true">⌄</span></button>
+        <section class="atlas-menu-panel migrations-panel" id="migrationsPanel" aria-labelledby="migrationsTitle" hidden></section>
+      </div>
       <div class="atlas-menu"><button type="button" class="atlas-menu-trigger" data-atlas-menu="layersPanel" aria-expanded="false" aria-controls="layersPanel">Layers <span aria-hidden="true">⌄</span></button>
         <section class="atlas-menu-panel" id="layersPanel" aria-label="Map layers" hidden>
           <h2>Map layers</h2>
@@ -1720,6 +1757,7 @@ window.fetch = async function(input, init) {
     get(event) {
       if (!event || event.kind !== 'event' || event.cat === 'dinosaurs') return '';
       if (event.wiki === 'The_Holocaust') return '💀';
+      if (event.wiki === 'Pale_of_Settlement') return '📜';
       if (event.indigenous) return '🌳';
       if (medical[event.wiki]) return medical[event.wiki];
       if (/vaccine/i.test(event.wiki)) return '💉';
@@ -2189,6 +2227,728 @@ window.fetch = async function(input, init) {
         ]
       ]
     ]
+  },
+  {
+    "wiki": "Expulsion_of_the_Loyalists",
+    "kind": "migrations",
+    "paths": [
+      [
+        [
+          -74.01,
+          40.71
+        ],
+        [
+          -71,
+          40.5
+        ],
+        [
+          -67,
+          42
+        ],
+        [
+          -63.57,
+          44.65
+        ]
+      ]
+    ]
+  },
+  {
+    "wiki": "French_emigration_(1789–1815)",
+    "kind": "migrations",
+    "paths": [
+      [
+        [
+          2.35,
+          48.86
+        ],
+        [
+          1.85,
+          50.95
+        ],
+        [
+          1.31,
+          51.13
+        ],
+        [
+          -0.13,
+          51.51
+        ]
+      ]
+    ]
+  },
+  {
+    "wiki": "Haitian_Americans",
+    "kind": "migrations",
+    "paths": [
+      [
+        [
+          -72.2,
+          19.76
+        ],
+        [
+          -75,
+          20.1
+        ],
+        [
+          -75.83,
+          20.02
+        ],
+        [
+          -79,
+          23
+        ],
+        [
+          -85,
+          27
+        ],
+        [
+          -90.07,
+          29.95
+        ]
+      ]
+    ]
+  },
+  {
+    "wiki": "Mexican_immigration_to_the_United_States",
+    "kind": "migrations",
+    "paths": [
+      [
+        [
+          -106.07,
+          28.63
+        ],
+        [
+          -106.42,
+          31.69
+        ],
+        [
+          -106.49,
+          31.76
+        ],
+        [
+          -106.65,
+          35.08
+        ]
+      ]
+    ]
+  },
+  {
+    "wiki": "Belgian_refugees_in_the_First_World_War",
+    "kind": "migrations",
+    "paths": [
+      [
+        [
+          4.4,
+          51.22
+        ],
+        [
+          2.92,
+          51.23
+        ],
+        [
+          1.17,
+          51.08
+        ],
+        [
+          -0.13,
+          51.51
+        ]
+      ],
+      [
+        [
+          4.4,
+          51.22
+        ],
+        [
+          4.48,
+          51.92
+        ]
+      ]
+    ]
+  },
+  {
+    "wiki": "Armenian_genocide",
+    "kind": "migrations",
+    "paths": [
+      [
+        [
+          39.49,
+          39.75
+        ],
+        [
+          38.5,
+          38.5
+        ],
+        [
+          37.16,
+          36.2
+        ],
+        [
+          39.02,
+          35.34
+        ],
+        [
+          40.14,
+          35.34
+        ]
+      ]
+    ]
+  },
+  {
+    "wiki": "White_émigré",
+    "kind": "migrations",
+    "paths": [
+      [
+        [
+          33.53,
+          44.62
+        ],
+        [
+          31.5,
+          43
+        ],
+        [
+          28.98,
+          41.01
+        ]
+      ],
+      [
+        [
+          131.88,
+          43.12
+        ],
+        [
+          129.6,
+          44.6
+        ],
+        [
+          126.63,
+          45.8
+        ]
+      ]
+    ]
+  },
+  {
+    "wiki": "Population_exchange_between_Greece_and_Turkey",
+    "kind": "migrations",
+    "paths": [
+      [
+        [
+          27.14,
+          38.42
+        ],
+        [
+          25,
+          37.8
+        ],
+        [
+          23.65,
+          37.94
+        ]
+      ],
+      [
+        [
+          22.94,
+          40.64
+        ],
+        [
+          24.8,
+          40.1
+        ],
+        [
+          26.7,
+          40.4
+        ],
+        [
+          28.98,
+          41.01
+        ]
+      ]
+    ]
+  },
+  {
+    "wiki": "Retirada",
+    "kind": "migrations",
+    "paths": [
+      [
+        [
+          2.17,
+          41.39
+        ],
+        [
+          2.96,
+          42.27
+        ],
+        [
+          2.87,
+          42.46
+        ],
+        [
+          2.9,
+          42.7
+        ]
+      ]
+    ]
+  },
+  {
+    "wiki": "Displaced_persons_camps_in_post–World_War_II_Europe",
+    "kind": "migrations",
+    "paths": [
+      [
+        [
+          11.58,
+          48.14
+        ],
+        [
+          2.35,
+          48.86
+        ],
+        [
+          0.11,
+          49.49
+        ],
+        [
+          -15,
+          49
+        ],
+        [
+          -40,
+          45
+        ],
+        [
+          -74.01,
+          40.71
+        ]
+      ],
+      [
+        [
+          16.37,
+          48.21
+        ],
+        [
+          13.78,
+          45.65
+        ],
+        [
+          12.5,
+          41.9
+        ]
+      ]
+    ]
+  },
+  {
+    "wiki": "Retreat_of_the_government_of_the_Republic_of_China_to_Taiwan",
+    "kind": "migrations",
+    "paths": [
+      [
+        [
+          121.47,
+          31.23
+        ],
+        [
+          122.6,
+          29.5
+        ],
+        [
+          122.4,
+          27
+        ],
+        [
+          121.56,
+          25.03
+        ]
+      ]
+    ]
+  },
+  {
+    "wiki": "Hungnam_evacuation",
+    "kind": "migrations",
+    "paths": [
+      [
+        [
+          127.62,
+          39.83
+        ],
+        [
+          129.8,
+          38.5
+        ],
+        [
+          130,
+          36.5
+        ],
+        [
+          129.08,
+          35.18
+        ],
+        [
+          128.7,
+          34.9
+        ]
+      ]
+    ]
+  },
+  {
+    "wiki": "Hungarian_Revolution_of_1956",
+    "kind": "migrations",
+    "paths": [
+      [
+        [
+          19.04,
+          47.5
+        ],
+        [
+          17,
+          47.7
+        ],
+        [
+          16.37,
+          48.21
+        ]
+      ],
+      [
+        [
+          19.04,
+          47.5
+        ],
+        [
+          19.15,
+          46.1
+        ],
+        [
+          19.67,
+          46.1
+        ]
+      ]
+    ]
+  },
+  {
+    "wiki": "Vietnamese_boat_people",
+    "kind": "migrations",
+    "paths": [
+      [
+        [
+          106.7,
+          10.77
+        ],
+        [
+          106,
+          8
+        ],
+        [
+          104,
+          5
+        ],
+        [
+          103.11,
+          5.62
+        ]
+      ],
+      [
+        [
+          106.7,
+          10.77
+        ],
+        [
+          110,
+          13
+        ],
+        [
+          112,
+          18
+        ],
+        [
+          114.17,
+          22.3
+        ]
+      ]
+    ]
+  },
+  {
+    "wiki": "Afghan_refugees",
+    "kind": "migrations",
+    "paths": [
+      [
+        [
+          69.21,
+          34.56
+        ],
+        [
+          70.1,
+          34.4
+        ],
+        [
+          71.58,
+          34.01
+        ]
+      ],
+      [
+        [
+          62.2,
+          34.35
+        ],
+        [
+          60.8,
+          34.3
+        ],
+        [
+          59.6,
+          36.3
+        ]
+      ]
+    ]
+  },
+  {
+    "wiki": "Bosnian_War",
+    "kind": "migrations",
+    "paths": [
+      [
+        [
+          18.41,
+          43.86
+        ],
+        [
+          16,
+          45
+        ],
+        [
+          15.98,
+          45.81
+        ],
+        [
+          15,
+          47
+        ],
+        [
+          11.58,
+          48.14
+        ]
+      ]
+    ]
+  },
+  {
+    "wiki": "Great_Lakes_refugee_crisis",
+    "kind": "migrations",
+    "paths": [
+      [
+        [
+          30.06,
+          -1.94
+        ],
+        [
+          29.25,
+          -1.68
+        ]
+      ],
+      [
+        [
+          30.06,
+          -1.94
+        ],
+        [
+          30.8,
+          -2.3
+        ],
+        [
+          31.8,
+          -2.6
+        ]
+      ]
+    ]
+  },
+  {
+    "wiki": "Refugees_of_the_Syrian_civil_war",
+    "kind": "migrations",
+    "paths": [
+      [
+        [
+          36.29,
+          33.51
+        ],
+        [
+          35.5,
+          33.89
+        ]
+      ],
+      [
+        [
+          37.16,
+          36.2
+        ],
+        [
+          37.38,
+          37.07
+        ]
+      ],
+      [
+        [
+          36.29,
+          33.51
+        ],
+        [
+          36.2,
+          32.5
+        ],
+        [
+          35.93,
+          31.95
+        ]
+      ]
+    ]
+  },
+  {
+    "wiki": "Ukrainian_refugee_crisis",
+    "kind": "migrations",
+    "paths": [
+      [
+        [
+          30.52,
+          50.45
+        ],
+        [
+          24.03,
+          49.84
+        ],
+        [
+          22.77,
+          49.78
+        ],
+        [
+          21.01,
+          52.23
+        ]
+      ],
+      [
+        [
+          30.72,
+          46.48
+        ],
+        [
+          28.83,
+          47.01
+        ]
+      ]
+    ]
+  },
+  {
+    "wiki": "Belarusian_diaspora",
+    "kind": "migrations",
+    "paths": [
+      [
+        [
+          27.56,
+          53.9
+        ],
+        [
+          23.83,
+          53.67
+        ],
+        [
+          23.16,
+          53.13
+        ],
+        [
+          21.01,
+          52.23
+        ]
+      ]
+    ]
+  },
+  {
+    "wiki": "Jewish_refugees_from_Nazi_Germany_and_German-occupied_Europe",
+    "kind": "migrations",
+    "paths": [
+      [
+        [
+          13.4,
+          52.52
+        ],
+        [
+          8.68,
+          50.11
+        ],
+        [
+          2.35,
+          48.86
+        ]
+      ],
+      [
+        [
+          16.37,
+          48.21
+        ],
+        [
+          8.54,
+          47.38
+        ]
+      ]
+    ]
+  },
+  {
+    "wiki": "Kindertransport",
+    "kind": "migrations",
+    "paths": [
+      [
+        [
+          13.4,
+          52.52
+        ],
+        [
+          6.9,
+          52.2
+        ],
+        [
+          4.12,
+          51.98
+        ],
+        [
+          1.29,
+          51.95
+        ],
+        [
+          -0.08,
+          51.52
+        ]
+      ]
+    ]
+  },
+  {
+    "wiki": "Holocaust_trains",
+    "kind": "migrations",
+    "paths": [
+      [
+        [
+          2.45,
+          48.93
+        ],
+        [
+          8.5,
+          50
+        ],
+        [
+          13.4,
+          51
+        ],
+        [
+          19.18,
+          50.04
+        ]
+      ],
+      [
+        [
+          21.01,
+          52.23
+        ],
+        [
+          21.5,
+          52.5
+        ],
+        [
+          22.03,
+          52.66
+        ]
+      ]
+    ]
   }
 ];
   const byWiki = new Map(routes.map(r => [r.wiki, r]));
@@ -2650,6 +3410,33 @@ const EVENTS = [
 [1958,null,0,"Kilby demonstrates an integrated circuit","Jack Kilby demonstrates a working integrated circuit at Texas Instruments in Dallas in 1958. Noyce’s later planar silicon approach is a separate contribution. This marker records the prototype milestone, not the beginning of all commercial chip production.",32.9,-96.75,"am","technology","Integrated_circuit","https://www.computerhistory.org/siliconengine/all-semiconductor-solid-circuit-is-demonstrated/",null,null,null,["technology","technology milestones","microchip","integrated circuit","Jack Kilby","semiconductor"]],
 [1969,null,0,"ARPANET’s first host-to-host message","In October 1969, the first ARPANET host-to-host message is sent from UCLA toward the Stanford Research Institute. The Los Angeles marker represents the sending node. ARPANET is a precursor to the Internet; this is not the invention of the World Wide Web.",34.07,-118.44,"am","technology","ARPANET","https://www.darpa.mil/about/innovation-timeline/arpanet",null,null,null,["technology","technology milestones","internet","network","packet switching","UCLA"]],
 [1971,null,0,"Intel 4004 microprocessor introduced","Intel introduces the 4004 in 1971, integrating a CPU onto a single chip for a commercial product. The Santa Clara marker represents Intel’s development region. Other processors and earlier computing technologies also contributed to the history of microprocessors.",37.35,-121.96,"am","technology","Intel_4004","https://www.computerhistory.org/siliconengine/timeline/",null,null,null,["technology","technology milestones","microprocessor","CPU","computer","Intel","chip"]],
+// War, revolution and refugee history: append to preserve existing shared IDs.
+[1783,1785,0,"American Revolution: Loyalist departures","After the American Revolution, Loyalists leave the United States for British North America and other destinations. Black Loyalists seek freedom as well as refuge, while some enslaved people are transported by their owners. The New York marker and Nova Scotia connection show one departure corridor. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",40.71,-74.01,"am","migrations","Expulsion_of_the_Loyalists","https://www.canada.ca/en/immigration-refugees-citizenship/services/refugees/about-refugee-system/how-system-works/history.html",null,null,null,["migrations","migration","refugees","displacement","American Revolution","American War of Independence","Loyalists","Black Loyalists","Canada","Nova Scotia"],false],
+[1789,1800,0,"French Revolution: émigré flight","Revolutionary upheaval and persecution drive people from France to neighbouring countries and farther afield. Their backgrounds and motives vary. The 1789–1800 interval follows the French National Archives’ account of departures; exile and return continue beyond it. Paris and London represent one connection. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",48.86,2.35,"eu","migrations","French_emigration_(1789–1815)","https://girophares.archives-nationales.culture.gouv.fr/emigres-de-la-revolution-francaise",null,null,null,["migrations","migration","refugees","displacement","French Revolution","emigres","émigrés","exile","France","Britain"],false],
+[1791,1810,0,"Haitian Revolution: Saint-Domingue displacement","The Haitian Revolution and its aftermath displace white colonists, free people of colour and enslaved people taken by owners. Some people reach New Orleans through Cuba, including a further exodus in 1809. These groups face very different circumstances; the corridor does not represent voluntary movement for everyone. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",19.76,-72.2,"am","migrations","Haitian_Americans","https://heritage.bnf.fr/france-ameriques/refugies-saint-domingue-nouvelle-orleans",null,null,null,["migrations","migration","refugees","displacement","Haitian Revolution","Saint Domingue","Haiti","Cuba","New Orleans","slavery"],false],
+[1910,1920,0,"Mexican Revolution: refugees and political exile","Violence during the Mexican Revolution drives refugees and political exiles toward the United States. Employment also shapes migration, so not everyone follows the same cause or path. Ciudad Juárez and El Paso represent one border corridor; movement also occurs elsewhere and after the revolution. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",31.69,-106.42,"am","migrations","Mexican_immigration_to_the_United_States","https://blogs.loc.gov/kluge/2015/03/the-history-of-mexican-immigration-to-the-u-s-in-the-early-20th-century/",null,null,null,["migrations","migration","refugees","displacement","Mexican Revolution","Mexico","United States","political exile","El Paso"],false],
+[1914,1918,0,"World War I: Belgian refugees","Germany’s invasion and the fighting force Belgian civilians to seek safety abroad, including in Britain and the Netherlands. Antwerp represents an affected city. The lines show selected directions of flight, not military advances; some refugees stay abroad or return after the war. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",51.22,4.4,"eu","migrations","Belgian_refugees_in_the_First_World_War","https://hackney-museum.hackney.gov.uk/2025/05/30/belgian-refugees-hackney/",null,null,null,["migrations","migration","refugees","displacement","World War I","First World War","Belgium","Belgian refugees","Britain","Netherlands"],false],
+[1915,1916,0,"Armenian genocide: forced deportations","Ottoman authorities deport Armenian civilians and carry out mass killing during the genocide of 1915–1916. Deportations toward Syria and the desert expose people to lethal violence and deprivation. The eastern Anatolia–Aleppo–Deir ez-Zor line represents forced displacement, not a safe migration route or the full geography of the genocide. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",39.75,39.49,"as","migrations","Armenian_genocide","https://www.ushmm.org/genocide/armenia",null,null,null,["migrations","migration","refugees","displacement","Armenian genocide","World War I","forced deportation","Armenia","Syria","Deir ez Zor"],false],
+[1917,1923,1,"Russian Revolution and Civil War: refugee exodus","Revolution, civil war, persecution and famine displace people from the former Russian Empire. Some flee through Black Sea ports toward Constantinople, while others head east toward Harbin. The approximate interval covers the revolution and early refugee crisis, not the end of exile or all later Soviet-era flight. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",44.62,33.53,"eu","migrations","White_émigré","https://www.unhcr.org/sites/default/files/legacy-pdf/3ebf9ba80.pdf",null,null,null,["migrations","migration","refugees","displacement","Russian Revolution","Russian Civil War","White emigres","White Russians","exile","Nansen","Harbin","Russian Revolution 1917","1917"],false],
+[1923,1924,0,"Compulsory Greek–Turkish population exchange","The 1923 Lausanne convention requires an exchange based principally on religion: Greek Orthodox people leave Türkiye for Greece, and Muslims leave Greece for Türkiye, with specified exceptions. The paired Aegean arrows represent selected directions of compulsory transfer; earlier wartime flight and later resettlement extend beyond this interval. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",38.42,27.14,"as","migrations","Population_exchange_between_Greece_and_Turkey","https://www.mfa.gov.tr/lausanne-peace-treaty-vi_-convention-concerning-the-exchange-of-greek-and-turkish-populations-signed-at-lausanne_.en.mfa",null,null,null,["migrations","migration","refugees","displacement","Greece","Turkey","Turkiye","Lausanne","forced migration","population exchange","Greco Turkish war"],false],
+[1936,1939,0,"Spanish Civil War: flight and La Retirada","Civilians and defeated Republicans flee the Spanish Civil War; the fall of Catalonia produces a major crossing into France in early 1939. Many encounter internment and harsh conditions there. The Barcelona–Pyrenees–France connection is one corridor; exile continues after the war. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",41.39,2.17,"eu","migrations","Retirada","https://www.histoire-immigration.fr/caracteristiques-migratoires-selon-les-pays-d-origine/la-retirada-ou-l-exil-republicain-espagnol-d-apres-guerre",null,null,null,["migrations","migration","refugees","displacement","Spanish Civil War","Spanish refugees","Retirada","Spain","France","Republicans"],false],
+[1945,1952,0,"World War II aftermath: displaced persons in Europe","After World War II, survivors of persecution and other uprooted people live in displaced-persons camps and cities while seeking homes, return or resettlement. Jewish survivors are a major group in the cited account. Germany, Austria and Italy are representative centres; the Atlantic line shows one resettlement direction, not every destination. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",48.14,11.58,"eu","migrations","Displaced_persons_camps_in_post–World_War_II_Europe","https://encyclopedia.ushmm.org/content/en/article/displaced-persons",null,null,null,["migrations","migration","refugees","displacement","World War II","Second World War","Holocaust survivors","displaced persons","DP camps","postwar","resettlement"],false],
+[1949,1950,1,"Chinese Civil War: mainland-to-Taiwan displacement","The Nationalist government, military personnel and civilians relocate or flee from mainland China to Taiwan around 1949. The approximate interval highlights this major phase and its immediate aftermath. Shanghai and Taipei represent one connection; people leave from many places and later movements continue. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",31.23,121.47,"as","migrations","Retreat_of_the_government_of_the_Republic_of_China_to_Taiwan","https://1997-2001.state.gov/background_notes/taiwan_0010_bgn.html",null,null,null,["migrations","migration","refugees","displacement","Chinese Civil War","Chinese Revolution","China","Taiwan","Nationalists","1949","Kuomintang"],false],
+[1950,1953,0,"Korean War: civilian flight and evacuation","War displaces Korean civilians across the peninsula. The December 1950 Hungnam evacuation is one major example of civilians escaping by sea toward southern ports. The line represents that selected evacuation connection, while the viewing interval covers the 1950–1953 war; displacement does not end with the armistice. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",39.83,127.62,"as","migrations","Hungnam_evacuation","https://www.history.navy.mil/content/history/nhhc/about-us/leadership/director/directors-corner/h-grams/h-gram-056/h-056-1.html",null,null,null,["migrations","migration","refugees","displacement","Korean War","Korea","Hungnam","Busan","Geoje","evacuation"],false],
+[1956,1957,0,"Hungarian Revolution: refugee flight","The suppression of the 1956 Hungarian uprising drives refugees into Austria and Yugoslavia. Many subsequently resettle elsewhere, while some return. Budapest represents an origin region and the arrows show two selected directions of escape; they do not assign the same route or political identity to every refugee. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",47.5,19.04,"eu","migrations","Hungarian_Revolution_of_1956","https://medialib.iom.int/en/gallery/664/hungarianrefugeecrisis-19561957",null,null,null,["migrations","migration","refugees","displacement","Hungarian Revolution","Hungarian uprising","Hungary","Austria","Yugoslavia","Cold War"],false],
+[1975,1996,0,"Vietnam War aftermath: Vietnamese refugee departures","After the Vietnam War, people leave Viet Nam by sea and other routes amid political persecution, hardship and regional conflict. Malaysia and Hong Kong represent first-asylum destinations, followed in many cases by resettlement elsewhere. The 1996 cutoff marks the formal end of the regional Comprehensive Plan of Action, not the end of Vietnamese migration. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",10.77,106.7,"as","migrations","Vietnamese_boat_people","https://www.unhcr.org/us/sites/en-us/files/legacy-pdf/3ebf9bad0.pdf",null,null,null,["migrations","migration","refugees","displacement","Vietnam War","Vietnam","Viet Nam","boat people","Indochina","Malaysia","Hong Kong"],false],
+[1979,1989,0,"Soviet–Afghan War: refugees in Pakistan and Iran","War and repression drive Afghans into Pakistan, Iran and other countries. Flight begins before the Soviet invasion and continues after the Soviet withdrawal. The 1979–1989 interval highlights the Soviet-war phase; the Kabul marker and two arrows represent selected connections rather than all origins or border crossings. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",34.56,69.21,"as","migrations","Afghan_refugees","https://unama.unmissions.org/en/news/unhcr-marks-30-years-of-helping-afghan-refugees",null,null,null,["migrations","migration","refugees","displacement","Soviet Afghan War","Afghanistan","Pakistan","Iran","Soviet invasion","Cold War"],false],
+[1992,1995,0,"Bosnian War: refugees and internal displacement","War, ethnic cleansing and persecution uproot people across Bosnia and Herzegovina. Some seek refuge in neighbouring countries or farther away; others remain displaced within Bosnia. Sarajevo represents an affected city. The lines show selected outward connections, and the war-end cutoff does not imply that refugees have returned. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",43.86,18.41,"eu","migrations","Bosnian_War","https://encyclopedia.ushmm.org/content/en/article/bosnia",null,null,null,["migrations","migration","refugees","displacement","Bosnian War","Bosnia","Yugoslav wars","ethnic cleansing","Croatia","Germany","Balkans"],false],
+[1994,1996,0,"Rwandan genocide and war: regional refugee crisis","The genocide against the Tutsi and armed conflict cause mass displacement within Rwanda and across its borders. Refugees flee toward Zaire, now the Democratic Republic of the Congo, and Tanzania, among other destinations. The interval highlights the 1994 exodus and major 1996 returns; people’s circumstances and later movements vary. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",-1.94,30.06,"af","migrations","Great_Lakes_refugee_crisis","https://www.unhcr.org/news/eight-year-rwandan-refugee-saga-tanzania-comes-end",null,null,null,["migrations","migration","refugees","displacement","Rwandan genocide","Rwanda","Great Lakes","Zaire","DR Congo","Tanzania","refugee crisis"],false],
+[2011,2026,0,"Syrian war: refugee displacement and continuing exile","Conflict from 2011 forces Syrians to seek safety within the country and abroad, including in Lebanon, Türkiye and Jordan. Refugees and returnees continue to need protection after later political changes. These outward arrows summarise selected displacement connections; they do not depict current traffic or return flows. The 2026 endpoint is the atlas coverage limit. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",33.51,36.29,"me","migrations","Refugees_of_the_Syrian_civil_war","https://www.unhcr.org/asia/emergencies/syria-emergency",null,null,null,["migrations","migration","refugees","displacement","Syrian civil war","Syria","Syrian refugees","Arab Spring","Lebanon","Turkey","Jordan"],true],
+[2022,2026,0,"Russia’s full-scale invasion: flight from Ukraine","Russia’s full-scale invasion in February 2022 causes major new displacement in Ukraine and across its borders, intensifying a crisis already under way since 2014. The arrows show selected routes toward Poland and Moldova, not all destinations or present-day traffic. Refugees and displaced people remain in need of protection; 2026 is the atlas coverage limit. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",50.45,30.52,"eu","migrations","Ukrainian_refugee_crisis","https://www.unhcr.org/ukraine",null,null,null,["migrations","migration","refugees","displacement","Ukraine war","Russia Ukraine war","Russian invasion","Ukraine refugees","Poland","Moldova","2022","Russian Ukraine war 2023","2023"],true],
+// Requested Belarusian exile and Jewish wartime displacement records.
+[2020,2026,0,"Belarus after 2020: political exile in Poland","Repression following Belarus’s 2020 presidential election drives people to seek safety in Poland, alongside migration for other reasons. Not every Belarusian resident in Poland is a political exile or has refugee status. The Minsk–Poland connection summarises this continuing displacement phase through the atlas’s 2026 coverage limit; it is not a picture of present-day traffic. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",53.9,27.56,"eu","migrations","Belarusian_diaspora","https://www.euaa.europa.eu/news-events/belarus-new-report-highlights-deteriorating-human-rights-situation",null,null,null,["migrations","migration","Belarus","Belarusian","Belarussian","Poland","2020","Belarus protests","political exile","repression","refugees"],true],
+[1933,1945,0,"Jewish escape from Nazi persecution","Nazi persecution drives Jews to seek refuge from Germany and later from German-occupied Europe. Admission restrictions and tightening Nazi controls leave many unable to escape. Berlin–France and Vienna–Switzerland represent selected directions of refuge across the period; they do not imply a safe or continuously open passage. Wartime deportation and postwar resettlement have separate records. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",52.52,13.4,"eu","migrations","Jewish_refugees_from_Nazi_Germany_and_German-occupied_Europe","https://encyclopedia.ushmm.org/content/en/article/refugees",null,null,null,["migrations","migration","Jewish refugees","Jews","World War II","WW2","Second World War","Holocaust","Nazi persecution","escape","refugees"],false],
+[1938,1940,0,"Kindertransport: refugee children escape to Britain","Rescue efforts bring predominantly Jewish children from Nazi-controlled territory to Britain, usually without their parents. Most transports take place before World War II begins; the broader 1938–1940 chronology includes the final escape from the Netherlands. The line represents a selected Germany–Netherlands–Harwich–London connection, not every child’s journey. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",52.52,13.4,"eu","migrations","Kindertransport","https://encyclopedia.ushmm.org/content/en/article/kindertransport-1938-40",null,null,null,["migrations","migration","Kindertransport","Jewish children","Jews","refugees","World War II","WW2","Holocaust","Britain","rescue"],false],
+[1942,1944,0,"Holocaust: forced deportations to killing centres","Nazi authorities forcibly deport Jews to killing centres as part of the genocide. The Drancy–Auschwitz-Birkenau and Warsaw–Treblinka lines represent selected deportation connections during the main mass-deportation phase of 1942–1944. These are transports to persecution and murder, not refugee escape. Deportation and forced marches also occur outside this selected interval. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",48.93,2.45,"eu","migrations","Holocaust_trains","https://encyclopedia.ushmm.org/content/en/article/deportations-to-killing-centers",null,null,null,["migrations","migration","Jews","Jewish","Holocaust","World War II","WW2","Second World War","Nazi deportations","forced deportation","Auschwitz","Treblinka","Drancy"],false],
+// Residency restrictions: a dated context marker, without an invented migration route.
+[1791,1917,0,"Pale of Settlement: Jewish residency restrictions","From 1791, the Russian Empire confines most Jewish permanent residence to a changing western region. Boundaries, exemptions and restrictions within the Pale vary over time; it is not an independent state. Wartime measures weaken the restrictions before their legal abolition by the Provisional Government in 1917. The Mogilev marker identifies one community associated with the Pale, rather than outlining its full extent. This entry supplies residency-policy context for Jewish migration; it does not depict a migration journey.",53.9,30.33,"eu","migrations","Pale_of_Settlement","https://encyclopedia.yivo.org/article/246",null,null,null,["migrations","migration history","Pale of Settlement","Jewish history","Jews","residency restrictions","Russian Empire","Catherine II","Mogilev","Черта оседлости","cherta osedlosti"],false],
 ];
 
 // [name, born, died, approx, role, lat, lon, region, wikiSlug]
@@ -3172,7 +3959,7 @@ function renderDetailBase(){const el=document.getElementById("detail");if(select
   else if(x.kind==="event"){
     el.innerHTML=`<div class="detail" style="--c:var(--c-${x.cat})"><button class="iconbtn close" aria-label="Close">×</button>
     <div class="kicker"><i></i>${esc(fmtEvent(x))} · ${REGIONS[x.region]}${x.approx?" · Approximate date":""}</div>
-    <h3>${AtlasEventEmojis.icon(x)}${esc(x.title)}</h3>${historicalContextNote(x,state.year)}<p>${esc(x.blurb)}</p>${x.indigenous?`<p class="indigenous-context"><strong>${x.indigenous.evidence?"Archaeological evidence · dated site":"Indigenous history · documented place"}</strong><br>${x.indigenous.evidence?"Dates represent rounded evidence ages. Site locations do not establish a migration track or a modern national identity.":"This marker locates a community or site, not a territorial boundary. Dates refer to the described event or archaeological evidence, not the lifetime of a people. Colonial map fills can overlap Indigenous homelands."}${x.indigenous.territorySource?` <a href="${esc(x.indigenous.territorySource)}" target="_blank" rel="noopener">Territory &amp; community reference ↗</a>`:""}</p>`:""}${["trade","migrations"].includes(x.cat)?`<p class="route-method">Schematic connections · routes and timings are approximate. Select a line or marker to read its source.</p>`:""}${x.source?`<p><a href="${esc(x.source)}" target="_blank" rel="noopener">Source ↗</a></p>`:""}<a href="${wikiUrl(x.wiki)}" target="_blank" rel="noopener">Read more on Wikipedia ↗</a>
+    <h3>${AtlasEventEmojis.icon(x)}${esc(x.title)}</h3>${historicalContextNote(x,state.year)}<p>${esc(x.blurb)}</p>${x.indigenous?`<p class="indigenous-context"><strong>${x.indigenous.evidence?"Archaeological evidence · dated site":"Indigenous history · documented place"}</strong><br>${x.indigenous.evidence?"Dates represent rounded evidence ages. Site locations do not establish a migration track or a modern national identity.":"This marker locates a community or site, not a territorial boundary. Dates refer to the described event or archaeological evidence, not the lifetime of a people. Colonial map fills can overlap Indigenous homelands."}${x.indigenous.territorySource?` <a href="${esc(x.indigenous.territorySource)}" target="_blank" rel="noopener">Territory &amp; community reference ↗</a>`:""}</p>`:""}${window.HistoricalLayersCore?.routes.some(route=>route.wiki===x.wiki)?`<p class="route-method">Schematic connections · routes and timings are approximate. Select a line or marker to read its source.</p>`:""}${x.source?`<p><a href="${esc(x.source)}" target="_blank" rel="noopener">Source ↗</a></p>`:""}<a href="${wikiUrl(x.wiki)}" target="_blank" rel="noopener">Read more on Wikipedia ↗</a>
     <div class="meanwhile-slot"></div></div>`}
   else{const age=DiscoveryCore.yearsBetween(x.born,state.year);el.innerHTML=`<div class="detail" style="--c:var(--ink)"><button class="iconbtn close" aria-label="Close">×</button>
     <div class="kicker"><i></i>${esc(fmt(x.born,x.approx))} – ${esc(fmt(x.died,x.approx))} · ${REGIONS[x.region]}</div>
@@ -5599,12 +6386,19 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
 </script>
 <script>/* Thematic controls share the atlas categories, dates, search and saved views. */
 (() => {
-  const kinds = ['trade', 'migrations', 'pandemics', 'climate', 'technology'];
+  const kinds = ['trade', 'pandemics', 'climate', 'technology'];
+  const records = Object.fromEntries(kinds.map(cat => [cat, ev.filter(e => e.cat === cat)]));
   const section = document.createElement('section');
   section.className = 'thematic-layers';
   section.setAttribute('aria-label', 'Thematic map layers');
-  section.innerHTML = `<h3>Explore a layer</h3><p>Follow the selected year. Explore jumps to a recorded period.</p>${kinds.map(cat => `<div class="thematic-layer" data-layer="${cat}"><button type="button" class="layer-toggle" data-layer-toggle="${cat}" aria-pressed="true" style="--c:var(--c-${cat})"><i aria-hidden="true"></i><span>${cat === 'pandemics' ? 'Plagues & pandemics' : CATS[cat]}<small data-layer-count="${cat}"></small></span><b aria-hidden="true">✓</b></button><button type="button" class="layer-explore" data-layer-explore="${cat}" aria-label="Explore ${cat === 'pandemics' ? 'plagues and pandemics' : CATS[cat].toLowerCase()}">Explore <span aria-hidden="true">→</span></button></div>`).join('')}<p class="layer-route-key"><span>― Trade connections</span><span>⇢ Migration directions</span></p><p>Lines and arrows are schematic. Markers locate associated places, not an event’s full reach.</p>`;
+  section.innerHTML = `<h3>Explore a layer</h3><p>Follow the selected year. Explore jumps to a recorded period.</p>${kinds.map(cat => `<div class="thematic-layer" data-layer="${cat}"><button type="button" class="layer-toggle" data-layer-toggle="${cat}" aria-pressed="true" style="--c:var(--c-${cat})"><i aria-hidden="true"></i><span>${cat === 'pandemics' ? 'Plagues & pandemics' : CATS[cat]}<small data-layer-count="${cat}"></small></span><b aria-hidden="true">✓</b></button><button type="button" class="layer-explore" data-layer-explore="${cat}" aria-label="Explore ${cat === 'pandemics' ? 'plagues and pandemics' : CATS[cat].toLowerCase()}">Explore <span aria-hidden="true">→</span></button></div>`).join('')}<p class="layer-route-key"><span>― Trade connections</span></p><p>Trade lines are schematic. Markers locate associated places, not an event’s full reach.</p>`;
   document.getElementById('layersPanel').append(section);
+  async function visit(event, year) {
+    document.getElementById('layersPanel').scrollTop = 0;
+    const trigger = document.querySelector('[data-atlas-menu="layersPanel"]');
+    if(trigger.getAttribute('aria-expanded') === 'true') trigger.click();
+    await HistoryDiscovery.jumpSearch({kind:'event',recordId:event.id,start:year,lon:event.lon,lat:event.lat});
+  }
   for (const button of section.querySelectorAll('[data-layer-toggle]')) button.onclick = () => {
     document.querySelector(`#legend [data-k="${button.dataset.layerToggle}"]`).click();
   };
@@ -5613,8 +6407,7 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
     const event = HistoricalLayersCore.nearest(ev, cat, state.year);
     if (!event) return;
     const year = Math.max(event.start, Math.min(event.end, state.year));
-    document.querySelector('[data-atlas-menu="layersPanel"]').click();
-    await HistoryDiscovery.jumpSearch({kind:'event',recordId:event.id,start:year,lon:event.lon,lat:event.lat});
+    await visit(event, year);
   };
   const note = document.createElement('details');
   note.className = 'route-map-note';
@@ -5633,10 +6426,11 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
         const button = section.querySelector(`[data-layer-toggle="${cat}"]`);
         button.setAttribute('aria-pressed', String(enabled));
         button.querySelector('b').textContent = enabled ? '✓' : '○';
-        const count = years.map(year => ev.filter(e => e.cat === cat && DiscoveryCore.yearGap(e.start,e.end,year) <= halfWin(year)).length);
+        const count = years.map(year => records[cat].filter(e => DiscoveryCore.yearGap(e.start,e.end,year) <= halfWin(year)).length);
+        const total = records[cat].length;
         section.querySelector(`[data-layer-count="${cat}"]`).textContent = years.length > 1
-          ? `${count[0]} left · ${count[1]} right${enabled ? '' : ' · hidden'}`
-          : `${count[0]} in this period${enabled ? '' : ' · hidden'}`;
+          ? `${count[0]} left · ${count[1]} right · ${total} total${enabled ? '' : ' · hidden'}`
+          : `${count[0]} in this period · ${total} total${enabled ? '' : ' · hidden'}`;
       }
       note.hidden = !years.some(year => HistoricalLayersCore.active(ev,year,state.cats).length);
     },
@@ -5687,6 +6481,82 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
   };
 })();
 </script>
+<script>/* Migration browsing has its own menu; map visibility stays in the atlas category state. */
+(() => {
+  const records = ev.filter(event => event.cat === 'migrations');
+  const searchable = DiscoveryCore.prepareSearch(records.map(event => ({
+    kind: 'event', title: event.title, aliases: [...event.aliases,
+      ...(/\b(world war ii|ww2)\b/i.test([event.title,...event.aliases].join(' ')) ? ['WWII','WW2'] : []),
+      ...(/\bworld war i\b/i.test([event.title,...event.aliases].join(' ')) ? ['WWI','WW1'] : []),
+    ],
+    description: event.blurb, recordId: event.id,
+  })));
+  const panel = document.getElementById('migrationsPanel');
+  const trigger = document.querySelector('[data-atlas-menu="migrationsPanel"]');
+  panel.innerHTML = `<div class="migrations-heading"><h2 id="migrationsTitle">Migrations</h2><button type="button" class="migrations-close" aria-label="Close migrations">×</button></div>
+    <label class="migrations-visibility"><span>Show on map</span><input type="checkbox" id="migrationVisibility" checked></label>
+    <label class="migrations-search-label" for="migrationSearch">Find a history</label>
+    <input type="search" id="migrationSearch" aria-label="Search migrations" placeholder="Belarus, WWII, Pale of Settlement…" autocomplete="off" maxlength="160" aria-controls="migrationResults">
+    <p class="migrations-status" id="migrationStatus" role="status" aria-live="polite"></p>
+    <div class="migrations-results" id="migrationResults" aria-label="Migration histories"></div>
+    <p class="migrations-hint">Choose a history to open its map and sources.</p>`;
+  const visibility = panel.querySelector('#migrationVisibility');
+  const search = panel.querySelector('#migrationSearch');
+  const status = panel.querySelector('#migrationStatus');
+  const results = panel.querySelector('#migrationResults');
+  let lastKey = '';
+
+  panel.querySelector('.migrations-close').onclick = () => {
+    if (trigger.getAttribute('aria-expanded') === 'true') trigger.click();
+    trigger.focus({preventScroll:true});
+  };
+  visibility.onchange = () => {
+    if (visibility.checked) state.cats.add('migrations');
+    else state.cats.delete('migrations');
+    document.querySelector('#legend [data-k="migrations"]').setAttribute('aria-pressed', String(visibility.checked));
+    buildMarks();update();
+  };
+  search.addEventListener('input', () => HistoryMigrations.render());
+  results.addEventListener('click', async event => {
+    const button = event.target.closest('[data-migration-record]');
+    if (!button) return;
+    const record = byId[button.dataset.migrationRecord];
+    // Keep the chosen year when it is already inside the record's interval.
+    const year = [state.year, ...HistoryDiscovery.displayedYears()].find(year => year >= record.start && year <= record.end) ?? record.start;
+    if (trigger.getAttribute('aria-expanded') === 'true') trigger.click();
+    await HistoryDiscovery.jumpSearch({kind:'event',recordId:record.id,start:year,lon:record.lon,lat:record.lat});
+  });
+
+  function group(title, events) {
+    if (!events.length) return '';
+    return `<section class="migration-group"><h3>${esc(title)} <span>${events.length}</span></h3>${events.map(event => `<button type="button" class="migration-result" data-migration-record="${event.id}" aria-current="${state.sel === event.id}"><span>${esc(event.title)}</span><small>${esc(fmtEvent(event))}</small></button>`).join('')}</section>`;
+  }
+  window.HistoryMigrations = { render() {
+    const years = HistoryDiscovery.displayedYears();
+    const enabled = state.cats.has('migrations');
+    const query = search.value.trim();
+    const key = `${years.join('/')}/${enabled}/${query}/${state.sel}`;
+    if (key === lastKey) return;
+    lastKey = key;
+    visibility.checked = enabled;
+    const inPeriod = event => years.some(year => DiscoveryCore.yearGap(event.start,event.end,year) <= halfWin(year));
+    const current = records.filter(inPeriod);
+    const matches = query ? DiscoveryCore.search(searchable,query,'event',records.length).map(result => byId[result.recordId]) : records;
+    const near = matches.filter(inPeriod).sort((a,b) => a.start-b.start);
+    const other = matches.filter(event => !inPeriod(event)).sort((a,b) => b.start-a.start);
+    const periodLabel = years.length > 1 ? `${fmt(years[0])} & ${fmt(years[1])}` : fmt(years[0]);
+    status.textContent = query
+      ? `${matches.length} ${matches.length === 1 ? 'match' : 'matches'} · ${records.length} histories total`
+      : `${current.length} near ${periodLabel} · ${records.length} histories total`;
+    const focusedId = results.contains(document.activeElement) ? document.activeElement.dataset.migrationRecord : null;
+    results.innerHTML = group(years.length > 1 ? 'Displayed periods' : `Around ${periodLabel}`,near) + group('Other periods',other)
+      || '<p class="migrations-empty">No matching histories. Try a place, people or event.</p>';
+    if (focusedId) (results.querySelector(`[data-migration-record="${focusedId}"]`) || search).focus({preventScroll:true});
+    results.scrollTop = 0;
+  } };
+  HistoryMigrations.render();
+})();
+</script>
 <script>/* Compact map controls. Existing atlas state and navigation remain the source of truth. */
 (() => {
   const triggers = [...document.querySelectorAll('[data-atlas-menu]')];
@@ -5720,7 +6590,23 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
     options.open = false;
     document.getElementById(trigger.dataset.atlasMenu).hidden = false;
     trigger.setAttribute('aria-expanded', 'true');
+    positionMenus();
   }
+  function positionMenus() {
+    for (const trigger of triggers) {
+      const panel = document.getElementById(trigger.dataset.atlasMenu);
+      if (panel.hidden) continue;
+      const toolbar = trigger.closest('.atlas-toolbar');
+      if (toolbar) {
+        const anchor = toolbar.getBoundingClientRect();
+        panel.style.setProperty('--atlas-menu-top', `${Math.max(12, anchor.bottom + 10)}px`);
+        panel.style.setProperty('--atlas-menu-right', `${Math.max(12, innerWidth - anchor.right)}px`);
+      }
+      panel.style.setProperty('--atlas-menu-space', `${Math.max(0, innerHeight - panel.getBoundingClientRect().top - 12)}px`);
+    }
+  }
+  window.addEventListener('resize', positionMenus);
+  window.addEventListener('scroll', positionMenus, { passive: true });
   for (const trigger of triggers) trigger.onclick = () => {
     if (trigger.getAttribute('aria-expanded') === 'true') closeMenus();
     else openMenu(trigger);
@@ -5791,6 +6677,7 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
   let lastKey = '';
   window.AtlasUI = { render() {
     window.HistoryLayers?.render();
+    window.HistoryMigrations?.render();
     const years = HistoryDiscovery.displayedYears();
     const deep = years.some((year) => year < -1000000);
     const human = years.some((year) => year >= -1000000);

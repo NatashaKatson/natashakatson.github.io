@@ -102,18 +102,28 @@ locations, not animated spread or affected-area boundaries. See
 
 ## Curated discoveries and focused depth
 
-The **Layers** menu now includes **Trade routes**, **Migrations**, **Plagues &
+The **Layers** menu now includes **Trade routes**, **Plagues &
 pandemics**, **Climate events** and **Technology**. These controls share their
 state with the event filters, search, timeline marks and saved views. Each shows
-the number of recorded events in the displayed period; comparisons show separate
-left/right counts. **Explore** enables the layer and visits the nearest recorded
+the number of recorded events in the displayed period and the total catalogue;
+comparisons show separate left/right counts. **Explore** enables the layer and visits the nearest recorded
 period without resetting the other category choices.
 
-Ten schematic networks supply selectable trade lines and migration arrows.
+Thirty-three schematic networks supply selectable trade lines and migration arrows.
 Climate and technology records use dated location markers. Dates and category
 choices apply independently on both comparison maps. Source-linked details
 explain the representative coordinates and the route's full recorded interval.
 See [the layer inventory and verification](history-layers.md).
+
+The separate **Migrations** button lists 30 sourced histories across the whole timeline,
+including revolutionary exile, wartime refugee movements, and Jewish residency-policy context. The catalogue is
+available even when the selected period has no migrations. Search and a Show on
+map checkbox sit above a scrolling list, grouped into the displayed period and
+other periods. Choosing a story enables migrations, keeps an applicable displayed
+year or visits the start year, and focuses its source-linked reader. The mobile
+panel opens as a bottom sheet. Close and Escape return focus to its trigger.
+The full inventory and interval qualifications are in
+[migration coverage](history-migrations.md).
 
 **Curated discoveries** introduces an authored Cleopatra tour with five stops:
 Alexandria, Chang’an, Meroë, Monte Albán and Rome. Each stop focuses the existing

@@ -1,11 +1,18 @@
 /* Thematic controls share the atlas categories, dates, search and saved views. */
 (() => {
-  const kinds = ['trade', 'migrations', 'pandemics', 'climate', 'technology'];
+  const kinds = ['trade', 'pandemics', 'climate', 'technology'];
+  const records = Object.fromEntries(kinds.map(cat => [cat, ev.filter(e => e.cat === cat)]));
   const section = document.createElement('section');
   section.className = 'thematic-layers';
   section.setAttribute('aria-label', 'Thematic map layers');
-  section.innerHTML = `<h3>Explore a layer</h3><p>Follow the selected year. Explore jumps to a recorded period.</p>${kinds.map(cat => `<div class="thematic-layer" data-layer="${cat}"><button type="button" class="layer-toggle" data-layer-toggle="${cat}" aria-pressed="true" style="--c:var(--c-${cat})"><i aria-hidden="true"></i><span>${cat === 'pandemics' ? 'Plagues & pandemics' : CATS[cat]}<small data-layer-count="${cat}"></small></span><b aria-hidden="true">✓</b></button><button type="button" class="layer-explore" data-layer-explore="${cat}" aria-label="Explore ${cat === 'pandemics' ? 'plagues and pandemics' : CATS[cat].toLowerCase()}">Explore <span aria-hidden="true">→</span></button></div>`).join('')}<p class="layer-route-key"><span>― Trade connections</span><span>⇢ Migration directions</span></p><p>Lines and arrows are schematic. Markers locate associated places, not an event’s full reach.</p>`;
+  section.innerHTML = `<h3>Explore a layer</h3><p>Follow the selected year. Explore jumps to a recorded period.</p>${kinds.map(cat => `<div class="thematic-layer" data-layer="${cat}"><button type="button" class="layer-toggle" data-layer-toggle="${cat}" aria-pressed="true" style="--c:var(--c-${cat})"><i aria-hidden="true"></i><span>${cat === 'pandemics' ? 'Plagues & pandemics' : CATS[cat]}<small data-layer-count="${cat}"></small></span><b aria-hidden="true">✓</b></button><button type="button" class="layer-explore" data-layer-explore="${cat}" aria-label="Explore ${cat === 'pandemics' ? 'plagues and pandemics' : CATS[cat].toLowerCase()}">Explore <span aria-hidden="true">→</span></button></div>`).join('')}<p class="layer-route-key"><span>― Trade connections</span></p><p>Trade lines are schematic. Markers locate associated places, not an event’s full reach.</p>`;
   document.getElementById('layersPanel').append(section);
+  async function visit(event, year) {
+    document.getElementById('layersPanel').scrollTop = 0;
+    const trigger = document.querySelector('[data-atlas-menu="layersPanel"]');
+    if(trigger.getAttribute('aria-expanded') === 'true') trigger.click();
+    await HistoryDiscovery.jumpSearch({kind:'event',recordId:event.id,start:year,lon:event.lon,lat:event.lat});
+  }
   for (const button of section.querySelectorAll('[data-layer-toggle]')) button.onclick = () => {
     document.querySelector(`#legend [data-k="${button.dataset.layerToggle}"]`).click();
   };
@@ -14,8 +21,7 @@
     const event = HistoricalLayersCore.nearest(ev, cat, state.year);
     if (!event) return;
     const year = Math.max(event.start, Math.min(event.end, state.year));
-    document.querySelector('[data-atlas-menu="layersPanel"]').click();
-    await HistoryDiscovery.jumpSearch({kind:'event',recordId:event.id,start:year,lon:event.lon,lat:event.lat});
+    await visit(event, year);
   };
   const note = document.createElement('details');
   note.className = 'route-map-note';
@@ -34,10 +40,11 @@
         const button = section.querySelector(`[data-layer-toggle="${cat}"]`);
         button.setAttribute('aria-pressed', String(enabled));
         button.querySelector('b').textContent = enabled ? '✓' : '○';
-        const count = years.map(year => ev.filter(e => e.cat === cat && DiscoveryCore.yearGap(e.start,e.end,year) <= halfWin(year)).length);
+        const count = years.map(year => records[cat].filter(e => DiscoveryCore.yearGap(e.start,e.end,year) <= halfWin(year)).length);
+        const total = records[cat].length;
         section.querySelector(`[data-layer-count="${cat}"]`).textContent = years.length > 1
-          ? `${count[0]} left · ${count[1]} right${enabled ? '' : ' · hidden'}`
-          : `${count[0]} in this period${enabled ? '' : ' · hidden'}`;
+          ? `${count[0]} left · ${count[1]} right · ${total} total${enabled ? '' : ' · hidden'}`
+          : `${count[0]} in this period · ${total} total${enabled ? '' : ' · hidden'}`;
       }
       note.hidden = !years.some(year => HistoricalLayersCore.active(ev,year,state.cats).length);
     },

@@ -17,7 +17,7 @@ test('each thematic category contains source-linked records and the existing pan
     for(const e of events)assert(e.source?.startsWith('https://'),e.wiki);
   }
   assert.equal(records.filter(e=>e.cat==='trade').length,4);
-  assert.equal(records.filter(e=>e.cat==='migrations').length,6);
+  assert.equal(records.filter(e=>e.cat==='migrations').length,30);
   assert.equal(records.filter(e=>e.cat==='pandemics').length,32);
   assert.equal(records.filter(e=>e.cat==='climate').length,7);
   assert.equal(records.filter(e=>e.cat==='technology').length,24);
@@ -32,8 +32,8 @@ test('each thematic category contains source-linked records and the existing pan
 });
 
 test('every schematic route refers to a unique dated event with valid coordinates and direction context',()=>{
-  assert.equal(layers.routes.length,10);
-  assert.equal(new Set(layers.routes.map(r=>r.wiki)).size,10);
+  assert.equal(layers.routes.length,33);
+  assert.equal(new Set(layers.routes.map(r=>r.wiki)).size,33);
   for(const route of layers.routes){
     const event=get(route.wiki);
     assert(event,route.wiki);assert.equal(route.kind,event.cat);

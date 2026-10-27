@@ -1,11 +1,11 @@
 {
   "scope": "Every event summary and principal date reviewed against sources; all border files scanned for integrity. This is not an independent certification of every historical frontier.",
   "counts": {
-    "events": 322,
+    "events": 346,
     "people": 66,
-    "eventsWithSourceLinks": 322,
-    "sourceReviewedEvents": 322,
-    "correctedOrClarifiedEvents": 181,
+    "eventsWithSourceLinks": 346,
+    "sourceReviewedEvents": 346,
+    "correctedOrClarifiedEvents": 205,
     "borderChunks": 217,
     "borderFeatureInstances": 22190,
     "distinctBorderVersions": 13372,
@@ -4848,6 +4848,366 @@
       "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
       "review": "addition",
       "source": "https://www.computerhistory.org/siliconengine/timeline/"
+    },
+    {
+      "id": "e322",
+      "title": "American Revolution: Loyalist departures",
+      "start": 1783,
+      "end": 1785,
+      "approximate": false,
+      "point": [
+        -74.01,
+        40.71
+      ],
+      "wiki": "Expulsion_of_the_Loyalists",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://www.canada.ca/en/immigration-refugees-citizenship/services/refugees/about-refugee-system/how-system-works/history.html"
+    },
+    {
+      "id": "e323",
+      "title": "French Revolution: émigré flight",
+      "start": 1789,
+      "end": 1800,
+      "approximate": false,
+      "point": [
+        2.35,
+        48.86
+      ],
+      "wiki": "French_emigration_(1789–1815)",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://girophares.archives-nationales.culture.gouv.fr/emigres-de-la-revolution-francaise"
+    },
+    {
+      "id": "e324",
+      "title": "Haitian Revolution: Saint-Domingue displacement",
+      "start": 1791,
+      "end": 1810,
+      "approximate": false,
+      "point": [
+        -72.2,
+        19.76
+      ],
+      "wiki": "Haitian_Americans",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://heritage.bnf.fr/france-ameriques/refugies-saint-domingue-nouvelle-orleans"
+    },
+    {
+      "id": "e325",
+      "title": "Mexican Revolution: refugees and political exile",
+      "start": 1910,
+      "end": 1920,
+      "approximate": false,
+      "point": [
+        -106.42,
+        31.69
+      ],
+      "wiki": "Mexican_immigration_to_the_United_States",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://blogs.loc.gov/kluge/2015/03/the-history-of-mexican-immigration-to-the-u-s-in-the-early-20th-century/"
+    },
+    {
+      "id": "e326",
+      "title": "World War I: Belgian refugees",
+      "start": 1914,
+      "end": 1918,
+      "approximate": false,
+      "point": [
+        4.4,
+        51.22
+      ],
+      "wiki": "Belgian_refugees_in_the_First_World_War",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://hackney-museum.hackney.gov.uk/2025/05/30/belgian-refugees-hackney/"
+    },
+    {
+      "id": "e327",
+      "title": "Armenian genocide: forced deportations",
+      "start": 1915,
+      "end": 1916,
+      "approximate": false,
+      "point": [
+        39.49,
+        39.75
+      ],
+      "wiki": "Armenian_genocide",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://www.ushmm.org/genocide/armenia"
+    },
+    {
+      "id": "e328",
+      "title": "Russian Revolution and Civil War: refugee exodus",
+      "start": 1917,
+      "end": 1923,
+      "approximate": true,
+      "point": [
+        33.53,
+        44.62
+      ],
+      "wiki": "White_émigré",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://www.unhcr.org/sites/default/files/legacy-pdf/3ebf9ba80.pdf"
+    },
+    {
+      "id": "e329",
+      "title": "Compulsory Greek–Turkish population exchange",
+      "start": 1923,
+      "end": 1924,
+      "approximate": false,
+      "point": [
+        27.14,
+        38.42
+      ],
+      "wiki": "Population_exchange_between_Greece_and_Turkey",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://www.mfa.gov.tr/lausanne-peace-treaty-vi_-convention-concerning-the-exchange-of-greek-and-turkish-populations-signed-at-lausanne_.en.mfa"
+    },
+    {
+      "id": "e330",
+      "title": "Spanish Civil War: flight and La Retirada",
+      "start": 1936,
+      "end": 1939,
+      "approximate": false,
+      "point": [
+        2.17,
+        41.39
+      ],
+      "wiki": "Retirada",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://www.histoire-immigration.fr/caracteristiques-migratoires-selon-les-pays-d-origine/la-retirada-ou-l-exil-republicain-espagnol-d-apres-guerre"
+    },
+    {
+      "id": "e331",
+      "title": "World War II aftermath: displaced persons in Europe",
+      "start": 1945,
+      "end": 1952,
+      "approximate": false,
+      "point": [
+        11.58,
+        48.14
+      ],
+      "wiki": "Displaced_persons_camps_in_post–World_War_II_Europe",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://encyclopedia.ushmm.org/content/en/article/displaced-persons"
+    },
+    {
+      "id": "e332",
+      "title": "Chinese Civil War: mainland-to-Taiwan displacement",
+      "start": 1949,
+      "end": 1950,
+      "approximate": true,
+      "point": [
+        121.47,
+        31.23
+      ],
+      "wiki": "Retreat_of_the_government_of_the_Republic_of_China_to_Taiwan",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://1997-2001.state.gov/background_notes/taiwan_0010_bgn.html"
+    },
+    {
+      "id": "e333",
+      "title": "Korean War: civilian flight and evacuation",
+      "start": 1950,
+      "end": 1953,
+      "approximate": false,
+      "point": [
+        127.62,
+        39.83
+      ],
+      "wiki": "Hungnam_evacuation",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://www.history.navy.mil/content/history/nhhc/about-us/leadership/director/directors-corner/h-grams/h-gram-056/h-056-1.html"
+    },
+    {
+      "id": "e334",
+      "title": "Hungarian Revolution: refugee flight",
+      "start": 1956,
+      "end": 1957,
+      "approximate": false,
+      "point": [
+        19.04,
+        47.5
+      ],
+      "wiki": "Hungarian_Revolution_of_1956",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://medialib.iom.int/en/gallery/664/hungarianrefugeecrisis-19561957"
+    },
+    {
+      "id": "e335",
+      "title": "Vietnam War aftermath: Vietnamese refugee departures",
+      "start": 1975,
+      "end": 1996,
+      "approximate": false,
+      "point": [
+        106.7,
+        10.77
+      ],
+      "wiki": "Vietnamese_boat_people",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://www.unhcr.org/us/sites/en-us/files/legacy-pdf/3ebf9bad0.pdf"
+    },
+    {
+      "id": "e336",
+      "title": "Soviet–Afghan War: refugees in Pakistan and Iran",
+      "start": 1979,
+      "end": 1989,
+      "approximate": false,
+      "point": [
+        69.21,
+        34.56
+      ],
+      "wiki": "Afghan_refugees",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://unama.unmissions.org/en/news/unhcr-marks-30-years-of-helping-afghan-refugees"
+    },
+    {
+      "id": "e337",
+      "title": "Bosnian War: refugees and internal displacement",
+      "start": 1992,
+      "end": 1995,
+      "approximate": false,
+      "point": [
+        18.41,
+        43.86
+      ],
+      "wiki": "Bosnian_War",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://encyclopedia.ushmm.org/content/en/article/bosnia"
+    },
+    {
+      "id": "e338",
+      "title": "Rwandan genocide and war: regional refugee crisis",
+      "start": 1994,
+      "end": 1996,
+      "approximate": false,
+      "point": [
+        30.06,
+        -1.94
+      ],
+      "wiki": "Great_Lakes_refugee_crisis",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://www.unhcr.org/news/eight-year-rwandan-refugee-saga-tanzania-comes-end"
+    },
+    {
+      "id": "e339",
+      "title": "Syrian war: refugee displacement and continuing exile",
+      "start": 2011,
+      "end": 2026,
+      "approximate": false,
+      "point": [
+        36.29,
+        33.51
+      ],
+      "wiki": "Refugees_of_the_Syrian_civil_war",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://www.unhcr.org/asia/emergencies/syria-emergency"
+    },
+    {
+      "id": "e340",
+      "title": "Russia’s full-scale invasion: flight from Ukraine",
+      "start": 2022,
+      "end": 2026,
+      "approximate": false,
+      "point": [
+        30.52,
+        50.45
+      ],
+      "wiki": "Ukrainian_refugee_crisis",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://www.unhcr.org/ukraine"
+    },
+    {
+      "id": "e341",
+      "title": "Belarus after 2020: political exile in Poland",
+      "start": 2020,
+      "end": 2026,
+      "approximate": false,
+      "point": [
+        27.56,
+        53.9
+      ],
+      "wiki": "Belarusian_diaspora",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://www.euaa.europa.eu/news-events/belarus-new-report-highlights-deteriorating-human-rights-situation"
+    },
+    {
+      "id": "e342",
+      "title": "Jewish escape from Nazi persecution",
+      "start": 1933,
+      "end": 1945,
+      "approximate": false,
+      "point": [
+        13.4,
+        52.52
+      ],
+      "wiki": "Jewish_refugees_from_Nazi_Germany_and_German-occupied_Europe",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://encyclopedia.ushmm.org/content/en/article/refugees"
+    },
+    {
+      "id": "e343",
+      "title": "Kindertransport: refugee children escape to Britain",
+      "start": 1938,
+      "end": 1940,
+      "approximate": false,
+      "point": [
+        13.4,
+        52.52
+      ],
+      "wiki": "Kindertransport",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://encyclopedia.ushmm.org/content/en/article/kindertransport-1938-40"
+    },
+    {
+      "id": "e344",
+      "title": "Holocaust: forced deportations to killing centres",
+      "start": 1942,
+      "end": 1944,
+      "approximate": false,
+      "point": [
+        2.45,
+        48.93
+      ],
+      "wiki": "Holocaust_trains",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://encyclopedia.ushmm.org/content/en/article/deportations-to-killing-centers"
+    },
+    {
+      "id": "e345",
+      "title": "Pale of Settlement: Jewish residency restrictions",
+      "start": 1791,
+      "end": 1917,
+      "approximate": false,
+      "point": [
+        30.33,
+        53.9
+      ],
+      "wiki": "Pale_of_Settlement",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://encyclopedia.yivo.org/article/246"
     }
   ]
 }

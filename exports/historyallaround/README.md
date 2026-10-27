@@ -2,7 +2,7 @@
 
 `atlas-data.json` contains both collections, field names, and date/region metadata.
 `events.csv` and `people.csv` contain the same records in UTF-8 CSV format.
-The export includes 322 events (including 8 dinosaur entries) and 66 people.
+The export includes 346 events (including 8 dinosaur entries) and 66 people.
 
 These are the curated event and people records from
 `static/historyallaround/atlas/index.html`. They do not include the atlas's
