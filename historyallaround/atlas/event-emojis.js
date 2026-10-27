@@ -17,6 +17,7 @@
     get(event) {
       if (!event || event.kind !== 'event' || event.cat === 'dinosaurs') return '';
       if (event.wiki === 'The_Holocaust') return '💀';
+      if (event.wiki === 'Pale_of_Settlement') return '📜';
       if (event.indigenous) return '🌳';
       if (medical[event.wiki]) return medical[event.wiki];
       if (/vaccine/i.test(event.wiki)) return '💉';

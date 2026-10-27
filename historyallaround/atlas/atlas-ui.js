@@ -31,7 +31,23 @@
     options.open = false;
     document.getElementById(trigger.dataset.atlasMenu).hidden = false;
     trigger.setAttribute('aria-expanded', 'true');
+    positionMenus();
   }
+  function positionMenus() {
+    for (const trigger of triggers) {
+      const panel = document.getElementById(trigger.dataset.atlasMenu);
+      if (panel.hidden) continue;
+      const toolbar = trigger.closest('.atlas-toolbar');
+      if (toolbar) {
+        const anchor = toolbar.getBoundingClientRect();
+        panel.style.setProperty('--atlas-menu-top', `${Math.max(12, anchor.bottom + 10)}px`);
+        panel.style.setProperty('--atlas-menu-right', `${Math.max(12, innerWidth - anchor.right)}px`);
+      }
+      panel.style.setProperty('--atlas-menu-space', `${Math.max(0, innerHeight - panel.getBoundingClientRect().top - 12)}px`);
+    }
+  }
+  window.addEventListener('resize', positionMenus);
+  window.addEventListener('scroll', positionMenus, { passive: true });
   for (const trigger of triggers) trigger.onclick = () => {
     if (trigger.getAttribute('aria-expanded') === 'true') closeMenus();
     else openMenu(trigger);
@@ -102,6 +118,7 @@
   let lastKey = '';
   window.AtlasUI = { render() {
     window.HistoryLayers?.render();
+    window.HistoryMigrations?.render();
     const years = HistoryDiscovery.displayedYears();
     const deep = years.some((year) => year < -1000000);
     const human = years.some((year) => year >= -1000000);

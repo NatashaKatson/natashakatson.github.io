@@ -14,7 +14,26 @@
 .thematic-layer button:focus-visible { outline: 2px solid #a3482d; outline-offset: 2px; }
 .layer-route-key { display: flex; flex-wrap: wrap; gap: 4px 10px; }
 .layer-route-key span:first-child { color: #92602f; }
-.layer-route-key span:last-child { color: #626da3; }
+.atlas-menu-panel.migrations-panel { width: 360px; height: min(65svh, 540px, var(--atlas-menu-space, 540px)); padding: 14px 16px 12px; overflow: hidden; }
+.migrations-panel:not([hidden]) { display: flex; flex-direction: column; }
+.migrations-heading { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex: none; }
+.migrations-heading h2 { margin: 0; }
+.migrations-close { width: 44px; height: 44px; border: 0; border-radius: 4px; background: transparent; color: inherit; font: 24px var(--body); cursor: pointer; }
+.migrations-visibility { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 44px; flex: none; cursor: pointer; font: 13px var(--body); }
+.migrations-visibility input { width: 19px; height: 19px; margin: 0 5px 0 0; accent-color: #626da3; cursor: pointer; }
+.migrations-search-label { margin: 5px 0 6px; flex: none; font: 11px var(--body); color: #756c65; }
+#migrationSearch { width: 100%; min-height: 44px; flex: none; border: 1px solid #c8bdaf; border-radius: 5px; padding: 9px 10px; background: #fffdf9; color: #2d2420; font: 14px var(--body); }
+.migrations-panel .migrations-status { margin: 10px 0; flex: none; font-size: 11px; }
+.migrations-results { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; border-block: 1px solid #e4dcd0; }
+.migration-group h3 { margin: 0; padding: 10px 2px 6px; font: 11px var(--body); color: #756c65; }
+.migration-group h3 span { margin-left: 5px; color: #626da3; }
+.migration-result { position: relative; display: block; width: 100%; min-height: 56px; padding: 10px 22px 10px 4px; text-align: left; color: inherit; background: transparent; border: 0; border-bottom: 1px solid #e4dcd0; font: 13px/1.5 var(--body); cursor: pointer; }
+.migration-result::after { content: '→'; position: absolute; right: 4px; top: 14px; color: #81776e; }
+.migration-result small { display: block; margin-top: 2px; color: #756c65; font-size: 11px; }
+.migration-result[aria-current="true"] { box-shadow: inset 2px 0 #626da3; padding-left: 8px; background: #eee7dc; }
+.migration-result:hover, .migrations-close:hover { background: #eee7dc; }
+.migrations-panel :is(button, input):focus-visible { outline: 2px solid #626da3; outline-offset: -2px; }
+.migrations-panel .migrations-hint { margin: 8px 0 0; flex: none; font-size: 10px; }
 .stage .readout {
   top: 22px; left: 24px; width: auto; max-width: calc(100% - 240px);
   padding: 0; border: 0; background: transparent; container-type: normal;
@@ -39,8 +58,10 @@
   position: absolute; z-index: 10; top: calc(100% + 10px); right: 0;
   width: 280px; max-width: calc(100vw - 32px); padding: 18px;
   background: #f8f5f0; color: #2d2420; border: 1px solid #d9d1c7; border-radius: 7px;
-  box-shadow: 0 12px 35px #33291e24; max-height: min(65svh, 540px); overflow: auto; overscroll-behavior: contain;
+  box-shadow: 0 12px 35px #33291e24; max-height: min(65svh, 540px, var(--atlas-menu-space, 540px)); overflow: auto; overscroll-behavior: contain;
 }
+.atlas-toolbar .atlas-menu-panel { position: fixed; top: var(--atlas-menu-top); right: var(--atlas-menu-right); }
+.stage:has(.atlas-toolbar .atlas-menu-panel:not([hidden])) { z-index: 50; }
 .atlas-menu-panel h2 { margin: 0 0 14px; font: 20px var(--display); }
 .atlas-menu-panel p { font-size: 11px; line-height: 1.6; color: #756c65; }
 .stage .borders-control, .stage.comparing .borders-control {
@@ -168,15 +189,21 @@
   .stage .readout { top: 18px; left: 18px; max-width: calc(100% - 36px); }
   .stage .readout .yr { font-size: 30px; }
   .stage .readout .yr small, .stage .readout .deep-time-year small { font-size: 16px; }
-  .atlas-toolbar, .stage.comparing .atlas-toolbar { top: 86px; right: 16px; }
+  .atlas-toolbar, .stage.comparing .atlas-toolbar { top: 86px; right: 16px; left: 16px; justify-content: flex-end; gap: 6px; }
   .stage.comparing .atlas-toolbar { top: 48px; }
-  .atlas-toolbar .atlas-menu:first-child .atlas-menu-panel { right: -107px; }
-  .atlas-menu-panel { max-height: min(55svh, 340px); }
+  .atlas-toolbar .atlas-menu { position: static; }
+  .atlas-menu-panel { max-height: min(55svh, 340px, var(--atlas-menu-space, 340px)); }
   .borders-control .bseg button[data-b="history"] { font-size: 12px; }
   .borders-control .bseg button[data-b="history"]::after { content: none; }
   .time, .stage.comparing + .time { padding: 12px 16px; gap: 9px 8px; }
   .time .controls .lbl { display: none; }
   .atlas-menu-trigger, .dock-options > summary { min-height: 44px; padding: 8px 10px; gap: 6px; }
+  .atlas-toolbar .atlas-menu-trigger { padding-inline: 8px; gap: 4px; }
+  .atlas-menu-panel.migrations-panel {
+    position: fixed; top: auto; left: 12px; right: 12px; bottom: max(12px, env(safe-area-inset-bottom));
+    width: auto; max-width: none; height: min(75svh, 600px); max-height: min(75svh, 600px); border-radius: 12px;
+  }
+  #migrationSearch { font-size: 16px; }
   .time .iconbtn { min-height: 44px; width: 30px; }
   .time .play { width: auto; padding: 0 11px; }
   .dock-actions { gap: 6px; }
@@ -191,6 +218,13 @@
 }
 @media (max-width: 560px) {
   .app > header .head-tools { grid-template-columns: auto minmax(0, 1fr); }
+}
+@media (min-width: 861px) and (max-width: 1050px) {
+  .atlas-toolbar { top: 84px; }
+}
+@media (max-width: 860px) and (max-height: 520px) {
+  .migrations-panel .migrations-search-label, .migrations-panel .migrations-hint { display: none; }
+  #migrationSearch { margin-top: 6px; }
 }
 @media (max-width: 370px) {
   .time .controls { gap: 3px; }
