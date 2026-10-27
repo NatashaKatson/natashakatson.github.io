@@ -1095,13 +1095,56 @@ header .seg{padding:2px;background:#f0ebe3;border:1px solid rgba(45,36,32,.1);bo
 .dock-options > summary::-webkit-details-marker { display: none; }
 .dock-options:not([open]) > .dock-options-content { display: none; }
 .dock-options-content, .era-panel { top: auto; bottom: calc(100% + 14px); }
-.dock-options-content { width: min(440px, calc(100vw - 32px)); }
+.dock-options-content { width: min(440px, calc(100vw - 32px)); max-height: min(65svh, 540px, var(--options-space, 540px)); }
+.dock-options-content.opens-below { top: calc(100% + 14px); bottom: auto; }
 .era-panel { width: 340px; }
 #eraChoices { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
 #eraChoices button { text-align: left; padding: 9px; min-height: 52px; border: 0; border-radius: 4px; background: transparent; font: 13px var(--display); cursor: pointer; }
 #eraChoices button:hover { background: #eee7dc; }
 #eraChoices small { display: block; margin-top: 3px; color: #81776e; font: 10px var(--body); }
-.time .dock-options-content .discovery-tools { display: flex; padding: 0 0 16px; justify-content: flex-start; }
+.time .dock-options-content .discovery-tools {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 8px; padding: 0; min-width: 0;
+}
+.dock-options-content .discovery-tools button {
+  min-height: 44px; padding: 9px 12px; border: 1px solid #d9d1c7;
+  border-radius: 5px; background: #fffdf9; color: #443c35; font: 12px/1.4 var(--body);
+}
+.dock-options-content .discovery-tools button:hover { background: #eee7dc; border-color: #b7aa9a; }
+.dock-options-content .discovery-tools :is(button, input):focus-visible { outline: 2px solid #a3482d; outline-offset: 2px; }
+.dock-options-content #compareToggle {
+  grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; padding: 0; border: 0; background: transparent; text-align: left; font-weight: 500; font-size: 14px;
+}
+.dock-options-content #compareToggle::after {
+  content: ''; flex: none; width: 34px; height: 20px; border-radius: 12px;
+  background: radial-gradient(circle at 10px 10px, #fffdf9 0 7px, transparent 7.5px), #b5aca1;
+}
+.dock-options-content #compareToggle[aria-pressed="true"]::after {
+  background: radial-gradient(circle at 24px 10px, #fffdf9 0 7px, transparent 7.5px), #a3482d;
+}
+.dock-options-content #compareYears {
+  grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: end; gap: 12px;
+}
+.dock-options-content #compareYears label { display: grid; gap: 6px; min-width: 0; font-size: 11px; color: #756c65; }
+.dock-options-content #compareYears input {
+  width: 100%; min-width: 0; min-height: 44px; padding: 10px 12px;
+  border: 1px solid #d9d1c7; border-radius: 5px; background: #fffdf9;
+  color: #2d2420; font: 14px/1.4 var(--body); font-variant-numeric: tabular-nums;
+}
+.dock-options-content #compareYears button { grid-column: 1 / -1; background: #a3482d; border-color: #a3482d; color: #fffdf9; }
+.dock-options-content #compareYears button:hover { background: #8c3d26; border-color: #8c3d26; }
+.dock-options-content #changeOption {
+  grid-column: 1 / -1; display: flex; align-items: center; gap: 9px;
+  min-height: 44px; font-size: 12px; line-height: 1.5; cursor: pointer;
+}
+.dock-options-content #changedOutlines { flex: none; width: 16px; height: 16px; margin: 0; accent-color: #a3482d; }
+.dock-options-content #compareNote { grid-column: 1 / -1; font-size: 11px; line-height: 1.6; color: #756c65; }
+.dock-options-content .share-view, .dock-options-content .dinosaur-trigger { margin-top: 4px; }
+.dock-options-content .share-panel {
+  grid-column: 1 / -1; order: 1; padding: 12px 0 0; border-top: 1px solid #d9d1c7;
+}
 .time-summary { grid-area: summary; display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 12px; font: 11px var(--body); color: #756c65; }
 .time-summary .era { color: #a3482d; }
 .time-summary .now b { font-weight: 500; }
@@ -1140,7 +1183,7 @@ header .seg{padding:2px;background:#f0ebe3;border:1px solid rgba(45,36,32,.1);bo
   .time .play { width: auto; padding: 0 11px; }
   .dock-actions { gap: 6px; }
   .era-panel { right: -78px; width: min(340px, calc(100vw - 32px)); }
-  .dock-options-content { max-height: 55svh; }
+  .dock-options-content { max-height: min(55svh, var(--options-space, 540px)); }
   .map-context { left: 18px; bottom: 18px; }
   .stage .zoom { right: 16px; bottom: 16px; }
   .stage .zoom .iconbtn { width: 40px; height: 40px; }
@@ -4889,8 +4932,8 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
   ];
   const card = document.createElement("section");
   card.className = "dinosaur-discovery comparison-stories";
-  card.setAttribute("aria-label", "Explore dinosaurs");
-  card.innerHTML = `<details><summary><span aria-hidden="true">🦖</span> Explore dinosaurs</summary><p>Eight fossil records, millions of years before human history.</p><div class="dinosaur-eras">${eras.map((e, i) => `<button type="button" data-dinosaur-era="${i}">${e.name}<small>${esc(fmt(e.year))}</small></button>`).join("")}</div><p>Watch the continents change from the Triassic to the Cretaceous. Dinosaur avatars follow representative fossil regions reconstructed on those ancient continents. Fossil ages and positions are approximate.</p><div class="dinosaur-list">${fossils.map((e) => `<button type="button" class="story-card dinosaur-list-card" data-dinosaur-id="${e.id}"><img src="${avatarUrl(e)}" width="56" height="56" alt="" loading="lazy"><span><b>${esc(e.title)}</b><small>${esc(fmtSpan(e.start, e.end, true))} · ${esc(e.fossilRegion)}</small></span></button>`).join("")}</div><p class="dinosaur-art-note">Illustrated reconstructions; colours and appearance are speculative.</p></details>`;
+  card.setAttribute("aria-label", "Dinosaurs");
+  card.innerHTML = `<details><summary><span aria-hidden="true">🦖</span> Dinosaurs</summary><p>Eight fossil records, millions of years before human history.</p><div class="dinosaur-eras">${eras.map((e, i) => `<button type="button" data-dinosaur-era="${i}">${e.name}<small>${esc(fmt(e.year))}</small></button>`).join("")}</div><p>Watch the continents change from the Triassic to the Cretaceous. Dinosaur avatars follow representative fossil regions reconstructed on those ancient continents. Fossil ages and positions are approximate.</p><div class="dinosaur-list">${fossils.map((e) => `<button type="button" class="story-card dinosaur-list-card" data-dinosaur-id="${e.id}"><img src="${avatarUrl(e)}" width="56" height="56" alt="" loading="lazy"><span><b>${esc(e.title)}</b><small>${esc(fmtSpan(e.start, e.end, true))} · ${esc(e.fossilRegion)}</small></span></button>`).join("")}</div><p class="dinosaur-art-note">Illustrated reconstructions; colours and appearance are speculative.</p></details>`;
   document.getElementById("fact").before(card);
   const trigger = document.createElement("button");
   trigger.type = "button";
@@ -5012,6 +5055,19 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
   const optionsContent = options.querySelector('.dock-options-content');
   optionsContent.append(document.querySelector('.discovery-tools'));
 
+  function positionOptions() {
+    if (!options.open) return;
+    const anchor = options.getBoundingClientRect();
+    const above = anchor.top - 28;
+    const below = innerHeight - anchor.bottom - 28;
+    const openBelow = above < Math.min(optionsContent.scrollHeight, 220) && below > above;
+    optionsContent.classList.toggle('opens-below', openBelow);
+    optionsContent.style.setProperty('--options-space', `${Math.max(0, openBelow ? below : above)}px`);
+  }
+  window.addEventListener('resize', positionOptions);
+  window.addEventListener('scroll', positionOptions, { passive: true });
+  options.addEventListener('click', () => requestAnimationFrame(positionOptions));
+
   function closeMenus(restoreFocus = false) {
     for (const trigger of triggers) {
       const panel = document.getElementById(trigger.dataset.atlasMenu);
@@ -5030,7 +5086,7 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
     if (trigger.getAttribute('aria-expanded') === 'true') closeMenus();
     else openMenu(trigger);
   };
-  options.addEventListener('toggle', () => { if (options.open) closeMenus(); });
+  options.addEventListener('toggle', () => { if (options.open) { closeMenus(); positionOptions(); } });
   document.addEventListener('pointerdown', (event) => {
     if (!event.target.closest('.atlas-menu')) closeMenus();
     if (!options.contains(event.target)) options.open = false;

@@ -96,6 +96,36 @@ try {
   assert(await evaluate(`(()=>{const b=document.querySelector('.history-search-trigger'),r=b.getBoundingClientRect();return r.height>=44&&document.elementFromPoint(r.x+r.width/2,r.y+r.height/2)?.closest('button')===b&&document.documentElement.scrollWidth<=innerWidth})()`), 'Mobile search is reachable with no horizontal overflow');
   await evaluate(`document.querySelector('.history-search-trigger').click()`);
   assert(await evaluate(`document.getElementById('historySearch').open`), 'Mobile search opens by touch/click');
+  await evaluate(`localStorage.removeItem('atlas.last-year.v1')`);
+  const visitYear = async (suffix, year) => {
+    await send('Page.navigate', { url: url + suffix });
+    await waitFor(`!!window.AtlasUI && !!window.HistoryCountries && state.year===${year}`);
+  };
+  await visitYear('?startup=first', 2026);
+  await evaluate(`setYear(1789)`);
+  assert.equal(await evaluate(`localStorage.getItem('atlas.last-year.v1')`), '1789');
+  await visitYear('?startup=return', 1789);
+  await evaluate(`slider.value=Math.round(tAt(-500)*SLIDER_STEPS);slider.dispatchEvent(new Event('input',{bubbles:true}))`);
+  assert.equal(await evaluate(`localStorage.getItem('atlas.last-year.v1')`), '-500', 'Scrubbing saves immediately');
+  await visitYear('?startup=bc', -500);
+  await visitYear('#1903', 1903);
+  const exactView = await evaluate(`HistoryDiscovery.urlHash()`);
+  await evaluate(`setYear(1453)`);
+  await visitYear(exactView, 1903);
+  await visitYear('#67000000bc', -67000000);
+  await visitYear('?startup=deep', -67000000);
+  await evaluate(`localStorage.setItem('atlas.last-year.v1','0')`);
+  await visitYear('?startup=invalid', 2026);
+  const blockedStorage = await send('Page.addScriptToEvaluateOnNewDocument', { source: `Object.defineProperty(window,'localStorage',{get(){throw Error('Storage blocked')}})` });
+  try {
+    await visitYear('?startup=blocked', 2026);
+    await evaluate(`setYear(1789)`);
+    assert.equal(await evaluate(`state.year`), 1789, 'Atlas remains usable with blocked storage');
+    await visitYear('#500bc', -500);
+  } finally {
+    await send('Page.removeScriptToEvaluateOnNewDocument', { identifier: blockedStorage.identifier });
+  }
+  console.log('Fresh visits, remembered years, immediate slider persistence, explicit links, exact views, deep time and blocked storage passed');
   assert.equal(errors.length, 0, JSON.stringify(errors));
   console.log('Mobile Search is visible and reachable at 390px; no runtime errors');
 } finally {

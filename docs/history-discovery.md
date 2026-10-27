@@ -192,7 +192,7 @@ remain in `tests/history-discovery.test.cjs`.
 Use **Choose era → Dinosaurs · On/Off** to include
 or exclude deep time. Off removes dinosaur eras, ticks, fossil entries and avatars
 from the timeline/map and restores the 300,000 BC–2026 human-history scale. If the
-selected year is in deep time, Off returns to the last human-history year (1453 on
+selected year is in deep time, Off returns to the last human-history year (2026 on
 a fresh direct dinosaur visit). The setting is retained by exact-view links and
 Back. An explicit dinosaur search result, era jump or deep-date entry enables the
 range again. Play respects the current enabled range.
@@ -200,7 +200,7 @@ Off also hides the dinosaur browser, exploration shortcuts and dinosaur choices
 in the era picker. The Choose era toggle remains available to restore them.
 
 Choose **More → Explore dinosaurs**, use **Choose era → Explore dinosaur
-eras**, select an era, or open **Explore dinosaurs** in the
+eras**, select an era, or open **Dinosaurs** in the
 sidebar, or visit `atlas/#dinosaurs`. Eight sourced records include Herrerasaurus,
 Stegosaurus, Diplodocus, Iguanodon bernissartensis, Spinosaurus, Velociraptor,
 Tyrannosaurus rex and Triceratops. Triassic/Jurassic/Cretaceous buttons focus
@@ -572,6 +572,12 @@ year inputs, playback, hashes, search navigation and comparisons cannot extend p
 2026 when a visitor's browser clock advances. The landing page states this range.
 Daily challenge rotation still follows the visitor's local calendar date; that is
 independent of the historical timeline's endpoint.
+
+Opening the atlas without a date in the URL restores the last year viewed in this
+browser, stored as `atlas.last-year.v1` in local storage. A first visit, invalid
+stored date or unavailable storage defaults to the current supported year, 2026.
+Explicit year, exact-view and discovery links take priority over the remembered
+date. Timeline changes, including scrubbing and playback, save the displayed year.
 
 The timeline's **World population** strip follows the selected year, or shows the
 left and right years separately during comparison. It always represents a global
