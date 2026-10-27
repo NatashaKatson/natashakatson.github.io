@@ -5,6 +5,19 @@
   const optionsContent = options.querySelector('.dock-options-content');
   optionsContent.append(document.querySelector('.discovery-tools'));
 
+  function positionOptions() {
+    if (!options.open) return;
+    const anchor = options.getBoundingClientRect();
+    const above = anchor.top - 28;
+    const below = innerHeight - anchor.bottom - 28;
+    const openBelow = above < Math.min(optionsContent.scrollHeight, 220) && below > above;
+    optionsContent.classList.toggle('opens-below', openBelow);
+    optionsContent.style.setProperty('--options-space', `${Math.max(0, openBelow ? below : above)}px`);
+  }
+  window.addEventListener('resize', positionOptions);
+  window.addEventListener('scroll', positionOptions, { passive: true });
+  options.addEventListener('click', () => requestAnimationFrame(positionOptions));
+
   function closeMenus(restoreFocus = false) {
     for (const trigger of triggers) {
       const panel = document.getElementById(trigger.dataset.atlasMenu);
@@ -23,7 +36,7 @@
     if (trigger.getAttribute('aria-expanded') === 'true') closeMenus();
     else openMenu(trigger);
   };
-  options.addEventListener('toggle', () => { if (options.open) closeMenus(); });
+  options.addEventListener('toggle', () => { if (options.open) { closeMenus(); positionOptions(); } });
   document.addEventListener('pointerdown', (event) => {
     if (!event.target.closest('.atlas-menu')) closeMenus();
     if (!options.contains(event.target)) options.open = false;

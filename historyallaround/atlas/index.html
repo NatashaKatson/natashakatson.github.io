@@ -898,11 +898,24 @@ const CATS={power:"Power & states",war:"War",ideas:"Science & exploration",cultu
 const ERAS=[[-252000000,"Dinosaurs"],[-66000000,"Before humans"],[-300000,"Prehistory"],[-3200,"Ancient"],[-800,"Classical"],[500,"Medieval"],[1500,"Early modern"],[1800,"Modern"]];
 // The atlas intentionally ends in 2026, independently of the browser clock.
 const NOW=2026,SLIDER_STEPS=3000000;
+const LAST_YEAR_KEY="atlas.last-year.v1";
+function readLastAtlasYear(){
+  try{
+    const year=Number(localStorage.getItem(LAST_YEAR_KEY));
+    if(Number.isInteger(year)&&year!==0&&year>=-252000000&&year<=NOW)return year;
+  }catch(_){}
+  return NOW;
+}
+let lastStoredYear;
+function rememberAtlasYear(year){
+  if(year===lastStoredYear)return;
+  try{localStorage.setItem(LAST_YEAR_KEY,String(year));lastStoredYear=year}catch(_){}
+}
 
 // piecewise scale: slider t (0..1) <-> year
 const SEG=[[0,-252000000],[.06,-201000000],[.12,-145000000],[.22,-66000000],[.24,-300000],[.316,-10000],[.3692,-3000],[.544,0],[.772,1500],[.8708,1800],[1,NOW]];
 const HISTORY_SEG=[[0,-300000],[.10,-10000],[.17,-3000],[.40,0],[.70,1500],[.83,1800],[1,NOW]];
-let dinosaurTimeline=true,lastHumanYear=1453;
+let dinosaurTimeline=true,lastHumanYear=NOW;
 function yearAt(t){const segments=dinosaurTimeline?SEG:HISTORY_SEG;for(let i=1;i<segments.length;i++){const[a,ya]=segments[i-1],[b,yb]=segments[i];if(t<=b)return ya+(yb-ya)*(t-a)/(b-a)}return NOW}
 function tAt(y){const segments=dinosaurTimeline?SEG:HISTORY_SEG;for(let i=1;i<segments.length;i++){const[a,ya]=segments[i-1],[b,yb]=segments[i];if(y<=yb)return a+(b-a)*(y-ya)/(yb-ya)}return 1}
 const SAME_TIME_YEARS=DiscoveryCore.sameTimeYears;
@@ -928,7 +941,7 @@ const ppl=PEOPLE.map((p,i)=>({id:"p"+i,kind:"person",name:p[0],born:p[1],died:p[
 const byId=Object.fromEntries([...ev,...ppl].map(x=>[x.id,x]));
 const wikiUrl=s=>"https://en.wikipedia.org/wiki/"+encodeURIComponent(s).replace(/%2C/g,",").replace(/%27/g,"'");
 
-const state={year:1453,mode:"globe",sel:null,borders:"history",cats:new Set(Object.keys(CATS)),playing:false,factI:0};
+const state={year:readLastAtlasYear(),mode:"globe",sel:null,borders:"history",cats:new Set(Object.keys(CATS)),playing:false,factI:0};
 let rot=[-25,-22,0],zoomK=1,flatT={x:0,y:0},userMoved=false,selectedPolity=null;
 
 // ---------- styles from tokens
@@ -1316,6 +1329,7 @@ function slow(){slowAt=performance.now();renderDetail();renderSide();const y=sta
   try{history.replaceState(null,"",window.HistoryDiscovery?.urlHash() || "#"+(y<0?Math.abs(y)+"bc":y))}catch(_){}}
 function update(fast){
   syncTimelineRange();
+  rememberAtlasYear(state.year);
   const y=state.year;const yr=document.getElementById("yr");
   yr.classList.toggle("deep-time-year",y<=-1000000);
   yr.innerHTML=y<=-1000000?`≈${(Math.abs(y)/1000000).toLocaleString("en-US",{maximumFractionDigits:0})}<small>million years ago</small>`:y<0?`${Math.abs(y).toLocaleString("en-US")}<small>BC</small>`:y<1000?`<small style="margin:0 .15em 0 0">AD</small>${y}`:`${y}`;
