@@ -1060,6 +1060,15 @@ function stars(){const w=Math.round(W*DPR),h=Math.round(H*DPR);if(starLayer&&sta
   const c=document.createElement("canvas");c.width=w;c.height=h;const x=c.getContext("2d");x.scale(DPR,DPR);x.fillStyle=C.star;
   for(const[sx,sy,sr,sa]of STARS){x.globalAlpha=sa;x.beginPath();x.arc(sx*W,sy*H,sr,0,7);x.fill()}return starLayer=c}
 let hits=[],polLabels=[];
+// Nearby events can share a reporting city. Keep each emoji selectable and connect
+// displaced markers to their recorded point rather than changing the coordinates.
+function eventMarkerPoint(x,y,placed){
+  for(const radius of [0,28,56,84,112])for(let step=0;step<(radius?8:1);step++){
+    const angle=step*Math.PI/4,p={x:x+radius*Math.cos(angle),y:y+radius*Math.sin(angle)};
+    if(p.x>=12&&p.x<=W-12&&p.y>=12&&p.y<=H-12&&placed.every(q=>Math.hypot(p.x-q.x,p.y-q.y)>=26))return p;
+  }
+  return {x,y};
+}
 function relevance(e,y,w){const d=DiscoveryCore.yearGap(e.start,e.end,y);return d<=w?1-0.55*(d/w):0}
 // Both are asked for several times per frame, so the last answer is kept until the year or filters change.
 let actMemo={},pplMemo={};
@@ -1145,13 +1154,15 @@ function renderScene(){
   for(const p of people){if(!visible(p.lon,p.lat))continue;const[x,y]=proj([p.lon,p.lat]);
     ctx.save();ctx.translate(x,y);ctx.rotate(Math.PI/4);ctx.strokeStyle=C.ink;ctx.lineWidth=1.4;ctx.fillStyle=C.paper;ctx.beginPath();ctx.rect(-3.5,-3.5,7,7);ctx.fill();ctx.stroke();ctx.restore();
     hits.push({x,y,id:p.id,label:p.name+" · "+fmtSpan(p.born,p.died,p.approx)})}
-  const act=activeEvents(),fossilMarks=[];
+  const act=activeEvents(),fossilMarks=[],emojiMarks=[];
   const labelled=polLabels.slice();
   act.slice().reverse().forEach(({e,r})=>{if(evidenceView&&e.indigenous?.evidence)return;const point=window.HistoryPaleogeography?.point(e,state.year)||[e.lon,e.lat];if(!visible(...point))return;let[x,y]=proj(point);
     if(e.cat==="dinosaurs"){
       const marker=window.HistoryDinosaurs?.drawMarker(e,[x,y],fossilMarks);
       if(marker){fossilMarks.push(marker);hits.push({...marker,id:e.id,label:e.title+" · "+fmtSpan(e.start,e.end,e.approx)+" · fossil region"})}return;
     }
+    const anchor={x,y},marker=eventMarkerPoint(x,y,emojiMarks);emojiMarks.push(marker);x=marker.x;y=marker.y;
+    if(x!==anchor.x||y!==anchor.y){ctx.save();ctx.strokeStyle=C['c-'+e.cat];ctx.globalAlpha=.55;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(anchor.x,anchor.y);ctx.lineTo(x,y);ctx.stroke();ctx.restore()}
     const emoji=AtlasEventEmojis.get(e);
     ctx.save();ctx.globalAlpha=.65+.35*r;ctx.fillStyle=C.ink;
     ctx.font='20px "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif';ctx.textAlign="center";ctx.textBaseline="middle";

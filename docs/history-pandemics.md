@@ -37,7 +37,9 @@ pandemic.
 Points represent affected cities, reporting sites or representative outbreak
 regions. They are not proven origins, continuously infected locations, spread
 routes or global affected-area polygons. Modern city coordinates do not imply
-modern national identity at the historical date.
+modern national identity at the historical date. Overlapping event symbols are
+spaced slightly apart, with connector lines back to their recorded points so
+each remains selectable.
 
 All entries use the normal inclusive interval/proximity logic. Thus a pandemic
 remains on the map throughout its recorded interval, as well as within the
