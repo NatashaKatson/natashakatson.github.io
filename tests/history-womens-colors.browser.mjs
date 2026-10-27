@@ -90,10 +90,21 @@ try {
   assert(await evaluate(`document.querySelector('.rights-map-years').textContent.includes('no score data')&&HistoryWomensColors.fillFor([],1500)({name:'Canada'})===WomensEmpowermentCore.missing`),'Earlier history is labelled unknown');
   await evaluate(`state.borders='today';setYear(2025);render();`);
   assert(await evaluate(`HistoryWomensColors.fillFor([],2025)({properties:{name:'Canada'}})==='#398565'`),'Today-border mode resolves basemap countries');
-  await evaluate(`setYear(1950);document.getElementById('play').click();`);
-  await waitFor('state.playing&&state.year>1950');
-  assert(await evaluate(`state.rightsColors&&document.querySelector('.rights-map-years').textContent.includes(String(state.year))`),'Playback keeps the country-color year synchronized');
-  await evaluate(`stopPlay();setYear(2025);`);
+  // Playback updates state before its queued draw. Check the legend when it is
+  // rendered, rather than reading it between those two animation callbacks.
+  await evaluate(`
+    setYear(1950);
+    globalThis.playbackColorSamples=[];
+    globalThis.playbackColorObserver=new MutationObserver(()=>{
+      if(state.playing&&state.year>1950)playbackColorSamples.push({year:state.year,label:document.querySelector('.rights-map-years').textContent});
+    });
+    playbackColorObserver.observe(document.querySelector('.rights-map-years'),{childList:true});
+    document.getElementById('play').click();
+  `);
+  await waitFor('playbackColorSamples.length>=3');
+  const playback=await evaluate(`stopPlay();playbackColorObserver.disconnect();({enabled:state.rightsColors,samples:playbackColorSamples})`);
+  assert(playback.enabled&&playback.samples.every(({year,label})=>label===year+' scores'),'Playback keeps the country-color year synchronized: '+JSON.stringify(playback.samples));
+  await evaluate(`setYear(2025);`);
   await evaluate(`document.querySelector('[data-atlas-menu="womensRightsPanel"]').click();document.getElementById('rightsColorsTab').click();document.getElementById('rightsCountrySearch').value='';HistoryWomensColors.render();`);
   for(const [width,height] of [[1440,1000],[1440,400],[900,400],[768,1024],[390,844],[320,500],[844,390]]){
     await send('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:1,mobile:width<=860});
