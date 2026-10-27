@@ -32,7 +32,7 @@ function audit() {
     check([0, 1].includes(approximate) && !!title && !!blurb && !!wiki, `e${i}: incomplete record`);
     check(Number.isFinite(lat) && Math.abs(lat) <= 90 && Number.isFinite(lon) && Math.abs(lon) <= 180, `e${i}: invalid point`);
     check(['eu', 'me', 'af', 'as', 'am', 'oc'].includes(region), `e${i}: unknown region`);
-    check(['power', 'war', 'ideas', 'culture', 'nature', 'fashion', 'pandemics', 'dinosaurs'].includes(category), `e${i}: unknown category`);
+    check(['power', 'war', 'ideas', 'culture', 'nature', 'fashion', 'pandemics', 'trade', 'migrations', 'climate', 'technology', 'dinosaurs'].includes(category), `e${i}: unknown category`);
     check(row[15] == null || typeof row[15] === 'boolean', `e${i}: invalid ongoing flag`);
     check(!row[15] || end === 2026, `e${i}: ongoing interval must reach the atlas cutoff`);
     check(!source || source.startsWith('https://'), `e${i}: invalid source URL`);
