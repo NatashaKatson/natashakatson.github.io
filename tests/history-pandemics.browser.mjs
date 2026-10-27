@@ -49,7 +49,7 @@ try {
     const chip=document.querySelector('#legend [data-k="pandemics"]');
     check(chip&&!chip.hidden&&chip.textContent.includes('Pandemics'),'Pandemics is a human-history filter');
     check(getComputedStyle(chip).getPropertyValue('--c-pandemics').trim()==='#317d83','Pandemic swatch has a real color');
-    check(document.getElementById('filterCount').textContent==='7','All seven human filters counted');
+    check(document.getElementById('filterCount').textContent==='11','All eleven human filters counted');
     for(const b of document.querySelectorAll('#legend [data-k]'))if(b!==chip&&b.getAttribute('aria-pressed')==='true')b.click();
     render();check(state.cats.size===1&&state.cats.has('pandemics'),'Pandemics can be isolated');
     check(document.getElementById('filterCount').textContent==='1','Isolated category count is one');

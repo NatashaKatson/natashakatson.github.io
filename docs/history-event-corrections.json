@@ -1,6 +1,6 @@
 {
   "reviewed": "2026-10-26",
-  "scope": "Review of all 324 event summaries and principal dates, including medical milestones, pandemic history, sourced Indigenous histories and archaeological evidence. Sourced archaeological periods and representative points do not certify territorial boundaries, continuous government or migration tracks. Pandemic intervals include qualified historical waves, ancient precursors and ongoing coverage through 2026.",
+  "scope": "Review of all 322 event summaries and principal dates, including medical milestones, pandemic history, sourced Indigenous histories and archaeological evidence. Sourced archaeological periods and representative points do not certify territorial boundaries, continuous government or migration tracks. Pandemic intervals include qualified historical waves, ancient precursors and ongoing coverage through 2026.",
   "events": [
     {
       "wiki": "Göbekli_Tepe",
@@ -47,13 +47,15 @@
     },
     {
       "wiki": "Bantu_expansion",
-      "start": -3000,
-      "title": "Early Bantu-speaking dispersals",
-      "blurb": "Dispersals of Bantu-speaking communities began in western Central Africa roughly 6,000–4,000 years ago and continued over many centuries. Farming and, in later phases, ironworking spread through different regions. The marker represents the broad Nigeria–Cameroon homeland, not a single departure site.",
-      "lat": 6,
+      "start": -4000,
+      "title": "Expansion of Bantu-speaking communities",
+      "blurb": "Language, archaeology and genetics trace a long, varied expansion from the Nigeria–Cameroon border region into central, eastern and southern Africa. The approximate interval summarises many generations; it is not a single migration, an end to later movement, or a claim about modern national borders. Arrows summarise directions of movement, not the journeys of every person or exact travel tracks.",
+      "lat": 5.5,
       "lon": 10,
       "source": "https://www.nature.com/articles/s41586-023-06770-6",
-      "reason": "The former 1000 BC date was too late for the beginning, the marker was far from the proposed homeland, and ironworking was conflated with the earliest dispersals."
+      "reason": "Extend the existing record to the qualified movement interval and preserve the original shared ID. The former 1000 BC date was too late for the beginning, the marker was far from the proposed homeland, and ironworking was conflated with the earliest dispersals.",
+      "end": 1000,
+      "approx": 1
     },
     {
       "wiki": "Diamond_Sutra",
@@ -864,8 +866,15 @@
     {
       "wiki": "Partition_of_India",
       "change": "source-check",
-      "source": "https://www.nam.ac.uk/explore/independence-and-partition-1947",
-      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+      "source": "https://www.nationalarchives.gov.uk/education/teaching-resources/partition-of-british-india/",
+      "reason": "Extend the existing record to the qualified movement interval and preserve the original shared ID. Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event.",
+      "start": 1947,
+      "end": 1948,
+      "approx": 1,
+      "title": "Displacement during the Partition of British India",
+      "blurb": "India and Pakistan become independent in 1947. Partition causes mass displacement and violence, including movements in both directions across Punjab. Lahore is a representative affected city. The paired arrows sketch cross-border directions; they do not reproduce the 1947 boundary or cover the separate migrations in Bengal. Arrows summarise directions of movement, not the journeys of every person or exact travel tracks.",
+      "lat": 31.55,
+      "lon": 74.34
     },
     {
       "wiki": "Proclamation_of_the_People's_Republic_of_China",
@@ -2646,19 +2655,6 @@
       "reason": "Source supports this period or milestone. Dates and representative map locations retain the qualifications in the description; route coordinates are hand-drawn schematic connections, not source GIS tracks."
     },
     {
-      "wiki": "Bantu_expansion",
-      "change": "addition",
-      "start": -4000,
-      "end": 1000,
-      "approx": 1,
-      "title": "Expansion of Bantu-speaking communities",
-      "blurb": "Language, archaeology and genetics trace a long, varied expansion from the Nigeria–Cameroon border region into central, eastern and southern Africa. The approximate interval summarises many generations; it is not a single migration or a claim about modern national borders. Arrows summarise directions of movement, not the journeys of every person or exact travel tracks.",
-      "lat": 5.5,
-      "lon": 10,
-      "source": "https://www.nature.com/articles/s41586-023-06770-6",
-      "reason": "Source supports this period or milestone. Dates and representative map locations retain the qualifications in the description; route coordinates are hand-drawn schematic connections, not source GIS tracks."
-    },
-    {
       "wiki": "Atlantic_slave_trade",
       "change": "addition",
       "start": 1501,
@@ -2698,19 +2694,6 @@
       "reason": "Source supports this period or milestone. Dates and representative map locations retain the qualifications in the description; route coordinates are hand-drawn schematic connections, not source GIS tracks."
     },
     {
-      "wiki": "Partition_of_India",
-      "change": "addition",
-      "start": 1947,
-      "end": 1948,
-      "approx": 1,
-      "title": "Displacement during the Partition of British India",
-      "blurb": "Partition causes mass displacement and violence, including movements in both directions across Punjab. Lahore is a representative affected city. The paired arrows sketch cross-border directions; they do not reproduce the 1947 boundary or cover the separate migrations in Bengal. Arrows summarise directions of movement, not the journeys of every person or exact travel tracks.",
-      "lat": 31.55,
-      "lon": 74.34,
-      "source": "https://www.nationalarchives.gov.uk/education/teaching-resources/partition-of-british-india/",
-      "reason": "Source supports this period or milestone. Dates and representative map locations retain the qualifications in the description; route coordinates are hand-drawn schematic connections, not source GIS tracks."
-    },
-    {
       "wiki": "Younger_Dryas",
       "change": "addition",
       "start": -10950,
@@ -2726,14 +2709,14 @@
     {
       "wiki": "8.2-kiloyear_event",
       "change": "addition",
-      "start": -6250,
-      "end": -6090,
+      "start": -6300,
+      "end": -6140,
       "approx": 1,
       "title": "The 8.2-thousand-year climate event",
       "blurb": "Ice cores and other climate archives record abrupt cooling around 8,200 years before AD 1950. This approximate 160-year viewing window summarises the Greenland event; other regions show different timing and effects. The marker locates a representative Greenland archive region.",
       "lat": 72,
       "lon": -42,
-      "source": "https://doi.org/10.1126/science.1123253",
+      "source": "https://www.bas.ac.uk/data/our-data/publication/the-8-2-ka-event-from-greenland-ice-cores/",
       "reason": "Source supports this period or milestone. Dates and representative map locations retain the qualifications in the description; route coordinates are hand-drawn schematic connections, not source GIS tracks."
     },
     {
@@ -2824,7 +2807,7 @@
       "blurb": "Jack Kilby demonstrates a working integrated circuit at Texas Instruments in Dallas in 1958. Noyce’s later planar silicon approach is a separate contribution. This marker records the prototype milestone, not the beginning of all commercial chip production.",
       "lat": 32.9,
       "lon": -96.75,
-      "source": "https://www.computerhistory.org/siliconengine/timeline/",
+      "source": "https://www.computerhistory.org/siliconengine/all-semiconductor-solid-circuit-is-demonstrated/",
       "reason": "Source supports this period or milestone. Dates and representative map locations retain the qualifications in the description; route coordinates are hand-drawn schematic connections, not source GIS tracks."
     },
     {

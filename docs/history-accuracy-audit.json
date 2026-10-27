@@ -1,11 +1,11 @@
 {
   "scope": "Every event summary and principal date reviewed against sources; all border files scanned for integrity. This is not an independent certification of every historical frontier.",
   "counts": {
-    "events": 303,
+    "events": 322,
     "people": 66,
-    "eventsWithSourceLinks": 303,
-    "sourceReviewedEvents": 303,
-    "correctedOrClarifiedEvents": 161,
+    "eventsWithSourceLinks": 322,
+    "sourceReviewedEvents": 322,
+    "correctedOrClarifiedEvents": 181,
     "borderChunks": 217,
     "borderFeatureInstances": 22190,
     "distinctBorderVersions": 13372,
@@ -336,13 +336,13 @@
     },
     {
       "id": "e21",
-      "title": "Early Bantu-speaking dispersals",
-      "start": -3000,
-      "end": -3000,
+      "title": "Expansion of Bantu-speaking communities",
+      "start": -4000,
+      "end": 1000,
       "approximate": true,
       "point": [
         10,
-        6
+        5.5
       ],
       "wiki": "Bantu_expansion",
       "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
@@ -2121,18 +2121,18 @@
     },
     {
       "id": "e140",
-      "title": "Independence and Partition of India",
+      "title": "Displacement during the Partition of British India",
       "start": 1947,
-      "end": 1947,
-      "approximate": false,
+      "end": 1948,
+      "approximate": true,
       "point": [
-        77.21,
-        28.61
+        74.34,
+        31.55
       ],
       "wiki": "Partition_of_India",
       "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
       "review": "source-check",
-      "source": "https://www.nam.ac.uk/explore/independence-and-partition-1947"
+      "source": "https://www.nationalarchives.gov.uk/education/teaching-resources/partition-of-british-india/"
     },
     {
       "id": "e141",
@@ -4563,6 +4563,291 @@
       "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
       "review": "addition",
       "source": "https://www.who.int/news-room/questions-and-answers/item/coronavirus-disease-covid-19/"
+    },
+    {
+      "id": "e303",
+      "title": "Silk Roads: Chang’an to Central Asia",
+      "start": -200,
+      "end": 1600,
+      "approximate": true,
+      "point": [
+        108.94,
+        34.26
+      ],
+      "wiki": "Silk_Roads",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://whc.unesco.org/en/list/1442/"
+    },
+    {
+      "id": "e304",
+      "title": "Trans-Saharan gold and salt networks",
+      "start": 700,
+      "end": 1400,
+      "approximate": true,
+      "point": [
+        -3.01,
+        16.77
+      ],
+      "wiki": "Trans-Saharan_trade",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://www.metmuseum.org/essays/the-trans-saharan-gold-trade-7th-14th-century"
+    },
+    {
+      "id": "e305",
+      "title": "Swahili ports and Indian Ocean trade",
+      "start": 1200,
+      "end": 1600,
+      "approximate": true,
+      "point": [
+        39.52,
+        -8.96
+      ],
+      "wiki": "Indian_Ocean_trade",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://whc.unesco.org/en/list/144/"
+    },
+    {
+      "id": "e306",
+      "title": "Hanseatic trading connections",
+      "start": 1200,
+      "end": 1600,
+      "approximate": true,
+      "point": [
+        10.69,
+        53.87
+      ],
+      "wiki": "Hanseatic_League",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://whc.unesco.org/en/list/272/"
+    },
+    {
+      "id": "e307",
+      "title": "Austronesian dispersal through island Southeast Asia",
+      "start": -2500,
+      "end": 500,
+      "approximate": true,
+      "point": [
+        121.7,
+        18.3
+      ],
+      "wiki": "Austronesian_expansion",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://ncca.gov.ph/about-culture-and-arts/in-focus/the-austronesian-expansion-a-reaction-to-paths-of-origin/"
+    },
+    {
+      "id": "e308",
+      "title": "Forced Atlantic crossings of enslaved Africans",
+      "start": 1501,
+      "end": 1866,
+      "approximate": true,
+      "point": [
+        13.23,
+        -8.84
+      ],
+      "wiki": "Atlantic_slave_trade",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://legacy.slavevoyages.org/assessment/estimates"
+    },
+    {
+      "id": "e309",
+      "title": "Cherokee forced removal: Trail of Tears",
+      "start": 1838,
+      "end": 1839,
+      "approximate": false,
+      "point": [
+        -84.75,
+        35.2
+      ],
+      "wiki": "Trail_of_Tears",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://americanindian.si.edu/nk360/removal-reflections"
+    },
+    {
+      "id": "e310",
+      "title": "The Great Migration of African Americans",
+      "start": 1910,
+      "end": 1970,
+      "approximate": false,
+      "point": [
+        -87.63,
+        41.88
+      ],
+      "wiki": "Great_Migration_(African_American)",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://www.archives.gov/research/african-americans/migrations/great-migration"
+    },
+    {
+      "id": "e311",
+      "title": "Younger Dryas cooling",
+      "start": -10950,
+      "end": -9750,
+      "approximate": true,
+      "point": [
+        -40,
+        72
+      ],
+      "wiki": "Younger_Dryas",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://www.usgs.gov/publications/stratigraphy-younger-dryas-chronozone-and-paleoenvironmental-implications-central-and"
+    },
+    {
+      "id": "e312",
+      "title": "The 8.2-thousand-year climate event",
+      "start": -6300,
+      "end": -6140,
+      "approximate": true,
+      "point": [
+        -42,
+        72
+      ],
+      "wiki": "8.2-kiloyear_event",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://www.bas.ac.uk/data/our-data/publication/the-8-2-ka-event-from-greenland-ice-cores/"
+    },
+    {
+      "id": "e313",
+      "title": "Late Antique Little Ice Age",
+      "start": 536,
+      "end": 660,
+      "approximate": true,
+      "point": [
+        9,
+        46.6
+      ],
+      "wiki": "Late_Antique_Little_Ice_Age",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://www.nature.com/articles/ngeo2652"
+    },
+    {
+      "id": "e314",
+      "title": "Little Ice Age",
+      "start": 1300,
+      "end": 1850,
+      "approximate": true,
+      "point": [
+        8,
+        46.55
+      ],
+      "wiki": "Little_Ice_Age",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://glossary.ametsoc.org/wiki/little-ice-age/"
+    },
+    {
+      "id": "e315",
+      "title": "The Year Without a Summer",
+      "start": 1816,
+      "end": 1816,
+      "approximate": false,
+      "point": [
+        6.15,
+        46.2
+      ],
+      "wiki": "Year_Without_a_Summer",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://www.nps.gov/articles/000/1816-the-year-without-summer.htm"
+    },
+    {
+      "id": "e316",
+      "title": "Dust Bowl drought and dust storms",
+      "start": 1930,
+      "end": 1939,
+      "approximate": true,
+      "point": [
+        -101.5,
+        36.7
+      ],
+      "wiki": "Dust_Bowl",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://www.nps.gov/features/shen/2019/ccc/lesson-1/timeline/1935-3.html"
+    },
+    {
+      "id": "e317",
+      "title": "Morse’s Washington–Baltimore telegraph demonstration",
+      "start": 1844,
+      "end": 1844,
+      "approximate": false,
+      "point": [
+        -77.01,
+        38.89
+      ],
+      "wiki": "Electrical_telegraph",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://www.loc.gov/collections/samuel-morse-papers/articles-and-essays/invention-of-the-telegraph/"
+    },
+    {
+      "id": "e318",
+      "title": "Point-contact transistor demonstrated",
+      "start": 1947,
+      "end": 1947,
+      "approximate": false,
+      "point": [
+        -74.41,
+        40.68
+      ],
+      "wiki": "Point-contact_transistor",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://www.computerhistory.org/siliconengine/timeline/"
+    },
+    {
+      "id": "e319",
+      "title": "Kilby demonstrates an integrated circuit",
+      "start": 1958,
+      "end": 1958,
+      "approximate": false,
+      "point": [
+        -96.75,
+        32.9
+      ],
+      "wiki": "Integrated_circuit",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://www.computerhistory.org/siliconengine/all-semiconductor-solid-circuit-is-demonstrated/"
+    },
+    {
+      "id": "e320",
+      "title": "ARPANET’s first host-to-host message",
+      "start": 1969,
+      "end": 1969,
+      "approximate": false,
+      "point": [
+        -118.44,
+        34.07
+      ],
+      "wiki": "ARPANET",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://www.darpa.mil/about/innovation-timeline/arpanet"
+    },
+    {
+      "id": "e321",
+      "title": "Intel 4004 microprocessor introduced",
+      "start": 1971,
+      "end": 1971,
+      "approximate": false,
+      "point": [
+        -121.96,
+        37.35
+      ],
+      "wiki": "Intel_4004",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://www.computerhistory.org/siliconengine/timeline/"
     }
   ]
 }

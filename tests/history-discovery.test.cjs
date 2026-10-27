@@ -218,10 +218,11 @@ test("recent years contain sourced events visible to the timeline", () => {
   const mapping = html.match(/^const ev=EVENTS.map.*$/m)[0];
   const active = html.slice(html.indexOf("function relevance("), html.indexOf("function alivePeople("));
   const context = vm.createContext({
-    state: { year: 2026, cats: new Set(["ideas", "culture", "nature", "war", "power", "fashion"]) },
+    state: { year: 2026 },
     DiscoveryCore: core,
     halfWin: () => core.sameTimeYears,
   });
+  vm.runInContext(html.match(/^const CATS=.*$/m)[0] + "\nstate.cats = new Set(Object.keys(CATS));", context);
   vm.runInContext(events + "\n" + mapping + "\n" + active, context);
   for (const year of [2023, 2024, 2025, 2026]) {
     context.state.year = year;

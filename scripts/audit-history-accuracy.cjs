@@ -24,6 +24,7 @@ function audit() {
   const evidence = new Map(reviews.map((r) => [r.wiki, r]));
   check(evidence.size === reviews.length, 'Duplicate event review keys');
   const eventKeys = new Set(events.map((row) => row[9]));
+  check(eventKeys.size === events.length, 'Duplicate event story keys');
   for (const review of reviews) check(eventKeys.has(review.wiki), `Review references an absent event: ${review.wiki}`);
   const eventRows = events.map((row, i) => {
     const [start, end, approximate, title, blurb, lat, lon, region, category, wiki, source] = row;

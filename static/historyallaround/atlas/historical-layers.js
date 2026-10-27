@@ -21,10 +21,13 @@
   note.className = 'route-map-note';
   note.innerHTML = '<summary>Schematic routes <span aria-hidden="true">ⓘ</span></summary><p>Solid lines show selected trade connections; dashed arrows show directions of migration. They summarise changing networks across the displayed interval. Select a line or marker for context and sources.</p>';
   document.getElementById('mapContext').append(note);
-
+  let lastKey = '';
   window.HistoryLayers = {
     render() {
       const years = HistoryDiscovery.displayedYears();
+      const key = years.join('/')+'|'+[...state.cats].join(',');
+      if(key === lastKey) return;
+      lastKey = key;
       section.hidden = years.every(year => year < -1000000);
       for (const cat of kinds) {
         const enabled = state.cats.has(cat);
