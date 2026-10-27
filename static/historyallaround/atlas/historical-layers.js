@@ -19,7 +19,7 @@
   };
   const note = document.createElement('details');
   note.className = 'route-map-note';
-  note.innerHTML = '<summary>Schematic routes <span aria-hidden="true">ⓘ</span></summary><p>Solid lines show selected trade connections; dashed arrows show directions of migration. They summarise changing networks across the displayed interval. Select a line or marker for context and sources.</p>';
+  note.innerHTML = '<summary>Schematic routes <span aria-hidden="true">ⓘ</span></summary><p>Solid lines show selected trade connections; dashed arrows show directions of migration. Each route summarises its full recorded interval. Select a line or marker for dates, context and sources.</p>';
   document.getElementById('mapContext').append(note);
   let lastKey = '';
   window.HistoryLayers = {

@@ -4,7 +4,8 @@ The **Pandemics** filter contains 32 sourced records across the human timeline.
 Twenty-one are additions; eleven existing pandemic records were recategorised.
 Smallpox eradication and vaccine development retain their original categories.
 Existing IDs and record order are preserved; additions follow the original 282
-records. The exported atlas now contains 303 events and 66 people.
+records. The thematic-layer follow-up brings the exported atlas to 322 events
+and 66 people; the pandemic inventory remains 32 records.
 
 “All pandemics” has no universally agreed historical catalogue. This inventory
 covers the standard plague, cholera and influenza sequences, HIV/AIDS and

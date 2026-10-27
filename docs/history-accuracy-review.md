@@ -1,5 +1,12 @@
 # Atlas accuracy review — 23 October 2026
 
+Thematic-layer follow-up, 26 October: 19 additional sourced events bring the
+atlas to **322 events**. Existing Bantu and Partition records now describe
+qualified movement intervals; 19 existing technology milestones and Tambora
+have dedicated categories. Ten schematic networks connect associated places.
+Their geometry is hand-drawn, with source links and full-interval qualifications.
+See [the layer inventory](history-layers.md).
+
 Pandemic follow-up, 26 October: 21 additional sourced records bring the atlas to
 **303 events**. The dedicated Pandemics category contains 32 records, including
 qualified ancient epidemics, all seven cholera pandemics, plague eras, early

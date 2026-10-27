@@ -102,6 +102,19 @@ locations, not animated spread or affected-area boundaries. See
 
 ## Curated discoveries and focused depth
 
+The **Layers** menu now includes **Trade routes**, **Migrations**, **Plagues &
+pandemics**, **Climate events** and **Technology**. These controls share their
+state with the event filters, search, timeline marks and saved views. Each shows
+the number of recorded events in the displayed period; comparisons show separate
+left/right counts. **Explore** enables the layer and visits the nearest recorded
+period without resetting the other category choices.
+
+Ten schematic networks supply selectable trade lines and migration arrows.
+Climate and technology records use dated location markers. Dates and category
+choices apply independently on both comparison maps. Source-linked details
+explain the representative coordinates and the route's full recorded interval.
+See [the layer inventory and verification](history-layers.md).
+
 **Curated discoveries** introduces an authored Cleopatra tour with five stops:
 Alexandria, Chang’an, Meroë, Monte Albán and Rome. Each stop focuses the existing
 map on its coordinate and year, with source links, Previous/Next and direct stop
