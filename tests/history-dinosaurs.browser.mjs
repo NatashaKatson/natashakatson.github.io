@@ -27,7 +27,7 @@ async function navigate(hash) {
   await send('Page.navigate', { url: 'about:blank' });
   await send('Page.navigate', { url: url + hash });
   for (let i = 0; i < 100; i++) {
-    if (await evaluate('!!window.HistoryDinosaurs')) return;
+    if (await evaluate('!!window.HistoryDinosaurs && !!window.AtlasUI')) return;
     await new Promise(r => setTimeout(r, 100));
   }
   throw Error('Atlas failed to load');
