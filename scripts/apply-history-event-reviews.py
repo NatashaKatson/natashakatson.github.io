@@ -10,7 +10,7 @@ reviews = json.loads((ROOT / 'docs/history-event-corrections.json').read_text())
 changes = {row['wiki']: row for row in reviews}
 if len(changes) != len(reviews):
     raise ValueError('Duplicate review keys')
-fields = {'start': 0, 'end': 1, 'approx': 2, 'title': 3, 'blurb': 4, 'lat': 5, 'lon': 6, 'source': 10}
+fields = {'start': 0, 'end': 1, 'approx': 2, 'title': 3, 'blurb': 4, 'lat': 5, 'lon': 6, 'source': 10, 'ongoing': 15}
 seen = set()
 
 

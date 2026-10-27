@@ -18,7 +18,7 @@ From the repository root:
 node prototypes/atlas-ui/build-preview.cjs
 ```
 
-Edit `static/historyallaround/atlas/event-emojis.js` for shared icon mappings. Date-context presentation now lives in the production renderer and `DiscoveryCore.isHistoricalContext`, so the preview inherits it directly. Scripts, styles, images, and compressed copies of the original map/search datasets are bundled so the preview can open from disk without a server. Optional fonts and the existing support button use their original external services.
+Edit `static/historyallaround/atlas/event-emojis.js` for shared icon mappings. Date-context presentation now lives in the production renderer and `DiscoveryCore.isHistoricalContext`, so the preview inherits it directly. Scripts, styles, images, and compressed copies of the original map/search datasets are bundled so the preview can open from disk without a server. Optional fonts use an external service. The support button is a regular link and renders offline.
 
 The bundled D3 7.8.5 and TopoJSON client 3.1.0 are the same versions as the atlas. Licenses are retained in `vendor/` and embedded in the preview. All event sources and map attribution remain in the original UI.
 

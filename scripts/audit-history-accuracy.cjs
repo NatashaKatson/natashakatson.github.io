@@ -32,11 +32,13 @@ function audit() {
     check([0, 1].includes(approximate) && !!title && !!blurb && !!wiki, `e${i}: incomplete record`);
     check(Number.isFinite(lat) && Math.abs(lat) <= 90 && Number.isFinite(lon) && Math.abs(lon) <= 180, `e${i}: invalid point`);
     check(['eu', 'me', 'af', 'as', 'am', 'oc'].includes(region), `e${i}: unknown region`);
-    check(['power', 'war', 'ideas', 'culture', 'nature', 'fashion', 'dinosaurs'].includes(category), `e${i}: unknown category`);
+    check(['power', 'war', 'ideas', 'culture', 'nature', 'fashion', 'pandemics', 'dinosaurs'].includes(category), `e${i}: unknown category`);
+    check(row[15] == null || typeof row[15] === 'boolean', `e${i}: invalid ongoing flag`);
+    check(!row[15] || end === 2026, `e${i}: ongoing interval must reach the atlas cutoff`);
     check(!source || source.startsWith('https://'), `e${i}: invalid source URL`);
     const review = evidence.get(wiki);
     if (review) {
-      const fields = { start: 0, end: 1, approx: 2, title: 3, blurb: 4, lat: 5, lon: 6, source: 10 };
+      const fields = { start: 0, end: 1, approx: 2, title: 3, blurb: 4, lat: 5, lon: 6, source: 10, ongoing: 15 };
       for (const [field, index] of Object.entries(fields))
         if (field in review) check(row[index] === review[field], `e${i}: reviewed ${field} was not applied`);
     }

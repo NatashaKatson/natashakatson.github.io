@@ -9,7 +9,7 @@
   };
   const localRecords = core.prepareSearch([
     ...ev.map((r) => ({ kind: r.cat === "dinosaurs" ? "dinosaur" : "event", title: r.title, aliases: [r.wiki.replaceAll("_", " "), ...(r.aliases || []), ...(r.indigenous?.aliases || []), ...(r.cat === "dinosaurs" ? ["dinosaur", "dinosaurs"] : []), ...(r.wiki === "Tyrannosaurus" ? ["T. rex", "T rex", "Tyrannosaurus rex"] : [])],
-      description: r.blurb, start: r.start, end: r.end, approx: r.approx,
+      description: r.blurb, start: r.start, end: r.end, approx: r.approx, ongoing: r.ongoing,
       lon: r.lon, lat: r.lat, recordId: r.id })),
     ...ppl.map((r) => ({ kind: "person", title: r.name, aliases: [r.wiki.replaceAll("_", " ")],
       description: r.role, start: r.born, end: r.died, approx: r.approx,
@@ -51,7 +51,7 @@
 
   function dateLabel(r) {
     if (r.kind === "place") return `Present-day place · explore ${fmt(state.year)}`;
-    const span = fmtSpan(r.start, r.end === r.start ? null : r.end, r.approx);
+    const span = fmtEvent(r);
     return r.kind === "state" ? `Mapped ${span} · open ${fmt(r.year)}` : span;
   }
   function renderResults() {

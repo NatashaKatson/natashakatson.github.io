@@ -1,11 +1,11 @@
 {
   "scope": "Every event summary and principal date reviewed against sources; all border files scanned for integrity. This is not an independent certification of every historical frontier.",
   "counts": {
-    "events": 282,
+    "events": 303,
     "people": 66,
-    "eventsWithSourceLinks": 282,
-    "sourceReviewedEvents": 282,
-    "correctedOrClarifiedEvents": 140,
+    "eventsWithSourceLinks": 303,
+    "sourceReviewedEvents": 303,
+    "correctedOrClarifiedEvents": 161,
     "borderChunks": 217,
     "borderFeatureInstances": 22190,
     "distinctBorderVersions": 13372,
@@ -756,10 +756,10 @@
     },
     {
       "id": "e49",
-      "title": "Plague of Justinian",
+      "title": "First plague pandemic (Justinian and later waves)",
       "start": 541,
-      "end": 541,
-      "approximate": false,
+      "end": 750,
+      "approximate": true,
       "point": [
         28.96,
         41
@@ -767,7 +767,7 @@
       "wiki": "Plague_of_Justinian",
       "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
       "review": "correction or clarification",
-      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11433773/"
+      "source": "https://www.shh.mpg.de/1332424/plague-pandemic"
     },
     {
       "id": "e50",
@@ -4116,10 +4116,10 @@
     },
     {
       "id": "e273",
-      "title": "First cholera pandemic begins",
+      "title": "First cholera pandemic",
       "start": 1817,
-      "end": 1817,
-      "approximate": false,
+      "end": 1823,
+      "approximate": true,
       "point": [
         88.36,
         22.57
@@ -4127,22 +4127,22 @@
       "wiki": "First_cholera_pandemic",
       "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
       "review": "source-check",
-      "source": "https://wwwnc.cdc.gov/eid/article/17/11/11-1109_article"
+      "source": "https://applications.emro.who.int/docs/em_rc15_8_en.pdf"
     },
     {
       "id": "e274",
-      "title": "Third plague pandemic: Hong Kong outbreak",
-      "start": 1894,
-      "end": 1894,
-      "approximate": false,
+      "title": "Third plague pandemic",
+      "start": 1855,
+      "end": 1960,
+      "approximate": true,
       "point": [
-        114.16,
-        22.28
+        102.72,
+        25.04
       ],
       "wiki": "Third_plague_pandemic",
       "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
       "review": "source-check",
-      "source": "https://www.pasteur.fr/en/whats-new/latest-news/news/alexandre-yersin-man-who-discovered-bacterium-responsible-plague"
+      "source": "https://doi.org/10.3390/microorganisms12091802"
     },
     {
       "id": "e275",
@@ -4176,9 +4176,9 @@
     },
     {
       "id": "e277",
-      "title": "Seventh cholera pandemic begins",
+      "title": "Seventh cholera pandemic (El Tor)",
       "start": 1961,
-      "end": 1961,
+      "end": 2026,
       "approximate": false,
       "point": [
         119.43,
@@ -4187,7 +4187,7 @@
       "wiki": "Seventh_cholera_pandemic",
       "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
       "review": "source-check",
-      "source": "https://iris.who.int/bitstream/10665/66485/1/"
+      "source": "https://www.who.int/news-room/fact-sheets/detail/cholera"
     },
     {
       "id": "e278",
@@ -4206,9 +4206,9 @@
     },
     {
       "id": "e279",
-      "title": "HIV/AIDS pandemic: first recognised AIDS reports",
+      "title": "HIV/AIDS pandemic (recognised in 1981)",
       "start": 1981,
-      "end": 1981,
+      "end": 2026,
       "approximate": false,
       "point": [
         -118.24,
@@ -4248,6 +4248,321 @@
       "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
       "review": "source-check",
       "source": "https://www.who.int/news-room/spotlight/history-of-vaccination/a-brief-history-of-vaccination"
+    },
+    {
+      "id": "e282",
+      "title": "Antonine plague",
+      "start": 165,
+      "end": 180,
+      "approximate": true,
+      "point": [
+        12.5,
+        41.9
+      ],
+      "wiki": "Antonine_Plague",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://www.sciencedirect.com/science/article/pii/S2352409X22001298"
+    },
+    {
+      "id": "e283",
+      "title": "Plague of Cyprian",
+      "start": 249,
+      "end": 262,
+      "approximate": true,
+      "point": [
+        10.32,
+        36.85
+      ],
+      "wiki": "Plague_of_Cyprian",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://www.sciencedirect.com/science/article/pii/S2352409X22001298"
+    },
+    {
+      "id": "e284",
+      "title": "Second plague pandemic (Black Death and later waves)",
+      "start": 1346,
+      "end": 1844,
+      "approximate": true,
+      "point": [
+        28.98,
+        41.01
+      ],
+      "wiki": "Second_plague_pandemic",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://www.etd.ceu.edu/2016/ganea_sabina.pdf"
+    },
+    {
+      "id": "e285",
+      "title": "1510 influenza pandemic",
+      "start": 1510,
+      "end": 1510,
+      "approximate": true,
+      "point": [
+        2.35,
+        48.86
+      ],
+      "wiki": "1510_influenza_pandemic",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3106245/"
+    },
+    {
+      "id": "e286",
+      "title": "Smallpox spreads in the Americas",
+      "start": 1518,
+      "end": 1527,
+      "approximate": true,
+      "point": [
+        -69.93,
+        18.49
+      ],
+      "wiki": "History_of_smallpox",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/10230264/"
+    },
+    {
+      "id": "e287",
+      "title": "1557–1560 influenza pandemic",
+      "start": 1557,
+      "end": 1560,
+      "approximate": true,
+      "point": [
+        -0.13,
+        51.51
+      ],
+      "wiki": "1557_influenza_pandemic",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2720801/"
+    },
+    {
+      "id": "e288",
+      "title": "1580 influenza pandemic",
+      "start": 1580,
+      "end": 1580,
+      "approximate": true,
+      "point": [
+        12.5,
+        41.9
+      ],
+      "wiki": "1580_influenza_pandemic",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2720801/"
+    },
+    {
+      "id": "e289",
+      "title": "1729–1733 influenza pandemic waves",
+      "start": 1729,
+      "end": 1733,
+      "approximate": true,
+      "point": [
+        37.62,
+        55.75
+      ],
+      "wiki": "1729_influenza_pandemic",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2720801/"
+    },
+    {
+      "id": "e290",
+      "title": "1761–1762 influenza pandemic",
+      "start": 1761,
+      "end": 1762,
+      "approximate": true,
+      "point": [
+        -0.13,
+        51.51
+      ],
+      "wiki": "1761_influenza_pandemic",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2720801/"
+    },
+    {
+      "id": "e291",
+      "title": "1780–1782 influenza pandemic",
+      "start": 1780,
+      "end": 1782,
+      "approximate": true,
+      "point": [
+        30.32,
+        59.93
+      ],
+      "wiki": "1781_influenza_pandemic",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2720801/"
+    },
+    {
+      "id": "e292",
+      "title": "1788–1790 influenza pandemic",
+      "start": 1788,
+      "end": 1790,
+      "approximate": true,
+      "point": [
+        -0.13,
+        51.51
+      ],
+      "wiki": "1788_influenza_pandemic",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2720801/"
+    },
+    {
+      "id": "e293",
+      "title": "1830–1837 influenza pandemic waves",
+      "start": 1830,
+      "end": 1837,
+      "approximate": true,
+      "point": [
+        30.32,
+        59.93
+      ],
+      "wiki": "1830_influenza_pandemic",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2720801/"
+    },
+    {
+      "id": "e294",
+      "title": "1847–1848 influenza pandemic (classification debated)",
+      "start": 1847,
+      "end": 1848,
+      "approximate": true,
+      "point": [
+        -0.13,
+        51.51
+      ],
+      "wiki": "1847_influenza_pandemic",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3246071/"
+    },
+    {
+      "id": "e295",
+      "title": "1889–1893 pandemic (Russian flu)",
+      "start": 1889,
+      "end": 1893,
+      "approximate": true,
+      "point": [
+        30.32,
+        59.93
+      ],
+      "wiki": "1889–1890_pandemic",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8601188/"
+    },
+    {
+      "id": "e296",
+      "title": "1977–1978 H1N1 resurgence (age-restricted pandemic)",
+      "start": 1977,
+      "end": 1978,
+      "approximate": false,
+      "point": [
+        116.4,
+        39.9
+      ],
+      "wiki": "1977_Russian_flu",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://wwwnc.cdc.gov/eid/article/12/1/05-1254_article"
+    },
+    {
+      "id": "e297",
+      "title": "Second cholera pandemic",
+      "start": 1829,
+      "end": 1850,
+      "approximate": true,
+      "point": [
+        30.32,
+        59.93
+      ],
+      "wiki": "Second_cholera_pandemic",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://applications.emro.who.int/docs/em_rc15_8_en.pdf"
+    },
+    {
+      "id": "e298",
+      "title": "Third cholera pandemic",
+      "start": 1852,
+      "end": 1863,
+      "approximate": true,
+      "point": [
+        -0.13,
+        51.51
+      ],
+      "wiki": "Third_cholera_pandemic",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://applications.emro.who.int/docs/em_rc15_8_en.pdf"
+    },
+    {
+      "id": "e299",
+      "title": "Fourth cholera pandemic",
+      "start": 1863,
+      "end": 1875,
+      "approximate": true,
+      "point": [
+        39.83,
+        21.42
+      ],
+      "wiki": "Fourth_cholera_pandemic",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://applications.emro.who.int/docs/em_rc15_8_en.pdf"
+    },
+    {
+      "id": "e300",
+      "title": "Fifth cholera pandemic",
+      "start": 1881,
+      "end": 1896,
+      "approximate": true,
+      "point": [
+        9.99,
+        53.55
+      ],
+      "wiki": "Fifth_cholera_pandemic",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://applications.emro.who.int/docs/em_rc15_8_en.pdf"
+    },
+    {
+      "id": "e301",
+      "title": "Sixth cholera pandemic",
+      "start": 1899,
+      "end": 1923,
+      "approximate": true,
+      "point": [
+        14.27,
+        40.85
+      ],
+      "wiki": "Sixth_cholera_pandemic",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://applications.emro.who.int/docs/em_rc15_8_en.pdf"
+    },
+    {
+      "id": "e302",
+      "title": "COVID-19 pandemic",
+      "start": 2019,
+      "end": 2026,
+      "approximate": false,
+      "point": [
+        114.31,
+        30.59
+      ],
+      "wiki": "COVID-19",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://www.who.int/news-room/questions-and-answers/item/coronavirus-disease-covid-19/"
     }
   ]
 }

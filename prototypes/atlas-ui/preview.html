@@ -981,17 +981,14 @@ header .seg{padding:2px;background:#f0ebe3;border:1px solid rgba(45,36,32,.1);bo
 .atlas-footer-note { margin: 0; font-size: 11px; }
 .atlas-footer-support { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
 .atlas-footer-support > span { font-size: 10px; }
-.atlas-footer-support .bmc-btn-container { margin: 0; line-height: 1; }
-.atlas-footer-support .bmc-btn {
-  min-width: 0 !important; min-height: 0 !important; height: 38px !important;
-  padding: 0 13px !important; border-radius: 5px !important; font-size: 21px !important;
-  line-height: 38px !important; box-shadow: none !important;
-  display: inline-flex !important; align-items: center !important;
-  gap: 6px !important; width: max-content !important; white-space: nowrap !important;
+.atlas-footer .atlas-support-link {
+  display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+  min-height: 44px; padding: 0 14px; border: 1px solid #e0bd00; border-radius: 5px;
+  background: #ffdd00; color: #1d1b17; font-family: var(--display);
+  font-size: 14px; font-weight: 600; line-height: 1.2; text-decoration: none; white-space: nowrap;
 }
-.atlas-footer-support .bmc-btn svg { height: 23px !important; width: 20px !important; margin-right: 6px !important; }
-.atlas-footer-support .bmc-btn-text { font-size: 21px !important; line-height: 1 !important; width: auto !important; margin: 0 !important; flex: 0 0 auto !important; }
-.atlas-footer-support .bmc-btn .bmc-btn-emoji { font-size: 21px !important; line-height: 1 !important; }
+.atlas-footer .atlas-support-link:hover { background: #f4d300; }
+.atlas-support-link > span { font-size: 20px; line-height: 1; }
 .atlas-footer-sources { margin-top: 9px; }
 .atlas-footer-sources summary { width: fit-content; cursor: pointer; font-size: 10px; color: #756c65; padding: 2px 0; }
 .atlas-footer-source-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px 30px; padding-top: 10px; }
@@ -1012,11 +1009,11 @@ header .seg{padding:2px;background:#f0ebe3;border:1px solid rgba(45,36,32,.1);bo
   .atlas-footer { padding: 14px; }
   .atlas-footer-main { gap: 12px; }
   .atlas-footer .atlas-footer-name { font-size: 14px; }
-  .atlas-footer-support .bmc-btn { padding: 0 10px !important; font-size: 19px !important; }
-  .atlas-footer-support .bmc-btn-text, .atlas-footer-support .bmc-btn .bmc-btn-emoji { font-size: 19px !important; }
+  .atlas-footer .atlas-support-link { padding: 0 10px; font-size: 13px; }
 }
 </style>
 <style>/* Globe-first workspace: compact controls, contextual filters and one time dock. */
+:root, .stage { --c-pandemics: #317d83; }
 .stage .readout {
   top: 22px; left: 24px; width: auto; max-width: calc(100% - 240px);
   padding: 0; border: 0; background: transparent; container-type: normal;
@@ -1334,8 +1331,7 @@ header .seg{padding:2px;background:#f0ebe3;border:1px solid rgba(45,36,32,.1);bo
       <p class="atlas-footer-note">A world of stories, from dinosaur fossils to 2026.</p>
       <div class="atlas-footer-support" aria-label="Support the atlas">
         <span>Help the atlas grow</span>
-        <script defer type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="natashakatson" data-color="#FFDD00" data-emoji="☕" data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff"></script>
-        <noscript><a href="https://www.buymeacoffee.com/natashakatson" target="_blank" rel="noopener">☕ Buy me a coffee</a></noscript>
+        <a class="atlas-support-link" href="https://www.buymeacoffee.com/natashakatson" target="_blank" rel="noopener"><span aria-hidden="true">☕</span> Buy me a coffee</a>
       </div>
     </div>
     <details class="atlas-footer-sources">
@@ -1700,7 +1696,7 @@ window.fetch = async function(input, init) {
     Molecular_Structure_of_Nucleic_Acids: '🧬', Ignaz_Semmelweis: '🧼', Antiseptic_surgery: '🧼',
     Eradication_of_smallpox: '🌍', 'RTS,S': '💉',
   };
-  const categories = { power: '👑', war: '⚔️', ideas: '🔭', culture: '🎨', nature: '🌿', fashion: '🧵' };
+  const categories = { power: '👑', war: '⚔️', ideas: '🔭', culture: '🎨', nature: '🌿', fashion: '🧵', pandemics: '🦠' };
   window.AtlasEventEmojis = {
     icon(event) {
       const emoji = this.get(event);
@@ -1835,9 +1831,9 @@ window.fetch = async function(input, init) {
 });
 </script>
 <script>
-// [start, end|null, approx(0/1), title, blurb, lat, lon, region, category, wikiSlug, source?, fossilRegion?, locationSource?, indigenousContext?, aliases?]
+// [start, end|null, approx(0/1), title, blurb, lat, lon, region, category, wikiSlug, source?, fossilRegion?, locationSource?, indigenousContext?, aliases?, ongoing?]
 // regions: eu Europe, me Middle East & North Africa, af Sub-Saharan Africa, as Asia, am Americas, oc Oceania
-// categories: power, war, ideas, culture, nature, fashion
+// categories: power, war, ideas, culture, nature, fashion, pandemics, dinosaurs
 const EVENTS = [
 [-300000,null,1,"Early Homo sapiens at Jebel Irhoud","Fossils at Jebel Irhoud show our species living in North Africa about 300,000 years ago.",31.86,-8.87,"me","nature","Jebel_Irhoud","https://doi.org/10.1038/nature22336"],
 [-75000,null,1,"Blombos Cave engravings","Engraved ochre from Blombos Cave, dated to about 75,000 years ago, preserves deliberately scratched geometric patterns. This entry concerns engravings, rather than the separate evidence for a roughly 73,000-year-old drawing.",-34.41,21.22,"af","culture","Blombos_Cave","https://doi.org/10.1126/science.1067575"],
@@ -1888,7 +1884,7 @@ const EVENTS = [
 [476,null,0,"Western Roman Empire ends","The last western emperor is deposed. The eastern half lasts another thousand years.",44.42,12.2,"eu","power","Fall_of_the_Western_Roman_Empire","https://www.metmuseum.org/it/toah/ht/05/eust"],
 [499,null,0,"Aryabhata's astronomy","An Indian mathematician argues that the Earth spins on its axis.",25.6,85.1,"as","ideas","Aryabhatiya","https://mathshistory.st-andrews.ac.uk/Biographies//Aryabhata_I/"],
 [537,null,0,"Hagia Sophia completed","Justinian's Hagia Sophia is completed at Constantinople in 537. Its vast dome makes it a landmark of Byzantine architecture.",41.01,28.98,"eu","culture","Hagia_Sophia","https://whc.unesco.org/en/list/356/"],
-[541,null,0,"Plague of Justinian","The first plague pandemic is recorded in Egypt in 541 and reaches Constantinople in 542. The marker locates Constantinople, an affected capital, rather than the first outbreak site. This was not the earliest existence of the plague bacterium.",41.0,28.96,"eu","nature","Plague_of_Justinian","https://pmc.ncbi.nlm.nih.gov/articles/PMC11433773/",null,null,null,["pandemics","pandemic","first plague pandemic","bubonic plague"]],
+[541,750,1,"First plague pandemic (Justinian and later waves)","Plague is recorded in Egypt in 541 and reaches Constantinople in 542. Further outbreaks recur around the Mediterranean and in Europe until about 750. The interval groups successive waves, not continuous infection everywhere. Constantinople represents an affected capital, not a proven origin.",41,28.96,"eu","pandemics","Plague_of_Justinian","https://www.shh.mpg.de/1332424/plague-pandemic",null,null,null,["pandemics","pandemic","first plague pandemic","bubonic plague"]],
 [618,null,0,"Tang dynasty","The Tang dynasty begins in 618, with its capital at Chang'an, one of the great cities of the medieval world.",34.27,108.95,"as","power","Tang_dynasty","https://resources.metmuseum.org/resources/metpublications/pdf/The_Metropolitan_Museum_of_Art_Bulletin_v_23_no_9_May_1965.pdf"],
 [622,null,0,"The Hijra","Muhammad moves to Medina: year one of the Islamic calendar.",24.47,39.61,"me","culture","Hijrah","https://islam.museum/en/journey/hijra-route/"],
 [711,null,0,"Umayyad conquest of Iberia","Muslim forces cross into Spain, beginning nearly 800 years of al-Andalus.",36.5,-5.6,"eu","war","Umayyad_conquest_of_Hispania","https://www.metmuseum.org/-/media/files/learn/for%20educators/publications%20for%20educators/islamic%20teacher%20resource/unit5.pdf"],
@@ -1915,7 +1911,7 @@ const EVENTS = [
 [1324,null,0,"Mansa Musa's pilgrimage","Mali’s ruler passes through Cairo on pilgrimage in 1324. Historical accounts associate his lavish distribution of gold with a fall in gold’s value in Egypt.",30.04,31.24,"af","power","Mansa_Musa","https://www.metmuseum.org/de/essays/the-trans-saharan-gold-trade-7th-14th-century"],
 [1325,null,1,"Tenochtitlan founded","Mexica tradition dates the founding of Tenochtitlan on an island in Lake Texcoco to 1325. The precise foundation date is debated.",19.43,-99.13,"am","power","Tenochtitlan","https://www.gob.mx/cultura/articulos/el-codice-boturini-del-peregrinaje-de-los-aztecas-a-la-fundacion-de-mexico-tenochtitlan",null,null,{"mapLabel":"Mexica · Tenochtitlan","aliases":["Indigenous","North America","Mexico","Mexica","Aztec"]}],
 [1331,null,1,"Ibn Battuta visits Kilwa","He calls it one of the most beautiful cities in the world.",-8.96,39.51,"af","ideas","Kilwa_Kisiwani","https://whc.unesco.org/pg.cfm?CID=31&ID_SITE=144&l=en"],
-[1347,1351,0,"Black Death","Plague devastates Europe in 1347–1351, with mortality varying greatly between communities. The marker represents Messina, one of the Mediterranean ports affected in 1347, rather than the full extent of the epidemic.",38.19,15.55,"eu","nature","Black_Death","https://www.cambridge.org/core/services/aop-cambridge-core/content/view/EA9466FE5164149AD4350B7D38222A5C/S0043887121000034a.pdf/pandemics-and-political-development-the-electoral-legacy-of-the-black-death-in-germany.pdf",null,null,null,["pandemics","pandemic","second plague pandemic","bubonic plague"]],
+[1347,1351,0,"Black Death","Plague devastates Europe in 1347–1351, with mortality varying greatly between communities. The marker represents Messina, one of the Mediterranean ports affected in 1347, rather than the full extent of the epidemic.",38.19,15.55,"eu","pandemics","Black_Death","https://www.cambridge.org/core/services/aop-cambridge-core/content/view/EA9466FE5164149AD4350B7D38222A5C/S0043887121000034a.pdf/pandemics-and-political-development-the-electoral-legacy-of-the-black-death-in-germany.pdf",null,null,null,["pandemics","pandemic","second plague pandemic","bubonic plague"]],
 [1368,null,0,"Ming dynasty","A peasant rebel leader drives out the Mongols and founds the Ming.",32.06,118.8,"as","power","Ming_dynasty","https://www.getty.edu/publications/resources/virtuallibrary/0892365625.pdf"],
 [1405,1433,0,"Zheng He's voyages","Huge Chinese fleets sail as far as East Africa.",11.25,75.78,"as","ideas","Ming_treasure_voyages","https://www.metmuseum.org/ja/toah/ht/08/eac"],
 [1438,null,1,"Inca Empire expands","Around the fifteenth century, Inca rulers expand their state from Cusco across the Andes. The conventional date 1438 is associated with Pachacuti's rise, rather than a precisely dated beginning of all Inca expansion.",-13.53,-71.97,"am","power","Inca_Empire","https://82nd-and-fifth.metmuseum.org/toah/ht/08/sanc.html",null,null,{"mapLabel":"Inca · Cusco","aliases":["Indigenous","Peru","Andes","Inca"]}],
@@ -1998,7 +1994,7 @@ const EVENTS = [
 [2007,null,0,"The smartphone era","Apple launches the first iPhone.",37.78,-122.4,"am","ideas","IPhone_(1st_generation)","https://www.apple.com/uk/newsroom/2007/01/09Apple-Reinvents-the-Phone-with-iPhone/"],
 [2008,null,0,"Global financial crisis","Banks collapse and the world enters a deep recession.",40.7,-74.0,"am","power","2008_financial_crisis","https://www.federalreservehistory.org/essays/great-recession-of-200709"],
 [2010,2012,0,"Arab Spring","Protests spread across the Arab world, starting in Tunisia.",36.8,10.18,"me","power","Arab_Spring","https://publications.parliament.uk/pa/cm201012/cmselect/cmfaff/writev/arab/as07.htm"],
-[2020,2023,0,"COVID-19 global health emergency","WHO declares a public health emergency of international concern in January 2020 and ends that designation in May 2023. Ending the emergency designation does not mean that COVID-19 or the pandemic ended. The marker locates WHO in Geneva, rather than the outbreak's origin.",46.232,6.134,"eu","nature","COVID-19_pandemic","https://www.who.int/news/item/05-05-2023-statement-on-the-fifteenth-meeting-of-the-international-health-regulations-(2005)-emergency-committee-regarding-the-coronavirus-disease-(covid-19)-pandemic",null,null,null,["pandemics","pandemic","coronavirus","COVID"]],
+[2020,2023,0,"COVID-19 global health emergency","WHO declares a public health emergency of international concern in January 2020 and ends that designation in May 2023. Ending the emergency designation does not mean that COVID-19 or the pandemic ended. The marker locates WHO in Geneva, rather than the outbreak's origin.",46.232,6.134,"eu","pandemics","COVID-19_pandemic","https://www.who.int/news/item/05-05-2023-statement-on-the-fifteenth-meeting-of-the-international-health-regulations-(2005)-emergency-committee-regarding-the-coronavirus-disease-(covid-19)-pandemic",null,null,null,["pandemics","pandemic","coronavirus","COVID"]],
 [2022,null,0,"Russia invades Ukraine","Russia launches a full-scale invasion of Ukraine.",50.45,30.52,"eu","war","Russian_invasion_of_Ukraine","https://ukraine.un.org/en/173250-statement-secretary-general-%E2%80%93-ukraine"],
 [2022,null,0,"Webb telescope's first images","NASA releases the James Webb Space Telescope's first science images in July 2022. The marker locates the Space Telescope Science Institute in Baltimore, which supports the mission; the telescope operates in space.",39.33,-76.62,"am","ideas","James_Webb_Space_Telescope","https://science.nasa.gov/mission/webb/webbs-first-images/"],
 // Fashion & dress
@@ -2121,15 +2117,36 @@ const EVENTS = [
 [1972,null,0,"Artemisinin isolated for malaria research","In 1972, Tu Youyou’s team isolates the antimalarial compound later named artemisinin from sweet wormwood. This medical discovery builds on earlier extract research and leads to new malaria medicines. The Beijing marker represents her research institute, not every clinical trial site.",39.91,116.4,"as","ideas","Artemisinin","https://www.nobelprize.org/prizes/medicine/2015/tu/biographical/",null,null,null,["medicine","medical history","medical inventions","medical breakthroughs","Tu Youyou","malaria","qinghaosu","sweet wormwood"]],
 [1973,null,0,"Lauterbur publishes early MRI images","Paul Lauterbur publishes a method for producing images using nuclear magnetic resonance in 1973, following research at Stony Brook. This medical imaging foundation helps make MRI possible; it is not the date of the first routine hospital MRI service.",40.91,-73.12,"am","ideas","Magnetic_resonance_imaging","https://news.stonybrook.edu/university/university-honors-paul-lauterbur-father-of-the-mri/",null,null,null,["medicine","medical history","medical inventions","medical breakthroughs","MRI","NMR","Paul Lauterbur","medical imaging"]],
 [1978,null,0,"First birth following IVF","Louise Brown is born in Oldham on 25 July 1978 following in vitro fertilisation developed through work by Robert Edwards, Patrick Steptoe and their collaborators. This medical milestone is the first live birth after IVF, rather than the first laboratory fertilisation experiment.",53.54,-2.12,"eu","ideas","In_vitro_fertilisation","https://www.nobelprize.org/prizes/medicine/2010/popular-information/",null,null,null,["medicine","medical history","medical inventions","medical breakthroughs","IVF","in vitro fertilization","Louise Brown","Robert Edwards","Patrick Steptoe"]],
-[1817,null,0,"First cholera pandemic begins","In 1817, documented pandemic spread carries cholera beyond its longstanding home in Bengal. Successive waves make it a global public-health threat. The Kolkata-area marker represents Bengal, not a proven first infected person or the disease’s full reach. This entry marks the pandemic’s onset.",22.57,88.36,"as","nature","First_cholera_pandemic","https://wwwnc.cdc.gov/eid/article/17/11/11-1109_article",null,null,null,["pandemics","pandemic","epidemics","disease history","public health","cholera","Bengal","Calcutta","Kolkata"]],
-[1894,null,0,"Third plague pandemic: Hong Kong outbreak","Hong Kong suffers a major plague outbreak in 1894 during the third plague pandemic. Alexandre Yersin investigates and identifies the plague bacterium there. The marker locates this outbreak and research milestone, not the pandemic’s earlier origin or full duration.",22.28,114.16,"as","nature","Third_plague_pandemic","https://www.pasteur.fr/en/whats-new/latest-news/news/alexandre-yersin-man-who-discovered-bacterium-responsible-plague",null,null,null,["pandemics","pandemic","epidemics","disease history","public health","bubonic plague","Yersinia pestis","Alexandre Yersin"]],
-[1918,1919,0,"1918 influenza pandemic (Spanish flu)","An H1N1 influenza pandemic spreads worldwide in 1918–1919, causing enormous mortality, including among young adults. Its geographical origin remains uncertain. The Kansas marker represents early US military outbreaks, not a proven origin; the name Spanish flu does not establish an origin in Spain.",39.1,-96.81,"am","nature","Spanish_flu","https://archive.cdc.gov/www_cdc_gov/flu/pandemic-resources/1918-pandemic-h1n1.html",null,null,null,["pandemics","pandemic","epidemics","disease history","public health","1918 flu","H1N1","Spanish influenza"]],
-[1957,1958,0,"1957–1958 influenza pandemic (Asian flu)","A new influenza A(H2N2) virus triggers a pandemic in 1957–1958. Early reports include Singapore in February 1957, followed by Hong Kong and other countries. The Singapore marker locates an early reporting site, not the entire pandemic or a proven evolutionary origin.",1.29,103.85,"as","nature","1957–1958_influenza_pandemic","https://archive.cdc.gov/www_cdc_gov/flu/pandemic-resources/1957-1958-pandemic.html",null,null,null,["pandemics","pandemic","epidemics","disease history","public health","Asian influenza","H2N2","1957 flu"]],
-[1961,null,0,"Seventh cholera pandemic begins","The seventh cholera pandemic, caused by the El Tor lineage, begins in Sulawesi, Indonesia, in 1961 and later spreads across continents. The marker represents Sulawesi. This entry dates the onset; it does not claim that the pandemic ended in 1961.",-5.14,119.43,"as","nature","Seventh_cholera_pandemic","https://iris.who.int/bitstream/10665/66485/1/",null,null,null,["pandemics","pandemic","epidemics","disease history","public health","cholera","El Tor","Indonesia","Sulawesi"]],
-[1968,1970,0,"1968 influenza pandemic (Hong Kong flu)","Influenza A(H3N2) causes a pandemic first recognised in Hong Kong in 1968. Waves affect different countries at different times through 1970. The marker locates Hong Kong, not the full area affected. The viewing interval summarises these waves rather than the end of H3N2 circulation.",22.28,114.16,"as","nature","1968_influenza_pandemic","https://wwwnc.cdc.gov/eid/article/12/1/05-1254_article",null,null,null,["pandemics","pandemic","epidemics","disease history","public health","Hong Kong influenza","H3N2","1968 flu"]],
-[1981,null,0,"HIV/AIDS pandemic: first recognised AIDS reports","In June 1981, the CDC reports unusual pneumonia in five men in Los Angeles, an early recognition of what becomes known as AIDS. HIV had circulated before these reports. The Los Angeles marker locates the reported cases, not the origin of HIV or the beginning of every infection in the global pandemic.",34.05,-118.24,"am","nature","HIV/AIDS","https://www.hiv.gov/hiv-basics/overview/history/hiv-and-aids-timeline",null,null,null,["pandemics","pandemic","epidemics","disease history","public health","HIV","AIDS","acquired immunodeficiency syndrome"]],
-[2009,2010,0,"2009–2010 H1N1 influenza pandemic (swine flu)","A new influenza A(H1N1) virus spreads globally in 2009–2010. The Geneva marker represents WHO’s international pandemic response, not a proven place of origin. The pandemic interval does not imply that the virus disappears: descendants continue to circulate as seasonal influenza.",46.232,6.134,"eu","nature","2009_swine_flu_pandemic","https://www.who.int/europe/news-room/fact-sheets/item/evaluation-of-the-response-to-pandemic-%28h1n1%29-2009-in-the-european-region",null,null,null,["pandemics","pandemic","epidemics","disease history","public health","swine influenza","H1N1pdm09","2009 flu"]],
-[1980,null,0,"Smallpox declared eradicated worldwide","The World Health Assembly declares smallpox eradicated in 1980 after international vaccination and surveillance campaigns. The Geneva marker represents the declaration. This public-health achievement follows Jenner’s 1796 experiment and generations of vaccine development and coordinated work.",46.232,6.134,"eu","ideas","Eradication_of_smallpox","https://www.who.int/news-room/spotlight/history-of-vaccination/a-brief-history-of-vaccination",null,null,null,["medicine","medical history","vaccines","vaccination","immunization","immunisation","pandemics","pandemic","epidemics","disease history","public health","smallpox eradication","World Health Assembly"]],
+[1817,1823,1,"First cholera pandemic","From 1817, cholera spreads beyond Bengal across Asia and toward the eastern Mediterranean. The approximate 1817–1823 interval follows WHO’s historical chronology; other chronologies end it in 1824. The Kolkata marker represents Bengal, not a proven first case or the full affected area.",22.57,88.36,"as","pandemics","First_cholera_pandemic","https://applications.emro.who.int/docs/em_rc15_8_en.pdf",null,null,null,["pandemics","pandemic","epidemics","disease history","public health","cholera","Bengal","Calcutta","Kolkata"]],
+[1855,1960,1,"Third plague pandemic","Plague spreads from Yunnan in the mid-19th century and later travels through ports to other continents. The approximate 1855–1960 interval describes the historical pandemic era; plague persists in animal reservoirs afterward. The Kunming marker represents Yunnan, not the full affected area. Yersin identifies the bacterium in Hong Kong in 1894.",25.04,102.72,"as","pandemics","Third_plague_pandemic","https://doi.org/10.3390/microorganisms12091802",null,null,null,["pandemics","pandemic","epidemics","disease history","public health","bubonic plague","Yersinia pestis","Alexandre Yersin"]],
+[1918,1919,0,"1918 influenza pandemic (Spanish flu)","An H1N1 influenza pandemic spreads worldwide in 1918–1919, causing enormous mortality, including among young adults. Its geographical origin remains uncertain. The Kansas marker represents early US military outbreaks, not a proven origin; the name Spanish flu does not establish an origin in Spain.",39.1,-96.81,"am","pandemics","Spanish_flu","https://archive.cdc.gov/www_cdc_gov/flu/pandemic-resources/1918-pandemic-h1n1.html",null,null,null,["pandemics","pandemic","epidemics","disease history","public health","1918 flu","H1N1","Spanish influenza"]],
+[1957,1958,0,"1957–1958 influenza pandemic (Asian flu)","A new influenza A(H2N2) virus triggers a pandemic in 1957–1958. Early reports include Singapore in February 1957, followed by Hong Kong and other countries. The Singapore marker locates an early reporting site, not the entire pandemic or a proven evolutionary origin.",1.29,103.85,"as","pandemics","1957–1958_influenza_pandemic","https://archive.cdc.gov/www_cdc_gov/flu/pandemic-resources/1957-1958-pandemic.html",null,null,null,["pandemics","pandemic","epidemics","disease history","public health","Asian influenza","H2N2","1957 flu"]],
+[1961,2026,0,"Seventh cholera pandemic (El Tor)","The seventh cholera pandemic begins in Sulawesi, Indonesia, in 1961 and spreads across continents. WHO still describes it as ongoing in 2026. The Makassar marker represents Sulawesi, not the whole affected area. The map’s 2026 limit is a coverage cutoff, not an end date.",-5.14,119.43,"as","pandemics","Seventh_cholera_pandemic","https://www.who.int/news-room/fact-sheets/detail/cholera",null,null,null,["pandemics","pandemic","epidemics","disease history","public health","cholera","El Tor","Indonesia","Sulawesi"],true],
+[1968,1970,0,"1968 influenza pandemic (Hong Kong flu)","Influenza A(H3N2) causes a pandemic first recognised in Hong Kong in 1968. Waves affect different countries at different times through 1970. The marker locates Hong Kong, not the full area affected. The viewing interval summarises these waves rather than the end of H3N2 circulation.",22.28,114.16,"as","pandemics","1968_influenza_pandemic","https://wwwnc.cdc.gov/eid/article/12/1/05-1254_article",null,null,null,["pandemics","pandemic","epidemics","disease history","public health","Hong Kong influenza","H3N2","1968 flu"]],
+[1981,2026,0,"HIV/AIDS pandemic (recognised in 1981)","The CDC’s June 1981 Los Angeles reports mark early recognition of AIDS. HIV had circulated before these reports, and the global epidemic continues. Los Angeles represents the reported cases, not HIV’s origin. This viewing interval begins with recognition and continues through the atlas’s 2026 coverage limit, not a claimed end.",34.05,-118.24,"am","pandemics","HIV/AIDS","https://www.hiv.gov/hiv-basics/overview/history/hiv-and-aids-timeline",null,null,null,["pandemics","pandemic","epidemics","disease history","public health","HIV","AIDS","acquired immunodeficiency syndrome"],true],
+[2009,2010,0,"2009–2010 H1N1 influenza pandemic (swine flu)","A new influenza A(H1N1) virus spreads globally in 2009–2010. The Geneva marker represents WHO’s international pandemic response, not a proven place of origin. The pandemic interval does not imply that the virus disappears: descendants continue to circulate as seasonal influenza.",46.232,6.134,"eu","pandemics","2009_swine_flu_pandemic","https://www.who.int/europe/news-room/fact-sheets/item/evaluation-of-the-response-to-pandemic-%28h1n1%29-2009-in-the-european-region",null,null,null,["pandemics","pandemic","epidemics","disease history","public health","swine influenza","H1N1pdm09","2009 flu"]],
+[1980,null,0,"Smallpox declared eradicated worldwide","The World Health Assembly declares smallpox eradicated in 1980 after international vaccination and surveillance campaigns. The Geneva marker represents the declaration. This public-health achievement follows Jenner’s 1796 experiment and generations of vaccine development and coordinated work.",46.232,6.134,"eu","nature","Eradication_of_smallpox","https://www.who.int/news-room/spotlight/history-of-vaccination/a-brief-history-of-vaccination",null,null,null,["medicine","medical history","vaccines","vaccination","immunization","immunisation","pandemics","pandemic","epidemics","disease history","public health","smallpox eradication","World Health Assembly"]],
+[165,180,1,"Antonine plague","A major epidemic affects the Roman Empire around AD 165–180. Smallpox is often proposed, but the diagnosis and full reach remain uncertain. Rome is a representative affected city. This ancient transregional epidemic is included as a precursor to later global pandemics.",41.9,12.5,"eu","pandemics","Antonine_Plague","https://www.sciencedirect.com/science/article/pii/S2352409X22001298",null,null,null,["pandemics","pandemic","epidemics","disease history","public health","Galen","smallpox","Roman Empire"],false],
+[249,262,1,"Plague of Cyprian","A severe epidemic affects the Roman world in the mid-3rd century. Cyprian describes its effects at Carthage. Its pathogen and exact chronology are disputed; the approximate interval is not proof of worldwide spread. The marker locates Carthage, an affected city.",36.85,10.32,"me","pandemics","Plague_of_Cyprian","https://www.sciencedirect.com/science/article/pii/S2352409X22001298",null,null,null,["pandemics","pandemic","epidemics","disease history","public health","Cyprian","Carthage","Roman Empire"],false],
+[1346,1844,1,"Second plague pandemic (Black Death and later waves)","The Black Death begins a long era of recurring plague across western Eurasia and North Africa. Outbreaks continue in different regions into the 19th century. The approximate end follows a common historical convention, not a simultaneous global ending. The Istanbul marker represents an affected city; the separate Black Death entry describes the initial European wave.",41.01,28.98,"eu","pandemics","Second_plague_pandemic","https://www.etd.ceu.edu/2016/ganea_sabina.pdf",null,null,null,["pandemics","pandemic","epidemics","disease history","public health","bubonic plague","Yersinia pestis","Black Death"],false],
+[1510,1510,1,"1510 influenza pandemic","Contemporary accounts describe a rapidly spreading influenza-like illness in 1510, especially across Europe after reports from North Africa. This is among the earliest well-documented influenza pandemics. The Paris marker represents French accounts, not an established origin; no virus sample survives.",48.86,2.35,"eu","pandemics","1510_influenza_pandemic","https://pmc.ncbi.nlm.nih.gov/articles/PMC3106245/",null,null,null,["pandemics","pandemic","epidemics","disease history","public health","flu","influenza","1510 flu"],false],
+[1518,1527,1,"Smallpox spreads in the Americas","Smallpox is recorded in Hispaniola in 1518 and Mexico in 1520, with early spread toward the Andes later in the decade. The approximate interval shows this devastating phase of smallpox’s intercontinental expansion; it is not the full lifetime of the disease. Santo Domingo represents the early Caribbean epidemic.",18.49,-69.93,"am","pandemics","History_of_smallpox","https://pubmed.ncbi.nlm.nih.gov/10230264/",null,null,null,["pandemics","pandemic","epidemics","disease history","public health","smallpox","variola","Americas","Hispaniola","Mexico"],false],
+[1557,1560,1,"1557–1560 influenza pandemic","Historical accounts associate these years with widespread influenza-like illness across several continents. The diagnosis is retrospective and exact wave boundaries vary. London represents recorded English mortality, not a proven origin.",51.51,-0.13,"eu","pandemics","1557_influenza_pandemic","https://pmc.ncbi.nlm.nih.gov/articles/PMC2720801/",null,null,null,["pandemics","pandemic","epidemics","disease history","public health","flu","influenza","1557 flu"],false],
+[1580,1580,1,"1580 influenza pandemic","A widely documented influenza-like pandemic crosses Asia, Africa and Europe in 1580. Rome represents a heavily affected city, not a proven origin. The diagnosis relies on historical descriptions rather than preserved virus samples.",41.9,12.5,"eu","pandemics","1580_influenza_pandemic","https://pmc.ncbi.nlm.nih.gov/articles/PMC2720801/",null,null,null,["pandemics","pandemic","epidemics","disease history","public health","flu","influenza","1580 flu"],false],
+[1729,1733,1,"1729–1733 influenza pandemic waves","Influenza-like disease spreads widely in 1729–1730 and again in 1732–1733. Historical accounts differ on whether these are separate pandemics or returning waves. Moscow is a representative reporting location; the interval groups the waves without claiming continuous illness everywhere.",55.75,37.62,"eu","pandemics","1729_influenza_pandemic","https://pmc.ncbi.nlm.nih.gov/articles/PMC2720801/",null,null,null,["pandemics","pandemic","epidemics","disease history","public health","flu","influenza","1732 flu","1733 flu"],false],
+[1761,1762,1,"1761–1762 influenza pandemic","Accounts describe an influenza-like pandemic in the Americas and Europe in 1761–1762. Physicians compare clinical observations across countries. London represents European reports, not an established source of the outbreak.",51.51,-0.13,"eu","pandemics","1761_influenza_pandemic","https://pmc.ncbi.nlm.nih.gov/articles/PMC2720801/",null,null,null,["pandemics","pandemic","epidemics","disease history","public health","flu","influenza","1762 flu"],false],
+[1780,1782,1,"1780–1782 influenza pandemic","An influenza-like pandemic spreads from Asia through Russia and Europe, with exceptionally high attack rates reported in 1781–1782. Saint Petersburg is a representative affected city. The approximate interval follows one historical chronology; exact origins and virus subtype remain uncertain.",59.93,30.32,"eu","pandemics","1781_influenza_pandemic","https://pmc.ncbi.nlm.nih.gov/articles/PMC2720801/",null,null,null,["pandemics","pandemic","epidemics","disease history","public health","flu","influenza","1781 flu","1782 flu"],false],
+[1788,1790,1,"1788–1790 influenza pandemic","Influenza-like illness again spreads widely in the late 1780s. Many historians distinguish this pandemic from the 1782 wave, although their relationship is debated. London is a representative reporting city, not a proven origin.",51.51,-0.13,"eu","pandemics","1788_influenza_pandemic","https://pmc.ncbi.nlm.nih.gov/articles/PMC2720801/",null,null,null,["pandemics","pandemic","epidemics","disease history","public health","flu","influenza","1789 flu"],false],
+[1830,1837,1,"1830–1837 influenza pandemic waves","Widespread influenza-like outbreaks occur in 1830–1831, 1832–1833 and 1836–1837. Historians differ on how many distinct pandemics these represent. Saint Petersburg is a representative affected city. The interval groups successive waves rather than continuous local transmission.",59.93,30.32,"eu","pandemics","1830_influenza_pandemic","https://pmc.ncbi.nlm.nih.gov/articles/PMC2720801/",null,null,null,["pandemics","pandemic","epidemics","disease history","public health","flu","influenza","1831 flu","1832 flu","1833 flu","1836 flu","1837 flu"],false],
+[1847,1848,1,"1847–1848 influenza pandemic (classification debated)","A major influenza-like outbreak spreads across Europe and beyond in 1847–1848. Some histories count a pandemic; others find its global extent insufficiently documented. London represents contemporary mortality records. Its inclusion does not establish a confirmed virus subtype or worldwide reach.",51.51,-0.13,"eu","pandemics","1847_influenza_pandemic","https://pmc.ncbi.nlm.nih.gov/articles/PMC3246071/",null,null,null,["pandemics","pandemic","epidemics","disease history","public health","flu","influenza","1848 flu"],false],
+[1889,1893,1,"1889–1893 pandemic (Russian flu)","A respiratory pandemic spreads worldwide from 1889, with recurring waves into the early 1890s. Its pathogen remains unconfirmed; influenza and coronavirus explanations have been proposed. Saint Petersburg represents an early extensively reported outbreak, not a proven origin.",59.93,30.32,"eu","pandemics","1889–1890_pandemic","https://pmc.ncbi.nlm.nih.gov/articles/PMC8601188/",null,null,null,["pandemics","pandemic","epidemics","disease history","public health","flu","influenza","Russian influenza","1889 flu","1890 flu","1891 flu","1892 flu"],false],
+[1977,1978,0,"1977–1978 H1N1 resurgence (age-restricted pandemic)","H1N1 reappears in 1977 and spreads internationally, mainly affecting children and young adults with little prior immunity. Its classification differs from the broad pandemics of 1918, 1957 and 1968. Beijing represents early northern Chinese reports, not a proven origin. H1N1 continues circulating afterward.",39.9,116.4,"as","pandemics","1977_Russian_flu","https://wwwnc.cdc.gov/eid/article/12/1/05-1254_article",null,null,null,["pandemics","pandemic","epidemics","disease history","public health","flu","influenza","Russian flu","H1N1","1977 flu"],false],
+[1829,1850,1,"Second cholera pandemic","One of the seven recognised cholera pandemics, with repeated outbreaks across countries. The approximate 1829–1850 interval follows WHO’s historical chronology; other histories use different boundaries. Saint Petersburg represents an affected city, not the pandemic’s origin or full geographical reach.",59.93,30.32,"eu","pandemics","Second_cholera_pandemic","https://applications.emro.who.int/docs/em_rc15_8_en.pdf",null,null,null,["pandemics","pandemic","epidemics","disease history","public health","cholera","second cholera"],false],
+[1852,1863,1,"Third cholera pandemic","One of the seven recognised cholera pandemics, with repeated outbreaks across countries. The approximate 1852–1863 interval follows WHO’s historical chronology; other histories use different boundaries. London represents an affected city, not the pandemic’s origin or full geographical reach.",51.51,-0.13,"eu","pandemics","Third_cholera_pandemic","https://applications.emro.who.int/docs/em_rc15_8_en.pdf",null,null,null,["pandemics","pandemic","epidemics","disease history","public health","cholera","third cholera"],false],
+[1863,1875,1,"Fourth cholera pandemic","One of the seven recognised cholera pandemics, with repeated outbreaks across countries. The approximate 1863–1875 interval follows WHO’s historical chronology; other histories use different boundaries. Mecca represents an affected city, not the pandemic’s origin or full geographical reach.",21.42,39.83,"me","pandemics","Fourth_cholera_pandemic","https://applications.emro.who.int/docs/em_rc15_8_en.pdf",null,null,null,["pandemics","pandemic","epidemics","disease history","public health","cholera","fourth cholera"],false],
+[1881,1896,1,"Fifth cholera pandemic","One of the seven recognised cholera pandemics, with repeated outbreaks across countries. The approximate 1881–1896 interval follows WHO’s historical chronology; other histories use different boundaries. Hamburg represents an affected city, not the pandemic’s origin or full geographical reach.",53.55,9.99,"eu","pandemics","Fifth_cholera_pandemic","https://applications.emro.who.int/docs/em_rc15_8_en.pdf",null,null,null,["pandemics","pandemic","epidemics","disease history","public health","cholera","fifth cholera"],false],
+[1899,1923,1,"Sixth cholera pandemic","One of the seven recognised cholera pandemics, with repeated outbreaks across countries. The approximate 1899–1923 interval follows WHO’s historical chronology; other histories use different boundaries. Naples represents an affected city, not the pandemic’s origin or full geographical reach.",40.85,14.27,"eu","pandemics","Sixth_cholera_pandemic","https://applications.emro.who.int/docs/em_rc15_8_en.pdf",null,null,null,["pandemics","pandemic","epidemics","disease history","public health","cholera","sixth cholera"],false],
+[2019,2026,0,"COVID-19 pandemic","WHO learns of a pneumonia cluster in Wuhan in December 2019 and characterises COVID-19 as a pandemic in March 2020. COVID-19 continues after the global emergency designation ends in May 2023. Wuhan represents the early reported cluster, not a proven origin. The map shows continuing disease through its 2026 coverage limit.",30.59,114.31,"as","pandemics","COVID-19","https://www.who.int/news-room/questions-and-answers/item/coronavirus-disease-covid-19/",null,null,null,["pandemics","pandemic","epidemics","disease history","public health","coronavirus","SARS-CoV-2","COVID","covid 19"],true],
 ];
 
 // [name, born, died, approx, role, lat, lon, region, wikiSlug]
@@ -2241,15 +2258,28 @@ const FACTS = [
 
 const REGIONS={eu:"Europe",me:"Middle East & North Africa",af:"Sub-Saharan Africa",as:"Asia",am:"Americas",oc:"Oceania"};
 const REGION_ORDER=["eu","me","af","as","am","oc"];
-const CATS={power:"Power & states",war:"War",ideas:"Science & exploration",culture:"Culture & faith",nature:"People & nature",fashion:"Fashion & dress",dinosaurs:"Dinosaurs"};
+const CATS={power:"Power & states",war:"War",ideas:"Science & exploration",culture:"Culture & faith",nature:"People & nature",fashion:"Fashion & dress",pandemics:"Pandemics",dinosaurs:"Dinosaurs"};
 const ERAS=[[-252000000,"Dinosaurs"],[-66000000,"Before humans"],[-300000,"Prehistory"],[-3200,"Ancient"],[-800,"Classical"],[500,"Medieval"],[1500,"Early modern"],[1800,"Modern"]];
 // The atlas intentionally ends in 2026, independently of the browser clock.
 const NOW=2026,SLIDER_STEPS=3000000;
+const LAST_YEAR_KEY="atlas.last-year.v1";
+function readLastAtlasYear(){
+  try{
+    const year=Number(localStorage.getItem(LAST_YEAR_KEY));
+    if(Number.isInteger(year)&&year!==0&&year>=-252000000&&year<=NOW)return year;
+  }catch(_){}
+  return NOW;
+}
+let lastStoredYear;
+function rememberAtlasYear(year){
+  if(year===lastStoredYear)return;
+  try{localStorage.setItem(LAST_YEAR_KEY,String(year));lastStoredYear=year}catch(_){}
+}
 
 // piecewise scale: slider t (0..1) <-> year
 const SEG=[[0,-252000000],[.06,-201000000],[.12,-145000000],[.22,-66000000],[.24,-300000],[.316,-10000],[.3692,-3000],[.544,0],[.772,1500],[.8708,1800],[1,NOW]];
 const HISTORY_SEG=[[0,-300000],[.10,-10000],[.17,-3000],[.40,0],[.70,1500],[.83,1800],[1,NOW]];
-let dinosaurTimeline=true,lastHumanYear=1453;
+let dinosaurTimeline=true,lastHumanYear=NOW;
 function yearAt(t){const segments=dinosaurTimeline?SEG:HISTORY_SEG;for(let i=1;i<segments.length;i++){const[a,ya]=segments[i-1],[b,yb]=segments[i];if(t<=b)return ya+(yb-ya)*(t-a)/(b-a)}return NOW}
 function tAt(y){const segments=dinosaurTimeline?SEG:HISTORY_SEG;for(let i=1;i<segments.length;i++){const[a,ya]=segments[i-1],[b,yb]=segments[i];if(y<=yb)return a+(b-a)*(y-ya)/(yb-ya)}return 1}
 const SAME_TIME_YEARS=DiscoveryCore.sameTimeYears;
@@ -2257,6 +2287,7 @@ function halfWin(y=state.year){return y < -1000000 ? 1000000 : SAME_TIME_YEARS}
 function roundYear(y){const n=Math.round(y);return n===0?(y<0?-1:1):n}
 function fmt(y,approx){const c=approx?"c. ":"";if(y<=-1000000)return c+(Math.abs(y)/1000000).toLocaleString("en-US",{maximumFractionDigits:3})+" million years ago";if(y<0)return c+Math.abs(y).toLocaleString("en-US")+" BC";if(y<1000)return c+"AD "+y;return c+y}
 function fmtSpan(a,b,ap){if(a<=-1000000&&b<=-1000000&&a!==b)return (ap?"c. ":"")+(Math.abs(a)/1000000).toLocaleString("en-US",{maximumFractionDigits:3})+"–"+(Math.abs(b)/1000000).toLocaleString("en-US",{maximumFractionDigits:3})+" million years ago";return b&&b!==a?fmt(a,ap)+"–"+(a<0&&b>0?fmt(b):(b<0?Math.abs(b).toLocaleString("en-US")+" BC":b)):fmt(a,ap)}
+function fmtEvent(e){return e.ongoing?fmt(e.start,e.approx)+"–present":fmtSpan(e.start,e.end,e.approx)}
 function eraOf(y){let e=ERAS[0][1];for(const[s,n]of ERAS)if(y>=s)e=n;return e}
 function parseYear(s){
   s=s.trim().toLowerCase().replace(/,/g,"");
@@ -2270,17 +2301,17 @@ function parseYear(s){
   return Math.max(-252000000,Math.min(NOW,y));
 }
 
-const ev=EVENTS.map((e,i)=>({id:"e"+i,kind:"event",start:e[0],end:e[1]??e[0],approx:!!e[2],title:e[3],blurb:e[4],lat:e[5],lon:e[6],region:e[7],cat:e[8],wiki:e[9],source:e[10],fossilRegion:e[11],locationSource:e[12],indigenous:e[13],aliases:e[14]||[]}));
+const ev=EVENTS.map((e,i)=>({id:"e"+i,kind:"event",start:e[0],end:e[1]??e[0],approx:!!e[2],title:e[3],blurb:e[4],lat:e[5],lon:e[6],region:e[7],cat:e[8],wiki:e[9],source:e[10],fossilRegion:e[11],locationSource:e[12],indigenous:e[13],aliases:e[14]||[],ongoing:!!e[15]}));
 const ppl=PEOPLE.map((p,i)=>({id:"p"+i,kind:"person",name:p[0],born:p[1],died:p[2],approx:!!p[3],role:p[4],lat:p[5],lon:p[6],region:p[7],wiki:p[8],source:p[9]}));
 const byId=Object.fromEntries([...ev,...ppl].map(x=>[x.id,x]));
 const wikiUrl=s=>"https://en.wikipedia.org/wiki/"+encodeURIComponent(s).replace(/%2C/g,",").replace(/%27/g,"'");
 
-const state={year:1453,mode:"globe",sel:null,borders:"history",cats:new Set(Object.keys(CATS)),playing:false,factI:0};
+const state={year:readLastAtlasYear(),mode:"globe",sel:null,borders:"history",cats:new Set(Object.keys(CATS)),playing:false,factI:0};
 let rot=[-25,-22,0],zoomK=1,flatT={x:0,y:0},userMoved=false,selectedPolity=null;
 
 // ---------- styles from tokens
 let starLayer=null;
-let C={};function readColors(){const s=getComputedStyle(document.getElementById("stage"));for(const k of["paper","ink","muted","ocean","ocean-2","land","land-edge","lake","lake-edge","lake-ink","grat","border","atmo","shade","star","water-label","accent","halo","c-power","c-war","c-ideas","c-culture","c-nature","c-fashion","c-dinosaurs"])C[k]=s.getPropertyValue("--"+k).trim();
+let C={};function readColors(){const s=getComputedStyle(document.getElementById("stage"));for(const k of["paper","ink","muted","ocean","ocean-2","land","land-edge","lake","lake-edge","lake-ink","grat","border","atmo","shade","star","water-label","accent","halo","c-power","c-war","c-ideas","c-culture","c-nature","c-fashion","c-pandemics","c-dinosaurs"])C[k]=s.getPropertyValue("--"+k).trim();
   C.mono=s.getPropertyValue("--mono");C.display=s.getPropertyValue("--display");starLayer=null}
 readColors();
 const mq=matchMedia("(prefers-color-scheme: dark)");mq.addEventListener?.("change",()=>{readColors();draw()});
@@ -2469,7 +2500,7 @@ function renderScene(){
     ctx.save();ctx.globalAlpha=.65+.35*r;ctx.fillStyle=C.ink;
     ctx.font='20px "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif';ctx.textAlign="center";ctx.textBaseline="middle";
     ctx.fillText(emoji,x,y+.5);ctx.restore();
-    hits.push({x,y,id:e.id,label:e.title+" · "+fmtSpan(e.start,e.end!==e.start?e.end:null,e.approx)})});
+    hits.push({x,y,id:e.id,label:e.title+" · "+fmtEvent(e)})});
   // labels for strongest few, avoiding overlap
   ctx.font=`500 ${W<600?10.5:11.5}px ${C.display}`;ctx.textBaseline="middle";
   const maxL=W<600?3:6;let n=0;
@@ -2608,7 +2639,7 @@ function revealDetail(){const el=document.getElementById("detail");el.setAttribu
 function closeSelection(){const saved=sidebarReturn;sidebarReturn=null;state.sel=null;selectedPolity=null;update();
   const row=saved&&saved.year===state.year&&document.querySelector(`#side [data-id="${saved.id}"]`);
   if(row){document.getElementById("side").scrollTop=saved.scroll;row.focus({preventScroll:true})}else slider.focus({preventScroll:true})}
-function historicalContextNote(x,year){return DiscoveryCore.isHistoricalContext(x,year)?`<p class="timeline-context-note"><strong>Historical context for ${esc(fmt(year))}</strong><br>This record covers ${esc(fmtSpan(x.start,x.end,x.approx))}. Its date range describes a historical period, rather than an event dated ${esc(fmt(year))}.</p>`:""}
+function historicalContextNote(x,year){return DiscoveryCore.isHistoricalContext(x,year)?`<p class="timeline-context-note"><strong>Historical context for ${esc(fmt(year))}</strong><br>This record covers ${esc(fmtEvent(x))}. Its date range describes a historical period, rather than an event dated ${esc(fmt(year))}.</p>`:""}
 function select(id,fly=true,recordYear=null){sidebarReturn=null;window.HistoryDiscovery?.selectedRecord(recordYear);state.sel=id;selectedPolity=null;const x=byId[id];stopPlay();
   if(!(recordYear!==null&&window.HistoryDiscovery?.isComparing())&&x.kind==="event"&&(state.year<x.start-halfWin(x.start)||state.year>x.end+halfWin(x.start))){state.year=x.start;slider.value=Math.round(tAt(x.start)*SLIDER_STEPS)}
   if(fly||state.mode==="globe"){const point=window.HistoryPaleogeography?.point(x,recordYear??state.year)||[x.lon,x.lat];flyTo(...point)}update();
@@ -2620,10 +2651,10 @@ function renderDetailBase(){const el=document.getElementById("detail");if(select
     el.querySelector(".close").onclick=closeSelection;return}
   const x=state.sel&&byId[state.sel];if(!x){el.innerHTML="";return}
   if(x.cat==="dinosaurs"){
-    el.innerHTML=`<div class="detail dinosaur-detail" style="--c:var(--c-dinosaurs)"><button class="iconbtn close" aria-label="Close">×</button><div class="kicker">Dinosaur · approximate fossil age</div><h3>${esc(x.title)}</h3><p><strong>${esc(fmtSpan(x.start,x.end,x.approx))}</strong></p><p>${esc(x.blurb)}</p><p><strong>Representative fossil region:</strong> ${esc(x.fossilRegion)}</p><p>The map reconstructs this present-day fossil region on ancient continents using the same PALEOMAP snapshot as the land. The marker is approximate; it is not an exact quarry or the animal's full range. Continental outlines do not resolve local shorelines or sea levels. Fossil ages and reconstructions can change with new research.</p><p><a href="${esc(x.source)}" target="_blank" rel="noopener">Dinosaur &amp; age source ↗</a> · <a href="${esc(x.locationSource)}" target="_blank" rel="noopener">Fossil region source ↗</a></p></div>`}
+    el.innerHTML=`<div class="detail dinosaur-detail" style="--c:var(--c-dinosaurs)"><button class="iconbtn close" aria-label="Close">×</button><div class="kicker">Dinosaur · approximate fossil age</div><h3>${esc(x.title)}</h3><p><strong>${esc(fmtEvent(x))}</strong></p><p>${esc(x.blurb)}</p><p><strong>Representative fossil region:</strong> ${esc(x.fossilRegion)}</p><p>The map reconstructs this present-day fossil region on ancient continents using the same PALEOMAP snapshot as the land. The marker is approximate; it is not an exact quarry or the animal's full range. Continental outlines do not resolve local shorelines or sea levels. Fossil ages and reconstructions can change with new research.</p><p><a href="${esc(x.source)}" target="_blank" rel="noopener">Dinosaur &amp; age source ↗</a> · <a href="${esc(x.locationSource)}" target="_blank" rel="noopener">Fossil region source ↗</a></p></div>`}
   else if(x.kind==="event"){
     el.innerHTML=`<div class="detail" style="--c:var(--c-${x.cat})"><button class="iconbtn close" aria-label="Close">×</button>
-    <div class="kicker"><i></i>${esc(fmtSpan(x.start,x.end!==x.start?x.end:null,x.approx))} · ${REGIONS[x.region]}${x.approx?" · Approximate date":""}</div>
+    <div class="kicker"><i></i>${esc(fmtEvent(x))} · ${REGIONS[x.region]}${x.approx?" · Approximate date":""}</div>
     <h3>${AtlasEventEmojis.icon(x)}${esc(x.title)}</h3>${historicalContextNote(x,state.year)}<p>${esc(x.blurb)}</p>${x.indigenous?`<p class="indigenous-context"><strong>${x.indigenous.evidence?"Archaeological evidence · dated site":"Indigenous history · documented place"}</strong><br>${x.indigenous.evidence?"Dates represent rounded evidence ages. Site locations do not establish a migration track or a modern national identity.":"This marker locates a community or site, not a territorial boundary. Dates refer to the described event or archaeological evidence, not the lifetime of a people. Colonial map fills can overlap Indigenous homelands."}${x.indigenous.territorySource?` <a href="${esc(x.indigenous.territorySource)}" target="_blank" rel="noopener">Territory &amp; community reference ↗</a>`:""}</p>`:""}${x.source?`<p><a href="${esc(x.source)}" target="_blank" rel="noopener">Source ↗</a></p>`:""}<a href="${wikiUrl(x.wiki)}" target="_blank" rel="noopener">Read more on Wikipedia ↗</a>
     <div class="meanwhile-slot"></div></div>`}
   else{const age=DiscoveryCore.yearsBetween(x.born,state.year);el.innerHTML=`<div class="detail" style="--c:var(--ink)"><button class="iconbtn close" aria-label="Close">×</button>
@@ -2632,7 +2663,7 @@ function renderDetailBase(){const el=document.getElementById("detail");if(select
     <a href="${esc(x.source||wikiUrl(x.wiki))}" target="_blank" rel="noopener">${x.source?"Source":"Read more on Wikipedia"} ↗</a></div>`}
   el.querySelector(".close").onclick=closeSelection}
 function eventRegions(records,showRanges=false){const by={};for(const{e}of records)(by[e.region]??=[]).push(e);
-  return REGION_ORDER.filter(r=>by[r]).map(r=>`<div class="region"><h4><span>${REGIONS[r]}</span><span>${by[r].length}</span></h4>${by[r].sort((a,b)=>a.start-b.start).map(e=>`<button class="item" data-id="${e.id}" aria-current="${state.sel===e.id}" style="--c:var(--c-${e.cat})"><span class="y">${esc(showRanges?fmtSpan(e.start,e.end,e.approx):fmt(e.start,e.approx))}</span><span><span class="t">${AtlasEventEmojis.icon(e)}${esc(e.title)}</span><span class="b">${esc(e.blurb)}</span></span></button>`).join("")}</div>`).join("")}
+  return REGION_ORDER.filter(r=>by[r]).map(r=>`<div class="region"><h4><span>${REGIONS[r]}</span><span>${by[r].length}</span></h4>${by[r].sort((a,b)=>a.start-b.start).map(e=>`<button class="item" data-id="${e.id}" aria-current="${state.sel===e.id}" style="--c:var(--c-${e.cat})"><span class="y">${esc(showRanges||e.cat==="pandemics"?fmtEvent(e):fmt(e.start,e.approx))}</span><span><span class="t">${AtlasEventEmojis.icon(e)}${esc(e.title)}</span><span class="b">${esc(e.blurb)}</span></span></button>`).join("")}</div>`).join("")}
 function renderSide(){
   const act=activeEvents(),y=state.year;
   const context=act.filter(({e})=>DiscoveryCore.isHistoricalContext(e,y)),dated=act.filter(({e})=>!DiscoveryCore.isHistoricalContext(e,y));
@@ -2663,6 +2694,7 @@ function slow(){slowAt=performance.now();renderDetail();renderSide();const y=sta
   try{history.replaceState(null,"",window.HistoryDiscovery?.urlHash() || "#"+(y<0?Math.abs(y)+"bc":y))}catch(_){}}
 function update(fast){
   syncTimelineRange();
+  rememberAtlasYear(state.year);
   const y=state.year;const yr=document.getElementById("yr");
   yr.classList.toggle("deep-time-year",y<=-1000000);
   yr.innerHTML=y<=-1000000?`≈${(Math.abs(y)/1000000).toLocaleString("en-US",{maximumFractionDigits:0})}<small>million years ago</small>`:y<0?`${Math.abs(y).toLocaleString("en-US")}<small>BC</small>`:y<1000?`<small style="margin:0 .15em 0 0">AD</small>${y}`:`${y}`;
@@ -3253,7 +3285,7 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
             .slice(0, p.limit)
             .map(
               (r, i) =>
-                `<button class="place-entry" type="button" data-place-row="${i}" data-place-key="${esc(JSON.stringify([r.type,r.id || r.name,r.start,r.end]))}" data-place-start="${r.start}" data-place-end="${r.end}"><b>${esc(fmtSpan(r.start, r.end, r.approx))} · ${esc(r.title)}</b><small>${r.type === "coverage" ? "Mapped coverage · " : ""}${esc(r.description)}${r.basis ? " · " + esc(r.basis) : ""}</small></button>`,
+                `<button class="place-entry" type="button" data-place-row="${i}" data-place-key="${esc(JSON.stringify([r.type,r.id || r.name,r.start,r.end]))}" data-place-start="${r.start}" data-place-end="${r.end}"><b>${esc(fmtEvent(r))} · ${esc(r.title)}</b><small>${r.type === "coverage" ? "Mapped coverage · " : ""}${esc(r.description)}${r.basis ? " · " + esc(r.basis) : ""}</small></button>`,
             )
             .join("")
         : "<p>No records found here so far. Missing records do not imply this place was uninhabited.</p>"
@@ -4237,7 +4269,7 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
   };
   const localRecords = core.prepareSearch([
     ...ev.map((r) => ({ kind: r.cat === "dinosaurs" ? "dinosaur" : "event", title: r.title, aliases: [r.wiki.replaceAll("_", " "), ...(r.aliases || []), ...(r.indigenous?.aliases || []), ...(r.cat === "dinosaurs" ? ["dinosaur", "dinosaurs"] : []), ...(r.wiki === "Tyrannosaurus" ? ["T. rex", "T rex", "Tyrannosaurus rex"] : [])],
-      description: r.blurb, start: r.start, end: r.end, approx: r.approx,
+      description: r.blurb, start: r.start, end: r.end, approx: r.approx, ongoing: r.ongoing,
       lon: r.lon, lat: r.lat, recordId: r.id })),
     ...ppl.map((r) => ({ kind: "person", title: r.name, aliases: [r.wiki.replaceAll("_", " ")],
       description: r.role, start: r.born, end: r.died, approx: r.approx,
@@ -4279,7 +4311,7 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
 
   function dateLabel(r) {
     if (r.kind === "place") return `Present-day place · explore ${fmt(state.year)}`;
-    const span = fmtSpan(r.start, r.end === r.start ? null : r.end, r.approx);
+    const span = fmtEvent(r);
     return r.kind === "state" ? `Mapped ${span} · open ${fmt(r.year)}` : span;
   }
   function renderResults() {

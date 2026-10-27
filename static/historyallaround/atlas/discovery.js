@@ -236,7 +236,7 @@
             .slice(0, p.limit)
             .map(
               (r, i) =>
-                `<button class="place-entry" type="button" data-place-row="${i}" data-place-key="${esc(JSON.stringify([r.type,r.id || r.name,r.start,r.end]))}" data-place-start="${r.start}" data-place-end="${r.end}"><b>${esc(fmtSpan(r.start, r.end, r.approx))} · ${esc(r.title)}</b><small>${r.type === "coverage" ? "Mapped coverage · " : ""}${esc(r.description)}${r.basis ? " · " + esc(r.basis) : ""}</small></button>`,
+                `<button class="place-entry" type="button" data-place-row="${i}" data-place-key="${esc(JSON.stringify([r.type,r.id || r.name,r.start,r.end]))}" data-place-start="${r.start}" data-place-end="${r.end}"><b>${esc(fmtEvent(r))} · ${esc(r.title)}</b><small>${r.type === "coverage" ? "Mapped coverage · " : ""}${esc(r.description)}${r.basis ? " · " + esc(r.basis) : ""}</small></button>`,
             )
             .join("")
         : "<p>No records found here so far. Missing records do not imply this place was uninhabited.</p>"

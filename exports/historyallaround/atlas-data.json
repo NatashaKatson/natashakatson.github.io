@@ -1,10 +1,10 @@
 {
   "metadata": {
-    "schemaVersion": 1,
+    "schemaVersion": 2,
     "sourceFile": "static/historyallaround/atlas/index.html",
-    "eventCount": 282,
+    "eventCount": 303,
     "peopleCount": 66,
-    "dateConvention": "Historical years use negative numbers for BC/BCE and positive numbers for AD/CE; there is no year zero. Prehistoric entries retain the atlas numeric dates, including approximate negative ages for dinosaurs. A null event endYear means a single dated entry, not an ongoing event.",
+    "dateConvention": "Historical years use negative numbers for BC/BCE and positive numbers for AD/CE; there is no year zero. Prehistoric entries retain the atlas numeric dates, including approximate negative ages for dinosaurs. A null event endYear means a single dated entry. For ongoing events, endYear is the atlas coverage cutoff (2026), not a historical end date.",
     "coordinates": "Latitude and longitude in degrees. Points can represent a location associated with an entry rather than its full geographical extent.",
     "ids": "IDs match the current atlas array positions and may change if source records are reordered.",
     "regions": {
@@ -34,7 +34,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e1",
@@ -53,7 +54,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e2",
@@ -72,7 +74,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e3",
@@ -91,7 +94,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e4",
@@ -110,7 +114,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e5",
@@ -129,7 +134,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e6",
@@ -148,7 +154,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e7",
@@ -167,7 +174,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e8",
@@ -186,7 +194,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e9",
@@ -205,7 +214,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e10",
@@ -224,7 +234,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e11",
@@ -243,7 +254,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e12",
@@ -262,7 +274,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e13",
@@ -281,7 +294,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e14",
@@ -300,7 +314,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e15",
@@ -319,7 +334,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e16",
@@ -338,7 +354,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e17",
@@ -357,7 +374,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e18",
@@ -376,7 +394,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e19",
@@ -395,7 +414,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e20",
@@ -414,7 +434,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e21",
@@ -433,7 +454,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e22",
@@ -452,7 +474,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e23",
@@ -471,7 +494,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e24",
@@ -490,7 +514,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e25",
@@ -509,7 +534,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e26",
@@ -528,7 +554,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e27",
@@ -547,7 +574,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e28",
@@ -566,7 +594,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e29",
@@ -585,7 +614,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e30",
@@ -604,7 +634,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e31",
@@ -623,7 +654,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e32",
@@ -642,7 +674,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e33",
@@ -661,7 +694,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e34",
@@ -680,7 +714,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e35",
@@ -699,7 +734,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e36",
@@ -718,7 +754,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e37",
@@ -737,7 +774,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e38",
@@ -756,7 +794,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e39",
@@ -775,7 +814,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e40",
@@ -794,7 +834,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e41",
@@ -821,7 +862,8 @@
           "Maya"
         ]
       },
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e42",
@@ -840,7 +882,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e43",
@@ -859,7 +902,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e44",
@@ -878,7 +922,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e45",
@@ -897,7 +942,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e46",
@@ -916,7 +962,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e47",
@@ -935,7 +982,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e48",
@@ -954,22 +1002,23 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e49",
-      "title": "Plague of Justinian",
-      "description": "The first plague pandemic is recorded in Egypt in 541 and reaches Constantinople in 542. The marker locates Constantinople, an affected capital, rather than the first outbreak site. This was not the earliest existence of the plague bacterium.",
+      "title": "First plague pandemic (Justinian and later waves)",
+      "description": "Plague is recorded in Egypt in 541 and reaches Constantinople in 542. Further outbreaks recur around the Mediterranean and in Europe until about 750. The interval groups successive waves, not continuous infection everywhere. Constantinople represents an affected capital, not a proven origin.",
       "startYear": 541,
-      "endYear": null,
-      "approximate": false,
+      "endYear": 750,
+      "approximate": true,
       "latitude": 41,
       "longitude": 28.96,
       "region": "eu",
-      "category": "nature",
+      "category": "pandemics",
       "wikipediaSlug": "Plague_of_Justinian",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Plague_of_Justinian",
-      "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11433773/",
+      "sourceUrl": "https://www.shh.mpg.de/1332424/plague-pandemic",
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
@@ -978,7 +1027,8 @@
         "pandemic",
         "first plague pandemic",
         "bubonic plague"
-      ]
+      ],
+      "ongoing": false
     },
     {
       "id": "e50",
@@ -997,7 +1047,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e51",
@@ -1016,7 +1067,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e52",
@@ -1035,7 +1087,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e53",
@@ -1054,7 +1107,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e54",
@@ -1073,7 +1127,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e55",
@@ -1092,7 +1147,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e56",
@@ -1111,7 +1167,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e57",
@@ -1130,7 +1187,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e58",
@@ -1149,7 +1207,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e59",
@@ -1177,7 +1236,8 @@
           "Cahokia"
         ]
       },
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e60",
@@ -1196,7 +1256,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e61",
@@ -1215,7 +1276,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e62",
@@ -1234,7 +1296,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e63",
@@ -1253,7 +1316,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e64",
@@ -1272,7 +1336,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e65",
@@ -1291,7 +1356,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e66",
@@ -1310,7 +1376,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e67",
@@ -1329,7 +1396,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e68",
@@ -1348,7 +1416,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e69",
@@ -1376,7 +1445,8 @@
           "Polynesia"
         ]
       },
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e70",
@@ -1395,7 +1465,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e71",
@@ -1414,7 +1485,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e72",
@@ -1443,7 +1515,8 @@
           "Polynesia"
         ]
       },
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e73",
@@ -1462,7 +1535,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e74",
@@ -1490,7 +1564,8 @@
           "Aztec"
         ]
       },
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e75",
@@ -1509,7 +1584,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e76",
@@ -1521,7 +1597,7 @@
       "latitude": 38.19,
       "longitude": 15.55,
       "region": "eu",
-      "category": "nature",
+      "category": "pandemics",
       "wikipediaSlug": "Black_Death",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Black_Death",
       "sourceUrl": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/EA9466FE5164149AD4350B7D38222A5C/S0043887121000034a.pdf/pandemics-and-political-development-the-electoral-legacy-of-the-black-death-in-germany.pdf",
@@ -1533,7 +1609,8 @@
         "pandemic",
         "second plague pandemic",
         "bubonic plague"
-      ]
+      ],
+      "ongoing": false
     },
     {
       "id": "e77",
@@ -1552,7 +1629,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e78",
@@ -1571,7 +1649,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e79",
@@ -1598,7 +1677,8 @@
           "Inca"
         ]
       },
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e80",
@@ -1617,7 +1697,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e81",
@@ -1636,7 +1717,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e82",
@@ -1655,7 +1737,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e83",
@@ -1674,7 +1757,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e84",
@@ -1693,7 +1777,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e85",
@@ -1712,7 +1797,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e86",
@@ -1731,7 +1817,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e87",
@@ -1750,7 +1837,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e88",
@@ -1769,7 +1857,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e89",
@@ -1788,7 +1877,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e90",
@@ -1807,7 +1897,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e91",
@@ -1826,7 +1917,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e92",
@@ -1845,7 +1937,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e93",
@@ -1864,7 +1957,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e94",
@@ -1883,7 +1977,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e95",
@@ -1902,7 +1997,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e96",
@@ -1921,7 +2017,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e97",
@@ -1940,7 +2037,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e98",
@@ -1959,7 +2057,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e99",
@@ -1978,7 +2077,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e100",
@@ -1997,7 +2097,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e101",
@@ -2016,7 +2117,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e102",
@@ -2035,7 +2137,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e103",
@@ -2054,7 +2157,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e104",
@@ -2073,7 +2177,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e105",
@@ -2092,7 +2197,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e106",
@@ -2111,7 +2217,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e107",
@@ -2130,7 +2237,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e108",
@@ -2149,7 +2257,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e109",
@@ -2168,7 +2277,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e110",
@@ -2187,7 +2297,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e111",
@@ -2206,7 +2317,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e112",
@@ -2225,7 +2337,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e113",
@@ -2253,7 +2366,8 @@
           "Aotearoa"
         ]
       },
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e114",
@@ -2272,7 +2386,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e115",
@@ -2291,7 +2406,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e116",
@@ -2310,7 +2426,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e117",
@@ -2329,7 +2446,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e118",
@@ -2348,7 +2466,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e119",
@@ -2367,7 +2486,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e120",
@@ -2386,7 +2506,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e121",
@@ -2405,7 +2526,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e122",
@@ -2424,7 +2546,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e123",
@@ -2443,7 +2566,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e124",
@@ -2462,7 +2586,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e125",
@@ -2481,7 +2606,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e126",
@@ -2500,7 +2626,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e127",
@@ -2519,7 +2646,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e128",
@@ -2538,7 +2666,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e129",
@@ -2557,7 +2686,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e130",
@@ -2576,7 +2706,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e131",
@@ -2595,7 +2726,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e132",
@@ -2614,7 +2746,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e133",
@@ -2639,7 +2772,8 @@
         "medical inventions",
         "antibiotics",
         "Alexander Fleming"
-      ]
+      ],
+      "ongoing": false
     },
     {
       "id": "e134",
@@ -2658,7 +2792,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e135",
@@ -2677,7 +2812,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e136",
@@ -2696,7 +2832,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e137",
@@ -2715,7 +2852,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e138",
@@ -2734,7 +2872,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e139",
@@ -2753,7 +2892,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e140",
@@ -2772,7 +2912,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e141",
@@ -2791,7 +2932,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e142",
@@ -2810,7 +2952,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e143",
@@ -2829,7 +2972,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e144",
@@ -2848,7 +2992,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e145",
@@ -2867,7 +3012,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e146",
@@ -2886,7 +3032,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e147",
@@ -2905,7 +3052,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e148",
@@ -2924,7 +3072,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e149",
@@ -2943,7 +3092,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e150",
@@ -2962,7 +3112,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e151",
@@ -2981,7 +3132,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e152",
@@ -3000,7 +3152,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e153",
@@ -3019,7 +3172,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e154",
@@ -3038,7 +3192,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e155",
@@ -3057,7 +3212,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e156",
@@ -3076,7 +3232,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e157",
@@ -3095,7 +3252,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e158",
@@ -3114,7 +3272,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e159",
@@ -3126,7 +3285,7 @@
       "latitude": 46.232,
       "longitude": 6.134,
       "region": "eu",
-      "category": "nature",
+      "category": "pandemics",
       "wikipediaSlug": "COVID-19_pandemic",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/COVID-19_pandemic",
       "sourceUrl": "https://www.who.int/news/item/05-05-2023-statement-on-the-fifteenth-meeting-of-the-international-health-regulations-(2005)-emergency-committee-regarding-the-coronavirus-disease-(covid-19)-pandemic",
@@ -3138,7 +3297,8 @@
         "pandemic",
         "coronavirus",
         "COVID"
-      ]
+      ],
+      "ongoing": false
     },
     {
       "id": "e160",
@@ -3157,7 +3317,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e161",
@@ -3176,7 +3337,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e162",
@@ -3195,7 +3357,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e163",
@@ -3214,7 +3377,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e164",
@@ -3233,7 +3397,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e165",
@@ -3252,7 +3417,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e166",
@@ -3271,7 +3437,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e167",
@@ -3290,7 +3457,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e168",
@@ -3309,7 +3477,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e169",
@@ -3328,7 +3497,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e170",
@@ -3347,7 +3517,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e171",
@@ -3366,7 +3537,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e172",
@@ -3385,7 +3557,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e173",
@@ -3404,7 +3577,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e174",
@@ -3423,7 +3597,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e175",
@@ -3442,7 +3617,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e176",
@@ -3461,7 +3637,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e177",
@@ -3480,7 +3657,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e178",
@@ -3499,7 +3677,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e179",
@@ -3518,7 +3697,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e180",
@@ -3537,7 +3717,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e181",
@@ -3556,7 +3737,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e182",
@@ -3575,7 +3757,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e183",
@@ -3594,7 +3777,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e184",
@@ -3613,7 +3797,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e185",
@@ -3632,7 +3817,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e186",
@@ -3651,7 +3837,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e187",
@@ -3670,7 +3857,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e188",
@@ -3689,7 +3877,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e189",
@@ -3708,7 +3897,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e190",
@@ -3727,7 +3917,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e191",
@@ -3746,7 +3937,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e192",
@@ -3765,7 +3957,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e193",
@@ -3784,7 +3977,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e194",
@@ -3803,7 +3997,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e195",
@@ -3822,7 +4017,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e196",
@@ -3841,7 +4037,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e197",
@@ -3860,7 +4057,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e198",
@@ -3879,7 +4077,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e199",
@@ -3898,7 +4097,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e200",
@@ -3917,7 +4117,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e201",
@@ -3936,7 +4137,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e202",
@@ -3955,7 +4157,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e203",
@@ -3974,7 +4177,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e204",
@@ -3993,7 +4197,8 @@
       "fossilRegion": "Ischigualasto region · Argentina",
       "locationSourceUrl": "https://whc.unesco.org/en/list/966/",
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e205",
@@ -4012,7 +4217,8 @@
       "fossilRegion": "Dinosaur National Monument region · Utah, USA",
       "locationSourceUrl": "https://www.nps.gov/dino/planyourvisit/quarry-exhibit-hall.htm",
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e206",
@@ -4031,7 +4237,8 @@
       "fossilRegion": "Carnegie Quarry region · Utah, USA",
       "locationSourceUrl": "https://www.nps.gov/dino/learn/nature/diplodocus-longus.htm",
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e207",
@@ -4050,7 +4257,8 @@
       "fossilRegion": "Bernissart region · Belgium",
       "locationSourceUrl": "https://www.naturalsciences.be/en/discover-join/discover/the-bernissart-iguanodons-at-a-glance",
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e208",
@@ -4069,7 +4277,8 @@
       "fossilRegion": "Kem Kem region · Morocco",
       "locationSourceUrl": "https://doi.org/10.1016/j.cretres.2018.09.012",
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e209",
@@ -4088,7 +4297,8 @@
       "fossilRegion": "Flaming Cliffs region · Mongolia",
       "locationSourceUrl": "https://www.amnh.org/exhibitions/fossils-flaming-cliffs-gobi",
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e210",
@@ -4107,7 +4317,8 @@
       "fossilRegion": "Faith region · South Dakota, USA",
       "locationSourceUrl": "https://www.fieldmuseum.org/collection-item-iconic/sue",
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e211",
@@ -4126,7 +4337,8 @@
       "fossilRegion": "Hell Creek region · Montana, USA",
       "locationSourceUrl": "https://museumoftherockies.org/exhibitions/siebel-dinosaur-complex",
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e212",
@@ -4145,7 +4357,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e213",
@@ -4164,7 +4377,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e214",
@@ -4183,7 +4397,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e215",
@@ -4202,7 +4417,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e216",
@@ -4221,7 +4437,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e217",
@@ -4240,7 +4457,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e218",
@@ -4259,7 +4477,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e219",
@@ -4278,7 +4497,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e220",
@@ -4297,7 +4517,8 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e221",
@@ -4324,7 +4545,8 @@
           "earthworks"
         ]
       },
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e222",
@@ -4350,7 +4572,8 @@
           "Native American"
         ]
       },
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e223",
@@ -4377,7 +4600,8 @@
           "Puebloan"
         ]
       },
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e224",
@@ -4407,7 +4631,8 @@
         ],
         "territorySource": "https://www.musqueam.bc.ca/our-story/our-territory/"
       },
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e225",
@@ -4441,7 +4666,8 @@
         ],
         "territorySource": "https://americanindian.si.edu/sites/1/files/pdf/education/HaudenosauneeGuide.pdf"
       },
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e226",
@@ -4470,7 +4696,8 @@
           "New York"
         ]
       },
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e227",
@@ -4499,7 +4726,8 @@
           "Pueblo"
         ]
       },
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e228",
@@ -4527,7 +4755,8 @@
           "Northwest Coast"
         ]
       },
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e229",
@@ -4554,7 +4783,8 @@
           "Kiks.ádi"
         ]
       },
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e230",
@@ -4582,7 +4812,8 @@
           "Georgia"
         ]
       },
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e231",
@@ -4610,7 +4841,8 @@
         ],
         "territorySource": "https://www.cherokee.org/About-The-Nation/Maps"
       },
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e232",
@@ -4639,7 +4871,8 @@
           "syllabary"
         ]
       },
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e233",
@@ -4669,7 +4902,8 @@
           "Winnipeg"
         ]
       },
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e234",
@@ -4698,7 +4932,8 @@
           "Inuktitut"
         ]
       },
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e235",
@@ -4727,7 +4962,8 @@
           "Ненцы"
         ]
       },
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e236",
@@ -4758,7 +4994,8 @@
           "Якуты"
         ]
       },
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e237",
@@ -4790,7 +5027,8 @@
           "Юпик"
         ]
       },
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e238",
@@ -4825,7 +5063,8 @@
         ],
         "territorySource": "https://www.saamicouncil.net/en/charter"
       },
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e239",
@@ -4853,7 +5092,8 @@
           "Айны"
         ]
       },
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e240",
@@ -4881,7 +5121,8 @@
           "aquaculture"
         ]
       },
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e241",
@@ -4909,7 +5150,8 @@
           "Kalahari"
         ]
       },
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e242",
@@ -4939,7 +5181,8 @@
           "Wajãpi"
         ]
       },
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e243",
@@ -4968,7 +5211,8 @@
           "rope bridge"
         ]
       },
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e244",
@@ -4998,7 +5242,8 @@
         ],
         "evidence": true
       },
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e245",
@@ -5028,7 +5273,8 @@
         ],
         "evidence": true
       },
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e246",
@@ -5057,7 +5303,8 @@
         ],
         "evidence": true
       },
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e247",
@@ -5086,7 +5333,8 @@
         ],
         "evidence": true
       },
-      "aliases": []
+      "aliases": [],
+      "ongoing": false
     },
     {
       "id": "e248",
@@ -5115,7 +5363,8 @@
         "Edward Jenner",
         "cowpox",
         "Berkeley"
-      ]
+      ],
+      "ongoing": false
     },
     {
       "id": "e249",
@@ -5143,7 +5392,8 @@
         "immunisation",
         "Louis Pasteur",
         "Joseph Meister"
-      ]
+      ],
+      "ongoing": false
     },
     {
       "id": "e250",
@@ -5173,7 +5423,8 @@
         "TB",
         "Calmette",
         "Guerin"
-      ]
+      ],
+      "ongoing": false
     },
     {
       "id": "e251",
@@ -5202,7 +5453,8 @@
         "flu vaccine",
         "Thomas Francis",
         "Jonas Salk"
-      ]
+      ],
+      "ongoing": false
     },
     {
       "id": "e252",
@@ -5231,7 +5483,8 @@
         "poliomyelitis",
         "IPV",
         "Jonas Salk"
-      ]
+      ],
+      "ongoing": false
     },
     {
       "id": "e253",
@@ -5259,7 +5512,8 @@
         "immunisation",
         "rubeola",
         "John Enders"
-      ]
+      ],
+      "ongoing": false
     },
     {
       "id": "e254",
@@ -5287,7 +5541,8 @@
         "immunisation",
         "measles mumps rubella",
         "Maurice Hilleman"
-      ]
+      ],
+      "ongoing": false
     },
     {
       "id": "e255",
@@ -5316,7 +5571,8 @@
         "recombinant DNA",
         "hepatitis B",
         "HBV"
-      ]
+      ],
+      "ongoing": false
     },
     {
       "id": "e256",
@@ -5345,7 +5601,8 @@
         "human papillomavirus",
         "Gardasil",
         "cervical cancer"
-      ]
+      ],
+      "ongoing": false
     },
     {
       "id": "e257",
@@ -5375,7 +5632,8 @@
         "coronavirus",
         "Pfizer",
         "BioNTech"
-      ]
+      ],
+      "ongoing": false
     },
     {
       "id": "e258",
@@ -5404,7 +5662,8 @@
         "malaria",
         "RTS S",
         "Mosquirix"
-      ]
+      ],
+      "ongoing": false
     },
     {
       "id": "e259",
@@ -5430,7 +5689,8 @@
         "medical breakthroughs",
         "Rene Laennec",
         "diagnosis"
-      ]
+      ],
+      "ongoing": false
     },
     {
       "id": "e260",
@@ -5459,7 +5719,8 @@
         "ether",
         "surgery",
         "Morton"
-      ]
+      ],
+      "ongoing": false
     },
     {
       "id": "e261",
@@ -5487,7 +5748,8 @@
         "hand washing",
         "hygiene",
         "puerperal fever"
-      ]
+      ],
+      "ongoing": false
     },
     {
       "id": "e262",
@@ -5515,7 +5777,8 @@
         "antisepsis",
         "carbolic acid",
         "surgery"
-      ]
+      ],
+      "ongoing": false
     },
     {
       "id": "e263",
@@ -5544,7 +5807,8 @@
         "Roentgen",
         "Rontgen",
         "medical imaging"
-      ]
+      ],
+      "ongoing": false
     },
     {
       "id": "e264",
@@ -5571,7 +5835,8 @@
         "Karl Landsteiner",
         "blood types",
         "blood transfusion"
-      ]
+      ],
+      "ongoing": false
     },
     {
       "id": "e265",
@@ -5600,7 +5865,8 @@
         "Best",
         "Collip",
         "Macleod"
-      ]
+      ],
+      "ongoing": false
     },
     {
       "id": "e266",
@@ -5626,7 +5892,8 @@
         "medical breakthroughs",
         "organ transplant",
         "Joseph Murray"
-      ]
+      ],
+      "ongoing": false
     },
     {
       "id": "e267",
@@ -5653,7 +5920,8 @@
         "cardiac pacing",
         "Ake Senning",
         "Rune Elmqvist"
-      ]
+      ],
+      "ongoing": false
     },
     {
       "id": "e268",
@@ -5680,7 +5948,8 @@
         "Christiaan Barnard",
         "Cape Town",
         "organ transplant"
-      ]
+      ],
+      "ongoing": false
     },
     {
       "id": "e269",
@@ -5708,7 +5977,8 @@
         "CAT scan",
         "Hounsfield",
         "medical imaging"
-      ]
+      ],
+      "ongoing": false
     },
     {
       "id": "e270",
@@ -5736,7 +6006,8 @@
         "malaria",
         "qinghaosu",
         "sweet wormwood"
-      ]
+      ],
+      "ongoing": false
     },
     {
       "id": "e271",
@@ -5764,7 +6035,8 @@
         "NMR",
         "Paul Lauterbur",
         "medical imaging"
-      ]
+      ],
+      "ongoing": false
     },
     {
       "id": "e272",
@@ -5793,22 +6065,23 @@
         "Louise Brown",
         "Robert Edwards",
         "Patrick Steptoe"
-      ]
+      ],
+      "ongoing": false
     },
     {
       "id": "e273",
-      "title": "First cholera pandemic begins",
-      "description": "In 1817, documented pandemic spread carries cholera beyond its longstanding home in Bengal. Successive waves make it a global public-health threat. The Kolkata-area marker represents Bengal, not a proven first infected person or the disease’s full reach. This entry marks the pandemic’s onset.",
+      "title": "First cholera pandemic",
+      "description": "From 1817, cholera spreads beyond Bengal across Asia and toward the eastern Mediterranean. The approximate 1817–1823 interval follows WHO’s historical chronology; other chronologies end it in 1824. The Kolkata marker represents Bengal, not a proven first case or the full affected area.",
       "startYear": 1817,
-      "endYear": null,
-      "approximate": false,
+      "endYear": 1823,
+      "approximate": true,
       "latitude": 22.57,
       "longitude": 88.36,
       "region": "as",
-      "category": "nature",
+      "category": "pandemics",
       "wikipediaSlug": "First_cholera_pandemic",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/First_cholera_pandemic",
-      "sourceUrl": "https://wwwnc.cdc.gov/eid/article/17/11/11-1109_article",
+      "sourceUrl": "https://applications.emro.who.int/docs/em_rc15_8_en.pdf",
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
@@ -5822,22 +6095,23 @@
         "Bengal",
         "Calcutta",
         "Kolkata"
-      ]
+      ],
+      "ongoing": false
     },
     {
       "id": "e274",
-      "title": "Third plague pandemic: Hong Kong outbreak",
-      "description": "Hong Kong suffers a major plague outbreak in 1894 during the third plague pandemic. Alexandre Yersin investigates and identifies the plague bacterium there. The marker locates this outbreak and research milestone, not the pandemic’s earlier origin or full duration.",
-      "startYear": 1894,
-      "endYear": null,
-      "approximate": false,
-      "latitude": 22.28,
-      "longitude": 114.16,
+      "title": "Third plague pandemic",
+      "description": "Plague spreads from Yunnan in the mid-19th century and later travels through ports to other continents. The approximate 1855–1960 interval describes the historical pandemic era; plague persists in animal reservoirs afterward. The Kunming marker represents Yunnan, not the full affected area. Yersin identifies the bacterium in Hong Kong in 1894.",
+      "startYear": 1855,
+      "endYear": 1960,
+      "approximate": true,
+      "latitude": 25.04,
+      "longitude": 102.72,
       "region": "as",
-      "category": "nature",
+      "category": "pandemics",
       "wikipediaSlug": "Third_plague_pandemic",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Third_plague_pandemic",
-      "sourceUrl": "https://www.pasteur.fr/en/whats-new/latest-news/news/alexandre-yersin-man-who-discovered-bacterium-responsible-plague",
+      "sourceUrl": "https://doi.org/10.3390/microorganisms12091802",
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
@@ -5850,7 +6124,8 @@
         "bubonic plague",
         "Yersinia pestis",
         "Alexandre Yersin"
-      ]
+      ],
+      "ongoing": false
     },
     {
       "id": "e275",
@@ -5862,7 +6137,7 @@
       "latitude": 39.1,
       "longitude": -96.81,
       "region": "am",
-      "category": "nature",
+      "category": "pandemics",
       "wikipediaSlug": "Spanish_flu",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Spanish_flu",
       "sourceUrl": "https://archive.cdc.gov/www_cdc_gov/flu/pandemic-resources/1918-pandemic-h1n1.html",
@@ -5878,7 +6153,8 @@
         "1918 flu",
         "H1N1",
         "Spanish influenza"
-      ]
+      ],
+      "ongoing": false
     },
     {
       "id": "e276",
@@ -5890,7 +6166,7 @@
       "latitude": 1.29,
       "longitude": 103.85,
       "region": "as",
-      "category": "nature",
+      "category": "pandemics",
       "wikipediaSlug": "1957–1958_influenza_pandemic",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/1957%E2%80%931958_influenza_pandemic",
       "sourceUrl": "https://archive.cdc.gov/www_cdc_gov/flu/pandemic-resources/1957-1958-pandemic.html",
@@ -5906,22 +6182,23 @@
         "Asian influenza",
         "H2N2",
         "1957 flu"
-      ]
+      ],
+      "ongoing": false
     },
     {
       "id": "e277",
-      "title": "Seventh cholera pandemic begins",
-      "description": "The seventh cholera pandemic, caused by the El Tor lineage, begins in Sulawesi, Indonesia, in 1961 and later spreads across continents. The marker represents Sulawesi. This entry dates the onset; it does not claim that the pandemic ended in 1961.",
+      "title": "Seventh cholera pandemic (El Tor)",
+      "description": "The seventh cholera pandemic begins in Sulawesi, Indonesia, in 1961 and spreads across continents. WHO still describes it as ongoing in 2026. The Makassar marker represents Sulawesi, not the whole affected area. The map’s 2026 limit is a coverage cutoff, not an end date.",
       "startYear": 1961,
-      "endYear": null,
+      "endYear": 2026,
       "approximate": false,
       "latitude": -5.14,
       "longitude": 119.43,
       "region": "as",
-      "category": "nature",
+      "category": "pandemics",
       "wikipediaSlug": "Seventh_cholera_pandemic",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Seventh_cholera_pandemic",
-      "sourceUrl": "https://iris.who.int/bitstream/10665/66485/1/",
+      "sourceUrl": "https://www.who.int/news-room/fact-sheets/detail/cholera",
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
@@ -5935,7 +6212,8 @@
         "El Tor",
         "Indonesia",
         "Sulawesi"
-      ]
+      ],
+      "ongoing": true
     },
     {
       "id": "e278",
@@ -5947,7 +6225,7 @@
       "latitude": 22.28,
       "longitude": 114.16,
       "region": "as",
-      "category": "nature",
+      "category": "pandemics",
       "wikipediaSlug": "1968_influenza_pandemic",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/1968_influenza_pandemic",
       "sourceUrl": "https://wwwnc.cdc.gov/eid/article/12/1/05-1254_article",
@@ -5963,19 +6241,20 @@
         "Hong Kong influenza",
         "H3N2",
         "1968 flu"
-      ]
+      ],
+      "ongoing": false
     },
     {
       "id": "e279",
-      "title": "HIV/AIDS pandemic: first recognised AIDS reports",
-      "description": "In June 1981, the CDC reports unusual pneumonia in five men in Los Angeles, an early recognition of what becomes known as AIDS. HIV had circulated before these reports. The Los Angeles marker locates the reported cases, not the origin of HIV or the beginning of every infection in the global pandemic.",
+      "title": "HIV/AIDS pandemic (recognised in 1981)",
+      "description": "The CDC’s June 1981 Los Angeles reports mark early recognition of AIDS. HIV had circulated before these reports, and the global epidemic continues. Los Angeles represents the reported cases, not HIV’s origin. This viewing interval begins with recognition and continues through the atlas’s 2026 coverage limit, not a claimed end.",
       "startYear": 1981,
-      "endYear": null,
+      "endYear": 2026,
       "approximate": false,
       "latitude": 34.05,
       "longitude": -118.24,
       "region": "am",
-      "category": "nature",
+      "category": "pandemics",
       "wikipediaSlug": "HIV/AIDS",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/HIV%2FAIDS",
       "sourceUrl": "https://www.hiv.gov/hiv-basics/overview/history/hiv-and-aids-timeline",
@@ -5991,7 +6270,8 @@
         "HIV",
         "AIDS",
         "acquired immunodeficiency syndrome"
-      ]
+      ],
+      "ongoing": true
     },
     {
       "id": "e280",
@@ -6003,7 +6283,7 @@
       "latitude": 46.232,
       "longitude": 6.134,
       "region": "eu",
-      "category": "nature",
+      "category": "pandemics",
       "wikipediaSlug": "2009_swine_flu_pandemic",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/2009_swine_flu_pandemic",
       "sourceUrl": "https://www.who.int/europe/news-room/fact-sheets/item/evaluation-of-the-response-to-pandemic-%28h1n1%29-2009-in-the-european-region",
@@ -6019,7 +6299,8 @@
         "swine influenza",
         "H1N1pdm09",
         "2009 flu"
-      ]
+      ],
+      "ongoing": false
     },
     {
       "id": "e281",
@@ -6031,7 +6312,7 @@
       "latitude": 46.232,
       "longitude": 6.134,
       "region": "eu",
-      "category": "ideas",
+      "category": "nature",
       "wikipediaSlug": "Eradication_of_smallpox",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Eradication_of_smallpox",
       "sourceUrl": "https://www.who.int/news-room/spotlight/history-of-vaccination/a-brief-history-of-vaccination",
@@ -6052,7 +6333,627 @@
         "public health",
         "smallpox eradication",
         "World Health Assembly"
-      ]
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e282",
+      "title": "Antonine plague",
+      "description": "A major epidemic affects the Roman Empire around AD 165–180. Smallpox is often proposed, but the diagnosis and full reach remain uncertain. Rome is a representative affected city. This ancient transregional epidemic is included as a precursor to later global pandemics.",
+      "startYear": 165,
+      "endYear": 180,
+      "approximate": true,
+      "latitude": 41.9,
+      "longitude": 12.5,
+      "region": "eu",
+      "category": "pandemics",
+      "wikipediaSlug": "Antonine_Plague",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Antonine_Plague",
+      "sourceUrl": "https://www.sciencedirect.com/science/article/pii/S2352409X22001298",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "aliases": [
+        "pandemics",
+        "pandemic",
+        "epidemics",
+        "disease history",
+        "public health",
+        "Galen",
+        "smallpox",
+        "Roman Empire"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e283",
+      "title": "Plague of Cyprian",
+      "description": "A severe epidemic affects the Roman world in the mid-3rd century. Cyprian describes its effects at Carthage. Its pathogen and exact chronology are disputed; the approximate interval is not proof of worldwide spread. The marker locates Carthage, an affected city.",
+      "startYear": 249,
+      "endYear": 262,
+      "approximate": true,
+      "latitude": 36.85,
+      "longitude": 10.32,
+      "region": "me",
+      "category": "pandemics",
+      "wikipediaSlug": "Plague_of_Cyprian",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Plague_of_Cyprian",
+      "sourceUrl": "https://www.sciencedirect.com/science/article/pii/S2352409X22001298",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "aliases": [
+        "pandemics",
+        "pandemic",
+        "epidemics",
+        "disease history",
+        "public health",
+        "Cyprian",
+        "Carthage",
+        "Roman Empire"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e284",
+      "title": "Second plague pandemic (Black Death and later waves)",
+      "description": "The Black Death begins a long era of recurring plague across western Eurasia and North Africa. Outbreaks continue in different regions into the 19th century. The approximate end follows a common historical convention, not a simultaneous global ending. The Istanbul marker represents an affected city; the separate Black Death entry describes the initial European wave.",
+      "startYear": 1346,
+      "endYear": 1844,
+      "approximate": true,
+      "latitude": 41.01,
+      "longitude": 28.98,
+      "region": "eu",
+      "category": "pandemics",
+      "wikipediaSlug": "Second_plague_pandemic",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Second_plague_pandemic",
+      "sourceUrl": "https://www.etd.ceu.edu/2016/ganea_sabina.pdf",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "aliases": [
+        "pandemics",
+        "pandemic",
+        "epidemics",
+        "disease history",
+        "public health",
+        "bubonic plague",
+        "Yersinia pestis",
+        "Black Death"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e285",
+      "title": "1510 influenza pandemic",
+      "description": "Contemporary accounts describe a rapidly spreading influenza-like illness in 1510, especially across Europe after reports from North Africa. This is among the earliest well-documented influenza pandemics. The Paris marker represents French accounts, not an established origin; no virus sample survives.",
+      "startYear": 1510,
+      "endYear": 1510,
+      "approximate": true,
+      "latitude": 48.86,
+      "longitude": 2.35,
+      "region": "eu",
+      "category": "pandemics",
+      "wikipediaSlug": "1510_influenza_pandemic",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/1510_influenza_pandemic",
+      "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3106245/",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "aliases": [
+        "pandemics",
+        "pandemic",
+        "epidemics",
+        "disease history",
+        "public health",
+        "flu",
+        "influenza",
+        "1510 flu"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e286",
+      "title": "Smallpox spreads in the Americas",
+      "description": "Smallpox is recorded in Hispaniola in 1518 and Mexico in 1520, with early spread toward the Andes later in the decade. The approximate interval shows this devastating phase of smallpox’s intercontinental expansion; it is not the full lifetime of the disease. Santo Domingo represents the early Caribbean epidemic.",
+      "startYear": 1518,
+      "endYear": 1527,
+      "approximate": true,
+      "latitude": 18.49,
+      "longitude": -69.93,
+      "region": "am",
+      "category": "pandemics",
+      "wikipediaSlug": "History_of_smallpox",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/History_of_smallpox",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/10230264/",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "aliases": [
+        "pandemics",
+        "pandemic",
+        "epidemics",
+        "disease history",
+        "public health",
+        "smallpox",
+        "variola",
+        "Americas",
+        "Hispaniola",
+        "Mexico"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e287",
+      "title": "1557–1560 influenza pandemic",
+      "description": "Historical accounts associate these years with widespread influenza-like illness across several continents. The diagnosis is retrospective and exact wave boundaries vary. London represents recorded English mortality, not a proven origin.",
+      "startYear": 1557,
+      "endYear": 1560,
+      "approximate": true,
+      "latitude": 51.51,
+      "longitude": -0.13,
+      "region": "eu",
+      "category": "pandemics",
+      "wikipediaSlug": "1557_influenza_pandemic",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/1557_influenza_pandemic",
+      "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2720801/",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "aliases": [
+        "pandemics",
+        "pandemic",
+        "epidemics",
+        "disease history",
+        "public health",
+        "flu",
+        "influenza",
+        "1557 flu"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e288",
+      "title": "1580 influenza pandemic",
+      "description": "A widely documented influenza-like pandemic crosses Asia, Africa and Europe in 1580. Rome represents a heavily affected city, not a proven origin. The diagnosis relies on historical descriptions rather than preserved virus samples.",
+      "startYear": 1580,
+      "endYear": 1580,
+      "approximate": true,
+      "latitude": 41.9,
+      "longitude": 12.5,
+      "region": "eu",
+      "category": "pandemics",
+      "wikipediaSlug": "1580_influenza_pandemic",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/1580_influenza_pandemic",
+      "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2720801/",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "aliases": [
+        "pandemics",
+        "pandemic",
+        "epidemics",
+        "disease history",
+        "public health",
+        "flu",
+        "influenza",
+        "1580 flu"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e289",
+      "title": "1729–1733 influenza pandemic waves",
+      "description": "Influenza-like disease spreads widely in 1729–1730 and again in 1732–1733. Historical accounts differ on whether these are separate pandemics or returning waves. Moscow is a representative reporting location; the interval groups the waves without claiming continuous illness everywhere.",
+      "startYear": 1729,
+      "endYear": 1733,
+      "approximate": true,
+      "latitude": 55.75,
+      "longitude": 37.62,
+      "region": "eu",
+      "category": "pandemics",
+      "wikipediaSlug": "1729_influenza_pandemic",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/1729_influenza_pandemic",
+      "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2720801/",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "aliases": [
+        "pandemics",
+        "pandemic",
+        "epidemics",
+        "disease history",
+        "public health",
+        "flu",
+        "influenza",
+        "1732 flu",
+        "1733 flu"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e290",
+      "title": "1761–1762 influenza pandemic",
+      "description": "Accounts describe an influenza-like pandemic in the Americas and Europe in 1761–1762. Physicians compare clinical observations across countries. London represents European reports, not an established source of the outbreak.",
+      "startYear": 1761,
+      "endYear": 1762,
+      "approximate": true,
+      "latitude": 51.51,
+      "longitude": -0.13,
+      "region": "eu",
+      "category": "pandemics",
+      "wikipediaSlug": "1761_influenza_pandemic",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/1761_influenza_pandemic",
+      "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2720801/",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "aliases": [
+        "pandemics",
+        "pandemic",
+        "epidemics",
+        "disease history",
+        "public health",
+        "flu",
+        "influenza",
+        "1762 flu"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e291",
+      "title": "1780–1782 influenza pandemic",
+      "description": "An influenza-like pandemic spreads from Asia through Russia and Europe, with exceptionally high attack rates reported in 1781–1782. Saint Petersburg is a representative affected city. The approximate interval follows one historical chronology; exact origins and virus subtype remain uncertain.",
+      "startYear": 1780,
+      "endYear": 1782,
+      "approximate": true,
+      "latitude": 59.93,
+      "longitude": 30.32,
+      "region": "eu",
+      "category": "pandemics",
+      "wikipediaSlug": "1781_influenza_pandemic",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/1781_influenza_pandemic",
+      "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2720801/",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "aliases": [
+        "pandemics",
+        "pandemic",
+        "epidemics",
+        "disease history",
+        "public health",
+        "flu",
+        "influenza",
+        "1781 flu",
+        "1782 flu"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e292",
+      "title": "1788–1790 influenza pandemic",
+      "description": "Influenza-like illness again spreads widely in the late 1780s. Many historians distinguish this pandemic from the 1782 wave, although their relationship is debated. London is a representative reporting city, not a proven origin.",
+      "startYear": 1788,
+      "endYear": 1790,
+      "approximate": true,
+      "latitude": 51.51,
+      "longitude": -0.13,
+      "region": "eu",
+      "category": "pandemics",
+      "wikipediaSlug": "1788_influenza_pandemic",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/1788_influenza_pandemic",
+      "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2720801/",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "aliases": [
+        "pandemics",
+        "pandemic",
+        "epidemics",
+        "disease history",
+        "public health",
+        "flu",
+        "influenza",
+        "1789 flu"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e293",
+      "title": "1830–1837 influenza pandemic waves",
+      "description": "Widespread influenza-like outbreaks occur in 1830–1831, 1832–1833 and 1836–1837. Historians differ on how many distinct pandemics these represent. Saint Petersburg is a representative affected city. The interval groups successive waves rather than continuous local transmission.",
+      "startYear": 1830,
+      "endYear": 1837,
+      "approximate": true,
+      "latitude": 59.93,
+      "longitude": 30.32,
+      "region": "eu",
+      "category": "pandemics",
+      "wikipediaSlug": "1830_influenza_pandemic",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/1830_influenza_pandemic",
+      "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2720801/",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "aliases": [
+        "pandemics",
+        "pandemic",
+        "epidemics",
+        "disease history",
+        "public health",
+        "flu",
+        "influenza",
+        "1831 flu",
+        "1832 flu",
+        "1833 flu",
+        "1836 flu",
+        "1837 flu"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e294",
+      "title": "1847–1848 influenza pandemic (classification debated)",
+      "description": "A major influenza-like outbreak spreads across Europe and beyond in 1847–1848. Some histories count a pandemic; others find its global extent insufficiently documented. London represents contemporary mortality records. Its inclusion does not establish a confirmed virus subtype or worldwide reach.",
+      "startYear": 1847,
+      "endYear": 1848,
+      "approximate": true,
+      "latitude": 51.51,
+      "longitude": -0.13,
+      "region": "eu",
+      "category": "pandemics",
+      "wikipediaSlug": "1847_influenza_pandemic",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/1847_influenza_pandemic",
+      "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3246071/",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "aliases": [
+        "pandemics",
+        "pandemic",
+        "epidemics",
+        "disease history",
+        "public health",
+        "flu",
+        "influenza",
+        "1848 flu"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e295",
+      "title": "1889–1893 pandemic (Russian flu)",
+      "description": "A respiratory pandemic spreads worldwide from 1889, with recurring waves into the early 1890s. Its pathogen remains unconfirmed; influenza and coronavirus explanations have been proposed. Saint Petersburg represents an early extensively reported outbreak, not a proven origin.",
+      "startYear": 1889,
+      "endYear": 1893,
+      "approximate": true,
+      "latitude": 59.93,
+      "longitude": 30.32,
+      "region": "eu",
+      "category": "pandemics",
+      "wikipediaSlug": "1889–1890_pandemic",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/1889%E2%80%931890_pandemic",
+      "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8601188/",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "aliases": [
+        "pandemics",
+        "pandemic",
+        "epidemics",
+        "disease history",
+        "public health",
+        "flu",
+        "influenza",
+        "Russian influenza",
+        "1889 flu",
+        "1890 flu",
+        "1891 flu",
+        "1892 flu"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e296",
+      "title": "1977–1978 H1N1 resurgence (age-restricted pandemic)",
+      "description": "H1N1 reappears in 1977 and spreads internationally, mainly affecting children and young adults with little prior immunity. Its classification differs from the broad pandemics of 1918, 1957 and 1968. Beijing represents early northern Chinese reports, not a proven origin. H1N1 continues circulating afterward.",
+      "startYear": 1977,
+      "endYear": 1978,
+      "approximate": false,
+      "latitude": 39.9,
+      "longitude": 116.4,
+      "region": "as",
+      "category": "pandemics",
+      "wikipediaSlug": "1977_Russian_flu",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/1977_Russian_flu",
+      "sourceUrl": "https://wwwnc.cdc.gov/eid/article/12/1/05-1254_article",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "aliases": [
+        "pandemics",
+        "pandemic",
+        "epidemics",
+        "disease history",
+        "public health",
+        "flu",
+        "influenza",
+        "Russian flu",
+        "H1N1",
+        "1977 flu"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e297",
+      "title": "Second cholera pandemic",
+      "description": "One of the seven recognised cholera pandemics, with repeated outbreaks across countries. The approximate 1829–1850 interval follows WHO’s historical chronology; other histories use different boundaries. Saint Petersburg represents an affected city, not the pandemic’s origin or full geographical reach.",
+      "startYear": 1829,
+      "endYear": 1850,
+      "approximate": true,
+      "latitude": 59.93,
+      "longitude": 30.32,
+      "region": "eu",
+      "category": "pandemics",
+      "wikipediaSlug": "Second_cholera_pandemic",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Second_cholera_pandemic",
+      "sourceUrl": "https://applications.emro.who.int/docs/em_rc15_8_en.pdf",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "aliases": [
+        "pandemics",
+        "pandemic",
+        "epidemics",
+        "disease history",
+        "public health",
+        "cholera",
+        "second cholera"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e298",
+      "title": "Third cholera pandemic",
+      "description": "One of the seven recognised cholera pandemics, with repeated outbreaks across countries. The approximate 1852–1863 interval follows WHO’s historical chronology; other histories use different boundaries. London represents an affected city, not the pandemic’s origin or full geographical reach.",
+      "startYear": 1852,
+      "endYear": 1863,
+      "approximate": true,
+      "latitude": 51.51,
+      "longitude": -0.13,
+      "region": "eu",
+      "category": "pandemics",
+      "wikipediaSlug": "Third_cholera_pandemic",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Third_cholera_pandemic",
+      "sourceUrl": "https://applications.emro.who.int/docs/em_rc15_8_en.pdf",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "aliases": [
+        "pandemics",
+        "pandemic",
+        "epidemics",
+        "disease history",
+        "public health",
+        "cholera",
+        "third cholera"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e299",
+      "title": "Fourth cholera pandemic",
+      "description": "One of the seven recognised cholera pandemics, with repeated outbreaks across countries. The approximate 1863–1875 interval follows WHO’s historical chronology; other histories use different boundaries. Mecca represents an affected city, not the pandemic’s origin or full geographical reach.",
+      "startYear": 1863,
+      "endYear": 1875,
+      "approximate": true,
+      "latitude": 21.42,
+      "longitude": 39.83,
+      "region": "me",
+      "category": "pandemics",
+      "wikipediaSlug": "Fourth_cholera_pandemic",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Fourth_cholera_pandemic",
+      "sourceUrl": "https://applications.emro.who.int/docs/em_rc15_8_en.pdf",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "aliases": [
+        "pandemics",
+        "pandemic",
+        "epidemics",
+        "disease history",
+        "public health",
+        "cholera",
+        "fourth cholera"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e300",
+      "title": "Fifth cholera pandemic",
+      "description": "One of the seven recognised cholera pandemics, with repeated outbreaks across countries. The approximate 1881–1896 interval follows WHO’s historical chronology; other histories use different boundaries. Hamburg represents an affected city, not the pandemic’s origin or full geographical reach.",
+      "startYear": 1881,
+      "endYear": 1896,
+      "approximate": true,
+      "latitude": 53.55,
+      "longitude": 9.99,
+      "region": "eu",
+      "category": "pandemics",
+      "wikipediaSlug": "Fifth_cholera_pandemic",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Fifth_cholera_pandemic",
+      "sourceUrl": "https://applications.emro.who.int/docs/em_rc15_8_en.pdf",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "aliases": [
+        "pandemics",
+        "pandemic",
+        "epidemics",
+        "disease history",
+        "public health",
+        "cholera",
+        "fifth cholera"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e301",
+      "title": "Sixth cholera pandemic",
+      "description": "One of the seven recognised cholera pandemics, with repeated outbreaks across countries. The approximate 1899–1923 interval follows WHO’s historical chronology; other histories use different boundaries. Naples represents an affected city, not the pandemic’s origin or full geographical reach.",
+      "startYear": 1899,
+      "endYear": 1923,
+      "approximate": true,
+      "latitude": 40.85,
+      "longitude": 14.27,
+      "region": "eu",
+      "category": "pandemics",
+      "wikipediaSlug": "Sixth_cholera_pandemic",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Sixth_cholera_pandemic",
+      "sourceUrl": "https://applications.emro.who.int/docs/em_rc15_8_en.pdf",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "aliases": [
+        "pandemics",
+        "pandemic",
+        "epidemics",
+        "disease history",
+        "public health",
+        "cholera",
+        "sixth cholera"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e302",
+      "title": "COVID-19 pandemic",
+      "description": "WHO learns of a pneumonia cluster in Wuhan in December 2019 and characterises COVID-19 as a pandemic in March 2020. COVID-19 continues after the global emergency designation ends in May 2023. Wuhan represents the early reported cluster, not a proven origin. The map shows continuing disease through its 2026 coverage limit.",
+      "startYear": 2019,
+      "endYear": 2026,
+      "approximate": false,
+      "latitude": 30.59,
+      "longitude": 114.31,
+      "region": "as",
+      "category": "pandemics",
+      "wikipediaSlug": "COVID-19",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/COVID-19",
+      "sourceUrl": "https://www.who.int/news-room/questions-and-answers/item/coronavirus-disease-covid-19/",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "aliases": [
+        "pandemics",
+        "pandemic",
+        "epidemics",
+        "disease history",
+        "public health",
+        "coronavirus",
+        "SARS-CoV-2",
+        "COVID",
+        "covid 19"
+      ],
+      "ongoing": true
     }
   ],
   "people": [

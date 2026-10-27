@@ -11,7 +11,7 @@ test('1992 contains nearby dated events without unrelated Indigenous community o
   const active = records.filter((r) => core.yearGap(r.start, r.end, 1992) <= core.sameTimeYears);
   const context = active.filter((r) => core.isHistoricalContext(r, 1992));
   const dated = active.filter((r) => !core.isHistoricalContext(r, 1992));
-  assert.equal(context.length, 0);
+  assert.deepEqual(context.map((r) => r.wiki), ['Seventh_cholera_pandemic', 'HIV/AIDS']);
   assert.deepEqual(dated.map((r) => r.wiki), ['Dissolution_of_the_Soviet_Union', '1994_South_African_general_election']);
   assert(!active.some((r) => r.indigenous));
   assert.equal(core.isHistoricalContext(records.find((r) => r.wiki === 'Penicillin'), 1928), false);

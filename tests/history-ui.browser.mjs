@@ -5,11 +5,10 @@ const url = process.env.ATLAS_TEST_URL || 'http://127.0.0.1:8891/atlas/';
 const tab = await (await fetch(cdp + '/json/new?about:blank', { method: 'PUT' })).json();
 const ws = new WebSocket(tab.webSocketDebuggerUrl);
 await new Promise((resolve, reject) => { ws.addEventListener('open', resolve, { once: true }); ws.addEventListener('error', reject, { once: true }); });
-let id = 0, supportRequest = null;
+let id = 0;
 const pending = new Map(), errors = [];
 ws.onmessage = ({ data }) => {
   const message = JSON.parse(data);
-  if (message.method === 'Fetch.requestPaused') supportRequest = message.params.requestId;
   if (message.method === 'Runtime.exceptionThrown') errors.push(message.params.exceptionDetails);
   const call = pending.get(message.id);
   if (!call) return;
@@ -32,15 +31,13 @@ const waitFor = async (expression) => {
 try {
   await send('Runtime.enable'); await send('Network.enable');
   await send('Network.setCacheDisabled', { cacheDisabled: true });
-  await send('Fetch.enable', { patterns: [{ urlPattern: '*cdnjs.buymeacoffee.com*', requestStage: 'Request' }] });
+  await send('Network.setBlockedURLs', { urls: ['https://cdnjs.buymeacoffee.com/*'] });
   await send('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false });
   await send('Page.navigate', { url: url + '#1992' });
   await waitFor('!!window.AtlasUI && !!window.HistoryCountries');
-  assert(supportRequest, 'Support request is still held');
-  assert(await evaluate(`document.getElementById('yr').textContent==='1992'`), 'Atlas starts while support request is stalled');
-  await send('Fetch.failRequest', { requestId: supportRequest, errorReason: 'BlockedByClient' });
-  await send('Fetch.disable');
-  console.log('Atlas initializes independently of the optional support button');
+  assert(await evaluate(`document.getElementById('yr').textContent==='1992'`), 'Atlas starts with the support service blocked');
+  assert(await evaluate(`(()=>{const a=document.querySelector('.atlas-support-link');return a?.href==='https://www.buymeacoffee.com/natashakatson'&&a.getBoundingClientRect().height>=44&&a.textContent.includes('Buy me a coffee')})()`), 'Support link stays visible with the support service blocked');
+  console.log('Atlas and support link work independently of the support service');
   const bad = await evaluate(`(async()=>{
     stopSpin();flyToken++;
     const high=world(await(await fetch('land-50m.json')).json());
@@ -76,11 +73,11 @@ try {
       assert(!!document.querySelector('#regions [data-id="'+event.id+'"]')===visible,'Penicillin follows the inclusive two-year window in '+year);
     }
     setYear(1992);const musqueam=ev.find(e=>e.wiki==='Musqueam_Indian_Band');
-    assert(document.getElementById('sideSub').textContent==='2 dated events within 2 years of 1992','1992 contains both events within two years');
+    assert(document.getElementById('sideSub').textContent==='2 dated events within 2 years of 1992 · 2 historical context records','1992 contains both dated events and continuing pandemic periods');
     for(const wiki of ['Dissolution_of_the_Soviet_Union','1994_South_African_general_election']){
       assert(document.querySelector('#regions [data-id="'+ev.find(e=>e.wiki===wiki).id+'"]'),'1992 includes '+wiki);
     }
-    assert(!activeEvents().some(({e})=>e.indigenous)&&!document.querySelector('.timeline-context-list'),'No unrelated continuing Indigenous overviews');
+    assert(!activeEvents().some(({e})=>e.indigenous),'No unrelated continuing Indigenous overviews');
     select(musqueam.id,false);
     assert(state.year===500&&!document.querySelector('.timeline-context-note'),'Selecting Musqueam visits its approximate movement date');
     document.querySelector('#detail .close').click();setYear(1100);
@@ -129,6 +126,5 @@ try {
   assert.equal(errors.length, 0, JSON.stringify(errors));
   console.log('Mobile Search is visible and reachable at 390px; no runtime errors');
 } finally {
-  if (supportRequest) await send('Fetch.disable').catch(() => {});
   await send('Page.close').catch(() => {}); ws.close();
 }

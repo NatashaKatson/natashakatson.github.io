@@ -10,13 +10,13 @@ const wikipediaUrl = (slug) => 'https://en.wikipedia.org/wiki/' +
 const events = eventRows.map((row, index) => {
   const [startYear, endYear, approximate, title, description, latitude, longitude,
     region, category, wikipediaSlug, sourceUrl, fossilRegion, locationSourceUrl,
-    indigenousContext, aliases] = row;
+    indigenousContext, aliases, ongoing] = row;
   return {
     id: 'e' + index, title, description, startYear, endYear: endYear ?? null,
     approximate: !!approximate, latitude, longitude, region, category,
     wikipediaSlug, wikipediaUrl: wikipediaUrl(wikipediaSlug), sourceUrl: sourceUrl ?? null,
     fossilRegion: fossilRegion ?? null, locationSourceUrl: locationSourceUrl ?? null,
-    indigenousContext: indigenousContext ?? null, aliases: aliases ?? [],
+    indigenousContext: indigenousContext ?? null, aliases: aliases ?? [], ongoing: !!ongoing,
   };
 });
 const people = personRows.map((row, index) => {
@@ -30,11 +30,11 @@ const people = personRows.map((row, index) => {
 });
 const data = {
   metadata: {
-    schemaVersion: 1,
+    schemaVersion: 2,
     sourceFile: 'static/historyallaround/atlas/index.html',
     eventCount: events.length,
     peopleCount: people.length,
-    dateConvention: 'Historical years use negative numbers for BC/BCE and positive numbers for AD/CE; there is no year zero. Prehistoric entries retain the atlas numeric dates, including approximate negative ages for dinosaurs. A null event endYear means a single dated entry, not an ongoing event.',
+    dateConvention: 'Historical years use negative numbers for BC/BCE and positive numbers for AD/CE; there is no year zero. Prehistoric entries retain the atlas numeric dates, including approximate negative ages for dinosaurs. A null event endYear means a single dated entry. For ongoing events, endYear is the atlas coverage cutoff (2026), not a historical end date.',
     coordinates: 'Latitude and longitude in degrees. Points can represent a location associated with an entry rather than its full geographical extent.',
     ids: 'IDs match the current atlas array positions and may change if source records are reordered.',
     regions: {

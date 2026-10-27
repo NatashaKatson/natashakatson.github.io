@@ -68,13 +68,14 @@ inventions and treatment milestones, eight pandemic onset/recognition or wave
 records, and the 1980 smallpox eradication declaration. Search **vaccines**,
 **medical inventions**, **pandemics**, or a disease/invention name, then choose
 **Events** to focus the results. Medical advances appear under
-**Science & exploration** and pandemic records under **People & nature**. Existing plague
-and COVID emergency records remain available.
+**Science & exploration**. Pandemic records now have their own **Pandemics**
+filter. Existing plague and COVID emergency records remain available.
 
 Dates distinguish development, publication, successful treatment, trial results,
 licensure and recommendations. Pandemic wave intervals are summaries, not proof
-that a pathogen disappeared. Cholera onset and AIDS recognition are single-year
-milestones, with no invented end date. Descriptions explain representative map
+that a pathogen disappeared. The pandemic expansion now supplies cholera wave
+intervals and ongoing cholera/HIV coverage through 2026, displayed as “present”,
+without claiming an end date. Descriptions explain representative map
 locations, including regulatory or announcement locations and uncertain origins.
 
 Records are appended to `EVENTS` to preserve existing shared IDs. Optional field
@@ -84,6 +85,20 @@ regeneration. Source checks are recorded in `history-event-corrections.json` and
 the generated accuracy inventory. Validate with `node --test
 tests/history-medicine.test.cjs tests/history-accuracy.test.cjs
 tests/history-discovery.test.cjs tests/history-challenge.test.cjs`.
+
+Pandemic coverage follow-up, 26 October: **21 additional sourced records** bring
+the atlas to **303 events** and the Pandemics filter to **32 records**. All seven
+cholera pandemics, the three plague pandemic eras, early and modern influenza,
+smallpox's early American spread, HIV/AIDS and COVID-19 are represented. Ancient
+transregional epidemics and disputed classifications are explicitly qualified.
+The WHO COVID emergency record remains a distinct 2020–2023 milestone. Records
+remain visible throughout their intervals, including their interiors; the normal
+two-year proximity window still applies outside endpoints. Long intervals appear
+in the sidebar's Historical context section. The map points represent associated
+locations, not animated spread or affected-area boundaries. See
+[coverage, grouping and source choices](history-pandemics.md). Validate with
+`node --test tests/history-pandemics.test.cjs` and
+`node tests/history-pandemics.browser.mjs`.
 
 ## Curated discoveries and focused depth
 

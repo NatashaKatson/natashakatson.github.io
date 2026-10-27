@@ -1,5 +1,13 @@
 # Atlas accuracy review — 23 October 2026
 
+Pandemic follow-up, 26 October: 21 additional sourced records bring the atlas to
+**303 events**. The dedicated Pandemics category contains 32 records, including
+qualified ancient epidemics, all seven cholera pandemics, plague eras, early
+influenza, modern pandemics and separate milestones. Intervals replace several
+onset-only markers; ongoing entries show “present” through the 2026 coverage
+cutoff. See [the coverage inventory](history-pandemics.md) for grouping,
+classification and source limitations.
+
 Follow-up, 24 October: 34 sourced medical and pandemic records bring the atlas to
 **282 events** (274 human-history entries and eight dinosaur entries). These
 include vaccine development/use/approval milestones, medical inventions and

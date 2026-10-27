@@ -590,17 +590,14 @@
 .atlas-footer-note { margin: 0; font-size: 11px; }
 .atlas-footer-support { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
 .atlas-footer-support > span { font-size: 10px; }
-.atlas-footer-support .bmc-btn-container { margin: 0; line-height: 1; }
-.atlas-footer-support .bmc-btn {
-  min-width: 0 !important; min-height: 0 !important; height: 38px !important;
-  padding: 0 13px !important; border-radius: 5px !important; font-size: 21px !important;
-  line-height: 38px !important; box-shadow: none !important;
-  display: inline-flex !important; align-items: center !important;
-  gap: 6px !important; width: max-content !important; white-space: nowrap !important;
+.atlas-footer .atlas-support-link {
+  display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+  min-height: 44px; padding: 0 14px; border: 1px solid #e0bd00; border-radius: 5px;
+  background: #ffdd00; color: #1d1b17; font-family: var(--display);
+  font-size: 14px; font-weight: 600; line-height: 1.2; text-decoration: none; white-space: nowrap;
 }
-.atlas-footer-support .bmc-btn svg { height: 23px !important; width: 20px !important; margin-right: 6px !important; }
-.atlas-footer-support .bmc-btn-text { font-size: 21px !important; line-height: 1 !important; width: auto !important; margin: 0 !important; flex: 0 0 auto !important; }
-.atlas-footer-support .bmc-btn .bmc-btn-emoji { font-size: 21px !important; line-height: 1 !important; }
+.atlas-footer .atlas-support-link:hover { background: #f4d300; }
+.atlas-support-link > span { font-size: 20px; line-height: 1; }
 .atlas-footer-sources { margin-top: 9px; }
 .atlas-footer-sources summary { width: fit-content; cursor: pointer; font-size: 10px; color: #756c65; padding: 2px 0; }
 .atlas-footer-source-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px 30px; padding-top: 10px; }
@@ -621,6 +618,5 @@
   .atlas-footer { padding: 14px; }
   .atlas-footer-main { gap: 12px; }
   .atlas-footer .atlas-footer-name { font-size: 14px; }
-  .atlas-footer-support .bmc-btn { padding: 0 10px !important; font-size: 19px !important; }
-  .atlas-footer-support .bmc-btn-text, .atlas-footer-support .bmc-btn .bmc-btn-emoji { font-size: 19px !important; }
+  .atlas-footer .atlas-support-link { padding: 0 10px; font-size: 13px; }
 }

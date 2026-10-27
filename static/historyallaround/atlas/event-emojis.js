@@ -8,7 +8,7 @@
     Molecular_Structure_of_Nucleic_Acids: '🧬', Ignaz_Semmelweis: '🧼', Antiseptic_surgery: '🧼',
     Eradication_of_smallpox: '🌍', 'RTS,S': '💉',
   };
-  const categories = { power: '👑', war: '⚔️', ideas: '🔭', culture: '🎨', nature: '🌿', fashion: '🧵' };
+  const categories = { power: '👑', war: '⚔️', ideas: '🔭', culture: '🎨', nature: '🌿', fashion: '🧵', pandemics: '🦠' };
   window.AtlasEventEmojis = {
     icon(event) {
       const emoji = this.get(event);

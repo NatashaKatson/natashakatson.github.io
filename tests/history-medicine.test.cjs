@@ -39,7 +39,7 @@ test('medical and pandemic aliases reach real event destinations through the sea
   }
 });
 
-test('pandemic wave windows remain active between endpoints while onset events stay single-year', () => {
+test('pandemic wave windows and ongoing coverage remain active between endpoints', () => {
   const get = (wiki) => context.events.find((e) => e.wiki === wiki);
   for (const [wiki, during, after] of [
     ['Spanish_flu', 1919, 1920],
@@ -53,9 +53,9 @@ test('pandemic wave windows remain active between endpoints while onset events s
   }
   for (const wiki of ['First_cholera_pandemic', 'Seventh_cholera_pandemic', 'HIV/AIDS']) {
     const event = get(wiki);
-    assert.equal(event.start, event.end, `${wiki} marks onset/recognition, not an invented full interval`);
-    assert.match(event.blurb, /onset|recognition/);
+    assert(event.end > event.start, `${wiki} remains visible beyond its onset/recognition`);
   }
+  for (const wiki of ['Seventh_cholera_pandemic', 'HIV/AIDS']) assert.equal(get(wiki).ongoing, true);
   assert.match(get('Spanish_flu').blurb, /origin remains uncertain/);
   assert.match(get('HIV/AIDS').blurb, /circulated before/);
   assert.match(get('2009_swine_flu_pandemic').blurb, /seasonal influenza/);
@@ -63,13 +63,13 @@ test('pandemic wave windows remain active between endpoints while onset events s
 
 test('medical additions have unique story keys and keep generic aliases separate from Indigenous context', () => {
   assert.equal(new Set(events.map((e) => e[9])).size, events.length);
-  const added = events.slice(248);
+  const added = events.slice(248, 282);
   assert.equal(added.length, 34);
   for (const e of added) {
     assert.equal(e[13], null);
     assert(e[14].length && e[14].every((alias) => typeof alias === 'string'));
     assert(e[10].startsWith('https://'));
-    assert(['ideas', 'nature'].includes(e[8]));
+    assert(['ideas', 'nature', 'pandemics'].includes(e[8]));
   }
   const covid = context.events.find((e) => e.wiki === 'COVID-19_pandemic');
   assert.equal(covid.region, 'eu', 'WHO’s Geneva decision appears in Europe');
