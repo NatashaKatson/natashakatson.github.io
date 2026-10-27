@@ -513,7 +513,7 @@ const EVENTS = [
 [-1250,null,1,"Chinese writing on oracle bones","Shang priests carve questions to the ancestors on bones and shells.",36.1,114.35,"as","ideas","Oracle_bone_script","https://whc.unesco.org/en/list/1114"],
 [-1200,null,1,"Olmec civilization","San Lorenzo in present-day Mexico is a major Olmec centre, known for its colossal carved stone heads. The marker represents the site during its early flourishing.",17.75,-94.76,"am","culture","Olmecs","https://www.lacma.org/sites/default/files/module-uploads/E4E_Olmec.pdf"],
 [-1200,null,1,"Bronze Age collapse","Around 1200 BC, several eastern Mediterranean kingdoms and trade networks collapse over a period of decades. The date and Cyprus marker represent a regional process, not one simultaneous destruction.",35.5,33.5,"me","war","Late_Bronze_Age_collapse","https://www.cambridge.org/core/journals/antiquity/article/getting-closer-to-the-late-bronze-age-collapse-in-the-aegean-and-eastern-mediterranean-c-1200-bc/482564326A668899FF183DD949FC520F"],
-[-4000,1000,1,"Expansion of Bantu-speaking communities","Language, archaeology and genetics trace a long, varied expansion from the Nigeria–Cameroon border region into central, eastern and southern Africa. The approximate interval summarises many generations; it is not a single migration, an end to later movement, or a claim about modern national borders. Arrows summarise directions of movement, not the journeys of every person or exact travel tracks.",5.5,10,"af","migrations","Bantu_expansion","https://www.nature.com/articles/s41586-023-06770-6",null,null,null,["migrations","migration","Bantu","Africa","Cameroon","Nigeria","language"]],
+[-3000,1000,1,"Expansion of Bantu-speaking communities","Language, archaeology and genetics trace a long, varied expansion from the Nigeria–Cameroon border region into central, eastern and southern Africa. The approximate interval summarises many generations; it is not a single migration, an end to later movement, or a claim about modern national borders. Arrows summarise directions of movement, not the journeys of every person or exact travel tracks.",5.5,10,"af","migrations","Bantu_expansion","https://www.nature.com/articles/s41586-023-06770-6",null,null,null,["migrations","migration","Bantu","Africa","Cameroon","Nigeria","language"]],
 [-900,null,1,"Lapita voyagers reach Tonga","Pacific navigators settle islands no human had seen before.",-21.1,-175.2,"oc","nature","Lapita_culture","https://doi.org/10.1073%2Fpnas.181335398"],
 [-776,null,1,"Traditional date of the first recorded Olympic Games","Ancient tradition dates the first recorded Olympic Games at Olympia to 776 BC. The festival honoured Zeus, and the competition probably had earlier roots; this is not a securely documented invention date.",37.64,21.63,"eu","culture","Ancient_Olympic_Games","https://www.olympics.com/ioc/ancient-olympic-games/history"],
 [-753,null,1,"Rome founded (by legend)","Romans later counted their years from this date.",41.89,12.49,"eu","power","Founding_of_Rome","https://museicapitolini.org/en/node/2482"],
@@ -1195,7 +1195,7 @@ function renderScene(){
   const maxL=W<600?3:6;let n=0;
   // Keep documented Indigenous communities legible alongside colonial fills. These are place markers, not territory polygons.
   const labelOrder=act.slice().sort((a,b)=>Number(b.e.id===state.sel)-Number(a.e.id===state.sel)||Number(!!b.e.indigenous)-Number(!!a.e.indigenous));
-  for(const{e}of labelOrder){if(n>=maxL)break;if(e.cat==="dinosaurs"||(evidenceView&&e.indigenous?.evidence)||!visible(e.lon,e.lat))continue;const[x,y]=proj([e.lon,e.lat]);if(x<8||x>W-8||y<8||y>H-8)continue;
+  for(const{e}of labelOrder){if(n>=maxL)break;if(e.cat==="dinosaurs"||(evidenceView&&e.indigenous?.evidence))continue;const marker=hits.find(h=>h.id===e.id&&!h.radius);if(!marker)continue;const{x,y}=marker;if(x<8||x>W-8||y<8||y>H-8)continue;
     const label=e.indigenous?.mapLabel||e.title;if(e.indigenous&&polityNames.has(label))continue;const tw=ctx.measureText(label).width;
     let lx=x+16;if(lx+tw>W-8)lx=x-16-tw;const box=[lx-3,y-9,tw+6,18];
     if(labelled.some(b=>!(box[0]>b[0]+b[2]||box[0]+box[2]<b[0]||box[1]>b[1]+b[3]||box[1]+box[3]<b[1])))continue;labelled.push(box);n++;
@@ -1204,7 +1204,8 @@ function renderScene(){
   // selection ring
   const s=state.sel&&byId[state.sel];
   if(evidenceView)BeringiaEvidence.drawSites(ctx,proj,ev,visible,W,H,C,hits);
-  if(s&&s.cat!=="dinosaurs"&&visible(s.lon,s.lat)){const[x,y]=proj([s.lon,s.lat]);ctx.beginPath();ctx.arc(x,y,13,0,7);ctx.strokeStyle=C.accent;ctx.lineWidth=2.5;ctx.stroke();
+  const selectedMarker=s&&hits.find(h=>h.id===s.id&&!h.radius);
+  if(selectedMarker&&s.cat!=="dinosaurs"){const{x,y}=selectedMarker;ctx.beginPath();ctx.arc(x,y,13,0,7);ctx.strokeStyle=C.accent;ctx.lineWidth=2.5;ctx.stroke();
     ctx.beginPath();ctx.arc(x,y,19,0,7);ctx.globalAlpha=.35;ctx.lineWidth=1.5;ctx.stroke();ctx.globalAlpha=1}
 }
 
