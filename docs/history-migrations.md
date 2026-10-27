@@ -1,8 +1,8 @@
 # Migration coverage
 
-The migration layer contains **30 sourced histories**, including **24 additions**
+The migration layer contains **31 sourced histories**, including **24 additions**
 covering revolutionary exile, wartime flight, forced deportation and postwar
-resettlement, plus residency-policy context. The atlas has 346 events. Existing story IDs are preserved.
+resettlement, plus residency-policy context. The atlas has 422 events, including the separate women’s rights catalogue. Existing story IDs are preserved.
 
 The dedicated **Migrations** button sits beside Layers and Filters. Its panel
 has a Show on map checkbox, search, and the complete catalogue grouped into
@@ -50,6 +50,7 @@ shares the existing category state with Filters and saved views.
 | Syrian war: refugee displacement and continuing exile | 2011–present | [Source](https://www.unhcr.org/asia/emergencies/syria-emergency) |
 | Belarus after 2020: political exile in Poland | 2020–present | [Source](https://www.euaa.europa.eu/news-events/belarus-new-report-highlights-deteriorating-human-rights-situation) |
 | Russia’s full-scale invasion: flight from Ukraine | 2022–present | [Source](https://www.unhcr.org/ukraine) |
+| Leaving Russia after the invasion: anti-war exile and flight from mobilization | 2022–2023 (initial waves and early aftermath) | [Human Rights Watch](https://www.hrw.org/world-report/2023/country-chapters/russian-federation), [Reuters](https://www.euronews.com/2022/09/27/ukraine-crisis-mobilisation-georgia) |
 
 Intervals can describe a war phase, an early flight wave or a documented
 resettlement programme. Their endpoints do not imply that every displaced
@@ -97,3 +98,13 @@ The Pale of Settlement is a 1791–1917 context entry with a Mogilev marker,
 exemptions, wartime relaxation and legal abolition explained. It has no migration
 arrow or invented fixed territorial outline. Its category makes this context
 available alongside migration histories.
+
+The Russia emigration story covers opposition to the invasion, unwillingness to
+support the war, repression of dissent, and fear of mobilization or being sent to
+fight. Motives can overlap and are not assumed to be shared by all emigrants.
+Human Rights Watch documents departure waves after February 24 and September’s
+mobilization; Reuters interviews provide first-person accounts.
+[OSW’s January 2023 analysis](https://www.osw.waw.pl/en/publikacje/osw-commentary/2023-01-20/mobilisation-russia-societys-reactions-and-economic)
+describes the early aftermath and onward travel or returns. The bounded viewing
+interval does not imply that exile ended in 2023. Moscow-to-Tbilisi and
+Moscow-to-Almaty arrows illustrate destinations rather than surveyed routes.

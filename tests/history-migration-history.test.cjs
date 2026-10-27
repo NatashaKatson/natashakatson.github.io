@@ -7,12 +7,12 @@ const layers=require('../static/historyallaround/atlas/historical-layers-core.js
 const {html,events:rows}=require('../scripts/audit-history-accuracy.cjs').records();
 const context=vm.createContext({});
 vm.runInContext(html.match(/const EVENTS = \[[\s\S]*?\n\];/)[0]+'\n'+html.match(/^const ev=EVENTS.map.*$/m)[0]+'\nglobalThis.events=ev;',context);
-const events=Array.from(context.events),added=events.slice(322);
+const events=Array.from(context.events),added=events.slice(322,346);
 const byWiki=wiki=>events.find(e=>e.wiki===wiki);
 
 test('war and revolution coverage expands the migration catalogue without duplicate stories',()=>{
   assert.equal(added.length,24);
-  assert.equal(events.filter(e=>e.cat==='migrations').length,30);
+  assert.equal(events.filter(e=>e.cat==='migrations').length,31);
   assert.equal(new Set(events.map(e=>e.wiki)).size,events.length);
   for(const event of added){
     assert.equal(event.cat,'migrations');
@@ -41,12 +41,29 @@ test('specific war and revolution searches navigate the actual event adapter',()
     ['World War II','Displaced_persons_camps_in_post–World_War_II_Europe'],
     ['Hungarian Revolution','Hungarian_Revolution_of_1956'],
     ['Ukraine refugees','Ukrainian_refugee_crisis'],
+    ['Russia mobilization','Russian_emigration_following_the_Russian_invasion_of_Ukraine'],
+    ['leaving Russia anti-war','Russian_emigration_following_the_Russian_invasion_of_Ukraine'],
     ['Russian Revolution 1917','White_émigré'],
     ['Russian Ukraine war 2023','Ukrainian_refugee_crisis'],
     ['Belarussian Poland 2020','Belarusian_diaspora'],
     ['Jews WW2','Holocaust_trains'],
     ['Pale of Settlement','Pale_of_Settlement'],
   ])assert(core.search(sandbox.searchRecords,query,'event',100).some(r=>r.recordId===byWiki(wiki).id),query);
+});
+
+test('post-invasion departures from Russia have distinct motives, evidence and outward routes',()=>{
+  const event=byWiki('Russian_emigration_following_the_Russian_invasion_of_Ukraine');
+  assert.equal(event.start,2022);assert.equal(event.end,2023);
+  assert.equal(event.ongoing,false);
+  assert.equal(event.source,'https://www.hrw.org/world-report/2023/country-chapters/russian-federation');
+  for(const claim of [/oppose the war/,/repression for dissent/,/being sent to fight/,/September 21 mobilization/,/motives can overlap/,/Not everyone/,/not the end of exile/])assert.match(event.blurb,claim);
+  assert.notEqual(event.id,byWiki('Ukrainian_refugee_crisis').id);
+  const route=layers.routes.find(r=>r.wiki===event.wiki);
+  assert.deepEqual(route.paths,[[[37.62,55.75],[44.8,41.72]],[[37.62,55.75],[76.89,43.24]]]);
+  for(const year of [2022,2023])assert(layers.active(events,year,new Set(['migrations'])).some(({record})=>record===event));
+  assert(!layers.active(events,2021,new Set(['migrations'])).some(({record})=>record===event));
+  const review=JSON.parse(fs.readFileSync('docs/history-event-corrections.json')).events.find(r=>r.wiki===event.wiki);
+  assert(review.additionalSources.includes('https://www.euronews.com/2022/09/27/ukraine-crisis-mobilisation-georgia'));
 });
 
 test('Pale of Settlement is dated residency context, without an invented migration route',()=>{

@@ -2,7 +2,7 @@
   "metadata": {
     "schemaVersion": 2,
     "sourceFile": "static/historyallaround/atlas/index.html",
-    "eventCount": 346,
+    "eventCount": 422,
     "peopleCount": 66,
     "dateConvention": "Historical years use negative numbers for BC/BCE and positive numbers for AD/CE; there is no year zero. Prehistoric entries retain the atlas numeric dates, including approximate negative ages for dinosaurs. A null event endYear means a single dated entry. For ongoing events, endYear is the atlas coverage cutoff (2026), not a historical end date.",
     "coordinates": "Latitude and longitude in degrees. Points can represent a location associated with an entry rather than its full geographical extent.",
@@ -34,6 +34,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -54,6 +55,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -74,6 +76,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -94,6 +97,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -114,6 +118,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -134,6 +139,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -154,6 +160,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -174,6 +181,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -194,6 +202,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -214,6 +223,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "technology",
         "technology milestones"
@@ -237,6 +247,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -257,6 +268,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -277,6 +289,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -297,6 +310,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -317,6 +331,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -337,6 +352,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -357,6 +373,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -377,6 +394,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -397,6 +415,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -417,6 +436,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -437,6 +457,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -457,6 +478,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "migrations",
         "migration",
@@ -485,6 +507,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -505,6 +528,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -525,6 +549,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -545,6 +570,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -565,6 +591,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -585,6 +612,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -605,6 +633,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -625,6 +654,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -645,6 +675,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -665,6 +696,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -685,6 +717,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -705,6 +738,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -725,6 +759,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -745,6 +780,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -765,6 +801,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -785,6 +822,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -805,6 +843,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -825,6 +864,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "technology",
         "technology milestones"
@@ -848,6 +888,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -876,6 +917,7 @@
           "Maya"
         ]
       },
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -896,6 +938,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -916,6 +959,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -936,6 +980,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -956,6 +1001,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -976,6 +1022,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -996,6 +1043,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -1016,6 +1064,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -1036,6 +1085,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "pandemics",
         "pandemic",
@@ -1061,6 +1111,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -1081,6 +1132,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -1101,6 +1153,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -1121,6 +1174,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -1141,6 +1195,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -1161,6 +1216,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -1181,6 +1237,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "technology",
         "technology milestones"
@@ -1204,6 +1261,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -1224,6 +1282,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -1253,6 +1312,7 @@
           "Cahokia"
         ]
       },
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -1273,6 +1333,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -1293,6 +1354,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -1313,6 +1375,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -1333,6 +1396,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -1353,6 +1417,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -1373,6 +1438,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -1393,6 +1459,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -1413,6 +1480,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -1433,6 +1501,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -1462,6 +1531,7 @@
           "Polynesia"
         ]
       },
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -1482,6 +1552,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -1502,6 +1573,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -1532,6 +1604,7 @@
           "Polynesia"
         ]
       },
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -1552,6 +1625,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -1581,6 +1655,7 @@
           "Aztec"
         ]
       },
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -1601,6 +1676,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -1621,6 +1697,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "pandemics",
         "pandemic",
@@ -1646,6 +1723,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -1666,6 +1744,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -1694,6 +1773,7 @@
           "Inca"
         ]
       },
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -1714,6 +1794,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "technology",
         "technology milestones"
@@ -1737,6 +1818,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -1757,6 +1839,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -1777,6 +1860,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -1797,6 +1881,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -1817,6 +1902,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -1837,6 +1923,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -1857,6 +1944,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -1877,6 +1965,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -1897,6 +1986,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -1917,6 +2007,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -1937,6 +2028,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -1957,6 +2049,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -1977,6 +2070,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -1997,6 +2091,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -2017,6 +2112,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -2037,6 +2133,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -2057,6 +2154,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -2077,6 +2175,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -2097,6 +2196,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -2117,6 +2217,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "technology",
         "technology milestones"
@@ -2140,6 +2241,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -2160,6 +2262,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -2180,6 +2283,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -2200,6 +2304,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -2220,6 +2325,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -2240,6 +2346,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -2260,6 +2367,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -2280,6 +2388,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -2300,6 +2409,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "climate",
         "climate events"
@@ -2323,6 +2433,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -2343,6 +2454,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "technology",
         "technology milestones"
@@ -2366,6 +2478,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -2395,6 +2508,7 @@
           "Aotearoa"
         ]
       },
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -2415,6 +2529,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -2435,6 +2550,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -2455,6 +2571,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -2475,6 +2592,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -2495,6 +2613,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -2515,6 +2634,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -2535,6 +2655,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "technology",
         "technology milestones"
@@ -2558,6 +2679,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "technology",
         "technology milestones"
@@ -2581,27 +2703,43 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
     {
       "id": "e123",
       "title": "New Zealand women vote",
-      "description": "The first self-governing country to give women the vote in national elections.",
+      "description": "New Zealand’s 1893 electoral reform grants eligible women, including Māori women, the parliamentary vote. Women first vote in the general election that November; eligibility to stand for Parliament follows in 1919. Christchurch marks a centre of suffrage organizing, not the seat of every legal change.",
       "startYear": 1893,
       "endYear": null,
       "approximate": false,
       "latitude": -43.53,
       "longitude": 172.63,
       "region": "oc",
-      "category": "power",
+      "category": "womens-rights",
       "wikipediaSlug": "Women's_suffrage_in_New_Zealand",
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Women's_suffrage_in_New_Zealand",
-      "sourceUrl": "https://nzhistory.govt.nz/page/women-vote-first-general-election",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://nzhistory.govt.nz/politics/womens-suffrage",
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
-      "aliases": [],
+      "rightsContext": {
+        "topic": "voting",
+        "country": "New Zealand"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "voting",
+        "suffrage",
+        "Kate Sheppard",
+        "Maori",
+        "Māori",
+        "Aotearoa"
+      ],
       "ongoing": false
     },
     {
@@ -2621,6 +2759,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -2641,6 +2780,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -2661,6 +2801,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -2681,6 +2822,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "technology",
         "technology milestones"
@@ -2704,6 +2846,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -2724,6 +2867,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -2744,6 +2888,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -2764,6 +2909,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -2784,6 +2930,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -2804,6 +2951,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "medicine",
         "medical history",
@@ -2830,6 +2978,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -2850,6 +2999,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -2870,6 +3020,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -2890,6 +3041,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -2910,6 +3062,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -2930,6 +3083,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -2950,6 +3104,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "migrations",
         "migration",
@@ -2979,6 +3134,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -2999,6 +3155,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -3019,6 +3176,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "technology",
         "technology milestones"
@@ -3042,6 +3200,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -3062,6 +3221,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "technology",
         "technology milestones"
@@ -3085,6 +3245,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -3105,6 +3266,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "technology",
         "technology milestones"
@@ -3128,6 +3290,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -3148,6 +3311,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -3168,6 +3332,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "technology",
         "technology milestones"
@@ -3191,6 +3356,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -3211,6 +3377,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -3231,6 +3398,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -3251,6 +3419,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -3271,6 +3440,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -3291,6 +3461,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "technology",
         "technology milestones"
@@ -3314,6 +3485,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -3334,6 +3506,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -3354,6 +3527,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "pandemics",
         "pandemic",
@@ -3379,6 +3553,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -3399,6 +3574,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "technology",
         "technology milestones"
@@ -3422,6 +3598,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -3442,6 +3619,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -3462,6 +3640,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -3482,6 +3661,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -3502,6 +3682,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -3522,6 +3703,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -3542,6 +3724,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -3562,6 +3745,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -3582,6 +3766,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -3602,6 +3787,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -3622,6 +3808,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -3642,6 +3829,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -3662,6 +3850,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -3682,6 +3871,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -3702,6 +3892,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -3722,6 +3913,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -3742,6 +3934,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -3762,6 +3955,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -3782,6 +3976,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -3802,6 +3997,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -3822,6 +4018,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -3842,6 +4039,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -3862,6 +4060,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -3882,6 +4081,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -3902,6 +4102,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -3922,6 +4123,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -3942,6 +4144,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -3962,6 +4165,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -3982,6 +4186,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -4002,6 +4207,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "technology",
         "technology milestones"
@@ -4025,6 +4231,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -4045,6 +4252,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "technology",
         "technology milestones"
@@ -4068,6 +4276,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -4088,6 +4297,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "technology",
         "technology milestones"
@@ -4111,6 +4321,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -4131,6 +4342,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -4151,6 +4363,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -4171,6 +4384,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "technology",
         "technology milestones"
@@ -4194,6 +4408,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -4214,6 +4429,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -4234,6 +4450,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -4254,6 +4471,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -4274,6 +4492,7 @@
       "fossilRegion": "Ischigualasto region · Argentina",
       "locationSourceUrl": "https://whc.unesco.org/en/list/966/",
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -4294,6 +4513,7 @@
       "fossilRegion": "Dinosaur National Monument region · Utah, USA",
       "locationSourceUrl": "https://www.nps.gov/dino/planyourvisit/quarry-exhibit-hall.htm",
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -4314,6 +4534,7 @@
       "fossilRegion": "Carnegie Quarry region · Utah, USA",
       "locationSourceUrl": "https://www.nps.gov/dino/learn/nature/diplodocus-longus.htm",
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -4334,6 +4555,7 @@
       "fossilRegion": "Bernissart region · Belgium",
       "locationSourceUrl": "https://www.naturalsciences.be/en/discover-join/discover/the-bernissart-iguanodons-at-a-glance",
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -4354,6 +4576,7 @@
       "fossilRegion": "Kem Kem region · Morocco",
       "locationSourceUrl": "https://doi.org/10.1016/j.cretres.2018.09.012",
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -4374,6 +4597,7 @@
       "fossilRegion": "Flaming Cliffs region · Mongolia",
       "locationSourceUrl": "https://www.amnh.org/exhibitions/fossils-flaming-cliffs-gobi",
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -4394,6 +4618,7 @@
       "fossilRegion": "Faith region · South Dakota, USA",
       "locationSourceUrl": "https://www.fieldmuseum.org/collection-item-iconic/sue",
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -4414,6 +4639,7 @@
       "fossilRegion": "Hell Creek region · Montana, USA",
       "locationSourceUrl": "https://museumoftherockies.org/exhibitions/siebel-dinosaur-complex",
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -4434,6 +4660,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -4454,6 +4681,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -4474,6 +4702,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -4494,6 +4723,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -4514,6 +4744,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -4534,6 +4765,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -4554,6 +4786,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -4574,6 +4807,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -4594,6 +4828,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -4622,6 +4857,7 @@
           "earthworks"
         ]
       },
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -4649,6 +4885,7 @@
           "Native American"
         ]
       },
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -4677,6 +4914,7 @@
           "Puebloan"
         ]
       },
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -4708,6 +4946,7 @@
         ],
         "territorySource": "https://www.musqueam.bc.ca/our-story/our-territory/"
       },
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -4743,6 +4982,7 @@
         ],
         "territorySource": "https://americanindian.si.edu/sites/1/files/pdf/education/HaudenosauneeGuide.pdf"
       },
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -4773,6 +5013,7 @@
           "New York"
         ]
       },
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -4803,6 +5044,7 @@
           "Pueblo"
         ]
       },
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -4832,6 +5074,7 @@
           "Northwest Coast"
         ]
       },
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -4860,6 +5103,7 @@
           "Kiks.ádi"
         ]
       },
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -4889,6 +5133,7 @@
           "Georgia"
         ]
       },
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -4918,6 +5163,7 @@
         ],
         "territorySource": "https://www.cherokee.org/About-The-Nation/Maps"
       },
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -4948,6 +5194,7 @@
           "syllabary"
         ]
       },
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -4979,6 +5226,7 @@
           "Winnipeg"
         ]
       },
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -5009,6 +5257,7 @@
           "Inuktitut"
         ]
       },
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -5039,6 +5288,7 @@
           "Ненцы"
         ]
       },
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -5071,6 +5321,7 @@
           "Якуты"
         ]
       },
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -5104,6 +5355,7 @@
           "Юпик"
         ]
       },
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -5140,6 +5392,7 @@
         ],
         "territorySource": "https://www.saamicouncil.net/en/charter"
       },
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -5169,6 +5422,7 @@
           "Айны"
         ]
       },
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -5198,6 +5452,7 @@
           "aquaculture"
         ]
       },
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -5227,6 +5482,7 @@
           "Kalahari"
         ]
       },
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -5258,6 +5514,7 @@
           "Wajãpi"
         ]
       },
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -5288,6 +5545,7 @@
           "rope bridge"
         ]
       },
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -5319,6 +5577,7 @@
         ],
         "evidence": true
       },
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -5350,6 +5609,7 @@
         ],
         "evidence": true
       },
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -5380,6 +5640,7 @@
         ],
         "evidence": true
       },
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -5410,6 +5671,7 @@
         ],
         "evidence": true
       },
+      "rightsContext": null,
       "aliases": [],
       "ongoing": false
     },
@@ -5430,6 +5692,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "medicine",
         "medical history",
@@ -5460,6 +5723,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "medicine",
         "medical history",
@@ -5489,6 +5753,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "medicine",
         "medical history",
@@ -5520,6 +5785,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "medicine",
         "medical history",
@@ -5550,6 +5816,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "medicine",
         "medical history",
@@ -5580,6 +5847,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "medicine",
         "medical history",
@@ -5609,6 +5877,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "medicine",
         "medical history",
@@ -5638,6 +5907,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "medicine",
         "medical history",
@@ -5668,6 +5938,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "medicine",
         "medical history",
@@ -5698,6 +5969,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "medicine",
         "medical history",
@@ -5729,6 +6001,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "medicine",
         "medical history",
@@ -5759,6 +6032,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "medicine",
         "medical history",
@@ -5786,6 +6060,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "medicine",
         "medical history",
@@ -5816,6 +6091,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "medicine",
         "medical history",
@@ -5845,6 +6121,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "medicine",
         "medical history",
@@ -5874,6 +6151,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "medicine",
         "medical history",
@@ -5904,6 +6182,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "medicine",
         "medical history",
@@ -5932,6 +6211,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "medicine",
         "medical history",
@@ -5962,6 +6242,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "medicine",
         "medical history",
@@ -5989,6 +6270,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "medicine",
         "medical history",
@@ -6017,6 +6299,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "medicine",
         "medical history",
@@ -6045,6 +6328,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "medicine",
         "medical history",
@@ -6074,6 +6358,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "medicine",
         "medical history",
@@ -6103,6 +6388,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "medicine",
         "medical history",
@@ -6132,6 +6418,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "medicine",
         "medical history",
@@ -6162,6 +6449,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "pandemics",
         "pandemic",
@@ -6192,6 +6480,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "pandemics",
         "pandemic",
@@ -6221,6 +6510,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "pandemics",
         "pandemic",
@@ -6250,6 +6540,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "pandemics",
         "pandemic",
@@ -6279,6 +6570,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "pandemics",
         "pandemic",
@@ -6309,6 +6601,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "pandemics",
         "pandemic",
@@ -6338,6 +6631,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "pandemics",
         "pandemic",
@@ -6367,6 +6661,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "pandemics",
         "pandemic",
@@ -6396,6 +6691,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "medicine",
         "medical history",
@@ -6430,6 +6726,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "pandemics",
         "pandemic",
@@ -6459,6 +6756,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "pandemics",
         "pandemic",
@@ -6488,6 +6786,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "pandemics",
         "pandemic",
@@ -6517,6 +6816,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "pandemics",
         "pandemic",
@@ -6546,6 +6846,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "pandemics",
         "pandemic",
@@ -6577,6 +6878,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "pandemics",
         "pandemic",
@@ -6606,6 +6908,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "pandemics",
         "pandemic",
@@ -6635,6 +6938,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "pandemics",
         "pandemic",
@@ -6665,6 +6969,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "pandemics",
         "pandemic",
@@ -6694,6 +6999,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "pandemics",
         "pandemic",
@@ -6724,6 +7030,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "pandemics",
         "pandemic",
@@ -6753,6 +7060,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "pandemics",
         "pandemic",
@@ -6786,6 +7094,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "pandemics",
         "pandemic",
@@ -6815,6 +7124,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "pandemics",
         "pandemic",
@@ -6848,6 +7158,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "pandemics",
         "pandemic",
@@ -6879,6 +7190,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "pandemics",
         "pandemic",
@@ -6907,6 +7219,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "pandemics",
         "pandemic",
@@ -6935,6 +7248,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "pandemics",
         "pandemic",
@@ -6963,6 +7277,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "pandemics",
         "pandemic",
@@ -6991,6 +7306,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "pandemics",
         "pandemic",
@@ -7019,6 +7335,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "pandemics",
         "pandemic",
@@ -7049,6 +7366,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "trade",
         "trade routes",
@@ -7077,6 +7395,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "trade",
         "trade routes",
@@ -7105,6 +7424,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "trade",
         "trade routes",
@@ -7133,6 +7453,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "trade",
         "trade routes",
@@ -7161,6 +7482,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "migrations",
         "migration",
@@ -7188,6 +7510,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "migrations",
         "migration",
@@ -7216,6 +7539,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "migrations",
         "migration",
@@ -7243,6 +7567,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "migrations",
         "migration",
@@ -7271,6 +7596,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "climate",
         "climate events",
@@ -7298,6 +7624,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "climate",
         "climate events",
@@ -7326,6 +7653,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "climate",
         "climate events",
@@ -7353,6 +7681,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "climate",
         "climate events",
@@ -7380,6 +7709,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "climate",
         "climate events",
@@ -7407,6 +7737,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "climate",
         "climate events",
@@ -7435,6 +7766,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "technology",
         "technology milestones",
@@ -7461,6 +7793,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "technology",
         "technology milestones",
@@ -7488,6 +7821,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "technology",
         "technology milestones",
@@ -7515,6 +7849,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "technology",
         "technology milestones",
@@ -7542,6 +7877,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "technology",
         "technology milestones",
@@ -7570,6 +7906,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "migrations",
         "migration",
@@ -7601,6 +7938,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "migrations",
         "migration",
@@ -7632,6 +7970,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "migrations",
         "migration",
@@ -7663,6 +8002,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "migrations",
         "migration",
@@ -7693,6 +8033,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "migrations",
         "migration",
@@ -7724,6 +8065,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "migrations",
         "migration",
@@ -7755,6 +8097,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "migrations",
         "migration",
@@ -7789,6 +8132,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "migrations",
         "migration",
@@ -7821,6 +8165,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "migrations",
         "migration",
@@ -7852,6 +8197,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "migrations",
         "migration",
@@ -7884,6 +8230,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "migrations",
         "migration",
@@ -7916,6 +8263,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "migrations",
         "migration",
@@ -7947,6 +8295,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "migrations",
         "migration",
@@ -7978,6 +8327,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "migrations",
         "migration",
@@ -8010,6 +8360,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "migrations",
         "migration",
@@ -8041,6 +8392,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "migrations",
         "migration",
@@ -8073,6 +8425,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "migrations",
         "migration",
@@ -8105,6 +8458,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "migrations",
         "migration",
@@ -8137,6 +8491,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "migrations",
         "migration",
@@ -8171,6 +8526,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "migrations",
         "migration",
@@ -8203,6 +8559,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "migrations",
         "migration",
@@ -8235,6 +8592,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "migrations",
         "migration",
@@ -8267,6 +8625,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "migrations",
         "migration",
@@ -8301,6 +8660,7 @@
       "fossilRegion": null,
       "locationSourceUrl": null,
       "indigenousContext": null,
+      "rightsContext": null,
       "aliases": [
         "migrations",
         "migration history",
@@ -8313,6 +8673,2811 @@
         "Mogilev",
         "Черта оседлости",
         "cherta osedlosti"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e346",
+      "title": "Egyptian marriage contract records financial protections",
+      "description": "A surviving marriage contract from Asyut sets out payments and property arrangements in the event of divorce. It is evidence for particular legal protections in Ptolemaic Egypt, not the beginning of women’s rights or proof of equality for every woman.",
+      "startYear": -172,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 27.18,
+      "longitude": 31.18,
+      "region": "me",
+      "category": "womens-rights",
+      "wikipediaSlug": "Women_in_ancient_Egypt",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://artsandculture.google.com/asset/papyrus-marriage-contract-between-the-priest-pagosh-and-teteimhotep/rwGBVTtjvcbJWg",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "equality",
+        "country": "Egypt"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "equality",
+        "ancient Egypt",
+        "marriage",
+        "divorce",
+        "property",
+        "British Museum"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e347",
+      "title": "Magna Carta addresses widows’ property and remarriage",
+      "description": "Clauses 7 and 8 of the 1215 charter address a widow’s inheritance and protection against forced remarriage. A widow holding land still needs the king’s or her lord’s consent to remarry. These limited feudal protections are not universal women’s rights.",
+      "startYear": 1215,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 51.45,
+      "longitude": -0.56,
+      "region": "eu",
+      "category": "womens-rights",
+      "wikipediaSlug": "Dower",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://magnacarta.cmp.uea.ac.uk/read/magna_carta_1215/Clause_08",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "equality",
+        "country": "England"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "equality",
+        "Magna Carta",
+        "widows",
+        "consent",
+        "property"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e348",
+      "title": "Christine de Pizan writes The Book of the City of Ladies",
+      "description": "Around 1405, Christine de Pizan constructs a literary defence of women against hostile stereotypes. The book presents women’s intellectual and moral capabilities; its publication is an advocacy milestone, not a change in law.",
+      "startYear": 1405,
+      "endYear": null,
+      "approximate": true,
+      "latitude": 48.86,
+      "longitude": 2.35,
+      "region": "eu",
+      "category": "womens-rights",
+      "wikipediaSlug": "The_Book_of_the_City_of_Ladies",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://expositions.bnf.fr/brouillons/grand/3.htm",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "movements",
+        "country": "France"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "movements",
+        "Christine de Pizan",
+        "education",
+        "medieval"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e349",
+      "title": "Olympe de Gouges demands equal citizenship for women",
+      "description": "Olympe de Gouges publishes the Declaration of the Rights of Woman and of the Female Citizen, demanding political and civil equality. This is a demand for rights, not an enacted grant of suffrage.",
+      "startYear": 1791,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 48.86,
+      "longitude": 2.35,
+      "region": "eu",
+      "category": "womens-rights",
+      "wikipediaSlug": "Declaration_of_the_Rights_of_Woman_and_of_the_Female_Citizen",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://www.assemblee-nationale.fr/dyn/histoire-et-patrimoine/revolution-francaise/declaration-des-droits-de-la-femme-et-de-la-citoyenne-olympe-de-gouges",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "movements",
+        "country": "France"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "movements",
+        "Olympe de Gouges",
+        "declaration",
+        "French Revolution",
+        "citizenship"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e350",
+      "title": "Mary Wollstonecraft argues for women’s equal education",
+      "description": "A Vindication of the Rights of Woman argues that women should receive an education that develops their reason and independence. The book is an influential intervention in debates about equality, rather than a law opening schools.",
+      "startYear": 1792,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 51.51,
+      "longitude": -0.13,
+      "region": "eu",
+      "category": "womens-rights",
+      "wikipediaSlug": "A_Vindication_of_the_Rights_of_Woman",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://americanhistory.si.edu/collections/object/nmah_1835346",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "education",
+        "country": "Britain"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "education",
+        "Mary Wollstonecraft",
+        "education",
+        "Vindication"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e351",
+      "title": "Savitribai and Jyotirao Phule open a girls’ school in Pune",
+      "description": "Savitribai and Jyotirao Phule establish a school for girls in Pune. Their work challenges exclusion from education. This entry identifies the documented school milestone without claiming that girls’ education began there or that schooling became universally accessible.",
+      "startYear": 1848,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 18.52,
+      "longitude": 73.86,
+      "region": "as",
+      "category": "womens-rights",
+      "wikipediaSlug": "Savitribai_Phule",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://www.ncert.nic.in/dgs/pdf/KGBV-HistoryENGLISH.pdf",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "education",
+        "country": "India"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "education",
+        "Savitribai",
+        "Jyotirao",
+        "Phule",
+        "girls school",
+        "Pune"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e352",
+      "title": "Seneca Falls convention adopts the Declaration of Sentiments",
+      "description": "Participants at the Seneca Falls convention call for women’s civil, social and political rights, including voting. The convention is a US organizing milestone, not the beginning of women’s struggles worldwide or the achievement of the rights demanded.",
+      "startYear": 1848,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 42.91,
+      "longitude": -76.8,
+      "region": "am",
+      "category": "womens-rights",
+      "wikipediaSlug": "Seneca_Falls_Convention",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://www.nps.gov/articles/declaration-of-sentiments-the-first-women-s-rights-convention.htm",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "movements",
+        "country": "United States"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "movements",
+        "Seneca Falls",
+        "Declaration of Sentiments",
+        "suffrage",
+        "Elizabeth Cady Stanton",
+        "USA",
+        "US",
+        "U.S.",
+        "United States",
+        "United States of America"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e353",
+      "title": "University of London opens its degrees to women",
+      "description": "A supplemental charter makes University of London degrees available to women on the same academic terms as men. This changes access at this university, not at every British institution or for all women in practice.",
+      "startYear": 1878,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 51.52,
+      "longitude": -0.13,
+      "region": "eu",
+      "category": "womens-rights",
+      "wikipediaSlug": "General_Examination_for_Women",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://archives.libraries.london.ac.uk/resources/1912historicalrecord.pdf",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "education",
+        "country": "Britain"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "education",
+        "university",
+        "higher education",
+        "London"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e354",
+      "title": "Married women gain wider control of property under English law",
+      "description": "The Married Women’s Property Act 1882 expands married women’s capacity to hold and dispose of their own property under the law of England, Wales and Ireland. It takes effect in 1883. Scotland has a separate legal history; the Act does not establish complete equality.",
+      "startYear": 1882,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 51.5,
+      "longitude": -0.12,
+      "region": "eu",
+      "category": "womens-rights",
+      "wikipediaSlug": "Married_Women's_Property_Act_1882",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://www.legislation.gov.uk/ukpga/Vict/45-46/75/enacted",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "equality",
+        "country": "Britain and Ireland"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "equality",
+        "married women",
+        "property",
+        "earnings",
+        "coverture"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e355",
+      "title": "Tsuda Umeko establishes a higher-education school for women",
+      "description": "Tsuda Umeko founds Joshi Eigaku Juku in Tokyo, one of Japan’s early private institutions of higher education for women. The school expands educational opportunities without representing universal admission or the first education of Japanese women.",
+      "startYear": 1900,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 35.69,
+      "longitude": 139.75,
+      "region": "as",
+      "category": "womens-rights",
+      "wikipediaSlug": "Tsuda_University",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://www.tsuda.ac.jp/en/profile.html",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "education",
+        "country": "Japan"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "education",
+        "Tsuda Umeko",
+        "Umeko Tsuda",
+        "university",
+        "Tokyo"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e356",
+      "title": "Australian federal suffrage expands with racial exclusions",
+      "description": "The Commonwealth Franchise Act allows eligible women to vote and stand for federal parliament. It excludes many Aboriginal and Torres Strait Islander people and people classified by the law as natives of Africa, Asia or Pacific islands, with limited exceptions. This is not universal suffrage.",
+      "startYear": 1902,
+      "endYear": null,
+      "approximate": false,
+      "latitude": -37.81,
+      "longitude": 144.96,
+      "region": "oc",
+      "category": "womens-rights",
+      "wikipediaSlug": "Commonwealth_Franchise_Act_1902",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://peo.gov.au/understand-our-parliament/history-of-parliament/history-milestones/australian-parliament-history-timeline/events/commonwealth-franchise-act-1902",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "voting",
+        "country": "Australia"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "voting",
+        "suffrage",
+        "voting",
+        "racial exclusions",
+        "Indigenous"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e357",
+      "title": "Finland grants women the vote and eligibility for parliament",
+      "description": "The parliamentary reform of 1906 gives women voting rights and the right to stand for election in the Grand Duchy of Finland. Nineteen women are elected in 1907. Voting rights should be distinguished from equal representation in office.",
+      "startYear": 1906,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 60.17,
+      "longitude": 24.94,
+      "region": "eu",
+      "category": "womens-rights",
+      "wikipediaSlug": "Women's_suffrage_in_Finland",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://finland.fi/life-society/finlands-parliament-pioneer-of-gender-equality/",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "voting",
+        "country": "Finland"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "voting",
+        "suffrage",
+        "voting",
+        "parliament",
+        "1907"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e358",
+      "title": "Britain grants parliamentary votes to some women",
+      "description": "The Representation of the People Act enfranchises women aged 30 and over who meet its qualifying conditions. Most younger adult women remain excluded. The same-year reform allowing women to stand for Parliament is distinct; equal voting terms follow in 1928.",
+      "startYear": 1918,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 51.5,
+      "longitude": -0.12,
+      "region": "eu",
+      "category": "womens-rights",
+      "wikipediaSlug": "Representation_of_the_People_Act_1918",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://www.parliament.uk/about/living-heritage/transformingsociety/electionsvoting/womenvote/overview/thevote/",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "voting",
+        "country": "United Kingdom"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "voting",
+        "suffrage",
+        "voting",
+        "partial franchise",
+        "property qualifications"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e359",
+      "title": "The US Nineteenth Amendment bars sex-based voting exclusion",
+      "description": "Ratification of the Nineteenth Amendment prohibits denying citizens the vote on account of sex. Racial discrimination, citizenship exclusions and other barriers continue to obstruct many Black, Indigenous, Asian American and other women. The amendment does not give every woman an effective vote immediately.",
+      "startYear": 1920,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 38.89,
+      "longitude": -77.01,
+      "region": "am",
+      "category": "womens-rights",
+      "wikipediaSlug": "Nineteenth_Amendment_to_the_United_States_Constitution",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://www.archives.gov/milestone-documents/19th-amendment",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "voting",
+        "country": "United States"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "voting",
+        "suffrage",
+        "19th Amendment",
+        "Nineteenth Amendment",
+        "USA",
+        "US",
+        "U.S.",
+        "United States",
+        "United States of America"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e360",
+      "title": "Britain establishes equal voting terms for women and men",
+      "description": "The Equal Franchise Act gives women the parliamentary vote on the same age terms as men, at 21. This removes the sex-based age distinction left by the 1918 reform; it is a franchise milestone rather than proof of equality in every area of life.",
+      "startYear": 1928,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 51.5,
+      "longitude": -0.12,
+      "region": "eu",
+      "category": "womens-rights",
+      "wikipediaSlug": "Representation_of_the_People_(Equal_Franchise)_Act_1928",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://www.parliament.uk/about/living-heritage/transformingsociety/electionsvoting/womenvote/case-studies-women-parliament/what-difference/the-vote-for-some/",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "voting",
+        "country": "United Kingdom"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "voting",
+        "suffrage",
+        "voting",
+        "Equal Franchise"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e361",
+      "title": "Ecuador’s constitution recognizes women’s voting rights",
+      "description": "The 1929 constitution formally recognizes women’s voting rights in Ecuador. Literacy requirements still exclude many people. The milestone follows Matilde Hidalgo’s exercise of the vote in 1924, rather than marking the first time any Ecuadorian woman voted.",
+      "startYear": 1929,
+      "endYear": null,
+      "approximate": false,
+      "latitude": -0.18,
+      "longitude": -78.47,
+      "region": "am",
+      "category": "womens-rights",
+      "wikipediaSlug": "Women's_suffrage_in_Ecuador",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://data.ipu.org/parliament/EC/EC-LC01/elections/historical-data-on-women/",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "voting",
+        "country": "Ecuador"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "voting",
+        "suffrage",
+        "voting",
+        "Matilde Hidalgo",
+        "Latin America"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e362",
+      "title": "Brazil’s electoral code recognizes women as voters",
+      "description": "The 1932 electoral code recognizes women’s right to vote and stand for election. Literacy and other electoral restrictions still limit participation. National political rights develop unevenly after the code; this is not a claim that every Brazilian woman can vote in 1932.",
+      "startYear": 1932,
+      "endYear": null,
+      "approximate": false,
+      "latitude": -22.91,
+      "longitude": -43.17,
+      "region": "am",
+      "category": "womens-rights",
+      "wikipediaSlug": "Women's_suffrage_in_Brazil",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://www.tse.jus.br/servicos-eleitorais/glossario/termos/voto-da-mulher",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "voting",
+        "country": "Brazil"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "voting",
+        "suffrage",
+        "voting",
+        "Bertha Lutz",
+        "electoral code"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e363",
+      "title": "Türkiye grants women parliamentary voting and candidacy rights",
+      "description": "Constitutional and electoral changes in December 1934 give women the right to vote and stand in national parliamentary elections. Earlier municipal reforms preceded this step. The Ankara point represents the national legislative milestone.",
+      "startYear": 1934,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 39.93,
+      "longitude": 32.86,
+      "region": "as",
+      "category": "womens-rights",
+      "wikipediaSlug": "Women's_suffrage_in_Turkey",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://www.tihek.gov.tr/5-aralik-kadin-haklari-gunune-iliskin--basin-aciklamasi",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "voting",
+        "country": "Türkiye"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "voting",
+        "Turkey",
+        "Turkiye",
+        "suffrage",
+        "voting"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e364",
+      "title": "France recognizes women’s right to vote and stand for election",
+      "description": "The ordinance of 21 April 1944 recognizes women as electors and candidates on the same terms as men. French women first vote under the reform in 1945. The measure is issued in Algiers; colonial exclusions have their own later history.",
+      "startYear": 1944,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 36.75,
+      "longitude": 3.06,
+      "region": "me",
+      "category": "womens-rights",
+      "wikipediaSlug": "Women's_suffrage_in_France",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://www.assemblee-nationale.fr/dyn/histoire-et-patrimoine/deuxieme-guerre-mondiale/l-accession-des-femmes-au-droit-de-vote",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "voting",
+        "country": "France · ordinance issued in Algeria"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "voting",
+        "suffrage",
+        "voting",
+        "French women",
+        "Algiers"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e365",
+      "title": "Japan’s electoral reform enfranchises women",
+      "description": "A postwar revision of Japan’s electoral law recognizes women’s right to vote. Women participate in the 1946 general election. The milestone records a change in political rights, not the end of other legal or social inequalities.",
+      "startYear": 1945,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 35.68,
+      "longitude": 139.75,
+      "region": "as",
+      "category": "womens-rights",
+      "wikipediaSlug": "Women's_suffrage_in_Japan",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://www.archives.go.jp/learning/archive_collection_2/",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "voting",
+        "country": "Japan"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "voting",
+        "suffrage",
+        "voting",
+        "1946",
+        "postwar"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e366",
+      "title": "India’s constitution establishes universal adult suffrage",
+      "description": "The Constitution establishes universal adult suffrage, replacing the restricted franchise inherited from colonial rule. Women vote in the first general election of 1951–1952. Limited voting rights existed before independence, so 1950 is not the first vote by any Indian woman.",
+      "startYear": 1950,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 28.61,
+      "longitude": 77.21,
+      "region": "as",
+      "category": "womens-rights",
+      "wikipediaSlug": "Women's_suffrage_in_India",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://data.ipu.org/parliament/IN/IN-LC01/elections/historical-data-on-women/",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "voting",
+        "country": "India"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "voting",
+        "suffrage",
+        "voting",
+        "constitution",
+        "universal adult franchise"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e367",
+      "title": "Egypt recognizes women’s national political rights",
+      "description": "Egypt’s 1956 reforms recognize women’s rights to vote and stand for election. Women enter parliament in 1957. Legal recognition is a milestone in a longer struggle, rather than proof that all barriers to participation disappear.",
+      "startYear": 1956,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 30.04,
+      "longitude": 31.24,
+      "region": "me",
+      "category": "womens-rights",
+      "wikipediaSlug": "Women's_suffrage_in_Egypt",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://knowledge.unwomen.org/sites/default/files/Headquarters/Attachments/Sections/Library/Publications/2011/ProgressOfTheWorldsWomen-2011-en.pdf",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "voting",
+        "country": "Egypt"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "voting",
+        "suffrage",
+        "voting",
+        "Doria Shafik",
+        "1957"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e368",
+      "title": "Tunisia adopts the Code of Personal Status",
+      "description": "Promulgated in August 1956 and effective in January 1957, Tunisia’s Code of Personal Status changes marriage and divorce law, including prohibiting polygamy and establishing judicial divorce. It is a significant reform, not complete legal equality between women and men.",
+      "startYear": 1956,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 36.81,
+      "longitude": 10.18,
+      "region": "me",
+      "category": "womens-rights",
+      "wikipediaSlug": "Code_of_Personal_Status_in_Tunisia",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://www.justice.gov.tn/index.php?L=3&id=436",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "equality",
+        "country": "Tunisia"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "equality",
+        "marriage",
+        "divorce",
+        "polygamy",
+        "Personal Status Code"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e369",
+      "title": "South African women march against apartheid pass laws",
+      "description": "On 9 August, about 20,000 women march to Pretoria’s Union Buildings to oppose the extension of pass controls to women. Their protest connects women’s organizing with resistance to apartheid. The march itself does not repeal the pass-law system.",
+      "startYear": 1956,
+      "endYear": null,
+      "approximate": false,
+      "latitude": -25.74,
+      "longitude": 28.21,
+      "region": "af",
+      "category": "womens-rights",
+      "wikipediaSlug": "Women's_March_(South_Africa)",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://www.gov.za/news/events/commemorative-events/womens-day",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "movements",
+        "country": "South Africa"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "movements",
+        "Women’s March",
+        "anti apartheid",
+        "pass laws",
+        "Lilian Ngoyi"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e370",
+      "title": "The UN adopts CEDAW, the women’s rights convention",
+      "description": "The UN General Assembly adopts the Convention on the Elimination of All Forms of Discrimination against Women. It addresses discrimination in public and private life and enters into force in 1981. Adoption does not mean every country ratifies it or immediately implements its obligations.",
+      "startYear": 1979,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 40.75,
+      "longitude": -73.97,
+      "region": "am",
+      "category": "womens-rights",
+      "wikipediaSlug": "Convention_on_the_Elimination_of_All_Forms_of_Discrimination_Against_Women",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://legal.un.org/avl/ha/cedaw/cedaw.html",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "equality",
+        "country": "Global · United Nations, New York"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "equality",
+        "CEDAW",
+        "United Nations",
+        "international treaty",
+        "1981"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e371",
+      "title": "The Belém do Pará Convention addresses violence against women",
+      "description": "The Organization of American States adopts a convention recognizing women’s right to live free from violence and setting obligations for states parties. The treaty covers public and private violence. Adoption is distinct from ratification and effective protection in each country.",
+      "startYear": 1994,
+      "endYear": null,
+      "approximate": false,
+      "latitude": -1.46,
+      "longitude": -48.5,
+      "region": "am",
+      "category": "womens-rights",
+      "wikipediaSlug": "Belém_do_Pará_Convention",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://www.oas.org/en/mesecvi/convention.asp",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "violence",
+        "country": "Americas · adopted in Brazil"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "violence",
+        "Belem do Para",
+        "domestic violence",
+        "gender based violence",
+        "OAS"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e372",
+      "title": "The Beijing conference adopts a global platform for women’s rights",
+      "description": "The Fourth World Conference on Women adopts the Beijing Declaration and Platform for Action, setting an agenda across areas including education, health, violence and political participation. It is an international policy commitment, not a law immediately granting identical rights everywhere.",
+      "startYear": 1995,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 39.9,
+      "longitude": 116.4,
+      "region": "as",
+      "category": "womens-rights",
+      "wikipediaSlug": "Beijing_Declaration",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://www.un.org/conferences/women/beijing1995",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "movements",
+        "country": "Global · Beijing, China"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "movements",
+        "Beijing",
+        "Platform for Action",
+        "United Nations",
+        "conference"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e373",
+      "title": "UN resolution 1325 recognizes women’s role in peace and security",
+      "description": "The Security Council adopts resolution 1325 on women, peace and security. It calls for women’s participation in peace processes and protection of women and girls in armed conflict. This is a framework for action, not evidence that conflicts or exclusion end.",
+      "startYear": 2000,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 40.75,
+      "longitude": -73.97,
+      "region": "am",
+      "category": "womens-rights",
+      "wikipediaSlug": "United_Nations_Security_Council_Resolution_1325",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://www.un.org/womenwatch/osagi/wps/",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "equality",
+        "country": "Global · United Nations, New York"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "equality",
+        "1325",
+        "peace",
+        "security",
+        "UNSCR",
+        "participation"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e374",
+      "title": "The African Union adopts the Maputo Protocol",
+      "description": "Adopted in Maputo, the protocol addresses women’s equality, freedom from violence and reproductive rights. Article 14 includes abortion on specified grounds, including sexual assault, rape, incest and threats to health or life. Treaty obligations depend on participation and implementation; adoption does not change every national law at once.",
+      "startYear": 2003,
+      "endYear": null,
+      "approximate": false,
+      "latitude": -25.97,
+      "longitude": 32.57,
+      "region": "af",
+      "category": "womens-rights",
+      "wikipediaSlug": "Maputo_Protocol",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://au.int/sites/default/files/treaties/37077-treaty-charter_on_rights_of_women_in_africa.pdf",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "reproductive",
+        "country": "Africa · adopted in Mozambique"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "reproductive",
+        "abortion",
+        "reproductive rights",
+        "African Union",
+        "Maputo",
+        "treaty"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e375",
+      "title": "Ellen Johnson Sirleaf takes office as Liberia’s president",
+      "description": "On 16 January, Ellen Johnson Sirleaf is inaugurated as Liberia’s president, becoming Africa’s first elected woman head of state. Her presidency is a representation milestone, not a claim that women’s political or social equality has been achieved.",
+      "startYear": 2006,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 6.32,
+      "longitude": -10.81,
+      "region": "af",
+      "category": "womens-rights",
+      "wikipediaSlug": "Ellen_Johnson_Sirleaf",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://www.un.org/sg/en/content/former-secretary-general/statements/2006-01-16/statement-the-secretary-general-the-inauguration-of-the-president-of-liberia",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "voting",
+        "country": "Liberia"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "voting",
+        "Ellen Johnson Sirleaf",
+        "president",
+        "representation",
+        "leadership"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e376",
+      "title": "Kenya enacts the Prohibition of Female Genital Mutilation Act",
+      "description": "Kenya enacts a specific law prohibiting female genital mutilation and related conduct. The milestone records a legislative measure against a harmful practice; it does not imply that the practice or barriers to protection immediately disappear.",
+      "startYear": 2011,
+      "endYear": null,
+      "approximate": false,
+      "latitude": -1.29,
+      "longitude": 36.82,
+      "region": "af",
+      "category": "womens-rights",
+      "wikipediaSlug": "Prohibition_of_Female_Genital_Mutilation_Act_2011",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://www.kenyalaw.org/kl/fileadmin/pdfdownloads/Acts/ProhibitionofFemaleGenitalMutilationAct_No32of2011.pdf",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "violence",
+        "country": "Kenya"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "violence",
+        "FGM",
+        "female genital mutilation",
+        "bodily autonomy",
+        "violence"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e377",
+      "title": "Saudi Arabia lifts the ban on women driving",
+      "description": "The ban on women driving is lifted in June 2018. The UN Secretary-General welcomes this change. This entry records a specific mobility milestone rather than claiming that wider discrimination or restrictions on women’s rights have ended.",
+      "startYear": 2018,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 24.71,
+      "longitude": 46.68,
+      "region": "me",
+      "category": "womens-rights",
+      "wikipediaSlug": "Women_to_drive_movement",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://www.un.org/sg/en/content/sg/statements/2018-06-24/statement-attributable-the-spokesman-for-the-secretary-general-saudi-arabia",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "equality",
+        "country": "Saudi Arabia"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "equality",
+        "driving",
+        "mobility",
+        "Women2Drive"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e378",
+      "title": "Taliban authorities exclude women from Afghan universities",
+      "description": "In December 2022, the Taliban authorities suspend women’s access to universities. The United Nations condemns the decision and calls for its reversal. This records a major restriction on education, not an advance in rights or a claim about every Afghan woman’s experience.",
+      "startYear": 2022,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 34.56,
+      "longitude": 69.21,
+      "region": "as",
+      "category": "womens-rights",
+      "wikipediaSlug": "Women_in_Afghanistan",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://afghanistan.un.org/en/212740-un-afghanistan-condemns-taliban-decision-suspend-women-universities-and-calls-its-immediate",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "education",
+        "country": "Afghanistan"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "education",
+        "Taliban",
+        "university ban",
+        "education restriction",
+        "rollback"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e379",
+      "title": "Soviet Russia permits abortion in public hospitals",
+      "description": "Soviet Russia legalizes abortion in 1920 within a public medical framework. This is a major early legal change, not a guarantee of unrestricted or equal access. The policy is reversed in 1936, and abortion is re-legalized in the Soviet Union in 1955.",
+      "startYear": 1920,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 55.75,
+      "longitude": 37.62,
+      "region": "eu",
+      "category": "womens-rights",
+      "wikipediaSlug": "Abortion_in_Russia",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://discovery.ucl.ac.uk/id/eprint/10086847/",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "reproductive",
+        "country": "Soviet Russia"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "reproductive",
+        "abortion",
+        "legalization",
+        "reproductive rights",
+        "1920"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e380",
+      "title": "The Soviet government severely restricts abortion",
+      "description": "The Soviet government prohibits most abortions in 1936, retaining narrow medical exceptions. This reverses the 1920 policy and is part of a broader intervention in family and reproductive life. The restriction is a historical setback, with re-legalization following in 1955.",
+      "startYear": 1936,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 55.75,
+      "longitude": 37.62,
+      "region": "eu",
+      "category": "womens-rights",
+      "wikipediaSlug": "Family_in_the_Soviet_Union",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://discovery.ucl.ac.uk/id/eprint/10086847/",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "reproductive",
+        "country": "Soviet Union"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "reproductive",
+        "abortion",
+        "ban",
+        "restriction",
+        "Stalin",
+        "reversal"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e381",
+      "title": "The Soviet Union re-legalizes abortion",
+      "description": "The Soviet Union re-legalizes abortion in 1955 after the restrictive 1936 policy. Legal provision, medical capacity and contraceptive access remain different questions. This is a dated Soviet policy change, not a statement of the laws of later successor states.",
+      "startYear": 1955,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 55.75,
+      "longitude": 37.62,
+      "region": "eu",
+      "category": "womens-rights",
+      "wikipediaSlug": "Abortion_in_the_Soviet_Union",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://discovery.ucl.ac.uk/id/eprint/10086847/",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "reproductive",
+        "country": "Soviet Union"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "reproductive",
+        "abortion",
+        "legalization",
+        "reproductive rights",
+        "1955"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e382",
+      "title": "Britain passes the Abortion Act",
+      "description": "The Abortion Act 1967 establishes specified grounds under which registered medical practitioners can lawfully terminate pregnancies in England, Wales and Scotland. It comes into force in 1968 and does not extend to Northern Ireland. It is not unrestricted abortion on request.",
+      "startYear": 1967,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 51.5,
+      "longitude": -0.12,
+      "region": "eu",
+      "category": "womens-rights",
+      "wikipediaSlug": "Abortion_Act_1967",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://www.legislation.gov.uk/ukpga/1967/87/enacted",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "reproductive",
+        "country": "Great Britain"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "reproductive",
+        "abortion",
+        "Abortion Act",
+        "reproductive rights",
+        "1968"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e383",
+      "title": "India adopts the Medical Termination of Pregnancy Act",
+      "description": "The Medical Termination of Pregnancy Act creates a legal framework for abortion on specified grounds and subject to medical and procedural conditions. This entry marks enactment in 1971, not unrestricted access or the later amendments to the Act.",
+      "startYear": 1971,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 28.61,
+      "longitude": 77.21,
+      "region": "as",
+      "category": "womens-rights",
+      "wikipediaSlug": "Medical_Termination_of_Pregnancy_Act,_1971",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://www.indiacode.nic.in/bitstream/123456789/1593/1/197134.pdf",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "reproductive",
+        "country": "India"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "reproductive",
+        "abortion",
+        "MTP Act",
+        "Medical Termination",
+        "reproductive rights"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e384",
+      "title": "Roe v. Wade recognizes a US constitutional abortion protection",
+      "description": "The US Supreme Court recognizes constitutional protection for a decision to terminate pregnancy under the framework set out in Roe v. Wade. This is a historical ruling: the Court overturns Roe and Casey in Dobbs in 2022. The 1973 marker does not describe present law.",
+      "startYear": 1973,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 38.89,
+      "longitude": -77,
+      "region": "am",
+      "category": "womens-rights",
+      "wikipediaSlug": "Roe_v._Wade",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://tile.loc.gov/storage-services/service/ll/usrep/usrep410/usrep410113/usrep410113.pdf",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "reproductive",
+        "country": "United States"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "reproductive",
+        "abortion",
+        "Roe",
+        "Wade",
+        "constitutional protection",
+        "reproductive rights",
+        "USA",
+        "US",
+        "U.S.",
+        "United States",
+        "United States of America"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e385",
+      "title": "France enacts the Veil abortion law",
+      "description": "The law promulgated on 17 January 1975 permits abortion within specified conditions. It is a major reform associated with Simone Veil, rather than unlimited access. Later legislation changes its framework, and a separate constitutional amendment follows in 2024.",
+      "startYear": 1975,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 48.86,
+      "longitude": 2.35,
+      "region": "eu",
+      "category": "womens-rights",
+      "wikipediaSlug": "Veil_Act",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://www.legifrance.gouv.fr/loda/id/LEGITEXT000006068506/",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "reproductive",
+        "country": "France"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "reproductive",
+        "abortion",
+        "IVG",
+        "Simone Veil",
+        "Veil law"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e386",
+      "title": "Canada’s Supreme Court strikes down the abortion provision",
+      "description": "In R. v. Morgentaler, the Supreme Court of Canada strikes down the Criminal Code abortion provision because its restrictions and procedures violate Charter protections. The decision does not mean that services are immediately available equally throughout Canada.",
+      "startYear": 1988,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 45.42,
+      "longitude": -75.7,
+      "region": "am",
+      "category": "womens-rights",
+      "wikipediaSlug": "R_v_Morgentaler",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://www.publications.gc.ca/Collection-R/LoPBdP/CIR/8910-e.htm",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "reproductive",
+        "country": "Canada"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "reproductive",
+        "abortion",
+        "Morgentaler",
+        "Charter",
+        "reproductive rights"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e387",
+      "title": "South Africa adopts the Choice on Termination of Pregnancy Act",
+      "description": "The 1996 Act replaces a restrictive abortion framework with broader access, including termination on request in early pregnancy and specified grounds later. It comes into operation in 1997. Enactment is distinct from the practical availability of services.",
+      "startYear": 1996,
+      "endYear": null,
+      "approximate": false,
+      "latitude": -33.92,
+      "longitude": 18.42,
+      "region": "af",
+      "category": "womens-rights",
+      "wikipediaSlug": "Choice_on_Termination_of_Pregnancy_Act,_1996",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://www.parliament.gov.za/storage/app/media/Acts/1996/Act_92_of_1996_Choice_on_Termination_of_Pregnancy_Act.pdf",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "reproductive",
+        "country": "South Africa"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "reproductive",
+        "abortion",
+        "Choice Act",
+        "reproductive rights",
+        "1997"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e388",
+      "title": "Nepal reforms its abortion law",
+      "description": "Nepal’s 2002 legal reform permits abortion under defined conditions, after a long period of criminalization. Legal change precedes the expansion of approved services. Cost, geography, stigma and information can still obstruct access; the milestone is not a claim of universal provision.",
+      "startYear": 2002,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 27.72,
+      "longitude": 85.32,
+      "region": "as",
+      "category": "womens-rights",
+      "wikipediaSlug": "Abortion_in_Nepal",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://asiapacific.unfpa.org/sites/default/files/pub-pdf/final_draft_young_people_and_the_law_report_case_studies-01.pdf",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "reproductive",
+        "country": "Nepal"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "reproductive",
+        "abortion",
+        "legalization",
+        "reproductive rights",
+        "Muluki Ain"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e389",
+      "title": "Ireland votes to repeal the Eighth Amendment",
+      "description": "In the May 2018 referendum, voters approve removing the constitutional provision known as the Eighth Amendment and allowing the legislature to regulate termination of pregnancy. The referendum is distinct from the subsequent legislation and the introduction of services.",
+      "startYear": 2018,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 53.35,
+      "longitude": -6.26,
+      "region": "eu",
+      "category": "womens-rights",
+      "wikipediaSlug": "Thirty-sixth_Amendment_of_the_Constitution_of_Ireland",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://www.electoralcommission.ie/previous-referendums/",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "reproductive",
+        "country": "Ireland"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "reproductive",
+        "abortion",
+        "Repeal the Eighth",
+        "referendum",
+        "reproductive rights"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e390",
+      "title": "New Zealand adopts abortion law reform",
+      "description": "The Abortion Legislation Act 2020 reforms New Zealand’s legal framework for abortion and removes abortion from the Crimes Act framework for the pregnant person. It retains statutory conditions for provision. This dated reform should not be read as a statement about every aspect of later access.",
+      "startYear": 2020,
+      "endYear": null,
+      "approximate": false,
+      "latitude": -41.28,
+      "longitude": 174.78,
+      "region": "oc",
+      "category": "womens-rights",
+      "wikipediaSlug": "Abortion_Legislation_Act_2020",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://www.legislation.govt.nz/act/public/2020/6/en/latest/",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "reproductive",
+        "country": "New Zealand"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "reproductive",
+        "abortion",
+        "decriminalization",
+        "reproductive rights",
+        "Aotearoa"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e391",
+      "title": "Argentina’s Congress approves abortion access legislation",
+      "description": "Congress approves Law 27,610 on 30 December 2020, providing for voluntary termination within a defined gestational limit and specified grounds afterward. Promulgation follows in January 2021. The marker records parliamentary approval, not the date services become uniformly accessible.",
+      "startYear": 2020,
+      "endYear": null,
+      "approximate": false,
+      "latitude": -34.61,
+      "longitude": -58.38,
+      "region": "am",
+      "category": "womens-rights",
+      "wikipediaSlug": "Law_27,610",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://www.argentina.gob.ar/normativa/nacional/ley-27610-2020-346231",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "reproductive",
+        "country": "Argentina"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "reproductive",
+        "abortion",
+        "Green Wave",
+        "Marea Verde",
+        "27610",
+        "2021"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e392",
+      "title": "Mexico’s Supreme Court invalidates Coahuila’s abortion criminalization",
+      "description": "The Supreme Court invalidates provisions of Coahuila’s penal code criminalizing voluntary abortion and establishes constitutional reasoning against absolute criminalization. This specific judgment is not an identical statutory reform in every Mexican state or proof of uniform service access.",
+      "startYear": 2021,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 19.43,
+      "longitude": -99.13,
+      "region": "am",
+      "category": "womens-rights",
+      "wikipediaSlug": "Abortion_in_Mexico",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://www.internet2.scjn.gob.mx/red2/comunicados/noticia.asp?id=6579",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "reproductive",
+        "country": "Mexico"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "reproductive",
+        "abortion",
+        "Coahuila",
+        "SCJN",
+        "decriminalization",
+        "Green Wave"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e393",
+      "title": "Colombia’s Constitutional Court limits abortion criminalization",
+      "description": "Judgment C-055 of 2022 makes abortion punishable under the challenged provision only after 24 weeks, while preserving the previously recognized exceptions beyond that point. This is a dated constitutional ruling, not a guarantee that barriers to healthcare disappear.",
+      "startYear": 2022,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 4.71,
+      "longitude": -74.07,
+      "region": "am",
+      "category": "womens-rights",
+      "wikipediaSlug": "Abortion_in_Colombia",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://www1.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=195148",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "reproductive",
+        "country": "Colombia"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "reproductive",
+        "abortion",
+        "C-055",
+        "Causa Justa",
+        "decriminalization",
+        "24 weeks"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e394",
+      "title": "Dobbs overturns Roe and Casey’s US abortion protection",
+      "description": "In Dobbs v. Jackson Women’s Health Organization, the Supreme Court overturns Roe and Casey and holds that the federal Constitution does not confer a right to abortion. The ruling permits divergent state restrictions and protections; it does not itself enact one nationwide abortion ban.",
+      "startYear": 2022,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 38.89,
+      "longitude": -77,
+      "region": "am",
+      "category": "womens-rights",
+      "wikipediaSlug": "Dobbs_v._Jackson_Women's_Health_Organization",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://www.supremecourt.gov/opinions/21pdf/19-1392_6j37.pdf",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "reproductive",
+        "country": "United States"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "reproductive",
+        "abortion",
+        "Dobbs",
+        "Roe overturned",
+        "restriction",
+        "reversal",
+        "USA",
+        "US",
+        "U.S.",
+        "United States",
+        "United States of America"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e395",
+      "title": "France constitutionally guarantees freedom to have an abortion",
+      "description": "Parliament approves a constitutional amendment in March 2024 guaranteeing freedom to have recourse to abortion under conditions determined by law. The amendment is promulgated on 8 March. This strengthens constitutional protection without making access unconditional.",
+      "startYear": 2024,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 48.8,
+      "longitude": 2.12,
+      "region": "eu",
+      "category": "womens-rights",
+      "wikipediaSlug": "Abortion_in_France",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://www.conseil-etat.fr/en/content/download/217795/document/CE-RA23-Web_EN%20BD_link.pdf",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "reproductive",
+        "country": "France"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "reproductive",
+        "abortion",
+        "IVG",
+        "constitution",
+        "constitutional guarantee"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e396",
+      "title": "Russian women win voting rights before the Bolshevik takeover",
+      "description": "Campaigning by women’s organizations helps secure voting rights under the Provisional Government in 1917. Women participate in elections that year, including for the Constituent Assembly. This milestone precedes the Bolshevik seizure of power and is not a claim that political equality is complete.",
+      "startYear": 1917,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 59.94,
+      "longitude": 30.31,
+      "region": "eu",
+      "category": "womens-rights",
+      "wikipediaSlug": "Women's_suffrage_in_Russia",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://www.cambridge.org/core/journals/slavic-review/article/women-and-gender-in-1917/CE4673AE59CA42774E510225CACAC405",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "voting",
+        "country": "Russia"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "voting",
+        "suffrage",
+        "voting",
+        "Provisional Government",
+        "1917",
+        "Russian women"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e397",
+      "title": "China’s Marriage Law recognizes free choice and easier divorce",
+      "description": "The 1950 Marriage Law recognizes free choice in marriage and expands access to divorce. It is a major reform of family relations under the new People’s Republic. Enactment and its uneven implementation are different matters; it does not establish complete equality in everyday life.",
+      "startYear": 1950,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 39.9,
+      "longitude": 116.4,
+      "region": "as",
+      "category": "womens-rights",
+      "wikipediaSlug": "Marriage_Law_of_the_People's_Republic_of_China",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://www.jstor.org/stable/jj.2711550",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "equality",
+        "country": "China"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "equality",
+        "Marriage Law",
+        "marriage",
+        "divorce",
+        "family law",
+        "1950"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e398",
+      "title": "Tunisia broadens legal access to abortion",
+      "description": "Tunisia’s 1973 reform broadens the grounds for legal abortion after a more limited 1965 change. It permits abortion during the first three months under a medical framework, with specified grounds later. The milestone concerns the historical law, not a guarantee of equal practical access.",
+      "startYear": 1973,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 36.81,
+      "longitude": 10.18,
+      "region": "me",
+      "category": "womens-rights",
+      "wikipediaSlug": "Abortion_in_Tunisia",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/files/documents/2020/Jan/un_1995_abortion_policies_-_a_global_review_-_volume_iii_oman_to_zimbabwe.pdf",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "reproductive",
+        "country": "Tunisia"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "reproductive",
+        "abortion",
+        "reproductive rights",
+        "1973",
+        "North Africa"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e399",
+      "title": "The US Comstock Act restricts mailing abortion and contraceptive materials",
+      "description": "Congress enacts the Comstock Act on March 3, restricting the mailing of articles intended for abortion or contraception and associated information. The entry describes the 1873 statute; later amendments and court interpretations change its reach.",
+      "startYear": 1873,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 38.89,
+      "longitude": -77.01,
+      "region": "am",
+      "category": "womens-rights",
+      "wikipediaSlug": "Comstock_Act",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://www.justice.gov/olc/opinion/file/1560596/dl",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "reproductive",
+        "country": "United States"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "abortion",
+        "abortions",
+        "reproductive rights",
+        "Comstock",
+        "Anthony Comstock",
+        "mail",
+        "contraception",
+        "restriction",
+        "USA",
+        "US",
+        "U.S.",
+        "United States",
+        "United States of America"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e400",
+      "title": "Colorado expands the circumstances permitting abortion",
+      "description": "Colorado reforms its abortion law to permit abortions in specified circumstances, including pregnancies likely to cause the pregnant woman’s death and cases of rape or incest. This is a limited reform before Roe, rather than unrestricted legalization.",
+      "startYear": 1967,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 39.74,
+      "longitude": -104.98,
+      "region": "am",
+      "category": "womens-rights",
+      "wikipediaSlug": "Abortion_in_Colorado_1967",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://content.leg.colorado.gov/sites/default/files/images/2023-2024_89vbb.pdf",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "reproductive",
+        "country": "United States · Colorado"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "abortion",
+        "abortions",
+        "reproductive rights",
+        "Colorado",
+        "Denver",
+        "1967 reform",
+        "rape",
+        "incest",
+        "USA",
+        "US",
+        "U.S.",
+        "United States",
+        "United States of America"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e401",
+      "title": "Hawaii reforms abortion law before Roe",
+      "description": "Hawaii’s Act 1 repeals earlier abortion provisions and permits termination of a nonviable pregnancy under specified conditions. The 1970 act requires a licensed physician, a qualifying hospital and state domicile or at least ninety days’ physical presence. These are historical conditions, not a description of later Hawaii law.",
+      "startYear": 1970,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 21.31,
+      "longitude": -157.86,
+      "region": "am",
+      "category": "womens-rights",
+      "wikipediaSlug": "Abortion_in_Hawaii_1970",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://data.capitol.hawaii.gov/sessions/sessionlaws/Years/SLH1970/SLH1970_Act1.pdf",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "reproductive",
+        "country": "United States · Hawaii"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "abortion",
+        "abortions",
+        "reproductive rights",
+        "Hawaii",
+        "Honolulu",
+        "Act 1",
+        "1970 reform",
+        "USA",
+        "US",
+        "U.S.",
+        "United States",
+        "United States of America"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e402",
+      "title": "New York legalizes abortion before Roe",
+      "description": "New York legalizes abortion in 1970, three years before Roe v. Wade. The reform is a state-law milestone; it does not establish a nationwide right or imply that earlier restrictions and practical barriers immediately disappear everywhere.",
+      "startYear": 1970,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 42.65,
+      "longitude": -73.76,
+      "region": "am",
+      "category": "womens-rights",
+      "wikipediaSlug": "Abortion_in_New_York_1970",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://nyassembly.gov/write/upload/postings/2017/pdfs/20171215_0078563.pdf",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "reproductive",
+        "country": "United States · New York"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "abortion",
+        "abortions",
+        "reproductive rights",
+        "New York",
+        "Albany",
+        "Constance Cook",
+        "Clinton Dominick",
+        "George Michaels",
+        "legalization",
+        "USA",
+        "US",
+        "U.S.",
+        "United States",
+        "United States of America"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e403",
+      "title": "Washington voters approve abortion reform in Referendum 20",
+      "description": "On November 3, Washington voters approve Referendum 20. It permits abortion within four lunar months after conception, before quickening, subject to residency and consent requirements. The historical law includes husband-consent requirements for a married woman living with her husband and guardian consent for an unmarried minor under eighteen.",
+      "startYear": 1970,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 47.04,
+      "longitude": -122.9,
+      "region": "am",
+      "category": "womens-rights",
+      "wikipediaSlug": "Washington_Referendum_20",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://www2.sos.wa.gov/legacy/images/publications/sl_voterspamphlet_1970_eastern/sl_voterspamphlet_1970_eastern.pdf",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "reproductive",
+        "country": "United States · Washington"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "abortion",
+        "abortions",
+        "reproductive rights",
+        "Washington state",
+        "Olympia",
+        "Referendum 20",
+        "R20",
+        "1970 reform",
+        "USA",
+        "US",
+        "U.S.",
+        "United States",
+        "United States of America"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e404",
+      "title": "The Hyde Amendment restricts federal abortion funding",
+      "description": "Congress first enacts the Hyde Amendment on September 30, restricting federal abortion funding through an appropriations provision and limiting Medicaid coverage. The original version has a life-saving exception. Later versions change the exceptions; this funding restriction is distinct from a nationwide criminal ban on abortion.",
+      "startYear": 1976,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 38.89,
+      "longitude": -77.01,
+      "region": "am",
+      "category": "womens-rights",
+      "wikipediaSlug": "Hyde_Amendment",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://www.govinfo.gov/content/pkg/USREPORTS-448/pdf/USREPORTS-448-297.pdf",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "reproductive",
+        "country": "United States"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "abortion",
+        "abortions",
+        "reproductive rights",
+        "Hyde",
+        "Henry Hyde",
+        "Medicaid",
+        "funding",
+        "restriction",
+        "USA",
+        "US",
+        "U.S.",
+        "United States",
+        "United States of America"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e405",
+      "title": "Harris v. McRae upholds the Hyde funding restriction",
+      "description": "On June 30, the US Supreme Court upholds the challenged Hyde Amendment restrictions. It holds that Medicaid does not require a participating state to fund medically necessary abortions for which federal reimbursement is unavailable under Hyde. The decision concerns public funding, rather than a general prohibition on obtaining an abortion.",
+      "startYear": 1980,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 38.89,
+      "longitude": -77,
+      "region": "am",
+      "category": "womens-rights",
+      "wikipediaSlug": "Harris_v._McRae",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://www.govinfo.gov/content/pkg/USREPORTS-448/pdf/USREPORTS-448-297.pdf",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "reproductive",
+        "country": "United States"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "abortion",
+        "abortions",
+        "reproductive rights",
+        "Harris",
+        "McRae",
+        "Hyde",
+        "Medicaid",
+        "Supreme Court",
+        "funding",
+        "USA",
+        "US",
+        "U.S.",
+        "United States",
+        "United States of America"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e406",
+      "title": "Casey preserves abortion protection but changes the legal test",
+      "description": "On June 29, the Supreme Court reaffirms Roe’s central protection before viability while replacing its trimester framework with an undue-burden standard for abortion restrictions. It invalidates Pennsylvania’s spousal-notification requirement while sustaining other challenged provisions. Dobbs overturns Roe and Casey in 2022.",
+      "startYear": 1992,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 38.89,
+      "longitude": -77,
+      "region": "am",
+      "category": "womens-rights",
+      "wikipediaSlug": "Planned_Parenthood_v._Casey",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://tile.loc.gov/storage-services/service/ll/usrep/usrep505/usrep505833/usrep505833.pdf",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "reproductive",
+        "country": "United States"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "abortion",
+        "abortions",
+        "reproductive rights",
+        "Casey",
+        "Planned Parenthood",
+        "Pennsylvania",
+        "undue burden",
+        "spousal notification",
+        "Supreme Court",
+        "USA",
+        "US",
+        "U.S.",
+        "United States",
+        "United States of America"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e407",
+      "title": "The FACE Act protects access to reproductive-health facilities",
+      "description": "Congress enacts the Freedom of Access to Clinic Entrances Act. It prohibits force, threats and physical obstruction interfering with people obtaining or providing reproductive-health services, including abortion, and intentional damage to facilities. Its protections also cover pregnancy counseling facilities and places of religious worship; it does not itself legalize abortion nationwide.",
+      "startYear": 1994,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 38.89,
+      "longitude": -77.01,
+      "region": "am",
+      "category": "womens-rights",
+      "wikipediaSlug": "Freedom_of_Access_to_Clinic_Entrances_Act",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://www.justice.gov/archives/reproductive-rights/what-we-are-doing",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "reproductive",
+        "country": "United States"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "abortion",
+        "abortions",
+        "reproductive rights",
+        "FACE",
+        "clinic access",
+        "violence",
+        "obstruction",
+        "1994",
+        "USA",
+        "US",
+        "U.S.",
+        "United States",
+        "United States of America"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e408",
+      "title": "The FDA first approves mifepristone for medication abortion",
+      "description": "In September, the Food and Drug Administration first approves Mifeprex, containing mifepristone, for medication abortion through seven weeks of pregnancy. This is a federal drug-approval milestone. Later labeling and access rules change; FDA approval does not itself guarantee access under every state’s laws.",
+      "startYear": 2000,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 38.9,
+      "longitude": -77.03,
+      "region": "am",
+      "category": "womens-rights",
+      "wikipediaSlug": "Mifepristone_FDA_approval",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://www.fda.gov/drugs/postmarket-drug-safety-information-patients-and-providers/questions-and-answers-mifepristone-medical-termination-pregnancy-through-ten-weeks-gestation",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "reproductive",
+        "country": "United States"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "abortion",
+        "abortions",
+        "reproductive rights",
+        "FDA",
+        "mifepristone",
+        "Mifeprex",
+        "medication abortion",
+        "abortion pill",
+        "USA",
+        "US",
+        "U.S.",
+        "United States",
+        "United States of America"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e409",
+      "title": "New York enacts the Reproductive Health Act",
+      "description": "On January 22, New York enacts the Reproductive Health Act. It authorizes abortion within twenty-four weeks, or when the fetus is not viable or an abortion is necessary to protect the patient’s life or health, according to the practitioner’s professional judgment. The statute strengthens state-law protection before Dobbs.",
+      "startYear": 2019,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 42.65,
+      "longitude": -73.76,
+      "region": "am",
+      "category": "womens-rights",
+      "wikipediaSlug": "Reproductive_Health_Act",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://www.nysenate.gov/legislation/bills/2019/S240",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "reproductive",
+        "country": "United States · New York"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "abortion",
+        "abortions",
+        "reproductive rights",
+        "New York",
+        "Albany",
+        "Reproductive Health Act",
+        "RHA",
+        "S240",
+        "USA",
+        "US",
+        "U.S.",
+        "United States",
+        "United States of America"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e410",
+      "title": "Texas SB 8 restricts abortion through private civil enforcement",
+      "description": "Effective September 1, Texas SB 8 prohibits most abortions after detection of embryonic or fetal cardiac activity and authorizes private civil actions against providers and people who knowingly aid prohibited abortions. A medical-emergency exception is included. This 2021 law takes effect before Dobbs; it is distinct from Texas’s later trigger prohibition.",
+      "startYear": 2021,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 30.27,
+      "longitude": -97.74,
+      "region": "am",
+      "category": "womens-rights",
+      "wikipediaSlug": "Texas_Heartbeat_Act",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://capitol.texas.gov/billlookup/BillSummary.aspx?Bill=SB8&LegSess=87R",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "reproductive",
+        "country": "United States · Texas"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "abortion",
+        "abortions",
+        "reproductive rights",
+        "Texas",
+        "Austin",
+        "SB8",
+        "SB 8",
+        "heartbeat law",
+        "restriction",
+        "private lawsuits",
+        "USA",
+        "US",
+        "U.S.",
+        "United States",
+        "United States of America"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e411",
+      "title": "Texas’s trigger abortion prohibition takes effect",
+      "description": "On August 25, Texas’s Human Life Protection Act takes effect after the Supreme Court’s Dobbs judgment triggers the law. It prohibits abortion with a limited exception for a life-threatening physical condition. The statute was enacted in 2021; this marker records its 2022 commencement rather than its passage.",
+      "startYear": 2022,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 30.27,
+      "longitude": -97.74,
+      "region": "am",
+      "category": "womens-rights",
+      "wikipediaSlug": "Texas_Human_Life_Protection_Act",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://www.sll.texas.gov/faqs/texas-trigger-law/",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "reproductive",
+        "country": "United States · Texas"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "abortion",
+        "abortions",
+        "reproductive rights",
+        "Texas",
+        "Austin",
+        "HB1280",
+        "HB 1280",
+        "trigger ban",
+        "Chapter 170A",
+        "restriction",
+        "USA",
+        "US",
+        "U.S.",
+        "United States",
+        "United States of America"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e412",
+      "title": "California voters add reproductive freedom to the state constitution",
+      "description": "On November 8, California voters approve Proposition 1, adding an explicit state constitutional protection for reproductive freedom, including the choice of abortion and the choice to use or refuse contraception. The measure concerns California’s constitution following Dobbs, rather than a new federal constitutional right.",
+      "startYear": 2022,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 38.58,
+      "longitude": -121.49,
+      "region": "am",
+      "category": "womens-rights",
+      "wikipediaSlug": "2022_California_Proposition_1",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://elections.cdn.sos.ca.gov/sov/2022-general/sov/complete.pdf",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "reproductive",
+        "country": "United States · California"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "abortion",
+        "abortions",
+        "reproductive rights",
+        "California",
+        "Sacramento",
+        "Proposition 1",
+        "Prop 1",
+        "constitutional protection",
+        "USA",
+        "US",
+        "U.S.",
+        "United States",
+        "United States of America"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e413",
+      "title": "Kansas voters reject the Value Them Both amendment",
+      "description": "On August 2, Kansas voters reject a proposed amendment declaring that the state constitution does not secure a right to abortion or require abortion funding. Rejection leaves the constitution unchanged; it does not repeal every existing abortion regulation or establish unlimited access.",
+      "startYear": 2022,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 39.05,
+      "longitude": -95.68,
+      "region": "am",
+      "category": "womens-rights",
+      "wikipediaSlug": "2022_Kansas_abortion_referendum",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://www.kansashistory.gov/archives/512066",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "reproductive",
+        "country": "United States · Kansas"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "abortion",
+        "abortions",
+        "reproductive rights",
+        "Kansas",
+        "Topeka",
+        "Value Them Both",
+        "referendum",
+        "amendment rejected",
+        "USA",
+        "US",
+        "U.S.",
+        "United States",
+        "United States of America"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e414",
+      "title": "Michigan voters approve the reproductive-freedom amendment",
+      "description": "On November 8, Michigan voters approve Proposal 3, adding a right to reproductive freedom, including abortion and contraception, to the state constitution. The amendment takes effect on December 24. It allows regulation of abortion after fetal viability, subject to a life-or-health exception.",
+      "startYear": 2022,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 42.73,
+      "longitude": -84.56,
+      "region": "am",
+      "category": "womens-rights",
+      "wikipediaSlug": "2022_Michigan_Proposal_3",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://www.michigan.gov/whitmer/news/press-releases/2022/12/14/governor-whitmer-signs-executive-directive-affirming-reproductive-freedoms",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "reproductive",
+        "country": "United States · Michigan"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "abortion",
+        "abortions",
+        "reproductive rights",
+        "Michigan",
+        "Lansing",
+        "Proposal 3",
+        "Proposal 22-3",
+        "constitutional protection",
+        "USA",
+        "US",
+        "U.S.",
+        "United States",
+        "United States of America"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e415",
+      "title": "Ohio adds a constitutional right to reproductive decisions",
+      "description": "Ohio’s November Issue 1 amendment establishes a right to make and carry out reproductive decisions, including abortion, contraception and miscarriage care. Effective December 7, it permits abortion restrictions after fetal viability but protects abortion necessary for the pregnant patient’s life or health in the treating physician’s professional judgment.",
+      "startYear": 2023,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 39.96,
+      "longitude": -83,
+      "region": "am",
+      "category": "womens-rights",
+      "wikipediaSlug": "November_2023_Ohio_Issue_1",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://codes.ohio.gov/ohio-constitution/section-1.22",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "reproductive",
+        "country": "United States · Ohio"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "abortion",
+        "abortions",
+        "reproductive rights",
+        "Ohio",
+        "Columbus",
+        "November Issue 1",
+        "Issue 1",
+        "constitutional protection",
+        "USA",
+        "US",
+        "U.S.",
+        "United States",
+        "United States of America"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e416",
+      "title": "Arizona voters approve a constitutional abortion right",
+      "description": "Arizona voters approve Proposition 139 in the November 5 election. The amendment protects abortion before fetal viability and afterward when necessary to protect the pregnant individual’s life or physical or mental health in a treating health professional’s good-faith judgment. The governor proclaims the approved amendment law on November 25.",
+      "startYear": 2024,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 33.45,
+      "longitude": -112.1,
+      "region": "am",
+      "category": "womens-rights",
+      "wikipediaSlug": "2024_Arizona_Proposition_139",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://apps.azsos.gov/election/2024/bm/Proclamation_for_Prop_139.pdf",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "reproductive",
+        "country": "United States · Arizona"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "abortion",
+        "abortions",
+        "reproductive rights",
+        "Arizona",
+        "Phoenix",
+        "Proposition 139",
+        "Prop 139",
+        "Arizona Abortion Access Act",
+        "constitutional protection",
+        "USA",
+        "US",
+        "U.S.",
+        "United States",
+        "United States of America"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e417",
+      "title": "Florida’s six-week abortion restriction takes effect",
+      "description": "On May 1, Florida’s Heartbeat Protection Act takes effect, replacing the previous fifteen-week limit with a prohibition after six weeks, subject to statutory exceptions. The state health agency’s notice links commencement to an April 1 Florida Supreme Court decision. This records implementation in 2024, following enactment in 2023.",
+      "startYear": 2024,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 30.44,
+      "longitude": -84.28,
+      "region": "am",
+      "category": "womens-rights",
+      "wikipediaSlug": "Florida_Heartbeat_Protection_Act",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://flrules.org/Gateway/View_notice.asp?id=28322174",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "reproductive",
+        "country": "United States · Florida"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "abortion",
+        "abortions",
+        "reproductive rights",
+        "Florida",
+        "Tallahassee",
+        "six week",
+        "6 week",
+        "Heartbeat Protection Act",
+        "SB300",
+        "SB 300",
+        "restriction",
+        "USA",
+        "US",
+        "U.S.",
+        "United States",
+        "United States of America"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e418",
+      "title": "Florida’s abortion-rights amendment falls short of the approval threshold",
+      "description": "On November 5, Amendment 4 receives about 57.17 percent of votes cast, below Florida’s sixty-percent requirement for constitutional amendments, and is not adopted. The proposal would have protected abortion before viability or when necessary for the patient’s health. A simple majority therefore does not change the state constitution.",
+      "startYear": 2024,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 30.44,
+      "longitude": -84.28,
+      "region": "am",
+      "category": "womens-rights",
+      "wikipediaSlug": "2024_Florida_Amendment_4",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://results.elections.myflorida.com/DetailRpt.Asp?ELECTIONDATE=11%2F5%2F2024&RACE=A04",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "reproductive",
+        "country": "United States · Florida"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "abortion",
+        "abortions",
+        "reproductive rights",
+        "Florida",
+        "Tallahassee",
+        "Amendment 4",
+        "sixty percent",
+        "60 percent",
+        "amendment failed",
+        "USA",
+        "US",
+        "U.S.",
+        "United States",
+        "United States of America"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e419",
+      "title": "Colorado voters adopt a constitutional right to abortion",
+      "description": "On November 5, Colorado voters approve Amendment 79, recognizing a state constitutional right to abortion and prohibiting state and local governments from denying or impeding it. The measure also removes the state constitutional restriction on public abortion funding; it does not remove separate federal funding restrictions.",
+      "startYear": 2024,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 39.74,
+      "longitude": -104.98,
+      "region": "am",
+      "category": "womens-rights",
+      "wikipediaSlug": "2024_Colorado_Amendment_79",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://historicalelectiondata.coloradosos.gov/contest/26545",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "reproductive",
+        "country": "United States · Colorado"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "abortion",
+        "abortions",
+        "reproductive rights",
+        "Colorado",
+        "Denver",
+        "Amendment 79",
+        "public funding",
+        "constitutional protection",
+        "USA",
+        "US",
+        "U.S.",
+        "United States",
+        "United States of America"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e420",
+      "title": "Missouri voters approve a reproductive-freedom amendment",
+      "description": "On November 5, Missouri voters approve Amendment 3, adding a right to reproductive freedom, including abortion, to the state constitution. Its text allows restrictions after fetal viability with a life-or-health exception. This marks the 2024 constitutional vote; it does not assert that every clinic reopened immediately or describe later litigation and ballot measures.",
+      "startYear": 2024,
+      "endYear": null,
+      "approximate": false,
+      "latitude": 38.58,
+      "longitude": -92.17,
+      "region": "am",
+      "category": "womens-rights",
+      "wikipediaSlug": "2024_Missouri_Amendment_3",
+      "wikipediaUrl": null,
+      "sourceUrl": "https://www.sos.mo.gov/CMSImages/ElectionResultsStatistics/2024GeneralElection.pdf",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": {
+        "topic": "reproductive",
+        "country": "United States · Missouri"
+      },
+      "aliases": [
+        "women",
+        "womens rights",
+        "women's rights",
+        "women’s rights",
+        "abortion",
+        "abortions",
+        "reproductive rights",
+        "Missouri",
+        "Jefferson City",
+        "Amendment 3",
+        "constitutional protection",
+        "USA",
+        "US",
+        "U.S.",
+        "United States",
+        "United States of America"
+      ],
+      "ongoing": false
+    },
+    {
+      "id": "e421",
+      "title": "Leaving Russia after the invasion: anti-war exile and flight from mobilization",
+      "description": "After Russia’s full-scale invasion of Ukraine on February 24, 2022, some people leave Russia because they oppose the war and do not want to support it; others fear repression for dissent or being sent to fight. These motives can overlap. A second major departure wave follows the September 21 mobilization announcement. Human Rights Watch documents both waves and the crackdown on anti-war speech; Reuters interviews describe opposition to the invasion and fear of the call-up. Georgia and Kazakhstan are among the destinations. Not everyone who leaves has the same political views or refugee status. The 2022–2023 interval highlights the initial waves and early aftermath, not the end of exile. Arrows are schematic connections from Russia to representative destinations, not individual journeys or migration counts.",
+      "startYear": 2022,
+      "endYear": 2023,
+      "approximate": false,
+      "latitude": 55.75,
+      "longitude": 37.62,
+      "region": "eu",
+      "category": "migrations",
+      "wikipediaSlug": "Russian_emigration_following_the_Russian_invasion_of_Ukraine",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Russian_emigration_following_the_Russian_invasion_of_Ukraine",
+      "sourceUrl": "https://www.hrw.org/world-report/2023/country-chapters/russian-federation",
+      "fossilRegion": null,
+      "locationSourceUrl": null,
+      "indigenousContext": null,
+      "rightsContext": null,
+      "aliases": [
+        "migrations",
+        "migration",
+        "emigration",
+        "Russia",
+        "Russian emigrants",
+        "leaving Russia",
+        "from Russia",
+        "anti-war",
+        "opposition to war",
+        "political exile",
+        "repression",
+        "mobilization",
+        "mobilisation",
+        "conscription",
+        "draft evasion",
+        "army",
+        "Georgia",
+        "Tbilisi",
+        "Kazakhstan",
+        "2022",
+        "2023"
       ],
       "ongoing": false
     }

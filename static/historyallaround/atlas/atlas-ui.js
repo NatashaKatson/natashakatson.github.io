@@ -119,6 +119,8 @@
   window.AtlasUI = { render() {
     window.HistoryLayers?.render();
     window.HistoryMigrations?.render();
+    window.HistoryWomensRights?.render();
+    window.HistoryWomensColors?.render();
     const years = HistoryDiscovery.displayedYears();
     const deep = years.some((year) => year < -1000000);
     const human = years.some((year) => year >= -1000000);

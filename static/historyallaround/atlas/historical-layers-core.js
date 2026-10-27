@@ -1015,6 +1015,32 @@
       ]
     ]
   },
+{
+  "wiki": "Russian_emigration_following_the_Russian_invasion_of_Ukraine",
+  "kind": "migrations",
+  "paths": [
+    [
+      [
+        37.62,
+        55.75
+      ],
+      [
+        44.8,
+        41.72
+      ]
+    ],
+    [
+      [
+        37.62,
+        55.75
+      ],
+      [
+        76.89,
+        43.24
+      ]
+    ]
+  ]
+},
   {
     "wiki": "Ukrainian_refugee_crisis",
     "kind": "migrations",

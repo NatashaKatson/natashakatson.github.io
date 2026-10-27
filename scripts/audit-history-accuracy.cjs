@@ -33,9 +33,14 @@ function audit() {
     check([0, 1].includes(approximate) && !!title && !!blurb && !!wiki, `e${i}: incomplete record`);
     check(Number.isFinite(lat) && Math.abs(lat) <= 90 && Number.isFinite(lon) && Math.abs(lon) <= 180, `e${i}: invalid point`);
     check(['eu', 'me', 'af', 'as', 'am', 'oc'].includes(region), `e${i}: unknown region`);
-    check(['power', 'war', 'ideas', 'culture', 'nature', 'fashion', 'pandemics', 'trade', 'migrations', 'climate', 'technology', 'dinosaurs'].includes(category), `e${i}: unknown category`);
+    check(['power', 'war', 'ideas', 'culture', 'nature', 'fashion', 'pandemics', 'trade', 'migrations', 'climate', 'technology', 'womens-rights', 'dinosaurs'].includes(category), `e${i}: unknown category`);
     check(row[15] == null || typeof row[15] === 'boolean', `e${i}: invalid ongoing flag`);
     check(!row[15] || end === 2026, `e${i}: ongoing interval must reach the atlas cutoff`);
+    check(row[16] == null || category === 'womens-rights', `e${i}: rights metadata on another category`);
+    if (category === 'womens-rights') {
+      check(typeof row[16]?.country === 'string' && !!row[16].country, `e${i}: missing rights country/context`);
+      check(['voting','education','equality','movements','violence','reproductive'].includes(row[16]?.topic), `e${i}: unknown rights topic`);
+    }
     check(!source || source.startsWith('https://'), `e${i}: invalid source URL`);
     const review = evidence.get(wiki);
     if (review) {

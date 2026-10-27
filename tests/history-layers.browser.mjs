@@ -60,9 +60,9 @@ try {
   console.log(await evaluate(`(async()=>{
     const check=(v,m)=>{if(!v)throw Error(m)};
     document.querySelector('[data-atlas-menu="migrationsPanel"]').click();
-    check(document.getElementById('migrationStatus').textContent==='0 near 1300 · 30 histories total','Year count is distinguished from the whole catalogue');
+    check(document.getElementById('migrationStatus').textContent==='0 near 1300 · 31 histories total','Year count is distinguished from the whole catalogue');
     const catalogue=document.getElementById('migrationResults');
-    check(catalogue.querySelectorAll('[data-migration-record]').length===30&&!document.querySelector('#layersPanel [data-migration-record]'),'All migrations are available in their dedicated menu');
+    check(catalogue.querySelectorAll('[data-migration-record]').length===31&&!document.querySelector('#layersPanel [data-migration-record]'),'All migrations are available in their dedicated menu');
     const event=ev.find(e=>e.wiki==='Bosnian_War');
     const button=catalogue.querySelector('[data-migration-record="'+event.id+'"]');button.focus();button.click();
     await new Promise(r=>setTimeout(r,100));flyToken++;render();
@@ -72,7 +72,7 @@ try {
     check(document.querySelector('#detail h3').textContent.includes('Bosnian War'),'Catalogue opens the selected migration story');
     return 'Migration totals, complete catalogue, dated navigation and keyboard focus passed';
   })()`));
-  for(const [wiki,year] of [['Silk_Roads',1300],['Great_Migration_(African_American)',1950],['Belarusian_diaspora',2020],['White_émigré',1917],['Ukrainian_refugee_crisis',2023],['Jewish_refugees_from_Nazi_Germany_and_German-occupied_Europe',1943],['Kindertransport',1939],['Holocaust_trains',1943]]){
+  for(const [wiki,year] of [['Silk_Roads',1300],['Great_Migration_(African_American)',1950],['Belarusian_diaspora',2020],['White_émigré',1917],['Ukrainian_refugee_crisis',2023],['Russian_emigration_following_the_Russian_invasion_of_Ukraine',2023],['Jewish_refugees_from_Nazi_Germany_and_German-occupied_Europe',1943],['Kindertransport',1939],['Holocaust_trains',1943]]){
     const point=await evaluate(`(async()=>{
       const e=ev.find(e=>e.wiki===${JSON.stringify(wiki)});
       for(const cat of [...state.cats])if(cat!==e.cat&&state.cats.size>1)document.querySelector('#legend [data-k="'+cat+'"]').click();
@@ -104,7 +104,7 @@ try {
     const choose=cat=>{state.cats=new Set([cat]);buildMarks();update();render()};
     choose('trade');setYear(1700);render();check(!hits.some(h=>h.radius===7)&&document.querySelector('.route-map-note').hidden,'Expired trade routes disappear');
     choose('migrations');setYear(1950);render();
-    check(document.getElementById('migrationStatus').textContent==='5 near 1950 · 30 histories total','Migration count updates with the year: '+document.getElementById('migrationStatus').textContent);
+    check(document.getElementById('migrationStatus').textContent==='5 near 1950 · 31 histories total','Migration count updates with the year: '+document.getElementById('migrationStatus').textContent);
     choose('climate');setYear(1816);render();
     check(activeEvents().some(({e})=>e.wiki==='Year_Without_a_Summer'),'Climate event follows timeline');
     check(!hits.some(h=>h.radius===7),'Climate markers do not invent affected-area tracks');
@@ -134,7 +134,7 @@ try {
     }
     await screenshot(String(width));
     await evaluate(`document.querySelector('[data-atlas-menu="migrationsPanel"]').click()`);
-    assert(await evaluate(`(()=>{const list=document.getElementById('migrationResults');const buttons=[...list.querySelectorAll('[data-migration-record]')],last=buttons.at(-1);last.scrollIntoView({block:'nearest'});const r=last.getBoundingClientRect(),p=list.getBoundingClientRect();return buttons.length===30&&r.width>0&&r.height>=44&&r.left>=0&&r.right<=innerWidth&&r.top>=p.top&&r.bottom<=p.bottom+1&&r.bottom<=innerHeight&&document.documentElement.scrollWidth<=innerWidth})()`),`Last migration is reachable in its separate menu at ${width}px`);
+    assert(await evaluate(`(()=>{const list=document.getElementById('migrationResults');const buttons=[...list.querySelectorAll('[data-migration-record]')],last=buttons.at(-1);last.scrollIntoView({block:'nearest'});const r=last.getBoundingClientRect(),p=list.getBoundingClientRect();return buttons.length===31&&r.width>0&&r.height>=44&&r.left>=0&&r.right<=innerWidth&&r.top>=p.top&&r.bottom<=p.bottom+1&&r.bottom<=innerHeight&&document.documentElement.scrollWidth<=innerWidth})()`),`Last migration is reachable in its separate menu at ${width}px`);
     await screenshot('catalogue-'+width);
     await evaluate(`document.querySelector('.migrations-close').click()`);
   }

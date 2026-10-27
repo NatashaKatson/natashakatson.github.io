@@ -2,7 +2,7 @@
 
 `atlas-data.json` contains both collections, field names, and date/region metadata.
 `events.csv` and `people.csv` contain the same records in UTF-8 CSV format.
-The export includes 346 events (including 8 dinosaur entries) and 66 people.
+The export includes 422 events (including 8 dinosaur entries) and 66 people.
 
 These are the curated event and people records from
 `static/historyallaround/atlas/index.html`. They do not include the atlas's
@@ -32,3 +32,20 @@ Regenerate from the current atlas source with:
 ```sh
 node scripts/export-history-data.cjs
 ```
+
+The dedicated women’s rights category contains 76 dated milestones, including
+41 abortion and reproductive-rights histories. `rightsContext` supplies the topic
+and country/context label. For these records `wikipediaUrl` is null: their
+`sourceUrl` links the trusted historical or institutional reference. The
+`wikipediaSlug` field remains the stable story key used by shared atlas views.
+See [coverage and sources](../../docs/history-womens-rights.md).
+
+US abortion coverage includes 24 milestones: eight federal milestones and
+sixteen state milestones across twelve states. State names are part of the
+`rightsContext.country` display label; federal entries use `United States`.
+All US rights records include `USA`, `US` and `U.S.` search aliases.
+
+Country colors use a separate annual index, rather than deriving scores from
+these milestone exports. The local dataset is
+[`womens-empowerment.json`](../../static/historyallaround/atlas/womens-empowerment.json);
+see [coverage, attribution and license](../../docs/history-womens-country-colors.md).

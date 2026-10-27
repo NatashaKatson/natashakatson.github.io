@@ -43,7 +43,7 @@ try {
     assert(toggle.closest('#eraPanel')&&!document.querySelector('#layersPanel .dinosaur-map-controls'),'dinosaur controls belong to Choose era, not Layers');
     assert(document.getElementById('layersPanel').hidden&&document.getElementById('filtersPanel').hidden,'map menus start collapsed');
     document.querySelector('[data-atlas-menu="filtersPanel"]').click();
-    assert(document.querySelectorAll('#legend .chip:not([hidden])').length===11&&document.getElementById('filterCount').textContent==='11','human history shows eleven relevant filters');
+    assert(document.querySelectorAll('#legend .chip:not([hidden])').length===12&&document.getElementById('filterCount').textContent==='12','human history shows twelve relevant filters');
     document.querySelector('#legend .chip').focus();
     document.activeElement.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',bubbles:true}));
     assert(document.getElementById('filtersPanel').hidden&&document.activeElement.dataset.atlasMenu==='filtersPanel','Escape closes the menu and restores focus');
@@ -99,7 +99,7 @@ try {
     document.getElementById('compareToggle').click();
     const form=document.getElementById('compareYears');form.elements.left.value='150 Ma';form.elements.right.value='1903';form.requestSubmit();render();
     assert(state.year===1903&&!document.querySelector('.deep-time-note').hidden,'deep-time note follows either comparison side');
-    assert(document.querySelectorAll('#legend .chip:not([hidden])').length===12,'mixed comparison shows categories for both periods');
+    assert(document.querySelectorAll('#legend .chip:not([hidden])').length===13,'mixed comparison shows categories for both periods');
     await HistoryDiscovery.openView(dinosaurHash);render();
     return 'Dinosaurs: ages, source context, eras, clickable markers, category search, Back, sharing and comparison passed';
   })()`));

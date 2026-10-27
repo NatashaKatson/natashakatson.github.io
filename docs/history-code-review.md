@@ -129,3 +129,79 @@ the new arrow suite also passes in the offline preview. All 87 Node tests, both
 Python tests, the country-data check and all 46 offline preview checks pass.
 The integrity audit reports no errors, and the complete bilingual site builds
 with CI's Hugo 0.110.0. No additional blocker was found in the reviewed paths.
+
+## Women’s rights code review
+
+Reviewed the dedicated browser, map/category state, global search adapter,
+source-link rendering, exports, standalone bundling and responsive controls.
+The 76 milestones and their recorded sources are preserved.
+
+**P2 — Timeline updates reset the catalogue’s scroll and keyboard focus.**
+Changing the year rebuilt every result, restored focus without scrolling, then
+reset the list to its beginning. A focused final result moved from the visible
+list to thousands of pixels below it. Non-filter updates now retain the result
+buttons and update their date annotations and selection state in place. Search,
+topic and region changes still rebuild the matching list and start at its top.
+
+**P2 — Short desktop windows made the results inaccessible.** At 1440×400 and
+900×400, anchoring below the toolbar left the fixed controls using all available
+height; the scrolling list collapsed to two pixels. In short desktop viewports,
+the panel now uses the viewport height with twelve-pixel margins. The regression
+suite checks complete, clickable final results at those sizes and 1280×450,
+alongside the existing phone, tablet and desktop cases.
+
+**P2 — Global search omitted rights country labels and abortion aliases.**
+The dedicated browser indexed these fields, but global search did not.
+“United States abortion” and “United Kingdom suffrage” returned no event results,
+and the plural “abortions” found only the Soviet restriction entry. Global search
+now indexes the rights country/context and reproductive-topic aliases. A test
+uses the actual search adapter to verify both country queries and discovery of
+all 19 reproductive milestones with the plural query.
+
+Each issue was reproduced before its fix. The expanded browser checks preserve
+chronology, source-linked readers, keyboard dismissal, saved visibility, map
+markers, comparison dates and separation from Layers.
+
+Validation: all 95 Node tests, both Python tests, the country-data check and all
+18 browser suites pass. The updated women’s rights suite
+also passes against the offline preview, whose full verifier passes all 46 checks.
+The integrity audit reports no errors, exports agree with all 422 source records,
+and the production build passes with Hugo 0.110.0. No unresolved blocker was
+found in the reviewed code paths.
+
+The US abortion expansion adds 22 entries after the existing catalogue, keeping
+all prior story IDs. Its 24 US milestones cover eight federal milestones and
+sixteen state milestones across twelve states. The dedicated Topic shortcut
+combines with search and region filters; both search adapters accept USA, US,
+U.S. and state names. Browser checks verify the federal/state scope, Texas and
+Florida result sets, the failed Florida amendment’s qualified reader and its
+official result link. Descriptions distinguish passage, commencement and voter
+approval, and keep historical legal changes separate from present-day access.
+
+## Women’s rights country colors review
+
+A separate Country colors view uses a pinned V-Dem v16 / OWID annual series,
+with no ratings derived from the event catalogue. Country fills, source-linked
+readers and hover labels use the same score lookup. Each comparison half uses
+its own year; the optional flag is preserved in saved views and navigation
+returns. Missing years and unmatched territories stay grey. The 2026 map
+explicitly labels its latest observation as 2025. The source, license,
+processing and mapping rules are recorded in
+[the country-color documentation](history-womens-country-colors.md).
+
+The extra view controls exposed insufficient list height in short and narrow
+windows. The panel now uses its available viewport space, with compact spacing
+in short windows and independently scrollable views. The existing milestone
+suite verifies the complete final result remains reachable at all fourteen
+sizes. Color controls have 44-pixel view buttons and a scrollable score table.
+
+Validation: 102 Node tests and all 19 served browser suites pass, including
+actual canvas color checks, Canada and Afghanistan, two-year comparison,
+playback, saved views, missing data, retry behavior, source links and responsive
+controls. Both Python geometry tests, the source-data rebuild check and country
+data check pass. Hugo 0.110.0 builds both language sites.
+
+The standalone preview also passes all 46 verifier checks and both women’s
+rights browser suites with external requests blocked. The 133 KB score JSON
+and both modules are included in its bundle. The event catalogue and its
+existing shared record identities are unchanged by the color filter.

@@ -48,9 +48,9 @@ try {
     check(!document.querySelector('#layersPanel [data-layer="migrations"]')&&!document.querySelector('#layersPanel [data-migration-record]'),'Migrations are removed from Layers');
     const trigger=document.querySelector('[data-atlas-menu="migrationsPanel"]');trigger.click();
     check(trigger.getAttribute('aria-expanded')==='true','Direct access to Migrations');
-    check(document.querySelectorAll('#migrationResults [data-migration-record]').length===30,'Every history is available without expanding another menu');
+    check(document.querySelectorAll('#migrationResults [data-migration-record]').length===31,'Every history is available without expanding another menu');
     const near=document.querySelector('.migration-group');
-    check(near.querySelector('h3').textContent.includes('2023')&&near.querySelectorAll('[data-migration-record]').length===3,'Histories in the displayed period appear first');
+    check(near.querySelector('h3').textContent.includes('2023')&&near.querySelectorAll('[data-migration-record]').length===4,'Histories in the displayed period appear first');
     const search=document.getElementById('migrationSearch');search.focus();const top=search.getBoundingClientRect().top;
     search.value='Belarussian';search.dispatchEvent(new Event('input',{bubbles:true}));
     check(document.querySelectorAll('[data-migration-record]').length===1&&document.getElementById('migrationResults').textContent.includes('Belarus'),'Aliases work in the dedicated search');
@@ -92,7 +92,7 @@ try {
   for(const [width,height] of [[1440,1000],[1024,768],[900,700],[768,1024],[390,844],[320,568],[320,500],[844,390]]){
     await send('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:1,mobile:width<=860});
     await evaluate(`window.scrollTo({top:0,behavior:'instant'});`);
-    assert(await evaluate(`(()=>{const r=[...document.querySelectorAll('.atlas-toolbar > .atlas-menu > button')].map(b=>b.getBoundingClientRect());return r.every((a,i)=>a.left>=0&&a.right<=innerWidth&&a.height>=40&&r.slice(i+1).every(b=>a.right<=b.left||b.right<=a.left))&&document.documentElement.scrollWidth<=innerWidth})()`),`Three map controls fit at ${width}×${height}`);
+    assert(await evaluate(`(()=>{const r=[...document.querySelectorAll('.atlas-toolbar > .atlas-menu > button')].map(b=>b.getBoundingClientRect());return r.every((a,i)=>a.left>=0&&a.right<=innerWidth&&a.height>=40&&r.slice(i+1).every(b=>a.right<=b.left||b.right<=a.left||a.bottom<=b.top||b.bottom<=a.top))&&document.documentElement.scrollWidth<=innerWidth})()`),`Four map controls fit at ${width}×${height}`);
     await evaluate(`(()=>{const t=document.querySelector('[data-atlas-menu="migrationsPanel"]');if(t.getAttribute('aria-expanded')!=='true')t.click()})()`);
     assert(await evaluate(`(()=>{const panel=document.getElementById('migrationsPanel'),p=panel.getBoundingClientRect(),s=document.getElementById('migrationSearch').getBoundingClientRect();return p.left>=0&&p.right<=innerWidth&&p.top>=0&&p.bottom<=innerHeight&&s.top>=p.top&&s.bottom<=p.bottom})()`),`Panel and search fit at ${width}×${height}`);
     assert(await evaluate(`(()=>{const list=document.getElementById('migrationResults'),b=[...list.querySelectorAll('[data-migration-record]')].at(-1);b.scrollIntoView({block:'nearest'});const r=b.getBoundingClientRect(),p=list.getBoundingClientRect();return r.height>=44&&r.top>=p.top-1&&r.bottom<=p.bottom+1&&document.elementFromPoint(r.left+15,r.top+r.height/2)?.closest('[data-migration-record]')===b})()`),`Last result is visible and clickable at ${width}×${height}`);

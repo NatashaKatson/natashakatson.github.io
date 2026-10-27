@@ -12,7 +12,7 @@ test('1992 contains nearby dated events without unrelated Indigenous community o
   const context = active.filter((r) => core.isHistoricalContext(r, 1992));
   const dated = active.filter((r) => !core.isHistoricalContext(r, 1992));
   assert.deepEqual(context.map((r) => r.wiki), ['Seventh_cholera_pandemic', 'HIV/AIDS', 'Vietnamese_boat_people']);
-  assert.deepEqual(dated.map((r) => r.wiki), ['Dissolution_of_the_Soviet_Union', '1994_South_African_general_election', 'Bosnian_War', 'Great_Lakes_refugee_crisis']);
+  assert.deepEqual(dated.map((r) => r.wiki), ['Dissolution_of_the_Soviet_Union', '1994_South_African_general_election', 'Bosnian_War', 'Great_Lakes_refugee_crisis', 'Belém_do_Pará_Convention', 'Planned_Parenthood_v._Casey', 'Freedom_of_Access_to_Clinic_Entrances_Act']);
   assert(!active.some((r) => r.indigenous));
   assert.equal(core.isHistoricalContext(records.find((r) => r.wiki === 'Penicillin'), 1928), false);
   assert.equal(core.isHistoricalContext(records.find((r) => r.wiki === 'Tyrannosaurus'), -67000000), false);

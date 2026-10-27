@@ -47,7 +47,7 @@ try {
   await send('Page.navigate', { url: testURL + '#1928' });
   await waitFor(`!!window.AtlasUI && !!window.HistoryDinosaurs && !!window.AtlasEventEmojis`);
   await evaluate('stopSpin();');
-  await check(`ev.length===346 && ppl.length===66`, 'All original records and thematic additions are retained');
+  await check(`ev.length===422 && ppl.length===66`, 'All original records and thematic additions are retained');
   await check(`document.querySelector('.side-intro h2').textContent==='Around the world' && !!document.querySelector('#fact') && !!document.querySelector('.curated-discoveries') && !!document.querySelector('#people')`, 'Original right panel, stories, people, and discovery cards are retained');
   await check(`slider.max==='3000000' && slider.min==='0' && !!document.querySelector('#play') && !!document.querySelector('#eraChoices') && !!document.querySelector('.dock-options')`, 'Original slider, playback, eras, and More controls are retained');
   await check(`AtlasEventEmojis.get(ev.find(e=>e.wiki==='Penicillin'))==='💊' && AtlasEventEmojis.get(ev.find(e=>e.wiki==='Smallpox_vaccine'))==='💉' && AtlasEventEmojis.get(ev.find(e=>e.wiki==='Stethoscope'))==='🩺' && AtlasEventEmojis.get(ev.find(e=>e.wiki==='Spanish_flu'))==='🦠'`, 'Medical discoveries, vaccines, diagnostics, and pandemics have specific emojis');
@@ -66,7 +66,7 @@ try {
   await check(`polities().length>0`, 'Historical borders load from the embedded original datasets offline');
   await evaluate(`setYear(1992);stopSpin();globalThis.musqueam=ev.find(e=>e.wiki==='Musqueam_Indian_Band');`);
   await check(`musqueam.start===500 && musqueam.end===500 && !activeEvents().some(({e})=>e===musqueam)`, 'Musqueam movement has one approximate date and is absent in 1992');
-  await check(`document.getElementById('sideSub').textContent==='4 dated events within 2 years of 1992 · 3 historical context records'`, '1992 shows nearby dated events and continuing pandemics');
+  await check(`document.getElementById('sideSub').textContent==='7 dated events within 2 years of 1992 · 3 historical context records'`, '1992 shows nearby dated events and continuing pandemics');
   await check(`!document.querySelector('#regions [data-id="'+musqueam.id+'"]') && !!document.querySelector('#regions > .region [data-id="'+ev.find(e=>e.wiki==='Dissolution_of_the_Soviet_Union').id+'"]')`, 'Unrelated Indigenous overviews stay absent from the 1992 ledger');
   await check(`!activeEvents().some(({e})=>['Black_Death','COVID-19_pandemic','Inactivated_polio_vaccine'].includes(e.wiki))`, 'Unrelated past and future events do not appear in 1992');
   await screenshot('context-1992');
@@ -98,7 +98,8 @@ try {
   await check(`state.year===1`, 'Original one-year stepping skips year zero');
   await evaluate(`slider.dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowLeft',bubbles:true,cancelable:true}));`);
   await check(`state.year===-1`, 'Original keyboard stepping crosses the BC/AD boundary');
-  await evaluate(`setYear(1900);document.getElementById('play').click();`); await pause(160);
+  await evaluate(`setYear(1900);document.getElementById('play').click();`);
+  await waitFor(`state.playing && state.year>1900`);
   await check(`state.playing && state.year>1900`, 'Original playback advances the timeline');
   await evaluate(`document.getElementById('play').click();`);
   await check(`!state.playing`, 'Original Pause stops playback');

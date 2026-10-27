@@ -1,11 +1,11 @@
 {
   "scope": "Every event summary and principal date reviewed against sources; all border files scanned for integrity. This is not an independent certification of every historical frontier.",
   "counts": {
-    "events": 346,
+    "events": 422,
     "people": 66,
-    "eventsWithSourceLinks": 346,
-    "sourceReviewedEvents": 346,
-    "correctedOrClarifiedEvents": 205,
+    "eventsWithSourceLinks": 422,
+    "sourceReviewedEvents": 422,
+    "correctedOrClarifiedEvents": 282,
     "borderChunks": 217,
     "borderFeatureInstances": 22190,
     "distinctBorderVersions": 13372,
@@ -1877,7 +1877,7 @@
       "wiki": "Women's_suffrage_in_New_Zealand",
       "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
       "review": "source-check",
-      "source": "https://nzhistory.govt.nz/page/women-vote-first-general-election"
+      "source": "https://nzhistory.govt.nz/politics/womens-suffrage"
     },
     {
       "id": "e124",
@@ -5208,6 +5208,1146 @@
       "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
       "review": "addition",
       "source": "https://encyclopedia.yivo.org/article/246"
+    },
+    {
+      "id": "e346",
+      "title": "Egyptian marriage contract records financial protections",
+      "start": -172,
+      "end": -172,
+      "approximate": false,
+      "point": [
+        31.18,
+        27.18
+      ],
+      "wiki": "Women_in_ancient_Egypt",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://artsandculture.google.com/asset/papyrus-marriage-contract-between-the-priest-pagosh-and-teteimhotep/rwGBVTtjvcbJWg"
+    },
+    {
+      "id": "e347",
+      "title": "Magna Carta addresses widows’ property and remarriage",
+      "start": 1215,
+      "end": 1215,
+      "approximate": false,
+      "point": [
+        -0.56,
+        51.45
+      ],
+      "wiki": "Dower",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://magnacarta.cmp.uea.ac.uk/read/magna_carta_1215/Clause_08"
+    },
+    {
+      "id": "e348",
+      "title": "Christine de Pizan writes The Book of the City of Ladies",
+      "start": 1405,
+      "end": 1405,
+      "approximate": true,
+      "point": [
+        2.35,
+        48.86
+      ],
+      "wiki": "The_Book_of_the_City_of_Ladies",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://expositions.bnf.fr/brouillons/grand/3.htm"
+    },
+    {
+      "id": "e349",
+      "title": "Olympe de Gouges demands equal citizenship for women",
+      "start": 1791,
+      "end": 1791,
+      "approximate": false,
+      "point": [
+        2.35,
+        48.86
+      ],
+      "wiki": "Declaration_of_the_Rights_of_Woman_and_of_the_Female_Citizen",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.assemblee-nationale.fr/dyn/histoire-et-patrimoine/revolution-francaise/declaration-des-droits-de-la-femme-et-de-la-citoyenne-olympe-de-gouges"
+    },
+    {
+      "id": "e350",
+      "title": "Mary Wollstonecraft argues for women’s equal education",
+      "start": 1792,
+      "end": 1792,
+      "approximate": false,
+      "point": [
+        -0.13,
+        51.51
+      ],
+      "wiki": "A_Vindication_of_the_Rights_of_Woman",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://americanhistory.si.edu/collections/object/nmah_1835346"
+    },
+    {
+      "id": "e351",
+      "title": "Savitribai and Jyotirao Phule open a girls’ school in Pune",
+      "start": 1848,
+      "end": 1848,
+      "approximate": false,
+      "point": [
+        73.86,
+        18.52
+      ],
+      "wiki": "Savitribai_Phule",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.ncert.nic.in/dgs/pdf/KGBV-HistoryENGLISH.pdf"
+    },
+    {
+      "id": "e352",
+      "title": "Seneca Falls convention adopts the Declaration of Sentiments",
+      "start": 1848,
+      "end": 1848,
+      "approximate": false,
+      "point": [
+        -76.8,
+        42.91
+      ],
+      "wiki": "Seneca_Falls_Convention",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.nps.gov/articles/declaration-of-sentiments-the-first-women-s-rights-convention.htm"
+    },
+    {
+      "id": "e353",
+      "title": "University of London opens its degrees to women",
+      "start": 1878,
+      "end": 1878,
+      "approximate": false,
+      "point": [
+        -0.13,
+        51.52
+      ],
+      "wiki": "General_Examination_for_Women",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://archives.libraries.london.ac.uk/resources/1912historicalrecord.pdf"
+    },
+    {
+      "id": "e354",
+      "title": "Married women gain wider control of property under English law",
+      "start": 1882,
+      "end": 1882,
+      "approximate": false,
+      "point": [
+        -0.12,
+        51.5
+      ],
+      "wiki": "Married_Women's_Property_Act_1882",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.legislation.gov.uk/ukpga/Vict/45-46/75/enacted"
+    },
+    {
+      "id": "e355",
+      "title": "Tsuda Umeko establishes a higher-education school for women",
+      "start": 1900,
+      "end": 1900,
+      "approximate": false,
+      "point": [
+        139.75,
+        35.69
+      ],
+      "wiki": "Tsuda_University",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.tsuda.ac.jp/en/profile.html"
+    },
+    {
+      "id": "e356",
+      "title": "Australian federal suffrage expands with racial exclusions",
+      "start": 1902,
+      "end": 1902,
+      "approximate": false,
+      "point": [
+        144.96,
+        -37.81
+      ],
+      "wiki": "Commonwealth_Franchise_Act_1902",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://peo.gov.au/understand-our-parliament/history-of-parliament/history-milestones/australian-parliament-history-timeline/events/commonwealth-franchise-act-1902"
+    },
+    {
+      "id": "e357",
+      "title": "Finland grants women the vote and eligibility for parliament",
+      "start": 1906,
+      "end": 1906,
+      "approximate": false,
+      "point": [
+        24.94,
+        60.17
+      ],
+      "wiki": "Women's_suffrage_in_Finland",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://finland.fi/life-society/finlands-parliament-pioneer-of-gender-equality/"
+    },
+    {
+      "id": "e358",
+      "title": "Britain grants parliamentary votes to some women",
+      "start": 1918,
+      "end": 1918,
+      "approximate": false,
+      "point": [
+        -0.12,
+        51.5
+      ],
+      "wiki": "Representation_of_the_People_Act_1918",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.parliament.uk/about/living-heritage/transformingsociety/electionsvoting/womenvote/overview/thevote/"
+    },
+    {
+      "id": "e359",
+      "title": "The US Nineteenth Amendment bars sex-based voting exclusion",
+      "start": 1920,
+      "end": 1920,
+      "approximate": false,
+      "point": [
+        -77.01,
+        38.89
+      ],
+      "wiki": "Nineteenth_Amendment_to_the_United_States_Constitution",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.archives.gov/milestone-documents/19th-amendment"
+    },
+    {
+      "id": "e360",
+      "title": "Britain establishes equal voting terms for women and men",
+      "start": 1928,
+      "end": 1928,
+      "approximate": false,
+      "point": [
+        -0.12,
+        51.5
+      ],
+      "wiki": "Representation_of_the_People_(Equal_Franchise)_Act_1928",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.parliament.uk/about/living-heritage/transformingsociety/electionsvoting/womenvote/case-studies-women-parliament/what-difference/the-vote-for-some/"
+    },
+    {
+      "id": "e361",
+      "title": "Ecuador’s constitution recognizes women’s voting rights",
+      "start": 1929,
+      "end": 1929,
+      "approximate": false,
+      "point": [
+        -78.47,
+        -0.18
+      ],
+      "wiki": "Women's_suffrage_in_Ecuador",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://data.ipu.org/parliament/EC/EC-LC01/elections/historical-data-on-women/"
+    },
+    {
+      "id": "e362",
+      "title": "Brazil’s electoral code recognizes women as voters",
+      "start": 1932,
+      "end": 1932,
+      "approximate": false,
+      "point": [
+        -43.17,
+        -22.91
+      ],
+      "wiki": "Women's_suffrage_in_Brazil",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.tse.jus.br/servicos-eleitorais/glossario/termos/voto-da-mulher"
+    },
+    {
+      "id": "e363",
+      "title": "Türkiye grants women parliamentary voting and candidacy rights",
+      "start": 1934,
+      "end": 1934,
+      "approximate": false,
+      "point": [
+        32.86,
+        39.93
+      ],
+      "wiki": "Women's_suffrage_in_Turkey",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.tihek.gov.tr/5-aralik-kadin-haklari-gunune-iliskin--basin-aciklamasi"
+    },
+    {
+      "id": "e364",
+      "title": "France recognizes women’s right to vote and stand for election",
+      "start": 1944,
+      "end": 1944,
+      "approximate": false,
+      "point": [
+        3.06,
+        36.75
+      ],
+      "wiki": "Women's_suffrage_in_France",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.assemblee-nationale.fr/dyn/histoire-et-patrimoine/deuxieme-guerre-mondiale/l-accession-des-femmes-au-droit-de-vote"
+    },
+    {
+      "id": "e365",
+      "title": "Japan’s electoral reform enfranchises women",
+      "start": 1945,
+      "end": 1945,
+      "approximate": false,
+      "point": [
+        139.75,
+        35.68
+      ],
+      "wiki": "Women's_suffrage_in_Japan",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.archives.go.jp/learning/archive_collection_2/"
+    },
+    {
+      "id": "e366",
+      "title": "India’s constitution establishes universal adult suffrage",
+      "start": 1950,
+      "end": 1950,
+      "approximate": false,
+      "point": [
+        77.21,
+        28.61
+      ],
+      "wiki": "Women's_suffrage_in_India",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://data.ipu.org/parliament/IN/IN-LC01/elections/historical-data-on-women/"
+    },
+    {
+      "id": "e367",
+      "title": "Egypt recognizes women’s national political rights",
+      "start": 1956,
+      "end": 1956,
+      "approximate": false,
+      "point": [
+        31.24,
+        30.04
+      ],
+      "wiki": "Women's_suffrage_in_Egypt",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://knowledge.unwomen.org/sites/default/files/Headquarters/Attachments/Sections/Library/Publications/2011/ProgressOfTheWorldsWomen-2011-en.pdf"
+    },
+    {
+      "id": "e368",
+      "title": "Tunisia adopts the Code of Personal Status",
+      "start": 1956,
+      "end": 1956,
+      "approximate": false,
+      "point": [
+        10.18,
+        36.81
+      ],
+      "wiki": "Code_of_Personal_Status_in_Tunisia",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.justice.gov.tn/index.php?L=3&id=436"
+    },
+    {
+      "id": "e369",
+      "title": "South African women march against apartheid pass laws",
+      "start": 1956,
+      "end": 1956,
+      "approximate": false,
+      "point": [
+        28.21,
+        -25.74
+      ],
+      "wiki": "Women's_March_(South_Africa)",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.gov.za/news/events/commemorative-events/womens-day"
+    },
+    {
+      "id": "e370",
+      "title": "The UN adopts CEDAW, the women’s rights convention",
+      "start": 1979,
+      "end": 1979,
+      "approximate": false,
+      "point": [
+        -73.97,
+        40.75
+      ],
+      "wiki": "Convention_on_the_Elimination_of_All_Forms_of_Discrimination_Against_Women",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://legal.un.org/avl/ha/cedaw/cedaw.html"
+    },
+    {
+      "id": "e371",
+      "title": "The Belém do Pará Convention addresses violence against women",
+      "start": 1994,
+      "end": 1994,
+      "approximate": false,
+      "point": [
+        -48.5,
+        -1.46
+      ],
+      "wiki": "Belém_do_Pará_Convention",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.oas.org/en/mesecvi/convention.asp"
+    },
+    {
+      "id": "e372",
+      "title": "The Beijing conference adopts a global platform for women’s rights",
+      "start": 1995,
+      "end": 1995,
+      "approximate": false,
+      "point": [
+        116.4,
+        39.9
+      ],
+      "wiki": "Beijing_Declaration",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.un.org/conferences/women/beijing1995"
+    },
+    {
+      "id": "e373",
+      "title": "UN resolution 1325 recognizes women’s role in peace and security",
+      "start": 2000,
+      "end": 2000,
+      "approximate": false,
+      "point": [
+        -73.97,
+        40.75
+      ],
+      "wiki": "United_Nations_Security_Council_Resolution_1325",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.un.org/womenwatch/osagi/wps/"
+    },
+    {
+      "id": "e374",
+      "title": "The African Union adopts the Maputo Protocol",
+      "start": 2003,
+      "end": 2003,
+      "approximate": false,
+      "point": [
+        32.57,
+        -25.97
+      ],
+      "wiki": "Maputo_Protocol",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://au.int/sites/default/files/treaties/37077-treaty-charter_on_rights_of_women_in_africa.pdf"
+    },
+    {
+      "id": "e375",
+      "title": "Ellen Johnson Sirleaf takes office as Liberia’s president",
+      "start": 2006,
+      "end": 2006,
+      "approximate": false,
+      "point": [
+        -10.81,
+        6.32
+      ],
+      "wiki": "Ellen_Johnson_Sirleaf",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.un.org/sg/en/content/former-secretary-general/statements/2006-01-16/statement-the-secretary-general-the-inauguration-of-the-president-of-liberia"
+    },
+    {
+      "id": "e376",
+      "title": "Kenya enacts the Prohibition of Female Genital Mutilation Act",
+      "start": 2011,
+      "end": 2011,
+      "approximate": false,
+      "point": [
+        36.82,
+        -1.29
+      ],
+      "wiki": "Prohibition_of_Female_Genital_Mutilation_Act_2011",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.kenyalaw.org/kl/fileadmin/pdfdownloads/Acts/ProhibitionofFemaleGenitalMutilationAct_No32of2011.pdf"
+    },
+    {
+      "id": "e377",
+      "title": "Saudi Arabia lifts the ban on women driving",
+      "start": 2018,
+      "end": 2018,
+      "approximate": false,
+      "point": [
+        46.68,
+        24.71
+      ],
+      "wiki": "Women_to_drive_movement",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.un.org/sg/en/content/sg/statements/2018-06-24/statement-attributable-the-spokesman-for-the-secretary-general-saudi-arabia"
+    },
+    {
+      "id": "e378",
+      "title": "Taliban authorities exclude women from Afghan universities",
+      "start": 2022,
+      "end": 2022,
+      "approximate": false,
+      "point": [
+        69.21,
+        34.56
+      ],
+      "wiki": "Women_in_Afghanistan",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://afghanistan.un.org/en/212740-un-afghanistan-condemns-taliban-decision-suspend-women-universities-and-calls-its-immediate"
+    },
+    {
+      "id": "e379",
+      "title": "Soviet Russia permits abortion in public hospitals",
+      "start": 1920,
+      "end": 1920,
+      "approximate": false,
+      "point": [
+        37.62,
+        55.75
+      ],
+      "wiki": "Abortion_in_Russia",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://discovery.ucl.ac.uk/id/eprint/10086847/"
+    },
+    {
+      "id": "e380",
+      "title": "The Soviet government severely restricts abortion",
+      "start": 1936,
+      "end": 1936,
+      "approximate": false,
+      "point": [
+        37.62,
+        55.75
+      ],
+      "wiki": "Family_in_the_Soviet_Union",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://discovery.ucl.ac.uk/id/eprint/10086847/"
+    },
+    {
+      "id": "e381",
+      "title": "The Soviet Union re-legalizes abortion",
+      "start": 1955,
+      "end": 1955,
+      "approximate": false,
+      "point": [
+        37.62,
+        55.75
+      ],
+      "wiki": "Abortion_in_the_Soviet_Union",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://discovery.ucl.ac.uk/id/eprint/10086847/"
+    },
+    {
+      "id": "e382",
+      "title": "Britain passes the Abortion Act",
+      "start": 1967,
+      "end": 1967,
+      "approximate": false,
+      "point": [
+        -0.12,
+        51.5
+      ],
+      "wiki": "Abortion_Act_1967",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.legislation.gov.uk/ukpga/1967/87/enacted"
+    },
+    {
+      "id": "e383",
+      "title": "India adopts the Medical Termination of Pregnancy Act",
+      "start": 1971,
+      "end": 1971,
+      "approximate": false,
+      "point": [
+        77.21,
+        28.61
+      ],
+      "wiki": "Medical_Termination_of_Pregnancy_Act,_1971",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.indiacode.nic.in/bitstream/123456789/1593/1/197134.pdf"
+    },
+    {
+      "id": "e384",
+      "title": "Roe v. Wade recognizes a US constitutional abortion protection",
+      "start": 1973,
+      "end": 1973,
+      "approximate": false,
+      "point": [
+        -77,
+        38.89
+      ],
+      "wiki": "Roe_v._Wade",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://tile.loc.gov/storage-services/service/ll/usrep/usrep410/usrep410113/usrep410113.pdf"
+    },
+    {
+      "id": "e385",
+      "title": "France enacts the Veil abortion law",
+      "start": 1975,
+      "end": 1975,
+      "approximate": false,
+      "point": [
+        2.35,
+        48.86
+      ],
+      "wiki": "Veil_Act",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.legifrance.gouv.fr/loda/id/LEGITEXT000006068506/"
+    },
+    {
+      "id": "e386",
+      "title": "Canada’s Supreme Court strikes down the abortion provision",
+      "start": 1988,
+      "end": 1988,
+      "approximate": false,
+      "point": [
+        -75.7,
+        45.42
+      ],
+      "wiki": "R_v_Morgentaler",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.publications.gc.ca/Collection-R/LoPBdP/CIR/8910-e.htm"
+    },
+    {
+      "id": "e387",
+      "title": "South Africa adopts the Choice on Termination of Pregnancy Act",
+      "start": 1996,
+      "end": 1996,
+      "approximate": false,
+      "point": [
+        18.42,
+        -33.92
+      ],
+      "wiki": "Choice_on_Termination_of_Pregnancy_Act,_1996",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.parliament.gov.za/storage/app/media/Acts/1996/Act_92_of_1996_Choice_on_Termination_of_Pregnancy_Act.pdf"
+    },
+    {
+      "id": "e388",
+      "title": "Nepal reforms its abortion law",
+      "start": 2002,
+      "end": 2002,
+      "approximate": false,
+      "point": [
+        85.32,
+        27.72
+      ],
+      "wiki": "Abortion_in_Nepal",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://asiapacific.unfpa.org/sites/default/files/pub-pdf/final_draft_young_people_and_the_law_report_case_studies-01.pdf"
+    },
+    {
+      "id": "e389",
+      "title": "Ireland votes to repeal the Eighth Amendment",
+      "start": 2018,
+      "end": 2018,
+      "approximate": false,
+      "point": [
+        -6.26,
+        53.35
+      ],
+      "wiki": "Thirty-sixth_Amendment_of_the_Constitution_of_Ireland",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.electoralcommission.ie/previous-referendums/"
+    },
+    {
+      "id": "e390",
+      "title": "New Zealand adopts abortion law reform",
+      "start": 2020,
+      "end": 2020,
+      "approximate": false,
+      "point": [
+        174.78,
+        -41.28
+      ],
+      "wiki": "Abortion_Legislation_Act_2020",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.legislation.govt.nz/act/public/2020/6/en/latest/"
+    },
+    {
+      "id": "e391",
+      "title": "Argentina’s Congress approves abortion access legislation",
+      "start": 2020,
+      "end": 2020,
+      "approximate": false,
+      "point": [
+        -58.38,
+        -34.61
+      ],
+      "wiki": "Law_27,610",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.argentina.gob.ar/normativa/nacional/ley-27610-2020-346231"
+    },
+    {
+      "id": "e392",
+      "title": "Mexico’s Supreme Court invalidates Coahuila’s abortion criminalization",
+      "start": 2021,
+      "end": 2021,
+      "approximate": false,
+      "point": [
+        -99.13,
+        19.43
+      ],
+      "wiki": "Abortion_in_Mexico",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.internet2.scjn.gob.mx/red2/comunicados/noticia.asp?id=6579"
+    },
+    {
+      "id": "e393",
+      "title": "Colombia’s Constitutional Court limits abortion criminalization",
+      "start": 2022,
+      "end": 2022,
+      "approximate": false,
+      "point": [
+        -74.07,
+        4.71
+      ],
+      "wiki": "Abortion_in_Colombia",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www1.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=195148"
+    },
+    {
+      "id": "e394",
+      "title": "Dobbs overturns Roe and Casey’s US abortion protection",
+      "start": 2022,
+      "end": 2022,
+      "approximate": false,
+      "point": [
+        -77,
+        38.89
+      ],
+      "wiki": "Dobbs_v._Jackson_Women's_Health_Organization",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.supremecourt.gov/opinions/21pdf/19-1392_6j37.pdf"
+    },
+    {
+      "id": "e395",
+      "title": "France constitutionally guarantees freedom to have an abortion",
+      "start": 2024,
+      "end": 2024,
+      "approximate": false,
+      "point": [
+        2.12,
+        48.8
+      ],
+      "wiki": "Abortion_in_France",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.conseil-etat.fr/en/content/download/217795/document/CE-RA23-Web_EN%20BD_link.pdf"
+    },
+    {
+      "id": "e396",
+      "title": "Russian women win voting rights before the Bolshevik takeover",
+      "start": 1917,
+      "end": 1917,
+      "approximate": false,
+      "point": [
+        30.31,
+        59.94
+      ],
+      "wiki": "Women's_suffrage_in_Russia",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.cambridge.org/core/journals/slavic-review/article/women-and-gender-in-1917/CE4673AE59CA42774E510225CACAC405"
+    },
+    {
+      "id": "e397",
+      "title": "China’s Marriage Law recognizes free choice and easier divorce",
+      "start": 1950,
+      "end": 1950,
+      "approximate": false,
+      "point": [
+        116.4,
+        39.9
+      ],
+      "wiki": "Marriage_Law_of_the_People's_Republic_of_China",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.jstor.org/stable/jj.2711550"
+    },
+    {
+      "id": "e398",
+      "title": "Tunisia broadens legal access to abortion",
+      "start": 1973,
+      "end": 1973,
+      "approximate": false,
+      "point": [
+        10.18,
+        36.81
+      ],
+      "wiki": "Abortion_in_Tunisia",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/files/documents/2020/Jan/un_1995_abortion_policies_-_a_global_review_-_volume_iii_oman_to_zimbabwe.pdf"
+    },
+    {
+      "id": "e399",
+      "title": "The US Comstock Act restricts mailing abortion and contraceptive materials",
+      "start": 1873,
+      "end": 1873,
+      "approximate": false,
+      "point": [
+        -77.01,
+        38.89
+      ],
+      "wiki": "Comstock_Act",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.justice.gov/olc/opinion/file/1560596/dl"
+    },
+    {
+      "id": "e400",
+      "title": "Colorado expands the circumstances permitting abortion",
+      "start": 1967,
+      "end": 1967,
+      "approximate": false,
+      "point": [
+        -104.98,
+        39.74
+      ],
+      "wiki": "Abortion_in_Colorado_1967",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://content.leg.colorado.gov/sites/default/files/images/2023-2024_89vbb.pdf"
+    },
+    {
+      "id": "e401",
+      "title": "Hawaii reforms abortion law before Roe",
+      "start": 1970,
+      "end": 1970,
+      "approximate": false,
+      "point": [
+        -157.86,
+        21.31
+      ],
+      "wiki": "Abortion_in_Hawaii_1970",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://data.capitol.hawaii.gov/sessions/sessionlaws/Years/SLH1970/SLH1970_Act1.pdf"
+    },
+    {
+      "id": "e402",
+      "title": "New York legalizes abortion before Roe",
+      "start": 1970,
+      "end": 1970,
+      "approximate": false,
+      "point": [
+        -73.76,
+        42.65
+      ],
+      "wiki": "Abortion_in_New_York_1970",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://nyassembly.gov/write/upload/postings/2017/pdfs/20171215_0078563.pdf"
+    },
+    {
+      "id": "e403",
+      "title": "Washington voters approve abortion reform in Referendum 20",
+      "start": 1970,
+      "end": 1970,
+      "approximate": false,
+      "point": [
+        -122.9,
+        47.04
+      ],
+      "wiki": "Washington_Referendum_20",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www2.sos.wa.gov/legacy/images/publications/sl_voterspamphlet_1970_eastern/sl_voterspamphlet_1970_eastern.pdf"
+    },
+    {
+      "id": "e404",
+      "title": "The Hyde Amendment restricts federal abortion funding",
+      "start": 1976,
+      "end": 1976,
+      "approximate": false,
+      "point": [
+        -77.01,
+        38.89
+      ],
+      "wiki": "Hyde_Amendment",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.govinfo.gov/content/pkg/USREPORTS-448/pdf/USREPORTS-448-297.pdf"
+    },
+    {
+      "id": "e405",
+      "title": "Harris v. McRae upholds the Hyde funding restriction",
+      "start": 1980,
+      "end": 1980,
+      "approximate": false,
+      "point": [
+        -77,
+        38.89
+      ],
+      "wiki": "Harris_v._McRae",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.govinfo.gov/content/pkg/USREPORTS-448/pdf/USREPORTS-448-297.pdf"
+    },
+    {
+      "id": "e406",
+      "title": "Casey preserves abortion protection but changes the legal test",
+      "start": 1992,
+      "end": 1992,
+      "approximate": false,
+      "point": [
+        -77,
+        38.89
+      ],
+      "wiki": "Planned_Parenthood_v._Casey",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://tile.loc.gov/storage-services/service/ll/usrep/usrep505/usrep505833/usrep505833.pdf"
+    },
+    {
+      "id": "e407",
+      "title": "The FACE Act protects access to reproductive-health facilities",
+      "start": 1994,
+      "end": 1994,
+      "approximate": false,
+      "point": [
+        -77.01,
+        38.89
+      ],
+      "wiki": "Freedom_of_Access_to_Clinic_Entrances_Act",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.justice.gov/archives/reproductive-rights/what-we-are-doing"
+    },
+    {
+      "id": "e408",
+      "title": "The FDA first approves mifepristone for medication abortion",
+      "start": 2000,
+      "end": 2000,
+      "approximate": false,
+      "point": [
+        -77.03,
+        38.9
+      ],
+      "wiki": "Mifepristone_FDA_approval",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.fda.gov/drugs/postmarket-drug-safety-information-patients-and-providers/questions-and-answers-mifepristone-medical-termination-pregnancy-through-ten-weeks-gestation"
+    },
+    {
+      "id": "e409",
+      "title": "New York enacts the Reproductive Health Act",
+      "start": 2019,
+      "end": 2019,
+      "approximate": false,
+      "point": [
+        -73.76,
+        42.65
+      ],
+      "wiki": "Reproductive_Health_Act",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.nysenate.gov/legislation/bills/2019/S240"
+    },
+    {
+      "id": "e410",
+      "title": "Texas SB 8 restricts abortion through private civil enforcement",
+      "start": 2021,
+      "end": 2021,
+      "approximate": false,
+      "point": [
+        -97.74,
+        30.27
+      ],
+      "wiki": "Texas_Heartbeat_Act",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://capitol.texas.gov/billlookup/BillSummary.aspx?Bill=SB8&LegSess=87R"
+    },
+    {
+      "id": "e411",
+      "title": "Texas’s trigger abortion prohibition takes effect",
+      "start": 2022,
+      "end": 2022,
+      "approximate": false,
+      "point": [
+        -97.74,
+        30.27
+      ],
+      "wiki": "Texas_Human_Life_Protection_Act",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.sll.texas.gov/faqs/texas-trigger-law/"
+    },
+    {
+      "id": "e412",
+      "title": "California voters add reproductive freedom to the state constitution",
+      "start": 2022,
+      "end": 2022,
+      "approximate": false,
+      "point": [
+        -121.49,
+        38.58
+      ],
+      "wiki": "2022_California_Proposition_1",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://elections.cdn.sos.ca.gov/sov/2022-general/sov/complete.pdf"
+    },
+    {
+      "id": "e413",
+      "title": "Kansas voters reject the Value Them Both amendment",
+      "start": 2022,
+      "end": 2022,
+      "approximate": false,
+      "point": [
+        -95.68,
+        39.05
+      ],
+      "wiki": "2022_Kansas_abortion_referendum",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.kansashistory.gov/archives/512066"
+    },
+    {
+      "id": "e414",
+      "title": "Michigan voters approve the reproductive-freedom amendment",
+      "start": 2022,
+      "end": 2022,
+      "approximate": false,
+      "point": [
+        -84.56,
+        42.73
+      ],
+      "wiki": "2022_Michigan_Proposal_3",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.michigan.gov/whitmer/news/press-releases/2022/12/14/governor-whitmer-signs-executive-directive-affirming-reproductive-freedoms"
+    },
+    {
+      "id": "e415",
+      "title": "Ohio adds a constitutional right to reproductive decisions",
+      "start": 2023,
+      "end": 2023,
+      "approximate": false,
+      "point": [
+        -83,
+        39.96
+      ],
+      "wiki": "November_2023_Ohio_Issue_1",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://codes.ohio.gov/ohio-constitution/section-1.22"
+    },
+    {
+      "id": "e416",
+      "title": "Arizona voters approve a constitutional abortion right",
+      "start": 2024,
+      "end": 2024,
+      "approximate": false,
+      "point": [
+        -112.1,
+        33.45
+      ],
+      "wiki": "2024_Arizona_Proposition_139",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://apps.azsos.gov/election/2024/bm/Proclamation_for_Prop_139.pdf"
+    },
+    {
+      "id": "e417",
+      "title": "Florida’s six-week abortion restriction takes effect",
+      "start": 2024,
+      "end": 2024,
+      "approximate": false,
+      "point": [
+        -84.28,
+        30.44
+      ],
+      "wiki": "Florida_Heartbeat_Protection_Act",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://flrules.org/Gateway/View_notice.asp?id=28322174"
+    },
+    {
+      "id": "e418",
+      "title": "Florida’s abortion-rights amendment falls short of the approval threshold",
+      "start": 2024,
+      "end": 2024,
+      "approximate": false,
+      "point": [
+        -84.28,
+        30.44
+      ],
+      "wiki": "2024_Florida_Amendment_4",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://results.elections.myflorida.com/DetailRpt.Asp?ELECTIONDATE=11%2F5%2F2024&RACE=A04"
+    },
+    {
+      "id": "e419",
+      "title": "Colorado voters adopt a constitutional right to abortion",
+      "start": 2024,
+      "end": 2024,
+      "approximate": false,
+      "point": [
+        -104.98,
+        39.74
+      ],
+      "wiki": "2024_Colorado_Amendment_79",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://historicalelectiondata.coloradosos.gov/contest/26545"
+    },
+    {
+      "id": "e420",
+      "title": "Missouri voters approve a reproductive-freedom amendment",
+      "start": 2024,
+      "end": 2024,
+      "approximate": false,
+      "point": [
+        -92.17,
+        38.58
+      ],
+      "wiki": "2024_Missouri_Amendment_3",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "source-check",
+      "source": "https://www.sos.mo.gov/CMSImages/ElectionResultsStatistics/2024GeneralElection.pdf"
+    },
+    {
+      "id": "e421",
+      "title": "Leaving Russia after the invasion: anti-war exile and flight from mobilization",
+      "start": 2022,
+      "end": 2023,
+      "approximate": false,
+      "point": [
+        37.62,
+        55.75
+      ],
+      "wiki": "Russian_emigration_following_the_Russian_invasion_of_Ukraine",
+      "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
+      "review": "addition",
+      "source": "https://www.hrw.org/world-report/2023/country-chapters/russian-federation"
     }
   ]
 }

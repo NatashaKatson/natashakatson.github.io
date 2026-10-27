@@ -1,6 +1,6 @@
 {
-  "reviewed": "2026-10-26",
-  "scope": "Review of all 346 event summaries and principal dates, including medical milestones, pandemic history, sourced Indigenous histories and archaeological evidence. Sourced archaeological periods and representative points do not certify territorial boundaries, continuous government or migration tracks. Pandemic intervals include qualified historical waves, ancient precursors and ongoing coverage through 2026.",
+  "reviewed": "2026-10-27",
+  "scope": "Review ledger for 422 sourced event summaries and principal dates, including a dedicated women’s rights catalogue and 24 US abortion milestones across federal history and 12 states. Women’s rights entries are dated milestones, including abortion reforms and reversals; they are not a current-law directory. Existing historical and archaeological qualifications remain in each record.",
   "events": [
     {
       "wiki": "Göbekli_Tepe",
@@ -795,8 +795,14 @@
     {
       "wiki": "Women's_suffrage_in_New_Zealand",
       "change": "source-check",
-      "source": "https://nzhistory.govt.nz/page/women-vote-first-general-election",
-      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+      "source": "https://nzhistory.govt.nz/politics/womens-suffrage",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event.",
+      "start": 1893,
+      "approx": 0,
+      "title": "New Zealand women vote",
+      "blurb": "New Zealand’s 1893 electoral reform grants eligible women, including Māori women, the parliamentary vote. Women first vote in the general election that November; eligibility to stand for Parliament follows in 1919. Christchurch marks a centre of suffrage organizing, not the seat of every legal change.",
+      "lat": -43.53,
+      "lon": 172.63
     },
     {
       "wiki": "Battle_of_Adwa",
@@ -3195,6 +3201,973 @@
       "additionalSources": [
         "https://en.wikipedia.org/wiki/Pale_of_Settlement"
       ]
+    },
+    {
+      "wiki": "Women_in_ancient_Egypt",
+      "change": "source-check",
+      "start": -172,
+      "approx": 0,
+      "title": "Egyptian marriage contract records financial protections",
+      "blurb": "A surviving marriage contract from Asyut sets out payments and property arrangements in the event of divorce. It is evidence for particular legal protections in Ptolemaic Egypt, not the beginning of women’s rights or proof of equality for every woman.",
+      "lat": 27.18,
+      "lon": 31.18,
+      "source": "https://artsandculture.google.com/asset/papyrus-marriage-contract-between-the-priest-pagosh-and-teteimhotep/rwGBVTtjvcbJWg",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "Dower",
+      "change": "source-check",
+      "start": 1215,
+      "approx": 0,
+      "title": "Magna Carta addresses widows’ property and remarriage",
+      "blurb": "Clauses 7 and 8 of the 1215 charter address a widow’s inheritance and protection against forced remarriage. A widow holding land still needs the king’s or her lord’s consent to remarry. These limited feudal protections are not universal women’s rights.",
+      "lat": 51.45,
+      "lon": -0.56,
+      "source": "https://magnacarta.cmp.uea.ac.uk/read/magna_carta_1215/Clause_08",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "The_Book_of_the_City_of_Ladies",
+      "change": "source-check",
+      "start": 1405,
+      "approx": 1,
+      "title": "Christine de Pizan writes The Book of the City of Ladies",
+      "blurb": "Around 1405, Christine de Pizan constructs a literary defence of women against hostile stereotypes. The book presents women’s intellectual and moral capabilities; its publication is an advocacy milestone, not a change in law.",
+      "lat": 48.86,
+      "lon": 2.35,
+      "source": "https://expositions.bnf.fr/brouillons/grand/3.htm",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "Declaration_of_the_Rights_of_Woman_and_of_the_Female_Citizen",
+      "change": "source-check",
+      "start": 1791,
+      "approx": 0,
+      "title": "Olympe de Gouges demands equal citizenship for women",
+      "blurb": "Olympe de Gouges publishes the Declaration of the Rights of Woman and of the Female Citizen, demanding political and civil equality. This is a demand for rights, not an enacted grant of suffrage.",
+      "lat": 48.86,
+      "lon": 2.35,
+      "source": "https://www.assemblee-nationale.fr/dyn/histoire-et-patrimoine/revolution-francaise/declaration-des-droits-de-la-femme-et-de-la-citoyenne-olympe-de-gouges",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "A_Vindication_of_the_Rights_of_Woman",
+      "change": "source-check",
+      "start": 1792,
+      "approx": 0,
+      "title": "Mary Wollstonecraft argues for women’s equal education",
+      "blurb": "A Vindication of the Rights of Woman argues that women should receive an education that develops their reason and independence. The book is an influential intervention in debates about equality, rather than a law opening schools.",
+      "lat": 51.51,
+      "lon": -0.13,
+      "source": "https://americanhistory.si.edu/collections/object/nmah_1835346",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "Savitribai_Phule",
+      "change": "source-check",
+      "start": 1848,
+      "approx": 0,
+      "title": "Savitribai and Jyotirao Phule open a girls’ school in Pune",
+      "blurb": "Savitribai and Jyotirao Phule establish a school for girls in Pune. Their work challenges exclusion from education. This entry identifies the documented school milestone without claiming that girls’ education began there or that schooling became universally accessible.",
+      "lat": 18.52,
+      "lon": 73.86,
+      "source": "https://www.ncert.nic.in/dgs/pdf/KGBV-HistoryENGLISH.pdf",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "Seneca_Falls_Convention",
+      "change": "source-check",
+      "start": 1848,
+      "approx": 0,
+      "title": "Seneca Falls convention adopts the Declaration of Sentiments",
+      "blurb": "Participants at the Seneca Falls convention call for women’s civil, social and political rights, including voting. The convention is a US organizing milestone, not the beginning of women’s struggles worldwide or the achievement of the rights demanded.",
+      "lat": 42.91,
+      "lon": -76.8,
+      "source": "https://www.nps.gov/articles/declaration-of-sentiments-the-first-women-s-rights-convention.htm",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "General_Examination_for_Women",
+      "change": "source-check",
+      "start": 1878,
+      "approx": 0,
+      "title": "University of London opens its degrees to women",
+      "blurb": "A supplemental charter makes University of London degrees available to women on the same academic terms as men. This changes access at this university, not at every British institution or for all women in practice.",
+      "lat": 51.52,
+      "lon": -0.13,
+      "source": "https://archives.libraries.london.ac.uk/resources/1912historicalrecord.pdf",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "Married_Women's_Property_Act_1882",
+      "change": "source-check",
+      "start": 1882,
+      "approx": 0,
+      "title": "Married women gain wider control of property under English law",
+      "blurb": "The Married Women’s Property Act 1882 expands married women’s capacity to hold and dispose of their own property under the law of England, Wales and Ireland. It takes effect in 1883. Scotland has a separate legal history; the Act does not establish complete equality.",
+      "lat": 51.5,
+      "lon": -0.12,
+      "source": "https://www.legislation.gov.uk/ukpga/Vict/45-46/75/enacted",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "Tsuda_University",
+      "change": "source-check",
+      "start": 1900,
+      "approx": 0,
+      "title": "Tsuda Umeko establishes a higher-education school for women",
+      "blurb": "Tsuda Umeko founds Joshi Eigaku Juku in Tokyo, one of Japan’s early private institutions of higher education for women. The school expands educational opportunities without representing universal admission or the first education of Japanese women.",
+      "lat": 35.69,
+      "lon": 139.75,
+      "source": "https://www.tsuda.ac.jp/en/profile.html",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "Commonwealth_Franchise_Act_1902",
+      "change": "source-check",
+      "start": 1902,
+      "approx": 0,
+      "title": "Australian federal suffrage expands with racial exclusions",
+      "blurb": "The Commonwealth Franchise Act allows eligible women to vote and stand for federal parliament. It excludes many Aboriginal and Torres Strait Islander people and people classified by the law as natives of Africa, Asia or Pacific islands, with limited exceptions. This is not universal suffrage.",
+      "lat": -37.81,
+      "lon": 144.96,
+      "source": "https://peo.gov.au/understand-our-parliament/history-of-parliament/history-milestones/australian-parliament-history-timeline/events/commonwealth-franchise-act-1902",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "Women's_suffrage_in_Finland",
+      "change": "source-check",
+      "start": 1906,
+      "approx": 0,
+      "title": "Finland grants women the vote and eligibility for parliament",
+      "blurb": "The parliamentary reform of 1906 gives women voting rights and the right to stand for election in the Grand Duchy of Finland. Nineteen women are elected in 1907. Voting rights should be distinguished from equal representation in office.",
+      "lat": 60.17,
+      "lon": 24.94,
+      "source": "https://finland.fi/life-society/finlands-parliament-pioneer-of-gender-equality/",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "Representation_of_the_People_Act_1918",
+      "change": "source-check",
+      "start": 1918,
+      "approx": 0,
+      "title": "Britain grants parliamentary votes to some women",
+      "blurb": "The Representation of the People Act enfranchises women aged 30 and over who meet its qualifying conditions. Most younger adult women remain excluded. The same-year reform allowing women to stand for Parliament is distinct; equal voting terms follow in 1928.",
+      "lat": 51.5,
+      "lon": -0.12,
+      "source": "https://www.parliament.uk/about/living-heritage/transformingsociety/electionsvoting/womenvote/overview/thevote/",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "Nineteenth_Amendment_to_the_United_States_Constitution",
+      "change": "source-check",
+      "start": 1920,
+      "approx": 0,
+      "title": "The US Nineteenth Amendment bars sex-based voting exclusion",
+      "blurb": "Ratification of the Nineteenth Amendment prohibits denying citizens the vote on account of sex. Racial discrimination, citizenship exclusions and other barriers continue to obstruct many Black, Indigenous, Asian American and other women. The amendment does not give every woman an effective vote immediately.",
+      "lat": 38.89,
+      "lon": -77.01,
+      "source": "https://www.archives.gov/milestone-documents/19th-amendment",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "Representation_of_the_People_(Equal_Franchise)_Act_1928",
+      "change": "source-check",
+      "start": 1928,
+      "approx": 0,
+      "title": "Britain establishes equal voting terms for women and men",
+      "blurb": "The Equal Franchise Act gives women the parliamentary vote on the same age terms as men, at 21. This removes the sex-based age distinction left by the 1918 reform; it is a franchise milestone rather than proof of equality in every area of life.",
+      "lat": 51.5,
+      "lon": -0.12,
+      "source": "https://www.parliament.uk/about/living-heritage/transformingsociety/electionsvoting/womenvote/case-studies-women-parliament/what-difference/the-vote-for-some/",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "Women's_suffrage_in_Ecuador",
+      "change": "source-check",
+      "start": 1929,
+      "approx": 0,
+      "title": "Ecuador’s constitution recognizes women’s voting rights",
+      "blurb": "The 1929 constitution formally recognizes women’s voting rights in Ecuador. Literacy requirements still exclude many people. The milestone follows Matilde Hidalgo’s exercise of the vote in 1924, rather than marking the first time any Ecuadorian woman voted.",
+      "lat": -0.18,
+      "lon": -78.47,
+      "source": "https://data.ipu.org/parliament/EC/EC-LC01/elections/historical-data-on-women/",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "Women's_suffrage_in_Brazil",
+      "change": "source-check",
+      "start": 1932,
+      "approx": 0,
+      "title": "Brazil’s electoral code recognizes women as voters",
+      "blurb": "The 1932 electoral code recognizes women’s right to vote and stand for election. Literacy and other electoral restrictions still limit participation. National political rights develop unevenly after the code; this is not a claim that every Brazilian woman can vote in 1932.",
+      "lat": -22.91,
+      "lon": -43.17,
+      "source": "https://www.tse.jus.br/servicos-eleitorais/glossario/termos/voto-da-mulher",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "Women's_suffrage_in_Turkey",
+      "change": "source-check",
+      "start": 1934,
+      "approx": 0,
+      "title": "Türkiye grants women parliamentary voting and candidacy rights",
+      "blurb": "Constitutional and electoral changes in December 1934 give women the right to vote and stand in national parliamentary elections. Earlier municipal reforms preceded this step. The Ankara point represents the national legislative milestone.",
+      "lat": 39.93,
+      "lon": 32.86,
+      "source": "https://www.tihek.gov.tr/5-aralik-kadin-haklari-gunune-iliskin--basin-aciklamasi",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "Women's_suffrage_in_France",
+      "change": "source-check",
+      "start": 1944,
+      "approx": 0,
+      "title": "France recognizes women’s right to vote and stand for election",
+      "blurb": "The ordinance of 21 April 1944 recognizes women as electors and candidates on the same terms as men. French women first vote under the reform in 1945. The measure is issued in Algiers; colonial exclusions have their own later history.",
+      "lat": 36.75,
+      "lon": 3.06,
+      "source": "https://www.assemblee-nationale.fr/dyn/histoire-et-patrimoine/deuxieme-guerre-mondiale/l-accession-des-femmes-au-droit-de-vote",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "Women's_suffrage_in_Japan",
+      "change": "source-check",
+      "start": 1945,
+      "approx": 0,
+      "title": "Japan’s electoral reform enfranchises women",
+      "blurb": "A postwar revision of Japan’s electoral law recognizes women’s right to vote. Women participate in the 1946 general election. The milestone records a change in political rights, not the end of other legal or social inequalities.",
+      "lat": 35.68,
+      "lon": 139.75,
+      "source": "https://www.archives.go.jp/learning/archive_collection_2/",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "Women's_suffrage_in_India",
+      "change": "source-check",
+      "start": 1950,
+      "approx": 0,
+      "title": "India’s constitution establishes universal adult suffrage",
+      "blurb": "The Constitution establishes universal adult suffrage, replacing the restricted franchise inherited from colonial rule. Women vote in the first general election of 1951–1952. Limited voting rights existed before independence, so 1950 is not the first vote by any Indian woman.",
+      "lat": 28.61,
+      "lon": 77.21,
+      "source": "https://data.ipu.org/parliament/IN/IN-LC01/elections/historical-data-on-women/",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "Women's_suffrage_in_Egypt",
+      "change": "source-check",
+      "start": 1956,
+      "approx": 0,
+      "title": "Egypt recognizes women’s national political rights",
+      "blurb": "Egypt’s 1956 reforms recognize women’s rights to vote and stand for election. Women enter parliament in 1957. Legal recognition is a milestone in a longer struggle, rather than proof that all barriers to participation disappear.",
+      "lat": 30.04,
+      "lon": 31.24,
+      "source": "https://knowledge.unwomen.org/sites/default/files/Headquarters/Attachments/Sections/Library/Publications/2011/ProgressOfTheWorldsWomen-2011-en.pdf",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "Code_of_Personal_Status_in_Tunisia",
+      "change": "source-check",
+      "start": 1956,
+      "approx": 0,
+      "title": "Tunisia adopts the Code of Personal Status",
+      "blurb": "Promulgated in August 1956 and effective in January 1957, Tunisia’s Code of Personal Status changes marriage and divorce law, including prohibiting polygamy and establishing judicial divorce. It is a significant reform, not complete legal equality between women and men.",
+      "lat": 36.81,
+      "lon": 10.18,
+      "source": "https://www.justice.gov.tn/index.php?L=3&id=436",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "Women's_March_(South_Africa)",
+      "change": "source-check",
+      "start": 1956,
+      "approx": 0,
+      "title": "South African women march against apartheid pass laws",
+      "blurb": "On 9 August, about 20,000 women march to Pretoria’s Union Buildings to oppose the extension of pass controls to women. Their protest connects women’s organizing with resistance to apartheid. The march itself does not repeal the pass-law system.",
+      "lat": -25.74,
+      "lon": 28.21,
+      "source": "https://www.gov.za/news/events/commemorative-events/womens-day",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "Convention_on_the_Elimination_of_All_Forms_of_Discrimination_Against_Women",
+      "change": "source-check",
+      "start": 1979,
+      "approx": 0,
+      "title": "The UN adopts CEDAW, the women’s rights convention",
+      "blurb": "The UN General Assembly adopts the Convention on the Elimination of All Forms of Discrimination against Women. It addresses discrimination in public and private life and enters into force in 1981. Adoption does not mean every country ratifies it or immediately implements its obligations.",
+      "lat": 40.75,
+      "lon": -73.97,
+      "source": "https://legal.un.org/avl/ha/cedaw/cedaw.html",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "Belém_do_Pará_Convention",
+      "change": "source-check",
+      "start": 1994,
+      "approx": 0,
+      "title": "The Belém do Pará Convention addresses violence against women",
+      "blurb": "The Organization of American States adopts a convention recognizing women’s right to live free from violence and setting obligations for states parties. The treaty covers public and private violence. Adoption is distinct from ratification and effective protection in each country.",
+      "lat": -1.46,
+      "lon": -48.5,
+      "source": "https://www.oas.org/en/mesecvi/convention.asp",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "Beijing_Declaration",
+      "change": "source-check",
+      "start": 1995,
+      "approx": 0,
+      "title": "The Beijing conference adopts a global platform for women’s rights",
+      "blurb": "The Fourth World Conference on Women adopts the Beijing Declaration and Platform for Action, setting an agenda across areas including education, health, violence and political participation. It is an international policy commitment, not a law immediately granting identical rights everywhere.",
+      "lat": 39.9,
+      "lon": 116.4,
+      "source": "https://www.un.org/conferences/women/beijing1995",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "United_Nations_Security_Council_Resolution_1325",
+      "change": "source-check",
+      "start": 2000,
+      "approx": 0,
+      "title": "UN resolution 1325 recognizes women’s role in peace and security",
+      "blurb": "The Security Council adopts resolution 1325 on women, peace and security. It calls for women’s participation in peace processes and protection of women and girls in armed conflict. This is a framework for action, not evidence that conflicts or exclusion end.",
+      "lat": 40.75,
+      "lon": -73.97,
+      "source": "https://www.un.org/womenwatch/osagi/wps/",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "Maputo_Protocol",
+      "change": "source-check",
+      "start": 2003,
+      "approx": 0,
+      "title": "The African Union adopts the Maputo Protocol",
+      "blurb": "Adopted in Maputo, the protocol addresses women’s equality, freedom from violence and reproductive rights. Article 14 includes abortion on specified grounds, including sexual assault, rape, incest and threats to health or life. Treaty obligations depend on participation and implementation; adoption does not change every national law at once.",
+      "lat": -25.97,
+      "lon": 32.57,
+      "source": "https://au.int/sites/default/files/treaties/37077-treaty-charter_on_rights_of_women_in_africa.pdf",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "Ellen_Johnson_Sirleaf",
+      "change": "source-check",
+      "start": 2006,
+      "approx": 0,
+      "title": "Ellen Johnson Sirleaf takes office as Liberia’s president",
+      "blurb": "On 16 January, Ellen Johnson Sirleaf is inaugurated as Liberia’s president, becoming Africa’s first elected woman head of state. Her presidency is a representation milestone, not a claim that women’s political or social equality has been achieved.",
+      "lat": 6.32,
+      "lon": -10.81,
+      "source": "https://www.un.org/sg/en/content/former-secretary-general/statements/2006-01-16/statement-the-secretary-general-the-inauguration-of-the-president-of-liberia",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "Prohibition_of_Female_Genital_Mutilation_Act_2011",
+      "change": "source-check",
+      "start": 2011,
+      "approx": 0,
+      "title": "Kenya enacts the Prohibition of Female Genital Mutilation Act",
+      "blurb": "Kenya enacts a specific law prohibiting female genital mutilation and related conduct. The milestone records a legislative measure against a harmful practice; it does not imply that the practice or barriers to protection immediately disappear.",
+      "lat": -1.29,
+      "lon": 36.82,
+      "source": "https://www.kenyalaw.org/kl/fileadmin/pdfdownloads/Acts/ProhibitionofFemaleGenitalMutilationAct_No32of2011.pdf",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "Women_to_drive_movement",
+      "change": "source-check",
+      "start": 2018,
+      "approx": 0,
+      "title": "Saudi Arabia lifts the ban on women driving",
+      "blurb": "The ban on women driving is lifted in June 2018. The UN Secretary-General welcomes this change. This entry records a specific mobility milestone rather than claiming that wider discrimination or restrictions on women’s rights have ended.",
+      "lat": 24.71,
+      "lon": 46.68,
+      "source": "https://www.un.org/sg/en/content/sg/statements/2018-06-24/statement-attributable-the-spokesman-for-the-secretary-general-saudi-arabia",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "Women_in_Afghanistan",
+      "change": "source-check",
+      "start": 2022,
+      "approx": 0,
+      "title": "Taliban authorities exclude women from Afghan universities",
+      "blurb": "In December 2022, the Taliban authorities suspend women’s access to universities. The United Nations condemns the decision and calls for its reversal. This records a major restriction on education, not an advance in rights or a claim about every Afghan woman’s experience.",
+      "lat": 34.56,
+      "lon": 69.21,
+      "source": "https://afghanistan.un.org/en/212740-un-afghanistan-condemns-taliban-decision-suspend-women-universities-and-calls-its-immediate",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "Abortion_in_Russia",
+      "change": "source-check",
+      "start": 1920,
+      "approx": 0,
+      "title": "Soviet Russia permits abortion in public hospitals",
+      "blurb": "Soviet Russia legalizes abortion in 1920 within a public medical framework. This is a major early legal change, not a guarantee of unrestricted or equal access. The policy is reversed in 1936, and abortion is re-legalized in the Soviet Union in 1955.",
+      "lat": 55.75,
+      "lon": 37.62,
+      "source": "https://discovery.ucl.ac.uk/id/eprint/10086847/",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "Family_in_the_Soviet_Union",
+      "change": "source-check",
+      "start": 1936,
+      "approx": 0,
+      "title": "The Soviet government severely restricts abortion",
+      "blurb": "The Soviet government prohibits most abortions in 1936, retaining narrow medical exceptions. This reverses the 1920 policy and is part of a broader intervention in family and reproductive life. The restriction is a historical setback, with re-legalization following in 1955.",
+      "lat": 55.75,
+      "lon": 37.62,
+      "source": "https://discovery.ucl.ac.uk/id/eprint/10086847/",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "Abortion_in_the_Soviet_Union",
+      "change": "source-check",
+      "start": 1955,
+      "approx": 0,
+      "title": "The Soviet Union re-legalizes abortion",
+      "blurb": "The Soviet Union re-legalizes abortion in 1955 after the restrictive 1936 policy. Legal provision, medical capacity and contraceptive access remain different questions. This is a dated Soviet policy change, not a statement of the laws of later successor states.",
+      "lat": 55.75,
+      "lon": 37.62,
+      "source": "https://discovery.ucl.ac.uk/id/eprint/10086847/",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "Abortion_Act_1967",
+      "change": "source-check",
+      "start": 1967,
+      "approx": 0,
+      "title": "Britain passes the Abortion Act",
+      "blurb": "The Abortion Act 1967 establishes specified grounds under which registered medical practitioners can lawfully terminate pregnancies in England, Wales and Scotland. It comes into force in 1968 and does not extend to Northern Ireland. It is not unrestricted abortion on request.",
+      "lat": 51.5,
+      "lon": -0.12,
+      "source": "https://www.legislation.gov.uk/ukpga/1967/87/enacted",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "Medical_Termination_of_Pregnancy_Act,_1971",
+      "change": "source-check",
+      "start": 1971,
+      "approx": 0,
+      "title": "India adopts the Medical Termination of Pregnancy Act",
+      "blurb": "The Medical Termination of Pregnancy Act creates a legal framework for abortion on specified grounds and subject to medical and procedural conditions. This entry marks enactment in 1971, not unrestricted access or the later amendments to the Act.",
+      "lat": 28.61,
+      "lon": 77.21,
+      "source": "https://www.indiacode.nic.in/bitstream/123456789/1593/1/197134.pdf",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "Roe_v._Wade",
+      "change": "source-check",
+      "start": 1973,
+      "approx": 0,
+      "title": "Roe v. Wade recognizes a US constitutional abortion protection",
+      "blurb": "The US Supreme Court recognizes constitutional protection for a decision to terminate pregnancy under the framework set out in Roe v. Wade. This is a historical ruling: the Court overturns Roe and Casey in Dobbs in 2022. The 1973 marker does not describe present law.",
+      "lat": 38.89,
+      "lon": -77.0,
+      "source": "https://tile.loc.gov/storage-services/service/ll/usrep/usrep410/usrep410113/usrep410113.pdf",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "Veil_Act",
+      "change": "source-check",
+      "start": 1975,
+      "approx": 0,
+      "title": "France enacts the Veil abortion law",
+      "blurb": "The law promulgated on 17 January 1975 permits abortion within specified conditions. It is a major reform associated with Simone Veil, rather than unlimited access. Later legislation changes its framework, and a separate constitutional amendment follows in 2024.",
+      "lat": 48.86,
+      "lon": 2.35,
+      "source": "https://www.legifrance.gouv.fr/loda/id/LEGITEXT000006068506/",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "R_v_Morgentaler",
+      "change": "source-check",
+      "start": 1988,
+      "approx": 0,
+      "title": "Canada’s Supreme Court strikes down the abortion provision",
+      "blurb": "In R. v. Morgentaler, the Supreme Court of Canada strikes down the Criminal Code abortion provision because its restrictions and procedures violate Charter protections. The decision does not mean that services are immediately available equally throughout Canada.",
+      "lat": 45.42,
+      "lon": -75.7,
+      "source": "https://www.publications.gc.ca/Collection-R/LoPBdP/CIR/8910-e.htm",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "Choice_on_Termination_of_Pregnancy_Act,_1996",
+      "change": "source-check",
+      "start": 1996,
+      "approx": 0,
+      "title": "South Africa adopts the Choice on Termination of Pregnancy Act",
+      "blurb": "The 1996 Act replaces a restrictive abortion framework with broader access, including termination on request in early pregnancy and specified grounds later. It comes into operation in 1997. Enactment is distinct from the practical availability of services.",
+      "lat": -33.92,
+      "lon": 18.42,
+      "source": "https://www.parliament.gov.za/storage/app/media/Acts/1996/Act_92_of_1996_Choice_on_Termination_of_Pregnancy_Act.pdf",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "Abortion_in_Nepal",
+      "change": "source-check",
+      "start": 2002,
+      "approx": 0,
+      "title": "Nepal reforms its abortion law",
+      "blurb": "Nepal’s 2002 legal reform permits abortion under defined conditions, after a long period of criminalization. Legal change precedes the expansion of approved services. Cost, geography, stigma and information can still obstruct access; the milestone is not a claim of universal provision.",
+      "lat": 27.72,
+      "lon": 85.32,
+      "source": "https://asiapacific.unfpa.org/sites/default/files/pub-pdf/final_draft_young_people_and_the_law_report_case_studies-01.pdf",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "Thirty-sixth_Amendment_of_the_Constitution_of_Ireland",
+      "change": "source-check",
+      "start": 2018,
+      "approx": 0,
+      "title": "Ireland votes to repeal the Eighth Amendment",
+      "blurb": "In the May 2018 referendum, voters approve removing the constitutional provision known as the Eighth Amendment and allowing the legislature to regulate termination of pregnancy. The referendum is distinct from the subsequent legislation and the introduction of services.",
+      "lat": 53.35,
+      "lon": -6.26,
+      "source": "https://www.electoralcommission.ie/previous-referendums/",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "Abortion_Legislation_Act_2020",
+      "change": "source-check",
+      "start": 2020,
+      "approx": 0,
+      "title": "New Zealand adopts abortion law reform",
+      "blurb": "The Abortion Legislation Act 2020 reforms New Zealand’s legal framework for abortion and removes abortion from the Crimes Act framework for the pregnant person. It retains statutory conditions for provision. This dated reform should not be read as a statement about every aspect of later access.",
+      "lat": -41.28,
+      "lon": 174.78,
+      "source": "https://www.legislation.govt.nz/act/public/2020/6/en/latest/",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "Law_27,610",
+      "change": "source-check",
+      "start": 2020,
+      "approx": 0,
+      "title": "Argentina’s Congress approves abortion access legislation",
+      "blurb": "Congress approves Law 27,610 on 30 December 2020, providing for voluntary termination within a defined gestational limit and specified grounds afterward. Promulgation follows in January 2021. The marker records parliamentary approval, not the date services become uniformly accessible.",
+      "lat": -34.61,
+      "lon": -58.38,
+      "source": "https://www.argentina.gob.ar/normativa/nacional/ley-27610-2020-346231",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "Abortion_in_Mexico",
+      "change": "source-check",
+      "start": 2021,
+      "approx": 0,
+      "title": "Mexico’s Supreme Court invalidates Coahuila’s abortion criminalization",
+      "blurb": "The Supreme Court invalidates provisions of Coahuila’s penal code criminalizing voluntary abortion and establishes constitutional reasoning against absolute criminalization. This specific judgment is not an identical statutory reform in every Mexican state or proof of uniform service access.",
+      "lat": 19.43,
+      "lon": -99.13,
+      "source": "https://www.internet2.scjn.gob.mx/red2/comunicados/noticia.asp?id=6579",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "Abortion_in_Colombia",
+      "change": "source-check",
+      "start": 2022,
+      "approx": 0,
+      "title": "Colombia’s Constitutional Court limits abortion criminalization",
+      "blurb": "Judgment C-055 of 2022 makes abortion punishable under the challenged provision only after 24 weeks, while preserving the previously recognized exceptions beyond that point. This is a dated constitutional ruling, not a guarantee that barriers to healthcare disappear.",
+      "lat": 4.71,
+      "lon": -74.07,
+      "source": "https://www1.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=195148",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "Dobbs_v._Jackson_Women's_Health_Organization",
+      "change": "source-check",
+      "start": 2022,
+      "approx": 0,
+      "title": "Dobbs overturns Roe and Casey’s US abortion protection",
+      "blurb": "In Dobbs v. Jackson Women’s Health Organization, the Supreme Court overturns Roe and Casey and holds that the federal Constitution does not confer a right to abortion. The ruling permits divergent state restrictions and protections; it does not itself enact one nationwide abortion ban.",
+      "lat": 38.89,
+      "lon": -77.0,
+      "source": "https://www.supremecourt.gov/opinions/21pdf/19-1392_6j37.pdf",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "Abortion_in_France",
+      "change": "source-check",
+      "start": 2024,
+      "approx": 0,
+      "title": "France constitutionally guarantees freedom to have an abortion",
+      "blurb": "Parliament approves a constitutional amendment in March 2024 guaranteeing freedom to have recourse to abortion under conditions determined by law. The amendment is promulgated on 8 March. This strengthens constitutional protection without making access unconditional.",
+      "lat": 48.8,
+      "lon": 2.12,
+      "source": "https://www.conseil-etat.fr/en/content/download/217795/document/CE-RA23-Web_EN%20BD_link.pdf",
+      "reason": "The linked institutional, primary legal or scholarly source supports the named milestone and principal date. The summary distinguishes advocacy, enactment, implementation and restrictions; the point represents an associated place, not the full reach of the event."
+    },
+    {
+      "wiki": "Women's_suffrage_in_Russia",
+      "change": "source-check",
+      "start": 1917,
+      "approx": 0,
+      "title": "Russian women win voting rights before the Bolshevik takeover",
+      "blurb": "Campaigning by women’s organizations helps secure voting rights under the Provisional Government in 1917. Women participate in elections that year, including for the Constituent Assembly. This milestone precedes the Bolshevik seizure of power and is not a claim that political equality is complete.",
+      "lat": 59.94,
+      "lon": 30.31,
+      "source": "https://www.cambridge.org/core/journals/slavic-review/article/women-and-gender-in-1917/CE4673AE59CA42774E510225CACAC405",
+      "reason": "The linked scholarly or institutional history supports the milestone and principal date. The record distinguishes a legal reform from its implementation and avoids treating it as a statement of present law."
+    },
+    {
+      "wiki": "Marriage_Law_of_the_People's_Republic_of_China",
+      "change": "source-check",
+      "start": 1950,
+      "approx": 0,
+      "title": "China’s Marriage Law recognizes free choice and easier divorce",
+      "blurb": "The 1950 Marriage Law recognizes free choice in marriage and expands access to divorce. It is a major reform of family relations under the new People’s Republic. Enactment and its uneven implementation are different matters; it does not establish complete equality in everyday life.",
+      "lat": 39.9,
+      "lon": 116.4,
+      "source": "https://www.jstor.org/stable/jj.2711550",
+      "reason": "The linked scholarly or institutional history supports the milestone and principal date. The record distinguishes a legal reform from its implementation and avoids treating it as a statement of present law."
+    },
+    {
+      "wiki": "Abortion_in_Tunisia",
+      "change": "source-check",
+      "start": 1973,
+      "approx": 0,
+      "title": "Tunisia broadens legal access to abortion",
+      "blurb": "Tunisia’s 1973 reform broadens the grounds for legal abortion after a more limited 1965 change. It permits abortion during the first three months under a medical framework, with specified grounds later. The milestone concerns the historical law, not a guarantee of equal practical access.",
+      "lat": 36.81,
+      "lon": 10.18,
+      "source": "https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/files/documents/2020/Jan/un_1995_abortion_policies_-_a_global_review_-_volume_iii_oman_to_zimbabwe.pdf",
+      "reason": "The linked scholarly or institutional history supports the milestone and principal date. The record distinguishes a legal reform from its implementation and avoids treating it as a statement of present law."
+    },
+    {
+      "wiki": "Comstock_Act",
+      "change": "source-check",
+      "start": 1873,
+      "approx": 0,
+      "title": "The US Comstock Act restricts mailing abortion and contraceptive materials",
+      "blurb": "Congress enacts the Comstock Act on March 3, restricting the mailing of articles intended for abortion or contraception and associated information. The entry describes the 1873 statute; later amendments and court interpretations change its reach.",
+      "lat": 38.89,
+      "lon": -77.01,
+      "source": "https://www.justice.gov/olc/opinion/file/1560596/dl",
+      "reason": "The Office of Legal Counsel’s historical account, pages 3–4 and footnote 6, identifies the March 3, 1873 act and its original mailing provisions. No claim about present enforceability is made."
+    },
+    {
+      "wiki": "Abortion_in_Colorado_1967",
+      "change": "source-check",
+      "start": 1967,
+      "approx": 0,
+      "title": "Colorado expands the circumstances permitting abortion",
+      "blurb": "Colorado reforms its abortion law to permit abortions in specified circumstances, including pregnancies likely to cause the pregnant woman’s death and cases of rape or incest. This is a limited reform before Roe, rather than unrestricted legalization.",
+      "lat": 39.74,
+      "lon": -104.98,
+      "source": "https://content.leg.colorado.gov/sites/default/files/images/2023-2024_89vbb.pdf",
+      "reason": "The nonpartisan Colorado Legislative Council’s 2024 Amendment 79 Blue Book analysis dates the limited reform to 1967 and lists these circumstances. The marker represents the state capital."
+    },
+    {
+      "wiki": "Abortion_in_Hawaii_1970",
+      "change": "source-check",
+      "start": 1970,
+      "approx": 0,
+      "title": "Hawaii reforms abortion law before Roe",
+      "blurb": "Hawaii’s Act 1 repeals earlier abortion provisions and permits termination of a nonviable pregnancy under specified conditions. The 1970 act requires a licensed physician, a qualifying hospital and state domicile or at least ninety days’ physical presence. These are historical conditions, not a description of later Hawaii law.",
+      "lat": 21.31,
+      "lon": -157.86,
+      "source": "https://data.capitol.hawaii.gov/sessions/sessionlaws/Years/SLH1970/SLH1970_Act1.pdf",
+      "reason": "The enacted Act 1 appears on pages 1–2 of the 1970 Hawaii session laws; its residency, hospital and nonviability conditions prevent an unqualified legalization claim."
+    },
+    {
+      "wiki": "Abortion_in_New_York_1970",
+      "change": "source-check",
+      "start": 1970,
+      "approx": 0,
+      "title": "New York legalizes abortion before Roe",
+      "blurb": "New York legalizes abortion in 1970, three years before Roe v. Wade. The reform is a state-law milestone; it does not establish a nationwide right or imply that earlier restrictions and practical barriers immediately disappear everywhere.",
+      "lat": 42.65,
+      "lon": -73.76,
+      "source": "https://nyassembly.gov/write/upload/postings/2017/pdfs/20171215_0078563.pdf",
+      "reason": "The New York State Legislative Women’s Caucus history, page 36, identifies the 1970 law, its sponsors and its passage; the point marks Albany rather than every affected provider.",
+      "additionalSources": [
+        "https://ag.ny.gov/publications/abortion-legal-and-protected-new-york-state"
+      ]
+    },
+    {
+      "wiki": "Washington_Referendum_20",
+      "change": "source-check",
+      "start": 1970,
+      "approx": 0,
+      "title": "Washington voters approve abortion reform in Referendum 20",
+      "blurb": "On November 3, Washington voters approve Referendum 20. It permits abortion within four lunar months after conception, before quickening, subject to residency and consent requirements. The historical law includes husband-consent requirements for a married woman living with her husband and guardian consent for an unmarried minor under eighteen.",
+      "lat": 47.04,
+      "lon": -122.9,
+      "source": "https://www2.sos.wa.gov/legacy/images/publications/sl_voterspamphlet_1970_eastern/sl_voterspamphlet_1970_eastern.pdf",
+      "reason": "The 1970 official voter pamphlet supplies the exact limited eligibility and consent terms. The legislature’s referendum history records approval on November 3, 1970; this does not describe present state law.",
+      "additionalSources": [
+        "https://leg.wa.gov/media/euokxnje/2002pam2.pdf"
+      ]
+    },
+    {
+      "wiki": "Hyde_Amendment",
+      "change": "source-check",
+      "start": 1976,
+      "approx": 0,
+      "title": "The Hyde Amendment restricts federal abortion funding",
+      "blurb": "Congress first enacts the Hyde Amendment on September 30, restricting federal abortion funding through an appropriations provision and limiting Medicaid coverage. The original version has a life-saving exception. Later versions change the exceptions; this funding restriction is distinct from a nationwide criminal ban on abortion.",
+      "lat": 38.89,
+      "lon": -77.01,
+      "source": "https://www.govinfo.gov/content/pkg/USREPORTS-448/pdf/USREPORTS-448-297.pdf",
+      "reason": "Harris v. McRae recounts the initial September 30, 1976 enactment and varying annual exceptions, including the original life-saving exception (448 U.S. 302–304).",
+      "additionalSources": [
+        "https://www.congress.gov/crs_external_products/R/PDF/R46785/R46785.1.pdf"
+      ]
+    },
+    {
+      "wiki": "Harris_v._McRae",
+      "change": "source-check",
+      "start": 1980,
+      "approx": 0,
+      "title": "Harris v. McRae upholds the Hyde funding restriction",
+      "blurb": "On June 30, the US Supreme Court upholds the challenged Hyde Amendment restrictions. It holds that Medicaid does not require a participating state to fund medically necessary abortions for which federal reimbursement is unavailable under Hyde. The decision concerns public funding, rather than a general prohibition on obtaining an abortion.",
+      "lat": 38.89,
+      "lon": -77.0,
+      "source": "https://www.govinfo.gov/content/pkg/USREPORTS-448/pdf/USREPORTS-448-297.pdf",
+      "reason": "The original Supreme Court opinion gives the June 30, 1980 date and distinguishes the Title XIX funding obligation and constitutional challenge. The description does not assert that state-funded coverage is forbidden."
+    },
+    {
+      "wiki": "Planned_Parenthood_v._Casey",
+      "change": "source-check",
+      "start": 1992,
+      "approx": 0,
+      "title": "Casey preserves abortion protection but changes the legal test",
+      "blurb": "On June 29, the Supreme Court reaffirms Roe’s central protection before viability while replacing its trimester framework with an undue-burden standard for abortion restrictions. It invalidates Pennsylvania’s spousal-notification requirement while sustaining other challenged provisions. Dobbs overturns Roe and Casey in 2022.",
+      "lat": 38.89,
+      "lon": -77.0,
+      "source": "https://tile.loc.gov/storage-services/service/ll/usrep/usrep505/usrep505833/usrep505833.pdf",
+      "reason": "The original 1992 opinion supplies the ruling date, viability protection, undue-burden test and different treatment of the challenged Pennsylvania provisions. Dobbs supplies the subsequent reversal.",
+      "additionalSources": [
+        "https://www.supremecourt.gov/opinions/21pdf/19-1392_6j37.pdf"
+      ]
+    },
+    {
+      "wiki": "Freedom_of_Access_to_Clinic_Entrances_Act",
+      "change": "source-check",
+      "start": 1994,
+      "approx": 0,
+      "title": "The FACE Act protects access to reproductive-health facilities",
+      "blurb": "Congress enacts the Freedom of Access to Clinic Entrances Act. It prohibits force, threats and physical obstruction interfering with people obtaining or providing reproductive-health services, including abortion, and intentional damage to facilities. Its protections also cover pregnancy counseling facilities and places of religious worship; it does not itself legalize abortion nationwide.",
+      "lat": 38.89,
+      "lon": -77.01,
+      "source": "https://www.justice.gov/archives/reproductive-rights/what-we-are-doing",
+      "reason": "The DOJ’s archived reproductive-rights explanation dates enactment to 1994; its statutes-enforced explanation specifies the protected services, facilities and places of worship.",
+      "additionalSources": [
+        "https://www.justice.gov/crt/civil-rights-division-statutes-enforced"
+      ]
+    },
+    {
+      "wiki": "Mifepristone_FDA_approval",
+      "change": "source-check",
+      "start": 2000,
+      "approx": 0,
+      "title": "The FDA first approves mifepristone for medication abortion",
+      "blurb": "In September, the Food and Drug Administration first approves Mifeprex, containing mifepristone, for medication abortion through seven weeks of pregnancy. This is a federal drug-approval milestone. Later labeling and access rules change; FDA approval does not itself guarantee access under every state’s laws.",
+      "lat": 38.9,
+      "lon": -77.03,
+      "source": "https://www.fda.gov/drugs/postmarket-drug-safety-information-patients-and-providers/questions-and-answers-mifepristone-medical-termination-pregnancy-through-ten-weeks-gestation",
+      "reason": "The FDA’s own question-and-answer page dates first approval to September 2000 and distinguishes the original seven-week indication from the 2016 extension. No current availability or treatment instructions are asserted.",
+      "additionalSources": [
+        "https://www.accessdata.fda.gov/drugsatfda_docs/label/2000/20687lbl.pdf"
+      ]
+    },
+    {
+      "wiki": "Reproductive_Health_Act",
+      "change": "source-check",
+      "start": 2019,
+      "approx": 0,
+      "title": "New York enacts the Reproductive Health Act",
+      "blurb": "On January 22, New York enacts the Reproductive Health Act. It authorizes abortion within twenty-four weeks, or when the fetus is not viable or an abortion is necessary to protect the patient’s life or health, according to the practitioner’s professional judgment. The statute strengthens state-law protection before Dobbs.",
+      "lat": 42.65,
+      "lon": -73.76,
+      "source": "https://www.nysenate.gov/legislation/bills/2019/S240",
+      "reason": "The official S240 record records signing on January 22, 2019 and includes the enacted section 2599-bb eligibility language. This is the 2019 law, not a promise of current practical access."
+    },
+    {
+      "wiki": "Texas_Heartbeat_Act",
+      "change": "source-check",
+      "start": 2021,
+      "approx": 0,
+      "title": "Texas SB 8 restricts abortion through private civil enforcement",
+      "blurb": "Effective September 1, Texas SB 8 prohibits most abortions after detection of embryonic or fetal cardiac activity and authorizes private civil actions against providers and people who knowingly aid prohibited abortions. A medical-emergency exception is included. This 2021 law takes effect before Dobbs; it is distinct from Texas’s later trigger prohibition.",
+      "lat": 30.27,
+      "lon": -97.74,
+      "source": "https://capitol.texas.gov/billlookup/BillSummary.aspx?Bill=SB8&LegSess=87R",
+      "reason": "The Texas Legislature’s enrolled-bill summary gives the September 1, 2021 effective date, cardiac-activity restriction, medical-emergency exception and exclusive private civil enforcement. The summary does not impose a fixed week count."
+    },
+    {
+      "wiki": "Texas_Human_Life_Protection_Act",
+      "change": "source-check",
+      "start": 2022,
+      "approx": 0,
+      "title": "Texas’s trigger abortion prohibition takes effect",
+      "blurb": "On August 25, Texas’s Human Life Protection Act takes effect after the Supreme Court’s Dobbs judgment triggers the law. It prohibits abortion with a limited exception for a life-threatening physical condition. The statute was enacted in 2021; this marker records its 2022 commencement rather than its passage.",
+      "lat": 30.27,
+      "lon": -97.74,
+      "source": "https://www.sll.texas.gov/faqs/texas-trigger-law/",
+      "reason": "The Texas State Law Library distinguishes enactment in 2021, the July 2022 Dobbs judgment and August 25 commencement. Chapter 170A supplies the qualified physical-condition exception.",
+      "additionalSources": [
+        "https://statutes.capitol.texas.gov/Docs/HS/htm/HS.170A.htm"
+      ]
+    },
+    {
+      "wiki": "2022_California_Proposition_1",
+      "change": "source-check",
+      "start": 2022,
+      "approx": 0,
+      "title": "California voters add reproductive freedom to the state constitution",
+      "blurb": "On November 8, California voters approve Proposition 1, adding an explicit state constitutional protection for reproductive freedom, including the choice of abortion and the choice to use or refuse contraception. The measure concerns California’s constitution following Dobbs, rather than a new federal constitutional right.",
+      "lat": 38.58,
+      "lon": -121.49,
+      "source": "https://elections.cdn.sos.ca.gov/sov/2022-general/sov/complete.pdf",
+      "reason": "The Secretary of State’s certified Statement of Vote records Proposition 1’s approval on November 8, 2022; the official voter guide supplies its constitutional text.",
+      "additionalSources": [
+        "https://vig.cdn.sos.ca.gov/2022/general/pdf/complete-vig.pdf"
+      ]
+    },
+    {
+      "wiki": "2022_Kansas_abortion_referendum",
+      "change": "source-check",
+      "start": 2022,
+      "approx": 0,
+      "title": "Kansas voters reject the Value Them Both amendment",
+      "blurb": "On August 2, Kansas voters reject a proposed amendment declaring that the state constitution does not secure a right to abortion or require abortion funding. Rejection leaves the constitution unchanged; it does not repeal every existing abortion regulation or establish unlimited access.",
+      "lat": 39.05,
+      "lon": -95.68,
+      "source": "https://www.kansashistory.gov/archives/512066",
+      "reason": "The Kansas State Archives dates the rejection to August 2, 2022 and describes the proposal. The official ballot explains that a no vote makes no constitutional change.",
+      "additionalSources": [
+        "https://sos.ks.gov/elections/22elec/2022-Primary-Election-Constitutional-Amendment-HCR-5003.pdf"
+      ]
+    },
+    {
+      "wiki": "2022_Michigan_Proposal_3",
+      "change": "source-check",
+      "start": 2022,
+      "approx": 0,
+      "title": "Michigan voters approve the reproductive-freedom amendment",
+      "blurb": "On November 8, Michigan voters approve Proposal 3, adding a right to reproductive freedom, including abortion and contraception, to the state constitution. The amendment takes effect on December 24. It allows regulation of abortion after fetal viability, subject to a life-or-health exception.",
+      "lat": 42.73,
+      "lon": -84.56,
+      "source": "https://www.michigan.gov/whitmer/news/press-releases/2022/12/14/governor-whitmer-signs-executive-directive-affirming-reproductive-freedoms",
+      "reason": "The governor’s December 2022 implementation announcement distinguishes approval from December 24 commencement; the House Fiscal Agency’s proposal analysis reproduces the viability and life-or-health conditions.",
+      "additionalSources": [
+        "https://www.house.mi.gov/hfa/PDF/Alpha/Ballot_Proposal_3_of_2022.pdf"
+      ]
+    },
+    {
+      "wiki": "November_2023_Ohio_Issue_1",
+      "change": "source-check",
+      "start": 2023,
+      "approx": 0,
+      "title": "Ohio adds a constitutional right to reproductive decisions",
+      "blurb": "Ohio’s November Issue 1 amendment establishes a right to make and carry out reproductive decisions, including abortion, contraception and miscarriage care. Effective December 7, it permits abortion restrictions after fetal viability but protects abortion necessary for the pregnant patient’s life or health in the treating physician’s professional judgment.",
+      "lat": 39.96,
+      "lon": -83.0,
+      "source": "https://codes.ohio.gov/ohio-constitution/section-1.22",
+      "reason": "Ohio Constitution Article I section 22 supplies the right, viability exception and December 7, 2023 effective date. The November election is distinct from the August 2023 Issue 1.",
+      "additionalSources": [
+        "https://www.ohiosos.gov/office/media-center/categories/press-releases/2023-12-07"
+      ]
+    },
+    {
+      "wiki": "2024_Arizona_Proposition_139",
+      "change": "source-check",
+      "start": 2024,
+      "approx": 0,
+      "title": "Arizona voters approve a constitutional abortion right",
+      "blurb": "Arizona voters approve Proposition 139 in the November 5 election. The amendment protects abortion before fetal viability and afterward when necessary to protect the pregnant individual’s life or physical or mental health in a treating health professional’s good-faith judgment. The governor proclaims the approved amendment law on November 25.",
+      "lat": 33.45,
+      "lon": -112.1,
+      "source": "https://apps.azsos.gov/election/2024/bm/Proclamation_for_Prop_139.pdf",
+      "reason": "The official proclamation verifies voter approval and November 25, 2024 proclamation. The Secretary of State’s final ballot-language explanation supplies the viability and life-or-health scope.",
+      "additionalSources": [
+        "https://apps.azsos.gov/election/BallotMeasures/2024/2024_0821_Final_2024_Ballot_Language_English.pdf"
+      ]
+    },
+    {
+      "wiki": "Florida_Heartbeat_Protection_Act",
+      "change": "source-check",
+      "start": 2024,
+      "approx": 0,
+      "title": "Florida’s six-week abortion restriction takes effect",
+      "blurb": "On May 1, Florida’s Heartbeat Protection Act takes effect, replacing the previous fifteen-week limit with a prohibition after six weeks, subject to statutory exceptions. The state health agency’s notice links commencement to an April 1 Florida Supreme Court decision. This records implementation in 2024, following enactment in 2023.",
+      "lat": 30.44,
+      "lon": -84.28,
+      "source": "https://flrules.org/Gateway/View_notice.asp?id=28322174",
+      "reason": "The Agency for Health Care Administration’s May 2024 emergency-rule notice explicitly records the May 1 start, six-week restriction, prior fifteen-week rule and statutory trigger; the 2024 statute provides the exceptions.",
+      "additionalSources": [
+        "https://www.flsenate.gov/laws/statutes/2024/390.0111"
+      ]
+    },
+    {
+      "wiki": "2024_Florida_Amendment_4",
+      "change": "source-check",
+      "start": 2024,
+      "approx": 0,
+      "title": "Florida’s abortion-rights amendment falls short of the approval threshold",
+      "blurb": "On November 5, Amendment 4 receives about 57.17 percent of votes cast, below Florida’s sixty-percent requirement for constitutional amendments, and is not adopted. The proposal would have protected abortion before viability or when necessary for the patient’s health. A simple majority therefore does not change the state constitution.",
+      "lat": 30.44,
+      "lon": -84.28,
+      "source": "https://results.elections.myflorida.com/DetailRpt.Asp?ELECTIONDATE=11%2F5%2F2024&RACE=A04",
+      "reason": "The official statewide results record 6,070,758 yes and 4,548,379 no votes. Florida Constitution Article XI section 5(e) requires sixty percent; the original proposal concerned previability and health protections. Approval is not inferred from a simple majority.",
+      "additionalSources": [
+        "https://www.flsenate.gov/Laws/Constitution#A11S05",
+        "https://lawreview.law.miami.edu/words-matter/"
+      ]
+    },
+    {
+      "wiki": "2024_Colorado_Amendment_79",
+      "change": "source-check",
+      "start": 2024,
+      "approx": 0,
+      "title": "Colorado voters adopt a constitutional right to abortion",
+      "blurb": "On November 5, Colorado voters approve Amendment 79, recognizing a state constitutional right to abortion and prohibiting state and local governments from denying or impeding it. The measure also removes the state constitutional restriction on public abortion funding; it does not remove separate federal funding restrictions.",
+      "lat": 39.74,
+      "lon": -104.98,
+      "source": "https://historicalelectiondata.coloradosos.gov/contest/26545",
+      "reason": "The Secretary of State’s historical election database gives the ballot question and statewide approval totals. The Legislative Council’s Blue Book distinguishes removal of the state funding ban from federal restrictions.",
+      "additionalSources": [
+        "https://content.leg.colorado.gov/sites/default/files/images/2023-2024_89vbb.pdf"
+      ]
+    },
+    {
+      "wiki": "2024_Missouri_Amendment_3",
+      "change": "source-check",
+      "start": 2024,
+      "approx": 0,
+      "title": "Missouri voters approve a reproductive-freedom amendment",
+      "blurb": "On November 5, Missouri voters approve Amendment 3, adding a right to reproductive freedom, including abortion, to the state constitution. Its text allows restrictions after fetal viability with a life-or-health exception. This marks the 2024 constitutional vote; it does not assert that every clinic reopened immediately or describe later litigation and ballot measures.",
+      "lat": 38.58,
+      "lon": -92.17,
+      "source": "https://www.sos.mo.gov/CMSImages/ElectionResultsStatistics/2024GeneralElection.pdf",
+      "reason": "The Secretary of State’s official results record Amendment 3’s approval; the 2024 ballot-measures page supplies its scope. The description explicitly separates the vote from implementation and later developments.",
+      "additionalSources": [
+        "https://www.sos.mo.gov/elections/petitions/2024BallotMeasures"
+      ]
+    },
+    {
+      "wiki": "Russian_emigration_following_the_Russian_invasion_of_Ukraine",
+      "change": "addition",
+      "start": 2022,
+      "end": 2023,
+      "approx": 0,
+      "title": "Leaving Russia after the invasion: anti-war exile and flight from mobilization",
+      "blurb": "After Russia’s full-scale invasion of Ukraine on February 24, 2022, some people leave Russia because they oppose the war and do not want to support it; others fear repression for dissent or being sent to fight. These motives can overlap. A second major departure wave follows the September 21 mobilization announcement. Human Rights Watch documents both waves and the crackdown on anti-war speech; Reuters interviews describe opposition to the invasion and fear of the call-up. Georgia and Kazakhstan are among the destinations. Not everyone who leaves has the same political views or refugee status. The 2022–2023 interval highlights the initial waves and early aftermath, not the end of exile. Arrows are schematic connections from Russia to representative destinations, not individual journeys or migration counts.",
+      "lat": 55.75,
+      "lon": 37.62,
+      "source": "https://www.hrw.org/world-report/2023/country-chapters/russian-federation",
+      "reason": "Human Rights Watch documents the two 2022 departure waves and repression of anti-war dissent. Reuters reporting of September 27, 2022 includes interviews with Russians leaving for Georgia who oppose the invasion and fear mobilization, and reports departures toward Kazakhstan. The bounded 2022–2023 viewing interval covers those waves and their early aftermath, not the end of exile. Representative Moscow-to-Tbilisi and Moscow-to-Almaty links are schematic, not claims about individual itineraries or departure volumes.",
+      "additionalSources": [
+        "https://www.euronews.com/2022/09/27/ukraine-crisis-mobilisation-georgia",
+        "https://www.osw.waw.pl/en/publikacje/osw-commentary/2023-01-20/mobilisation-russia-societys-reactions-and-economic"
+      ],
+      "ongoing": false
     }
   ]
 }

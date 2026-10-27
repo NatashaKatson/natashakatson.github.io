@@ -11,10 +11,10 @@ const features = (chunk, year) => JSON.parse(fs.readFileSync(`static/historyalla
 test('every event, person, border arc and historical search destination passes integrity checks', () => {
   const result = audit();
   assert.deepEqual(result.errors, []);
-  assert.equal(result.counts.events, 346);
+  assert.equal(result.counts.events, 422);
   assert.equal(result.counts.people, 66);
-  assert.equal(result.counts.sourceReviewedEvents, 346);
-  assert.equal(result.counts.eventsWithSourceLinks, 346);
+  assert.equal(result.counts.sourceReviewedEvents, 422);
+  assert.equal(result.counts.eventsWithSourceLinks, 422);
   assert.equal(result.counts.borderChunks, 217);
   assert(result.counts.borderFeatureInstances > 22000);
   assert(result.counts.historicalSearchRecords > 2000);

@@ -1,5 +1,18 @@
 # Atlas accuracy review — 23 October 2026
 
+Russia emigration follow-up, 27 October: a separate source-linked migration
+story covers anti-war exile, repression and flight from mobilization in the
+2022 departure waves and early aftermath. Human Rights Watch and Reuters
+support the context; the atlas now contains **422 events** and 31 migration
+histories. Existing record IDs are preserved. See [migration coverage](history-migrations.md).
+
+Women’s rights follow-up, 27 October: 75 sourced additions bring the atlas to
+**421 events**. The existing New Zealand suffrage milestone keeps its shared ID
+and joins a dedicated 76-entry Women’s rights browser, including 41 abortion and
+reproductive-rights histories across all six regions. Records distinguish dated
+advocacy, laws, implementation and reversals. See
+[the source inventory](history-womens-rights.md).
+
 Thematic-layer follow-up, 26 October: 19 additional sourced events bring the
 atlas to **322 events**. Existing Bantu and Partition records now describe
 qualified movement intervals; 19 existing technology milestones and Tambora

@@ -40,7 +40,7 @@ function imageURLs(source) {
 let html = read('index.html');
 html = html.replace('<title>History All Around</title>', '<title>History All Around · Emoji prototype</title>');
 html = html.replace('<head>', '<head>\n<meta name="robots" content="noindex">');
-html = html.replace(/<link rel="stylesheet" href="(discovery\.css|atlas-ui\.css)">/g, (_, file) => `<style>${read(file)}</style>`);
+html = html.replace(/<link rel="stylesheet" href="(discovery\.css|atlas-ui\.css|womens-rights\.css)">/g, (_, file) => `<style>${read(file)}</style>`);
 html = html.replace(/<script src="([^\"]+)"><\/script>/g, (_, file) => {
   if (file.startsWith('https://')) {
     const name = file.includes('d3.min.js') ? 'd3.min.js' : file.includes('topojson-client') ? 'topojson-client.min.js' : null;

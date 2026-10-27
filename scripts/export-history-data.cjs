@@ -10,13 +10,13 @@ const wikipediaUrl = (slug) => 'https://en.wikipedia.org/wiki/' +
 const events = eventRows.map((row, index) => {
   const [startYear, endYear, approximate, title, description, latitude, longitude,
     region, category, wikipediaSlug, sourceUrl, fossilRegion, locationSourceUrl,
-    indigenousContext, aliases, ongoing] = row;
+    indigenousContext, aliases, ongoing, rightsContext] = row;
   return {
     id: 'e' + index, title, description, startYear, endYear: endYear ?? null,
     approximate: !!approximate, latitude, longitude, region, category,
-    wikipediaSlug, wikipediaUrl: wikipediaUrl(wikipediaSlug), sourceUrl: sourceUrl ?? null,
+    wikipediaSlug, wikipediaUrl: rightsContext ? null : wikipediaUrl(wikipediaSlug), sourceUrl: sourceUrl ?? null,
     fossilRegion: fossilRegion ?? null, locationSourceUrl: locationSourceUrl ?? null,
-    indigenousContext: indigenousContext ?? null, aliases: aliases ?? [], ongoing: !!ongoing,
+    indigenousContext: indigenousContext ?? null, rightsContext: rightsContext ?? null, aliases: aliases ?? [], ongoing: !!ongoing,
   };
 });
 const people = personRows.map((row, index) => {

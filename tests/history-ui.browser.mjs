@@ -73,7 +73,7 @@ try {
       assert(!!document.querySelector('#regions [data-id="'+event.id+'"]')===visible,'Penicillin follows the inclusive two-year window in '+year);
     }
     setYear(1992);const musqueam=ev.find(e=>e.wiki==='Musqueam_Indian_Band');
-    assert(document.getElementById('sideSub').textContent==='4 dated events within 2 years of 1992 · 3 historical context records','1992 contains both dated events and continuing pandemic periods');
+    assert(document.getElementById('sideSub').textContent==='7 dated events within 2 years of 1992 · 3 historical context records','1992 contains both dated events and continuing pandemic periods');
     for(const wiki of ['Dissolution_of_the_Soviet_Union','1994_South_African_general_election']){
       assert(document.querySelector('#regions [data-id="'+ev.find(e=>e.wiki===wiki).id+'"]'),'1992 includes '+wiki);
     }
