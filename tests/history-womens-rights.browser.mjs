@@ -113,7 +113,7 @@ try {
   await waitFor('!!window.HistoryWomensRights && !!window.AtlasUI');
   assert(await evaluate(`!state.cats.size&&!document.getElementById('rightsVisibility').checked`),'Saved view preserves hidden women’s rights');
   await evaluate(`stopSpin();flyToken++;document.getElementById('rightsSearch').value='';document.getElementById('rightsTopic').value='all';document.getElementById('rightsRegion').value='all';HistoryWomensRights.render();`);
-  for(const [width,height] of [[1440,1000],[1440,400],[900,400],[1280,450],[1100,800],[1024,768],[900,700],[861,700],[768,1024],[560,700],[390,844],[320,568],[320,500],[844,390]]){
+  for(const [width,height] of [[1440,1000],[1440,400],[900,400],[1280,450],[1100,800],[1024,768],[900,700],[861,700],[861,650],[861,601],[768,1024],[560,700],[390,844],[320,568],[320,500],[844,390]]){
     await send('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:1,mobile:width<=860});
     await evaluate(`window.scrollTo({top:0,behavior:'instant'});resize();`);
     assert(await evaluate(`(()=>{const r=[...document.querySelectorAll('.atlas-toolbar > .atlas-menu > button')].map(b=>b.getBoundingClientRect());return r.length===4&&r.every((a,i)=>a.left>=0&&a.right<=innerWidth&&a.height>=40&&r.slice(i+1).every(b=>a.right<=b.left||b.right<=a.left||a.bottom<=b.top||b.bottom<=a.top))&&document.documentElement.scrollWidth<=innerWidth})()`),`Four controls fit at ${width}×${height}`);
