@@ -52,6 +52,8 @@ try {
   await check(`slider.max==='3000000' && slider.min==='0' && !!document.querySelector('#play') && !!document.querySelector('#eraChoices') && !!document.querySelector('.dock-options')`, 'Original slider, playback, eras, and More controls are retained');
   await check(`AtlasEventEmojis.get(ev.find(e=>e.wiki==='Penicillin'))==='💊' && AtlasEventEmojis.get(ev.find(e=>e.wiki==='Smallpox_vaccine'))==='💉' && AtlasEventEmojis.get(ev.find(e=>e.wiki==='Stethoscope'))==='🩺' && AtlasEventEmojis.get(ev.find(e=>e.wiki==='Spanish_flu'))==='🦠'`, 'Medical discoveries, vaccines, diagnostics, and pandemics have specific emojis');
   await check(`ev.filter(e=>e.cat==='dinosaurs').every(e=>AtlasEventEmojis.get(e)==='')`, 'Dinosaur portraits and markers retain their original rendering');
+  await evaluate(`Promise.all([...document.querySelectorAll('.dinosaur-list-card img')].map(img=>{img.loading='eager';return img.decode()}))`);
+  await check(`[...document.querySelectorAll('.dinosaur-list-card img')].every(img=>img.naturalWidth>0)`, 'All eight dinosaur images decode in the offline preview');
   await check(`[...document.querySelectorAll('#regions .item')].some(b=>b.textContent.includes('Penicillin discovered') && b.querySelector('.event-emoji')?.textContent==='💊')`, 'Event list adds emojis while keeping original event text');
   await check(`(()=>{const icon=document.querySelector('#regions .event-emoji'),r=icon.getBoundingClientRect(),style=getComputedStyle(icon);return r.width>=18&&r.height>=18&&style.fontFamily.includes('Apple Color Emoji')&&style.visibility==='visible'&&style.display!=='none'})()`, 'Event emojis have visible dimensions and an explicit emoji font');
   await evaluate(`select(ev.find(e=>e.wiki==='Penicillin').id,false);`);

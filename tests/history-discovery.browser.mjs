@@ -326,5 +326,5 @@ const shot = await send("Page.captureScreenshot", {
 );
 console.log("Browser exceptions:", errors);
 if (errors.length) throw Error(JSON.stringify(errors));
-await send("Target.closeTarget", { targetId: page.id });
+await fetch(cdpURL+'/json/close/'+page.id);
 ws.close();

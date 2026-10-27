@@ -91,4 +91,4 @@ try{
   fs.writeFileSync(path.join(os.tmpdir(),'history-beringia-mobile.png'),Buffer.from(mobile.data,'base64'));
   assert.equal(errors.length,0,JSON.stringify(errors));
   console.log('Search, exact-view reload and 390px mobile layout passed; screenshots: '+os.tmpdir());
-}finally{await send('Target.closeTarget',{targetId:page.id});ws.close();}
+}finally{await fetch(cdp+'/json/close/'+page.id);ws.close();}

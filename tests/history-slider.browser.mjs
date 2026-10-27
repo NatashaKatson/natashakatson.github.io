@@ -113,6 +113,6 @@ try {
   console.log('Independent comparison snapshots and browser exceptions: passed');
 } finally {
   clearInterval(keepAlive);
-  await send('Target.closeTarget', { targetId: page.id });
+  await fetch(cdp+'/json/close/'+page.id);
   ws.close();
 }

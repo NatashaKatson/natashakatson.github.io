@@ -224,5 +224,5 @@ return 'New France label remains visible on the 390px mobile map';
 const quebecShot=await send('Page.captureScreenshot',{format:'png'});
 (await import('node:fs')).writeFileSync((await import('node:path')).join((await import('node:os')).tmpdir(),'history-quebec-mobile.png'),Buffer.from(quebecShot.data,'base64'));
 console.log('Browser exceptions:',errors);
-await send('Target.closeTarget',{targetId:page.id});ws.close();
+await fetch(cdpURL+'/json/close/'+page.id);ws.close();
 if(errors.length)throw Error(JSON.stringify(errors));

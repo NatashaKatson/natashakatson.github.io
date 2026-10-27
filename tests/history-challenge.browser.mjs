@@ -201,5 +201,5 @@ return 'Coordinate entry, validation, correct reordering, skips and final summar
 const shot=await send('Page.captureScreenshot',{format:'png'});
 (await import('node:fs')).writeFileSync((await import('node:path')).join((await import('node:os')).tmpdir(),'history-challenge-mobile.png'),Buffer.from(shot.data,'base64'));
 console.log('Browser exceptions:',errors);
-await send('Target.closeTarget',{targetId:page.id});ws.close();
+await fetch(cdpURL+'/json/close/'+page.id);ws.close();
 if(errors.length)throw Error(JSON.stringify(errors));

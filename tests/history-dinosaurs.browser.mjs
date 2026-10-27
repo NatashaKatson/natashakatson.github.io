@@ -204,5 +204,5 @@ try {
 } finally {
   clearInterval(keepAlive);
   if (errors.length) console.error(JSON.stringify(errors));
-  await send('Target.closeTarget', { targetId: page.id }); ws.close();
+  await fetch(cdp+'/json/close/'+page.id); ws.close();
 }

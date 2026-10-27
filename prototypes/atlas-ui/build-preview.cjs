@@ -53,9 +53,11 @@ html = html.replace(/<script src="([^\"]+)"><\/script>/g, (_, file) => {
     "const avatarUrl = (record) => window.AtlasPrototypeAssets.images['images/dinosaurs/' + record.wiki.toLowerCase() + '.webp'];", 'dinosaur asset resolver');
   return script(imageURLs(source));
 });
+// Resolve page attributes before inserting the manifest: replacing paths inside
+// the manifest would rename its image keys and break dynamic avatar lookups.
+html = imageURLs(html);
 const bootstrap = `<script type="application/json" id="prototype-assets">${payload}</script>\n${script(loader)}`;
 html = html.replace('<script type="application/json" id="land">', () => bootstrap + '\n<script type="application/json" id="land">');
-html = imageURLs(html);
 // Preserve the original home destination when opening the prototype from its own folder.
 html = html.replaceAll('href="../"', 'href="../../static/historyallaround/"');
 const licenses = ['d3.LICENSE', 'topojson-client.LICENSE'].map((file) => fs.readFileSync(path.join(__dirname, 'vendor', file), 'utf8')).join('\n');

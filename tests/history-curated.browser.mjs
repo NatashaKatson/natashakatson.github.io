@@ -171,6 +171,6 @@ try {
   console.log("Browser exceptions: none");
 } finally {
   if (errors.length) console.error('Atlas exceptions:', JSON.stringify(errors));
-  await send("Target.closeTarget", { targetId: page.id });
+  await fetch(cdpURL+'/json/close/'+page.id);
   ws.close();
 }

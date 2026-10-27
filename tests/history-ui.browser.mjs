@@ -126,5 +126,5 @@ try {
   assert.equal(errors.length, 0, JSON.stringify(errors));
   console.log('Mobile Search is visible and reachable at 390px; no runtime errors');
 } finally {
-  await send('Page.close').catch(() => {}); ws.close();
+  await fetch(cdp+'/json/close/'+tab.id); ws.close();
 }

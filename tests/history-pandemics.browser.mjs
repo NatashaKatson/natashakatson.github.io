@@ -63,6 +63,11 @@ try {
       const hit=hits.find(h=>h.id===e.id);
       check(nearest(hit.x,hit.y)?.id===e.id,'Marker hit testing '+wiki);
       select(e.id,false);flyToken++;
+      const rings=[],originalArc=ctx.arc;
+      ctx.arc=function(x,y,r,...args){if(r===13)rings.push({x,y});return originalArc.call(this,x,y,r,...args)};
+      render();ctx.arc=originalArc;
+      const selectedHit=hits.find(h=>h.id===e.id&&!h.radius);
+      check(rings.some(p=>Math.hypot(p.x-selectedHit.x,p.y-selectedHit.y)<.01),'Selection ring follows the visible marker '+wiki);
       check(document.querySelector('#detail h3').textContent.includes(e.title),'Reader opens '+wiki);
       if(e.ongoing)check(document.querySelector('#detail .kicker').textContent.includes('present'),'Ongoing reader label '+wiki);
       document.querySelector('#detail .close').click();
@@ -72,8 +77,12 @@ try {
     check(document.querySelector('#regions [data-id="'+covid.id+'"] .y').textContent==='2019–present','Sidebar uses present');
     document.querySelector('[data-atlas-menu="filtersPanel"]').click();
     chip.click();check(state.cats.has('pandemics'),'At least one category remains enabled');
-    const nature=document.querySelector('#legend [data-k="nature"]');nature.click();chip.click();render();
+    const nature=document.querySelector('#legend [data-k="nature"]');nature.click();select(covid.id,false);flyToken++;chip.click();render();
     check(!activeEvents().some(({e})=>e.cat==='pandemics')&&!hits.some(h=>byId[h.id]?.cat==='pandemics'),'Disabling pandemics removes their map markers');
+    let hiddenRings=0;const savedArc=ctx.arc;
+    ctx.arc=function(x,y,r,...args){if(r===13)hiddenRings++;return savedArc.call(this,x,y,r,...args)};
+    render();ctx.arc=savedArc;check(hiddenRings===0,'Hidden category has no phantom selection ring');
+    document.querySelector('#detail .close').click();
     check(nature.getAttribute('aria-pressed')==='true'&&chip.getAttribute('aria-pressed')==='false','Filters are independent');
     document.querySelector('.history-search-trigger').click();
     const input=document.getElementById('historySearchInput');input.value='COVID-19 pandemic';input.dispatchEvent(new Event('input',{bubbles:true}));

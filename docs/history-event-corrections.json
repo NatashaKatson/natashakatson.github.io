@@ -47,13 +47,13 @@
     },
     {
       "wiki": "Bantu_expansion",
-      "start": -4000,
+      "start": -3000,
       "title": "Expansion of Bantu-speaking communities",
       "blurb": "Language, archaeology and genetics trace a long, varied expansion from the Nigeria–Cameroon border region into central, eastern and southern Africa. The approximate interval summarises many generations; it is not a single migration, an end to later movement, or a claim about modern national borders. Arrows summarise directions of movement, not the journeys of every person or exact travel tracks.",
       "lat": 5.5,
       "lon": 10,
       "source": "https://www.nature.com/articles/s41586-023-06770-6",
-      "reason": "Extend the existing record to the qualified movement interval and preserve the original shared ID. The former 1000 BC date was too late for the beginning, the marker was far from the proposed homeland, and ironworking was conflated with the earliest dispersals.",
+      "reason": "Retain the existing approximate 3000 BC start used by shared links, within the source’s 6000–4000-years-ago emergence range. Extend the viewing interval to cover later movements; its cutoff is not a claim that migration ended then. Route lines summarise connections over the full interval.",
       "end": 1000,
       "approx": 1
     },

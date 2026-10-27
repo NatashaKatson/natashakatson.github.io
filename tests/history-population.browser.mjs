@@ -133,5 +133,5 @@ assert(document.querySelector('.population-value')&&document.querySelector('.pop
 return 'Population failure is nonblocking and retry recovers';
 })()`));
 console.log('Browser exceptions:',errors);
-await send('Target.closeTarget',{targetId:page.id});ws.close();
+await fetch(cdpURL+'/json/close/'+page.id);ws.close();
 if(errors.length)throw Error(JSON.stringify(errors));

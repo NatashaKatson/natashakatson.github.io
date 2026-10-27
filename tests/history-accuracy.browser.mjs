@@ -269,5 +269,5 @@ try {
   console.log('Great Lakes boundary, lake water and shore-city regressions passed; screenshot: '+screenshotPath);
 } finally {
   clearInterval(keepAlive);
-  await send('Target.closeTarget',{targetId:page.id});ws.close();
+  await fetch(cdp+'/json/close/'+page.id);ws.close();
 }

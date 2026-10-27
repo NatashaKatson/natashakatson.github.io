@@ -132,5 +132,5 @@ try {
   fs.writeFileSync(path.join(os.tmpdir(),'history-water-ui-mobile.png'),Buffer.from(shot.data,'base64'));
   assert.equal(errors.length,0,JSON.stringify(errors));
 } finally {
-  clearInterval(keepAlive);await send('Target.closeTarget',{targetId:page.id});ws.close();
+  clearInterval(keepAlive);await fetch(cdp+'/json/close/'+page.id);ws.close();
 }

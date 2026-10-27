@@ -132,5 +132,5 @@ try {
   assert.deepEqual(errors, [], 'No browser runtime exceptions');
   console.log('Browser runtime exceptions: none');
 } finally {
-  await send('Target.closeTarget', { targetId: tab.id }); ws.close();
+  await fetch(cdp+'/json/close/'+tab.id); ws.close();
 }

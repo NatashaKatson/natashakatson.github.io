@@ -24,6 +24,10 @@ test('each thematic category contains source-linked records and the existing pan
   assert.equal(get('Printing_press').cat,'technology');
   assert.equal(get('1815_eruption_of_Mount_Tambora').cat,'climate');
   assert.equal(get('Smallpox_vaccine').cat,'ideas','vaccine milestones keep their science category');
+  assert.equal(get('Bantu_expansion').id,'e21');
+  assert.equal(get('Bantu_expansion').start,-3000,'existing dated shared references stay valid');
+  assert.equal(get('Partition_of_India').id,'e140');
+  assert.equal(get('Partition_of_India').start,1947);
   assert.equal(new Set(rows.map(e=>e[9])).size,rows.length);
 });
 

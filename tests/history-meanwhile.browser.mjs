@@ -111,6 +111,6 @@ try {
   if(errors.length)throw Error(JSON.stringify(errors));
   console.log('Browser exceptions: none');
 } finally {
-  await send("Target.closeTarget", { targetId: page.id });
+  await fetch(cdpURL+'/json/close/'+page.id);
   ws.close();
 }
