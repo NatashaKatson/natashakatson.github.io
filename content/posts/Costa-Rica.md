@@ -140,7 +140,7 @@ Ugh, food in Costa Rica is probably the most expensive part. Groceries are very 
 
 We usually had breakfast and lunch at home (except in Fortuna) and ate dinner at cafes. Mostly because it’s hard to eat heavy food in the midday heat. Also, thanks to Sam, we eat breakfast earlier than cafes open. Since we stayed in Airbnbs with full kitchens, we stopped at Walmart on the first day — and were shocked by the prices. Locals later told us about Auto Mercado, which looks upscale but is actually cheaper.
 
-In Playa Hermosa, we found an affordable (by local standards) [small cafe](google.com/maps/place/Restaurante+Almar/@10.5719793,-85.6740503,16.51z/data=!4m5!3m4!1s0x8f9e2b1c79bdc067:0xb9c736844612b69c!8m2!3d10.5757461!4d-85.6746912?entry=ttu&g_ep=EgoyMDI2MDEyNS4wIKXMDSoASAFQAw%3D%3D). Portions were huge, so we usually ordered two dishes for the three of us. I could message them on WhatsApp, order ahead, and pick it up to eat on the beach — very convenient.
+In Playa Hermosa, we found an affordable (by local standards) [small cafe](https://google.com/maps/place/Restaurante+Almar/@10.5719793,-85.6740503,16.51z/data=!4m5!3m4!1s0x8f9e2b1c79bdc067:0xb9c736844612b69c!8m2!3d10.5757461!4d-85.6746912?entry=ttu&g_ep=EgoyMDI2MDEyNS4wIKXMDSoASAFQAw%3D%3D). Portions were huge, so we usually ordered two dishes for the three of us. I could message them on WhatsApp, order ahead, and pick it up to eat on the beach — very convenient.
 
 In Fortuna, we ate at sodas — local cafes similar to diners in the US or Canada. Casado is typical there: rice, beans, fried plantain, and a protein (chicken, fish, or meat). Sometimes we ordered rice with chicken, which came with fries — Sam was very interested in that for the first few days.
 

@@ -45,6 +45,13 @@ try {
   await waitFor('!!window.AtlasUI && !!window.HistoryContemporaries');
   console.log(await evaluate(`(async()=>{
     const check=(v,m)=>{if(!v)throw Error(m)};
+    const until=async(predicate,message)=>{
+      const deadline=performance.now()+10000;
+      while(!predicate()){
+        check(performance.now()<deadline,message+' (timed out)');
+        await new Promise(r=>setTimeout(r,30));
+      }
+    };
     stopSpin();flyToken++;
     const before=(a,b)=>!!(a.compareDocumentPosition(b)&Node.DOCUMENT_POSITION_FOLLOWING);
     const regions=document.getElementById('regions'),people=document.getElementById('people');
@@ -57,10 +64,10 @@ try {
     const event=ev.find(e=>e.wiki==='Penicillin');select(event.id,false);
     check(!document.querySelector('#detail [data-story]').closest('details').open,'Other-date exploration is collapsed');
     slider.value=Math.round(tAt(1992)*SLIDER_STEPS);slider.dispatchEvent(new Event('input',{bubbles:true}));
-    await new Promise(r=>setTimeout(r,250));
+    await until(()=>state.year===1992&&!state.sel&&!document.querySelector('#detail .detail'),'Scrubbing clears obsolete detail');
     check(state.year===1992&&!state.sel&&!document.querySelector('#detail .detail'),'Scrubbing clears obsolete detail');
     setYear(1928);select(event.id,false);document.getElementById('play').click();
-    await new Promise(r=>setTimeout(r,250));stopPlay();
+    await until(()=>state.year>1928&&!state.sel&&!document.querySelector('#detail .detail'),'Playback clears obsolete detail');stopPlay();
     check(state.year>1928&&!state.sel&&!document.querySelector('#detail .detail'),'Playback clears obsolete detail');
     setYear(1);const augustus=ppl.find(p=>p.wiki==='Augustus');select(augustus.id,false);
     check(document.querySelector('#detail p').textContent.includes('63 years old'),'BC/AD detail age skips year zero');

@@ -28,8 +28,9 @@
 {{- end }}
 <script>
     window.onload = function () {
-        if (localStorage.getItem("menu-scroll-position")) {
-            document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
+        const menu = document.getElementById('menu');
+        if (menu && localStorage.getItem("menu-scroll-position")) {
+            menu.scrollLeft = localStorage.getItem("menu-scroll-position");
         }
     }
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -58,13 +59,14 @@
     };
 
     function menu_on_scroll() {
-        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
+        const menu = document.getElementById('menu');
+        if (menu) localStorage.setItem("menu-scroll-position", menu.scrollLeft);
     }
 
 </script>
 {{- if (not .Site.Params.disableThemeToggle) }}
 <script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
+    document.getElementById("theme-toggle")?.addEventListener("click", () => {
         if (document.body.className.includes("dark")) {
             document.body.classList.remove('dark');
             localStorage.setItem("pref-theme", 'light');
