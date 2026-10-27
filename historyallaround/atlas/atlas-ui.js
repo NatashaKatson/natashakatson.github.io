@@ -40,7 +40,10 @@
       const toolbar = trigger.closest('.atlas-toolbar');
       if (toolbar) {
         const anchor = toolbar.getBoundingClientRect();
-        panel.style.setProperty('--atlas-menu-top', `${Math.max(12, anchor.bottom + 10)}px`);
+        // Long catalogues need enough room for a complete result below their controls.
+        const top = panel.id === 'womensRightsPanel' && innerWidth > 860
+          ? Math.min(anchor.bottom + 10, innerHeight - 560) : anchor.bottom + 10;
+        panel.style.setProperty('--atlas-menu-top', `${Math.max(12, top)}px`);
         panel.style.setProperty('--atlas-menu-right', `${Math.max(12, innerWidth - anchor.right)}px`);
       }
       panel.style.setProperty('--atlas-menu-space', `${Math.max(0, innerHeight - panel.getBoundingClientRect().top - 12)}px`);
@@ -119,6 +122,8 @@
   window.AtlasUI = { render() {
     window.HistoryLayers?.render();
     window.HistoryMigrations?.render();
+    window.HistoryWomensRights?.render();
+    window.HistoryWomensColors?.render();
     const years = HistoryDiscovery.displayedYears();
     const deep = years.some((year) => year < -1000000);
     const human = years.some((year) => year >= -1000000);

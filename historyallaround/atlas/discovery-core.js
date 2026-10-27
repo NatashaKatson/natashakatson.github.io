@@ -91,6 +91,7 @@
           !Number.isFinite(v.zoom) || v.zoom < .7 || v.zoom > 6 ||
           !Number.isFinite(v.split) || v.split < .05 || v.split > .95 ||
           typeof v.compare !== "boolean" || typeof v.changed !== "boolean" ||
+          !(v.rightsColors == null || typeof v.rightsColors === "boolean") ||
           !Array.isArray(v.cats) || v.cats.length > categories.length ||
           !v.cats.every((c) => categories.includes(c)) ||
           !(v.selectedYear === null || year(v.selectedYear)) ||

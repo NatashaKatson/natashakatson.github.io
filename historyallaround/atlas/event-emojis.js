@@ -16,6 +16,7 @@
     },
     get(event) {
       if (!event || event.kind !== 'event' || event.cat === 'dinosaurs') return '';
+      if (event.cat === 'womens-rights') return '👩';
       if (event.wiki === 'The_Holocaust') return '💀';
       if (event.wiki === 'Pale_of_Settlement') return '📜';
       if (event.indigenous) return '🌳';
