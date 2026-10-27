@@ -1,4 +1,5 @@
 /* Globe-first workspace: compact controls, contextual filters and one time dock. */
+:root, .stage { --c-pandemics: #317d83; }
 .stage .readout {
   top: 22px; left: 24px; width: auto; max-width: calc(100% - 240px);
   padding: 0; border: 0; background: transparent; container-type: normal;
