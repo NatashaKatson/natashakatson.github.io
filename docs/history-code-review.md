@@ -96,3 +96,36 @@ counts and saved categories after the separation.
 The dedicated migration suite passes against both the served atlas and the
 standalone offline preview. All 16 browser suites, 87 Node tests, 46 offline
 preview checks and the Hugo 0.110.0 production build pass after the UI changes.
+
+## Migration arrow rendering review
+
+**P2 — Short migration legs lost their direction at world zoom.** Each
+geographic leg had an independent eight-pixel arrowhead, suppressed when two
+nearby projected samples were less than two pixels apart. Korea's Hungnam
+evacuation consequently had no arrowheads at default globe zoom, then several
+crowded heads at regional zoom. Heads now follow the full visible projected
+path, scale down for short paths and repeat at 90-pixel intervals on long paths.
+They follow the local forward tangent at bends. Korea's recorded coordinates
+and historical interval remain unchanged.
+
+**P2 — Route interaction did not use the drawing's clipping and resampling.**
+Hit positions came from independent geographic samples, discarding offscreen
+points. A segment crossing a zoomed viewport could therefore be drawn without
+selectable samples. Route hits and arrowheads now use D3's projected line stream,
+including horizon, antimeridian and viewport clipping, so separate visible pieces
+stay separate and visible crossings remain selectable.
+
+The new `tests/history-migration-arrows.browser.mjs` checks Korea at 1440, 390
+and 320 pixels in globe and flat projections at zoom levels 1, 3 and 6. It
+checks rendered arrow positions and forward tangents against independent dense
+geographic samples, tests the other migration routes, verifies date and category
+gating, and clicks Korea's line away from its marker to open the source-linked
+reader. Synthetic paths exercise a map-seam crossing, a viewport crossing with
+offscreen endpoints and a hidden-hemisphere route. Screenshots were inspected
+at world and regional zoom on desktop and emulated phones.
+
+Validation after the fixes: all 17 browser suites pass against the served atlas;
+the new arrow suite also passes in the offline preview. All 87 Node tests, both
+Python tests, the country-data check and all 46 offline preview checks pass.
+The integrity audit reports no errors, and the complete bilingual site builds
+with CI's Hugo 0.110.0. No additional blocker was found in the reviewed paths.

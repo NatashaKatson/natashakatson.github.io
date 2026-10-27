@@ -6447,31 +6447,40 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
         context.setLineDash(migration ? [6,5] : []);
         context.beginPath();geoPath(HistoricalLayersCore.geometry(route));context.stroke();
         context.setLineDash([]);
-        for (const line of route.paths) {
-          for (let i=1;i<line.length;i++) {
-            const interpolate = d3.geoInterpolate(line[i-1],line[i]);
-            const steps = Math.max(2,Math.ceil(d3.geoDistance(line[i-1],line[i])*180/Math.PI));
-            let last = null;
-            for(let j=0;j<=steps;j++) {
-              const point = interpolate(j/steps);
-              if(!isVisible(...point)){last=null;continue;}
-              const p = projection(point);
-              if(!p || !p.every(Number.isFinite) || p[0]<0 || p[0]>W || p[1]<0 || p[1]>H){last=null;continue;}
-              // Subdivide visible projected segments so narrow routes remain selectable when zoomed.
-              const gap = last ? Math.hypot(p[0]-last[0],p[1]-last[1]) : 0;
-              const subdivisions = gap < Math.max(W,H)/2 ? Math.max(1,Math.ceil(gap/9)) : 1;
-              for(let k=1;k<=subdivisions;k++) hits.push({x:last?last[0]+(p[0]-last[0])*k/subdivisions:p[0],y:last?last[1]+(p[1]-last[1])*k/subdivisions:p[1],id:record.id,radius:7,label:record.title+' · '+fmtEvent(record)+' · schematic '+(migration?'migration':'trade connection')});
-              last=p;
-            }
+        // Use the same resampling and horizon/antimeridian clipping as the
+        // drawn path. Geographic waypoints are too sparse for short routes
+        // (Korea at world zoom), and must not be joined across map seams.
+        const lines = [];
+        let line;
+        const sink = {
+          lineStart() { lines.push(line = []); },
+          point(x,y) { line.push([x,y]); },
+          lineEnd() {},
+        };
+        d3.geoStream(HistoricalLayersCore.geometry(route), projection.stream(d3.geoClipRectangle(0,0,W,H)(sink)));
+        const label = record.title+' · '+fmtEvent(record)+' · schematic '+(migration?'migration':'trade connection');
+        for (const points of lines) {
+          const distances = [0];
+          for(let i=0;i<points.length;i++) {
+            const p=points[i],last=points[i-1];
+            const gap=last?Math.hypot(p[0]-last[0],p[1]-last[1]):0;
+            if(i)distances.push(distances[i-1]+gap);
+            const subdivisions=Math.max(1,Math.ceil(gap/9));
+            for(let k=1;k<=subdivisions;k++)hits.push({x:last?last[0]+(p[0]-last[0])*k/subdivisions:p[0],y:last?last[1]+(p[1]-last[1])*k/subdivisions:p[1],id:record.id,radius:7,label});
           }
-          // Arrowheads are placed on each leg only where both nearby points are visible.
-          if(migration) for(let i=1;i<line.length;i++) {
-            const interpolate=d3.geoInterpolate(line[i-1],line[i]);
-            const a=interpolate(.68),b=interpolate(.78);
-            if(!isVisible(...a)||!isVisible(...b))continue;
-            const p=projection(a),q=projection(b);
-            if(!p||!q||Math.hypot(q[0]-p[0],q[1]-p[1])<2||Math.hypot(q[0]-p[0],q[1]-p[1])>W/3)continue;
-            context.save();context.translate(...q);context.rotate(Math.atan2(q[1]-p[1],q[0]-p[0]));context.beginPath();context.moveTo(0,0);context.lineTo(-8,-4);context.lineTo(-8,4);context.closePath();context.fill();context.restore();
+          const length=distances.at(-1);
+          if(!migration || length<4)continue;
+          const pointAt = distance => {
+            let i=1;while(i<distances.length-1&&distances[i]<distance)i++;
+            const t=(distance-distances[i-1])/(distances[i]-distances[i-1]);
+            return points[i-1].map((v,k)=>v+(points[i][k]-v)*t);
+          };
+          // One readable direction on short routes; space additional heads
+          // by screen distance rather than crowding one onto every waypoint.
+          const size=Math.min(8,length*.35),end=length-Math.min(2,length*.1);
+          for(let distance=end;distance>=size+1;distance-=90) {
+            const p=pointAt(distance-Math.min(size,1)),q=pointAt(distance);
+            context.save();context.translate(...q);context.rotate(Math.atan2(q[1]-p[1],q[0]-p[0]));context.beginPath();context.moveTo(0,0);context.lineTo(-size,-size/2);context.lineTo(-size,size/2);context.closePath();context.fill();context.restore();
           }
         }
         context.restore();

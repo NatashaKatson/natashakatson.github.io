@@ -65,6 +65,11 @@ enslavement and genocide are explicitly identified in the record text. Haitian
 Revolution displacement also distinguishes free people from enslaved people
 transported by owners.
 
+Arrowheads follow each visible projected path toward its destination, with size
+and spacing based on screen distance. Short routes such as the Hungnam evacuation
+retain a direction at world zoom without an arrow on every intermediate waypoint.
+Horizon, map-seam and viewport clipping also govern the selectable route areas.
+
 Sources and review reasons are retained per record in
 `history-event-corrections.json`; route geometry is in
 `static/historyallaround/atlas/historical-layers-core.js`.
@@ -77,6 +82,9 @@ comparison counts, shared views and catalogue access at desktop/mobile widths.
 `node tests/history-migrations-ui.browser.mjs` additionally covers dedicated
 search, keyboard opening/dismissal, empty results, year preservation, saved
 visibility, and reachable list items from 320-pixel phones to desktop screens.
+`node tests/history-migration-arrows.browser.mjs` checks rendered directions,
+Korea at world and regional zoom, route clicks and date/category gating, plus
+map-seam, viewport and hidden-hemisphere clipping.
 
 Requested examples are explicitly represented: Belarus-to-Poland exile from
 2020; Russian Revolution/Civil War exile from 1917; displacement from Russia’s
