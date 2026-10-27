@@ -1,0 +1,466 @@
+/* Hand-drawn connections between documented regions; not source GIS tracks. */
+(function(root){
+  const routes = [
+  {
+    "wiki": "Silk_Roads",
+    "kind": "trade",
+    "paths": [
+      [
+        [
+          108.94,
+          34.26
+        ],
+        [
+          103.8,
+          36.06
+        ],
+        [
+          98.5,
+          39.7
+        ],
+        [
+          94.66,
+          40.14
+        ],
+        [
+          89.19,
+          42.95
+        ],
+        [
+          82.97,
+          41.72
+        ],
+        [
+          75.99,
+          39.47
+        ],
+        [
+          71.45,
+          42.9
+        ],
+        [
+          66.97,
+          39.65
+        ]
+      ]
+    ]
+  },
+  {
+    "wiki": "Trans-Saharan_trade",
+    "kind": "trade",
+    "paths": [
+      [
+        [
+          -4.26,
+          31.28
+        ],
+        [
+          -4.99,
+          23.58
+        ],
+        [
+          -3.01,
+          16.77
+        ]
+      ],
+      [
+        [
+          -3.01,
+          16.77
+        ],
+        [
+          -4.9,
+          13.9
+        ]
+      ]
+    ]
+  },
+  {
+    "wiki": "Indian_Ocean_trade",
+    "kind": "trade",
+    "paths": [
+      [
+        [
+          39.52,
+          -8.96
+        ],
+        [
+          41,
+          -4
+        ],
+        [
+          50,
+          5
+        ],
+        [
+          56,
+          15
+        ],
+        [
+          58.4,
+          23.6
+        ],
+        [
+          68,
+          20
+        ],
+        [
+          72.6,
+          21.2
+        ]
+      ],
+      [
+        [
+          58.4,
+          23.6
+        ],
+        [
+          67,
+          11
+        ],
+        [
+          75.8,
+          11.25
+        ],
+        [
+          79.8,
+          6.9
+        ]
+      ]
+    ]
+  },
+  {
+    "wiki": "Hanseatic_League",
+    "kind": "trade",
+    "paths": [
+      [
+        [
+          10.69,
+          53.87
+        ],
+        [
+          12.1,
+          54.2
+        ],
+        [
+          18.65,
+          54.35
+        ],
+        [
+          24.1,
+          57
+        ],
+        [
+          24.75,
+          59.44
+        ]
+      ],
+      [
+        [
+          10.69,
+          53.87
+        ],
+        [
+          9.5,
+          56.2
+        ],
+        [
+          10.5,
+          58.1
+        ],
+        [
+          5.32,
+          60.39
+        ]
+      ],
+      [
+        [
+          10.69,
+          53.87
+        ],
+        [
+          9.5,
+          56.2
+        ],
+        [
+          6,
+          56
+        ],
+        [
+          2,
+          53
+        ],
+        [
+          -0.1,
+          51.5
+        ]
+      ]
+    ]
+  },
+  {
+    "wiki": "Austronesian_expansion",
+    "kind": "migrations",
+    "paths": [
+      [
+        [
+          121,
+          23.5
+        ],
+        [
+          121.7,
+          18.3
+        ],
+        [
+          123,
+          12
+        ],
+        [
+          119,
+          5
+        ],
+        [
+          116,
+          0
+        ]
+      ],
+      [
+        [
+          123,
+          12
+        ],
+        [
+          128,
+          3
+        ],
+        [
+          132,
+          -2
+        ],
+        [
+          140,
+          -5
+        ]
+      ]
+    ]
+  },
+  {
+    "wiki": "Bantu_expansion",
+    "kind": "migrations",
+    "paths": [
+      [
+        [
+          10,
+          5.5
+        ],
+        [
+          14,
+          1
+        ],
+        [
+          18,
+          -4
+        ],
+        [
+          25,
+          -8
+        ],
+        [
+          29,
+          -14
+        ],
+        [
+          31,
+          -24
+        ]
+      ],
+      [
+        [
+          18,
+          -4
+        ],
+        [
+          24,
+          -1
+        ],
+        [
+          30,
+          -2
+        ],
+        [
+          35,
+          -6
+        ]
+      ]
+    ]
+  },
+  {
+    "wiki": "Atlantic_slave_trade",
+    "kind": "migrations",
+    "paths": [
+      [
+        [
+          13.23,
+          -8.84
+        ],
+        [
+          -4,
+          -12
+        ],
+        [
+          -20,
+          -14
+        ],
+        [
+          -38.5,
+          -12.97
+        ]
+      ],
+      [
+        [
+          -1,
+          5.5
+        ],
+        [
+          -15,
+          10
+        ],
+        [
+          -35,
+          15
+        ],
+        [
+          -61,
+          14
+        ],
+        [
+          -76,
+          18
+        ]
+      ]
+    ]
+  },
+  {
+    "wiki": "Trail_of_Tears",
+    "kind": "migrations",
+    "paths": [
+      [
+        [
+          -84.75,
+          35.2
+        ],
+        [
+          -85.5,
+          35.5
+        ],
+        [
+          -86.8,
+          36.2
+        ],
+        [
+          -89.5,
+          37.3
+        ],
+        [
+          -91,
+          37.3
+        ],
+        [
+          -92.5,
+          36.5
+        ],
+        [
+          -94.97,
+          35.92
+        ]
+      ]
+    ]
+  },
+  {
+    "wiki": "Great_Migration_(African_American)",
+    "kind": "migrations",
+    "paths": [
+      [
+        [
+          -90.18,
+          32.3
+        ],
+        [
+          -90.05,
+          35.15
+        ],
+        [
+          -89.1,
+          38
+        ],
+        [
+          -87.63,
+          41.88
+        ]
+      ],
+      [
+        [
+          -84.39,
+          33.75
+        ],
+        [
+          -83,
+          39
+        ],
+        [
+          -83.05,
+          42.33
+        ]
+      ]
+    ]
+  },
+  {
+    "wiki": "Partition_of_India",
+    "kind": "migrations",
+    "paths": [
+      [
+        [
+          74.34,
+          31.55
+        ],
+        [
+          74.87,
+          31.63
+        ],
+        [
+          75.58,
+          31.33
+        ]
+      ],
+      [
+        [
+          75.4,
+          30.85
+        ],
+        [
+          74.6,
+          30.85
+        ],
+        [
+          73.8,
+          31.1
+        ]
+      ]
+    ]
+  }
+];
+  const byWiki = new Map(routes.map(r => [r.wiki, r]));
+  const api = {
+    routes,
+    active(records, year, categories) {
+      return records.filter(e => byWiki.has(e.wiki) && categories.has(e.cat) && year >= e.start && year <= e.end)
+        .map(record => ({ record, route: byWiki.get(record.wiki) }));
+    },
+    geometry(route) { return {type:'MultiLineString', coordinates:route.paths}; },
+    nearest(records, category, year) {
+      const gap = e => year < e.start ? e.start-year : year > e.end ? year-e.end : 0;
+      return records.filter(e => e.cat === category).sort((a,b) => gap(a)-gap(b) || a.start-b.start)[0] || null;
+    },
+  };
+  if(typeof module === 'object' && module.exports) module.exports = api;
+  else root.HistoricalLayersCore = api;
+})(typeof globalThis !== 'undefined' ? globalThis : this);

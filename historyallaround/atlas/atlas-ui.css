@@ -1,5 +1,20 @@
 /* Globe-first workspace: compact controls, contextual filters and one time dock. */
 :root, .stage { --c-pandemics: #317d83; }
+:root, .stage { --c-trade: #aa7139; --c-migrations: #626da3; --c-climate: #44889a; --c-technology: #797b3b; }
+.thematic-layers { margin-top: 18px; border-top: 1px solid #ddd4c3; padding-top: 12px; }
+.thematic-layers h3 { margin: 0; font: 15px var(--display); }
+.thematic-layer { display: flex; gap: 6px; align-items: center; margin: 5px 0; }
+.layer-toggle { flex: 1; min-width: 0; display: flex; align-items: center; gap: 9px; min-height: 48px; padding: 7px 3px; text-align: left; background: transparent; border: 0; color: inherit; font: 12px var(--body); cursor: pointer; }
+.layer-toggle i { width: 7px; height: 7px; flex: 0 0 7px; border-radius: 50%; background: var(--c); }
+.layer-toggle b { margin-left: auto; font-weight: 400; }
+.layer-toggle small { display: block; margin-top: 3px; color: #81776e; font-size: 10px; }
+.layer-toggle[aria-pressed="false"] { color: #82786e; }
+.layer-explore { min-height: 44px; border: 0; border-radius: 4px; background: #eee7dc; color: #443c35; padding: 7px; font: 10px var(--body); cursor: pointer; }
+.layer-toggle:hover, .layer-explore:hover { background: #e8dfd1; }
+.thematic-layer button:focus-visible { outline: 2px solid #a3482d; outline-offset: 2px; }
+.layer-route-key { display: flex; flex-wrap: wrap; gap: 4px 10px; }
+.layer-route-key span:first-child { color: #92602f; }
+.layer-route-key span:last-child { color: #626da3; }
 .stage .readout {
   top: 22px; left: 24px; width: auto; max-width: calc(100% - 240px);
   padding: 0; border: 0; background: transparent; container-type: normal;

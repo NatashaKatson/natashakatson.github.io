@@ -101,6 +101,7 @@
 
   let lastKey = '';
   window.AtlasUI = { render() {
+    window.HistoryLayers?.render();
     const years = HistoryDiscovery.displayedYears();
     const deep = years.some((year) => year < -1000000);
     const human = years.some((year) => year >= -1000000);
