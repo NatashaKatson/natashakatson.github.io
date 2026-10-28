@@ -1,0 +1,168 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+const root = path.dirname(fileURLToPath(import.meta.url));
+const testURL = process.env.ATLAS_TEST_URL || 'http://127.0.0.1:8769/historyallaround/atlas/';
+const screenshotDir = process.env.ATLAS_SCREENSHOT_DIR || path.join(root, 'previews');
+const cdp = process.env.ATLAS_CDP_URL || 'http://127.0.0.1:9231';
+const tab = await (await fetch(cdp + '/json/new?about:blank', { method: 'PUT' })).json();
+const ws = new WebSocket(tab.webSocketDebuggerUrl);
+await new Promise((resolve, reject) => { ws.addEventListener('open', resolve, { once: true }); ws.addEventListener('error', reject, { once: true }); });
+let id = 0, checks = 0;
+const pending = new Map(), errors = [];
+ws.onmessage = ({ data }) => {
+  const message = JSON.parse(data);
+  if (message.method === 'Runtime.exceptionThrown') errors.push(message.params.exceptionDetails.exception?.description || message.params.exceptionDetails.text);
+  const call = pending.get(message.id);
+  if (!call) return;
+  pending.delete(message.id); clearTimeout(call.timeout);
+  message.error ? call.reject(Error(JSON.stringify(message.error))) : call.resolve(message.result);
+};
+const send = (method, params = {}) => new Promise((resolve, reject) => {
+  const call = ++id;
+  const timeout = setTimeout(() => { pending.delete(call); reject(Error('CDP timed out: ' + method)); }, 15000);
+  pending.set(call, { resolve, reject, timeout }); ws.send(JSON.stringify({ id: call, method, params }));
+});
+const evaluate = async (expression) => {
+  const result = await send('Runtime.evaluate', { expression, awaitPromise: true, returnByValue: true });
+  if (result.exceptionDetails) throw Error(result.exceptionDetails.exception?.description || result.exceptionDetails.text);
+  return result.result.value;
+};
+const pause = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+const waitFor = async (expression) => { for (let i = 0; i < 120; i++) { if (await evaluate(expression)) return; await pause(70); } throw Error('Timed out: ' + expression); };
+const check = async (expression, label) => { if (!await evaluate(expression)) throw Error(label); console.log('PASS ' + label); checks++; };
+const screenshot = async (name) => {
+  fs.mkdirSync(screenshotDir, { recursive: true });
+  const result = await send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: false });
+  fs.writeFileSync(path.join(screenshotDir, name + '.png'), Buffer.from(result.data, 'base64'));
+};
+
+
+const click = async selector => {
+  const rect = await evaluate(`(()=>{const el=document.querySelector(${JSON.stringify(selector)});if(!el)throw Error('Missing control');const r=el.getBoundingClientRect();return {x:r.x+r.width/2,y:r.y+r.height/2}})()`);
+  await send('Input.dispatchMouseEvent', { type: 'mousePressed', ...rect, button: 'left', clickCount: 1 });
+  await send('Input.dispatchMouseEvent', { type: 'mouseReleased', ...rect, button: 'left', clickCount: 1 });
+  await pause(80);
+};
+try {
+  await send('Page.enable'); await send('Runtime.enable'); await send('Network.enable');
+  await send('Network.setBlockedURLs', { urls: ['https://fonts.googleapis.com/*','https://fonts.gstatic.com/*','https://cdnjs.buymeacoffee.com/*'] });
+  await send('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false });
+  await send('Page.navigate', { url: testURL + '#1928' });
+  await waitFor(`!!window.AtlasUI`);
+  await evaluate('stopSpin()');
+  await check(`ev.length===422 && ppl.length===66`, 'All historical records remain available');
+  await check(`timelineFocused && timelineWindow[0]===1800 && timelineWindow[1]===2026`, 'Timeline focuses on a useful modern range');
+  await click('#timelineScope');
+  await check(`!timelineFocused && yearAt(0)===-252000000 && yearAt(1)===2026`, 'All eras restores the complete time range');
+  await waitFor(`document.getElementById('timelineScope').textContent.includes('Focus era')`);
+  await check(`document.getElementById('timelineScope').getAttribute('aria-pressed')==='true'`, 'Overview control reflects the active timeline mode');
+  await click('#timelineScope');
+  await evaluate(`setYear(-1);document.getElementById('next').click()`);
+  await check(`state.year===1`, 'Year stepping skips year zero');
+  await evaluate(`slider.dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowLeft',bubbles:true,cancelable:true}))`);
+  await check(`state.year===-1`, 'Timeline keyboard stepping crosses BC/AD');
+  await evaluate(`setYear(1928)`);
+  await click('#nextEvent');
+  await check(`state.year>1928`, 'Next record changes the date');
+  await click('#previousEvent');
+  await check(`state.year===1928`, 'Previous record returns to its date');
+  await click('#play');
+  await waitFor(`state.playing && state.year>1928`);
+  await click('#play');
+  await check(`!state.playing`, 'Play and Pause work on the focused range');
+  await evaluate(`setYear(1928);select(ev.find(e=>e.wiki==='Penicillin').id,false)`);
+  await check(`document.querySelector('#detail h3').textContent.includes('Penicillin') && !document.querySelector('.event-list-disclosure').open`, 'Selected story is focused, with more events on demand');
+  await screenshot('desktop');
+  await click('#mapToolsToggle');
+  await check(`document.getElementById('mapSettings').open && document.activeElement.closest('#mapSettings')`, 'Map settings opens a focused modal drawer');
+  await check(`['vGlobe','vFlat','layersPanel','filtersPanel','compareToggle','compareYears','legend'].every(id=>document.getElementById('mapSettings').contains(document.getElementById(id)))`, 'View, layers, filters and comparison are together in settings');
+  await screenshot('settings');
+  await click('#vFlat');
+  await check(`state.mode==='flat'`, 'Settings changes the map view');
+  await click('#vGlobe');
+  await evaluate(`document.querySelector('#filtersPanel').parentElement.open=true;document.querySelector('#legend [data-k="war"]').click()`);
+  await check(`!state.cats.has('war')`, 'Category visibility still filters atlas records');
+  await waitFor(`!document.getElementById('resetFilters').disabled`);
+  await evaluate(`document.getElementById('resetFilters').click()`);
+  await check(`state.cats.has('war')`, 'Reset restores hidden categories');
+  await evaluate(`document.getElementById('compareToggle').parentElement.open=true;document.getElementById('compareToggle').click()`);
+  await check(`HistoryDiscovery.isComparing() && !document.getElementById('compareYears').hidden`, 'Year comparison remains available inside settings');
+  await evaluate(`document.getElementById('compareToggle').click()`);
+  await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape' });
+  await send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Escape', code: 'Escape' });
+  await waitFor(`!document.getElementById('mapSettings').open && document.activeElement.id==='mapToolsToggle'`);
+  await check(`!document.getElementById('mapSettings').open && document.activeElement.id==='mapToolsToggle'`, 'Escape closes settings and restores focus');
+  await click('.workspace-nav [data-workspace="journeys"]');
+  await check(`document.getElementById('atlasMain').dataset.workspace==='journeys' && !document.querySelector('.sidebar-extras').hidden`, 'Journeys has its own contextual workspace');
+  await screenshot('journeys');
+  await click('#journeyTopics [data-atlas-menu="womensRightsPanel"]');
+  await check(`!document.getElementById('womensRightsPanel').hidden && document.getElementById('rightsResults').children.length>0`, 'Women’s rights opens its chronological browser');
+  await screenshot('womens-rights');
+  await click('#rightsColorsTab');
+  await check(`!document.getElementById('rightsColorsPane').hidden`, 'Country color exploration is retained');
+  await click('#rightsMilestonesTab');
+  await evaluate(`document.querySelector('[data-rights-record]').click()`);
+  await waitFor(`state.sel && byId[state.sel].cat==='womens-rights' && document.getElementById('atlasMain').dataset.workspace==='explore'`);
+  await check(`!document.getElementById('detail').hidden`, 'Choosing a milestone returns to its map and detail');
+  await click('.workspace-nav [data-workspace="journeys"]');
+  await click('#journeyTopics [data-atlas-menu="migrationsPanel"]');
+  await check(`!document.getElementById('migrationsPanel').hidden && document.getElementById('migrationResults').children.length>0`, 'Human migrations opens its histories');
+  await evaluate(`document.querySelector('[data-migration-record]').click()`);
+  await waitFor(`state.sel && byId[state.sel].cat==='migrations' && document.getElementById('atlasMain').dataset.workspace==='explore'`);
+  await check(`!document.getElementById('detail').hidden`, 'Migration selection returns to Explore');
+  await click('.history-search-trigger');
+  await evaluate(`document.getElementById('historySearchInput').value='Penicillin';document.getElementById('historySearchInput').dispatchEvent(new Event('input',{bubbles:true}))`);
+  await waitFor(`!!document.querySelector('[data-search-result]')`);
+  await click('[data-search-result]');
+  await waitFor(`!document.getElementById('historySearch').open && state.sel && byId[state.sel].wiki==='Penicillin'`);
+  await check(`state.year===1928`, 'Global search opens the real record and its date');
+  await evaluate(`setYear(-150000000)`);
+  await waitFor(`HistoryPaleogeography.status(-150000000).state==='ready'`);
+  await check(`geo().ancient && d3.geoArea(geo().land)>1 && timelineWindow[0]<=state.year && timelineWindow[1]>=state.year`, 'Deep time keeps ancient geography and a relevant time range');
+  await evaluate(`setYear(1928);stopSpin()`);
+  for (const [width,height] of [[1440,1000],[1024,768],[860,900],[768,1024],[390,844],[320,650],[844,390]]) {
+    await send('Emulation.setDeviceMetricsOverride', {width,height,deviceScaleFactor:1,mobile:width<=860});
+    await evaluate(`AtlasUI.goToMap();setYear(1928);stopSpin()`); await pause(150);
+    await check(`document.documentElement.scrollWidth<=innerWidth && document.documentElement.scrollHeight<=innerHeight && cv.clientWidth>0 && cv.clientHeight>0`, `Map fits the ${width}×${height} viewport without page overflow`);
+    await check(`(()=>{const r=slider.getBoundingClientRect();return r.top>=0&&r.bottom<=innerHeight&&r.left>=0&&r.right<=innerWidth})()`, `Timeline remains visible at ${width}×${height}`);
+    if(width<=860) {
+      await check(`document.getElementById('sideBody').inert && !document.getElementById('eventSheetToggle').getAttribute('aria-expanded').includes('true')`, `Collapsed mobile sheet hides its interactive content at ${width}px`);
+      await click('#eventSheetToggle');
+      await check(`!document.getElementById('sideBody').inert && document.getElementById('side').classList.contains('sheet-open')`, `Mobile event sheet expands at ${width}px`);
+      await check(`(()=>{const s=document.getElementById('side').getBoundingClientRect(),t=document.querySelector('.time').getBoundingClientRect();return s.bottom<=t.top+1})()`, `Expanded sheet leaves the timeline unobstructed at ${width}px`);
+      await click('.mobile-atlas-nav [data-workspace="journeys"]');
+      await check(`document.getElementById('atlasMain').dataset.workspace==='journeys' && document.getElementById('side').classList.contains('sheet-open')`, `Mobile Journeys opens at ${width}px`);
+      await click('.mobile-atlas-nav [data-workspace="explore"]');
+    }
+  }
+  await send('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
+  await evaluate(`AtlasUI.goToMap();setYear(1928);document.getElementById('resetView').click();stopSpin()`);await pause(100);
+  await screenshot('mobile');
+  await click('#eventSheetToggle');
+  await screenshot('mobile-events');
+  await click('.context-tabs [data-context="people"]');
+  await check(`!document.getElementById('people').hidden && document.getElementById('regions').hidden`, 'People tab opens its own contextual list');
+  await evaluate(`document.querySelector('.skip-links a[href="#cv"]').click();document.querySelector('.skip-links a[href="#sideTitle"]').click()`);
+  await check(`document.activeElement.id==='sideTitle' && !document.getElementById('sideBody').inert`, 'Mobile skip links open and focus the event sheet');
+  await click('.mobile-atlas-nav [data-workspace="journeys"]');
+  await screenshot('mobile-journeys');
+  await click('.mobile-atlas-nav [data-workspace="explore"]');
+  await click('#mobileSearch');
+  await check(`document.getElementById('historySearch').open`, 'Mobile navigation opens the same working search');
+  await evaluate(`document.querySelector('[data-search-close]').click();AtlasUI.goToMap()`);
+  const r = await evaluate(`(()=>{const r=slider.getBoundingClientRect();return{x:r.x,y:r.y,width:r.width,height:r.height}})()`);
+  await send('Input.dispatchMouseEvent',{type:'mousePressed',x:r.x+r.width*.25,y:r.y+r.height/2,button:'left',clickCount:1});
+  await send('Input.dispatchMouseEvent',{type:'mouseMoved',x:r.x+r.width*.7,y:r.y+r.height/2,button:'left',buttons:1});
+  await send('Input.dispatchMouseEvent',{type:'mouseReleased',x:r.x+r.width*.7,y:r.y+r.height/2,button:'left',clickCount:1});
+  await check(`state.year!==1928 && Number.isFinite(state.year) && state.year>=1800 && state.year<=2026`, 'Mobile timeline drag selects dates in its focused era');
+  await check(`(()=>{const ids=[...document.querySelectorAll('[id]')].map(el=>el.id);return new Set(ids).size===ids.length})()`, 'Reorganized controls have unique document IDs');
+  if(errors.length)throw Error(errors.join('\n'));
+  console.log(`Validated ${checks} browser checks. No runtime errors.`);
+} catch(error) {
+  await screenshot('failure');
+  console.error('Browser runtime errors:',errors);
+  throw error;
+} finally {
+  await send('Page.close').catch(() => {}); ws.close();
+}

@@ -391,6 +391,7 @@ header .seg{padding:2px;background:#f0ebe3;border:1px solid rgba(45,36,32,.1);bo
 <link rel="stylesheet" href="discovery.css">
 <link rel="stylesheet" href="atlas-ui.css">
 <link rel="stylesheet" href="womens-rights.css">
+<link rel="stylesheet" href="workspace.css">
 </head>
 <body>
 
@@ -399,25 +400,31 @@ header .seg{padding:2px;background:#f0ebe3;border:1px solid rgba(45,36,32,.1);bo
 <main class="app" id="atlasMain" aria-label="History atlas">
   <header>
     <a class="brand" href="../" aria-label="History All Around home"><svg width="30" height="30" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10.5" fill="#0b1626"/><ellipse cx="12" cy="12" rx="4.6" ry="10.5" fill="none" stroke="#f4c66a" stroke-width="1.3"/><path d="M1.5 12h21M3.5 6.5h17M3.5 17.5h17" stroke="#f4c66a" stroke-width="1.1" opacity=".6"/><circle cx="16.5" cy="8.5" r="2" fill="#ff8fd0"/></svg><div class="brand-copy"><div class="brand-kicker">Interactive history atlas</div><h1>History All Around</h1></div><span>See the world at the same moment</span></a>
-    <div class="head-tools">
+    <nav class="workspace-nav" aria-label="Primary navigation"><button type="button" data-workspace="explore" aria-pressed="true">Explore</button><button type="button" data-workspace="journeys" aria-pressed="false">Journeys</button></nav>
+    <div class="head-tools"></div>
+  </header>
+
+  <dialog id="mapSettings" class="workspace-dialog settings-dialog" aria-labelledby="settingsTitle">
+    <div class="dialog-heading"><div><h2 id="settingsTitle">Map settings</h2><p>Shape your view of history.</p></div><button type="button" data-close-dialog aria-label="Close map settings">×</button></div>
       <form class="goto" id="goto" autocomplete="off"><div><label for="gotoInput" class="tool-label">Jump to a year</label>
         <input id="gotoInput" placeholder="e.g. 500 BC" aria-label="Go to year"></div><button class="iconbtn" aria-label="Go">→</button></form>
       <div class="view-tool"><span class="tool-label">View</span><div class="seg" role="group" aria-label="Map view">
         <button id="vGlobe" aria-pressed="true">Globe</button><button id="vFlat" aria-pressed="false">Map</button>
       </div></div>
-    </div>
-  </header>
+    <div id="settingsContents"></div>
+    <button type="button" class="workspace-primary" data-close-dialog>Done</button>
+  </dialog>
 
   <nav class="mobile-atlas-nav" aria-label="Atlas navigation">
-    <button type="button" data-atlas-jump="map">Map ↑</button>
-    <button type="button" data-atlas-jump="events">Events ↓</button>
-    <button type="button" id="mobileDate" aria-label="Change selected year"></button>
+    <button type="button" data-workspace="explore" aria-pressed="true">◎ <span>Explore</span></button>
+    <button type="button" data-workspace="journeys" aria-pressed="false">▤ <span>Journeys</span></button>
+    <button type="button" id="mobileSearch">⌕ <span>Search</span></button>
   </nav>
   <div class="stage" id="stage" role="region" aria-label="Interactive world map">
     <section id="atlasLoadError" class="atlas-load-error" role="alert" hidden><h2>The atlas could not load</h2><p>Check your connection and try again. Your last selected year is saved in this browser when storage is available.</p><button type="button" onclick="location.reload()">Try again</button><a href="../">Return to History All Around</a></section>
     <canvas id="cv" tabindex="0" aria-label="World map showing events at the selected time" aria-describedby="mapKeyboardHelp"></canvas>
     <p id="mapKeyboardHelp" class="sr-only">Use arrow keys to move the map, plus and minus to zoom, and Home to reset the view. Press Tab to leave the map. Events are also available in the event list.</p>
-    <button type="button" id="mapToolsToggle" class="atlas-menu-trigger" aria-expanded="false" aria-controls="mapTools">Map tools <span aria-hidden="true">⌄</span></button>
+    <button type="button" id="mapToolsToggle" class="atlas-menu-trigger" aria-haspopup="dialog" aria-expanded="false" aria-controls="mapSettings">☷ <span>Map settings</span></button>
     <div class="readout"><button type="button" id="editDate" aria-label="Edit selected date"><span class="yr" id="yr"></span><span class="date-edit-icon" aria-hidden="true">⌄</span></button></div>
     <div class="atlas-toolbar" id="mapTools" aria-label="Map controls">
       <div class="atlas-menu"><button type="button" class="atlas-menu-trigger" data-atlas-menu="womensRightsPanel" aria-expanded="false" aria-controls="womensRightsPanel"><span aria-hidden="true">👩</span> Women’s rights <span aria-hidden="true">⌄</span></button>
@@ -444,20 +451,26 @@ header .seg{padding:2px;background:#f0ebe3;border:1px solid rgba(45,36,32,.1);bo
 
   <section class="time" id="timeControls" aria-label="Time navigation">
     <div class="controls">
-      <button class="iconbtn" id="prev" aria-label="Previous year" title="Previous year">‹</button>
       <button class="iconbtn play" id="play" aria-label="Play">▶ Play</button>
-      <button class="iconbtn" id="next" aria-label="Next year" title="Next year">›</button>
+      <button type="button" class="iconbtn" id="previousEvent" aria-label="Previous recorded event" title="Previous recorded event">‹</button>
+      <button type="button" class="iconbtn" id="nextEvent" aria-label="Next recorded event" title="Next recorded event">›</button>
       <span class="lbl" id="winLbl"></span>
     </div>
+    <div class="timeline-date" id="timelineDateSlot"></div>
+    <div class="year-steppers" hidden>
+      <button class="iconbtn" id="prev" aria-label="Previous year" title="Previous year">‹</button>
+      <button class="iconbtn" id="next" aria-label="Next year" title="Next year">›</button>
+    </div>
     <div class="dock-actions">
-      <div class="atlas-menu"><button type="button" class="atlas-menu-trigger" data-atlas-menu="eraPanel" aria-expanded="false" aria-controls="eraPanel">Choose era <span aria-hidden="true">⌄</span></button>
+      <div class="atlas-menu"><button type="button" class="atlas-menu-trigger" data-atlas-menu="eraPanel" aria-expanded="false" aria-controls="eraPanel"><span id="currentEraLabel">Choose era</span> <span aria-hidden="true">⌄</span></button>
         <section class="atlas-menu-panel era-panel" id="eraPanel" aria-label="Choose an era" hidden><h2>Where in time?</h2><div id="eraChoices"></div></section>
       </div>
+      <button type="button" class="timeline-scope" id="timelineScope" aria-pressed="false">All eras ↗</button>
       <button type="button" class="atlas-menu-trigger" id="compareToggle" aria-pressed="false" aria-controls="compareYears" aria-describedby="compareDescription">Compare</button>
       <details class="dock-options"><summary>Share &amp; tools <span aria-hidden="true">⌄</span></summary><div class="dock-options-content"></div></details>
     </div>
     <div class="comparison-controls"><p id="compareDescription">Compare two years side by side. Drag the divider to see how the world changed.</p></div>
-    <div class="event-navigation" aria-label="Jump to a recorded event"><button type="button" id="previousEvent">← Previous event</button><button type="button" id="nextEvent">Next event →</button><details class="timeline-help"><summary>Scale &amp; Play</summary><p>The timeline expands recent history, so equal distances do not mean equal spans of time. Play moves at a steady pace along this scale. At 2026, it restarts at the beginning of the timeline. Use the year field for an exact date or these buttons to jump between recorded events.</p></details></div>
+    <div class="event-navigation"><details class="timeline-help"><summary>Timeline help</summary><p>The focused timeline uses equal spacing within the displayed era. All eras opens an overview that expands recent history; equal distances in that overview do not mean equal spans of time. Use the arrows beside Play to jump between recorded events, or enter an exact date. Left and right arrow keys on the timeline step one year; Shift + arrow jumps between records. There is no year zero.</p></details></div>
     <div class="ruler" id="ruler">
       <div class="eras" id="eras"></div>
       <div class="marks" id="marks"></div>
@@ -470,10 +483,14 @@ header .seg{padding:2px;background:#f0ebe3;border:1px solid rgba(45,36,32,.1);bo
   </section>
 
   <aside class="side" id="side" aria-labelledby="sideTitle">
-    <div class="side-intro"><div class="kicker">At the same time</div><h2 id="sideTitle" tabindex="-1">Around the world</h2><div class="sub" id="sideSub"></div><p class="sidebar-scope" id="sideScope">Worldwide records. Open a place’s history for a local timeline.</p></div>
+    <button type="button" id="eventSheetToggle" class="sheet-toggle" aria-expanded="false" aria-controls="sideBody"><span class="sheet-handle" aria-hidden="true"></span><span>Around this time</span><span id="sheetPreview">Browse events ↑</span></button>
+    <div id="sideBody">
+    <div class="side-intro"><div class="kicker">At the same time</div><h2 id="sideTitle" tabindex="-1">Around this time</h2><div class="sub" id="sideSub"></div><p class="sidebar-scope" id="sideScope">Worldwide records. Open a place’s history for a local timeline.</p><div class="context-tabs" role="group" aria-label="Around this time"><button type="button" data-context="events" aria-pressed="true">Events</button><button type="button" data-context="people" aria-pressed="false">People</button></div></div>
     <div class="side-content"><div id="detail" role="region" aria-label="Selected story"></div><div id="regions" role="region" aria-label="Events near the selected date"></div>
     <h3 class="atlas-section-title" id="peopleTitle">People alive at this moment</h3><div class="sub" id="peopleSub" style="margin-bottom:8px"></div><div class="people" id="people"></div>
-    <section class="sidebar-extras" aria-labelledby="sidebarExtrasTitle"><div class="sidebar-extras-intro"><h3 id="sidebarExtrasTitle">Explore other times</h3><p>These suggestions have their own dates. Opening one changes the timeline.</p></div><div class="fact" id="fact"></div></section></div>
+    <section class="journey-shortcuts" aria-label="Follow a journey"><h3>Follow a journey</h3><button type="button" data-journey-shortcut="womensRightsPanel">Women’s rights <span>→</span></button><button type="button" data-journey-shortcut="migrationsPanel">Human migrations <span>→</span></button><button type="button" data-journey-shortcut="dinosaurs">Life before humans <span>→</span></button></section>
+    <section class="sidebar-extras" aria-labelledby="sidebarExtrasTitle"><div class="sidebar-extras-intro"><h3 id="sidebarExtrasTitle">Explore other times</h3><p>These suggestions have their own dates. Opening one changes the timeline.</p></div><div id="journeyTopics"></div><div id="journeyPanels"></div><div class="journey-collections" id="journeyCollections"><div class="fact" id="fact"></div></div></section><p class="workspace-coverage">A selection of history, not a complete record.</p></div>
+    </div>
   </aside>
   <footer class="atlas-footer" aria-label="Atlas credits and support">
     <div class="atlas-footer-main">
@@ -1082,8 +1099,16 @@ function rememberAtlasYear(year){
 const SEG=[[0,-252000000],[.06,-201000000],[.12,-145000000],[.22,-66000000],[.24,-300000],[.316,-10000],[.3692,-3000],[.544,0],[.772,1500],[.8708,1800],[1,NOW]];
 const HISTORY_SEG=[[0,-300000],[.10,-10000],[.17,-3000],[.40,0],[.70,1500],[.83,1800],[1,NOW]];
 let dinosaurTimeline=true,lastHumanYear=NOW;
-function yearAt(t){const segments=dinosaurTimeline?SEG:HISTORY_SEG;for(let i=1;i<segments.length;i++){const[a,ya]=segments[i-1],[b,yb]=segments[i];if(t<=b)return ya+(yb-ya)*(t-a)/(b-a)}return NOW}
-function tAt(y){const segments=dinosaurTimeline?SEG:HISTORY_SEG;for(let i=1;i<segments.length;i++){const[a,ya]=segments[i-1],[b,yb]=segments[i];if(y<=yb)return a+(b-a)*(y-ya)/(yb-ya)}return 1}
+let timelineFocused=true,timelineWindow=null;
+const TIMELINE_WINDOWS=[[-252000000,-201000000],[-201000000,-145000000],[-145000000,-66000000],[-66000000,-300000],[-300000,-10000],[-10000,-3200],[-3200,-800],[-800,500],[500,1500],[1500,1800],[1800,NOW]];
+function syncTimelineWindow(){
+  if(timelineFocused&&timelineWindow&&state.year>=timelineWindow[0]&&state.year<=timelineWindow[1])return;
+  const next=timelineFocused?(TIMELINE_WINDOWS.find(([a,b])=>state.year>=a&&(state.year<b||b===NOW))||TIMELINE_WINDOWS.at(-1)):null;
+  if(next===timelineWindow)return;
+  timelineWindow=next;buildRuler();buildMarks();
+}
+function yearAt(t){if(timelineWindow)return timelineWindow[0]+t*(timelineWindow[1]-timelineWindow[0]);const segments=dinosaurTimeline?SEG:HISTORY_SEG;for(let i=1;i<segments.length;i++){const[a,ya]=segments[i-1],[b,yb]=segments[i];if(t<=b)return ya+(yb-ya)*(t-a)/(b-a)}return NOW}
+function tAt(y){if(timelineWindow)return Math.max(0,Math.min(1,(y-timelineWindow[0])/(timelineWindow[1]-timelineWindow[0])));const segments=dinosaurTimeline?SEG:HISTORY_SEG;for(let i=1;i<segments.length;i++){const[a,ya]=segments[i-1],[b,yb]=segments[i];if(y<=yb)return a+(b-a)*(y-ya)/(yb-ya)}return 1}
 const SAME_TIME_YEARS=DiscoveryCore.sameTimeYears;
 function halfWin(y=state.year){return y < -1000000 ? 1000000 : SAME_TIME_YEARS}
 function roundYear(y){const n=Math.round(y);return n===0?(y<0?-1:1):n}
@@ -1420,18 +1445,26 @@ const eras=document.getElementById("eras"),marks=document.getElementById("marks"
 function buildRuler(){
 eras.innerHTML="";ticks.innerHTML="";
 const compact=stage.clientWidth<600;
+if(timelineWindow){
+  const [a,b]=timelineWindow,step=d3.tickStep(a,b,compact?3:6);
+  const years=d3.range(Math.ceil(a/step)*step,b+step/100,step).filter(y=>y!==0);
+  if(!years.includes(a))years.unshift(a);if(!years.includes(b))years.push(b);
+  years.forEach((y,i)=>{if(i>0&&i<years.length-1&&Math.min(tAt(y),1-tAt(y))<(compact?.16:.08))return;const s=document.createElement('span');s.style.left=tAt(y)*100+'%';if(y===b)s.className='timeline-end';s.textContent=y<=-1000000?Math.abs(y)/1000000+' Ma':y<0?Math.abs(y).toLocaleString('en-US')+' BC':y<1000?'AD '+y:y;ticks.append(s)});
+  return;
+}
 const shown=dinosaurTimeline?ERAS:ERAS.filter(([y])=>y>=-300000);
 shown.forEach(([s,n],i)=>{const a=tAt(s),b=i<shown.length-1?tAt(shown[i+1][0]):1;const d=document.createElement("div");d.className="era-b";const SHORT={Prehistory:"Prehist.","Early modern":"E. modern"};if(compact&&SHORT[n])n=SHORT[n];d.style.left=a*100+"%";d.style.width=(b-a)*100+"%";d.textContent=n;eras.appendChild(d)});
 const years=dinosaurTimeline?[-252000000,-145000000,-66000000,-10000,-3000,-1000,1,500,1000,1500,1800,1900,NOW]:[-200000,-10000,-3000,-1000,1,500,1000,1500,1800,1900,NOW];
 years.forEach(y=>{const s=document.createElement("span");s.style.left=tAt(y)*100+"%";if(y===NOW)s.className="timeline-end";s.textContent=y<=-1000000?Math.abs(y)/1000000+" Ma":y<0?(Math.abs(y)>=10000?Math.abs(y)/1000+"k":Math.abs(y))+" BC":y===1?"AD 1":y;if(compact&&!(dinosaurTimeline?[-252000000,-66000000,1,NOW]:[-200000,1,NOW]).includes(y))return;ticks.appendChild(s)});
 }
 buildRuler();
-function buildMarks(){marks.innerHTML="";for(const e of ev){if(!state.cats.has(e.cat)||(!dinosaurTimeline&&e.start<-300000))continue;const b=document.createElement("b");b.style.left=tAt(e.start)*100+"%";b.style.height=(8+((e.start*7)%9+9)%9)+"px";b.style.setProperty("--c",`var(--c-${e.cat})`);marks.appendChild(b)}}
+function buildMarks(){marks.innerHTML="";for(const e of ev){if(!state.cats.has(e.cat)||(!dinosaurTimeline&&e.start<-300000)||(timelineWindow&&(e.start<timelineWindow[0]||e.start>timelineWindow[1])))continue;const b=document.createElement("b");b.style.left=tAt(e.start)*100+"%";b.style.height=(8+((e.start*7)%9+9)%9)+"px";b.style.setProperty("--c",`var(--c-${e.cat})`);marks.appendChild(b)}}
 function syncTimelineRange(){
 const enabled=state.cats.has("dinosaurs");
 if(!enabled){if(state.year<-300000){state.year=lastHumanYear;state.sel=null;selectedPolity=null}window.HistoryDiscovery?.limitYearsToHistory(lastHumanYear)}
 if(dinosaurTimeline!==enabled){dinosaurTimeline=enabled;buildRuler();buildMarks()}
 if(state.year>=-300000)lastHumanYear=state.year;
+syncTimelineWindow();
 slider.value=Math.round(tAt(state.year)*SLIDER_STEPS);
 }
 buildMarks();
@@ -1445,8 +1478,8 @@ document.getElementById("prev").onclick=()=>nudgeYear(-1);
 document.getElementById("next").onclick=()=>nudgeYear(1);
 let raf=0;const playBtn=document.getElementById("play");
 function stopPlay(){state.playing=false;cancelAnimationFrame(raf);playBtn.innerHTML=state.year>=NOW?"↻ Replay":"▶ Play";playBtn.setAttribute("aria-label",state.year>=NOW?"Replay from the beginning of the timeline":"Play")}
-playBtn.onclick=()=>{if(state.playing)return stopPlay();if(state.year>=NOW)setYear(dinosaurTimeline?-252000000:-300000);state.playing=true;playBtn.innerHTML="❚❚ Pause";playBtn.setAttribute("aria-label","Pause");
-  let last=performance.now();(function tick(n){const dt=Math.min(64,n-last);last=n;let t=+slider.value/SLIDER_STEPS+dt*0.0000085;if(t>=1){t=1;stopPlay()}slider.value=Math.round(t*SLIDER_STEPS);const year=roundYear(yearAt(t));if(year!==state.year)clearTimelineSelection();state.year=year;update(true);if(state.playing)raf=requestAnimationFrame(tick)})(last)};
+playBtn.onclick=()=>{if(state.playing)return stopPlay();if(state.year>=yearAt(1))setYear(yearAt(0));state.playing=true;playBtn.innerHTML="❚❚ Pause";playBtn.setAttribute("aria-label","Pause");
+  let last=performance.now(),position=+slider.value/SLIDER_STEPS;(function tick(n){const dt=Math.min(64,n-last);last=n;let t=position+dt*0.0000085;if(t>=1){t=1;stopPlay()}position=t;slider.value=Math.round(t*SLIDER_STEPS);const year=roundYear(yearAt(t));if(year!==state.year)clearTimelineSelection();state.year=year;update(true);if(state.playing)raf=requestAnimationFrame(tick)})(last)};
 document.addEventListener("keydown",e=>{if(e.defaultPrevented||e.target.closest?.("input:not([type=range]),textarea,select,[contenteditable=true]")||document.querySelector("dialog[open]"))return;if(e.key==="ArrowLeft"&&e.shiftKey){stepEvent(-1);e.preventDefault()}if(e.key==="ArrowRight"&&e.shiftKey){stepEvent(1);e.preventDefault()}if(e.key===" "&&e.target===document.body){playBtn.click();e.preventDefault()}});
 document.getElementById("goto").addEventListener("submit",e=>{e.preventDefault();const inp=document.getElementById("gotoInput");const y=parseYear(inp.value);if(y===null){inp.setCustomValidity(/^\s*0\s*(bc|bce|b\.c\.|ad|ce)?\s*$/i.test(inp.value)?"There is no year 0. Try 1 BC or AD 1.":"Enter a year from 252 million years ago to 2026, for example 1492, 500 BC or 150 Ma.");inp.reportValidity();return}inp.setCustomValidity("");stopPlay();setYear(y);inp.value=fmt(y);if(innerWidth<=860)window.AtlasUI?.goToMap();else inp.blur()});
 document.getElementById("gotoInput").addEventListener("input",e=>e.target.setCustomValidity(""));
@@ -1454,8 +1487,8 @@ document.getElementById("gotoInput").addEventListener("input",e=>e.target.setCus
 // ---------- side ledger
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 let sidebarReturn=null;
-function revealInSidebar(el){const side=document.getElementById("side");
-  if(window.innerWidth<=860)el.scrollIntoView({behavior:"instant",block:"start"});
+function revealInSidebar(el){const side=document.getElementById("side");window.AtlasUI?.reveal(el);
+  if(window.innerWidth<=860)el.scrollIntoView({behavior:"instant",block:"nearest"});
   else side.scrollTop=Math.max(0,side.scrollTop+el.getBoundingClientRect().top-side.getBoundingClientRect().top-side.querySelector(".side-intro").offsetHeight-12)}
 function revealDetail(){const el=document.getElementById("detail");el.setAttribute("tabindex","-1");revealInSidebar(el);el.focus({preventScroll:true})}
 function closeSelection(){const saved=sidebarReturn;sidebarReturn=null;state.sel=null;selectedPolity=null;update();

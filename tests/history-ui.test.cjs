@@ -7,6 +7,29 @@ const countries = require('../static/historyallaround/atlas/search-countries.js'
 const { events } = require('../scripts/audit-history-accuracy.cjs').records();
 const records = Array.from(events, (r) => ({ kind: 'event', cat: r[8], start: r[0], end: r[1] ?? r[0], wiki: r[9], indigenous: r[13] }));
 
+test('focused eras round-trip dates and retain the endpoint while scrubbing', () => {
+  const html = fs.readFileSync('static/historyallaround/atlas/index.html', 'utf8');
+  const context = vm.createContext({ state: { year: 1928 }, buildRuler() {}, buildMarks() {} });
+  const declarations = [/^const NOW=.*$/m, /^const SEG=.*$/m, /^const HISTORY_SEG=.*$/m,
+    /^let dinosaurTimeline=.*$/m, /^let timelineFocused=.*$/m, /^const TIMELINE_WINDOWS=.*$/m,
+    /^function syncTimelineWindow\(\)\{[\s\S]*?^\}/m, /^function yearAt.*$/m, /^function tAt.*$/m];
+  vm.runInContext(declarations.map(pattern => html.match(pattern)[0]).join('\n'), context);
+  for (const year of [-252000000, -228000000, -150000000, -67000000, -10000, -500, -1, 1, 1500, 1928, 2026]) {
+    context.state.year = year;
+    vm.runInContext('syncTimelineWindow()', context);
+    assert(Math.abs(vm.runInContext('yearAt(tAt(state.year))', context) - year) < .000001);
+    assert.equal(vm.runInContext('tAt(-300000000)', context), 0);
+    assert.equal(vm.runInContext('tAt(3000)', context), 1);
+  }
+  vm.runInContext('state.year=1700;syncTimelineWindow();state.year=1800;syncTimelineWindow()', context);
+  assert.equal(vm.runInContext('yearAt(0)', context), 1500, 'scrubbing to the edge retains the same range');
+  vm.runInContext('state.year=1801;syncTimelineWindow()', context);
+  assert.equal(vm.runInContext('yearAt(0)', context), 1800);
+  vm.runInContext('timelineFocused=false;syncTimelineWindow()', context);
+  assert.equal(vm.runInContext('yearAt(0)', context), -252000000);
+  assert.equal(vm.runInContext('yearAt(1)', context), 2026);
+});
+
 test('browsing summaries preserve complete short text and do not mistake an abbreviation for the whole summary', () => {
   const opening = 'A sourced historical milestone explains what changed in this place.';
   assert.equal(core.summary(opening), opening);

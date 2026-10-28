@@ -7,6 +7,7 @@ const html = fs.readFileSync('static/historyallaround/atlas/index.html', 'utf8')
 const context = vm.createContext({ state: { year: -67000000 } });
 const declarations = [html.match(/^const NOW=.*$/m)[0], html.match(/^const SEG=.*$/m)[0],
   html.match(/^const HISTORY_SEG=.*$/m)[0], html.match(/^let dinosaurTimeline=.*$/m)[0],
+  html.match(/^let timelineFocused=.*$/m)[0],
   'const SAME_TIME_YEARS=1;', ...['yearAt', 'tAt', 'fmt', 'fmtSpan', 'halfWin'].map((name) =>
     html.match(new RegExp('^function ' + name + '\\(.*$', 'm'))[0]),
   html.match(/^function parseYear\(s\)\{[\s\S]*?^\}/m)[0]];

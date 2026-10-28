@@ -1,4 +1,4 @@
-// Rebuild the original atlas as a portable prototype with emojis and clear interval labels.
+// Bundle the current atlas as a portable preview with its real controls and datasets.
 const fs = require('node:fs');
 const path = require('node:path');
 const zlib = require('node:zlib');
@@ -38,9 +38,9 @@ function imageURLs(source) {
   return source;
 }
 let html = read('index.html');
-html = html.replace('<title>History All Around</title>', '<title>History All Around · Emoji prototype</title>');
+html = html.replace('<title>History All Around</title>', '<title>History All Around · Redesign preview</title>');
 html = html.replace('<head>', '<head>\n<meta name="robots" content="noindex">');
-html = html.replace(/<link rel="stylesheet" href="(discovery\.css|atlas-ui\.css|womens-rights\.css)">/g, (_, file) => `<style>${read(file)}</style>`);
+html = html.replace(/<link rel="stylesheet" href="(discovery\.css|atlas-ui\.css|womens-rights\.css|workspace\.css)">/g, (_, file) => `<style>${read(file)}</style>`);
 html = html.replace(/<script src="([^\"]+)"><\/script>/g, (_, file) => {
   if (file.startsWith('https://')) {
     const name = file.includes('d3.min.js') ? 'd3.min.js' : file.includes('topojson-client') ? 'topojson-client.min.js' : null;
@@ -63,4 +63,4 @@ html = html.replaceAll('href="../"', 'href="../../static/historyallaround/"');
 const licenses = ['d3.LICENSE', 'topojson-client.LICENSE'].map((file) => fs.readFileSync(path.join(__dirname, 'vendor', file), 'utf8')).join('\n');
 html = html.replace('</body>', () => `<!-- Bundled map library licenses:\n${licenses}\n-->\n</body>`);
 fs.writeFileSync(path.join(__dirname, 'preview.html'), html);
-console.log(`Built original atlas + event emojis (${Object.keys(json).length} embedded datasets, ${(Buffer.byteLength(html) / 1024 / 1024).toFixed(1)} MB).`);
+console.log(`Built atlas redesign preview (${Object.keys(json).length} embedded datasets, ${(Buffer.byteLength(html) / 1024 / 1024).toFixed(1)} MB).`);

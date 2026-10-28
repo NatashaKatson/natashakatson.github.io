@@ -48,7 +48,7 @@ try {
   await waitFor(`!!window.AtlasUI && !!window.HistoryDinosaurs && !!window.AtlasEventEmojis`);
   await evaluate('stopSpin();');
   await check(`ev.length===422 && ppl.length===66`, 'All original records and thematic additions are retained');
-  await check(`document.querySelector('.side-intro h2').textContent==='Around the world' && !!document.querySelector('#fact') && !!document.querySelector('.curated-discoveries') && !!document.querySelector('#people')`, 'Original right panel, stories, people, and discovery cards are retained');
+  await check(`document.querySelector('.side-intro h2').textContent==='Around this time' && !!document.querySelector('#fact') && !!document.querySelector('.curated-discoveries') && !!document.querySelector('#people')`, 'Contextual panel retains stories, people, and discovery cards');
   await check(`slider.max==='3000000' && slider.min==='0' && !!document.querySelector('#play') && !!document.querySelector('#eraChoices') && !!document.querySelector('.dock-options')`, 'Original slider, playback, eras, and More controls are retained');
   await check(`AtlasEventEmojis.get(ev.find(e=>e.wiki==='Penicillin'))==='💊' && AtlasEventEmojis.get(ev.find(e=>e.wiki==='Smallpox_vaccine'))==='💉' && AtlasEventEmojis.get(ev.find(e=>e.wiki==='Stethoscope'))==='🩺' && AtlasEventEmojis.get(ev.find(e=>e.wiki==='Spanish_flu'))==='🦠'`, 'Medical discoveries, vaccines, diagnostics, and pandemics have specific emojis');
   await check(`ev.filter(e=>e.cat==='dinosaurs').every(e=>AtlasEventEmojis.get(e)==='')`, 'Dinosaur portraits and markers retain their original rendering');
@@ -114,7 +114,7 @@ try {
     await pause(40); // Allow compositor-delivered touch events to reach the page.
   };
   for (const mode of ['globe', 'flat']) {
-    await evaluate(`setMode('${mode}');stopSpin();window.scrollTo(0,0);`); await pause(100);
+    await evaluate(`setMode('${mode}');stopSpin();AtlasUI.goToMap();window.scrollTo(0,0);`); await pause(100);
     const point = await evaluate(`(()=>{const r=cv.getBoundingClientRect();return{x:r.left+r.width/2,y:r.top+r.height/2}})()`);
     const a = { id: 1, x: point.x - 45, y: point.y }, b = { id: 2, x: point.x + 45, y: point.y };
     await touch('touchStart', [a]);

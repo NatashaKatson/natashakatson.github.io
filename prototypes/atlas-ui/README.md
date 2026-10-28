@@ -1,6 +1,6 @@
-# Original atlas + event emojis and clear date context
+# Atlas redesign preview
 
-Open **[preview.html](preview.html)** directly in your browser. This prototype keeps the original atlas layout and behavior: globe/map, timeline slider, Play/Pause, era navigation, filters, right panel, stories, people, search, comparisons, challenges, and dinosaur portraits.
+Open **[preview.html](preview.html)** directly in your browser. It bundles the current atlas with Explore/Journeys navigation, a unified settings drawer, a focused era timeline, Events/People tabs, and a mobile bottom sheet. Existing globe/map behavior, historical records, filters, sources, stories, search, comparisons, challenges, and dinosaur portraits remain available. See [the redesign notes](../atlas-restructure/README.md) for the concept and new browser checks. The screenshots in this folder document the earlier layout; current screenshots are in `../atlas-restructure/previews/`.
 
 **Event emojis** appear on map markers, event-list titles, and selected event titles. Examples: vaccines 💉, medicines 💊, stethoscope 🩺, X-rays 🩻, blood groups 🩸, MRI 🧲, DNA 🧬, heart procedures 🫀, hygiene 🧼, and pandemics 🦠. Other events have category or subject icons. Source text and dinosaur art are unchanged.
 
@@ -8,7 +8,7 @@ Open **[preview.html](preview.html)** directly in your browser. This prototype k
 
 Try years **1928**, **1955**, **1816**, or **1918** to see the medical icons. The original slider and year controls work as before.
 
-`preview.html` is generated from the current files in `static/historyallaround/atlas/` and includes production bug fixes. Event emojis are rendered by the shared production code. Rebuilding the preview does not publish a deployment. The earlier redesigned browser is no longer used.
+`preview.html` is generated from the current files in `static/historyallaround/atlas/` and includes production bug fixes. Event emojis are rendered by the shared production code. Rebuilding the preview does not publish a deployment.
 
 ## Rebuild
 
