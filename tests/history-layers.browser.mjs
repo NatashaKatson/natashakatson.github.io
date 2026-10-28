@@ -51,6 +51,7 @@ try {
     const trade=document.querySelector('[data-layer-toggle="trade"]');trade.click();render();
     check(!state.cats.has('trade')&&document.querySelector('#legend [data-k="trade"]').getAttribute('aria-pressed')==='false','Layer toggle synchronises event filter');
     trade.click();render();
+    if(state.cats.has('migrations'))document.getElementById('migrationVisibility').click();
     for(const b of document.querySelectorAll('#legend [data-k]'))if(b.dataset.k!=='trade'&&b.getAttribute('aria-pressed')==='true')b.click();render();
     check(state.cats.size===1&&state.cats.has('trade'),'Trade layer is independent');
     check(hits.some(h=>h.radius===7&&byId[h.id]?.cat==='trade'),'Trade lines have selectable path hits');
@@ -75,9 +76,14 @@ try {
   for(const [wiki,year] of [['Silk_Roads',1300],['Great_Migration_(African_American)',1950],['Belarusian_diaspora',2020],['White_émigré',1917],['Ukrainian_refugee_crisis',2023],['Russian_emigration_following_the_Russian_invasion_of_Ukraine',2023],['Jewish_refugees_from_Nazi_Germany_and_German-occupied_Europe',1943],['Kindertransport',1939],['Holocaust_trains',1943]]){
     const point=await evaluate(`(async()=>{
       const e=ev.find(e=>e.wiki===${JSON.stringify(wiki)});
-      for(const cat of [...state.cats])if(cat!==e.cat&&state.cats.size>1)document.querySelector('#legend [data-k="'+cat+'"]').click();
+      for(const cat of [...state.cats])if(cat!==e.cat&&state.cats.size>1){
+        if(cat==='migrations')document.getElementById('migrationVisibility').click();
+        else document.querySelector('#legend [data-k="'+cat+'"]').click();
+      }
       await HistoryDiscovery.jumpSearch({kind:'event',recordId:e.id,start:${year},lon:e.lon,lat:e.lat});
       flyToken++;setYear(${year});render();
+      // Allow the responsive dock measurement and canvas resize to reach the displayed frame.
+      await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));render();
       if(e.cat==='migrations'){
         let arrows=0;const original=ctx.rotate;ctx.rotate=function(...args){arrows++;return original.apply(this,args)};
         HistoryLayers.drawRoutes(ctx,path,proj,visible,state.year);ctx.rotate=original;
@@ -90,7 +96,7 @@ try {
     })()`);
     await send('Input.dispatchMouseEvent',{type:'mousePressed',...point,button:'left',clickCount:1});
     await send('Input.dispatchMouseEvent',{type:'mouseReleased',...point,button:'left',clickCount:1});
-    assert(await evaluate(`byId[state.sel]?.wiki===${JSON.stringify(wiki)}`),'Line click selects '+wiki);
+    assert(await evaluate(`byId[state.sel]?.wiki===${JSON.stringify(wiki)}`),'Line click selects '+wiki+' (selected '+await evaluate('byId[state.sel]?.wiki')+')');
     assert(await evaluate(`document.querySelector('#detail').textContent.includes('Schematic connections')&&!!document.querySelector('#detail a[href^="https://"]')`),'Reader explains routes and provides sources');
   }
   console.log(await evaluate(`(async()=>{

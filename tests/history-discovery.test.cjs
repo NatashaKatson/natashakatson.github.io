@@ -184,7 +184,7 @@ test("year inputs accept formatted years and reject contradictory eras", () => {
     context.input = input;
     assert.equal(vm.runInContext("parseYear(input)", context), expected);
   }
-  for (const input of ["0", "AD 0", "0 BC", "-500 CE", "AD 500 BC", "1492junk", "9".repeat(400)]) {
+  for (const input of ["0", "AD 0", "0 BC", "-500 CE", "AD 500 BC", "1492junk", "2027", "3000", "252000001 BC", "253 Ma", "9".repeat(400)]) {
     context.input = input;
     assert.equal(vm.runInContext("parseYear(input)", context), null);
   }

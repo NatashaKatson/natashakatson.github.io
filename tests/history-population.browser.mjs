@@ -67,8 +67,8 @@ assert(NOW===2026&&yearAt(1)===2026&&new Date().getFullYear()===2035,'fixed endp
 assert(document.querySelector('#ticks .timeline-end').textContent==='2026','endpoint labeled on ruler');
 for(let i=0;i<80&&document.querySelector('.population-values').textContent.includes('Loading');i++)await new Promise(r=>setTimeout(r,100));
 stopSpin();setYear(2026);render();
-assert(stage.getBoundingClientRect().height>=innerHeight*.7,'desktop globe receives most of the viewport height');
-assert(document.querySelector('.time').getBoundingClientRect().height<=240,'desktop timeline stays compact, including coverage notices');
+assert(stage.getBoundingClientRect().height>=innerHeight*.6,'desktop globe receives most of the viewport after fitting its controls');
+assert(document.querySelector('.time').getBoundingClientRect().height<=innerHeight*.35,'desktop timeline fits its guidance, event navigation and reserved coverage notices');
 assert(document.getElementById('ruler').getBoundingClientRect().bottom<=innerHeight,'full timeline remains visible with the larger globe');
 assert(document.querySelector('.population-values').textContent.includes('8.3 billion'),'2026 world population');
 assert(document.querySelector('.population-values').textContent.includes('UN projection'),'2026 explicitly projected');
@@ -84,7 +84,8 @@ setYear(2023);render();assert(document.querySelectorAll('.population-value')[1].
 document.querySelector('.dock-options').open=true;
 const details=document.querySelector('.population-heading details');details.open=true;
 assert(details.textContent.includes('linear interpolation')&&details.querySelector('a[href*="ourworldindata"]'),'source/method disclosure');
-assert(stage.getBoundingClientRect().height>=innerHeight*.7,'expanded comparison and sources preserve globe space');
+await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+assert(stage.getBoundingClientRect().height>=innerHeight*.35&&document.querySelector('.time').getBoundingClientRect().bottom<=innerHeight+1,'editable comparison and source notes leave a usable map with all time controls visible');
 details.open=false;
 return 'Population: fixed 2026 endpoint under a 2035 clock, year updates, estimates/projections, interpolation, coverage and comparison passed';
 })()`));
@@ -95,7 +96,7 @@ const assert=(v,m)=>{if(!v)throw Error(m)};
 document.getElementById('compareToggle').click();
 window.scrollTo({top:0,behavior:'instant'});
 const time=document.querySelector('.time').getBoundingClientRect();
-assert(stage.getBoundingClientRect().height>=innerHeight*.58,'mobile globe leaves room for the compact time dock');
+assert(stage.getBoundingClientRect().height>=innerHeight*.38&&stage.getBoundingClientRect().height<=innerHeight*.5,'mobile globe leaves room for navigation and events');
 assert(time.top>=stage.getBoundingClientRect().bottom,'ordinary mobile timeline stays below map');
 stage.scrollIntoView({block:'start',behavior:'instant'});
 for(const [selector,menu] of [['.borders-control button','layersPanel'],['.legend button','filtersPanel'],['.zoom button',null]]){

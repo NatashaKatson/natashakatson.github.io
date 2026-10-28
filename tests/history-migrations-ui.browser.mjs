@@ -79,7 +79,7 @@ try {
     document.querySelector('[data-atlas-menu="migrationsPanel"]').click();
     document.getElementById('migrationVisibility').click();render();
     check(state.cats.size===0&&!activeEvents().length,'Show on map can turn off the last event category');
-    check(document.querySelector('#legend [data-k="migrations"]').getAttribute('aria-pressed')==='false','Global filters share the same visibility setting');
+    check(!document.querySelector('#legend [data-k="migrations"]'),'Migrations use their dedicated visibility control instead of a global filter');
     document.querySelector('[data-atlas-menu="layersPanel"]').click();
     check(document.getElementById('migrationsPanel').hidden&&!document.getElementById('layersPanel').hidden,'Opening another control closes Migrations');
     return 'Keyboard dismissal, independent visibility and exclusive menu handling passed';
@@ -92,6 +92,7 @@ try {
   for(const [width,height] of [[1440,1000],[1024,768],[900,700],[768,1024],[390,844],[320,568],[320,500],[844,390]]){
     await send('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:1,mobile:width<=860});
     await evaluate(`window.scrollTo({top:0,behavior:'instant'});`);
+    await evaluate(`if(innerWidth<=860&&document.getElementById('mapToolsToggle').getAttribute('aria-expanded')!=='true')document.getElementById('mapToolsToggle').click()`);
     assert(await evaluate(`(()=>{const r=[...document.querySelectorAll('.atlas-toolbar > .atlas-menu > button')].map(b=>b.getBoundingClientRect());return r.every((a,i)=>a.left>=0&&a.right<=innerWidth&&a.height>=40&&r.slice(i+1).every(b=>a.right<=b.left||b.right<=a.left||a.bottom<=b.top||b.bottom<=a.top))&&document.documentElement.scrollWidth<=innerWidth})()`),`Four map controls fit at ${width}×${height}`);
     await evaluate(`(()=>{const t=document.querySelector('[data-atlas-menu="migrationsPanel"]');if(t.getAttribute('aria-expanded')!=='true')t.click()})()`);
     assert(await evaluate(`(()=>{const panel=document.getElementById('migrationsPanel'),p=panel.getBoundingClientRect(),s=document.getElementById('migrationSearch').getBoundingClientRect();return p.left>=0&&p.right<=innerWidth&&p.top>=0&&p.bottom<=innerHeight&&s.top>=p.top&&s.bottom<=p.bottom})()`),`Panel and search fit at ${width}×${height}`);

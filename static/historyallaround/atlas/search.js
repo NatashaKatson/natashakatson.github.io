@@ -75,7 +75,7 @@
       });
     } else {
       status.textContent = `${matches.length ? `${matches.length === 16 ? "Top " : ""}${matches.length} result${matches.length === 1 ? "" : "s"}` : "No matching records yet. Try a shorter name or another spelling."}${loading.length ? ` Loading ${loading.map((d) => d.label).join(" and ")}…` : ""}${failed.length ? ` Could not load ${failed.map((d) => d.label).join(" and ")}; results are incomplete.` : ""}`;
-      results.innerHTML = matches.map((r, i) => `<button type="button" class="history-search-result" data-search-result="${i}"><span class="search-result-kind">${esc(kinds[r.kind])}</span><strong>${esc(r.title)}</strong><span class="search-result-date">${esc(dateLabel(r))}</span>${r.description ? `<small>${esc(r.description)}</small>` : ""}</button>`).join("");
+      results.innerHTML = matches.map((r, i) => `<button type="button" class="history-search-result" data-search-result="${i}"><span class="search-result-kind">${esc(kinds[r.kind])}</span><strong>${esc(r.title)}</strong><span class="search-result-date">${esc(dateLabel(r))}</span>${r.description ? `<small>${esc(core.summary(r.description))}</small>` : ""}</button>`).join("");
       results.querySelectorAll("[data-search-result]").forEach((b) => b.onclick = () => navigate(+b.dataset.searchResult));
     }
     results.setAttribute("aria-busy", String(navigating));

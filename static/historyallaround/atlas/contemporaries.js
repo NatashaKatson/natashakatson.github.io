@@ -3,6 +3,7 @@
   const core = DiscoveryCore;
   const card = document.createElement("section");
   card.className = "contemporaries-card comparison-stories";
+  card.tabIndex = -1;
   card.setAttribute("aria-label", "Contemporaries across cultures");
   document.getElementById("people").after(card);
   const examples = [
@@ -14,13 +15,18 @@
   async function show(person, year, pair = core.contemporaryPair(ppl, year, person.wiki)) {
     await HistoryDiscovery.jumpSearch({ kind: "person", recordId: person.id,
       start: year, lon: person.lon, lat: person.lat, contemporaries: pair?.people.map((p) => p.wiki) });
-    if (innerWidth <= 860) stage.scrollIntoView({ block: "center", behavior: "auto" });
+    render();
+    revealInSidebar(card);
+    card.focus({ preventScroll: true });
   }
   function render() {
     // Comparison's right year is the global year used by the people ledger.
     const selected = byId[state.sel];
     const anchor = selected?.kind === "person" ? selected.wiki : HistoryDiscovery.contemporaryAnchor();
     const savedPair = HistoryDiscovery.contemporaryPair();
+    card.classList.toggle('selected-pair', !!savedPair);
+    const anchorElement = document.getElementById(savedPair ? 'detail' : 'people');
+    if (anchorElement.nextElementSibling !== card) anchorElement.after(card);
     const key = [state.year, anchor, savedPair?.people.map((p) => p.wiki).join("/"), HistoryDiscovery.isComparing()].join("/");
     if (key === renderedKey) return;
     renderedKey = key;

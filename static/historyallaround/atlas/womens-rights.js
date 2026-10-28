@@ -30,6 +30,7 @@
   const results = panel.querySelector('#rightsResults');
   let lastKey = '';
   let listKey = '';
+  let listPeriod = '';
 
   panel.querySelector('.rights-close').onclick = () => {
     if (trigger.getAttribute('aria-expanded') === 'true') trigger.click();
@@ -40,6 +41,9 @@
     buildMarks();update();
   };
   for (const control of [search,topic,region]) control.addEventListener(control === search ? 'input' : 'change', () => HistoryWomensRights.render());
+  results.addEventListener('focusout', event => {
+    if (!results.contains(event.relatedTarget)) { lastKey = ''; HistoryWomensRights.render(); }
+  });
   results.addEventListener('click', async event => {
     const button = event.target.closest('[data-rights-record]');
     if (!button) return;
@@ -63,9 +67,10 @@
     const description = record => `${fmtEvent(record)} · ${record.rights.country}${inPeriod(record)?' · Near displayed year':''}`;
     status.textContent = `${matches.length} of ${records.length} milestones · ${matches.filter(inPeriod).length} near ${years.map(year => fmt(year)).join(' & ')}`;
     const filters = JSON.stringify([query,topic.value,region.value]);
+    const period = years.join('/');
     // A timeline, selection or visibility update must not replace the focused
     // button or reset a reader's scroll position in the chronological list.
-    if (filters === listKey) {
+    if (filters === listKey && (period === listPeriod || results.contains(document.activeElement))) {
       for (const button of results.querySelectorAll('[data-rights-record]')) {
         const record = byId[button.dataset.rightsRecord];
         button.setAttribute('aria-current', String(state.sel === record.id));
@@ -74,13 +79,16 @@
       return;
     }
     listKey = filters;
+    listPeriod = period;
     const focusedId = results.contains(document.activeElement) ? document.activeElement.dataset.rightsRecord : null;
     const groups = [
       ['Before 1800',-Infinity,1799], ['1800–1899',1800,1899],
       ['1900–1949',1900,1949], ['1950–1999',1950,1999], ['2000–present',2000,Infinity],
     ];
-    results.innerHTML = groups.map(([label,from,to]) => {
-      const events = matches.filter(record => record.start >= from && record.start <= to);
+    const near = matches.filter(inPeriod);
+    const renderGroup = (label, events) => events.length ? `<section class="rights-group"><h3>${esc(label)} <span>${events.length}</span></h3>${events.map(record => `<button type="button" class="rights-result" data-rights-record="${record.id}" aria-current="${state.sel === record.id}"><span aria-hidden="true">👩</span><span><strong>${esc(record.title)}</strong><small>${esc(description(record))}</small></span></button>`).join('')}</section>` : '';
+    results.innerHTML = renderGroup(`Near ${years.map(year => fmt(year)).join(' & ')}`, near) + groups.map(([label,from,to]) => {
+      const events = matches.filter(record => !inPeriod(record) && record.start >= from && record.start <= to);
       return events.length ? `<section class="rights-group"><h3>${label} <span>${events.length}</span></h3>${events.map(record => `<button type="button" class="rights-result" data-rights-record="${record.id}" aria-current="${state.sel === record.id}"><span aria-hidden="true">👩</span><span><strong>${esc(record.title)}</strong><small>${esc(description(record))}</small></span></button>`).join('')}</section>` : '';
     }).join('') || '<p class="rights-empty">No matching milestones. Try another search, topic or region.</p>';
     if (focusedId) (results.querySelector(`[data-rights-record="${focusedId}"]`) || search).focus({preventScroll:true});

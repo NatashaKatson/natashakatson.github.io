@@ -43,7 +43,7 @@ try {
     assert(toggle.closest('#eraPanel')&&!document.querySelector('#layersPanel .dinosaur-map-controls'),'dinosaur controls belong to Choose era, not Layers');
     assert(document.getElementById('layersPanel').hidden&&document.getElementById('filtersPanel').hidden,'map menus start collapsed');
     document.querySelector('[data-atlas-menu="filtersPanel"]').click();
-    assert(document.querySelectorAll('#legend .chip:not([hidden])').length===12&&document.getElementById('filterCount').textContent==='12','human history shows twelve relevant filters');
+    assert(document.querySelectorAll('#legend .chip:not([hidden])').length===11&&document.getElementById('filterCount').textContent==='All','human history shows eleven global filters with an unfiltered state');
     document.querySelector('#legend .chip').focus();
     document.activeElement.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',bubbles:true}));
     assert(document.getElementById('filtersPanel').hidden&&document.activeElement.dataset.atlasMenu==='filtersPanel','Escape closes the menu and restores focus');
@@ -58,7 +58,7 @@ try {
     toggle.click();render();assert(yearAt(0)===-252000000&&document.getElementById('eras').textContent.includes('Dinosaurs'),'on restores the dinosaur timeline');
     assert(!document.querySelector('.dinosaur-discovery').hidden&&!document.querySelector('.dinosaur-jump').hidden&&!document.querySelector('[data-dinosaur-destination]').hidden,'on restores dinosaur exploration');
     document.querySelector('.dinosaur-trigger').click();render();
-    assert(document.querySelectorAll('#legend .chip:not([hidden])').length===1&&document.getElementById('filterCount').textContent==='1','deep time shows the fossil filter');
+    assert(document.querySelectorAll('#legend .chip:not([hidden])').length===1&&document.getElementById('filterCount').textContent==='All','deep time shows the fossil filter with an unfiltered state');
     toggle.click();render();assert(state.year===1903&&!dinosaurTimeline&&!hits.some(h=>byId[h.id]?.cat==='dinosaurs'),'turning off during deep time returns to the last human year');
     toggle.click();await HistoryDiscovery.openView(dinosaurOffHash);render();assert(!dinosaurTimeline&&toggle.getAttribute('aria-pressed')==='false','shared off state restores the human timeline');
     toggle.click();
@@ -99,7 +99,7 @@ try {
     document.getElementById('compareToggle').click();
     const form=document.getElementById('compareYears');form.elements.left.value='150 Ma';form.elements.right.value='1903';form.requestSubmit();render();
     assert(state.year===1903&&!document.querySelector('.deep-time-note').hidden,'deep-time note follows either comparison side');
-    assert(document.querySelectorAll('#legend .chip:not([hidden])').length===13,'mixed comparison shows categories for both periods');
+    assert(document.querySelectorAll('#legend .chip:not([hidden])').length===12,'mixed comparison shows global categories for both periods');
     await HistoryDiscovery.openView(dinosaurHash);render();
     return 'Dinosaurs: ages, source context, eras, clickable markers, category search, Back, sharing and comparison passed';
   })()`));

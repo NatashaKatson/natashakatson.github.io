@@ -49,10 +49,11 @@ try {
     const chip=document.querySelector('#legend [data-k="pandemics"]');
     check(chip&&!chip.hidden&&chip.textContent.includes('Pandemics'),'Pandemics is a human-history filter');
     check(getComputedStyle(chip).getPropertyValue('--c-pandemics').trim()==='#317d83','Pandemic swatch has a real color');
-    check(document.getElementById('filterCount').textContent==='12','All twelve human filters counted');
+    check(document.getElementById('filterCount').textContent==='All','All human filters are visibly enabled');
+    if(state.cats.has('migrations'))document.getElementById('migrationVisibility').click();
     for(const b of document.querySelectorAll('#legend [data-k]'))if(b!==chip&&b.getAttribute('aria-pressed')==='true')b.click();
     render();check(state.cats.size===1&&state.cats.has('pandemics'),'Pandemics can be isolated');
-    check(document.getElementById('filterCount').textContent==='1','Isolated category count is one');
+    check(document.getElementById('filterCount').textContent==='10 hidden','Isolated category explains the ten hidden global types');
     for(const [wiki,year] of [['Antonine_Plague',170],['Plague_of_Justinian',650],['Second_plague_pandemic',1600],['Second_cholera_pandemic',1834],['Third_plague_pandemic',1900],['Spanish_flu',1918],['HIV/AIDS',2000],['COVID-19',2026]]){
       const e=ev.find(e=>e.wiki===wiki);
       await HistoryDiscovery.jumpSearch({kind:'event',recordId:e.id,start:e.start,lon:e.lon,lat:e.lat});flyToken++;

@@ -50,8 +50,9 @@ try {
     check(!document.querySelector('#layersPanel [data-rights-record]')&&!document.querySelector('#layersPanel [data-layer="womens-rights"]'),'Women’s rights are separate from Layers');
     const buttons=[...document.querySelectorAll('[data-rights-record]')];
     check(buttons.length===76,'Every milestone is discoverable outside its date');
-    check(buttons.every((b,i)=>!i||byId[buttons[i-1].dataset.rightsRecord].start<=byId[b.dataset.rightsRecord].start),'Chronological ordering across history');
-    check(byId[buttons[0].dataset.rightsRecord].start===-172,'Ancient history is included');
+    check(new Set(buttons.map(b=>b.dataset.rightsRecord)).size===76,'Milestones appear once across period groups');
+    check([...document.querySelectorAll('.rights-group')].every(group=>[...group.querySelectorAll('[data-rights-record]')].every((b,i,list)=>!i||byId[list[i-1].dataset.rightsRecord].start<=byId[b.dataset.rightsRecord].start)),'Chronological ordering within each period group');
+    check(buttons.some(b=>byId[b.dataset.rightsRecord].start===-172),'Ancient history is included');
     const list=document.getElementById('rightsResults'),last=buttons.at(-1);
     last.focus();last.scrollIntoView({block:'nearest'});
     const scroll=list.scrollTop;
@@ -116,6 +117,7 @@ try {
   for(const [width,height] of [[1440,1000],[1440,400],[900,400],[1280,450],[1100,800],[1024,768],[900,700],[861,700],[861,650],[861,601],[768,1024],[560,700],[390,844],[320,568],[320,500],[844,390]]){
     await send('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:1,mobile:width<=860});
     await evaluate(`window.scrollTo({top:0,behavior:'instant'});resize();`);
+    await evaluate(`if(innerWidth<=860&&document.getElementById('mapToolsToggle').getAttribute('aria-expanded')!=='true')document.getElementById('mapToolsToggle').click()`);
     assert(await evaluate(`(()=>{const r=[...document.querySelectorAll('.atlas-toolbar > .atlas-menu > button')].map(b=>b.getBoundingClientRect());return r.length===4&&r.every((a,i)=>a.left>=0&&a.right<=innerWidth&&a.height>=40&&r.slice(i+1).every(b=>a.right<=b.left||b.right<=a.left||a.bottom<=b.top||b.bottom<=a.top))&&document.documentElement.scrollWidth<=innerWidth})()`),`Four controls fit at ${width}×${height}`);
     await evaluate(`(()=>{const trigger=document.querySelector('[data-atlas-menu="womensRightsPanel"]');if(trigger.getAttribute('aria-expanded')!=='true')trigger.click()})()`);
     assert(await evaluate(`(()=>{const p=document.getElementById('womensRightsPanel').getBoundingClientRect();return p.height>0&&p.left>=0&&p.right<=innerWidth&&p.top>=0&&p.bottom<=innerHeight})()`),`Women’s rights panel fits at ${width}×${height}`);

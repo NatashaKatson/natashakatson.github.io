@@ -7,6 +7,17 @@ const countries = require('../static/historyallaround/atlas/search-countries.js'
 const { events } = require('../scripts/audit-history-accuracy.cjs').records();
 const records = Array.from(events, (r) => ({ kind: 'event', cat: r[8], start: r[0], end: r[1] ?? r[0], wiki: r[9], indigenous: r[13] }));
 
+test('browsing summaries preserve complete short text and do not mistake an abbreviation for the whole summary', () => {
+  const opening = 'A sourced historical milestone explains what changed in this place.';
+  assert.equal(core.summary(opening), opening);
+  assert.equal(core.summary(opening + ' Further context and source qualifications.'.repeat(10)), opening);
+  const full = 'U.S. courts consider the scope of the recorded law and the conditions that applied. '.repeat(5);
+  const summary = core.summary(full);
+  assert(summary.startsWith('U.S. courts consider'));
+  assert(summary.length <= 180 && summary.includes('conditions that applied.'));
+  assert.equal(core.summary(''), '');
+});
+
 test('1992 contains nearby dated events without unrelated Indigenous community overviews', () => {
   const active = records.filter((r) => core.yearGap(r.start, r.end, 1992) <= core.sameTimeYears);
   const context = active.filter((r) => core.isHistoricalContext(r, 1992));
