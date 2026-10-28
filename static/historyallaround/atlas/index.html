@@ -425,7 +425,7 @@ header .seg{padding:2px;background:#f0ebe3;border:1px solid rgba(45,36,32,.1);bo
     <canvas id="cv" tabindex="0" aria-label="World map showing events at the selected time" aria-describedby="mapKeyboardHelp"></canvas>
     <p id="mapKeyboardHelp" class="sr-only">Use arrow keys to move the map, plus and minus to zoom, and Home to reset the view. Press Tab to leave the map. Events are also available in the event list.</p>
     <button type="button" id="mapToolsToggle" class="atlas-menu-trigger" aria-haspopup="dialog" aria-expanded="false" aria-controls="mapSettings">☷ <span>Map settings</span></button>
-    <div class="readout"><button type="button" id="editDate" aria-label="Edit selected date"><span class="yr" id="yr"></span><span class="date-edit-icon" aria-hidden="true">⌄</span></button></div>
+    <div class="readout"><button type="button" id="editDate" aria-label="Edit selected date"><span class="yr" id="yr"></span><span class="date-edit-icon" aria-hidden="true">⌄</span></button><span class="readout-era" id="readoutEra"></span></div>
     <div class="atlas-toolbar" id="mapTools" aria-label="Map controls">
       <div class="atlas-menu"><button type="button" class="atlas-menu-trigger" data-atlas-menu="womensRightsPanel" aria-expanded="false" aria-controls="womensRightsPanel"><span aria-hidden="true">👩</span> Women’s rights <span aria-hidden="true">⌄</span></button>
         <section class="atlas-menu-panel womens-rights-panel" id="womensRightsPanel" aria-labelledby="womensRightsTitle" hidden></section>
@@ -1100,7 +1100,7 @@ const SEG=[[0,-252000000],[.06,-201000000],[.12,-145000000],[.22,-66000000],[.24
 const HISTORY_SEG=[[0,-300000],[.10,-10000],[.17,-3000],[.40,0],[.70,1500],[.83,1800],[1,NOW]];
 let dinosaurTimeline=true,lastHumanYear=NOW;
 let timelineFocused=true,timelineWindow=null;
-const TIMELINE_WINDOWS=[[-252000000,-201000000],[-201000000,-145000000],[-145000000,-66000000],[-66000000,-300000],[-300000,-10000],[-10000,-3200],[-3200,-800],[-800,500],[500,1500],[1500,1800],[1800,NOW]];
+const TIMELINE_WINDOWS=[[-252000000,-201000000],[-201000000,-145000000],[-145000000,-66000000],[-66000000,-300000],[-300000,-10000],[-10000,-3200],[-3200,-800],[-800,500],[500,1500],[1500,1800],[1800,1850],[1850,1900],[1900,1950],[1950,2000],[2000,NOW]];
 function syncTimelineWindow(){
   if(timelineFocused&&timelineWindow&&state.year>=timelineWindow[0]&&state.year<=timelineWindow[1])return;
   const next=timelineFocused?(TIMELINE_WINDOWS.find(([a,b])=>state.year>=a&&(state.year<b||b===NOW))||TIMELINE_WINDOWS.at(-1)):null;
@@ -1213,7 +1213,7 @@ const grat=d3.geoGraticule10();
 const WATER_LABELS=[["North Atlantic Ocean",-35,30],["South Atlantic Ocean",-18,-25],["North Pacific Ocean",-150,22],["South Pacific Ocean",-130,-27],["Indian Ocean",80,-25],["Arctic Ocean",10,77],["Mediterranean Sea",18,35]];
 let W=0,H=0,DPR=1,proj,path,center;
 const STARS=(()=>{let a=7;const rnd=()=>(a=(a*16807)%2147483647)/2147483647;return Array.from({length:170},()=>[rnd(),rnd(),rnd()<.9?.6:1.1,.15+rnd()*.5])})();
-function baseScale(){return state.mode==="globe"?Math.min(W,H)*0.39:Math.min(W/5.6,H/2.9)}
+function baseScale(){return state.mode==="globe"?(W<600?Math.min(W*.46,H*.48):Math.min(W*.47,H*.68)):Math.min(W/5.6,H/2.9)}
 function makeProj(){
   if(state.mode==="globe"){proj=d3.geoOrthographic().rotate(rot).scale(baseScale()*zoomK).translate([W/2,H/2+ (W<600?10:0)]).clipAngle(90).precision(.4)}
   else{proj=d3.geoNaturalEarth1().rotate([-10,0]).scale(baseScale()*zoomK).translate([W/2+flatT.x,H/2+flatT.y]).precision(.4)}

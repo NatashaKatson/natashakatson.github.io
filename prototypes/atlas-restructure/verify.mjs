@@ -52,7 +52,7 @@ try {
   await waitFor(`!!window.AtlasUI`);
   await evaluate('stopSpin()');
   await check(`ev.length===422 && ppl.length===66`, 'All historical records remain available');
-  await check(`timelineFocused && timelineWindow[0]===1800 && timelineWindow[1]===2026`, 'Timeline focuses on a useful modern range');
+  await check(`timelineFocused && timelineWindow[0]===1900 && timelineWindow[1]===1950`, 'Timeline focuses on a readable fifty-year modern range');
   await click('#timelineScope');
   await check(`!timelineFocused && yearAt(0)===-252000000 && yearAt(1)===2026`, 'All eras restores the complete time range');
   await waitFor(`document.getElementById('timelineScope').textContent.includes('Focus era')`);
@@ -73,6 +73,11 @@ try {
   await check(`!state.playing`, 'Play and Pause work on the focused range');
   await evaluate(`setYear(1928);select(ev.find(e=>e.wiki==='Penicillin').id,false)`);
   await check(`document.querySelector('#detail h3').textContent.includes('Penicillin') && !document.querySelector('.event-list-disclosure').open`, 'Selected story is focused, with more events on demand');
+  await waitFor(`!!document.querySelector('#detail .story-sources')`);
+  await check(`!document.querySelector('#detail .story-sources').open && document.querySelectorAll('#detail .story-sources a').length===2`, 'Compact card preserves both original source links on demand');
+  await check(`document.querySelector('#detail .detail').getBoundingClientRect().height<300 && !document.querySelector('#detail .story-context').open`, 'Selected story stays compact and related history remains available');
+  await check(`getComputedStyle(stage).backgroundImage==='none' && getComputedStyle(stage).backgroundColor==='rgb(242, 238, 230)'`, 'Map keeps the requested neutral paper background');
+  await check(`baseScale()*2>Math.min(W,H)`, 'Globe fills more of the desktop map stage');
   await screenshot('desktop');
   await click('#mapToolsToggle');
   await check(`document.getElementById('mapSettings').open && document.activeElement.closest('#mapSettings')`, 'Map settings opens a focused modal drawer');

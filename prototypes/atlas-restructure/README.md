@@ -14,6 +14,8 @@ Implemented in `static/historyallaround/atlas/` on the `redesign` branch. The or
 
 The timeline shows a useful era range, with **All eras** for moving between deep time and human history. Exact date entry belongs to this navigator. Its focused scale is linear; the overview retains the original expanded scale for recent history. Playback accumulates fractional progress so it advances smoothly even within short eras. Existing dates, sources, records, and shareable views are preserved.
 
+The visual implementation keeps a neutral warm-paper background, following the user's preference over the concept's blue backdrop. The larger globe, compact reading card, quieter timeline, and floating settings panel follow the concept's proportions. Recent history uses 50-year windows (the latest ends at the atlas's 2026 cutoff). Sources and related history remain accessible through disclosures.
+
 On mobile, retain the map and compact time navigator. Put events in an expandable bottom sheet. Explore, Journeys, and Search form the primary navigation.
 
 ## Verification

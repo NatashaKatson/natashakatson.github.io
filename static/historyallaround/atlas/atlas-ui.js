@@ -261,19 +261,34 @@
     document.getElementById('sheetPreview').textContent = journeys ? 'Browse journeys ↑' : (heading || 'Browse events ↑');
     sheetToggle.querySelector('span:nth-child(2)').textContent = journeys ? 'Journeys' : 'Around this time';
     document.getElementById('currentEraLabel').textContent = document.getElementById('era').textContent;
+    document.getElementById('readoutEra').textContent = document.getElementById('era').textContent;
     scopeButton.textContent = timelineFocused ? 'All eras ↗' : 'Focus era ↙';
     scopeButton.setAttribute('aria-pressed', String(!timelineFocused));
     if (document.activeElement !== dateInput) dateInput.value = state.year <= -1000000 ? `${Math.abs(state.year) / 1000000} Ma` : fmt(state.year);
-    // Related history remains available without overwhelming the selected story.
-    for (const section of document.querySelectorAll('#detail .near:not([data-disclosed])')) {
-      const disclosure = document.createElement('details');
-      const label = section.querySelector('b');
-      const summary = document.createElement('summary');
-      summary.textContent = label?.textContent || 'Related history';
-      if (label) label.remove();
-      disclosure.append(summary, ...section.childNodes);
-      section.append(disclosure);
-      section.dataset.disclosed = 'true';
+    // Keep the reading card brief; preserve every source and related record.
+    if (detailNode && !detailNode.dataset.compact && !detailNode.classList.contains('dinosaur-detail')) {
+      const sources = document.createElement('details');
+      sources.className = 'story-sources';
+      sources.innerHTML = '<summary>View sources ↗</summary>';
+      for (const child of [...detailNode.children]) {
+        if (child.tagName === 'A' || (child.tagName === 'P' && child.children.length === 1 && child.firstElementChild.tagName === 'A' && child.textContent.trim() === child.firstElementChild.textContent.trim())) sources.append(child);
+      }
+      if (sources.children.length > 1) detailNode.append(sources);
+      const action = detailNode.querySelector(':scope > .discovery-action');
+      if (action) {
+        action.setAttribute('aria-label', action.textContent);
+        action.textContent = 'Explore this place →';
+        detailNode.append(action);
+      }
+      const sections = [...detailNode.querySelectorAll('.near')];
+      if (sections.length) {
+        const related = document.createElement('details');
+        related.className = 'story-context';
+        related.innerHTML = '<summary>Context & related history</summary>';
+        related.append(...sections);
+        detailNode.after(related);
+      }
+      detailNode.dataset.compact = 'true';
     }
   }
   setSheet(false);
