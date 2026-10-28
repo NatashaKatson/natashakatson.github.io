@@ -103,8 +103,10 @@ try {
   }
   console.log('Korea arrow direction and density pass on desktop and phones in globe/map modes at zoom 1, 3 and 6');
   await send('Emulation.setDeviceMetricsOverride',{width:1440,height:1000,deviceScaleFactor:1,mobile:false});
-  const target=await evaluate(`(()=>{
+  const target=await evaluate(`(async()=>{
     resize();setMode('globe');stopSpin();flyToken++;rot=[-129,-37,0];zoomK=3;setYear(1950);render();
+    // The responsive dock measurement changes the map height after this viewport switch.
+    await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));resize();
     const record=ev.find(e=>e.wiki==='Hungnam_evacuation'),route=HistoricalLayersCore.routes.find(r=>r.wiki===record.wiki);
     for(const year of [1949,1954]){
       const result=captureRoute(route,year);
