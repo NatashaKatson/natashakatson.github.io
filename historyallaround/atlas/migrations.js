@@ -30,7 +30,6 @@
   visibility.onchange = () => {
     if (visibility.checked) state.cats.add('migrations');
     else state.cats.delete('migrations');
-    document.querySelector('#legend [data-k="migrations"]').setAttribute('aria-pressed', String(visibility.checked));
     buildMarks();update();
   };
   search.addEventListener('input', () => HistoryMigrations.render());

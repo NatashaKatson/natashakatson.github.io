@@ -566,7 +566,7 @@
   .app > header .brand h1 { font-size: 21px; }
   .app > header .brand-kicker { font-size: 7px; margin-bottom: 3px; }
   .app > header .head-tools { grid-template-columns: minmax(0, 1fr); gap: 10px; }
-  .app > header .view-tool { display: none; }
+  .app > header .view-tool { display: block; }
 }
 
 
@@ -574,7 +574,7 @@
 /* Credits sit below the timeline, outside the scrolling history ledger. */
 .app {
   grid-template-areas: "head head" "stage side" "time side" "foot foot";
-  grid-template-rows: auto max(420px, calc(100svh - 264px)) min-content auto;
+  grid-template-rows: auto max(260px, calc(100svh - var(--atlas-header-height, 72px) - var(--atlas-dock-height, 300px))) min-content auto;
   height: auto;
   min-height: 100svh;
 }
@@ -606,7 +606,7 @@
 .atlas-footer a:focus-visible, .atlas-footer summary:focus-visible { outline: 2px solid #b45a39; outline-offset: 3px; }
 @media (max-width: 860px) {
   .app > .stage { height: 72svh; min-height: 350px; }
-  .atlas-footer { order: 3; padding: 16px 20px; }
+  .atlas-footer { order: 5; padding: 16px 20px; }
   .app > .side { order: 4; }
   .atlas-footer-main { flex-wrap: wrap; gap: 12px 20px; }
   .atlas-footer-note { display: none; }

@@ -439,7 +439,7 @@
   };
   const tools = document.createElement("div");
   tools.className = "discovery-tools";
-  tools.innerHTML = `<button id="compareToggle" aria-pressed="false" type="button">Compare</button><form id="compareYears" hidden><label>Left year <input name="left" aria-label="Left comparison year" required value="1453"></label><label>Right year <input name="right" aria-label="Right comparison year" required value="${state.year}"></label><button>Apply years</button></form><label id="changeOption" hidden><input type="checkbox" id="changedOutlines"> Outline changed map records</label><span class="discovery-note" id="compareNote" hidden>The global timeline controls the right year. Enter BCE or CE; no year zero. Outlines mark changed geometry or political membership, not precise gains or losses; source borders are approximate.</span>`;
+  tools.innerHTML = `<form id="compareYears" aria-describedby="compareDescription" hidden><label>Left year <input name="left" aria-label="Left comparison year" required value="1453"></label><label>Right year <input name="right" aria-label="Right comparison year" required value="${state.year}"></label><button>Apply years</button></form><label id="changeOption" hidden><input type="checkbox" id="changedOutlines"> Outline changed map records</label><span class="discovery-note" id="compareNote" hidden>The global timeline controls the right year. Enter BCE or CE; no year zero. Outlines mark changed geometry or political membership, not precise gains or losses; source borders are approximate.</span>`;
   document.querySelector(".time").prepend(tools);
   const divider = document.createElement("button");
   divider.type = "button";
@@ -570,7 +570,7 @@
     for (let i = 0; i < 2; i++) {
       const input = form.elements[i];
       input.setCustomValidity(
-        vals[i] === null ? "Enter a BCE or CE year, excluding zero." : "",
+        vals[i] === null ? "Enter a year from 252 million years ago to 2026, excluding zero." : "",
       );
       if (vals[i] === null) {
         input.reportValidity();
@@ -1087,7 +1087,8 @@
         ? "Changed outlines require loaded historical borders for both years."
         : "";
       status.textContent = messages.join(" · ");
-      status.hidden = !messages.length;
+      // Keep the map still while border downloads add and remove coverage notices.
+      status.classList.toggle('is-empty', !messages.length);
       window.HistoryChallenge?.render();
     },
     mapAt(x, y, lookup) {
@@ -1201,8 +1202,11 @@
   function openHash(hash) {
     if (hash.includes("view=")) openView(hash);
     else {
-      const id = new URLSearchParams(hash.slice(1)).get("discover");
+      const params = new URLSearchParams(hash.slice(1));
+      const id = params.get("discover");
+      const event = ev.find(record => record.wiki === params.get("event"));
       if (discoveries.some((s) => s.id === id)) openCurated(id);
+      else if (event) jumpSearch({ kind: 'event', recordId: event.id, start: event.start, lon: event.lon, lat: event.lat });
       else {
         const year = parseYear(hash.slice(1));
         if (year !== null) { stopPlay(); setYear(year); }
@@ -1210,6 +1214,6 @@
     }
   }
   // Preserve old numeric hashes as well as exact views and short discovery links.
-  if (initialAtlasHash.includes("view=") || initialAtlasHash.includes("discover=")) openHash(initialAtlasHash);
+  if (initialAtlasHash.includes("view=") || initialAtlasHash.includes("discover=") || initialAtlasHash.includes("event=")) openHash(initialAtlasHash);
   window.addEventListener("hashchange", () => openHash(location.hash));
 })();

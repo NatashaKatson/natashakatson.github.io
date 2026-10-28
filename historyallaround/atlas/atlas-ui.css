@@ -103,7 +103,7 @@
 .time, .stage.comparing + .time {
   position: relative; z-index: 7; padding: 14px 24px 12px; gap: 7px 14px;
   grid-template-columns: minmax(0, 1fr) auto;
-  grid-template-areas: 'play actions' 'population population' 'ruler ruler' 'summary summary' 'status status';
+  grid-template-areas: 'play actions' 'compare compare' 'population population' 'ruler ruler' 'summary summary' 'status status';
 }
 .time .controls { gap: 6px; }
 .time .controls .lbl { margin-left: 8px; font: 10px var(--body); color: #81776e; }
@@ -131,35 +131,29 @@
 }
 .dock-options-content .discovery-tools button:hover { background: #eee7dc; border-color: #b7aa9a; }
 .dock-options-content .discovery-tools :is(button, input):focus-visible { outline: 2px solid #a3482d; outline-offset: 2px; }
-.dock-options-content #compareToggle {
-  grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between;
-  gap: 12px; padding: 0; border: 0; background: transparent; text-align: left; font-weight: 500; font-size: 14px;
-}
-.dock-options-content #compareToggle::after {
-  content: ''; flex: none; width: 34px; height: 20px; border-radius: 12px;
-  background: radial-gradient(circle at 10px 10px, #fffdf9 0 7px, transparent 7.5px), #b5aca1;
-}
-.dock-options-content #compareToggle[aria-pressed="true"]::after {
-  background: radial-gradient(circle at 24px 10px, #fffdf9 0 7px, transparent 7.5px), #a3482d;
-}
-.dock-options-content #compareYears {
-  grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+#compareToggle[aria-pressed="true"] { background: #a3482d; border-color: #a3482d; color: #fffdf9; }
+.comparison-controls { grid-area: compare; display: grid; gap: 8px; min-width: 0; }
+#compareDescription { margin: 0; color: #756c65; font: 11px/1.6 var(--body); }
+.comparison-controls :is(button, input):focus-visible { outline: 2px solid #a3482d; outline-offset: 2px; }
+.comparison-controls button { min-height: 44px; padding: 9px 12px; border: 1px solid #d9d1c7; border-radius: 5px; font: 12px/1.4 var(--body); cursor: pointer; }
+.comparison-controls #compareYears {
+  grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)) auto;
   align-items: end; gap: 12px;
 }
-.dock-options-content #compareYears label { display: grid; gap: 6px; min-width: 0; font-size: 11px; color: #756c65; }
-.dock-options-content #compareYears input {
+.comparison-controls #compareYears label { display: grid; gap: 6px; min-width: 0; font-size: 11px; color: #756c65; }
+.comparison-controls #compareYears input {
   width: 100%; min-width: 0; min-height: 44px; padding: 10px 12px;
   border: 1px solid #d9d1c7; border-radius: 5px; background: #fffdf9;
   color: #2d2420; font: 14px/1.4 var(--body); font-variant-numeric: tabular-nums;
 }
-.dock-options-content #compareYears button { grid-column: 1 / -1; background: #a3482d; border-color: #a3482d; color: #fffdf9; }
-.dock-options-content #compareYears button:hover { background: #8c3d26; border-color: #8c3d26; }
-.dock-options-content #changeOption {
+.comparison-controls #compareYears button { background: #a3482d; border-color: #a3482d; color: #fffdf9; }
+.comparison-controls #compareYears button:hover { background: #8c3d26; border-color: #8c3d26; }
+.comparison-controls #changeOption {
   grid-column: 1 / -1; display: flex; align-items: center; gap: 9px;
   min-height: 44px; font-size: 12px; line-height: 1.5; cursor: pointer;
 }
-.dock-options-content #changedOutlines { flex: none; width: 16px; height: 16px; margin: 0; accent-color: #a3482d; }
-.dock-options-content #compareNote { grid-column: 1 / -1; font-size: 11px; line-height: 1.6; color: #756c65; }
+.comparison-controls #changedOutlines { flex: none; width: 16px; height: 16px; margin: 0; accent-color: #a3482d; }
+.comparison-controls #compareNote { grid-column: 1 / -1; font-size: 11px; line-height: 1.6; color: #756c65; }
 .dock-options-content .share-view, .dock-options-content .dinosaur-trigger { margin-top: 4px; }
 .dock-options-content .share-panel {
   grid-column: 1 / -1; order: 1; padding: 12px 0 0; border-top: 1px solid #d9d1c7;
@@ -206,7 +200,10 @@
   #migrationSearch { font-size: 16px; }
   .time .iconbtn { min-height: 44px; width: 30px; }
   .time .play { width: auto; padding: 0 11px; }
-  .dock-actions { gap: 6px; }
+  .dock-actions { gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+  .comparison-controls #compareYears { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .comparison-controls #compareYears input { font-size: 16px; }
+  .comparison-controls #compareYears button { grid-column: 1 / -1; }
   .era-panel { right: -78px; width: min(340px, calc(100vw - 32px)); }
   .dock-options-content { max-height: min(55svh, var(--options-space, 540px)); }
   .map-context { left: 18px; bottom: 18px; }
@@ -292,4 +289,116 @@
 }
 @media (max-width: 370px) {
   .side .item { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+}
+
+/* Shared interaction layout. Keep responsive rules together after the base styles. */
+[hidden] { display: none !important; }
+:focus-visible { outline: 3px solid #a3482d; outline-offset: 3px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.skip-links { position: absolute; z-index: 200; top: 0; left: 12px; }
+.skip-links a { position: absolute; width: max-content; padding: 12px 18px; background: #2d2420; color: #fff; transform: translateY(-150%); }
+.skip-links a:focus { position: relative; display: inline-block; transform: none; }
+.mobile-atlas-nav, #mapToolsToggle { display: none; }
+.atlas-load-error { position: absolute; z-index: 90; inset: 20px; align-content: center; padding: 24px; text-align: center; background: #f8f5f0; color: #2d2420; }
+.atlas-load-error h2 { font: 500 28px/1.3 var(--display); }
+.atlas-load-error p { max-width: 440px; margin: 18px auto; }
+.atlas-load-error button { min-height: 44px; margin: 10px; padding: 10px 20px; border: 1px solid #a3482d; border-radius: 4px; background: #e99a7d; cursor: pointer; }
+.atlas-load-error a { display: block; margin-top: 12px; color: #a3482d; }
+body[data-atlas-load="failed"] .population-strip { display: none; }
+.stage:focus-within { z-index: 8; }
+#cv:focus-visible { outline-offset: -4px; }
+.stage .readout { padding: 10px 12px; background: #f8f5f0; border: 1px solid #ded6cb; border-radius: 4px; }
+.time, .stage.comparing + .time {
+  grid-template-areas: 'play actions' 'compare compare' 'population population' 'navigation navigation' 'ruler ruler' 'summary summary' 'status status';
+  padding-block: 12px;
+}
+.event-navigation { grid-area: navigation; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 14px; color: #655d56; }
+.event-navigation > button, .timeline-help summary { min-height: 32px; padding: 5px 0; border: 0; background: transparent; color: #a3482d; font: 12px/1.5 var(--body); cursor: pointer; }
+.event-navigation button:disabled { color: #756c65; opacity: .65; cursor: default; }
+.timeline-help { margin-left: auto; position: relative; }
+.timeline-help summary { color: #655d56; }
+.timeline-help p { position: absolute; z-index: 20; bottom: 100%; right: 0; width: 300px; max-width: calc(100vw - 40px); padding: 14px; background: #fffdf9; border: 1px solid #d9d1c7; box-shadow: 0 8px 25px #2d24201c; font: 13px/1.6 var(--body); }
+.ticks span { font-size: 11px; color: #655d56; }
+.ticks span:first-child { transform: translateX(0); }
+.ticks span:first-child::before { left: 0; }
+.ticks .timeline-end { transform: translateX(-100%); }
+.era-b { color: #655d56; font-size: 10px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.time .controls .lbl, .time-summary, .time .discovery-status { color: #655d56; font-size: 12px; }
+.time .controls { margin-bottom: 0; }
+.time .discovery-status { block-size: 42px; line-height: 18px; overflow-y: auto; }
+.time .discovery-status.is-empty { border-color: transparent; background: transparent; }
+.stage .readout::before, .app > header .tool-label { color: #655d56; font-size: 10px; }
+.stage-hint { color: #544840; font-size: 11px; }
+.atlas-menu-panel p, .layer-toggle small, .layer-explore, #eraChoices small, .time-summary, .time .discovery-status { font-size: 12px; color: #655d56; }
+#resetFilters { min-height: 44px; margin-bottom: 12px; padding: 8px 12px; border: 1px solid #c8bdaf; border-radius: 4px; background: #fff; font: 13px var(--body); cursor: pointer; }
+#resetFilters:disabled { opacity: .6; cursor: default; }
+#filterCount { min-width: 0; padding: 2px 5px; color: #544840; font-size: 11px; }
+.stage #legend .chip[aria-pressed="false"], .layer-toggle[aria-pressed="false"] { color: #655d56; }
+.borders-control .tool-label { color: #655d56; font-size: 11px; }
+.stage .zoom .iconbtn { width: 40px; height: 40px; }
+.dock-actions { flex-wrap: wrap; justify-content: flex-end; }
+.dock-options-content .discovery-tools { text-align: left; }
+.population-heading details { position: relative; }
+.population-heading details[open] { flex-basis: auto; }
+.population-method { position: absolute; z-index: 20; right: 0; bottom: calc(100% + 12px); width: min(620px, calc(100vw - 40px)); max-height: 60svh; overflow: auto; padding: 14px 18px; background: #fffdf9; border: 1px solid #d9d1c7; border-radius: 4px; box-shadow: 0 8px 25px #2d24201c; }
+.population-method, .timeline-help p { max-height: min(60svh, var(--note-space, 500px)); overflow-y: auto; }
+.opens-below > .population-method, .timeline-help.opens-below > p { bottom: auto; top: calc(100% + 12px); }
+.selected-pair { border-top: 3px solid #a3482d; }
+.empty-recovery { padding: 16px; border: 1px solid #d9d1c7; border-radius: 4px; background: #fff; }
+.empty-recovery p { margin: 0 0 12px; }
+.empty-recovery button, .empty-recovery a { display: block; width: 100%; min-height: 44px; margin-top: 8px; padding: 10px; border: 1px solid #d9d1c7; border-radius: 4px; background: #f8f5f0; color: #a3482d; text-align: left; font: 13px/1.5 var(--body); cursor: pointer; }
+.empty-recovery strong { display: block; color: #2d2420; font-weight: 500; }
+.side .item .b { font-size: 14px; }
+.atlas-footer-sources summary { min-height: 32px; font-size: 12px; }
+@media (min-width: 861px) and (max-width: 1100px) {
+  .time, .stage.comparing + .time { grid-template-areas: 'play play' 'actions actions' 'compare compare' 'population population' 'navigation navigation' 'ruler ruler' 'summary summary' 'status status'; }
+  .dock-actions { justify-content: flex-start; }
+}
+@media (max-width: 860px) {
+  .app > header { padding: 12px 16px; gap: 10px; }
+  .app > header .head-tools { grid-template-columns: auto minmax(0, 1fr) auto; gap: 8px; }
+  .app > header .goto input { font-size: 16px; }
+  .app > header .view-tool { display: block; }
+  .app > .stage { height: min(48svh, 420px); min-height: 280px; order: 1; scroll-margin-top: 57px; }
+  .mobile-atlas-nav { position: sticky; z-index: 45; top: 0; display: flex; gap: 6px; align-items: center; width: 100%; padding: 6px 14px; border-bottom: 1px solid #d9d1c7; background: #f8f5f0; order: 0; }
+  .mobile-atlas-nav button { min-height: 44px; padding: 8px 12px; border: 1px solid #d9d1c7; border-radius: 4px; background: #fff; color: #443c35; font: 13px var(--body); cursor: pointer; }
+  #mobileDate { margin-left: auto; color: #a3482d; font-weight: 500; font-size: 14px; }
+  #mapToolsToggle { display: flex; position: absolute; z-index: 9; top: 16px; right: 16px; }
+  .stage .readout { top: 14px; left: 16px; max-width: calc(100% - 155px); }
+  .stage .readout .yr { font-size: 27px; }
+  .atlas-toolbar, .stage.comparing .atlas-toolbar { display: flex; top: 70px; left: 12px; right: 12px; width: auto; max-width: none; gap: 6px; }
+  .stage:not(.tools-open) .atlas-toolbar > .atlas-menu > .atlas-menu-trigger { display: none; }
+  .tools-open .atlas-toolbar { padding: 10px; border: 1px solid #d9d1c7; border-radius: 6px; background: #f8f5f0; box-shadow: 0 8px 24px #33291e18; }
+  .time, .stage.comparing + .time { order: 2; padding: 10px 16px 12px; grid-template-areas: 'play play' 'actions actions' 'compare compare' 'population population' 'navigation navigation' 'ruler ruler' 'summary summary' 'status status'; }
+  .dock-actions { justify-content: flex-start; gap: 6px; }
+  .atlas-menu-trigger, .dock-options > summary { min-height: 44px; padding: 8px 10px; }
+  .time .controls { gap: 8px; }
+  .time .iconbtn { width: 44px; }
+  .time .play { width: auto; min-width: 90px; }
+  .era-panel { right: auto; left: 0; }
+  .event-navigation { column-gap: 10px; }
+  .event-navigation > button, .timeline-help summary { min-height: 44px; }
+  .timeline-help { margin: 0; }
+  .timeline-help p { left: 0; right: auto; }
+  .app > .side { order: 3; }
+  .app > .atlas-footer { order: 4; }
+  .side-intro, #sideTitle, #detail, .contemporaries-card, .curated-discoveries, .side .item, .discovery-panel { scroll-margin-top: 74px; }
+  .stage .zoom { right: 12px; bottom: 12px; }
+  .map-context { bottom: 12px; left: 16px; max-width: calc(100% - 76px); }
+  .map-context summary { min-height: 28px; font-size: 11px; }
+  .side .item { grid-template-columns: 64px minmax(0, 1fr); }
+  .time .controls .lbl { display: inline; margin-left: auto; }
+}
+@media (max-width: 560px) {
+  .app > header .head-tools { grid-template-columns: auto minmax(0, 1fr); }
+  .app > header .history-search-trigger { justify-self: start; }
+  .app > header .view-tool { justify-self: end; grid-column: 2; grid-row: 1; }
+  .app > header .view-tool > .tool-label { display: none; }
+  .app > header .goto { grid-column: 1 / -1; grid-row: 2; }
+  .app > header .goto .tool-label { display: none; }
+  .app > header .view-tool .seg { height: 44px; }
+  .app > header .view-tool .seg button { height: 36px; }
+  .dock-actions > .atlas-menu-trigger, .dock-actions > .atlas-menu > .atlas-menu-trigger, .dock-options > summary { font-size: 12px; padding-inline: 9px; }
+  #mobileDate { max-width: 48%; font-size: 12px; }
+  .side .item { grid-template-columns: minmax(0, 1fr); gap: 5px; }
 }

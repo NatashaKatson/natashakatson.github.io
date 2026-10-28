@@ -4,53 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>History All Around — An interactive world history atlas</title>
-<meta name="description" content="Travel through time, watch borders change and discover what was happening around the world in the same year.">
+<meta name="description" content="Travel through time, watch borders change and discover what was happening around the world around your chosen year.">
 <meta property="og:title" content="History All Around">
 <meta property="og:description" content="An interactive atlas for seeing borders, events and people across the world at the same moment.">
 <meta name="theme-color" content="#F8F5F0">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap">
-<style>
-:root{--ink:#15202b;--muted:#657281;--blue:#2859c5;--blue-dark:#193c87;--paper:#fff;--soft:#f3f6f9;--line:#dce3ea;--warm:#f2a26f;--green:#19866f;--font:"DM Sans",system-ui,sans-serif;--mono:"IBM Plex Mono",monospace}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f8fafc;color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}a{color:inherit}.wrap{width:min(1180px,calc(100% - 40px));margin:auto}
-.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{display:flex;align-items:center;gap:11px;text-decoration:none}.brand svg{width:31px;height:31px}.brand strong{font-size:19px;letter-spacing:-.03em}.nav-links{display:flex;align-items:center;gap:25px}.nav-links>a:not(.button){font-size:14px;color:#556270;text-decoration:none}.nav-links>a:hover{color:var(--blue)}
-.button{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:44px;padding:0 18px;border-radius:11px;background:var(--blue);color:#fff;text-decoration:none;font-weight:700;box-shadow:0 7px 18px rgba(40,89,197,.18);transition:transform .18s,box-shadow .18s}.button:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(40,89,197,.25)}.button.ghost{background:#fff;color:var(--ink);border:1px solid var(--line);box-shadow:none}.button svg{width:17px}
-.hero{position:relative;overflow:hidden;padding:76px 0 84px;background:radial-gradient(circle at 80% 18%,rgba(103,170,207,.17),transparent 31%),linear-gradient(180deg,#f8fafc,#eef4f7);border-top:1px solid #edf1f4;border-bottom:1px solid var(--line)}.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(61,96,117,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(61,96,117,.045) 1px,transparent 1px);background-size:52px 52px;mask-image:linear-gradient(90deg,#000,transparent 62%);pointer-events:none}.hero-grid{position:relative;display:grid;grid-template-columns:minmax(360px,.83fr) minmax(500px,1.17fr);align-items:center;gap:62px}.eyebrow{display:flex;align-items:center;gap:9px;margin-bottom:18px;color:var(--blue);font:500 11px var(--mono);letter-spacing:.13em;text-transform:uppercase}.eyebrow::before{content:"";width:24px;height:2px;background:var(--blue)}h1{max-width:610px;margin:0;font-size:clamp(48px,5.3vw,76px);font-weight:760;line-height:.98;letter-spacing:-.06em;text-wrap:balance}.hero-copy>p{max-width:570px;margin:25px 0 29px;color:#536270;font-size:19px;line-height:1.55}.actions{display:flex;flex-wrap:wrap;gap:10px}.proof{display:flex;gap:23px;margin-top:33px;color:#667584;font-size:12px}.proof span{display:flex;align-items:center;gap:7px}.proof i{width:6px;height:6px;border-radius:50%;background:var(--green)}
-.preview{position:relative;height:490px;border:1px solid rgba(78,110,129,.2);border-radius:20px;background:#d8e7ed;box-shadow:0 28px 70px rgba(42,72,90,.18);overflow:hidden}.preview-bar{position:absolute;z-index:2;left:0;right:0;top:0;height:36px;display:flex;align-items:center;gap:6px;padding:0 13px;background:rgba(255,255,255,.94);border-bottom:1px solid #dce3e8}.preview-bar i{width:7px;height:7px;border-radius:50%;background:#c9d1d8}.preview-bar span{margin-left:auto;color:#71808c;font:400 9px var(--mono);letter-spacing:.08em;text-transform:uppercase}.preview iframe{position:absolute;top:36px;left:0;width:1440px;height:900px;border:0;transform:scale(.49);transform-origin:top left;pointer-events:none}.preview-badge{position:absolute;z-index:3;right:14px;bottom:14px;padding:7px 10px;border-radius:8px;background:rgba(20,35,47,.88);color:#fff;font-size:11px;font-weight:700;backdrop-filter:blur(8px)}
-.intro{padding:94px 0 48px;text-align:center}.intro .eyebrow{justify-content:center}.intro .eyebrow::before{display:none}h2{max-width:790px;margin:0 auto;font-size:clamp(34px,4vw,52px);line-height:1.08;letter-spacing:-.045em;text-wrap:balance}.intro p{max-width:680px;margin:20px auto;color:var(--muted);font-size:18px}
-.stories{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding:22px 0 98px}.story{position:relative;display:flex;min-height:340px;flex-direction:column;overflow:hidden;padding:25px;border:1px solid var(--line);border-radius:16px;background:#fff;text-decoration:none;box-shadow:0 8px 24px rgba(27,43,58,.04);transition:transform .2s,box-shadow .2s,border-color .2s}.story:hover{transform:translateY(-4px);border-color:#b9c9d7;box-shadow:0 16px 38px rgba(27,43,58,.1)}.story::after{content:"";position:absolute;right:-55px;bottom:-70px;width:210px;height:210px;border:1px solid rgba(40,89,197,.12);border-radius:50%;box-shadow:0 0 0 28px rgba(40,89,197,.04),0 0 0 58px rgba(40,89,197,.025)}.story:nth-child(2)::after{border-color:rgba(209,79,69,.16);box-shadow:0 0 0 28px rgba(209,79,69,.045),0 0 0 58px rgba(209,79,69,.025)}.story:nth-child(3)::after{border-color:rgba(25,134,111,.17);box-shadow:0 0 0 28px rgba(25,134,111,.045),0 0 0 58px rgba(25,134,111,.025)}.year{position:relative;z-index:1;color:var(--blue);font:500 12px var(--mono);letter-spacing:.1em}.story:nth-child(2) .year{color:#b44239}.story:nth-child(3) .year{color:#147662}.story h3{position:relative;z-index:1;margin:52px 0 12px;font-size:25px;line-height:1.15;letter-spacing:-.035em}.story p{position:relative;z-index:1;margin:0;color:#657280;font-size:14px}.story .open{position:relative;z-index:1;margin-top:auto;font-weight:700;font-size:13px;color:var(--blue)}
-.features-wrap{padding:91px 0;background:#172738;color:#fff}.features-head{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;margin-bottom:58px}.features-head h2{margin:0}.features-head p{margin:0;color:#b8c5d0;font-size:17px}.features{display:grid;grid-template-columns:repeat(3,1fr);gap:44px}.feature{border-top:1px solid rgba(255,255,255,.18);padding-top:22px}.feature span{display:grid;width:41px;height:41px;margin-bottom:22px;place-items:center;border-radius:11px;background:#27405a;color:#a9ccff;font:500 13px var(--mono)}.feature h3{margin:0 0 9px;font-size:19px}.feature p{margin:0;color:#aebbc6;font-size:14px}
-.cta{padding:104px 0;text-align:center;background:#fff}.cta h2{max-width:720px}.cta p{margin:20px auto 28px;color:var(--muted);font-size:17px}.cta .button{min-height:50px;padding:0 23px}
-footer{padding:25px 0;border-top:1px solid var(--line);background:#fff;color:#77838e;font-size:12px}.footer-row{display:flex;justify-content:space-between;gap:20px}.footer-row a{color:#526170}
-@media(max-width:980px){.hero{padding-top:55px}.hero-grid{grid-template-columns:1fr;gap:44px}.hero-copy{text-align:center}.hero-copy .eyebrow,.actions,.proof{justify-content:center}.hero-copy>p{margin-left:auto;margin-right:auto}.preview{width:min(720px,100%);margin:auto}.features-head{grid-template-columns:1fr;gap:22px}.features-head h2{margin:0}.stories{grid-template-columns:1fr}.story{min-height:260px}.story h3{margin-top:35px}}
-@media(max-width:640px){.wrap{width:min(100% - 28px,1180px)}.nav{height:66px}.brand strong{font-size:17px}.nav-links>a:not(.button){display:none}.nav .button{min-height:38px;padding:0 12px;font-size:13px}.hero{padding:54px 0 60px}.hero-grid{display:block}.hero-copy>p{font-size:17px}.proof{flex-direction:column;align-items:center;gap:7px}.preview{height:300px;margin-top:42px;border-radius:14px}.preview iframe{transform:scale(.3)}.intro{padding:69px 0 35px}.stories{padding-bottom:70px}.features-wrap{padding:68px 0}.features{grid-template-columns:1fr;gap:30px}.cta{padding:72px 0}.footer-row{flex-direction:column}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.button,.story{transition:none}}
-
-/* Return to Work palette: warm cream, coral, sage and charcoal. */
-:root{--cream:#f8f5f0;--ink:#2d2420;--ink-soft:#544840;--ink-muted:#756c65;--rust:#e07b54;--rust-light:#f7e1d7;--gold:#536f58;--gold-light:#e5eee6;--paper:#ffffff;--soft:#f0ebe3;--line:rgba(45,36,32,.12);--sage:#9db4a0;--slate:#7c97a6;--font:"DM Sans",system-ui,sans-serif;--display:"Lora",Georgia,serif;--mono:"DM Sans",system-ui,sans-serif}
-body{background:var(--cream);color:var(--ink);font-weight:400}
-.nav{width:100%;max-width:none;height:72px;padding:0 max(24px,calc((100% - 1180px)/2));background:rgba(248,245,240,.96);border-bottom:1px solid var(--line);color:var(--ink)}.brand svg circle:first-child{fill:var(--ink)}.brand svg [stroke]{stroke:var(--rust-light)}.brand svg circle:last-child{fill:var(--rust)}.brand strong{font-family:var(--display);font-size:21px;font-weight:500;letter-spacing:-.025em}.nav-links>a:not(.button){color:var(--ink-soft)}.nav-links>a:not(.button):hover{color:var(--rust)}
-.button{border-radius:3px;background:var(--ink);color:var(--cream);font-weight:500;box-shadow:none;transition:background .18s,color .18s}.button:hover{transform:none;background:var(--ink-soft);box-shadow:none}.button.ghost{background:var(--paper);color:var(--ink);border:1px solid var(--line)}
-.hero{padding:82px 0 90px;background:radial-gradient(circle at 82% 14%,rgba(224,123,84,.07),transparent 31%),linear-gradient(180deg,var(--cream),#f0ebe3);border-top:0;border-bottom:1px solid var(--line);color:var(--ink)}.hero::before{background-image:linear-gradient(rgba(45,36,32,.023) 1px,transparent 1px),linear-gradient(90deg,rgba(45,36,32,.023) 1px,transparent 1px);background-size:58px 58px;mask-image:linear-gradient(90deg,#000,transparent 70%)}.hero-grid{grid-template-columns:minmax(360px,.82fr) minmax(500px,1.18fr)}.eyebrow{color:var(--rust);font-weight:500}.eyebrow::before{height:1px;background:var(--rust)}h1,h2,h3{font-family:var(--display)}h1{font-size:clamp(48px,5.1vw,72px);font-weight:400;letter-spacing:-.045em;line-height:1.02}.hero-copy>p{color:var(--ink-soft);font-size:18px}.proof{color:#6f6963}.proof i{background:var(--rust)}
-.preview{border:1px solid var(--line);border-radius:5px;background:var(--soft);box-shadow:0 18px 45px rgba(45,36,32,.11)}.preview-bar{height:35px;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line)}.preview iframe{top:35px}.preview-bar i:nth-child(1){background:var(--rust)}.preview-bar i:nth-child(2){background:var(--gold)}.preview-bar i:nth-child(3){background:var(--sage)}.preview-bar span{color:var(--ink-muted)}.preview-badge{background:rgba(45,36,32,.92);color:var(--cream);border-radius:3px;font-weight:500}
-.intro{padding-top:96px}.intro .eyebrow{color:var(--rust)}h2{font-weight:400;letter-spacing:-.035em}.intro p{color:var(--ink-soft)}
-.stories{gap:20px}.story{border:1px solid var(--line);border-top:3px solid var(--rust);border-radius:4px;background:var(--paper);box-shadow:none}.story:nth-child(2){border-top-color:var(--gold)}.story:nth-child(3){border-top-color:var(--sage)}.story:hover{transform:translateY(-1px);border-color:rgba(224,123,84,.3);box-shadow:0 10px 28px rgba(45,36,32,.06)}.story::after{display:none}.year,.story:nth-child(2) .year,.story:nth-child(3) .year{color:var(--rust);font-weight:500}.story:nth-child(2) .year{color:#536f58}.story:nth-child(3) .year{color:#536f58}.story .open{color:var(--rust);font-weight:500}.story h3{font-size:26px;font-weight:500;color:var(--ink);letter-spacing:-.025em}.story p{color:#6b655f}
-.features-wrap{background:var(--ink);color:var(--cream);border:0}.features-head h2{color:var(--cream)}.features-head p{color:#c8c0b7}.feature{border-color:rgba(248,245,240,.19)}.feature span{border-radius:3px;background:var(--rust-light);color:#91411e;font-weight:500}.feature:nth-child(2) span{background:var(--gold-light);color:#536f58}.feature:nth-child(3) span{background:#e5eee6;color:#536f58}.feature h3{font-family:var(--display);font-size:21px;font-weight:500}.feature p{color:#bcb4ab}
-.cta{background:var(--gold-light);color:var(--ink);border-bottom:1px solid var(--line)}.cta .eyebrow{color:#536f58}.cta p{color:var(--ink-soft)}.cta .button{background:var(--ink);color:var(--cream);box-shadow:none}
-footer{background:var(--cream);border-top:0;color:var(--ink-muted)}.footer-row a{color:var(--ink-soft)}
-@media(max-width:640px){.nav{height:68px;padding:0 14px}.brand strong{font-size:19px}.hero{padding:58px 0 64px}.preview{border-width:1px}.story h3{font-size:25px}}
-
-/* Coral calls to action, with a darker coral for small text. */
-.button,.cta .button{background:var(--rust);color:var(--ink)}
-.button:hover,.cta .button:hover{background:#e99a7d}
-.button.ghost{background:var(--paper);color:var(--ink)}
-.eyebrow,.intro .eyebrow,.year,.story .open{color:#a3482d}
-/* Fit the complete desktop atlas inside the preview at every screen width. */
-.preview{height:calc(35px + 900px * var(--preview-scale, .4) + 48px);min-width:0}
-.preview iframe{top:35px;transform:scale(var(--preview-scale, .4))}
-.preview-badge{left:0;right:0;bottom:0;min-height:48px;display:flex;align-items:center;justify-content:center;padding:10px 12px;text-align:center;line-height:1.4;border-radius:0}
-</style>
+<link rel="stylesheet" href="landing.css">
 </head>
 <body>
 <header class="wrap nav">
@@ -66,38 +27,29 @@ footer{background:var(--cream);border-top:0;color:var(--ink-muted)}.footer-row a
       <div class="hero-copy">
         <div class="eyebrow">Interactive world history atlas</div>
         <h1>History is happening everywhere.</h1>
-        <p>Move through time, watch borders change and discover what people across the world were building, fighting for and imagining in the very same year.</p>
-        <div class="actions"><a class="button" href="atlas/">Explore the atlas <span>→</span></a></div>
+        <p>Choose a year. See what people across the world were building, fighting for and imagining around the same time.</p>
+        <div class="actions"><a class="button" href="atlas/">Explore the atlas <span aria-hidden="true">→</span></a><a class="button ghost" href="atlas/#discover=cleopatra-world">Try Cleopatra’s world</a></div>
         <div class="proof"><span><i></i> Dinosaurs to 2026</span><span><i></i> Sourced discoveries</span><span><i></i> Lives that overlap</span></div>
       </div>
-      <div class="preview" aria-label="Preview of the interactive history atlas">
-        <div class="preview-bar"><i></i><i></i><i></i><span>Interactive atlas preview</span></div>
-        <iframe src="atlas/" title="History All Around atlas preview" tabindex="-1" aria-hidden="true"></iframe>
-        <div class="preview-badge">Explore borders, events and people</div>
-      </div>
+      <a class="preview" href="atlas/#discover=cleopatra-world" aria-label="Explore Cleopatra’s world in the atlas">
+        <img src="images/atlas-preview.webp" width="960" height="700" alt="Historical map of Cleopatra’s world, with events and places across the Mediterranean, Africa and Asia." fetchpriority="high" decoding="async">
+        <span class="preview-badge"><strong>51 BC · Cleopatra’s world</strong><span>Explore this story →</span></span>
+      </a>
     </div>
   </section>
-  <section class="wrap intro" id="stories"><div class="eyebrow">Start with a story</div><h2>The past gets stranger when you see the whole world at once.</h2><p>Political boundaries are only the beginning. Each year opens onto disputes, discoveries and near misses that shaped the map we know.</p></section>
+  <section class="wrap intro" id="stories"><div class="eyebrow">Start with a story</div><h2>The past gets stranger when you see the whole world at once.</h2><p>Start with a guided journey, compare overlapping lives, or follow one unlikely event. Every story connects its dates and places to sources.</p></section>
   <section class="wrap stories" aria-label="Featured historical stories">
     <a class="story" href="atlas/#discover=cleopatra-world"><span class="year">69–30 BC · FIVE PLACES</span><h3>What was happening in the world when Cleopatra lived?</h3><p>Travel from Alexandria to Han China, Meroë and a Zapotec city in a guided discovery of one lifetime.</p><span class="open">Follow Cleopatra's world →</span></a>
     <a class="story" href="atlas/#people=1610&amp;person=William_Shakespeare"><span class="year">1610 · LIVES THAT OVERLAP</span><h3>Shakespeare and Tokugawa Ieyasu were contemporaries.</h3><p>An English playwright and Japan's first Tokugawa shogun shared decades of history. Compare their lifespans and explore their worlds.</p><span class="open">Meet them in the same year →</span></a>
-    <a class="story" href="atlas/#1859"><span class="year">1859 · SAN JUAN ISLANDS</span><h3>A pig nearly started a war between Britain and America.</h3><p>One disputed boundary, one shot pig and two military forces produced a twelve-year standoff without a human casualty.</p><span class="open">See the world in 1859 →</span></a>
+    <a class="story" href="atlas/#event=Pig_War_(1859)"><span class="year">1859 · SAN JUAN ISLANDS</span><h3>A pig nearly started a war between Britain and America.</h3><p>One disputed boundary, one shot pig and two military forces produced a twelve-year standoff without a human casualty.</p><span class="open">See the world in 1859 →</span></a>
   </section>
-  <section class="features-wrap" id="about"><div class="wrap"><div class="features-head"><h2>One year. A whole world.</h2><p>The atlas brings geography and chronology together, so events are shown within 2 years of the date you choose rather than bundled into a vague historical era.</p></div><div class="features">
-    <div class="feature"><span>01</span><h3>Read the map with context</h3><p>Explore historical borders from 3400 BC onward. Dashed outlines mark approximate reconstructions, with uncertainty explained on the map.</p></div>
-    <div class="feature"><span>02</span><h3>See simultaneous events</h3><p>Find events across six world regions within a strict ±1-year window.</p></div>
-    <div class="feature"><span>03</span><h3>Discover unexpected contemporaries</h3><p>Compare overlapping lives across cultures, visit their associated places and share the same moment in history.</p></div>
+  <section class="features-wrap" id="about"><div class="wrap"><div class="features-head"><h2>Three steps into the past.</h2><p>Explore a growing collection of sourced events, people and reconstructed maps. Nearby events and longer historical periods are labeled separately.</p></div><div class="features">
+    <div class="feature"><span>01</span><h3>Choose a time</h3><p>Enter a year, choose an era or jump to a recorded event. Move between dinosaur fossil ages and human history.</p></div>
+    <div class="feature"><span>02</span><h3>Select a place or event</h3><p>Read events near your chosen year alongside clearly labeled historical context. Open a marker or use search to find a subject.</p></div>
+    <div class="feature"><span>03</span><h3>Follow a connection</h3><p>Discover overlapping lives, compare two dates or follow a guided story. Read the sources and share your view.</p></div>
   </div></div></section>
   <section class="cta"><div class="wrap"><div class="eyebrow" style="justify-content:center"><span style="display:none"></span>Choose a year</div><h2>Where in history will you begin?</h2><p>Drag the timeline from prehistory to 2026.</p><a class="button" href="atlas/">Open History All Around <span>→</span></a></div></section>
 </main>
 <footer><div class="wrap footer-row"><span>History All Around · Made by <a href="https://natashakatson.com">Natasha Katson</a></span><span>Maps: Natural Earth · Historical borders: Cliopatria / Seshat</span></div></footer>
-<script>
-const atlasPreview = document.querySelector('.preview');
-const resizeAtlasPreview = () => {
-  atlasPreview.style.setProperty('--preview-scale', atlasPreview.clientWidth / 1440);
-};
-resizeAtlasPreview();
-new ResizeObserver(resizeAtlasPreview).observe(atlasPreview);
-</script>
 </body>
 </html>

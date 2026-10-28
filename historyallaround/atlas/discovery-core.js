@@ -2,6 +2,14 @@
 (function (root) {
   const api = {
     sameTimeYears: 2,
+    summary(value, limit = 180) {
+      const text = String(value || '').trim();
+      if (text.length <= limit) return text;
+      const sentence = text.match(/^.*?[.!?](?=\s+[A-Z]|$)/u)?.[0];
+      if (sentence && sentence.length >= 40 && sentence.length <= limit) return sentence;
+      const boundary = text.lastIndexOf(' ', limit - 1);
+      return text.slice(0, boundary > limit / 2 ? boundary : limit - 1).replace(/[,;:]$/, '') + '…';
+    },
     yearsBetween(from, to) {
       return to - from - (from < 0 && to > 0 ? 1 : 0);
     },
