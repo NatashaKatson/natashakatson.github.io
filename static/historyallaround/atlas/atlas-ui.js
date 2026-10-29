@@ -150,6 +150,7 @@
     context = button.dataset.context;
     document.querySelectorAll('[data-context]').forEach(tab => tab.setAttribute('aria-pressed', String(tab === button)));
     renderWorkspace();
+    side.scrollTop = 0;
   });
   document.querySelectorAll('[data-journey-shortcut]').forEach(button => button.onclick = () => {
     setWorkspace('journeys');
@@ -181,6 +182,7 @@
     } else if (workspace !== 'explore') setWorkspace('explore');
     if (element.closest('.contemporaries-card')) context = 'people';
     else if (element.id === 'detail') context = byId[state.sel]?.kind === 'person' ? 'people' : 'events';
+    else if (element.classList.contains('discovery-panel')) context = 'events';
     setSheet(true);
     renderWorkspace();
   }
@@ -257,7 +259,11 @@
   });
 
   const peopleNodes = ['peopleTitle', 'peopleSub', 'people'].map(id => document.getElementById(id));
-  let lastWorkspaceKey = '', lastWorkspaceDetail = null, lastJourneySelection = '', lastChallengeView = '', lastPresentedRecord = '';
+  const peopleSummary = document.createElement('div');
+  peopleSummary.className = 'sub';
+  peopleSummary.hidden = true;
+  document.getElementById('sideSub').after(peopleSummary);
+  let lastWorkspaceKey = '', lastWorkspaceDetail = null, lastWorkspacePeople = null, lastJourneySelection = '', lastChallengeView = '', lastPresentedRecord = '';
   function renderWorkspace() {
     const presentedRecord = state.sel || selectedPolity?.name || document.querySelector('#detail .search-place-detail h3')?.textContent || '';
     if (presentedRecord && presentedRecord !== lastPresentedRecord) {
@@ -278,31 +284,36 @@
       workspace = 'journeys'; app.dataset.workspace = workspace; setSheet(true);
     }
     lastJourneySelection = journeySelection; lastChallengeView = challengeView;
+    app.dataset.sidebarContext = context;
     document.querySelectorAll('[data-workspace]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.workspace === workspace)));
     const detailNode = document.getElementById('detail').firstElementChild;
     const key = `${workspace}/${context}/${state.year}/${state.sel}/${selectedPolity?.name || ''}/${journeySelection}/${challengeView}`;
-    if (key === lastWorkspaceKey && detailNode === lastWorkspaceDetail) return;
-    lastWorkspaceKey = key; lastWorkspaceDetail = detailNode;
+    const peopleNode = document.getElementById('people').firstElementChild;
+    if (key === lastWorkspaceKey && detailNode === lastWorkspaceDetail && peopleNode === lastWorkspacePeople) return;
+    lastWorkspaceKey = key; lastWorkspaceDetail = detailNode; lastWorkspacePeople = peopleNode;
     const journeys = workspace === 'journeys';
     document.querySelector('.side-intro .kicker').textContent = journeys ? 'Follow your curiosity' : 'At the same time';
     document.getElementById('sideTitle').textContent = journeys ? 'Journeys through time' : 'Around this time';
     document.querySelector('.context-tabs').hidden = journeys;
     document.querySelectorAll('[data-context]').forEach(tab => tab.setAttribute('aria-pressed', String(tab.dataset.context === context)));
-    document.getElementById('sideSub').hidden = journeys;
+    document.getElementById('sideSub').hidden = journeys || context === 'people';
+    peopleSummary.hidden = journeys || context !== 'people';
+    const peopleCount = alivePeople().filter(person => person.born <= state.year && person.died >= state.year).length;
+    peopleSummary.textContent = `${peopleCount} ${peopleCount === 1 ? 'person' : 'people'} in this atlas alive in ${fmt(state.year)}`;
     document.getElementById('sideScope').hidden = journeys;
     document.querySelector('.sidebar-extras').hidden = !journeys;
     document.querySelector('.journey-shortcuts').hidden = journeys;
     document.getElementById('regions').hidden = journeys || context !== 'events';
     eventList.hidden = journeys || context !== 'events';
-    const hasSelection = !!document.querySelector('#detail .detail');
+    document.getElementById('detail').hidden = journeys || context !== (byId[state.sel]?.kind === 'person' ? 'people' : 'events');
+    const hasSelection = !document.getElementById('detail').hidden && !!document.querySelector('#detail .detail');
     if (hasSelection !== hadSelection) { eventList.open = !hasSelection; hadSelection = hasSelection; }
     eventList.classList.toggle('has-selection', hasSelection);
-    document.getElementById('detail').hidden = journeys;
     peopleNodes.forEach(node => node.hidden = journeys || context !== 'people');
     const pair = document.querySelector('.contemporaries-card');
     if (pair) pair.hidden = journeys || context !== 'people' || (!HistoryDiscovery.contemporaryPair() && !DiscoveryCore.contemporaryPair(ppl, state.year));
-    const heading = document.querySelector('#detail h3')?.textContent || document.querySelector('#regions .t')?.textContent;
-    document.getElementById('sheetPreview').textContent = journeys ? 'Browse journeys ↑' : (heading || 'Browse events ↑');
+    const heading = !document.getElementById('detail').hidden && document.querySelector('#detail h3')?.textContent;
+    document.getElementById('sheetPreview').textContent = journeys ? 'Browse journeys ↑' : (heading || (context === 'people' ? 'Browse people ↑' : document.querySelector('#regions .t')?.textContent || 'Browse events ↑'));
     sheetToggle.querySelector('span:nth-child(2)').textContent = journeys ? 'Journeys' : 'Around this time';
     document.getElementById('currentEraLabel').textContent = document.getElementById('era').textContent;
     document.getElementById('readoutEra').textContent = document.getElementById('era').textContent;
