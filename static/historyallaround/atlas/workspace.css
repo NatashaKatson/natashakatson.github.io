@@ -260,6 +260,8 @@ html, body { height: 100%; overflow: hidden; background: var(--workspace-paper);
   .sheet-toggle { height: 54px; min-height: 54px; padding-block: 4px; }
   .sheet-toggle > span:nth-child(2) { display: none; }
   .app > .side.sheet-open { top: 52px; bottom: 148px; }
+  .time:has(#eraPanel:not([hidden])) { z-index: 40; }
+  .era-panel { top: 60px; bottom: auto; max-height: calc(100dvh - 120px); }
 }
 @media (max-height: 720px) {
   #journeyPanels .atlas-menu-panel { position: fixed; inset: 12px; width: auto; height: calc(100dvh - 24px); padding: 12px 16px; background: var(--workspace-paper); border: 1px solid var(--workspace-line); border-radius: 10px; z-index: 60; }

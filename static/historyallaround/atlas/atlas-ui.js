@@ -194,20 +194,23 @@
   document.getElementById('editDate').onclick = editYear;
   document.getElementById('previousEvent').onclick = () => stepEvent(-1);
   document.getElementById('nextEvent').onclick = () => stepEvent(1);
-  document.getElementById('resetFilters').onclick = () => {
-    for (const cat of Object.keys(CATS)) if (cat !== 'migrations' && cat !== 'womens-rights') state.cats.add(cat);
-    state.cats.delete('womens-rights');
-    buildMarks(); update();
-  };
+  document.getElementById('resetFilters').onclick = resetEventFilters;
   const scopeButton = document.getElementById('timelineScope');
   scopeButton.onclick = () => {
     openMenu(document.querySelector('[data-atlas-menu="eraPanel"]'));
     document.getElementById('eraChoices').querySelector('button:not([hidden])')?.focus({ preventScroll: true });
   };
   const dateInput = document.getElementById('gotoInput');
+  const dateForm = document.getElementById('goto');
   const fitDateField = () => dateInput.classList.toggle('is-wide-date', dateInput.value.length > 7 || /[a-z]/i.test(dateInput.value));
   dateInput.addEventListener('input', fitDateField);
-  document.getElementById('goto').addEventListener('submit', fitDateField);
+  dateForm.addEventListener('submit', fitDateField);
+  dateForm.addEventListener('focusout', event => {
+    if (dateForm.contains(event.relatedTarget)) return;
+    dateInput.value = fmtInputYear(state.year);
+    dateInput.setCustomValidity('');
+    fitDateField();
+  });
   dateInput.addEventListener('keydown', event => { if (event.key === 'Escape') { dateInput.blur(); cv.focus({ preventScroll: true }); } });
 
   const menuTriggers = [...document.querySelectorAll('[data-atlas-menu]')].filter(button => button !== toolsToggle);

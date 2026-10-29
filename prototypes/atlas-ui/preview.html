@@ -1728,6 +1728,8 @@ html, body { height: 100%; overflow: hidden; background: var(--workspace-paper);
   .sheet-toggle { height: 54px; min-height: 54px; padding-block: 4px; }
   .sheet-toggle > span:nth-child(2) { display: none; }
   .app > .side.sheet-open { top: 52px; bottom: 148px; }
+  .time:has(#eraPanel:not([hidden])) { z-index: 40; }
+  .era-panel { top: 60px; bottom: auto; max-height: calc(100dvh - 120px); }
 }
 @media (max-height: 720px) {
   #journeyPanels .atlas-menu-panel { position: fixed; inset: 12px; width: auto; height: calc(100dvh - 24px); padding: 12px 16px; background: var(--workspace-paper); border: 1px solid var(--workspace-line); border-radius: 10px; z-index: 60; }
@@ -4514,6 +4516,7 @@ document.getElementById("vGlobe").onclick=()=>setMode("globe");
 document.getElementById("vFlat").onclick=()=>setMode("flat");
 
 // ---------- legend
+function resetEventFilters(){for(const cat of Object.keys(CATS))if(cat!=="migrations"&&cat!=="womens-rights")state.cats.add(cat);state.cats.delete("womens-rights");buildMarks();update()}
 const legend=document.getElementById("legend");
 for(const[k,v]of Object.entries(CATS)){if(k==="migrations")continue;const b=document.createElement("button");b.className="chip";b.style.setProperty("--c",`var(--c-${k})`);b.setAttribute("aria-pressed","true");b.innerHTML=`<i></i>${v}`;
   b.onclick=()=>{if(state.cats.has(k)){if(state.cats.size>1)state.cats.delete(k)}else state.cats.add(k);for(const c of legend.children)c.setAttribute("aria-pressed",state.cats.has(c.dataset.k));buildMarks();update()};b.dataset.k=k;legend.appendChild(b)}
@@ -4604,7 +4607,7 @@ function renderSide(){
   const quiet=REGION_ORDER.filter(r=>!by[r]).map(r=>REGIONS[r]);
   if(filled.length&&quiet.length)reg.insertAdjacentHTML("beforeend",`<p class="empty">Nothing recorded here yet for ${quiet.join(", ")}.</p>`);
   reg.querySelectorAll('[data-near-event]').forEach(button=>button.onclick=()=>select(button.dataset.nearEvent));
-  reg.querySelector('[data-reset-empty]')?.addEventListener('click',()=>{for(const cat of Object.keys(CATS))if(cat!=="migrations")state.cats.add(cat);buildMarks();update()});
+  reg.querySelector('[data-reset-empty]')?.addEventListener('click',resetEventFilters);
   const pp=alivePeople().filter(p=>p.born<=y&&p.died>=y);
   for(const id of ["peopleTitle","peopleSub","people"])document.getElementById(id).hidden=!pp.length;
   document.getElementById("peopleSub").textContent=pp.length?`${pp.length} of the people in this atlas`:"";
@@ -7502,20 +7505,23 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
   document.getElementById('editDate').onclick = editYear;
   document.getElementById('previousEvent').onclick = () => stepEvent(-1);
   document.getElementById('nextEvent').onclick = () => stepEvent(1);
-  document.getElementById('resetFilters').onclick = () => {
-    for (const cat of Object.keys(CATS)) if (cat !== 'migrations' && cat !== 'womens-rights') state.cats.add(cat);
-    state.cats.delete('womens-rights');
-    buildMarks(); update();
-  };
+  document.getElementById('resetFilters').onclick = resetEventFilters;
   const scopeButton = document.getElementById('timelineScope');
   scopeButton.onclick = () => {
     openMenu(document.querySelector('[data-atlas-menu="eraPanel"]'));
     document.getElementById('eraChoices').querySelector('button:not([hidden])')?.focus({ preventScroll: true });
   };
   const dateInput = document.getElementById('gotoInput');
+  const dateForm = document.getElementById('goto');
   const fitDateField = () => dateInput.classList.toggle('is-wide-date', dateInput.value.length > 7 || /[a-z]/i.test(dateInput.value));
   dateInput.addEventListener('input', fitDateField);
-  document.getElementById('goto').addEventListener('submit', fitDateField);
+  dateForm.addEventListener('submit', fitDateField);
+  dateForm.addEventListener('focusout', event => {
+    if (dateForm.contains(event.relatedTarget)) return;
+    dateInput.value = fmtInputYear(state.year);
+    dateInput.setCustomValidity('');
+    fitDateField();
+  });
   dateInput.addEventListener('keydown', event => { if (event.key === 'Escape') { dateInput.blur(); cv.focus({ preventScroll: true }); } });
 
   const menuTriggers = [...document.querySelectorAll('[data-atlas-menu]')].filter(button => button !== toolsToggle);
