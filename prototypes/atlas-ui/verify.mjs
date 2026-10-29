@@ -47,6 +47,7 @@ try {
   await send('Page.navigate', { url: testURL + '#1928' });
   await waitFor(`!!window.AtlasUI && !!window.HistoryDinosaurs && !!window.AtlasEventEmojis`);
   await evaluate('stopSpin();');
+  await evaluate(`state.cats.add('womens-rights');buildMarks();update();`);
   await check(`ev.length===422 && ppl.length===66`, 'All original records and thematic additions are retained');
   await check(`document.querySelector('.side-intro h2').textContent==='Around this time' && !!document.querySelector('#fact') && !!document.querySelector('.curated-discoveries') && !!document.querySelector('#people')`, 'Contextual panel retains stories, people, and discovery cards');
   await check(`slider.max==='3000000' && slider.min==='0' && !!document.querySelector('#play') && !!document.querySelector('#eraChoices') && !!document.querySelector('.dock-options')`, 'Original slider, playback, eras, and More controls are retained');

@@ -1,3 +1,4 @@
+import { workspaceSetup } from './atlas-workspace-helpers.mjs';
 // Dedicated women’s rights chronology, trusted readers, reproductive history and responsive controls.
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -37,6 +38,8 @@ const screenshot = async (name) => {
   fs.writeFileSync(path.join(os.tmpdir(), 'history-womens-rights-' + name + '.png'), Buffer.from(shot.data, 'base64'));
 };
 try {
+  await send('Page.enable');
+  await send('Page.addScriptToEvaluateOnNewDocument', { source: workspaceSetup });
   await send('Runtime.enable');await send('Network.enable');
   await send('Network.setCacheDisabled',{cacheDisabled:true});
   await send('Network.setBlockedURLs',{urls:url.startsWith('file:')?['http://*','https://*']:['https://fonts.googleapis.com/*','https://fonts.gstatic.com/*']});
@@ -45,11 +48,14 @@ try {
   await waitFor('!!window.HistoryWomensRights && !!window.AtlasUI');
   console.log(await evaluate(`(()=>{
     const check=(v,m)=>{if(!v)throw Error(m)};stopSpin();flyToken++;
+    check(!state.cats.has('womens-rights')&&!document.getElementById('rightsVisibility').checked&&!activeEvents().some(({e})=>e.cat==='womens-rights'),'Women’s rights markers are off by default');
     const trigger=document.querySelector('[data-atlas-menu="womensRightsPanel"]');trigger.click();
     check(trigger.textContent.includes('👩')&&trigger.getAttribute('aria-expanded')==='true','Woman emoji and dedicated entry point');
     check(!document.querySelector('#layersPanel [data-rights-record]')&&!document.querySelector('#layersPanel [data-layer="womens-rights"]'),'Women’s rights are separate from Layers');
     const buttons=[...document.querySelectorAll('[data-rights-record]')];
     check(buttons.length===76,'Every milestone is discoverable outside its date');
+    document.getElementById('rightsVisibility').click();render();
+    check(state.cats.has('womens-rights')&&document.getElementById('rightsVisibility').checked,'Show on map explicitly enables the markers');
     check(new Set(buttons.map(b=>b.dataset.rightsRecord)).size===76,'Milestones appear once across period groups');
     check([...document.querySelectorAll('.rights-group')].every(group=>[...group.querySelectorAll('[data-rights-record]')].every((b,i,list)=>!i||byId[list[i-1].dataset.rightsRecord].start<=byId[b.dataset.rightsRecord].start)),'Chronological ordering within each period group');
     check(buttons.some(b=>byId[b.dataset.rightsRecord].start===-172),'Ancient history is included');
@@ -99,7 +105,7 @@ try {
     check(!!detail.querySelector('a[href^="https://results.elections.myflorida.com/"]')&&!detail.querySelector('a[href*="wikipedia.org"]'),'State reader links official results');
     return 'US abortion shortcut, USA aliases, combined regions, state searches and official state reader passed';
   })()`));
-  await evaluate(`document.querySelector('#detail .close').click();document.querySelector('[data-atlas-menu="womensRightsPanel"]').focus()`);
+  await evaluate(`document.querySelector('#detail .close').click();AtlasTestUI.journeys();document.querySelector('[data-atlas-menu="womensRightsPanel"]').focus()`);
   await send('Input.dispatchKeyEvent',{type:'keyDown',key:'Enter',code:'Enter',windowsVirtualKeyCode:13,text:'\r'});
   await send('Input.dispatchKeyEvent',{type:'keyUp',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});
   assert(await evaluate(`!document.getElementById('womensRightsPanel').hidden`),'Keyboard opens Women’s rights');
@@ -117,8 +123,8 @@ try {
   for(const [width,height] of [[1440,1000],[1440,400],[900,400],[1280,450],[1100,800],[1024,768],[900,700],[861,700],[861,650],[861,601],[768,1024],[560,700],[390,844],[320,568],[320,500],[844,390]]){
     await send('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:1,mobile:width<=860});
     await evaluate(`window.scrollTo({top:0,behavior:'instant'});resize();`);
-    await evaluate(`if(innerWidth<=860&&document.getElementById('mapToolsToggle').getAttribute('aria-expanded')!=='true')document.getElementById('mapToolsToggle').click()`);
-    assert(await evaluate(`(()=>{const r=[...document.querySelectorAll('.atlas-toolbar > .atlas-menu > button')].map(b=>b.getBoundingClientRect());return r.length===4&&r.every((a,i)=>a.left>=0&&a.right<=innerWidth&&a.height>=40&&r.slice(i+1).every(b=>a.right<=b.left||b.right<=a.left||a.bottom<=b.top||b.bottom<=a.top))&&document.documentElement.scrollWidth<=innerWidth})()`),`Four controls fit at ${width}×${height}`);
+    await evaluate(`AtlasTestUI.journeys()`);
+    assert(await evaluate(`(()=>{const r=document.getElementById('mapToolsToggle').getBoundingClientRect();return r.width>=40&&r.left>=0&&r.right<=innerWidth&&document.documentElement.scrollWidth<=innerWidth})()`),`Workspace navigation fits at ${width}×${height}`);
     await evaluate(`(()=>{const trigger=document.querySelector('[data-atlas-menu="womensRightsPanel"]');if(trigger.getAttribute('aria-expanded')!=='true')trigger.click()})()`);
     assert(await evaluate(`(()=>{const p=document.getElementById('womensRightsPanel').getBoundingClientRect();return p.height>0&&p.left>=0&&p.right<=innerWidth&&p.top>=0&&p.bottom<=innerHeight})()`),`Women’s rights panel fits at ${width}×${height}`);
     assert(await evaluate(`(()=>{const list=document.getElementById('rightsResults'),button=[...list.querySelectorAll('[data-rights-record]')].at(-1);button.scrollIntoView({block:'nearest'});const r=button.getBoundingClientRect(),p=list.getBoundingClientRect();return r.height>=44&&r.top>=p.top-1&&r.bottom<=p.bottom+1&&document.elementFromPoint(r.left+20,r.top+r.height/2)?.closest('[data-rights-record]')===button})()`),`Last milestone is reachable at ${width}×${height}`);

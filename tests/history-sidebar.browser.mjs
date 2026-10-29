@@ -1,3 +1,4 @@
+import { workspaceSetup } from './atlas-workspace-helpers.mjs';
 // Sidebar scope, date changes, local-history lifecycle and readable narrow layouts.
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -37,6 +38,8 @@ const screenshot = async (name) => {
   fs.writeFileSync(path.join(os.tmpdir(), 'history-sidebar-' + name + '.png'), Buffer.from(shot.data, 'base64'));
 };
 try {
+  await send('Page.enable');
+  await send('Page.addScriptToEvaluateOnNewDocument', { source: workspaceSetup });
   await send('Runtime.enable'); await send('Network.enable');
   await send('Network.setBlockedURLs', { urls: url.startsWith('file:') ? ['http://*', 'https://*']
     : ['https://fonts.googleapis.com/*', 'https://fonts.gstatic.com/*', 'https://cdnjs.buymeacoffee.com/*'] });
@@ -57,7 +60,7 @@ try {
     const regions=document.getElementById('regions'),people=document.getElementById('people');
     const extras=document.querySelector('.sidebar-extras'),curated=document.querySelector('.curated-discoveries');
     check(before(regions,people)&&before(people,document.querySelector('.contemporaries-card'))&&before(people,extras),'Period results precede people and optional stories');
-    check(extras.lastElementChild===curated&&extras.contains(document.querySelector('.daily-challenge-card')),'Curated stories stay last, including after the daily challenge');
+    check(document.getElementById('journeyCollections').lastElementChild===curated&&extras.contains(document.querySelector('.daily-challenge-card')),'Curated stories stay last, including after the daily challenge');
     check(document.getElementById('sideScope').textContent.includes('Worldwide'),'Worldwide scope is explicit');
     for(const {e} of activeEvents())check(DiscoveryCore.yearGap(e.start,e.end,state.year)<=2,'Every event overlaps the selected window');
     check([...document.querySelectorAll('#people [data-id]')].every(b=>{const p=byId[b.dataset.id];return p.born<=state.year&&p.died>=state.year}),'Listed people were alive that year');

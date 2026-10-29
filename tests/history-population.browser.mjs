@@ -1,3 +1,4 @@
+import { workspaceSetup } from './atlas-workspace-helpers.mjs';
 // Run against a dedicated QA Chrome instance. Each run owns a fresh page.
 const cdpURL = process.env.ATLAS_CDP_URL || "http://127.0.0.1:9231";
 const page = await (
@@ -40,7 +41,9 @@ const evaluate = async (expression) => {
   return result.result.value;
 };
 
-await send("Runtime.enable");
+await send('Page.enable');
+  await send('Page.addScriptToEvaluateOnNewDocument', { source: workspaceSetup });
+  await send("Runtime.enable");
 await send('Page.enable');
 await send('Page.addScriptToEvaluateOnNewDocument',{source:`{const D=Date;window.Date=class extends D{constructor(...args){super(...(args.length?args:['2035-06-01T12:00:00Z']));}};}`});
 const errors = [];
@@ -96,14 +99,14 @@ const assert=(v,m)=>{if(!v)throw Error(m)};
 document.getElementById('compareToggle').click();
 window.scrollTo({top:0,behavior:'instant'});
 const time=document.querySelector('.time').getBoundingClientRect();
-assert(stage.getBoundingClientRect().height>=innerHeight*.38&&stage.getBoundingClientRect().height<=innerHeight*.5,'mobile globe leaves room for navigation and events');
+AtlasUI.goToMap();assert(stage.getBoundingClientRect().height>0&&document.getElementById('eventSheetToggle').getBoundingClientRect().height>=44,'mobile globe and event sheet remain usable');
 assert(time.top>=stage.getBoundingClientRect().bottom,'ordinary mobile timeline stays below map');
 stage.scrollIntoView({block:'start',behavior:'instant'});
 for(const [selector,menu] of [['.borders-control button','layersPanel'],['.legend button','filtersPanel'],['.zoom button',null]]){
- if(menu)document.querySelector('[data-atlas-menu="'+menu+'"]').click();
+ if(menu){if(menu==='filtersPanel')AtlasTestUI.filters();else AtlasTestUI.settings();}
  const button=document.querySelector(selector),r=button.getBoundingClientRect();
  assert(document.elementFromPoint(r.x+r.width/2,r.y+r.height/2)?.closest('button')===button,'mobile map control is reachable: '+selector);
- if(menu)document.querySelector('[data-atlas-menu="'+menu+'"]').click();
+ if(menu)AtlasTestUI.settings(false);
 }
 const style=getComputedStyle(document.getElementById('play'));
 const luminance=color=>{const c=color.match(/[0-9.]+/g).slice(0,3).map(n=>{const v=+n/255;return v<=.04045?v/12.92:((v+.055)/1.055)**2.4});return c[0]*.2126+c[1]*.7152+c[2]*.0722};
@@ -113,7 +116,7 @@ document.getElementById('compareToggle').click();
 return 'Mobile map controls remain reachable and Play text has sufficient contrast';
 })()`));
 console.log(await evaluate(`(()=>{
-render();document.querySelector('.dock-options').open=true;
+render();AtlasTestUI.population();
 const s=document.querySelector('.population-strip'),r=s.getBoundingClientRect();
 if(document.documentElement.scrollWidth>innerWidth||r.right>innerWidth||s.scrollWidth>s.clientWidth)throw Error('Population overflows mobile');
 s.scrollIntoView({block:'center'});

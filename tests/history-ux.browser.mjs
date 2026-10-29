@@ -1,3 +1,4 @@
+import { workspaceSetup } from './atlas-workspace-helpers.mjs';
 // UX regressions: real breakpoints, story destinations, focus, keyboard map access and recovery.
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -63,7 +64,9 @@ const screenshot = async name => {
   fs.writeFileSync(path.join(os.tmpdir(), 'history-ux-' + name + '.png'), Buffer.from(shot.data, 'base64'));
 };
 try {
-  await send('Page.enable'); await send('Runtime.enable'); await send('Network.enable');
+  await send('Page.enable');
+  await send('Page.addScriptToEvaluateOnNewDocument', { source: workspaceSetup });
+  await send('Runtime.enable'); await send('Network.enable');
   await send('Network.setBlockedURLs', { urls: ['https://*'] });
   for (const width of [320, 390, 641, 768, 860, 980, 1440]) {
     await viewport(width, 900); await navigate(landingURL);
@@ -76,15 +79,14 @@ try {
     await check(`!!document.querySelector('main')&&cv.tabIndex===0&&document.documentElement.scrollWidth<=innerWidth`, `Semantic map and no overflow at ${width}px`);
     if (width > 860) await check(`document.querySelector('.time').getBoundingClientRect().bottom<=innerHeight+1`, `Desktop dock fits ${width}×${height}`);
     else {
-      await check(`document.getElementById('vFlat').getBoundingClientRect().width>0&&document.getElementById('side').getBoundingClientRect().bottom<=document.querySelector('.atlas-footer').getBoundingClientRect().top`, `Mobile projection and content before credits at ${width}px`);
-      await click('[data-atlas-jump="events"]');
-      await check(`document.activeElement.id==='sideTitle'&&document.querySelector('.mobile-atlas-nav').getBoundingClientRect().top===0`, `Events shortcut keeps navigation visible at ${width}px`);
-      await click('[data-atlas-jump="map"]');
-      await check(`document.activeElement===cv&&cv.getBoundingClientRect().top>=50&&cv.getBoundingClientRect().top<innerHeight`, `Map shortcut restores visible focus at ${width}px`);
-      await click('#mapToolsToggle'); await click('[data-atlas-menu="filtersPanel"]');
-      await check(`!document.getElementById('filtersPanel').hidden`, `Compact map tools open filters at ${width}px`);
+      await click('#eventSheetToggle');
+      await check(`!document.getElementById('sideBody').inert&&document.querySelector('.mobile-atlas-nav').getBoundingClientRect().bottom<=innerHeight`, `Events sheet keeps bottom navigation visible at ${width}px`);
+      await click('.mobile-atlas-nav [data-workspace="explore"]');
+      await check(`!document.getElementById('side').classList.contains('sheet-open')&&cv.getBoundingClientRect().top>=50`, `Explore restores the visible map at ${width}px`);
+      await evaluate(`AtlasTestUI.filters()`);
+      await check(`document.getElementById('mapSettings').open&&document.getElementById('filtersPanel').parentElement.open`, `Map settings opens filters at ${width}px`);
       await key('Escape', 'Escape', 27);
-      await check(`document.getElementById('filtersPanel').hidden&&document.activeElement.id==='mapToolsToggle'`, `Escape restores compact tool focus at ${width}px`);
+      await check(`!document.getElementById('mapSettings').open&&document.activeElement.id==='mapToolsToggle'`, `Escape restores settings focus at ${width}px`);
     }
     if (width === 390) await screenshot('atlas-390');
   }
@@ -97,7 +99,7 @@ try {
   await check(`document.getElementById('winLbl').textContent==='±'+SAME_TIME_YEARS+' years'`, 'Dock describes the implemented window');
   await evaluate(`cv.focus();globalThis.beforeRotation=rot.slice()`); await key('ArrowRight','ArrowRight',39);
   await check(`rot[0]!==beforeRotation[0]&&document.activeElement===cv`, 'Arrow keys rotate the globe');
-  await click('#vFlat'); await evaluate(`cv.focus();globalThis.beforePan=flatT.x`); await key('ArrowLeft','ArrowLeft',37);
+  await evaluate(`AtlasTestUI.settings()`);await click('#vFlat'); await evaluate(`AtlasUI.goToMap();cv.focus();globalThis.beforePan=flatT.x`); await key('ArrowLeft','ArrowLeft',37);
   await check(`flatT.x!==beforePan`, 'Arrow keys pan the flat map');
   await key('Home','Home',36); await check(`zoomK===1&&flatT.x===0&&rot[0]===-25`, 'Home resets the map');
   await key('Tab','Tab',9); await check(`document.activeElement!==cv`, 'Keyboard can leave the map');
@@ -105,11 +107,11 @@ try {
   await check(`state.year===1928&&!!document.getElementById('gotoInput').validationMessage`, 'Future date is rejected without changing context');
   await evaluate(`document.getElementById('gotoInput').value='1492';document.getElementById('gotoInput').dispatchEvent(new Event('input'));document.getElementById('goto').requestSubmit()`);
   await check(`state.year===1492&&document.getElementById('gotoInput').value==='1492'`, 'Valid date and input agree');
-  await evaluate(`setYear(1928);document.querySelector('[data-atlas-menu="filtersPanel"]').click();document.querySelector('#legend [data-k="ideas"]').click();render()`);
-  await check(`document.getElementById('filterCount').textContent==='1 hidden'&&!document.getElementById('resetFilters').disabled`, 'Filter badge explains hidden types');
-  await click('#resetFilters'); await check(`[...document.querySelectorAll('#legend .chip')].every(b=>state.cats.has(b.dataset.k))&&document.getElementById('filterCount').textContent==='All'`, 'Reset restores all global event filters');
+  await evaluate(`setYear(1928);AtlasTestUI.filters();document.querySelector('#legend [data-k="ideas"]').click();render()`);
+  await check(`document.getElementById('filterCount').textContent==='2 hidden'&&!document.getElementById('resetFilters').disabled`, 'Filter badge explains hidden types, including women’s rights');
+  await click('#resetFilters'); await check(`[...document.querySelectorAll('#legend .chip')].every(b=>state.cats.has(b.dataset.k)===(b.dataset.k!=='womens-rights'))&&document.getElementById('filterCount').textContent==='Default'`, 'Reset restores default visibility with women’s rights off');
   await key('Escape','Escape',27);
-  await click('#compareToggle');
+  await evaluate(`AtlasTestUI.comparison()`);await click('#compareToggle');
   await check(`HistoryDiscovery.isComparing()&&!document.getElementById('compareYears').hidden&&document.querySelector('#compareYears input').getBoundingClientRect().width>0`, 'Visible Compare action opens year editing');
   await navigate(atlasURL, '1928'); await evaluate(`setYear(-500000)`);
   await check(`document.querySelector('[data-near-event]')&&!document.querySelector('.contemporaries-card').getBoundingClientRect().height&&document.getElementById('people').hidden`, 'Empty date offers concrete recovery without empty people sections');
@@ -119,7 +121,7 @@ try {
   await click('#detail .close');
   await check(`document.activeElement===cv&&cv.getBoundingClientRect().top>=50&&cv.getBoundingClientRect().top<innerHeight`, 'Mobile detail close restores visible map focus');
   await screenshot('return-to-map');
-  await click('#mapToolsToggle'); await click('[data-atlas-menu="womensRightsPanel"]');
+  await evaluate(`AtlasTestUI.journeys()`); await click('[data-atlas-menu="womensRightsPanel"]');
   await check(`[...document.querySelectorAll('#rightsResults > section:first-child [data-rights-record]')].every(b=>DiscoveryCore.yearGap(byId[b.dataset.rightsRecord].start,byId[b.dataset.rightsRecord].end,state.year)<=SAME_TIME_YEARS)&&document.querySelector('#rightsResults h3').textContent.includes('Near 1928')`, 'Thematic browser foregrounds the displayed period');
   await check(`document.getElementById('rightsResults').clientHeight>100`, 'Milestone results remain readable on mobile');
   assert.deepEqual(errors, [], 'No normal-operation runtime errors');

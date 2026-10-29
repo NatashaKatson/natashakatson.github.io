@@ -8,13 +8,15 @@ Implemented in `static/historyallaround/atlas/` on the `redesign` branch. The or
 - **Journeys:** guided explorations such as women's rights, migrations, and life before humans. Starting a journey opens its relevant dates, places, and contextual controls.
 - **Search:** one entry point for places, people, and events.
 
+Women’s-rights map markers are off by default, as requested. All 76 milestones remain available in Journeys and search; the map visibility control and explicit saved views can turn them on. Reset filters restores this default.
+
 ## Controls on demand
 
 **Map settings** holds Globe/Map, border display, event categories, and year comparison. A selected event opens its detail and sources. Location exploration opens a separate focused view instead of adding a long nearby-history list to every event.
 
-The timeline shows a useful era range, with **All eras** for moving between deep time and human history. Exact date entry belongs to this navigator. Its focused scale is linear; the overview retains the original expanded scale for recent history. Playback accumulates fractional progress so it advances smoothly even within short eras. Existing dates, sources, records, and shareable views are preserved.
+The timeline keeps the original complete date scale, ending at **2026**. **All eras** opens the existing era chooser without restricting the slider. Exact date entry, one-year stepping, recorded-event stepping, comparison, and the dinosaur timeline toggle remain available. Play now accumulates continuous progress and traverses the full scale in about 30 seconds, following the user's explicit timelapse request. Existing dates, sources, records, and shareable views are preserved.
 
-The visual implementation keeps a neutral warm-paper background, following the user's preference over the concept's blue backdrop. The larger globe, compact reading card, quieter timeline, and floating settings panel follow the concept's proportions. Recent history uses 50-year windows (the latest ends at the atlas's 2026 cutoff). Sources and related history remain accessible through disclosures.
+The implementation keeps a neutral warm-paper background. Story sources and related history use disclosures; their original content and links are retained. Map projection and zoom calculations match the original atlas. See [the functionality review](functionality-review.md) for the inventory comparison and regressions fixed.
 
 On mobile, retain the map and compact time navigator. Put events in an expandable bottom sheet. Explore, Journeys, and Search form the primary navigation.
 
@@ -24,6 +26,7 @@ With an isolated Chromium debugging session on port 9231 and a static server for
 
 ```sh
 node prototypes/atlas-restructure/verify.mjs
+node prototypes/atlas-restructure/review-parity.mjs
 node --test tests/history-*.test.cjs
 ```
 

@@ -1,3 +1,4 @@
+import { workspaceSetup } from './atlas-workspace-helpers.mjs';
 // Regression checks for search access, interior country points, reading focus and period context.
 import assert from 'node:assert/strict';
 const cdp = process.env.ATLAS_CDP_URL || 'http://127.0.0.1:9231';
@@ -29,6 +30,8 @@ const waitFor = async (expression) => {
   throw Error('Not ready: ' + expression);
 };
 try {
+  await send('Page.enable');
+  await send('Page.addScriptToEvaluateOnNewDocument', { source: workspaceSetup });
   await send('Runtime.enable'); await send('Network.enable');
   await send('Network.setCacheDisabled', { cacheDisabled: true });
   await send('Network.setBlockedURLs', { urls: ['https://cdnjs.buymeacoffee.com/*'] });
@@ -36,7 +39,9 @@ try {
   await send('Page.navigate', { url: url + '#1992' });
   await waitFor('!!window.AtlasUI && !!window.HistoryCountries');
   assert(await evaluate(`document.getElementById('yr').textContent==='1992'`), 'Atlas starts with the support service blocked');
+  await evaluate(`AtlasTestUI.about()`);
   assert(await evaluate(`(()=>{const a=document.querySelector('.atlas-support-link');return a?.href==='https://www.buymeacoffee.com/natashakatson'&&a.getBoundingClientRect().height>=44&&a.textContent.includes('Buy me a coffee')})()`), 'Support link stays visible with the support service blocked');
+  await evaluate(`AtlasTestUI.settings(false)`);
   console.log('Atlas and support link work independently of the support service');
   const bad = await evaluate(`(async()=>{
     stopSpin();flyToken++;
@@ -73,7 +78,7 @@ try {
       assert(!!document.querySelector('#regions [data-id="'+event.id+'"]')===visible,'Penicillin follows the inclusive two-year window in '+year);
     }
     setYear(1992);const musqueam=ev.find(e=>e.wiki==='Musqueam_Indian_Band');
-    assert(document.getElementById('sideSub').textContent==='7 dated events within 2 years of 1992 · 3 historical context records','1992 contains both dated events and continuing pandemic periods');
+    assert(document.getElementById('sideSub').textContent==='4 dated events within 2 years of 1992 · 3 historical context records','1992 contains dated events and continuing periods with women’s-rights markers off by default');
     for(const wiki of ['Dissolution_of_the_Soviet_Union','1994_South_African_general_election']){
       assert(document.querySelector('#regions [data-id="'+ev.find(e=>e.wiki===wiki).id+'"]'),'1992 includes '+wiki);
     }

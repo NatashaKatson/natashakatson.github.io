@@ -1,3 +1,4 @@
+import { workspaceSetup } from './atlas-workspace-helpers.mjs';
 // Dedicated migration browsing, keyboard navigation, visibility and responsive layout.
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -37,6 +38,8 @@ const screenshot = async (name) => {
   fs.writeFileSync(path.join(os.tmpdir(), 'history-migrations-ui-' + name + '.png'), Buffer.from(shot.data, 'base64'));
 };
 try {
+  await send('Page.enable');
+  await send('Page.addScriptToEvaluateOnNewDocument', { source: workspaceSetup });
   await send('Runtime.enable');await send('Network.enable');
   await send('Network.setCacheDisabled',{cacheDisabled:true});
   await send('Network.setBlockedURLs',{urls:url.startsWith('file:')?['http://*','https://*']:['https://fonts.googleapis.com/*','https://fonts.gstatic.com/*']});
@@ -65,7 +68,7 @@ try {
     check(document.getElementById('migrationsPanel').hidden&&document.activeElement===document.getElementById('detail'),'Navigation closes the menu and focuses the reader');
     return 'Dedicated access, period grouping, search aliases, stable controls and dated navigation passed';
   })()`));
-  await evaluate(`document.querySelector('#detail .close').click();document.querySelector('[data-atlas-menu="migrationsPanel"]').focus()`);
+  await evaluate(`document.querySelector('#detail .close').click();AtlasTestUI.journeys();document.querySelector('[data-atlas-menu="migrationsPanel"]').focus()`);
   await send('Input.dispatchKeyEvent',{type:'keyDown',key:'Enter',code:'Enter',windowsVirtualKeyCode:13,text:'\r'});
   await send('Input.dispatchKeyEvent',{type:'keyUp',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});
   assert(await evaluate(`!document.getElementById('migrationsPanel').hidden`),'Keyboard opens Migrations');
@@ -92,8 +95,8 @@ try {
   for(const [width,height] of [[1440,1000],[1024,768],[900,700],[768,1024],[390,844],[320,568],[320,500],[844,390]]){
     await send('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:1,mobile:width<=860});
     await evaluate(`window.scrollTo({top:0,behavior:'instant'});`);
-    await evaluate(`if(innerWidth<=860&&document.getElementById('mapToolsToggle').getAttribute('aria-expanded')!=='true')document.getElementById('mapToolsToggle').click()`);
-    assert(await evaluate(`(()=>{const r=[...document.querySelectorAll('.atlas-toolbar > .atlas-menu > button')].map(b=>b.getBoundingClientRect());return r.every((a,i)=>a.left>=0&&a.right<=innerWidth&&a.height>=40&&r.slice(i+1).every(b=>a.right<=b.left||b.right<=a.left||a.bottom<=b.top||b.bottom<=a.top))&&document.documentElement.scrollWidth<=innerWidth})()`),`Four map controls fit at ${width}×${height}`);
+    await evaluate(`AtlasTestUI.journeys()`);
+    assert(await evaluate(`(()=>{const r=document.getElementById('mapToolsToggle').getBoundingClientRect();return r.width>=40&&r.left>=0&&r.right<=innerWidth&&document.documentElement.scrollWidth<=innerWidth})()`),`Workspace navigation fits at ${width}×${height}`);
     await evaluate(`(()=>{const t=document.querySelector('[data-atlas-menu="migrationsPanel"]');if(t.getAttribute('aria-expanded')!=='true')t.click()})()`);
     assert(await evaluate(`(()=>{const panel=document.getElementById('migrationsPanel'),p=panel.getBoundingClientRect(),s=document.getElementById('migrationSearch').getBoundingClientRect();return p.left>=0&&p.right<=innerWidth&&p.top>=0&&p.bottom<=innerHeight&&s.top>=p.top&&s.bottom<=p.bottom})()`),`Panel and search fit at ${width}×${height}`);
     assert(await evaluate(`(()=>{const list=document.getElementById('migrationResults'),b=[...list.querySelectorAll('[data-migration-record]')].at(-1);b.scrollIntoView({block:'nearest'});const r=b.getBoundingClientRect(),p=list.getBoundingClientRect();return r.height>=44&&r.top>=p.top-1&&r.bottom<=p.bottom+1&&document.elementFromPoint(r.left+15,r.top+r.height/2)?.closest('[data-migration-record]')===b})()`),`Last result is visible and clickable at ${width}×${height}`);

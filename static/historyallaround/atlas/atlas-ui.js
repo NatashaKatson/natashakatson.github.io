@@ -6,10 +6,19 @@
   const settingsContents = document.getElementById('settingsContents');
   const toolsToggle = document.getElementById('mapToolsToggle');
   const mobile = matchMedia('(max-width: 860px)');
-  let workspace = 'explore', context = 'events', sheetOpen = false;
+  let restoreSettingsFocus = true;
+  let workspace = 'explore', context = byId[state.sel]?.kind === 'person' || HistoryDiscovery.contemporaryPair() ? 'people' : 'events', sheetOpen = false;
 
   // Relocate real controls so their existing state, handlers and IDs survive.
   document.getElementById('timelineDateSlot').append(document.getElementById('goto'));
+  for (const id of ['prev', 'next']) {
+    const button = document.getElementById(id);
+    button.type = 'button';
+    button.classList.add('year-step');
+    if (id === 'prev') document.getElementById('timelineDateSlot').prepend(button);
+    else document.getElementById('timelineDateSlot').append(button);
+  }
+  document.querySelector('.year-steppers').remove();
   const layers = document.getElementById('layersPanel');
   layers.hidden = false;
   layers.querySelector('h2').remove();
@@ -59,7 +68,7 @@
     const trigger = document.querySelector(`[data-atlas-menu="${id}"]`);
     const panel = document.getElementById(id);
     trigger.className = 'journey-topic';
-    trigger.innerHTML = `<span><strong>${title}</strong><small>${description}</small></span><span aria-hidden="true">→</span>`;
+    trigger.innerHTML = `<span><strong>${id === 'womensRightsPanel' ? '<span aria-hidden="true">👩</span> ' : ''}${title}</strong><small>${description}</small></span><span aria-hidden="true">→</span>`;
     topics.append(trigger);
     panels.append(panel);
   }
@@ -95,6 +104,7 @@
   function openSettings() {
     closeMenus();
     if (settings.open) { settings.close(); return; }
+    restoreSettingsFocus = true;
     settings.showModal();
     toolsToggle.setAttribute('aria-expanded', 'true');
   }
@@ -102,7 +112,7 @@
   settings.querySelectorAll('[data-close-dialog]').forEach(button => button.onclick = () => settings.close());
   settings.addEventListener('close', () => {
     toolsToggle.setAttribute('aria-expanded', 'false');
-    toolsToggle.focus({ preventScroll: true });
+    if (restoreSettingsFocus) toolsToggle.focus({ preventScroll: true });
   });
   settings.addEventListener('keydown', event => {
     if (event.key === 'Escape') { event.preventDefault(); settings.close(); }
@@ -112,7 +122,8 @@
     const rect = settings.getBoundingClientRect();
     if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) settings.close();
   });
-  document.querySelectorAll('[data-layer-explore]').forEach(button => button.addEventListener('click', () => settings.close()));
+  document.querySelectorAll('[data-layer-explore]').forEach(button => button.addEventListener('click', closeSettingsForNavigation));
+  function closeSettingsForNavigation() { restoreSettingsFocus = false; settings.close(); }
 
   const body = document.getElementById('sideBody');
   const sheetToggle = document.getElementById('eventSheetToggle');
@@ -150,7 +161,7 @@
   searchTrigger.innerHTML = '<span aria-hidden="true">⌕</span><span class="search-label">Search places, people, events</span>';
   document.getElementById('mobileSearch').onclick = () => searchTrigger.click();
   function goToMap() {
-    if (settings.open) settings.close();
+    if (settings.open) closeSettingsForNavigation();
     setWorkspace('explore');
     setSheet(false);
     cv.focus({ preventScroll: true });
@@ -163,7 +174,7 @@
   document.querySelector('.skip-links a[href="#sideTitle"]').onclick = event => { event.preventDefault(); goToEvents(); };
   document.querySelector('.skip-links a[href="#cv"]').onclick = event => { event.preventDefault(); goToMap(); };
   function reveal(element) {
-    if (settings.open) settings.close();
+    if (settings.open) closeSettingsForNavigation();
     const inJourneys = !!element.closest('.sidebar-extras');
     if (inJourneys) {
       if (workspace !== 'journeys') setWorkspace('journeys');
@@ -182,29 +193,38 @@
   document.getElementById('previousEvent').onclick = () => stepEvent(-1);
   document.getElementById('nextEvent').onclick = () => stepEvent(1);
   document.getElementById('resetFilters').onclick = () => {
-    for (const cat of Object.keys(CATS)) if (cat !== 'migrations') state.cats.add(cat);
+    for (const cat of Object.keys(CATS)) if (cat !== 'migrations' && cat !== 'womens-rights') state.cats.add(cat);
+    state.cats.delete('womens-rights');
     buildMarks(); update();
   };
   const scopeButton = document.getElementById('timelineScope');
-  scopeButton.onclick = () => { stopPlay(); timelineFocused = !timelineFocused; update(); };
+  scopeButton.onclick = () => {
+    openMenu(document.querySelector('[data-atlas-menu="eraPanel"]'));
+    document.getElementById('eraChoices').querySelector('button:not([hidden])')?.focus({ preventScroll: true });
+  };
   const dateInput = document.getElementById('gotoInput');
   dateInput.addEventListener('keydown', event => { if (event.key === 'Escape') { dateInput.blur(); cv.focus({ preventScroll: true }); } });
 
   const menuTriggers = [...document.querySelectorAll('[data-atlas-menu]')].filter(button => button !== toolsToggle);
   function closeMenus(restoreFocus = false) {
+    let returnTrigger;
     for (const trigger of menuTriggers) {
       const panel = document.getElementById(trigger.dataset.atlasMenu);
-      if (restoreFocus && panel.contains(document.activeElement)) trigger.focus({ preventScroll: true });
+      if (restoreFocus && panel.contains(document.activeElement)) returnTrigger = trigger;
       panel.hidden = true;
       trigger.setAttribute('aria-expanded', 'false');
     }
     side.classList.remove('journey-panel-open');
+    returnTrigger?.focus({ preventScroll: true });
+    scopeButton.setAttribute('aria-expanded', 'false');
   }
   function openMenu(trigger) {
     closeMenus();
     const panel = document.getElementById(trigger.dataset.atlasMenu);
+    if (panel.closest('#journeyPanels') && settings.open) closeSettingsForNavigation();
     panel.hidden = false;
     trigger.setAttribute('aria-expanded', 'true');
+    if (panel.id === 'eraPanel') scopeButton.setAttribute('aria-expanded', 'true');
     if (panel.closest('#journeyPanels')) {
       if (workspace !== 'journeys') setWorkspace('journeys');
       panel.hidden = false;
@@ -223,6 +243,7 @@
       const eraTrigger = document.querySelector('[data-atlas-menu="eraPanel"]');
       document.getElementById('eraPanel').hidden = true;
       eraTrigger.setAttribute('aria-expanded', 'false');
+      scopeButton.setAttribute('aria-expanded', 'false');
     }
   });
   document.addEventListener('keydown', event => {
@@ -233,10 +254,30 @@
   });
 
   const peopleNodes = ['peopleTitle', 'peopleSub', 'people'].map(id => document.getElementById(id));
-  let lastWorkspaceKey = '', lastWorkspaceDetail = null;
+  let lastWorkspaceKey = '', lastWorkspaceDetail = null, lastJourneySelection = '', lastChallengeView = '', lastPresentedRecord = '';
   function renderWorkspace() {
+    const presentedRecord = state.sel || selectedPolity?.name || document.querySelector('#detail .search-place-detail h3')?.textContent || '';
+    if (presentedRecord && presentedRecord !== lastPresentedRecord) {
+      workspace = 'explore'; app.dataset.workspace = workspace;
+      context = byId[state.sel]?.kind === 'person' ? 'people' : 'events';
+      setSheet(true);
+    }
+    lastPresentedRecord = presentedRecord;
+    const reader = document.querySelector('.curated-reader');
+    const comparisonStory = document.querySelector('.comparison-explanation');
+    const journeySelection = reader?.dataset.selection || (comparisonStory && !comparisonStory.hidden ? `comparison/${comparisonStory.dataset.story}` : '');
+    const banner = document.querySelector('.challenge-map-banner');
+    const challengeView = banner && !banner.hidden ? banner.textContent : '';
+    const picking = !!window.HistoryChallenge?.isPicking();
+    if (picking || (challengeView && challengeView !== lastChallengeView)) {
+      workspace = 'explore'; app.dataset.workspace = workspace; setSheet(false);
+    } else if (journeySelection && journeySelection !== lastJourneySelection) {
+      workspace = 'journeys'; app.dataset.workspace = workspace; setSheet(true);
+    }
+    lastJourneySelection = journeySelection; lastChallengeView = challengeView;
+    document.querySelectorAll('[data-workspace]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.workspace === workspace)));
     const detailNode = document.getElementById('detail').firstElementChild;
-    const key = `${workspace}/${context}/${state.year}/${state.sel}/${selectedPolity?.name || ''}/${timelineFocused}`;
+    const key = `${workspace}/${context}/${state.year}/${state.sel}/${selectedPolity?.name || ''}/${journeySelection}/${challengeView}`;
     if (key === lastWorkspaceKey && detailNode === lastWorkspaceDetail) return;
     lastWorkspaceKey = key; lastWorkspaceDetail = detailNode;
     const journeys = workspace === 'journeys';
@@ -262,8 +303,6 @@
     sheetToggle.querySelector('span:nth-child(2)').textContent = journeys ? 'Journeys' : 'Around this time';
     document.getElementById('currentEraLabel').textContent = document.getElementById('era').textContent;
     document.getElementById('readoutEra').textContent = document.getElementById('era').textContent;
-    scopeButton.textContent = timelineFocused ? 'All eras ↗' : 'Focus era ↙';
-    scopeButton.setAttribute('aria-pressed', String(!timelineFocused));
     if (document.activeElement !== dateInput) dateInput.value = state.year <= -1000000 ? `${Math.abs(state.year) / 1000000} Ma` : fmt(state.year);
     // Keep the reading card brief; preserve every source and related record.
     if (detailNode && !detailNode.dataset.compact && !detailNode.classList.contains('dinosaur-detail')) {
@@ -332,8 +371,6 @@
     button.innerHTML = `<span>${name}</span><small>${date}</small>`;
     button.onclick = () => {
       closeMenus();
-      timelineFocused = true;
-      timelineWindow = null;
       if (dinosaurEra !== undefined) document.querySelector(`[data-dinosaur-era="${dinosaurEra}"]`).click();
       else { stopPlay(); setYear(year); }
       document.querySelector('[data-atlas-menu="eraPanel"]').focus({ preventScroll: true });
@@ -358,7 +395,10 @@
   cv.addEventListener('wheel', dismissHint, { once: true, passive: true });
   setTimeout(dismissHint, 7000);
   let lastKey = '', lastPeriodKey = '';
-  window.AtlasUI = { goToMap, goToEvents, reveal, render() {
+  window.AtlasUI = { goToMap, goToEvents, reveal, revealList(saved) {
+    context = byId[saved?.id]?.kind === 'person' ? 'people' : 'events';
+    goToEvents(); renderWorkspace();
+  }, render() {
     renderWorkspace();
     window.HistoryLayers?.render();
     window.HistoryMigrations?.render();
@@ -383,9 +423,10 @@
       chip.setAttribute('aria-pressed', String(state.cats.has(chip.dataset.k)));
     }
     const hiddenCount = relevant.filter(cat => !state.cats.has(cat)).length;
-    document.getElementById('categoryStatus').textContent = hiddenCount ? `${hiddenCount} hidden` : 'All shown';
-    document.getElementById('filterCount').textContent = hiddenCount ? `${hiddenCount} hidden` : 'All';
-    document.getElementById('resetFilters').disabled = !hiddenCount;
+    const defaultView = relevant.every(cat => state.cats.has(cat) === (cat !== 'womens-rights'));
+    document.getElementById('categoryStatus').textContent = defaultView && human ? 'Default view' : hiddenCount ? `${hiddenCount} hidden` : 'All shown';
+    document.getElementById('filterCount').textContent = defaultView && human ? 'Default' : hiddenCount ? `${hiddenCount} hidden` : 'All';
+    document.getElementById('resetFilters').disabled = defaultView;
     document.getElementById('filterContext').textContent = 'Filters apply to the map and worldwide event list. ' + (deep && human ? 'Showing types for both displayed periods.' : deep ? 'Fossil records for this period.' : `Dated events within ${SAME_TIME_YEARS} years; longer periods are historical context.`);
     const dinosaursEnabled = state.cats.has('dinosaurs');
     browse.hidden = !deep || !dinosaursEnabled;

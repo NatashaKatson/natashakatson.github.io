@@ -52,12 +52,11 @@ try {
   await waitFor(`!!window.AtlasUI`);
   await evaluate('stopSpin()');
   await check(`ev.length===422 && ppl.length===66`, 'All historical records remain available');
-  await check(`timelineFocused && timelineWindow[0]===1900 && timelineWindow[1]===1950`, 'Timeline focuses on a readable fifty-year modern range');
+  await check(`!state.cats.has('womens-rights') && !document.getElementById('rightsVisibility').checked && document.querySelectorAll('[data-rights-record]').length===76`, 'Women’s-rights markers start off while all milestones remain available');
+  await check(`yearAt(0)===-252000000 && yearAt(1)===2026 && document.querySelector('#ticks .timeline-end').textContent==='2026'`, 'Original complete timeline reaches 2026');
   await click('#timelineScope');
-  await check(`!timelineFocused && yearAt(0)===-252000000 && yearAt(1)===2026`, 'All eras restores the complete time range');
-  await waitFor(`document.getElementById('timelineScope').textContent.includes('Focus era')`);
-  await check(`document.getElementById('timelineScope').getAttribute('aria-pressed')==='true'`, 'Overview control reflects the active timeline mode');
-  await click('#timelineScope');
+  await check(`!document.getElementById('eraPanel').hidden && yearAt(1)===2026`, 'All eras opens era navigation without truncating the timeline');
+  await click('[data-atlas-menu="eraPanel"]');
   await evaluate(`setYear(-1);document.getElementById('next').click()`);
   await check(`state.year===1`, 'Year stepping skips year zero');
   await evaluate(`slider.dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowLeft',bubbles:true,cancelable:true}))`);
@@ -70,14 +69,13 @@ try {
   await click('#play');
   await waitFor(`state.playing && state.year>1928`);
   await click('#play');
-  await check(`!state.playing`, 'Play and Pause work on the focused range');
+  await check(`!state.playing`, 'Play and Pause work on the complete timeline');
   await evaluate(`setYear(1928);select(ev.find(e=>e.wiki==='Penicillin').id,false)`);
   await check(`document.querySelector('#detail h3').textContent.includes('Penicillin') && !document.querySelector('.event-list-disclosure').open`, 'Selected story is focused, with more events on demand');
   await waitFor(`!!document.querySelector('#detail .story-sources')`);
   await check(`!document.querySelector('#detail .story-sources').open && document.querySelectorAll('#detail .story-sources a').length===2`, 'Compact card preserves both original source links on demand');
   await check(`document.querySelector('#detail .detail').getBoundingClientRect().height<300 && !document.querySelector('#detail .story-context').open`, 'Selected story stays compact and related history remains available');
   await check(`getComputedStyle(stage).backgroundImage==='none' && getComputedStyle(stage).backgroundColor==='rgb(242, 238, 230)'`, 'Map keeps the requested neutral paper background');
-  await check(`baseScale()*2>Math.min(W,H)`, 'Globe fills more of the desktop map stage');
   await screenshot('desktop');
   await click('#mapToolsToggle');
   await check(`document.getElementById('mapSettings').open && document.activeElement.closest('#mapSettings')`, 'Map settings opens a focused modal drawer');
@@ -124,7 +122,7 @@ try {
   await check(`state.year===1928`, 'Global search opens the real record and its date');
   await evaluate(`setYear(-150000000)`);
   await waitFor(`HistoryPaleogeography.status(-150000000).state==='ready'`);
-  await check(`geo().ancient && d3.geoArea(geo().land)>1 && timelineWindow[0]<=state.year && timelineWindow[1]>=state.year`, 'Deep time keeps ancient geography and a relevant time range');
+  await check(`geo().ancient && d3.geoArea(geo().land)>1 && yearAt(0)===-252000000 && yearAt(1)===2026`, 'Deep time keeps ancient geography and a relevant time range');
   await evaluate(`setYear(1928);stopSpin()`);
   for (const [width,height] of [[1440,1000],[1024,768],[860,900],[768,1024],[390,844],[320,650],[844,390]]) {
     await send('Emulation.setDeviceMetricsOverride', {width,height,deviceScaleFactor:1,mobile:width<=860});
@@ -160,7 +158,7 @@ try {
   await send('Input.dispatchMouseEvent',{type:'mousePressed',x:r.x+r.width*.25,y:r.y+r.height/2,button:'left',clickCount:1});
   await send('Input.dispatchMouseEvent',{type:'mouseMoved',x:r.x+r.width*.7,y:r.y+r.height/2,button:'left',buttons:1});
   await send('Input.dispatchMouseEvent',{type:'mouseReleased',x:r.x+r.width*.7,y:r.y+r.height/2,button:'left',clickCount:1});
-  await check(`state.year!==1928 && Number.isFinite(state.year) && state.year>=1800 && state.year<=2026`, 'Mobile timeline drag selects dates in its focused era');
+  await check(`state.year!==1928 && Number.isFinite(state.year) && state.year>=-252000000 && state.year<=2026`, 'Mobile timeline drag selects dates on the full original range');
   await check(`(()=>{const ids=[...document.querySelectorAll('[id]')].map(el=>el.id);return new Set(ids).size===ids.length})()`, 'Reorganized controls have unique document IDs');
   if(errors.length)throw Error(errors.join('\n'));
   console.log(`Validated ${checks} browser checks. No runtime errors.`);

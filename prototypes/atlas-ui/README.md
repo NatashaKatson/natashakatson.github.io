@@ -1,6 +1,6 @@
 # Atlas redesign preview
 
-Open **[preview.html](preview.html)** directly in your browser. It bundles the current atlas with Explore/Journeys navigation, a unified settings drawer, a focused era timeline, Events/People tabs, and a mobile bottom sheet. Existing globe/map behavior, historical records, filters, sources, stories, search, comparisons, challenges, and dinosaur portraits remain available. See [the redesign notes](../atlas-restructure/README.md) for the concept and new browser checks. The screenshots in this folder document the earlier layout; current screenshots are in `../atlas-restructure/previews/`.
+Open **[preview.html](preview.html)** directly in your browser. It bundles the current atlas with Explore/Journeys navigation, a unified settings drawer, the complete timeline through 2026, Events/People tabs, and a mobile bottom sheet. Existing globe/map behavior, historical records, filters, sources, stories, search, comparisons, challenges, and dinosaur portraits remain available. See [the redesign notes](../atlas-restructure/README.md) for the concept and new browser checks. The screenshots in this folder document the earlier layout; current screenshots are in `../atlas-restructure/previews/`.
 
 **Event emojis** appear on map markers, event-list titles, and selected event titles. Examples: vaccines 💉, medicines 💊, stethoscope 🩺, X-rays 🩻, blood groups 🩸, MRI 🧲, DNA 🧬, heart procedures 🫀, hygiene 🧼, and pandemics 🦠. Other events have category or subject icons. Source text and dinosaur art are unchanged.
 

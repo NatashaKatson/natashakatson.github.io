@@ -1,3 +1,4 @@
+import { workspaceSetup } from './atlas-workspace-helpers.mjs';
 // Use the isolated Chrome and static server described in docs/history-discovery.md.
 import fs from 'node:fs';
 import os from 'node:os';
@@ -33,6 +34,8 @@ async function navigate(hash) {
   throw Error('Atlas failed to load');
 }
 try {
+  await send('Page.enable');
+  await send('Page.addScriptToEvaluateOnNewDocument', { source: workspaceSetup });
   await send('Runtime.enable'); await send('Network.enable'); await send('Network.setCacheDisabled', { cacheDisabled: true });
   await send('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false });
   await navigate('#1903');
@@ -41,12 +44,12 @@ try {
     const toggle=document.querySelector('.dinosaur-toggle');
     assert(toggle&&toggle.getAttribute('aria-pressed')==='true','Era toggle is initially on');
     assert(toggle.closest('#eraPanel')&&!document.querySelector('#layersPanel .dinosaur-map-controls'),'dinosaur controls belong to Choose era, not Layers');
-    assert(document.getElementById('layersPanel').hidden&&document.getElementById('filtersPanel').hidden,'map menus start collapsed');
-    document.querySelector('[data-atlas-menu="filtersPanel"]').click();
-    assert(document.querySelectorAll('#legend .chip:not([hidden])').length===11&&document.getElementById('filterCount').textContent==='All','human history shows eleven global filters with an unfiltered state');
+    assert(!document.getElementById('mapSettings').open,'map menus start collapsed');
+    AtlasTestUI.filters();
+    assert(document.querySelectorAll('#legend .chip:not([hidden])').length===11&&document.getElementById('filterCount').textContent==='Default','human history exposes eleven categories with women’s-rights markers off by default');
     document.querySelector('#legend .chip').focus();
     document.activeElement.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',bubbles:true}));
-    assert(document.getElementById('filtersPanel').hidden&&document.activeElement.dataset.atlasMenu==='filtersPanel','Escape closes the menu and restores focus');
+    assert(!document.getElementById('mapSettings').open&&document.activeElement.id==='mapToolsToggle','Escape closes the menu and restores focus');
     const camera=JSON.stringify(rot);toggle.click();render();
     assert(!state.cats.has('dinosaurs')&&!dinosaurTimeline&&yearAt(0)===-300000,'off removes the deep-time timeline range');
     assert(!document.getElementById('eras').textContent.includes('Dinosaurs')&&!document.getElementById('ticks').textContent.includes('Ma'),'off removes ancient era labels and ticks');
@@ -69,7 +72,9 @@ try {
     document.querySelector('.dinosaur-trigger').click();render();
     assert(state.year===-67000000&&byId[state.sel]?.wiki==='Tyrannosaurus','dinosaur jump');
     assert(document.getElementById('yr').textContent.includes('million years ago'),'readable deep-time date');
-    assert(document.querySelector('.dinosaur-discovery').getBoundingClientRect().height>0,'dinosaur browser remains visible during deep time');
+    AtlasTestUI.journeys();
+    assert(document.querySelector('.dinosaur-discovery').getBoundingClientRect().height>0,'dinosaur browser remains available in Journeys during deep time');
+    AtlasUI.goToEvents();
     assert(document.querySelector('.dinosaur-detail').textContent.includes('Representative fossil region'),'fossil location context');
     await document.querySelector('.dinosaur-portrait img').decode();
     assert(document.querySelector('.dinosaur-portrait img').naturalWidth===512,'real illustrated avatar loads');
@@ -186,10 +191,10 @@ try {
     assert(state.year===-150000000&&document.getElementById('eraPanel').hidden,'era selection navigates and closes the picker');
     assert(document.activeElement.dataset.atlasMenu==='eraPanel','era selection returns focus');
     const options=document.querySelector('.dock-options');options.open=true;
-    document.querySelector('[data-atlas-menu="filtersPanel"]').click();
-    assert(!options.open,'map menu closes the expanded dock');
-    cv.dispatchEvent(new PointerEvent('pointerdown',{bubbles:true,pointerId:1}));
-    assert(document.getElementById('filtersPanel').hidden,'outside interaction closes the menu');
+    AtlasTestUI.filters();
+    assert(document.getElementById('mapSettings').open,'Settings exposes the event categories');
+    document.getElementById('mapSettings').querySelector('[data-close-dialog]').click();
+    assert(!document.getElementById('mapSettings').open,'Done closes settings');
     cv.dispatchEvent(new PointerEvent('pointerup',{bubbles:true,pointerId:1}));
     return 'Compact workspace: precise editing, responsive ruler, era navigation, focus and outside dismissal passed';
   })()`));

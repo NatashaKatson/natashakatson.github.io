@@ -1,3 +1,4 @@
+import { workspaceSetup } from './atlas-workspace-helpers.mjs';
 // Pandemic filter, map markers, ongoing labels, search and share regression checks.
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -37,6 +38,8 @@ const screenshot = async (name) => {
   fs.writeFileSync(path.join(os.tmpdir(), 'history-pandemics-' + name + '.png'), Buffer.from(shot.data, 'base64'));
 };
 try {
+  await send('Page.enable');
+  await send('Page.addScriptToEvaluateOnNewDocument', { source: workspaceSetup });
   await send('Runtime.enable'); await send('Network.enable');
   await send('Network.setBlockedURLs', { urls: url.startsWith('file:') ? ['http://*', 'https://*'] : ['https://fonts.googleapis.com/*', 'https://fonts.gstatic.com/*', 'https://cdnjs.buymeacoffee.com/*'] });
   await send('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false });
@@ -45,11 +48,11 @@ try {
   console.log(await evaluate(`(async()=>{
     const check=(v,m)=>{if(!v)throw Error(m)};
     stopSpin();flyToken++;
-    const trigger=document.querySelector('[data-atlas-menu="filtersPanel"]');trigger.click();
+    const trigger=document.getElementById('mapToolsToggle');AtlasTestUI.filters();
     const chip=document.querySelector('#legend [data-k="pandemics"]');
     check(chip&&!chip.hidden&&chip.textContent.includes('Pandemics'),'Pandemics is a human-history filter');
     check(getComputedStyle(chip).getPropertyValue('--c-pandemics').trim()==='#317d83','Pandemic swatch has a real color');
-    check(document.getElementById('filterCount').textContent==='All','All human filters are visibly enabled');
+    check(document.getElementById('filterCount').textContent==='Default','Default category visibility is explicit');
     if(state.cats.has('migrations'))document.getElementById('migrationVisibility').click();
     for(const b of document.querySelectorAll('#legend [data-k]'))if(b!==chip&&b.getAttribute('aria-pressed')==='true')b.click();
     render();check(state.cats.size===1&&state.cats.has('pandemics'),'Pandemics can be isolated');
@@ -76,7 +79,7 @@ try {
     const covid=ev.find(e=>e.wiki==='COVID-19');
     check(hits.find(h=>h.id===covid.id).label.includes('present'),'Map tooltip uses present');
     check(document.querySelector('#regions [data-id="'+covid.id+'"] .y').textContent==='2019–present','Sidebar uses present');
-    document.querySelector('[data-atlas-menu="filtersPanel"]').click();
+    document.getElementById('mapToolsToggle').click();
     chip.click();check(state.cats.has('pandemics'),'At least one category remains enabled');
     const nature=document.querySelector('#legend [data-k="nature"]');nature.click();select(covid.id,false);flyToken++;chip.click();render();
     check(!activeEvents().some(({e})=>e.cat==='pandemics')&&!hits.some(h=>byId[h.id]?.cat==='pandemics'),'Disabling pandemics removes their map markers');
@@ -97,7 +100,7 @@ try {
     check(state.cats.size===1&&state.cats.has('pandemics'),'Share a pandemic-only view');
     return 'Pandemic-only filtering, interval markers, actual map clicks, reader, continuing labels and search passed';
   })()`));
-  const point = await evaluate(`(()=>{const t=document.querySelector('[data-atlas-menu="filtersPanel"]');if(t.getAttribute('aria-expanded')==='true')t.click();flyToken++;render();const e=ev.find(e=>e.wiki==='COVID-19'),h=hits.find(h=>h.id===e.id),r=cv.getBoundingClientRect();return {x:r.left+h.x,y:r.top+h.y}})()`);
+  const point = await evaluate(`(()=>{const t=document.getElementById('mapToolsToggle');if(t.getAttribute('aria-expanded')==='true')t.click();flyToken++;render();const e=ev.find(e=>e.wiki==='COVID-19'),h=hits.find(h=>h.id===e.id),r=cv.getBoundingClientRect();return {x:r.left+h.x,y:r.top+h.y}})()`);
   await send('Input.dispatchMouseEvent', { type: 'mousePressed', ...point, button: 'left', clickCount: 1 });
   await send('Input.dispatchMouseEvent', { type: 'mouseReleased', ...point, button: 'left', clickCount: 1 });
   assert(await evaluate(`byId[state.sel]?.wiki==='COVID-19'`), 'Real map click selects pandemic marker');
@@ -109,7 +112,7 @@ try {
   assert(await evaluate('state.year===2026'), 'Shared pandemic view restores year');
   for (const width of [1440, 390, 320]) {
     await send('Emulation.setDeviceMetricsOverride', { width, height: 844, deviceScaleFactor: 1, mobile: width <= 860 });
-    await evaluate(`{window.scrollTo({top:0,behavior:'instant'});const t=document.querySelector('[data-atlas-menu="filtersPanel"]');if(t.getAttribute('aria-expanded')!=='true')t.click();}`);
+    await evaluate(`{window.scrollTo({top:0,behavior:'instant'});const t=document.getElementById('mapToolsToggle');if(t.getAttribute('aria-expanded')!=='true')t.click();AtlasTestUI.filters();}`);
     assert(await evaluate(`(()=>{const b=document.querySelector('#legend [data-k="pandemics"]');b.scrollIntoView({block:'nearest'});const r=b.getBoundingClientRect();return r.width>0&&r.height>=40&&r.left>=0&&r.right<=innerWidth&&document.documentElement.scrollWidth<=innerWidth})()`), `Pandemic filter reachable at ${width}px`);
     await screenshot(String(width));
   }

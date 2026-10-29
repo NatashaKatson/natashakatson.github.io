@@ -28,7 +28,7 @@ test('population interpolates between samples without extrapolating or exposing 
 test('timeline endpoint stays 2026 even when the browser clock is in another year',()=>{
   const html=fs.readFileSync('static/historyallaround/atlas/index.html','utf8');
   const declaration=html.match(/^const NOW=.*$/m)[0];
-  const segments=[/^const SEG=.*$/m,/^const HISTORY_SEG=.*$/m,/^let dinosaurTimeline=.*$/m,/^let timelineFocused=.*$/m].map(re=>html.match(re)[0]).join('\n');
+  const segments=[/^const SEG=.*$/m,/^const HISTORY_SEG=.*$/m,/^let dinosaurTimeline=.*$/m].map(re=>html.match(re)[0]).join('\n');
   const yearAt=html.match(/^function yearAt\(.*$/m)[0];
   for(const fakeYear of [2020,2026,2035]){
     const context=vm.createContext({Date:class{getFullYear(){return fakeYear;}}});

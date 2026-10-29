@@ -1,3 +1,4 @@
+import { workspaceSetup } from './atlas-workspace-helpers.mjs';
 // Thematic routes, migration arrows, dated markers, controls and shared views.
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -37,6 +38,8 @@ const screenshot = async (name) => {
   fs.writeFileSync(path.join(os.tmpdir(), 'history-layers-' + name + '.png'), Buffer.from(shot.data, 'base64'));
 };
 try {
+  await send('Page.enable');
+  await send('Page.addScriptToEvaluateOnNewDocument', { source: workspaceSetup });
   await send('Runtime.enable');await send('Network.enable');
   await send('Network.setCacheDisabled',{cacheDisabled:true});
   await send('Network.setBlockedURLs',{urls:url.startsWith('file:')?['http://*','https://*']:['https://fonts.googleapis.com/*','https://fonts.gstatic.com/*']});
@@ -134,7 +137,7 @@ try {
   await evaluate(`document.getElementById('compareToggle').click();setYear(1300);stopSpin();flyToken++;render()`);
   for(const width of [1440,390,320]){
     await send('Emulation.setDeviceMetricsOverride',{width,height:844,deviceScaleFactor:1,mobile:width<=860});
-    await evaluate(`(()=>{window.scrollTo({top:0,behavior:'instant'});const t=document.querySelector('[data-atlas-menu="layersPanel"]');if(t.getAttribute('aria-expanded')!=='true')t.click()})()`);
+    await evaluate(`(()=>{window.scrollTo({top:0,behavior:'instant'});const t=document.querySelector('[data-atlas-menu="layersPanel"]');if(t.getAttribute('aria-expanded')!=='true')t.click();AtlasTestUI.layers()})()`);
     for(const cat of ['trade','pandemics','climate','technology']){
       assert(await evaluate(`(()=>{const b=document.querySelector('[data-layer-toggle="${cat}"]');b.scrollIntoView({block:'nearest'});const r=b.getBoundingClientRect();return r.width>0&&r.height>=44&&r.left>=0&&r.right<=innerWidth&&document.documentElement.scrollWidth<=innerWidth})()`),`${cat} control reachable at ${width}px`);
     }

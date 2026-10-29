@@ -45,7 +45,8 @@ try {
   await send('Runtime.enable');
   await send('Emulation.setDeviceMetricsOverride',{width:1440,height:1000,deviceScaleFactor:1,mobile:false});
   await send('Page.navigate',{url:url+'#1950'});
-  await waitFor(()=>evaluate('!!window.HistoryDiscovery'),'Atlas did not load');
+  await waitFor(()=>evaluate('!!window.HistoryDiscovery && !!window.AtlasUI && W===stage.clientWidth && H===stage.clientHeight'),'Atlas workspace did not settle');
+  await evaluate('document.fonts.ready');
   console.log(await evaluate(`(async()=>{
     const assert=(v,m)=>{if(!v)throw Error(m)};
     stopSpin();flyToken++;await loadChunk(1950);setYear(1950);setMode('globe');
@@ -123,6 +124,8 @@ try {
   let shot=await send('Page.captureScreenshot',{format:'png'});
   fs.writeFileSync(path.join(os.tmpdir(),'history-water-ui-desktop.png'),Buffer.from(shot.data,'base64'));
   await send('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
+  await evaluate('AtlasUI.goToMap()');
+  await waitFor(()=>evaluate('W===stage.clientWidth && H===stage.clientHeight'),'Mobile canvas did not settle');
   const point=await evaluate(`(()=>{document.querySelector('#detail .close').click();setMode('globe');rot=[-74.05,-45.93,0];zoomK=6;makeProj();render();stage.scrollIntoView({block:'start',behavior:'instant'});const r=cv.getBoundingClientRect(),p=proj(waterTestPoint);return [r.left+p[0],r.top+p[1]]})()`);
   await send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:point[0],y:point[1]}]});
   await send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});

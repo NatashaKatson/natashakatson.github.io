@@ -684,6 +684,7 @@
     zoomK = stop.zoom || 1.8;
     focusPoint(stop.point);
     update(); renderTrail();
+    window.AtlasUI?.reveal(curatedShelf);
     curatedReader.querySelector("[data-curated-heading]").focus({ preventScroll: true });
     if (window.innerWidth <= 860) stage.scrollIntoView({ block: "center", behavior: "auto" });
     else revealInSidebar(curatedShelf);

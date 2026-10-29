@@ -1,3 +1,4 @@
+import { workspaceSetup } from './atlas-workspace-helpers.mjs';
 // Run against a dedicated QA Chrome instance. Each run owns a fresh page.
 const cdpURL = process.env.ATLAS_CDP_URL || "http://127.0.0.1:9231";
 const page = await (
@@ -40,7 +41,9 @@ const evaluate = async (expression) => {
   return result.result.value;
 };
 
-await send("Runtime.enable");
+await send('Page.enable');
+  await send('Page.addScriptToEvaluateOnNewDocument', { source: workspaceSetup });
+  await send("Runtime.enable");
 const errors = [];
 ws.addEventListener("message", (e) => {
   const m = JSON.parse(e.data);
@@ -171,10 +174,10 @@ await send("Emulation.setDeviceMetricsOverride", {
 await new Promise((r) => setTimeout(r, 300));
 console.log(
   await evaluate(
-    `(()=>{const assert=(v,m)=>{if(!v)throw Error(m)};assert(document.documentElement.scrollWidth<=390,'no mobile horizontal overflow');const d=document.querySelector('.compare-divider');assert(d.getBoundingClientRect().width>=36,'touch handle');const options=document.querySelector('.dock-options');options.open=true;assert(document.getElementById('compareToggle').getBoundingClientRect().height>=36,'touch control in expanded dock');options.open=false;return 'Mobile: 390px layout, accessible controls, and divider passed'})()`,
+    `(()=>{const assert=(v,m)=>{if(!v)throw Error(m)};assert(document.documentElement.scrollWidth<=390,'no mobile horizontal overflow');const d=document.querySelector('.compare-divider');assert(d.getBoundingClientRect().width>=36,'touch handle');const options=document.querySelector('.dock-options');AtlasTestUI.comparison();assert(document.getElementById('compareToggle').getBoundingClientRect().height>=36,'touch control in expanded dock');AtlasTestUI.settings(false);return 'Mobile: 390px layout, accessible controls, and divider passed'})()`,
   ),
 );
-await evaluate("window.scrollTo(0,0)");
+await evaluate("AtlasUI.goToMap();window.scrollTo(0,0)");
 await send("Page.bringToFront");
 await send("Emulation.setPageScaleFactor", { pageScaleFactor: 1 });
 await send("Emulation.setTouchEmulationEnabled", { enabled: false });

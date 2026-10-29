@@ -7,27 +7,50 @@ const countries = require('../static/historyallaround/atlas/search-countries.js'
 const { events } = require('../scripts/audit-history-accuracy.cjs').records();
 const records = Array.from(events, (r) => ({ kind: 'event', cat: r[8], start: r[0], end: r[1] ?? r[0], wiki: r[9], indigenous: r[13] }));
 
-test('focused eras round-trip dates and retain the endpoint while scrubbing', () => {
+test('the complete timeline always ends in 2026, regardless of the selected event year', () => {
   const html = fs.readFileSync('static/historyallaround/atlas/index.html', 'utf8');
-  const context = vm.createContext({ state: { year: 1928 }, buildRuler() {}, buildMarks() {} });
+  const context = vm.createContext({});
   const declarations = [/^const NOW=.*$/m, /^const SEG=.*$/m, /^const HISTORY_SEG=.*$/m,
-    /^let dinosaurTimeline=.*$/m, /^let timelineFocused=.*$/m, /^const TIMELINE_WINDOWS=.*$/m,
-    /^function syncTimelineWindow\(\)\{[\s\S]*?^\}/m, /^function yearAt.*$/m, /^function tAt.*$/m];
+    /^let dinosaurTimeline=.*$/m, /^function yearAt.*$/m, /^function tAt.*$/m];
   vm.runInContext(declarations.map(pattern => html.match(pattern)[0]).join('\n'), context);
-  for (const year of [-252000000, -228000000, -150000000, -67000000, -10000, -500, -1, 1, 1500, 1928, 2026]) {
-    context.state.year = year;
-    vm.runInContext('syncTimelineWindow()', context);
-    assert(Math.abs(vm.runInContext('yearAt(tAt(state.year))', context) - year) < .000001);
-    assert.equal(vm.runInContext('tAt(-300000000)', context), 0);
-    assert.equal(vm.runInContext('tAt(3000)', context), 1);
+  for (const dinosaurMode of [true, false]) {
+    context.dinosaurMode = dinosaurMode;
+    vm.runInContext('dinosaurTimeline=dinosaurMode', context);
+    for (const year of [1800, 1900, 1928, 1950, 1992, 2000, 2025, 2026]) {
+      context.year = year;
+      assert.equal(vm.runInContext('yearAt(1)', context), 2026);
+      assert(Math.abs(vm.runInContext('yearAt(tAt(year))', context) - year) < .000001);
+    }
   }
-  vm.runInContext('state.year=1700;syncTimelineWindow();state.year=1800;syncTimelineWindow()', context);
-  assert.equal(vm.runInContext('yearAt(0)', context), 1500, 'scrubbing to the edge retains the same range');
-  vm.runInContext('state.year=1801;syncTimelineWindow()', context);
-  assert.equal(vm.runInContext('yearAt(0)', context), 1800);
-  vm.runInContext('timelineFocused=false;syncTimelineWindow()', context);
-  assert.equal(vm.runInContext('yearAt(0)', context), -252000000);
-  assert.equal(vm.runInContext('yearAt(1)', context), 2026);
+});
+
+test('timelapse accumulates fractional progress at 60 fps and stops at 2026', () => {
+  const html = fs.readFileSync('static/historyallaround/atlas/index.html', 'utf8');
+  let clock = 1000, frame;
+  const context = vm.createContext({
+    state: { year: 1900, playing: false }, slider: { value: 0 },
+    playBtn: { innerHTML: '', setAttribute() {} },
+    performance: { now: () => clock },
+    requestAnimationFrame(callback) { frame = callback; return 1; }, cancelAnimationFrame() {},
+    clearTimelineSelection() {},
+  });
+  const declarations = [/^const NOW=.*$/m, /^const SEG=.*$/m, /^const HISTORY_SEG=.*$/m,
+    /^let dinosaurTimeline=.*$/m, /^const TIMELAPSE_DURATION_MS=.*$/m,
+    /^function yearAt.*$/m, /^function tAt.*$/m, /^function roundYear.*$/m,
+    /^function stopPlay.*$/m];
+  vm.runInContext(declarations.map(pattern => html.match(pattern)[0]).join('\n') + `
+    let raf=0;
+    function update(){slider.value=Math.round(tAt(state.year)*SLIDER_STEPS)}
+    function setYear(year){state.year=year;update()}
+    update();
+  `, context);
+  vm.runInContext(html.match(/^playBtn\.onclick=[\s\S]*?\}\)\(last\)\};/m)[0], context);
+  vm.runInContext('playBtn.onclick()', context);
+  for (let i = 0; i < 60; i++) { clock += 1000 / 60; frame(clock); }
+  assert(context.state.year >= 1940, 'recent history visibly advances in one second');
+  for (let i = 0; i < 300 && context.state.playing; i++) { clock += 1000 / 60; frame(clock); }
+  assert.equal(context.state.year, 2026);
+  assert.equal(context.state.playing, false);
 });
 
 test('browsing summaries preserve complete short text and do not mistake an abbreviation for the whole summary', () => {
