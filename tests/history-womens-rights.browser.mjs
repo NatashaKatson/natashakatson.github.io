@@ -46,9 +46,18 @@ try {
   await send('Emulation.setDeviceMetricsOverride',{width:1440,height:1000,deviceScaleFactor:1,mobile:false});
   await send('Page.navigate',{url:url+'#1950'});
   await waitFor('!!window.HistoryWomensRights && !!window.AtlasUI');
+  console.log(await evaluate(`(async()=>{
+    const view=JSON.parse(new URLSearchParams(HistoryDiscovery.urlHash().slice(1)).get('view'));
+    view.rightsColors=true;
+    await HistoryDiscovery.openView('#'+new URLSearchParams({view:JSON.stringify(view)}));
+    render();
+    if(state.year!==1950||Object.hasOwn(state,'rightsColors')||HistoryDiscovery.urlHash().includes('rightsColors'))throw Error('Legacy color views must keep the date without restoring country scoring');
+    return 'Legacy country-color views open without restoring country scores';
+  })()`));
   console.log(await evaluate(`(()=>{
     const check=(v,m)=>{if(!v)throw Error(m)};stopSpin();flyToken++;
     check(!state.cats.has('womens-rights')&&!document.getElementById('rightsVisibility').checked&&!activeEvents().some(({e})=>e.cat==='womens-rights'),'Women’s rights markers are off by default');
+    check(!window.HistoryWomensColors&&!document.getElementById('rightsColorsTab')&&!document.querySelector('.rights-map-legend'),'Country scoring, colors and legend are removed');
     const trigger=document.querySelector('[data-atlas-menu="womensRightsPanel"]');trigger.click();
     check(trigger.textContent.includes('👩')&&trigger.getAttribute('aria-expanded')==='true','Woman emoji and dedicated entry point');
     check(!document.querySelector('#layersPanel [data-rights-record]')&&!document.querySelector('#layersPanel [data-layer="womens-rights"]'),'Women’s rights are separate from Layers');

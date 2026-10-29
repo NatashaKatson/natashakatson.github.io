@@ -45,7 +45,5 @@ sixteen state milestones across twelve states. State names are part of the
 `rightsContext.country` display label; federal entries use `United States`.
 All US rights records include `USA`, `US` and `U.S.` search aliases.
 
-Country colors use a separate annual index, rather than deriving scores from
-these milestone exports. The local dataset is
-[`womens-empowerment.json`](../../static/historyallaround/atlas/womens-empowerment.json);
-see [coverage, attribution and license](../../docs/history-womens-country-colors.md).
+The country-score coloring feature has been removed. These exports continue
+to include all 76 women’s-rights milestones and their sources.

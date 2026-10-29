@@ -178,30 +178,8 @@ Florida result sets, the failed Florida amendment’s qualified reader and its
 official result link. Descriptions distinguish passage, commencement and voter
 approval, and keep historical legal changes separate from present-day access.
 
-## Women’s rights country colors review
+## Women’s rights country colors — removed 29 October 2026
 
-A separate Country colors view uses a pinned V-Dem v16 / OWID annual series,
-with no ratings derived from the event catalogue. Country fills, source-linked
-readers and hover labels use the same score lookup. Each comparison half uses
-its own year; the optional flag is preserved in saved views and navigation
-returns. Missing years and unmatched territories stay grey. The 2026 map
-explicitly labels its latest observation as 2025. The source, license,
-processing and mapping rules are recorded in
-[the country-color documentation](history-womens-country-colors.md).
-
-The extra view controls exposed insufficient list height in short and narrow
-windows. The panel now uses its available viewport space, with compact spacing
-in short windows and independently scrollable views. The existing milestone
-suite verifies the complete final result remains reachable at all fourteen
-sizes. Color controls have 44-pixel view buttons and a scrollable score table.
-
-Validation: 102 Node tests and all 19 served browser suites pass, including
-actual canvas color checks, Canada and Afghanistan, two-year comparison,
-playback, saved views, missing data, retry behavior, source links and responsive
-controls. Both Python geometry tests, the source-data rebuild check and country
-data check pass. Hugo 0.110.0 builds both language sites.
-
-The standalone preview also passes all 46 verifier checks and both women’s
-rights browser suites with external requests blocked. The 133 KB score JSON
-and both modules are included in its bundle. The event catalogue and its
-existing shared record identities are unchanged by the color filter.
+The country-score view and supporting assets have been removed following
+concerns about accuracy. All 76 women’s-rights milestones and their sources
+remain available. Older shared views ignore the obsolete color setting.

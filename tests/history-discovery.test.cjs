@@ -253,6 +253,8 @@ test("shared views reject malformed or unbounded camera and date values", () => 
     polity: null, point: [179, -90], story: 1, pin: null };
   const hash = (v) => "#" + new URLSearchParams({ view: JSON.stringify(v) });
   assert.deepEqual(core.parseView(hash(view), 2026, ["war"]), view);
+  assert.deepEqual(core.parseView(hash({...view, rightsColors: true}), 2026, ["war"]), view,
+    "Legacy country-color views keep their map settings and drop the removed flag");
   const discovery = { id: "cleopatra-world", stop: "monte-alban" };
   assert.deepEqual(core.parseView(hash({...view, discovery}), 2026, ["war"]).discovery, discovery);
   const contemporaries = ["Cleopatra", "Emperor_Yuan_of_Han"];

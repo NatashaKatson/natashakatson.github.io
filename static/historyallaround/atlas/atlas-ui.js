@@ -418,7 +418,6 @@
     window.HistoryLayers?.render();
     window.HistoryMigrations?.render();
     window.HistoryWomensRights?.render();
-    window.HistoryWomensColors?.render();
     const years = HistoryDiscovery.displayedYears();
     const periodKey = `${years}/${state.sel}/${state.borders}/${[...state.cats]}/${HistoryDiscovery.isComparing()}`;
     if (periodKey === lastPeriodKey) return;

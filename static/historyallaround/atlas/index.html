@@ -521,7 +521,6 @@ header .seg{padding:2px;background:#f0ebe3;border:1px solid rgba(45,36,32,.1);bo
 <script src="discovery-core.js"></script>
 <script src="event-emojis.js"></script>
 <script src="historical-layers-core.js"></script>
-<script src="womens-empowerment-core.js"></script>
 <script src="great-lakes.js"></script>
 <script src="water-data.js"></script>
 <script src="water.js"></script>
@@ -1126,7 +1125,7 @@ const ppl=PEOPLE.map((p,i)=>({id:"p"+i,kind:"person",name:p[0],born:p[1],died:p[
 const byId=Object.fromEntries([...ev,...ppl].map(x=>[x.id,x]));
 const wikiUrl=s=>"https://en.wikipedia.org/wiki/"+encodeURIComponent(s).replace(/%2C/g,",").replace(/%27/g,"'");
 
-const state={year:readLastAtlasYear(),mode:"globe",sel:null,borders:"history",rightsColors:false,cats:new Set(Object.keys(CATS).filter(cat=>cat!=="womens-rights")),playing:false,factI:0};
+const state={year:readLastAtlasYear(),mode:"globe",sel:null,borders:"history",cats:new Set(Object.keys(CATS).filter(cat=>cat!=="womens-rights")),playing:false,factI:0};
 let rot=[-25,-22,0],zoomK=1,flatT={x:0,y:0},userMoved=false,selectedPolity=null;
 
 // ---------- styles from tokens
@@ -1256,23 +1255,21 @@ function renderScene(){
   og.addColorStop(0,C.ocean);og.addColorStop(1,C["ocean-2"]);
   ctx.beginPath();path({type:"Sphere"});ctx.fillStyle=og;ctx.fill();
   ctx.beginPath();path(grat);ctx.strokeStyle=C.grat;ctx.lineWidth=.8;ctx.stroke();
-  ctx.beginPath();path(G.land);ctx.fillStyle=state.rightsColors&&!G.ancient?WomensEmpowermentCore.missing:C.land;ctx.fill();
+  ctx.beginPath();path(G.land);ctx.fillStyle=C.land;ctx.fill();
   const lw=Math.min(1.35,.68+.11*zoomK);
   const pols=!G.ancient&&state.borders==="history"&&!currentBorderFailed()?polities():[];
-  const rightsFill=window.HistoryWomensColors?.fillFor(pols,state.year);
   const water=G.ancient?null:HistoryWater.visible(pols.length?HistoryWater.scene(pols):HistoryWater.scene(),proj,W,H,R,globe?center:null);
   if(!G.ancient&&state.borders==="history"&&!currentBorderFailed()){
     // Preserve area order: a broad realm must never repaint a smaller territory
     // after its fill simply because the realm happens to use a later colour.
-    for(const f of pols){ctx.beginPath();path(f);ctx.fillStyle=rightsFill?rightsFill(f):STATE_FILLS[f.hue];ctx.fill()}
+    for(const f of pols){ctx.beginPath();path(f);ctx.fillStyle=STATE_FILLS[f.hue];ctx.fill()}
     // Repaint nested self-governing territories after their sovereign realm so both remain legible.
-    for(const f of pols)if(f.territoryOverlay){ctx.beginPath();path(f);ctx.fillStyle=rightsFill?rightsFill(f):STATE_FILLS[f.hue];ctx.fill()}
+    for(const f of pols)if(f.territoryOverlay){ctx.beginPath();path(f);ctx.fillStyle=STATE_FILLS[f.hue];ctx.fill()}
     // Water has its own shoreline; country boundaries continue across it.
     ctx.beginPath();path(water);ctx.fillStyle=C.lake;ctx.fill();
     ctx.beginPath();for(const f of pols)path(HistoryWater.outline(f));ctx.strokeStyle=C.border;ctx.lineWidth=lw;ctx.setLineDash([3,2]);ctx.stroke();ctx.setLineDash([]);
     if(selectedPolity){const f=pols.find(p=>samePolity(p,selectedPolity));if(f){ctx.beginPath();path(HistoryWater.outline(f));ctx.strokeStyle=C.accent;ctx.lineWidth=2.4;ctx.stroke()}}}
   else if(!G.ancient){
-    if(state.borders==="today"&&state.rightsColors){const fill=window.HistoryWomensColors?.fillFor(G.countries,state.year);if(fill)for(const f of G.countries){ctx.beginPath();path(f);ctx.fillStyle=fill(f);ctx.fill()}}
     ctx.beginPath();path(water);ctx.fillStyle=C.lake;ctx.fill();
     if(state.borders==="today"){ctx.beginPath();path(G.borders);ctx.strokeStyle=C.border;ctx.lineWidth=lw;ctx.stroke()}}
   ctx.beginPath();path(G.land);ctx.strokeStyle=C["land-edge"];ctx.lineWidth=.8;ctx.stroke();
@@ -1409,9 +1406,9 @@ function mapAtYear(x,y){if(window.HistoryPaleogeography?.isDeep(state.year))retu
   if(state.borders==="off"||(state.borders==="history"&&currentBorderFailed()))return null;
   if(state.borders==="history"&&!currentBorderFailed()){const pols=polities();let hit=null;
     for(const f of pols)if(inBox(f.bbox,ll)&&d3.geoContains(f,ll)&&(!hit||f.area<hit.area))hit=f;
-    return hit?{label:hit.name+(hit.member&&hit.member!==hit.name?` · part of ${hit.member}`:"")+(hit.basis?` · ${hit.basis}`:"")+(window.HistoryWomensColors?.label(hit,state.year,pols)||""),polity:hit}:null}
+    return hit?{label:hit.name+(hit.member&&hit.member!==hit.name?` · part of ${hit.member}`:"")+(hit.basis?` · ${hit.basis}`:""),polity:hit}:null}
   for(const c of (hi||lo).countries){const[[w,so],[ea,n]]=c.bbox;if(ll[1]<so||ll[1]>n)continue;if(w<=ea?(ll[0]<w||ll[0]>ea):(ll[0]<w&&ll[0]>ea))continue;
-    if(d3.geoContains(c,ll))return{label:c.properties.name+" (today)"+(window.HistoryWomensColors?.label(c,state.year)||""),polity:null}}return null}
+    if(d3.geoContains(c,ll))return{label:c.properties.name+" (today)",polity:null}}return null}
 function nearest(x,y){let best=null,bd=Infinity;for(const h of hits){const d=Math.hypot(h.x-x,h.y-y);if(d<=(h.radius||16)&&d<bd){bd=d;best=h}}return best}
 function syncBordersUI(){for(const b of document.querySelectorAll(".bseg button"))b.setAttribute("aria-pressed",b.dataset.b===state.borders);
   document.querySelector('.bseg [data-b="history"]').title=currentBorderFailed()?"Historical borders unavailable; no modern borders substituted":"";draw()}
@@ -1489,7 +1486,7 @@ function select(id,fly=true,recordYear=null){sidebarReturn=null;window.HistoryDi
 function selectPolity(f,year=state.year){sidebarReturn=null;if(window.HistoryDiscovery)window.HistoryDiscovery.selectPolityYear(year);state.sel=null;selectedPolity=f;stopPlay();stopSpin();renderDetail();draw();revealDetail()}
 function renderDetail(){renderDetailBase();if(window.HistoryDiscovery)window.HistoryDiscovery.detail()}
 function renderDetailBase(){const el=document.getElementById("detail");if(selectedPolity){const f=selectedPolity,member=DiscoveryCore.politicalStatus(f),link=f.wiki?`<a href="${wikiUrl(f.wiki)}" target="_blank" rel="noopener">Read more on Wikipedia ↗</a>`:"";
-    el.innerHTML=`<div class="detail polity"><button class="iconbtn close" aria-label="Close">×</button><div class="kicker"><i></i>Political coverage in ${esc(fmt(state.year))}</div><h3>${esc(f.name)}</h3><div class="meta-grid"><div><span>Mapped coverage</span><strong>${esc(fmtSpan(f.from,f.to))}</strong></div><div><span>Political status</span><strong>${esc(member)}</strong></div></div>${f.status?`<p>${esc(f.status)}</p>`:""}<p>Approximate, simplified reconstruction. Mapped extents may include claims and do not establish effective control. Coverage dates describe this source record.</p>${f.source?`<p><a href="${esc(f.source)}" target="_blank" rel="noopener">Source ↗</a></p>`:""}${window.HistoryWomensColors?.detail(f,state.year,polities())||""}${link}</div>`;
+    el.innerHTML=`<div class="detail polity"><button class="iconbtn close" aria-label="Close">×</button><div class="kicker"><i></i>Political coverage in ${esc(fmt(state.year))}</div><h3>${esc(f.name)}</h3><div class="meta-grid"><div><span>Mapped coverage</span><strong>${esc(fmtSpan(f.from,f.to))}</strong></div><div><span>Political status</span><strong>${esc(member)}</strong></div></div>${f.status?`<p>${esc(f.status)}</p>`:""}<p>Approximate, simplified reconstruction. Mapped extents may include claims and do not establish effective control. Coverage dates describe this source record.</p>${f.source?`<p><a href="${esc(f.source)}" target="_blank" rel="noopener">Source ↗</a></p>`:""}${link}</div>`;
     el.querySelector(".close").onclick=closeSelection;return}
   const x=state.sel&&byId[state.sel];if(!x){el.innerHTML="";return}
   if(x.cat==="dinosaurs"){
@@ -1588,7 +1585,6 @@ startSpin();
 <script src="historical-layers.js"></script>
 <script src="migrations.js"></script>
 <script src="womens-rights.js"></script>
-<script src="womens-empowerment.js"></script>
 <script src="atlas-ui.js"></script>
 </body>
 </html>

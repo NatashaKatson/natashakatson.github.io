@@ -99,7 +99,6 @@
           !Number.isFinite(v.zoom) || v.zoom < .7 || v.zoom > 6 ||
           !Number.isFinite(v.split) || v.split < .05 || v.split > .95 ||
           typeof v.compare !== "boolean" || typeof v.changed !== "boolean" ||
-          !(v.rightsColors == null || typeof v.rightsColors === "boolean") ||
           !Array.isArray(v.cats) || v.cats.length > categories.length ||
           !v.cats.every((c) => categories.includes(c)) ||
           !(v.selectedYear === null || year(v.selectedYear)) ||
@@ -118,6 +117,8 @@
             v.contemporaries.every((s) => typeof s === "string" && s.length > 0 && s.length <= 300) &&
             v.contemporaries[0] !== v.contemporaries[1])) ||
           !(v.story === null || (Number.isInteger(v.story) && v.story >= 0 && v.story < 3))) return null;
+        // Retain old shared views while dropping the removed country-color mode.
+        delete v.rightsColors;
         return v;
       } catch (_) { return null; }
     },

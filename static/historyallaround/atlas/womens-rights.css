@@ -27,40 +27,9 @@
 .womens-rights-panel :is(button,input,select):focus-visible { outline: 2px solid #a04868; outline-offset: -2px; }
 .womens-rights-panel .rights-hint { margin: 8px 0 0; flex: none; font-size: 10px; }
 .rights-context { padding: 10px; background: #f8f3ef; border-left: 2px solid #a04868; font-size: 12px; }
-.rights-view-tabs { display: flex; gap: 4px; flex: none; margin: 0 0 6px; }
-.rights-view-tabs button { flex: 1; min-height: 44px; padding: 6px; border: 1px solid #d9d1c7; border-radius: 4px; background: transparent; color: inherit; font: 12px var(--body); cursor: pointer; }
-.rights-view-tabs button[aria-pressed="true"] { background: #eee7dc; border-color: #a04868; }
-.rights-milestones-pane:not([hidden]) { display: flex; flex: 1; min-height: 0; flex-direction: column; }
-.rights-colors-pane:not([hidden]) { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
-.rights-colors-pane p { font: 12px/1.6 var(--body); margin: 8px 0; }
-.rights-color-ramp { display: flex; height: 10px; overflow: hidden; border-radius: 2px; margin-top: 8px; }
-.rights-color-ramp i { flex: 1; }
-.rights-color-extremes { display: flex; justify-content: space-between; gap: 8px; margin-top: 4px; font: 10px var(--body); }
-.rights-color-missing { display: flex; align-items: center; gap: 6px; margin-top: 5px; font: 10px var(--body); }
-.rights-color-missing i, .rights-country-results td i { display: inline-block; width: 10px; height: 10px; flex: none; border-radius: 2px; }
-.rights-color-years { display: flex; gap: 5px; }
-.rights-color-years button, #rightsColorRetry { min-height: 40px; padding: 6px 10px; border: 1px solid #c8bdaf; border-radius: 4px; background: #fffdf9; color: inherit; cursor: pointer; }
-.rights-color-method { font: 12px/1.6 var(--body); margin: 10px 0 14px; }
-.rights-color-method summary { cursor: pointer; min-height: 32px; }
-.rights-color-method a, .rights-score-card a { color: #93405b; }
-#rightsCountrySearch { display: block; width: 100%; min-height: 44px; margin: 5px 0 8px; padding: 8px; border: 1px solid #c8bdaf; border-radius: 4px; background: #fffdf9; color: inherit; font: 14px var(--body); }
-.rights-country-results table { width: 100%; border-collapse: collapse; font: 11px/1.5 var(--body); text-align: left; }
-.rights-country-results caption { text-align: left; font-size: 10px; margin-bottom: 7px; color: #756c65; }
-.rights-country-results th, .rights-country-results td { padding: 9px 3px; border-bottom: 1px solid #e4dcd0; font-weight: 400; }
-.rights-country-results thead th { font-weight: 600; }
-.rights-country-results td { white-space: nowrap; }
-.rights-country-results td i { margin-right: 4px; }
-.rights-colors-active { box-shadow: inset 0 -3px #398565; }
-.rights-map-legend { width: 260px; max-width: calc(100vw - 100px); padding: 9px 11px; border: 1px solid #d9d1c7; border-radius: 5px; background: #f8f5f0f5; color: #2d2420; }
-.rights-legend-open { display: flex; justify-content: space-between; align-items: center; gap: 6px; width: 100%; min-height: 28px; padding: 0; border: 0; background: transparent; color: inherit; font: 11px var(--body); cursor: pointer; text-align: left; }
-.rights-map-years { margin-top: 6px; font: 10px/1.4 var(--body); }
-.map-context:has(.rights-map-legend:not([hidden])) ~ .stage-hint { display: none; }
-.rights-score-card { padding: 12px; margin: 12px 0; background: #fffdf9; border-left: 3px solid #a04868; font: 12px/1.6 var(--body); }
-.rights-score-card h4 { margin: 0; }
 @media (max-width: 860px) {
   .atlas-menu-panel.womens-rights-panel { position: fixed; top: auto; left: 12px; right: 12px; bottom: max(12px, env(safe-area-inset-bottom)); width: auto; max-width: none; height: min(85svh, 650px); max-height: min(85svh, 650px); border-radius: 12px; }
   #rightsSearch, .rights-filters select { font-size: 16px; }
-  #rightsCountrySearch { font-size: 16px; }
 }
 @media (max-width: 560px) {
   .atlas-toolbar, .stage.comparing .atlas-toolbar { display: grid; grid-template-columns: repeat(2, max-content); }
@@ -68,7 +37,6 @@
 @media (max-height: 600px) {
   .womens-rights-panel .rights-intro, .rights-search-label, .womens-rights-panel .rights-hint { display: none; }
   #rightsSearch { margin-top: 2px; }
-  .rights-view-tabs { margin-bottom: 2px; }
   .rights-visibility { min-height: 34px; }
   .rights-filters { margin-top: 4px; }
   .womens-rights-panel .rights-status { margin: 6px 0; }

@@ -102,9 +102,7 @@ try {
   await click('#journeyTopics [data-atlas-menu="womensRightsPanel"]');
   await check(`!document.getElementById('womensRightsPanel').hidden && document.getElementById('rightsResults').children.length>0`, 'Women’s rights opens its chronological browser');
   await screenshot('womens-rights');
-  await click('#rightsColorsTab');
-  await check(`!document.getElementById('rightsColorsPane').hidden`, 'Country color exploration is retained');
-  await click('#rightsMilestonesTab');
+  await check(`!document.getElementById('rightsColorsTab') && !document.querySelector('.rights-map-legend')`, 'Country scoring and coloring controls are removed');
   await evaluate(`document.querySelector('[data-rights-record]').click()`);
   await waitFor(`state.sel && byId[state.sel].cat==='womens-rights' && document.getElementById('atlasMain').dataset.workspace==='explore'`);
   await check(`!document.getElementById('detail').hidden`, 'Choosing a milestone returns to its map and detail');

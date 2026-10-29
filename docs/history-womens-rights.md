@@ -14,9 +14,8 @@ a milestone enables its category and opens its recorded date. Map visibility
 shares state with Filters, comparison maps and saved views. The woman emoji
 appears in the button, catalogue, event markers, lists and readers.
 
-A separate **Country colors** view follows the selected year using V-Dem’s
-1789–2025 empowerment series. It has its own visibility setting and does not
-change milestone filters. See [country colors, sources and scope](history-womens-country-colors.md).
+The country-color scoring view was removed on 29 October 2026. The atlas retains
+the dated milestones and their sources; country fills do not rate women’s rights.
 
 ## Scope and interpretation
 
