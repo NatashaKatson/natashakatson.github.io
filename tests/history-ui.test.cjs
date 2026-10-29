@@ -7,6 +7,22 @@ const countries = require('../static/historyallaround/atlas/search-countries.js'
 const { events } = require('../scripts/audit-history-accuracy.cjs').records();
 const records = Array.from(events, (r) => ({ kind: 'event', cat: r[8], start: r[0], end: r[1] ?? r[0], wiki: r[9], indigenous: r[13] }));
 
+test('editable dates keep compact units and exact deep-time precision', () => {
+  const html = fs.readFileSync('static/historyallaround/atlas/index.html', 'utf8');
+  const context = vm.createContext({});
+  vm.runInContext([
+    html.match(/^const NOW=.*$/m)[0],
+    html.match(/^function fmt\(.*$/m)[0],
+    html.match(/^function fmtInputYear\(.*$/m)[0],
+    html.match(/^function parseYear\(s\)\{[\s\S]*?^\}/m)[0],
+  ].join('\n'), context);
+  for (const [year, label] of [[-201578000, '201.578 Ma'], [-201578999, '201.578999 Ma'], [-252000000, '252 Ma'], [-1000000, '1 Ma'], [-500, '500 BC'], [1, 'AD 1'], [2026, '2026']]) {
+    context.year = year;
+    assert.equal(vm.runInContext('fmtInputYear(year)', context), label);
+    assert.equal(vm.runInContext('parseYear(fmtInputYear(year))', context), year);
+  }
+});
+
 test('the complete timeline always ends in 2026, regardless of the selected event year', () => {
   const html = fs.readFileSync('static/historyallaround/atlas/index.html', 'utf8');
   const context = vm.createContext({});

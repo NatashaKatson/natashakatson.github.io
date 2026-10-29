@@ -1534,12 +1534,16 @@ html, body { height: 100%; overflow: hidden; background: var(--workspace-paper);
 .time .controls .play[aria-label='Pause']::before { content: 'Ⅱ'; }
 .time .controls .play[aria-label^='Replay']::before { content: '↻'; }
 .timeline-date { grid-area: date; display: flex; align-items: center; justify-content: center; min-width: 0; }
-.timeline-date .year-step { flex: none; width: 24px; min-height: 36px; padding: 0; border: 0; border-radius: 0; background: transparent; color: #756c60; font-size: 21px; cursor: pointer; }
-.timeline-date .goto { align-items: center; gap: 3px; }
+.time .timeline-date .year-step { flex: none; width: 28px; height: 36px; min-height: 36px; padding: 0; border: 0; border-radius: 50%; background: transparent; color: #756c60; font-size: 21px; cursor: pointer; }
+.time .timeline-date .year-step:hover { background: #eee9e0; }
+.timeline-date .goto { width: auto; flex: none; align-items: center; gap: 3px; }
+.timeline-date .goto > div { flex: none; }
 .timeline-date .tool-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
 .timeline-date .goto input { width: 133px; min-width: 0; height: 40px; font: 500 21px var(--display); text-align: center; padding: 4px 6px; border: 1px solid transparent; background: transparent; border-radius: 5px; }
 .timeline-date .goto input:hover, .timeline-date .goto input:focus { border-color: #d6cabb; background: #fff; }
-.timeline-date .goto .iconbtn { width: 28px !important; height: 36px !important; min-height: 36px; background: transparent !important; color: var(--workspace-accent) !important; }
+.time .timeline-date .goto input.is-wide-date { width: 16ch; }
+.timeline-date .goto .iconbtn { display: none; width: 28px !important; height: 36px !important; min-height: 36px; background: transparent !important; color: var(--workspace-accent) !important; }
+.timeline-date .goto:focus-within .iconbtn { display: grid; }
 .dock-actions { grid-area: actions; display: flex; flex-wrap: nowrap; justify-content: flex-end; gap: 8px; align-items: center; }
 .dock-actions .atlas-menu-trigger { border: 0; background: transparent; padding: 6px; font-size: 12px; }
 .timeline-scope { border: 0; background: transparent; color: var(--workspace-accent); cursor: pointer; padding: 7px 0; font: 12px var(--body); min-height: 40px; white-space: nowrap; }
@@ -1706,7 +1710,8 @@ html, body { height: 100%; overflow: hidden; background: var(--workspace-paper);
   .time .controls .play { width: 36px; padding: 0; font-size: 0; }
   .time .controls .lbl { display: none; }
   .timeline-date .goto input { width: 80px; height: 36px; font-size: 18px; }
-  .timeline-date .goto .iconbtn { display: none; }
+  .time .timeline-date .year-step { width: 24px; }
+  .timeline-date .goto .iconbtn, .timeline-date .goto:focus-within .iconbtn { display: none; }
   .dock-actions { gap: 4px; flex-wrap: nowrap; }
   .dock-actions .atlas-menu-trigger { min-height: 40px; padding: 4px 0; font-size: 11px; }
   .timeline-scope { font-size: 10px; }
@@ -1764,6 +1769,22 @@ html, body { height: 100%; overflow: hidden; background: var(--workspace-paper);
 @media (max-width: 860px) and (max-height: 550px) {
   .app > .side.journey-panel-open { z-index: 40; }
   #journeyPanels .atlas-menu-panel { inset: 12px; height: calc(100dvh - 24px); }
+}
+/* Long dates get their own row when the normal date column is too narrow. */
+@media (max-width: 1180px) {
+  .app:has(#gotoInput.is-wide-date) { grid-template-rows: 70px minmax(0, 1fr) 172px; }
+  .time:has(#gotoInput.is-wide-date) { grid-template-rows: 40px 40px 42px 16px; grid-template-areas: 'play actions actions' 'date date date' 'ruler ruler ruler' 'summary summary navigation'; }
+}
+@media (max-width: 860px) {
+  .app:has(#gotoInput.is-wide-date) { grid-template-rows: 62px minmax(0, 1fr) 172px 82px calc(60px + env(safe-area-inset-bottom)); }
+  .app:has(#gotoInput.is-wide-date):has(.side.sheet-open) { grid-template-rows: 62px minmax(0, 1fr) 172px 0 calc(60px + env(safe-area-inset-bottom)); }
+  .app:has(#gotoInput.is-wide-date) > .side.sheet-open { bottom: calc(232px + env(safe-area-inset-bottom)); }
+}
+@media (max-width: 860px) and (max-height: 550px) {
+  .app:has(#gotoInput.is-wide-date) { grid-template-rows: 48px minmax(0, 1fr) 140px 54px 48px; }
+  .app:has(#gotoInput.is-wide-date):has(.side.sheet-open) { grid-template-rows: 48px minmax(0, 1fr) 140px 0 48px; }
+  .time:has(#gotoInput.is-wide-date) { grid-template-rows: 36px 36px 38px; }
+  .app:has(#gotoInput.is-wide-date) > .side.sheet-open { bottom: 188px; }
 }
 </style>
 </head>
@@ -4266,6 +4287,7 @@ const SAME_TIME_YEARS=DiscoveryCore.sameTimeYears;
 function halfWin(y=state.year){return y < -1000000 ? 1000000 : SAME_TIME_YEARS}
 function roundYear(y){const n=Math.round(y);return n===0?(y<0?-1:1):n}
 function fmt(y,approx){const c=approx?"c. ":"";if(y<=-1000000)return c+(Math.abs(y)/1000000).toLocaleString("en-US",{maximumFractionDigits:3})+" million years ago";if(y<0)return c+Math.abs(y).toLocaleString("en-US")+" BC";if(y<1000)return c+"AD "+y;return c+y}
+function fmtInputYear(y){return y<=-1000000?`${Math.abs(y)/1000000} Ma`:fmt(y)}
 function fmtSpan(a,b,ap){if(a<=-1000000&&b<=-1000000&&a!==b)return (ap?"c. ":"")+(Math.abs(a)/1000000).toLocaleString("en-US",{maximumFractionDigits:3})+"–"+(Math.abs(b)/1000000).toLocaleString("en-US",{maximumFractionDigits:3})+" million years ago";return b&&b!==a?fmt(a,ap)+"–"+(a<0&&b>0?fmt(b):(b<0?Math.abs(b).toLocaleString("en-US")+" BC":b)):fmt(a,ap)}
 function fmtEvent(e){return e.ongoing?fmt(e.start,e.approx)+"–present":fmtSpan(e.start,e.end,e.approx)}
 function eraOf(y){let e=ERAS[0][1];for(const[s,n]of ERAS)if(y>=s)e=n;return e}
@@ -4627,7 +4649,7 @@ function stopPlay(){state.playing=false;cancelAnimationFrame(raf);playBtn.innerH
 playBtn.onclick=()=>{if(state.playing)return stopPlay();if(state.year>=NOW)setYear(dinosaurTimeline?-252000000:-300000);state.playing=true;playBtn.innerHTML="❚❚ Pause";playBtn.setAttribute("aria-label","Pause");
   let last=performance.now(),position=+slider.value/SLIDER_STEPS;(function tick(n){const dt=Math.min(64,n-last);last=n;let t=position+dt/TIMELAPSE_DURATION_MS;if(t>=1){t=1;stopPlay()}position=t;slider.value=Math.round(t*SLIDER_STEPS);const year=roundYear(yearAt(t));if(year!==state.year)clearTimelineSelection();state.year=year;update(true);if(state.playing)raf=requestAnimationFrame(tick)})(last)};
 document.addEventListener("keydown",e=>{if(e.defaultPrevented||e.target.closest?.("input:not([type=range]),textarea,select,[contenteditable=true]")||document.querySelector("dialog[open]"))return;if(e.key==="ArrowLeft"&&e.shiftKey){stepEvent(-1);e.preventDefault()}if(e.key==="ArrowRight"&&e.shiftKey){stepEvent(1);e.preventDefault()}if(e.key===" "&&e.target===document.body){playBtn.click();e.preventDefault()}});
-document.getElementById("goto").addEventListener("submit",e=>{e.preventDefault();const inp=document.getElementById("gotoInput");const y=parseYear(inp.value);if(y===null){inp.setCustomValidity(/^\s*0\s*(bc|bce|b\.c\.|ad|ce)?\s*$/i.test(inp.value)?"There is no year 0. Try 1 BC or AD 1.":"Enter a year from 252 million years ago to 2026, for example 1492, 500 BC or 150 Ma.");inp.reportValidity();return}inp.setCustomValidity("");stopPlay();setYear(y);inp.value=fmt(y);if(innerWidth<=860)window.AtlasUI?.goToMap();else inp.blur()});
+document.getElementById("goto").addEventListener("submit",e=>{e.preventDefault();const inp=document.getElementById("gotoInput");const y=parseYear(inp.value);if(y===null){inp.setCustomValidity(/^\s*0\s*(bc|bce|b\.c\.|ad|ce)?\s*$/i.test(inp.value)?"There is no year 0. Try 1 BC or AD 1.":"Enter a year from 252 million years ago to 2026, for example 1492, 500 BC or 150 Ma.");inp.reportValidity();return}inp.setCustomValidity("");stopPlay();setYear(y);inp.value=fmtInputYear(y);if(innerWidth<=860)window.AtlasUI?.goToMap();else inp.blur()});
 document.getElementById("gotoInput").addEventListener("input",e=>e.target.setCustomValidity(""));
 
 // ---------- side ledger
@@ -7681,7 +7703,7 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
   }
   const editYear = () => {
     const input = document.getElementById('gotoInput');
-    input.value = state.year <= -1000000 ? `${Math.abs(state.year) / 1000000} Ma` : fmt(state.year);
+    input.value = fmtInputYear(state.year);
     input.focus({ preventScroll: true }); input.select();
   };
   document.getElementById('editDate').onclick = editYear;
@@ -7698,6 +7720,9 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
     document.getElementById('eraChoices').querySelector('button:not([hidden])')?.focus({ preventScroll: true });
   };
   const dateInput = document.getElementById('gotoInput');
+  const fitDateField = () => dateInput.classList.toggle('is-wide-date', dateInput.value.length > 7 || /[a-z]/i.test(dateInput.value));
+  dateInput.addEventListener('input', fitDateField);
+  document.getElementById('goto').addEventListener('submit', fitDateField);
   dateInput.addEventListener('keydown', event => { if (event.key === 'Escape') { dateInput.blur(); cv.focus({ preventScroll: true }); } });
 
   const menuTriggers = [...document.querySelectorAll('[data-atlas-menu]')].filter(button => button !== toolsToggle);
@@ -7798,7 +7823,8 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
     sheetToggle.querySelector('span:nth-child(2)').textContent = journeys ? 'Journeys' : 'Around this time';
     document.getElementById('currentEraLabel').textContent = document.getElementById('era').textContent;
     document.getElementById('readoutEra').textContent = document.getElementById('era').textContent;
-    if (document.activeElement !== dateInput) dateInput.value = state.year <= -1000000 ? `${Math.abs(state.year) / 1000000} Ma` : fmt(state.year);
+    if (document.activeElement !== dateInput) dateInput.value = fmtInputYear(state.year);
+    fitDateField();
     // Keep the reading card brief; preserve every source and related record.
     if (detailNode && !detailNode.dataset.compact && !detailNode.classList.contains('dinosaur-detail')) {
       const sources = document.createElement('details');

@@ -186,7 +186,7 @@
   }
   const editYear = () => {
     const input = document.getElementById('gotoInput');
-    input.value = state.year <= -1000000 ? `${Math.abs(state.year) / 1000000} Ma` : fmt(state.year);
+    input.value = fmtInputYear(state.year);
     input.focus({ preventScroll: true }); input.select();
   };
   document.getElementById('editDate').onclick = editYear;
@@ -203,6 +203,9 @@
     document.getElementById('eraChoices').querySelector('button:not([hidden])')?.focus({ preventScroll: true });
   };
   const dateInput = document.getElementById('gotoInput');
+  const fitDateField = () => dateInput.classList.toggle('is-wide-date', dateInput.value.length > 7 || /[a-z]/i.test(dateInput.value));
+  dateInput.addEventListener('input', fitDateField);
+  document.getElementById('goto').addEventListener('submit', fitDateField);
   dateInput.addEventListener('keydown', event => { if (event.key === 'Escape') { dateInput.blur(); cv.focus({ preventScroll: true }); } });
 
   const menuTriggers = [...document.querySelectorAll('[data-atlas-menu]')].filter(button => button !== toolsToggle);
@@ -303,7 +306,8 @@
     sheetToggle.querySelector('span:nth-child(2)').textContent = journeys ? 'Journeys' : 'Around this time';
     document.getElementById('currentEraLabel').textContent = document.getElementById('era').textContent;
     document.getElementById('readoutEra').textContent = document.getElementById('era').textContent;
-    if (document.activeElement !== dateInput) dateInput.value = state.year <= -1000000 ? `${Math.abs(state.year) / 1000000} Ma` : fmt(state.year);
+    if (document.activeElement !== dateInput) dateInput.value = fmtInputYear(state.year);
+    fitDateField();
     // Keep the reading card brief; preserve every source and related record.
     if (detailNode && !detailNode.dataset.compact && !detailNode.classList.contains('dinosaur-detail')) {
       const sources = document.createElement('details');
