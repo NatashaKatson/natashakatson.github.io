@@ -130,7 +130,6 @@
       zoom: zoomK,
       mode: state.mode,
       borders: state.borders,
-      rightsColors: !!state.rightsColors,
       left: compare.left,
       split: compare.split,
       changed: document.getElementById("changedOutlines").checked,
@@ -176,7 +175,6 @@
       document.getElementById("compareToggle").click();
     // Enabling comparison selects historical borders; restore the saved layer afterward.
     state.borders = s.borders;
-    state.rightsColors = !!s.rightsColors;
     compare.left = s.left;
     form.elements.left.value = fmt(s.left);
     document.getElementById("changedOutlines").checked = s.changed;
@@ -684,6 +682,7 @@
     zoomK = stop.zoom || 1.8;
     focusPoint(stop.point);
     update(); renderTrail();
+    window.AtlasUI?.reveal(curatedShelf);
     curatedReader.querySelector("[data-curated-heading]").focus({ preventScroll: true });
     if (window.innerWidth <= 860) stage.scrollIntoView({ block: "center", behavior: "auto" });
     else revealInSidebar(curatedShelf);
@@ -799,7 +798,6 @@
     return {
       v: 1, year: state.year, left: compare.left, mode: state.mode,
       borders: state.borders, rot: rot.slice(), pan: [flatT.x / W, flatT.y / H],
-      rightsColors: !!state.rightsColors,
       zoom: zoomK, split: compare.split, compare: compare.on,
       changed: document.getElementById("changedOutlines").checked,
       selectedYear: compare.selectedYear, cats: [...state.cats],
@@ -856,7 +854,6 @@
     activeComparisonStory = v.story;
     activeDiscovery = curatedSelection(v.discovery) ? v.discovery : null;
     const saved = { ...snapshot(), ...v, sel: r?.id || null, polity: null,
-      rightsColors: !!v.rightsColors,
       activeComparisonStory: v.story, activeDiscovery, activeContemporaries: v.contemporaries || null, pinned,
       flatT: { x: v.pan[0] * W, y: v.pan[1] * H }, searchPlace: v.location || null,
       lastPoint: v.point, placeState: null, placeReturn: null };
