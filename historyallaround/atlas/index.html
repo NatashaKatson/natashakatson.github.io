@@ -1243,7 +1243,7 @@ function alivePeople(){const y=state.year;if(pplMemo.y===y)return pplMemo.v;cons
 let drawQ=0;function draw(){if(!drawQ)drawQ=requestAnimationFrame(()=>{drawQ=0;render()})}
 function render(){if(window.HistoryDiscovery)window.HistoryDiscovery.render(renderScene);else renderScene()}
 function renderScene(){
-  if(!W)return;makeProj();const G=geo();ctx.setTransform(DPR,0,0,DPR,0,0);ctx.clearRect(0,0,W,H);
+  if(!W||!H)return;makeProj();const G=geo();ctx.setTransform(DPR,0,0,DPR,0,0);ctx.clearRect(0,0,W,H);
   const globe=state.mode==="globe",[cx,cy]=proj.translate(),R=proj.scale(),evidenceView=window.HistoryDiscovery?.evidenceView();
   // stars: fixed to the screen, drift slightly as the globe turns
   {const sl=stars(),off=((rot[0]*.15)%W+W)%W;ctx.drawImage(sl,off,0,W,H);ctx.drawImage(sl,off-W,0,W,H)}
