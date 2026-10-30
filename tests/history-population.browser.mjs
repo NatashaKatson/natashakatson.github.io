@@ -74,6 +74,7 @@ assert(stage.getBoundingClientRect().height>=innerHeight*.6,'desktop globe recei
 assert(document.querySelector('.time').getBoundingClientRect().height<=innerHeight*.35,'desktop timeline fits its guidance, event navigation and reserved coverage notices');
 assert(document.getElementById('ruler').getBoundingClientRect().bottom<=innerHeight,'full timeline remains visible with the larger globe');
 assert(document.querySelector('.population-values').textContent.includes('8.3 billion'),'2026 world population');
+assert(!document.getElementById('mapSettings').open&&document.querySelector('.time > .population-strip').getBoundingClientRect().height>0,'World population is visible without opening settings');
 assert(document.querySelector('.population-values').textContent.includes('UN projection'),'2026 explicitly projected');
 setYear(2035);render();assert(state.year===2026,'future year clamped to endpoint');
 setYear(1453);render();assert(document.querySelector('.population-values').textContent.includes('Interpolated estimate'),'sparse history interpolated visibly');
@@ -116,7 +117,7 @@ document.getElementById('compareToggle').click();
 return 'Mobile map controls remain reachable and Play text has sufficient contrast';
 })()`));
 console.log(await evaluate(`(()=>{
-render();AtlasTestUI.population();
+render();AtlasUI.goToMap();
 const s=document.querySelector('.population-strip'),r=s.getBoundingClientRect();
 if(document.documentElement.scrollWidth>innerWidth||r.right>innerWidth||s.scrollWidth>s.clientWidth)throw Error('Population overflows mobile');
 s.scrollIntoView({block:'center'});

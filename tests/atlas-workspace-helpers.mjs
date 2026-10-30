@@ -20,10 +20,6 @@ window.AtlasTestUI = {
     this.settings();
     document.getElementById('compareToggle').parentElement.open = true;
   },
-  population() {
-    this.settings();
-    document.querySelector('.population-strip').parentElement.open = true;
-  },
   about() {
     this.settings();
     document.querySelector('.atlas-footer').parentElement.open = true;

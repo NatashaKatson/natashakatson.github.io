@@ -1469,7 +1469,7 @@ body[data-atlas-load="failed"] .population-strip { display: none; }
 <style>/* The atlas workspace: one map, one time navigator, details when needed. */
 :root { --workspace-paper: #faf8f4; --workspace-ink: #302b27; --workspace-line: #e3ddd4; --workspace-accent: #b94e32; }
 html, body { height: 100%; overflow: hidden; background: var(--workspace-paper); }
-.app { display: grid; height: 100dvh; min-height: 0; grid-template-columns: minmax(0, 1fr) clamp(360px, 28.5vw, 410px); grid-template-rows: 70px minmax(0, 1fr) 132px; grid-template-areas: 'head head' 'stage side' 'time side'; background: var(--workspace-paper); }
+.app { --population-space: 42px; display: grid; height: 100dvh; min-height: 0; grid-template-columns: minmax(0, 1fr) clamp(360px, 28.5vw, 410px); grid-template-rows: 70px minmax(0, 1fr) calc(132px + var(--population-space)); grid-template-areas: 'head head' 'stage side' 'time side'; background: var(--workspace-paper); }
 .app > header { display: flex; min-width: 0; padding: 0 28px; gap: 42px; flex-wrap: nowrap; border-bottom: 1px solid var(--workspace-line); background: var(--workspace-paper); }
 .brand { gap: 10px; flex: none; }
 .brand h1 { font-size: 22px; }
@@ -1492,7 +1492,7 @@ html, body { height: 100%; overflow: hidden; background: var(--workspace-paper);
 .stage .map-context { left: 28px; bottom: 20px; }
 .stage-hint { right: 85px; bottom: 22px; font-size: 10px; }
 .stage.comparing #mapToolsToggle { top: 52px; }
-.time, .stage.comparing + .time { grid-area: time; display: grid; grid-template-columns: auto minmax(100px, 1fr) auto; grid-template-rows: 40px 42px 16px; grid-template-areas: 'play date actions' 'ruler ruler ruler' 'summary summary navigation'; padding: 12px 24px 8px; gap: 2px 16px; background: var(--workspace-paper); border: 0; border-top: 1px solid var(--workspace-line); border-radius: 0; min-width: 0; z-index: 9; }
+.time, .stage.comparing + .time { grid-area: time; display: grid; grid-template-columns: auto minmax(100px, 1fr) auto; grid-template-rows: max-content 40px 42px 16px; grid-template-areas: 'population population population' 'play date actions' 'ruler ruler ruler' 'summary summary navigation'; padding: 12px 24px 8px; gap: 2px 16px; background: var(--workspace-paper); border: 0; border-top: 1px solid var(--workspace-line); border-radius: 0; min-width: 0; z-index: 9; }
 .time .controls { grid-area: play; display: flex; align-items: center; gap: 6px; }
 .time .controls .lbl { display: none; }
 .time .controls .iconbtn { width: 38px; min-height: 38px; height: 38px; border: 1px solid var(--workspace-line); border-radius: 50%; background: transparent; color: var(--workspace-ink); font-size: 20px; }
@@ -1631,11 +1631,13 @@ html, body { height: 100%; overflow: hidden; background: var(--workspace-paper);
 .settings-dialog .dock-options-content { position: static; width: 100%; max-width: none; max-height: none; padding: 0; border: 0; box-shadow: none; overflow: visible; }
 .settings-dialog .discovery-tools { display: grid; grid-template-columns: 1fr; padding: 0; gap: 8px; background: transparent; }
 .settings-dialog .discovery-tools > button { width: 100%; font-size: 13px; }
-.settings-dialog .population-strip { padding: 12px; background: #eee9de; display: block; }
-.settings-dialog .population-heading { display: block; }
-.settings-dialog .population-method { position: static; width: 100%; max-width: none; max-height: none; box-shadow: none; }
-.settings-dialog .population-heading details { margin: 10px 0; }
-.settings-dialog .population-values { display: grid; gap: 12px; }
+/* Population stays beside the timeline, including on phones and in comparison. */
+.time > .population-strip { position: relative; grid-area: population; align-items: center; gap: 4px 14px; padding: 6px 10px; }
+.time .population-heading details { position: static; margin-left: auto; }
+.time .population-values { align-items: center; }
+.time .population-value { align-items: baseline; }
+.time .population-method { left: 0; right: auto; bottom: calc(100% + 8px); width: min(620px, calc(100vw - 48px)); max-width: 100%; max-height: min(50dvh, var(--population-note-space, 400px)); }
+.time:has(.population-heading details[open]) { z-index: 40; }
 .settings-dialog .atlas-footer { padding: 0; border: 0; background: transparent; }
 .settings-dialog .atlas-footer-main, .settings-dialog .atlas-footer-source-grid { display: block; }
 .settings-dialog .atlas-footer-main > * { margin-bottom: 16px; }
@@ -1653,8 +1655,8 @@ html, body { height: 100%; overflow: hidden; background: var(--workspace-paper);
   .time .controls .play { width: 38px; }
 }
 @media (max-width: 860px) {
-  .app { grid-template-columns: minmax(0, 1fr); grid-template-rows: 62px minmax(0, 1fr) 132px 82px calc(60px + env(safe-area-inset-bottom)); grid-template-areas: 'head' 'stage' 'time' 'side' 'nav'; height: 100dvh; display: grid; }
-  .app:has(.side.sheet-open) { grid-template-rows: 62px minmax(0, 1fr) 132px 0 calc(60px + env(safe-area-inset-bottom)); }
+  .app { grid-template-columns: minmax(0, 1fr); grid-template-rows: 62px minmax(0, 1fr) calc(132px + var(--population-space)) 82px calc(60px + env(safe-area-inset-bottom)); grid-template-areas: 'head' 'stage' 'time' 'side' 'nav'; height: 100dvh; display: grid; }
+  .app:has(.side.sheet-open) { grid-template-rows: 62px minmax(0, 1fr) calc(132px + var(--population-space)) 0 calc(60px + env(safe-area-inset-bottom)); }
   .app > header { grid-area: head; padding: 0 16px; gap: 10px; }
   .brand h1 { font-size: 19px; }
   .brand > svg { width: 24px; height: 24px; }
@@ -1673,7 +1675,7 @@ html, body { height: 100%; overflow: hidden; background: var(--workspace-paper);
   .map-context p { width: 260px; }
   .stage .zoom { right: 16px; bottom: 12px; }
   .stage .zoom .iconbtn { width: 34px; height: 34px; }
-  .time, .stage.comparing + .time { order: initial; grid-area: time; grid-template-columns: auto minmax(0, 1fr) auto; grid-template-rows: 40px 42px 18px; grid-template-areas: 'play date actions' 'ruler ruler ruler' 'summary summary navigation'; padding: 10px 16px 8px; column-gap: 5px; row-gap: 2px; }
+  .time, .stage.comparing + .time { order: initial; grid-area: time; grid-template-columns: auto minmax(0, 1fr) auto; grid-template-rows: max-content 40px 42px 18px; grid-template-areas: 'population population population' 'play date actions' 'ruler ruler ruler' 'summary summary navigation'; padding: 10px 16px 8px; column-gap: 5px; row-gap: 2px; }
   .time .controls { gap: 3px; }
   .time .controls .iconbtn { width: 30px; min-height: 36px; height: 36px; }
   .time .controls .play { width: 36px; padding: 0; font-size: 0; }
@@ -1698,7 +1700,7 @@ html, body { height: 100%; overflow: hidden; background: var(--workspace-paper);
   .sheet-toggle > span:nth-child(2) { font: 500 17px var(--display); }
   #sheetPreview { font: 11px var(--body); color: #7c6b5d; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .side:not(.sheet-open) #sideBody { visibility: hidden; }
-  .app > .side.sheet-open { position: fixed; left: 0; right: 0; top: 72px; bottom: calc(192px + env(safe-area-inset-bottom)); height: auto; border-top: 1px solid #d4c8b9; box-shadow: 0 -15px 50px #30271e24; overflow: auto; }
+  .app > .side.sheet-open { position: fixed; left: 0; right: 0; top: 72px; bottom: calc(192px + var(--population-space) + env(safe-area-inset-bottom)); height: auto; border-top: 1px solid #d4c8b9; box-shadow: 0 -15px 50px #30271e24; overflow: auto; }
   .side.sheet-open .sheet-toggle { position: sticky; top: 0; z-index: 6; height: 70px; min-height: 70px; border-bottom: 1px solid var(--workspace-line); }
   .side.sheet-open .side-intro { top: 70px; }
   .side-intro { padding: 18px 20px 0; }
@@ -1721,15 +1723,23 @@ html, body { height: 100%; overflow: hidden; background: var(--workspace-paper);
   #mapToolsToggle { right: 12px; }
 }
 @media (max-width: 860px) and (max-height: 550px) {
-  .app { grid-template-rows: 48px minmax(0, 1fr) 100px 54px 48px; }
-  .app:has(.side.sheet-open) { grid-template-rows: 48px minmax(0, 1fr) 100px 0 48px; }
-  .time, .stage.comparing + .time { grid-template-rows: 36px 38px; padding-block: 8px; }
+  .app { grid-template-rows: 48px minmax(0, 1fr) calc(100px + var(--population-space)) 54px 48px; }
+  .app:has(.side.sheet-open) { grid-template-rows: 48px minmax(0, 1fr) calc(100px + var(--population-space)) 0 48px; }
+  .time, .stage.comparing + .time { grid-template-rows: max-content 36px 38px; padding-block: 8px; }
   .time-summary, .event-navigation { display: none; }
   .sheet-toggle { height: 54px; min-height: 54px; padding-block: 4px; }
   .sheet-toggle > span:nth-child(2) { display: none; }
-  .app > .side.sheet-open { top: 52px; bottom: 148px; }
+  .app > .side.sheet-open { top: 52px; bottom: calc(148px + var(--population-space)); }
   .time:has(#eraPanel:not([hidden])) { z-index: 40; }
   .era-panel { top: 60px; bottom: auto; max-height: calc(100dvh - 120px); }
+  .time > .population-strip { flex-wrap: nowrap; gap: 4px 8px; padding: 3px 6px; }
+  .time .population-heading > b { font-size: 9px; }
+  .time .population-heading details { order: 2; }
+  .time .population-heading summary { font-size: 0; }
+  .time .population-heading summary::after { content: 'ⓘ'; font-size: 14px; }
+  .time .population-values { flex-basis: auto; order: 1; gap: 8px; }
+  .time .population-value strong { font-size: 16px; }
+  .time .population-value small { flex-basis: 100%; font-size: 9px; line-height: 1.1; }
 }
 @media (max-height: 720px) {
   #journeyPanels .atlas-menu-panel { position: fixed; inset: 12px; width: auto; height: calc(100dvh - 24px); padding: 12px 16px; background: var(--workspace-paper); border: 1px solid var(--workspace-line); border-radius: 10px; z-index: 60; }
@@ -1743,19 +1753,25 @@ html, body { height: 100%; overflow: hidden; background: var(--workspace-paper);
 }
 /* Long dates get their own row when the normal date column is too narrow. */
 @media (max-width: 1180px) {
-  .app:has(#gotoInput.is-wide-date) { grid-template-rows: 70px minmax(0, 1fr) 172px; }
-  .time:has(#gotoInput.is-wide-date) { grid-template-rows: 40px 40px 42px 16px; grid-template-areas: 'play actions actions' 'date date date' 'ruler ruler ruler' 'summary summary navigation'; }
+  .app:has(#gotoInput.is-wide-date) { grid-template-rows: 70px minmax(0, 1fr) calc(172px + var(--population-space)); }
+  .time:has(#gotoInput.is-wide-date) { grid-template-rows: max-content 40px 40px 42px 16px; grid-template-areas: 'population population population' 'play actions actions' 'date date date' 'ruler ruler ruler' 'summary summary navigation'; }
 }
 @media (max-width: 860px) {
-  .app:has(#gotoInput.is-wide-date) { grid-template-rows: 62px minmax(0, 1fr) 172px 82px calc(60px + env(safe-area-inset-bottom)); }
-  .app:has(#gotoInput.is-wide-date):has(.side.sheet-open) { grid-template-rows: 62px minmax(0, 1fr) 172px 0 calc(60px + env(safe-area-inset-bottom)); }
-  .app:has(#gotoInput.is-wide-date) > .side.sheet-open { bottom: calc(232px + env(safe-area-inset-bottom)); }
+  .app:has(#gotoInput.is-wide-date) { grid-template-rows: 62px minmax(0, 1fr) calc(172px + var(--population-space)) 82px calc(60px + env(safe-area-inset-bottom)); }
+  .app:has(#gotoInput.is-wide-date):has(.side.sheet-open) { grid-template-rows: 62px minmax(0, 1fr) calc(172px + var(--population-space)) 0 calc(60px + env(safe-area-inset-bottom)); }
+  .app:has(#gotoInput.is-wide-date) > .side.sheet-open { bottom: calc(232px + var(--population-space) + env(safe-area-inset-bottom)); }
 }
 @media (max-width: 860px) and (max-height: 550px) {
-  .app:has(#gotoInput.is-wide-date) { grid-template-rows: 48px minmax(0, 1fr) 140px 54px 48px; }
-  .app:has(#gotoInput.is-wide-date):has(.side.sheet-open) { grid-template-rows: 48px minmax(0, 1fr) 140px 0 48px; }
-  .time:has(#gotoInput.is-wide-date) { grid-template-rows: 36px 36px 38px; }
-  .app:has(#gotoInput.is-wide-date) > .side.sheet-open { bottom: 188px; }
+  .app:has(#gotoInput.is-wide-date) { grid-template-rows: 48px minmax(0, 1fr) calc(140px + var(--population-space)) 54px 48px; }
+  .app:has(#gotoInput.is-wide-date):has(.side.sheet-open) { grid-template-rows: 48px minmax(0, 1fr) calc(140px + var(--population-space)) 0 48px; }
+  .time:has(#gotoInput.is-wide-date) { grid-template-rows: max-content 36px 36px 38px; }
+  .app:has(#gotoInput.is-wide-date) > .side.sheet-open { bottom: calc(188px + var(--population-space)); }
+}
+@media (min-width: 550px) and (max-width: 860px) and (max-height: 550px) {
+  .app:has(#gotoInput.is-wide-date) { grid-template-rows: 48px minmax(0, 1fr) calc(100px + var(--population-space)) 54px 48px; }
+  .app:has(#gotoInput.is-wide-date):has(.side.sheet-open) { grid-template-rows: 48px minmax(0, 1fr) calc(100px + var(--population-space)) 0 48px; }
+  .time:has(#gotoInput.is-wide-date) { grid-template-rows: max-content 36px 38px; grid-template-areas: 'population population population' 'play date actions' 'ruler ruler ruler' 'summary summary navigation'; }
+  .app:has(#gotoInput.is-wide-date) > .side.sheet-open { bottom: calc(148px + var(--population-space)); }
 }
 </style>
 </head>
@@ -4334,7 +4350,7 @@ function alivePeople(){const y=state.year;if(pplMemo.y===y)return pplMemo.v;cons
 let drawQ=0;function draw(){if(!drawQ)drawQ=requestAnimationFrame(()=>{drawQ=0;render()})}
 function render(){if(window.HistoryDiscovery)window.HistoryDiscovery.render(renderScene);else renderScene()}
 function renderScene(){
-  if(!W)return;makeProj();const G=geo();ctx.setTransform(DPR,0,0,DPR,0,0);ctx.clearRect(0,0,W,H);
+  if(!W||!H)return;makeProj();const G=geo();ctx.setTransform(DPR,0,0,DPR,0,0);ctx.clearRect(0,0,W,H);
   const globe=state.mode==="globe",[cx,cy]=proj.translate(),R=proj.scale(),evidenceView=window.HistoryDiscovery?.evidenceView();
   // stars: fixed to the screen, drift slightly as the globe turns
   {const sl=stars(),off=((rot[0]*.15)%W+W)%W;ctx.drawImage(sl,off,0,W,H);ctx.drawImage(sl,off-W,0,W,H)}
@@ -7359,11 +7375,19 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
   options.classList.add('settings-section');
   options.querySelector('summary').textContent = 'Share & other tools';
   settingsContents.append(options);
-  const population = document.createElement('details');
-  population.className = 'settings-section';
-  population.innerHTML = '<summary>World population</summary>';
-  population.append(document.querySelector('.population-strip'));
-  settingsContents.append(population);
+  const population = document.querySelector('.population-strip');
+  document.getElementById('timeControls').prepend(population);
+  // Reserve the readout's actual height, including wrapped comparison values.
+  const fitPopulation = () => {
+    app.style.setProperty('--population-space', `${population.hidden ? 0 : population.offsetHeight + 2}px`);
+    population.style.setProperty('--population-note-space', `${Math.max(0, population.getBoundingClientRect().top - 20)}px`);
+  };
+  const populationLayout = new ResizeObserver(fitPopulation);
+  populationLayout.observe(population);
+  populationLayout.observe(document.getElementById('timeControls'));
+  population.querySelector('details').addEventListener('toggle', fitPopulation);
+  window.addEventListener('resize', fitPopulation);
+  fitPopulation();
   const about = document.createElement('details');
   about.className = 'settings-section';
   about.innerHTML = '<summary>About & sources</summary>';

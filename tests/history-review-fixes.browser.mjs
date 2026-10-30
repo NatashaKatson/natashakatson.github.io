@@ -36,6 +36,8 @@ const screenshot = async (name) => {
 };
 const check = (condition, message) => { if (!condition) throw Error(message); };
 const click = async (selector) => {
+  // Let date-dependent readouts and their ResizeObservers finish moving the dock.
+  await evaluate('new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))');
   const point = await evaluate(`(()=>{const r=document.querySelector(${JSON.stringify(selector)}).getBoundingClientRect();return {x:r.left+r.width/2,y:r.top+r.height/2}})()`);
   await send('Input.dispatchMouseEvent', {type:'mousePressed',...point,button:'left',clickCount:1});
   await send('Input.dispatchMouseEvent', {type:'mouseReleased',...point,button:'left',clickCount:1});
@@ -45,7 +47,7 @@ try {
   await send('Network.setBlockedURLs', {urls:['https://fonts.googleapis.com/*','https://fonts.gstatic.com/*']});
   await send('Emulation.setDeviceMetricsOverride', {width:1440,height:1000,deviceScaleFactor:1,mobile:false});
   await send('Page.navigate', {url:testURL+'#1928'});
-  await waitFor('!!window.AtlasUI'); await evaluate('stopSpin();document.fonts.ready');
+  await waitFor('!!window.AtlasUI && !!document.querySelector(".population-value")'); await evaluate('stopSpin();document.fonts.ready');
   for (const width of [1440,390]) {
     await send('Emulation.setDeviceMetricsOverride', {width,height:844,deviceScaleFactor:1,mobile:width<=860});
     await evaluate(`setYear(1928);AtlasUI.goToMap();stopSpin()`);

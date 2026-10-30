@@ -48,11 +48,19 @@
   options.classList.add('settings-section');
   options.querySelector('summary').textContent = 'Share & other tools';
   settingsContents.append(options);
-  const population = document.createElement('details');
-  population.className = 'settings-section';
-  population.innerHTML = '<summary>World population</summary>';
-  population.append(document.querySelector('.population-strip'));
-  settingsContents.append(population);
+  const population = document.querySelector('.population-strip');
+  document.getElementById('timeControls').prepend(population);
+  // Reserve the readout's actual height, including wrapped comparison values.
+  const fitPopulation = () => {
+    app.style.setProperty('--population-space', `${population.hidden ? 0 : population.offsetHeight + 2}px`);
+    population.style.setProperty('--population-note-space', `${Math.max(0, population.getBoundingClientRect().top - 20)}px`);
+  };
+  const populationLayout = new ResizeObserver(fitPopulation);
+  populationLayout.observe(population);
+  populationLayout.observe(document.getElementById('timeControls'));
+  population.querySelector('details').addEventListener('toggle', fitPopulation);
+  window.addEventListener('resize', fitPopulation);
+  fitPopulation();
   const about = document.createElement('details');
   about.className = 'settings-section';
   about.innerHTML = '<summary>About & sources</summary>';
