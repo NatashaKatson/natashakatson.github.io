@@ -90,6 +90,10 @@ html, body { height: 100%; overflow: hidden; background: var(--workspace-paper);
 .story-context > summary { min-height: 32px; cursor: pointer; font-size: 11px; color: #827365; }
 .story-context .near { border: 0; padding-top: 8px; }
 .story-context .near > b { display: block; font-size: 11px; margin-bottom: 8px; }
+.story-context .near > p { font: 12px/1.6 var(--body); color: #756c65; }
+.story-context .story-card { padding: 10px; border: 1px solid var(--workspace-line); border-radius: 4px; background: #fffdfa; color: var(--workspace-ink); cursor: pointer; font: inherit; }
+.story-context .story-card:hover { border-color: var(--workspace-accent); }
+.story-context a { display: inline-block; min-height: 24px; color: var(--workspace-accent); font: 12px/1.6 var(--body); }
 .settings-dialog .view-tool { padding-bottom: 6px; border-bottom: 1px solid var(--workspace-line); }
 .settings-dialog .dock-options > summary { display: list-item; border: 0; border-radius: 0; background: transparent; justify-content: flex-start; padding: 10px 0; font-size: 13px; }
 .event-list-disclosure > summary { cursor: pointer; color: var(--workspace-accent); font-size: 12px; padding: 10px 0; }

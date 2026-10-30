@@ -345,8 +345,16 @@
         action.textContent = 'Explore this place →';
         detailNode.append(action);
       }
-      const sections = [...detailNode.querySelectorAll('.near')];
+      const sections = [...detailNode.querySelectorAll('.near')].filter(section => section.textContent.trim());
       if (sections.length) {
+        // The outer disclosure already collapses related history. Keep each
+        // section's heading and links visible after that single expansion.
+        for (const section of sections) {
+          const disclosure = section.querySelector(':scope > details');
+          if (!disclosure) continue;
+          disclosure.querySelector(':scope > summary')?.remove();
+          disclosure.replaceWith(...disclosure.childNodes);
+        }
         const related = document.createElement('details');
         related.className = 'story-context';
         related.innerHTML = '<summary>Context & related history</summary>';
