@@ -1663,7 +1663,7 @@ body { height: auto; min-height: 100%; overflow: visible; background: var(--work
   .brand h1 { font-size: 19px; }
   .brand > svg { width: 24px; height: 24px; }
   .workspace-nav { display: none; }
-  .app > header .head-tools { display: block; }
+  .app > header .head-tools { display: block; width: 44px; flex: 0 0 44px; }
   .app > header .history-search-trigger { width: 44px; height: 44px; min-height: 44px; padding: 7px; justify-content: center; background: transparent; border: 0; }
   .history-search-trigger .search-label { display: none; }
   .app > .stage { grid-area: stage; order: initial; min-height: 0; height: auto; scroll-margin-top: 0; }
@@ -7485,6 +7485,7 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
   sheetToggle.onclick = () => setSheet(!sheetOpen);
   mobile.addEventListener('change', () => { setSheet(sheetOpen); renderWorkspace(); });
   function setWorkspace(next) {
+    window.scrollTo({ top: 0, behavior: 'instant' });
     workspace = next;
     app.dataset.workspace = next;
     document.querySelectorAll('[data-workspace]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.workspace === next)));
@@ -7536,6 +7537,7 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
   document.querySelector('.skip-links a[href="#sideTitle"]').onclick = event => { event.preventDefault(); goToEvents(); };
   document.querySelector('.skip-links a[href="#cv"]').onclick = event => { event.preventDefault(); goToMap(); };
   function reveal(element) {
+    window.scrollTo({ top: 0, behavior: 'instant' });
     if (settings.open) closeSettingsForNavigation();
     const inJourneys = !!element.closest('.sidebar-extras');
     if (inJourneys) {
