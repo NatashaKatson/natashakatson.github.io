@@ -1580,6 +1580,10 @@ body { height: auto; min-height: 100%; overflow: visible; background: var(--work
 .journey-shortcuts h3 { font: 500 22px var(--display); margin: 0 0 12px; }
 .journey-shortcuts button { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 10px 0; background: none; border: 0; border-bottom: 1px solid var(--workspace-line); font: 13px var(--body); text-align: left; cursor: pointer; }
 .journey-shortcuts button:hover { color: var(--workspace-accent); }
+.journey-shortcuts button small { display: block; margin-top: 4px; color: #756c65; font: 11px/1.5 var(--body); }
+.journey-time-filter { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex: none; }
+.journey-time-filter select { max-width: 50%; min-height: 40px; padding: 5px; border: 1px solid #c8bdaf; border-radius: 4px; background: #fffdf9; color: inherit; font: 12px var(--body); }
+.journey-time-filter > label { gap: 8px; }
 .workspace-coverage { font-size: 10px; color: #7b746b; margin: 28px 0 0; }
 .side .sidebar-extras { margin: 0; padding: 0; border: 0; }
 .sidebar-extras-intro { margin-bottom: 12px; }
@@ -1887,7 +1891,7 @@ body > .atlas-footer { padding: 24px; background: var(--workspace-paper); }
     <div class="side-intro"><div class="kicker">At the same time</div><h2 id="sideTitle" tabindex="-1">Around this time</h2><div class="sub" id="sideSub"></div><p class="sidebar-scope" id="sideScope">Worldwide records. Open a place’s history for a local timeline.</p><div class="context-tabs" role="group" aria-label="Around this time"><button type="button" data-context="events" aria-pressed="true">Events</button><button type="button" data-context="people" aria-pressed="false">People</button></div></div>
     <div class="side-content"><div id="detail" role="region" aria-label="Selected story"></div><div id="regions" role="region" aria-label="Events near the selected date"></div>
     <h3 class="atlas-section-title" id="peopleTitle">People alive at this moment</h3><div class="sub" id="peopleSub" style="margin-bottom:8px"></div><div class="people" id="people"></div>
-    <section class="journey-shortcuts" aria-label="Follow a journey"><h3>Follow a journey</h3><button type="button" data-journey-shortcut="womensRightsPanel">Women’s rights <span>→</span></button><button type="button" data-journey-shortcut="migrationsPanel">Human migrations <span>→</span></button><button type="button" data-journey-shortcut="dinosaurs">Life before humans <span>→</span></button></section>
+    <section class="journey-shortcuts" aria-label="Follow a journey"><h3>Follow a journey</h3><button type="button" data-journey-shortcut="womensRightsPanel"><span>Women’s rights<small data-journey-count></small></span><span>→</span></button><button type="button" data-journey-shortcut="migrationsPanel"><span>Human migrations<small data-journey-count></small></span><span>→</span></button><button type="button" data-journey-shortcut="dinosaurs">Life before humans <span>→</span></button></section>
     <section class="sidebar-extras" aria-labelledby="sidebarExtrasTitle"><div class="sidebar-extras-intro"><h3 id="sidebarExtrasTitle">Explore other times</h3><p>These suggestions have their own dates. Opening one changes the timeline.</p></div><div id="journeyTopics"></div><div id="journeyPanels"></div><div class="journey-collections" id="journeyCollections"><div class="fact" id="fact"></div></div></section><p class="workspace-coverage">A selection of history, not a complete record.<br><button type="button" class="footer-shortcut" data-atlas-footer>About, sources &amp; support ↓</button></p></div>
     </div>
   </aside>
@@ -7182,13 +7186,14 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
   const panel = document.getElementById('migrationsPanel');
   const trigger = document.querySelector('[data-atlas-menu="migrationsPanel"]');
   panel.innerHTML = `<div class="migrations-heading"><h2 id="migrationsTitle">Migrations</h2><button type="button" class="migrations-close" aria-label="Close migrations">×</button></div>
-    <label class="migrations-visibility"><span>Show on map</span><input type="checkbox" id="migrationVisibility" checked></label>
+    <div class="journey-time-filter"><select id="migrationTimeScope" aria-label="Migration histories time period"><option value="all">All years</option><option value="selected">Selected period</option></select><label class="migrations-visibility"><span>Show on map</span><input type="checkbox" id="migrationVisibility" checked></label></div>
     <label class="migrations-search-label" for="migrationSearch">Find a history</label>
     <input type="search" id="migrationSearch" aria-label="Search migrations" placeholder="Belarus, WWII, Pale of Settlement…" autocomplete="off" maxlength="160" aria-controls="migrationResults">
     <p class="migrations-status" id="migrationStatus" role="status" aria-live="polite"></p>
     <div class="migrations-results" id="migrationResults" aria-label="Migration histories"></div>
     <p class="migrations-hint">Choose a history to open its map and sources.</p>`;
   const visibility = panel.querySelector('#migrationVisibility');
+  const timeScope = panel.querySelector('#migrationTimeScope');
   const search = panel.querySelector('#migrationSearch');
   const status = panel.querySelector('#migrationStatus');
   const results = panel.querySelector('#migrationResults');
@@ -7204,6 +7209,7 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
     buildMarks();update();
   };
   search.addEventListener('input', () => HistoryMigrations.render());
+  timeScope.addEventListener('change', () => HistoryMigrations.render());
   results.addEventListener('click', async event => {
     const button = event.target.closest('[data-migration-record]');
     if (!button) return;
@@ -7218,26 +7224,32 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
     if (!events.length) return '';
     return `<section class="migration-group"><h3>${esc(title)} <span>${events.length}</span></h3>${events.map(event => `<button type="button" class="migration-result" data-migration-record="${event.id}" aria-current="${state.sel === event.id}"><span>${esc(event.title)}</span><small>${esc(fmtEvent(event))}</small></button>`).join('')}</section>`;
   }
-  window.HistoryMigrations = { render() {
+  window.HistoryMigrations = { setScope(scope, reset = false) {
+    timeScope.value = scope;
+    if (reset) search.value = '';
+    this.render();
+  }, render() {
     const years = HistoryDiscovery.displayedYears();
     const enabled = state.cats.has('migrations');
     const query = search.value.trim();
-    const key = `${years.join('/')}/${enabled}/${query}/${state.sel}`;
+    const key = `${years.join('/')}/${enabled}/${query}/${timeScope.value}/${state.sel}`;
     if (key === lastKey) return;
     lastKey = key;
     visibility.checked = enabled;
     const inPeriod = event => years.some(year => DiscoveryCore.yearGap(event.start,event.end,year) <= halfWin(year));
     const current = records.filter(inPeriod);
-    const matches = query ? DiscoveryCore.search(searchable,query,'event',records.length).map(result => byId[result.recordId]) : records;
+    const filtered = query ? DiscoveryCore.search(searchable,query,'event',records.length).map(result => byId[result.recordId]) : records;
+    const selectedPeriod = timeScope.value === 'selected';
+    const matches = selectedPeriod ? filtered.filter(inPeriod) : filtered;
     const near = matches.filter(inPeriod).sort((a,b) => a.start-b.start);
     const other = matches.filter(event => !inPeriod(event)).sort((a,b) => b.start-a.start);
     const periodLabel = years.length > 1 ? `${fmt(years[0])} & ${fmt(years[1])}` : fmt(years[0]);
-    status.textContent = query
+    status.textContent = selectedPeriod ? `${near.length} histories near ${periodLabel} · ±${SAME_TIME_YEARS} years` : query
       ? `${matches.length} ${matches.length === 1 ? 'match' : 'matches'} · ${records.length} histories total`
       : `${current.length} near ${periodLabel} · ${records.length} histories total`;
     const focusedId = results.contains(document.activeElement) ? document.activeElement.dataset.migrationRecord : null;
-    results.innerHTML = group(years.length > 1 ? 'Displayed periods' : `Around ${periodLabel}`,near) + group('Other periods',other)
-      || '<p class="migrations-empty">No matching histories. Try a place, people or event.</p>';
+    results.innerHTML = group(years.length > 1 ? 'Displayed periods' : `Around ${periodLabel}`,near) + (selectedPeriod ? '' : group('Other periods',other))
+      || (selectedPeriod ? `<p class="migrations-empty">No matching histories near ${esc(periodLabel)}. Choose All years to browse the full timeline.</p>` : '<p class="migrations-empty">No matching histories. Try a place, people or event.</p>');
     if (focusedId) (results.querySelector(`[data-migration-record="${focusedId}"]`) || search).focus({preventScroll:true});
     results.scrollTop = 0;
   } };
@@ -7261,7 +7273,7 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
   const trigger = document.querySelector('[data-atlas-menu="womensRightsPanel"]');
   panel.innerHTML = `<div class="rights-heading"><h2 id="womensRightsTitle"><span aria-hidden="true">👩</span> Women’s rights</h2><button type="button" class="rights-close" aria-label="Close women’s rights">×</button></div>
     <p class="rights-intro">A history of rights, struggles and reversals around the world.</p>
-    <label class="rights-visibility"><span>Show on map</span><input type="checkbox" id="rightsVisibility" checked></label>
+    <div class="journey-time-filter"><select id="rightsTimeScope" aria-label="Women’s rights time period"><option value="all">All years</option><option value="selected">Selected period</option></select><label class="rights-visibility"><span>Show on map</span><input type="checkbox" id="rightsVisibility" checked></label></div>
     <label class="rights-search-label" for="rightsSearch">Find a milestone</label>
     <input type="search" id="rightsSearch" placeholder="Suffrage, abortion, a country or state…" autocomplete="off" maxlength="160" aria-controls="rightsResults">
     <div class="rights-filters"><label>Topic<select id="rightsTopic">${Object.entries({all:'All topics',...topics,'us-abortion':'U.S. abortion history'}).map(([key,label]) => `<option value="${key}">${esc(label)}</option>`).join('')}</select></label><label>Region<select id="rightsRegion"><option value="all">All regions</option>${Object.entries(REGIONS).map(([key,label]) => `<option value="${key}">${esc(label)}</option>`).join('')}</select></label></div>
@@ -7269,6 +7281,7 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
     <div class="rights-results" id="rightsResults" aria-label="Women’s rights timeline"></div>
     <p class="rights-hint">Choose a milestone for its date, place and sources. Historical laws and practical access may change later.</p>`;
   const visibility = panel.querySelector('#rightsVisibility');
+  const timeScope = panel.querySelector('#rightsTimeScope');
   const search = panel.querySelector('#rightsSearch');
   const topic = panel.querySelector('#rightsTopic');
   const region = panel.querySelector('#rightsRegion');
@@ -7286,7 +7299,7 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
     if (visibility.checked) state.cats.add(category); else state.cats.delete(category);
     buildMarks();update();
   };
-  for (const control of [search,topic,region]) control.addEventListener(control === search ? 'input' : 'change', () => HistoryWomensRights.render());
+  for (const control of [search,topic,region,timeScope]) control.addEventListener(control === search ? 'input' : 'change', () => HistoryWomensRights.render());
   results.addEventListener('focusout', event => {
     if (!results.contains(event.relatedTarget)) { lastKey = ''; HistoryWomensRights.render(); }
   });
@@ -7298,25 +7311,32 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
     await HistoryDiscovery.jumpSearch({kind:'event',recordId:record.id,start:record.start,lon:record.lon,lat:record.lat});
   });
 
-  window.HistoryWomensRights = { topics, render() {
+  window.HistoryWomensRights = { topics, setScope(scope, reset = false) {
+    timeScope.value = scope;
+    if (reset) { search.value = ''; topic.value = 'all'; region.value = 'all'; }
+    this.render();
+  }, render() {
     const years = HistoryDiscovery.displayedYears();
     const enabled = state.cats.has(category);
     const query = search.value.trim();
-    const key = JSON.stringify([years,enabled,query,topic.value,region.value,state.sel]);
+    const key = JSON.stringify([years,enabled,query,topic.value,region.value,timeScope.value,state.sel]);
     if (key === lastKey) return;
     lastKey = key;
     visibility.checked = enabled;
     const matchedIds = query ? new Set(DiscoveryCore.search(searchable,query,'event',records.length).map(result => result.recordId)) : null;
     const matchesTopic = record => topic.value === 'all' || record.rights.topic === topic.value || (topic.value === 'us-abortion' && record.rights.topic === 'reproductive' && record.rights.country.startsWith('United States'));
-    const matches = records.filter(record => (!matchedIds || matchedIds.has(record.id)) && matchesTopic(record) && (region.value === 'all' || record.region === region.value));
+    const filtered = records.filter(record => (!matchedIds || matchedIds.has(record.id)) && matchesTopic(record) && (region.value === 'all' || record.region === region.value));
     const inPeriod = record => years.some(year => DiscoveryCore.yearGap(record.start,record.end,year) <= halfWin(year));
+    const selectedPeriod = timeScope.value === 'selected';
+    const matches = selectedPeriod ? filtered.filter(inPeriod) : filtered;
     const description = record => `${fmtEvent(record)} · ${record.rights.country}${inPeriod(record)?' · Near displayed year':''}`;
-    status.textContent = `${matches.length} of ${records.length} milestones · ${matches.filter(inPeriod).length} near ${years.map(year => fmt(year)).join(' & ')}`;
-    const filters = JSON.stringify([query,topic.value,region.value]);
+    const periodLabel = years.map(year => fmt(year)).join(' & ');
+    status.textContent = selectedPeriod ? `${matches.length} milestones near ${periodLabel} · ±${SAME_TIME_YEARS} years` : `${matches.length} of ${records.length} milestones · ${matches.filter(inPeriod).length} near ${periodLabel}`;
+    const filters = JSON.stringify([query,topic.value,region.value,timeScope.value]);
     const period = years.join('/');
     // A timeline, selection or visibility update must not replace the focused
     // button or reset a reader's scroll position in the chronological list.
-    if (filters === listKey && (period === listPeriod || results.contains(document.activeElement))) {
+    if (filters === listKey && (period === listPeriod || (!selectedPeriod && results.contains(document.activeElement)))) {
       for (const button of results.querySelectorAll('[data-rights-record]')) {
         const record = byId[button.dataset.rightsRecord];
         button.setAttribute('aria-current', String(state.sel === record.id));
@@ -7333,10 +7353,10 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
     ];
     const near = matches.filter(inPeriod);
     const renderGroup = (label, events) => events.length ? `<section class="rights-group"><h3>${esc(label)} <span>${events.length}</span></h3>${events.map(record => `<button type="button" class="rights-result" data-rights-record="${record.id}" aria-current="${state.sel === record.id}"><span aria-hidden="true">👩</span><span><strong>${esc(record.title)}</strong><small>${esc(description(record))}</small></span></button>`).join('')}</section>` : '';
-    results.innerHTML = renderGroup(`Near ${years.map(year => fmt(year)).join(' & ')}`, near) + groups.map(([label,from,to]) => {
+    results.innerHTML = renderGroup(`Near ${years.map(year => fmt(year)).join(' & ')}`, near) + (selectedPeriod ? [] : groups).map(([label,from,to]) => {
       const events = matches.filter(record => !inPeriod(record) && record.start >= from && record.start <= to);
       return events.length ? `<section class="rights-group"><h3>${label} <span>${events.length}</span></h3>${events.map(record => `<button type="button" class="rights-result" data-rights-record="${record.id}" aria-current="${state.sel === record.id}"><span aria-hidden="true">👩</span><span><strong>${esc(record.title)}</strong><small>${esc(description(record))}</small></span></button>`).join('')}</section>` : '';
-    }).join('') || '<p class="rights-empty">No matching milestones. Try another search, topic or region.</p>';
+    }).join('') || (selectedPeriod ? `<p class="rights-empty">No matching milestones near ${esc(periodLabel)}. Choose All years to browse the full timeline.</p>` : '<p class="rights-empty">No matching milestones. Try another search, topic or region.</p>');
     if (focusedId) (results.querySelector(`[data-rights-record="${focusedId}"]`) || search).focus({preventScroll:true});
     results.scrollTop = 0;
   } };
@@ -7505,7 +7525,10 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
     setWorkspace('journeys');
     const id = button.dataset.journeyShortcut;
     if (id === 'dinosaurs') dinoTopic.click();
-    else openMenu(document.querySelector(`[data-atlas-menu="${id}"]`));
+    else {
+      (id === 'womensRightsPanel' ? HistoryWomensRights : HistoryMigrations).setScope('selected', true);
+      openMenu(document.querySelector(`[data-atlas-menu="${id}"]`));
+    }
   });
   const searchTrigger = document.querySelector('.history-search-trigger');
   searchTrigger.innerHTML = '<span aria-hidden="true">⌕</span><span class="search-label">Search places, people, events</span>';
@@ -7606,7 +7629,12 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
     }
   }
   for (const trigger of menuTriggers) trigger.onclick = () => {
-    if (trigger.getAttribute('aria-expanded') === 'true') closeMenus(); else openMenu(trigger);
+    if (trigger.getAttribute('aria-expanded') === 'true') closeMenus();
+    else {
+      if (trigger.dataset.atlasMenu === 'womensRightsPanel') HistoryWomensRights.setScope('all');
+      if (trigger.dataset.atlasMenu === 'migrationsPanel') HistoryMigrations.setScope('all');
+      openMenu(trigger);
+    }
   };
   document.addEventListener('pointerdown', event => {
     // Journey panels remain open while the map is explored. Era selection is transient.
@@ -7802,6 +7830,14 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
     document.getElementById('nextEvent').disabled = !available.some(event => event.start > state.year);
     const deep = years.some((year) => year < -1000000);
     const human = years.some((year) => year >= -1000000);
+    document.querySelector('.journey-shortcuts h3').textContent = `Explore near ${years.map(year => fmt(year)).join(' & ')}`;
+    for (const [id, category] of [['womensRightsPanel', 'womens-rights'], ['migrationsPanel', 'migrations']]) {
+      const button = document.querySelector(`[data-journey-shortcut="${id}"]`);
+      const count = ev.filter(record => record.cat === category && years.some(year => DiscoveryCore.yearGap(record.start, record.end, year) <= halfWin(year))).length;
+      button.hidden = !human;
+      button.querySelector('[data-journey-count]').textContent = `${count} ${count === 1 ? 'record' : 'records'} near the selected ${years.length === 1 ? 'year' : 'years'}`;
+    }
+    document.querySelector('[data-journey-shortcut="dinosaurs"]').hidden = !deep;
     const key = `${deep}/${human}/${state.borders}/${[...state.cats].sort().join(',')}/${HistoryDiscovery.isComparing()}`;
     if (key === lastKey) return;
     lastKey = key;

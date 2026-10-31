@@ -112,6 +112,10 @@ body { height: auto; min-height: 100%; overflow: visible; background: var(--work
 .journey-shortcuts h3 { font: 500 22px var(--display); margin: 0 0 12px; }
 .journey-shortcuts button { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 10px 0; background: none; border: 0; border-bottom: 1px solid var(--workspace-line); font: 13px var(--body); text-align: left; cursor: pointer; }
 .journey-shortcuts button:hover { color: var(--workspace-accent); }
+.journey-shortcuts button small { display: block; margin-top: 4px; color: #756c65; font: 11px/1.5 var(--body); }
+.journey-time-filter { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex: none; }
+.journey-time-filter select { max-width: 50%; min-height: 40px; padding: 5px; border: 1px solid #c8bdaf; border-radius: 4px; background: #fffdf9; color: inherit; font: 12px var(--body); }
+.journey-time-filter > label { gap: 8px; }
 .workspace-coverage { font-size: 10px; color: #7b746b; margin: 28px 0 0; }
 .side .sidebar-extras { margin: 0; padding: 0; border: 0; }
 .sidebar-extras-intro { margin-bottom: 12px; }

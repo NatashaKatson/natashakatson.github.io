@@ -21,7 +21,7 @@ window.AtlasTestUI = {
     document.getElementById('compareToggle').parentElement.open = true;
   },
   journeys() {
-    const button = [...document.querySelectorAll('[data-workspace="journeys"]')].find(b => b.getBoundingClientRect().height > 0);
+    const button = [...document.querySelectorAll('button[data-workspace="journeys"]')].find(b => b.getBoundingClientRect().height > 0);
     button.click();
   }
 };`;
