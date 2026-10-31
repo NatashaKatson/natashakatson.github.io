@@ -39,14 +39,15 @@ try{
   await send('Page.enable');await send('Runtime.enable');await send('Network.enable');
   await send('Network.setCacheDisabled',{cacheDisabled:true});
   await send('Network.setBlockedURLs',{urls:['https://fonts.googleapis.com/*','https://fonts.gstatic.com/*','https://cdnjs.buymeacoffee.com/*']});
-  await send('Page.navigate',{url:testURL+'#2026'});await waitFor('!!window.AtlasUI');
+  await send('Page.navigate',{url:testURL+'#2026'});await waitFor('!!window.AtlasUI && !!document.querySelector(".population-value")');
   await evaluate('stopSpin();document.fonts.ready');
   for(const [width,height] of [[1440,1000],[861,650],[390,844],[320,568],[844,390]]){
     await send('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:1,mobile:width<=860});
     await evaluate(`window.scrollTo({top:0,behavior:'instant'});AtlasUI.goToMap();document.querySelector('.atlas-footer-sources').open=false`);await pause(100);
-    check(await evaluate(`(()=>{const main=document.getElementById('atlasMain'),footer=document.getElementById('atlasFooter'),m=main.getBoundingClientRect(),f=footer.getBoundingClientRect();return footer.parentElement===document.body&&!footer.closest('dialog')&&f.top>=m.bottom&&Math.abs(m.height-innerHeight)<1&&!document.getElementById('mapSettings').textContent.includes('About & sources')})()`),'Credits form a page footer after the full-height atlas');
-    await evaluate(`AtlasUI.goToEvents();document.querySelector('[data-atlas-footer]').click()`);await pause(70);
-    check(await evaluate(`(()=>{const footer=document.getElementById('atlasFooter'),coffee=footer.querySelector('.atlas-support-link'),r=coffee.getBoundingClientRect();return !document.getElementById('mapSettings').open&&!document.getElementById('side').classList.contains('sheet-open')&&r.height>=44&&r.top>=0&&r.bottom<=innerHeight&&document.elementFromPoint(r.left+r.width/2,r.top+r.height/2)?.closest('a')===coffee&&coffee.href==='https://www.buymeacoffee.com/natashakatson'&&footer.textContent.includes('Made by')&&getComputedStyle(footer.querySelector('.atlas-footer-note')).display!=='none'&&getComputedStyle(footer.querySelector('.atlas-footer-support > span')).display!=='none'})()`),'Credits, support text and coffee button are visible without settings');
+    check(await evaluate(`(()=>{const main=document.getElementById('atlasMain'),footer=document.getElementById('atlasFooter'),m=main.getBoundingClientRect(),f=footer.getBoundingClientRect();return footer.parentElement===document.body&&!footer.closest('dialog')&&f.top>=m.bottom-1&&f.bottom<=innerHeight+1&&scrollY===0&&m.height<innerHeight&&!document.getElementById('mapSettings').textContent.includes('About & sources')})()`),'Footer is visible after loading without scrolling or opening settings');
+    await screenshot('footer-visible-'+width+'x'+height);
+    await evaluate(`setYear(2024);render();setYear(2026);render();AtlasUI.goToEvents();document.querySelector('[data-atlas-footer]').click()`);await pause(70);
+    check(await evaluate(`(()=>{const footer=document.getElementById('atlasFooter'),coffee=footer.querySelector('.atlas-support-link'),r=coffee.getBoundingClientRect();return !document.getElementById('mapSettings').open&&!document.getElementById('side').classList.contains('sheet-open')&&r.height>=44&&r.top>=0&&r.bottom<=innerHeight&&document.elementFromPoint(r.left+r.width/2,r.top+r.height/2)?.closest('a')===coffee&&coffee.href==='https://www.buymeacoffee.com/natashakatson'&&footer.textContent.includes('Made by')})()`),'Credits, support text and coffee button are visible without settings');
     await evaluate(`document.querySelector('.atlas-footer-sources summary').click()`);
     check(await evaluate(`(()=>{const footer=document.getElementById('atlasFooter'),sources=footer.querySelector('.atlas-footer-sources');return sources.open&&sources.querySelectorAll('.atlas-footer-source-grid > p').length===3&&sources.querySelector('a[href*="naturalearthdata"]')&&sources.querySelector('a[href*="geonames"]')&&sources.querySelector('a[href*="cliopatria"]')})()`),'All source attributions remain in the footer');
     check(await evaluate(`(()=>{for(const link of document.querySelectorAll('.atlas-footer-source-grid a')){link.scrollIntoView({block:'center',behavior:'instant'});const r=link.getClientRects()[0];if(!link.contains(document.elementFromPoint(r.left+r.width/2,r.top+r.height/2)))return false}return document.documentElement.scrollWidth<=innerWidth})()`),'Footer sources are reachable without horizontal overflow');
@@ -56,6 +57,14 @@ try{
     if(width<=860){
       await evaluate(`AtlasUI.goToEvents();window.scrollTo({top:document.body.scrollHeight,behavior:'instant'})`);await pause(80);
       check(await evaluate(`!document.getElementById('side').classList.contains('sheet-open')`),'An open mobile sheet does not cover the footer when scrolling down');
+    }
+    if(width<=860){
+      await evaluate(`window.scrollTo({top:0,behavior:'instant'});setYear(1928);select(ev.find(event=>event.wiki==='Penicillin').id,false);render()`);await pause(80);
+      const point=await evaluate(`(()=>{const close=document.querySelector('#detail .close');close.scrollIntoView({block:'nearest',behavior:'instant'});const r=close.getBoundingClientRect(),x=r.left+r.width/2,y=r.top+r.height/2;if(document.elementFromPoint(x,y)?.closest('button')!==close)throw Error('Reader close button is covered');return{x,y}})()`);
+      await send('Input.dispatchMouseEvent',{type:'mousePressed',...point,button:'left',clickCount:1});
+      await send('Input.dispatchMouseEvent',{type:'mouseReleased',...point,button:'left',clickCount:1});await pause(80);
+      check(await evaluate(`!state.sel&&document.activeElement===cv&&!document.getElementById('side').classList.contains('sheet-open')`),'Reader closes back to the map while the footer stays visible');
+      await evaluate(`setYear(2026);render()`);
     }
     console.log('PASS page footer, coffee link, source access and return navigation at '+width+'×'+height);
   }

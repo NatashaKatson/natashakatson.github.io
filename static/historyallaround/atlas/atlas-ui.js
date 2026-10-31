@@ -169,12 +169,27 @@
   searchTrigger.innerHTML = '<span aria-hidden="true">⌕</span><span class="search-label">Search places, people, events</span>';
   document.getElementById('mobileSearch').onclick = () => searchTrigger.click();
   const footer = document.getElementById('atlasFooter');
+  const fitFooter = () => {
+    const style = getComputedStyle(footer);
+    const rowHeight = Math.max(...[...footer.querySelectorAll('.atlas-footer-identity, .atlas-footer-support, .atlas-footer-sources > summary')].map(node => node.offsetHeight));
+    document.documentElement.style.setProperty('--footer-space', `${Math.ceil(rowHeight + parseFloat(style.paddingTop) + parseFloat(style.paddingBottom))}px`);
+  };
+  const footerLayout = new ResizeObserver(fitFooter);
+  footerLayout.observe(footer.querySelector('.atlas-footer-main'));
+  const footerSources = footer.querySelector('.atlas-footer-sources');
+  footerSources.addEventListener('toggle', () => {
+    fitFooter();
+    if (footerSources.open) footerSources.scrollIntoView({ block: 'nearest', behavior: 'instant' });
+  });
+  window.addEventListener('resize', fitFooter);
+  fitFooter();
   document.querySelector('[data-atlas-footer]').onclick = () => {
     closeMenus(); setSheet(false);
     footer.scrollIntoView({ block: 'start', behavior: 'instant' });
     footer.focus({ preventScroll: true });
   };
   footer.querySelector('[data-return-atlas]').onclick = () => {
+    footerSources.open = false;
     window.scrollTo({ top: 0, behavior: 'instant' });
     goToMap();
   };
