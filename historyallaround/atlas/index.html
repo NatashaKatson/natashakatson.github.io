@@ -496,20 +496,20 @@ header .seg{padding:2px;background:#f0ebe3;border:1px solid rgba(45,36,32,.1);bo
   <footer class="atlas-footer" id="atlasFooter" tabindex="-1" aria-label="Atlas credits and support">
     <div class="atlas-footer-main">
       <div class="atlas-footer-identity"><a href="../" class="atlas-footer-name">History All Around</a><span>Made by <a href="https://natashakatson.com">Natasha Katson</a></span></div>
-      <p class="atlas-footer-note">A world of stories, from dinosaur fossils to 2026.</p>
       <div class="atlas-footer-support" aria-label="Support the atlas">
         <span>Help the atlas grow</span>
         <a class="atlas-support-link" href="https://www.buymeacoffee.com/natashakatson" target="_blank" rel="noopener"><span aria-hidden="true">☕</span> Buy me a coffee</a>
       </div>
-    </div>
     <details class="atlas-footer-sources">
       <summary>Sources &amp; historical accuracy</summary>
+      <p class="atlas-footer-note">A world of stories, from dinosaur fossils to 2026.</p>
       <div class="atlas-footer-source-grid">
         <p><strong>Dates &amp; stories</strong>Dates before about 500 BC are approximate; some later dates are debated. Dinosaur entries use approximate fossil ages and representative present-day fossil regions, with museum and research sources. Entries link to their sources, and people's dates are checked against Wikidata.</p>
         <p><strong>Maps &amp; places</strong>Basemap and “Today” borders: <a href="https://www.naturalearthdata.com/">Natural Earth</a> (public domain). Place search: <a href="https://www.geonames.org/">GeoNames</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p>
         <p><strong>Historical borders</strong><a href="https://github.com/Seshat-Global-History-Databank/cliopatria">Cliopatria / Seshat Global History Databank</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Shapes are simplified; mapped borders are approximate and historians often disagree on them.</p>
       </div>
     </details>
+    </div>
     <button type="button" class="atlas-footer-return" data-return-atlas>Back to the atlas ↑</button>
   </footer>
 
@@ -1473,8 +1473,9 @@ document.getElementById("gotoInput").addEventListener("input",e=>e.target.setCus
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 let sidebarReturn=null;
 function revealInSidebar(el){const side=document.getElementById("side");window.AtlasUI?.reveal(el);
-  if(window.innerWidth<=860)el.scrollIntoView({behavior:"instant",block:"nearest"});
-  else side.scrollTop=Math.max(0,side.scrollTop+el.getBoundingClientRect().top-side.getBoundingClientRect().top-side.querySelector(".side-intro").offsetHeight-12)}
+  const inset=side.querySelector(".side-intro").offsetHeight+(window.innerWidth<=860?document.getElementById("eventSheetToggle").offsetHeight:0)+12;
+  side.scrollTop=Math.max(0,side.scrollTop+el.getBoundingClientRect().top-side.getBoundingClientRect().top-inset);
+  const close=el.querySelector('.close');if(close)close.style.scrollMarginTop=inset+'px'}
 function revealDetail(){const el=document.getElementById("detail");el.setAttribute("tabindex","-1");revealInSidebar(el);el.focus({preventScroll:true})}
 function closeSelection(){const saved=sidebarReturn;sidebarReturn=null;state.sel=null;selectedPolity=null;update();
   const row=saved&&saved.year===state.year&&document.querySelector(`#side [data-id="${saved.id}"]`);
