@@ -68,7 +68,7 @@
     const matchedIds = query ? new Set(DiscoveryCore.search(searchable,query,'event',records.length).map(result => result.recordId)) : null;
     const matchesTopic = record => topic.value === 'all' || record.rights.topic === topic.value || (topic.value === 'us-abortion' && record.rights.topic === 'reproductive' && record.rights.country.startsWith('United States'));
     const filtered = records.filter(record => (!matchedIds || matchedIds.has(record.id)) && matchesTopic(record) && (region.value === 'all' || record.region === region.value));
-    const inPeriod = record => years.some(year => DiscoveryCore.yearGap(record.start,record.end,year) <= halfWin(year));
+    const inPeriod = record => years.some(year => DiscoveryCore.yearGap(record.start,record.end,year) <= SAME_TIME_YEARS);
     const selectedPeriod = timeScope.value === 'selected';
     const matches = selectedPeriod ? filtered.filter(inPeriod) : filtered;
     const description = record => `${fmtEvent(record)} · ${record.rights.country}${inPeriod(record)?' · Near displayed year':''}`;

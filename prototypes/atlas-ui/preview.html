@@ -1467,7 +1467,7 @@ body[data-atlas-load="failed"] .population-strip { display: none; }
 }
 </style>
 <style>/* The atlas workspace: one map, one time navigator, details when needed. */
-:root { --footer-space: 60px; --workspace-paper: #faf8f4; --workspace-ink: #302b27; --workspace-line: #e3ddd4; --workspace-accent: #b94e32; }
+:root { --footer-space: calc(60px + env(safe-area-inset-bottom, 0px)); --workspace-paper: #faf8f4; --workspace-ink: #302b27; --workspace-line: #e3ddd4; --workspace-accent: #b94e32; }
 html { height: 100%; overflow-x: hidden; overflow-y: auto; background: var(--workspace-paper); }
 body { height: auto; min-height: 100%; overflow: visible; background: var(--workspace-paper); }
 .app { --population-space: 42px; display: grid; height: calc(100dvh - var(--footer-space)); min-height: 0; grid-template-columns: minmax(0, 1fr) clamp(360px, 28.5vw, 410px); grid-template-rows: 70px minmax(0, 1fr) calc(132px + var(--population-space)); grid-template-areas: 'head head' 'stage side' 'time side'; background: var(--workspace-paper); }
@@ -1503,7 +1503,7 @@ body { height: auto; min-height: 100%; overflow: visible; background: var(--work
 .time .controls .play[aria-label='Pause']::before { content: 'Ⅱ'; }
 .time .controls .play[aria-label^='Replay']::before { content: '↻'; }
 .timeline-date { grid-area: date; display: flex; align-items: center; justify-content: center; min-width: 0; }
-.time .timeline-date .year-step { flex: none; width: 28px; height: 36px; min-height: 36px; padding: 0; border: 0; border-radius: 50%; background: transparent; color: #756c60; font-size: 21px; cursor: pointer; }
+.time .timeline-date .year-step { flex: none; width: 40px; height: 40px; min-height: 40px; padding: 0; border: 0; border-radius: 50%; background: transparent; color: #756c60; font-size: 21px; cursor: pointer; }
 .time .timeline-date .year-step:hover { background: #eee9e0; }
 .timeline-date .goto { width: auto; flex: none; align-items: center; gap: 3px; }
 .timeline-date .goto > div { flex: none; }
@@ -1661,8 +1661,8 @@ body { height: auto; min-height: 100%; overflow: visible; background: var(--work
   .time .controls .play { width: 38px; }
 }
 @media (max-width: 860px) {
-  .app { grid-template-columns: minmax(0, 1fr); grid-template-rows: 62px minmax(0, 1fr) calc(132px + var(--population-space)) 82px calc(60px + env(safe-area-inset-bottom)); grid-template-areas: 'head' 'stage' 'time' 'side' 'nav'; height: calc(100dvh - var(--footer-space)); display: grid; }
-  .app:has(.side.sheet-open) { grid-template-rows: 62px minmax(0, 1fr) calc(132px + var(--population-space)) 0 calc(60px + env(safe-area-inset-bottom)); }
+  .app { grid-template-columns: minmax(0, 1fr); grid-template-rows: 62px minmax(0, 1fr) calc(132px + var(--population-space)) 82px 60px; grid-template-areas: 'head' 'stage' 'time' 'side' 'nav'; height: calc(100dvh - var(--footer-space)); display: grid; }
+  .app:has(.side.sheet-open) { grid-template-rows: 62px minmax(0, 1fr) calc(132px + var(--population-space)) 0 60px; }
   .app > header { grid-area: head; padding: 0 16px; gap: 10px; }
   .brand h1 { font-size: 19px; }
   .brand > svg { width: 24px; height: 24px; }
@@ -1687,33 +1687,33 @@ body { height: auto; min-height: 100%; overflow: visible; background: var(--work
   .time .controls .play { width: 36px; padding: 0; font-size: 0; }
   .time .controls .lbl { display: none; }
   .timeline-date .goto input { width: 80px; height: 36px; font-size: 18px; }
-  .time .timeline-date .year-step { width: 24px; }
+  .time .timeline-date .year-step { width: 36px; }
   .timeline-date .goto .iconbtn, .timeline-date .goto:focus-within .iconbtn { display: none; }
   .dock-actions { gap: 4px; flex-wrap: nowrap; }
   .dock-actions .atlas-menu-trigger { min-height: 40px; padding: 4px 0; font-size: 11px; }
-  .timeline-scope { font-size: 10px; }
+  .timeline-scope { font-size: 11px; }
   #currentEraLabel { display: none; }
   .time .ruler { height: 42px; }
-  .time .ticks { top: 29px; }
-  .time .ticks span { font-size: 9px; }
-  .time-summary { font-size: 9px; }
+  .time .ticks { top: 26px; }
+  .time .ticks span { font-size: 11px; }
+  .time-summary { font-size: 11px; }
   .time-summary .browse-dinosaurs { display: none; }
-  .timeline-help summary { font-size: 9px; min-height: 20px; }
-  .era-panel { position: fixed; bottom: calc(282px + var(--footer-space) + env(safe-area-inset-bottom)); top: auto; left: 12px; right: 12px; width: auto; max-width: none; max-height: calc(100dvh - 340px - var(--footer-space)); }
+  .timeline-help summary { font-size: 11px; min-height: 20px; }
+  .era-panel { position: fixed; bottom: calc(282px + var(--footer-space)); top: auto; left: 12px; right: 12px; width: auto; max-width: none; max-height: calc(100dvh - 340px - var(--footer-space)); }
   .app > .side { grid-area: side; order: initial; border: 0; border-top: 1px solid var(--workspace-line); border-radius: 14px 14px 0 0; background: var(--workspace-paper); min-height: 0; overflow: hidden; z-index: 20; }
   .sheet-toggle { display: grid; grid-template-columns: minmax(0, 1fr); width: 100%; height: 81px; min-height: 81px; padding: 8px 20px 10px; text-align: left; gap: 3px; border: 0; background: var(--workspace-paper); cursor: pointer; }
   .sheet-handle { display: block; justify-self: center; width: 32px; height: 4px; border-radius: 6px; background: #b9b1a7; }
   .sheet-toggle > span:nth-child(2) { font: 500 17px var(--display); }
   #sheetPreview { font: 11px var(--body); color: #7c6b5d; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .side:not(.sheet-open) #sideBody { visibility: hidden; }
-  .app > .side.sheet-open { position: fixed; left: 0; right: 0; top: 72px; bottom: calc(192px + var(--footer-space) + var(--population-space) + env(safe-area-inset-bottom)); height: auto; border-top: 1px solid #d4c8b9; box-shadow: 0 -15px 50px #30271e24; overflow: auto; }
+  .app > .side.sheet-open { position: fixed; left: 0; right: 0; top: 72px; bottom: calc(192px + var(--footer-space) + var(--population-space)); height: auto; border-top: 1px solid #d4c8b9; box-shadow: 0 -15px 50px #30271e24; overflow: auto; }
   .side.sheet-open .sheet-toggle { position: sticky; top: 0; z-index: 6; height: 70px; min-height: 70px; border-bottom: 1px solid var(--workspace-line); }
   .side.sheet-open .side-intro { top: 70px; }
   .side-intro { padding: 18px 20px 0; }
   .side h2 { font-size: 26px; }
   .side-content { padding: 16px 20px 24px; }
   #journeyPanels .atlas-menu-panel { height: max(300px, calc(100dvh - 425px)); }
-  .mobile-atlas-nav { position: static; grid-area: nav; order: initial; display: flex; justify-content: space-around; align-items: stretch; gap: 0; padding: 4px 12px calc(4px + env(safe-area-inset-bottom)); width: 100%; border: 0; border-top: 1px solid var(--workspace-line); background: var(--workspace-paper); z-index: 30; }
+  .mobile-atlas-nav { position: static; grid-area: nav; order: initial; display: flex; justify-content: space-around; align-items: stretch; gap: 0; padding: 4px 12px 4px; width: 100%; border: 0; border-top: 1px solid var(--workspace-line); background: var(--workspace-paper); z-index: 30; }
   .mobile-atlas-nav button { display: grid; place-content: center; gap: 0; flex: 1; border: 0; background: transparent; padding: 0; color: #796f63; font-size: 20px; }
   .mobile-atlas-nav button span { font: 10px var(--body); }
   .mobile-atlas-nav button[aria-pressed='true'] { color: var(--workspace-accent); }
@@ -1724,7 +1724,9 @@ body { height: auto; min-height: 100%; overflow: visible; background: var(--work
 @media (max-width: 370px) {
   .brand h1 { font-size: 17px; }
   .time, .stage.comparing + .time { padding-inline: 12px; }
-  .timeline-date .goto input { width: 64px; font-size: 16px; }
+  .timeline-date .goto input { width: 52px; font-size: 16px; }
+  .time { column-gap: 3px; }
+  .time .controls, .time .dock-actions { gap: 2px; }
   .stage .readout .yr { font-size: 30px; }
   #mapToolsToggle { right: 12px; }
 }
@@ -1751,7 +1753,7 @@ body { height: auto; min-height: 100%; overflow: visible; background: var(--work
   #journeyPanels .atlas-menu-panel { position: fixed; inset: 12px; width: auto; height: calc(100dvh - 24px); padding: 12px 16px; background: var(--workspace-paper); border: 1px solid var(--workspace-line); border-radius: 10px; z-index: 60; }
 }
 @media (max-width: 860px) {
-  #journeyPanels .atlas-menu-panel { position: fixed; inset: 12px 12px calc(72px + var(--footer-space) + env(safe-area-inset-bottom)) 12px; width: auto; height: auto; padding: 12px 16px; background: var(--workspace-paper); border: 1px solid var(--workspace-line); border-radius: 10px; box-shadow: 0 12px 40px #30271e24; z-index: 60; }
+  #journeyPanels .atlas-menu-panel { position: fixed; inset: 12px 12px calc(72px + var(--footer-space)) 12px; width: auto; height: auto; padding: 12px 16px; background: var(--workspace-paper); border: 1px solid var(--workspace-line); border-radius: 10px; box-shadow: 0 12px 40px #30271e24; z-index: 60; }
 }
 @media (max-width: 860px) and (max-height: 550px) {
   .app > .side.journey-panel-open { z-index: 40; }
@@ -1763,9 +1765,9 @@ body { height: auto; min-height: 100%; overflow: visible; background: var(--work
   .time:has(#gotoInput.is-wide-date) { grid-template-rows: max-content 40px 40px 42px 16px; grid-template-areas: 'population population population' 'play actions actions' 'date date date' 'ruler ruler ruler' 'summary summary navigation'; }
 }
 @media (max-width: 860px) {
-  .app:has(#gotoInput.is-wide-date) { grid-template-rows: 62px minmax(0, 1fr) calc(172px + var(--population-space)) 82px calc(60px + env(safe-area-inset-bottom)); }
-  .app:has(#gotoInput.is-wide-date):has(.side.sheet-open) { grid-template-rows: 62px minmax(0, 1fr) calc(172px + var(--population-space)) 0 calc(60px + env(safe-area-inset-bottom)); }
-  .app:has(#gotoInput.is-wide-date) > .side.sheet-open { bottom: calc(232px + var(--footer-space) + var(--population-space) + env(safe-area-inset-bottom)); }
+  .app:has(#gotoInput.is-wide-date) { grid-template-rows: 62px minmax(0, 1fr) calc(172px + var(--population-space)) 82px 60px; }
+  .app:has(#gotoInput.is-wide-date):has(.side.sheet-open) { grid-template-rows: 62px minmax(0, 1fr) calc(172px + var(--population-space)) 0 60px; }
+  .app:has(#gotoInput.is-wide-date) > .side.sheet-open { bottom: calc(232px + var(--footer-space) + var(--population-space)); }
 }
 @media (max-width: 860px) and (max-height: 550px) {
   .app:has(#gotoInput.is-wide-date) { grid-template-rows: 48px minmax(0, 1fr) calc(140px + var(--population-space)) 54px 48px; }
@@ -1781,7 +1783,7 @@ body { height: auto; min-height: 100%; overflow: visible; background: var(--work
 }
 
 /* Reserve the compact footer row so credits and support stay visible after load. */
-body > .atlas-footer { padding: 8px 24px; background: var(--workspace-paper); }
+body > .atlas-footer { padding: 8px max(24px, env(safe-area-inset-right)) calc(8px + env(safe-area-inset-bottom)) max(24px, env(safe-area-inset-left)); background: var(--workspace-paper); }
 .atlas-footer-main { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 24px; }
 .atlas-footer-identity { margin-right: auto; }
 .atlas-footer-sources { margin: 0; }
@@ -1794,7 +1796,7 @@ body > .atlas-footer { padding: 8px 24px; background: var(--workspace-paper); }
 .atlas-footer:has(.atlas-footer-sources[open]) .atlas-footer-return { display: inline-block; }
 .footer-shortcut:focus-visible, .atlas-footer-return:focus-visible { outline: 2px solid var(--workspace-accent); outline-offset: 3px; }
 @media (max-width: 860px) {
-  body > .atlas-footer { padding: 8px 12px; }
+  body > .atlas-footer { padding: 8px max(12px, env(safe-area-inset-right)) calc(8px + env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left)); }
   .atlas-footer-main { flex-wrap: nowrap; gap: 6px; }
   .atlas-footer-main:has(.atlas-footer-sources[open]) { flex-wrap: wrap; }
   .atlas-footer-identity { flex: 1; min-width: 0; }
@@ -1806,19 +1808,52 @@ body > .atlas-footer { padding: 8px 24px; background: var(--workspace-paper); }
   .atlas-footer-sources:not([open]) summary { font-size: 0; }
   .atlas-footer-sources:not([open]) summary::after { content: 'Sources'; font-size: 11px; }
 }
-@media (max-height: 360px) {
-  /* Keep the map controls usable in very short landscape windows. */
-  .app { height: 100dvh; }
-}
 @media (max-width: 860px) and (max-height: 720px) {
-  .app > .side.sheet-open, .app:has(#gotoInput.is-wide-date) > .side.sheet-open { bottom: calc(60px + var(--footer-space) + env(safe-area-inset-bottom)); }
+  .app > .side.sheet-open, .app:has(#gotoInput.is-wide-date) > .side.sheet-open { bottom: calc(60px + var(--footer-space)); }
 }
 @media (max-width: 860px) and (max-height: 550px) {
-  .app > .side.sheet-open, .app:has(#gotoInput.is-wide-date) > .side.sheet-open { bottom: calc(48px + var(--footer-space) + env(safe-area-inset-bottom)); }
+  .app > .side.sheet-open, .app:has(#gotoInput.is-wide-date) > .side.sheet-open { bottom: calc(48px + var(--footer-space)); }
   .side.sheet-open .sheet-toggle { height: 40px; min-height: 40px; }
   .side.sheet-open .side-intro { top: 40px; padding-top: 8px; }
   .side.sheet-open .side-intro :is(h2, .sub, .sidebar-scope) { display: none; }
   .side.sheet-open .context-tabs { margin-top: 0; }
+}
+
+/* In short windows, a side dock leaves room for the map and the footer. */
+@media (max-height: 360px) and (min-width: 550px) {
+  .app, .app:has(.side.sheet-open), .app:has(#gotoInput.is-wide-date), .app:has(#gotoInput.is-wide-date):has(.side.sheet-open) {
+    grid-template-columns: minmax(0, 1fr) 280px minmax(280px, 30vw);
+    grid-template-rows: 44px minmax(0, 1fr);
+    grid-template-areas: 'head head head' 'stage time side';
+    height: calc(100dvh - var(--footer-space));
+  }
+  .time, .stage.comparing + .time, .time:has(#gotoInput.is-wide-date) {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-rows: 40px max-content 40px minmax(36px, 1fr);
+    grid-template-areas: 'date date date' 'population population population' 'play play actions' 'ruler ruler ruler';
+    padding: 6px 8px; gap: 2px 4px; overflow-y: auto;
+  }
+  .time .timeline-date .goto input { font-size: 16px; }
+  .time .timeline-date .year-step { width: 40px; }
+  .time .ruler { height: 40px; }
+  .time .ticks { top: 23px; }
+  .time .ticks span { font-size: 11px; }
+  .app > header { min-height: 0; }
+  .time-summary, .event-navigation { display: none; }
+  .time:has(#eraPanel:not([hidden])) { z-index: 40; }
+  .era-panel { position: fixed; top: 12px; bottom: auto; left: auto; right: 12px; width: min(340px, calc(100vw - 24px)); max-height: calc(100dvh - 24px); }
+}
+@media (max-height: 360px) and (min-width: 550px) and (max-width: 860px) {
+  .app, .app:has(.side.sheet-open), .app:has(#gotoInput.is-wide-date), .app:has(#gotoInput.is-wide-date):has(.side.sheet-open) {
+    grid-template-columns: minmax(0, 1fr) 256px;
+    grid-template-rows: 44px minmax(0, 1fr) 44px;
+    grid-template-areas: 'head head' 'stage time' 'nav nav';
+  }
+  .app > .side:not(.sheet-open) { grid-area: stage; position: relative; align-self: end; justify-self: start; width: calc(100% - 60px); margin: 0 0 8px 8px; height: 44px; border: 1px solid var(--workspace-line); border-radius: 6px; }
+  .side:not(.sheet-open) .sheet-toggle { height: 44px; min-height: 44px; padding: 4px 8px; }
+  .side:not(.sheet-open) .sheet-handle { display: none; }
+  .side:not(.sheet-open) #sheetPreview { white-space: normal; line-height: 1.4; }
+  .time .timeline-date .goto input { width: 100px; }
 }
 </style>
 </head>
@@ -1881,8 +1916,8 @@ body > .atlas-footer { padding: 8px 24px; background: var(--workspace-paper); }
   <section class="time" id="timeControls" aria-label="Time navigation">
     <div class="controls">
       <button class="iconbtn play" id="play" aria-label="Play">▶ Play</button>
-      <button type="button" class="iconbtn" id="previousEvent" aria-label="Previous recorded event" title="Previous recorded event">‹</button>
-      <button type="button" class="iconbtn" id="nextEvent" aria-label="Next recorded event" title="Next recorded event">›</button>
+      <button type="button" class="iconbtn" id="previousEvent" aria-label="Previous recorded event" title="Previous recorded event"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 5v14M19 5l-11 7 11 7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></button>
+      <button type="button" class="iconbtn" id="nextEvent" aria-label="Next recorded event" title="Next recorded event"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19 5v14M5 5l11 7-11 7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></button>
       <span class="lbl" id="winLbl"></span>
     </div>
     <div class="timeline-date" id="timelineDateSlot"></div>
@@ -4367,7 +4402,7 @@ function makeProj(){
   path=d3.geoPath(proj,ctx);center=state.mode==="globe"?proj.invert([W/2,H/2+(W<600?10:0)]):null
 }
 let compactRuler=null;
-function resize(){const r=stage.getBoundingClientRect();DPR=Math.min(2,window.devicePixelRatio||1);W=r.width;H=r.height;const width=Math.round(W*DPR),height=Math.round(H*DPR);if(cv.width!==width)cv.width=width;if(cv.height!==height)cv.height=height;if(compactRuler!==(W<600)){compactRuler=W<600;buildRuler()}render()}
+function resize(){const r=stage.getBoundingClientRect();DPR=Math.min(2,window.devicePixelRatio||1);W=r.width;H=r.height;const width=Math.round(W*DPR),height=Math.round(H*DPR);if(cv.width!==width)cv.width=width;if(cv.height!==height)cv.height=height;const compact=document.getElementById("ruler").clientWidth<600;if(compactRuler!==compact){compactRuler=compact;buildRuler()}render()}
 new ResizeObserver(resize).observe(stage);
 // Browser pinch zoom can invalidate Safari's canvas without resizing the stage.
 window.visualViewport?.addEventListener("resize",draw);
@@ -4590,7 +4625,7 @@ const slider=document.getElementById("slider");
 const eras=document.getElementById("eras"),marks=document.getElementById("marks"),ticks=document.getElementById("ticks");
 function buildRuler(){
 eras.innerHTML="";ticks.innerHTML="";
-const compact=stage.clientWidth<600;
+const compact=document.getElementById("ruler").clientWidth<600;
 const shown=dinosaurTimeline?ERAS:ERAS.filter(([y])=>y>=-300000);
 shown.forEach(([s,n],i)=>{const a=tAt(s),b=i<shown.length-1?tAt(shown[i+1][0]):1;const d=document.createElement("div");d.className="era-b";const SHORT={Prehistory:"Prehist.","Early modern":"E. modern"};if(compact&&SHORT[n])n=SHORT[n];d.style.left=a*100+"%";d.style.width=(b-a)*100+"%";d.textContent=n;eras.appendChild(d)});
 const years=dinosaurTimeline?[-252000000,-145000000,-66000000,-10000,-3000,-1000,1,500,1000,1500,1800,1900,NOW]:[-200000,-10000,-3000,-1000,1,500,1000,1500,1800,1900,NOW];
@@ -7263,7 +7298,7 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
     if (key === lastKey) return;
     lastKey = key;
     visibility.checked = enabled;
-    const inPeriod = event => years.some(year => DiscoveryCore.yearGap(event.start,event.end,year) <= halfWin(year));
+    const inPeriod = event => years.some(year => DiscoveryCore.yearGap(event.start,event.end,year) <= SAME_TIME_YEARS);
     const current = records.filter(inPeriod);
     const filtered = query ? DiscoveryCore.search(searchable,query,'event',records.length).map(result => byId[result.recordId]) : records;
     const selectedPeriod = timeScope.value === 'selected';
@@ -7353,7 +7388,7 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
     const matchedIds = query ? new Set(DiscoveryCore.search(searchable,query,'event',records.length).map(result => result.recordId)) : null;
     const matchesTopic = record => topic.value === 'all' || record.rights.topic === topic.value || (topic.value === 'us-abortion' && record.rights.topic === 'reproductive' && record.rights.country.startsWith('United States'));
     const filtered = records.filter(record => (!matchedIds || matchedIds.has(record.id)) && matchesTopic(record) && (region.value === 'all' || record.region === region.value));
-    const inPeriod = record => years.some(year => DiscoveryCore.yearGap(record.start,record.end,year) <= halfWin(year));
+    const inPeriod = record => years.some(year => DiscoveryCore.yearGap(record.start,record.end,year) <= SAME_TIME_YEARS);
     const selectedPeriod = timeScope.value === 'selected';
     const matches = selectedPeriod ? filtered.filter(inPeriod) : filtered;
     const description = record => `${fmtEvent(record)} · ${record.rights.country}${inPeriod(record)?' · Near displayed year':''}`;
@@ -7530,7 +7565,7 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
     body.setAttribute('aria-hidden', String(mobile.matches && !open));
   }
   sheetToggle.onclick = () => setSheet(!sheetOpen);
-  mobile.addEventListener('change', () => { setSheet(sheetOpen); renderWorkspace(); });
+  mobile.addEventListener('change', () => { setSheet(sheetOpen); renderWorkspace(); updatePanelAccessibility(); });
   function setWorkspace(next) {
     window.scrollTo({ top: 0, behavior: 'instant' });
     workspace = next;
@@ -7564,9 +7599,10 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
   const fitFooter = () => {
     const style = getComputedStyle(footer);
     const rowHeight = Math.max(...[...footer.querySelectorAll('.atlas-footer-identity, .atlas-footer-support, .atlas-footer-sources > summary')].map(node => node.offsetHeight));
-    document.documentElement.style.setProperty('--footer-space', `${Math.ceil(rowHeight + parseFloat(style.paddingTop) + parseFloat(style.paddingBottom))}px`);
+    document.documentElement.style.setProperty('--footer-space', `${Math.ceil(rowHeight + parseFloat(style.paddingTop) + parseFloat(style.paddingBottom) + parseFloat(style.borderTopWidth) + parseFloat(style.borderBottomWidth))}px`);
   };
   const footerLayout = new ResizeObserver(fitFooter);
+  footerLayout.observe(footer, { box: 'border-box' });
   footerLayout.observe(footer.querySelector('.atlas-footer-main'));
   const footerSources = footer.querySelector('.atlas-footer-sources');
   footerSources.addEventListener('toggle', () => {
@@ -7642,7 +7678,43 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
   dateInput.addEventListener('keydown', event => { if (event.key === 'Escape') { dateInput.blur(); cv.focus({ preventScroll: true }); } });
 
   const menuTriggers = [...document.querySelectorAll('[data-atlas-menu]')].filter(button => button !== toolsToggle);
+  const panelInertState = new Map();
+  function restorePanelAccessibility() {
+    for (const [node, inert] of panelInertState) node.inert = inert;
+    panelInertState.clear();
+    panels.querySelectorAll('[role="dialog"]').forEach(panel => { panel.removeAttribute('role'); panel.removeAttribute('aria-modal'); });
+  }
+  function updatePanelAccessibility() {
+    restorePanelAccessibility();
+    const panel = panels.querySelector('.atlas-menu-panel:not([hidden])');
+    if (!panel || (!mobile.matches && innerHeight > 720)) return;
+    panel.setAttribute('role', 'dialog');
+    const bounds = panel.getBoundingClientRect();
+    const focused = document.activeElement;
+    let coveredFocus = false;
+    for (const node of [app.querySelector('header'), stage, document.getElementById('timeControls'), sheetToggle, side.querySelector('.side-intro'), side.querySelector('.workspace-coverage'), footer, document.querySelector('.mobile-atlas-nav')]) {
+      const rect = node.getBoundingClientRect();
+      if (!rect.width || !rect.height || rect.right <= bounds.left || rect.left >= bounds.right || rect.bottom <= bounds.top || rect.top >= bounds.bottom) continue;
+      panelInertState.set(node, node.inert);
+      node.inert = true;
+      coveredFocus ||= node.contains(focused);
+    }
+    const nav = document.querySelector('.mobile-atlas-nav');
+    panel.setAttribute('aria-modal', String(footer.inert && (nav.inert || !nav.getBoundingClientRect().height)));
+    if (coveredFocus) panel.querySelector('button, input, select')?.focus({ preventScroll: true });
+  }
+  window.addEventListener('resize', updatePanelAccessibility);
+  document.addEventListener('keydown', event => {
+    if (event.key !== 'Tab') return;
+    const panel = panels.querySelector('[aria-modal="true"]');
+    if (!panel) return;
+    const focusable = [...panel.querySelectorAll('button, input, select, a[href], [tabindex]')].filter(node => !node.disabled && node.tabIndex >= 0 && node.getClientRects().length);
+    const first = focusable[0], last = focusable.at(-1);
+    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+    else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+  });
   function closeMenus(restoreFocus = false) {
+    restorePanelAccessibility();
     let returnTrigger;
     for (const trigger of menuTriggers) {
       const panel = document.getElementById(trigger.dataset.atlasMenu);
@@ -7668,6 +7740,7 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
       side.classList.add('journey-panel-open');
       setSheet(true);
       panel.querySelector('input, button')?.focus({ preventScroll: true });
+      updatePanelAccessibility();
     }
   }
   for (const trigger of menuTriggers) trigger.onclick = () => {
@@ -7875,7 +7948,7 @@ window.HISTORY_PALEOGEOGRAPHY={"model":"PALEOMAP","retrieved":"2026-10-22","sour
     document.querySelector('.journey-shortcuts h3').textContent = `Explore near ${years.map(year => fmt(year)).join(' & ')}`;
     for (const [id, category] of [['womensRightsPanel', 'womens-rights'], ['migrationsPanel', 'migrations']]) {
       const button = document.querySelector(`[data-journey-shortcut="${id}"]`);
-      const count = ev.filter(record => record.cat === category && years.some(year => DiscoveryCore.yearGap(record.start, record.end, year) <= halfWin(year))).length;
+      const count = ev.filter(record => record.cat === category && years.some(year => DiscoveryCore.yearGap(record.start, record.end, year) <= SAME_TIME_YEARS)).length;
       button.hidden = !human;
       button.querySelector('[data-journey-count]').textContent = `${count} ${count === 1 ? 'record' : 'records'} near the selected ${years.length === 1 ? 'year' : 'years'}`;
     }

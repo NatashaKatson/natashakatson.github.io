@@ -56,7 +56,7 @@ try{
     check(await evaluate(`scrollY===0&&document.activeElement===cv&&state.year===2026&&document.getElementById('timeControls').getBoundingClientRect().bottom<=innerHeight+1`),'Returning restores the map and visible timeline without changing the year');
     if(width<=860){
       await evaluate(`AtlasUI.goToEvents();window.scrollTo({top:document.body.scrollHeight,behavior:'instant'})`);await pause(80);
-      check(await evaluate(`!document.getElementById('side').classList.contains('sheet-open')`),'An open mobile sheet does not cover the footer when scrolling down');
+      check(await evaluate(`(()=>{const coffee=document.querySelector('.atlas-support-link'),r=coffee.getBoundingClientRect();return (scrollY===0||!document.getElementById('side').classList.contains('sheet-open'))&&coffee.contains(document.elementFromPoint(r.left+r.width/2,r.top+r.height/2))})()`),'An open mobile sheet leaves the footer reachable and closes when the page scrolls');
     }
     if(width<=860){
       await evaluate(`window.scrollTo({top:0,behavior:'instant'});setYear(1928);select(ev.find(event=>event.wiki==='Penicillin').id,false);render()`);await pause(80);
