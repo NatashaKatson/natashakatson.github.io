@@ -138,7 +138,7 @@
     body.setAttribute('aria-hidden', String(mobile.matches && !open));
   }
   sheetToggle.onclick = () => setSheet(!sheetOpen);
-  mobile.addEventListener('change', () => { setSheet(sheetOpen); renderWorkspace(); });
+  mobile.addEventListener('change', () => { setSheet(sheetOpen); renderWorkspace(); updatePanelAccessibility(); });
   function setWorkspace(next) {
     window.scrollTo({ top: 0, behavior: 'instant' });
     workspace = next;
@@ -172,9 +172,10 @@
   const fitFooter = () => {
     const style = getComputedStyle(footer);
     const rowHeight = Math.max(...[...footer.querySelectorAll('.atlas-footer-identity, .atlas-footer-support, .atlas-footer-sources > summary')].map(node => node.offsetHeight));
-    document.documentElement.style.setProperty('--footer-space', `${Math.ceil(rowHeight + parseFloat(style.paddingTop) + parseFloat(style.paddingBottom))}px`);
+    document.documentElement.style.setProperty('--footer-space', `${Math.ceil(rowHeight + parseFloat(style.paddingTop) + parseFloat(style.paddingBottom) + parseFloat(style.borderTopWidth) + parseFloat(style.borderBottomWidth))}px`);
   };
   const footerLayout = new ResizeObserver(fitFooter);
+  footerLayout.observe(footer, { box: 'border-box' });
   footerLayout.observe(footer.querySelector('.atlas-footer-main'));
   const footerSources = footer.querySelector('.atlas-footer-sources');
   footerSources.addEventListener('toggle', () => {
@@ -250,7 +251,43 @@
   dateInput.addEventListener('keydown', event => { if (event.key === 'Escape') { dateInput.blur(); cv.focus({ preventScroll: true }); } });
 
   const menuTriggers = [...document.querySelectorAll('[data-atlas-menu]')].filter(button => button !== toolsToggle);
+  const panelInertState = new Map();
+  function restorePanelAccessibility() {
+    for (const [node, inert] of panelInertState) node.inert = inert;
+    panelInertState.clear();
+    panels.querySelectorAll('[role="dialog"]').forEach(panel => { panel.removeAttribute('role'); panel.removeAttribute('aria-modal'); });
+  }
+  function updatePanelAccessibility() {
+    restorePanelAccessibility();
+    const panel = panels.querySelector('.atlas-menu-panel:not([hidden])');
+    if (!panel || (!mobile.matches && innerHeight > 720)) return;
+    panel.setAttribute('role', 'dialog');
+    const bounds = panel.getBoundingClientRect();
+    const focused = document.activeElement;
+    let coveredFocus = false;
+    for (const node of [app.querySelector('header'), stage, document.getElementById('timeControls'), sheetToggle, side.querySelector('.side-intro'), side.querySelector('.workspace-coverage'), footer, document.querySelector('.mobile-atlas-nav')]) {
+      const rect = node.getBoundingClientRect();
+      if (!rect.width || !rect.height || rect.right <= bounds.left || rect.left >= bounds.right || rect.bottom <= bounds.top || rect.top >= bounds.bottom) continue;
+      panelInertState.set(node, node.inert);
+      node.inert = true;
+      coveredFocus ||= node.contains(focused);
+    }
+    const nav = document.querySelector('.mobile-atlas-nav');
+    panel.setAttribute('aria-modal', String(footer.inert && (nav.inert || !nav.getBoundingClientRect().height)));
+    if (coveredFocus) panel.querySelector('button, input, select')?.focus({ preventScroll: true });
+  }
+  window.addEventListener('resize', updatePanelAccessibility);
+  document.addEventListener('keydown', event => {
+    if (event.key !== 'Tab') return;
+    const panel = panels.querySelector('[aria-modal="true"]');
+    if (!panel) return;
+    const focusable = [...panel.querySelectorAll('button, input, select, a[href], [tabindex]')].filter(node => !node.disabled && node.tabIndex >= 0 && node.getClientRects().length);
+    const first = focusable[0], last = focusable.at(-1);
+    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+    else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+  });
   function closeMenus(restoreFocus = false) {
+    restorePanelAccessibility();
     let returnTrigger;
     for (const trigger of menuTriggers) {
       const panel = document.getElementById(trigger.dataset.atlasMenu);
@@ -276,6 +313,7 @@
       side.classList.add('journey-panel-open');
       setSheet(true);
       panel.querySelector('input, button')?.focus({ preventScroll: true });
+      updatePanelAccessibility();
     }
   }
   for (const trigger of menuTriggers) trigger.onclick = () => {
@@ -483,7 +521,7 @@
     document.querySelector('.journey-shortcuts h3').textContent = `Explore near ${years.map(year => fmt(year)).join(' & ')}`;
     for (const [id, category] of [['womensRightsPanel', 'womens-rights'], ['migrationsPanel', 'migrations']]) {
       const button = document.querySelector(`[data-journey-shortcut="${id}"]`);
-      const count = ev.filter(record => record.cat === category && years.some(year => DiscoveryCore.yearGap(record.start, record.end, year) <= halfWin(year))).length;
+      const count = ev.filter(record => record.cat === category && years.some(year => DiscoveryCore.yearGap(record.start, record.end, year) <= SAME_TIME_YEARS)).length;
       button.hidden = !human;
       button.querySelector('[data-journey-count]').textContent = `${count} ${count === 1 ? 'record' : 'records'} near the selected ${years.length === 1 ? 'year' : 'years'}`;
     }

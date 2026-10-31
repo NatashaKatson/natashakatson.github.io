@@ -61,7 +61,7 @@
     if (key === lastKey) return;
     lastKey = key;
     visibility.checked = enabled;
-    const inPeriod = event => years.some(year => DiscoveryCore.yearGap(event.start,event.end,year) <= halfWin(year));
+    const inPeriod = event => years.some(year => DiscoveryCore.yearGap(event.start,event.end,year) <= SAME_TIME_YEARS);
     const current = records.filter(inPeriod);
     const filtered = query ? DiscoveryCore.search(searchable,query,'event',records.length).map(result => byId[result.recordId]) : records;
     const selectedPeriod = timeScope.value === 'selected';
