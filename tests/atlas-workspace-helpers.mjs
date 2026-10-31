@@ -20,10 +20,6 @@ window.AtlasTestUI = {
     this.settings();
     document.getElementById('compareToggle').parentElement.open = true;
   },
-  about() {
-    this.settings();
-    document.querySelector('.atlas-footer').parentElement.open = true;
-  },
   journeys() {
     const button = [...document.querySelectorAll('[data-workspace="journeys"]')].find(b => b.getBoundingClientRect().height > 0);
     button.click();

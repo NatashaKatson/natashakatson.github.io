@@ -51,7 +51,7 @@ try {
         const rects=['.controls','.timeline-date','.dock-actions'].map(selector=>document.querySelector('.time '+selector).getBoundingClientRect());
         const overlap=rects.some((a,i)=>rects.slice(i+1).some(b=>a.left<b.right-.5&&a.right>b.left+.5&&a.top<b.bottom-.5&&a.bottom>b.top+.5));
         const field=input.getBoundingClientRect(),date=rects[1],centered=Math.abs((field.left+field.right-date.left-date.right)/2)<1;
-        return{value:input.value,expected:fmtInputYear(state.year),roundTrip:parseYear(input.value)===state.year,text,available,centered,overlap,overflow:document.documentElement.scrollWidth>innerWidth||document.documentElement.scrollHeight>innerHeight,border:getComputedStyle(document.getElementById('prev')).borderWidth};
+        return{value:input.value,expected:fmtInputYear(state.year),roundTrip:parseYear(input.value)===state.year,text,available,centered,overlap,overflow:document.documentElement.scrollWidth>innerWidth||document.getElementById('atlasMain').getBoundingClientRect().bottom>innerHeight+1,border:getComputedStyle(document.getElementById('prev')).borderWidth};
       })()`);
       if(result.value!==result.expected||!result.roundTrip||!result.centered||result.text>result.available+1||result.overlap||result.overflow||result.border!=='0px')throw Error(JSON.stringify({width,height,year,...result}));
     }

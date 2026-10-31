@@ -61,11 +61,6 @@
   population.querySelector('details').addEventListener('toggle', fitPopulation);
   window.addEventListener('resize', fitPopulation);
   fitPopulation();
-  const about = document.createElement('details');
-  about.className = 'settings-section';
-  about.innerHTML = '<summary>About & sources</summary>';
-  about.append(document.querySelector('.atlas-footer'));
-  settingsContents.append(about);
 
   const topics = document.getElementById('journeyTopics');
   const panels = document.getElementById('journeyPanels');
@@ -169,6 +164,19 @@
   const searchTrigger = document.querySelector('.history-search-trigger');
   searchTrigger.innerHTML = '<span aria-hidden="true">⌕</span><span class="search-label">Search places, people, events</span>';
   document.getElementById('mobileSearch').onclick = () => searchTrigger.click();
+  const footer = document.getElementById('atlasFooter');
+  document.querySelector('[data-atlas-footer]').onclick = () => {
+    closeMenus(); setSheet(false);
+    footer.scrollIntoView({ block: 'start', behavior: 'instant' });
+    footer.focus({ preventScroll: true });
+  };
+  footer.querySelector('[data-return-atlas]').onclick = () => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    goToMap();
+  };
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 0) { closeMenus(); if (mobile.matches && sheetOpen) setSheet(false); }
+  }, { passive: true });
   function goToMap() {
     if (settings.open) closeSettingsForNavigation();
     setWorkspace('explore');

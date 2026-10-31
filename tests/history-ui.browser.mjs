@@ -39,9 +39,9 @@ try {
   await send('Page.navigate', { url: url + '#1992' });
   await waitFor('!!window.AtlasUI && !!window.HistoryCountries');
   assert(await evaluate(`document.getElementById('yr').textContent==='1992'`), 'Atlas starts with the support service blocked');
-  await evaluate(`AtlasTestUI.about()`);
+  await evaluate(`document.querySelector('[data-atlas-footer]').click()`);
   assert(await evaluate(`(()=>{const a=document.querySelector('.atlas-support-link');return a?.href==='https://www.buymeacoffee.com/natashakatson'&&a.getBoundingClientRect().height>=44&&a.textContent.includes('Buy me a coffee')})()`), 'Support link stays visible with the support service blocked');
-  await evaluate(`AtlasTestUI.settings(false)`);
+  await evaluate(`document.querySelector('[data-return-atlas]').click()`);
   console.log('Atlas and support link work independently of the support service');
   const bad = await evaluate(`(async()=>{
     stopSpin();flyToken++;

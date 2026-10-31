@@ -1,6 +1,7 @@
 /* The atlas workspace: one map, one time navigator, details when needed. */
 :root { --workspace-paper: #faf8f4; --workspace-ink: #302b27; --workspace-line: #e3ddd4; --workspace-accent: #b94e32; }
-html, body { height: 100%; overflow: hidden; background: var(--workspace-paper); }
+html { height: 100%; overflow-x: hidden; overflow-y: auto; background: var(--workspace-paper); }
+body { height: auto; min-height: 100%; overflow: visible; background: var(--workspace-paper); }
 .app { --population-space: 42px; display: grid; height: 100dvh; min-height: 0; grid-template-columns: minmax(0, 1fr) clamp(360px, 28.5vw, 410px); grid-template-rows: 70px minmax(0, 1fr) calc(132px + var(--population-space)); grid-template-areas: 'head head' 'stage side' 'time side'; background: var(--workspace-paper); }
 .app > header { display: flex; min-width: 0; padding: 0 28px; gap: 42px; flex-wrap: nowrap; border-bottom: 1px solid var(--workspace-line); background: var(--workspace-paper); }
 .brand { gap: 10px; flex: none; }
@@ -174,9 +175,6 @@ html, body { height: 100%; overflow: hidden; background: var(--workspace-paper);
 .time .population-value { align-items: baseline; }
 .time .population-method { left: 0; right: auto; bottom: calc(100% + 8px); width: min(620px, calc(100vw - 48px)); max-width: 100%; max-height: min(50dvh, var(--population-note-space, 400px)); }
 .time:has(.population-heading details[open]) { z-index: 40; }
-.settings-dialog .atlas-footer { padding: 0; border: 0; background: transparent; }
-.settings-dialog .atlas-footer-main, .settings-dialog .atlas-footer-source-grid { display: block; }
-.settings-dialog .atlas-footer-main > * { margin-bottom: 16px; }
 .workspace-primary { width: 100%; min-height: 46px; margin-top: 28px; border: 0; border-radius: 6px; background: var(--workspace-accent); color: #fff; cursor: pointer; font: 14px var(--body); }
 .app:has(.deep-time-only) .journey-collections :is(.curated-discoveries, .daily-challenge-card, .comparison-stories, #fact) { display: block; }
 [hidden] { display: none !important; }
@@ -308,4 +306,19 @@ html, body { height: 100%; overflow: hidden; background: var(--workspace-paper);
   .app:has(#gotoInput.is-wide-date):has(.side.sheet-open) { grid-template-rows: 48px minmax(0, 1fr) calc(100px + var(--population-space)) 0 48px; }
   .time:has(#gotoInput.is-wide-date) { grid-template-rows: max-content 36px 38px; grid-template-areas: 'population population population' 'play date actions' 'ruler ruler ruler' 'summary summary navigation'; }
   .app:has(#gotoInput.is-wide-date) > .side.sheet-open { bottom: calc(148px + var(--population-space)); }
+}
+
+/* Credits and support belong to the page footer, after the full-height atlas. */
+body > .atlas-footer { padding: 24px; background: var(--workspace-paper); }
+.atlas-footer-main { flex-wrap: wrap; }
+.atlas-footer-note { display: block; }
+.atlas-footer-support > span { display: inline; }
+.atlas-footer-source-grid p { font-size: 12px; }
+.footer-shortcut, .atlas-footer-return { min-height: 44px; padding: 8px 0; border: 0; background: transparent; color: var(--workspace-accent); font: 12px var(--body); cursor: pointer; }
+.atlas-footer-return { margin-top: 12px; }
+.footer-shortcut:focus-visible, .atlas-footer-return:focus-visible { outline: 2px solid var(--workspace-accent); outline-offset: 3px; }
+@media (max-width: 860px) {
+  body > .atlas-footer { padding: 24px 20px; }
+  .atlas-footer-main { display: grid; gap: 16px; }
+  .atlas-footer-support { margin: 0; justify-content: space-between; }
 }
