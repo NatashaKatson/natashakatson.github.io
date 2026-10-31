@@ -61,11 +61,6 @@
   population.querySelector('details').addEventListener('toggle', fitPopulation);
   window.addEventListener('resize', fitPopulation);
   fitPopulation();
-  const about = document.createElement('details');
-  about.className = 'settings-section';
-  about.innerHTML = '<summary>About & sources</summary>';
-  about.append(document.querySelector('.atlas-footer'));
-  settingsContents.append(about);
 
   const topics = document.getElementById('journeyTopics');
   const panels = document.getElementById('journeyPanels');
@@ -145,6 +140,7 @@
   sheetToggle.onclick = () => setSheet(!sheetOpen);
   mobile.addEventListener('change', () => { setSheet(sheetOpen); renderWorkspace(); });
   function setWorkspace(next) {
+    window.scrollTo({ top: 0, behavior: 'instant' });
     workspace = next;
     app.dataset.workspace = next;
     document.querySelectorAll('[data-workspace]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.workspace === next)));
@@ -164,11 +160,27 @@
     setWorkspace('journeys');
     const id = button.dataset.journeyShortcut;
     if (id === 'dinosaurs') dinoTopic.click();
-    else openMenu(document.querySelector(`[data-atlas-menu="${id}"]`));
+    else {
+      (id === 'womensRightsPanel' ? HistoryWomensRights : HistoryMigrations).setScope('selected', true);
+      openMenu(document.querySelector(`[data-atlas-menu="${id}"]`));
+    }
   });
   const searchTrigger = document.querySelector('.history-search-trigger');
   searchTrigger.innerHTML = '<span aria-hidden="true">⌕</span><span class="search-label">Search places, people, events</span>';
   document.getElementById('mobileSearch').onclick = () => searchTrigger.click();
+  const footer = document.getElementById('atlasFooter');
+  document.querySelector('[data-atlas-footer]').onclick = () => {
+    closeMenus(); setSheet(false);
+    footer.scrollIntoView({ block: 'start', behavior: 'instant' });
+    footer.focus({ preventScroll: true });
+  };
+  footer.querySelector('[data-return-atlas]').onclick = () => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    goToMap();
+  };
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 0) { closeMenus(); if (mobile.matches && sheetOpen) setSheet(false); }
+  }, { passive: true });
   function goToMap() {
     if (settings.open) closeSettingsForNavigation();
     setWorkspace('explore');
@@ -183,6 +195,7 @@
   document.querySelector('.skip-links a[href="#sideTitle"]').onclick = event => { event.preventDefault(); goToEvents(); };
   document.querySelector('.skip-links a[href="#cv"]').onclick = event => { event.preventDefault(); goToMap(); };
   function reveal(element) {
+    window.scrollTo({ top: 0, behavior: 'instant' });
     if (settings.open) closeSettingsForNavigation();
     const inJourneys = !!element.closest('.sidebar-extras');
     if (inJourneys) {
@@ -251,7 +264,12 @@
     }
   }
   for (const trigger of menuTriggers) trigger.onclick = () => {
-    if (trigger.getAttribute('aria-expanded') === 'true') closeMenus(); else openMenu(trigger);
+    if (trigger.getAttribute('aria-expanded') === 'true') closeMenus();
+    else {
+      if (trigger.dataset.atlasMenu === 'womensRightsPanel') HistoryWomensRights.setScope('all');
+      if (trigger.dataset.atlasMenu === 'migrationsPanel') HistoryMigrations.setScope('all');
+      openMenu(trigger);
+    }
   };
   document.addEventListener('pointerdown', event => {
     // Journey panels remain open while the map is explored. Era selection is transient.
@@ -447,6 +465,14 @@
     document.getElementById('nextEvent').disabled = !available.some(event => event.start > state.year);
     const deep = years.some((year) => year < -1000000);
     const human = years.some((year) => year >= -1000000);
+    document.querySelector('.journey-shortcuts h3').textContent = `Explore near ${years.map(year => fmt(year)).join(' & ')}`;
+    for (const [id, category] of [['womensRightsPanel', 'womens-rights'], ['migrationsPanel', 'migrations']]) {
+      const button = document.querySelector(`[data-journey-shortcut="${id}"]`);
+      const count = ev.filter(record => record.cat === category && years.some(year => DiscoveryCore.yearGap(record.start, record.end, year) <= halfWin(year))).length;
+      button.hidden = !human;
+      button.querySelector('[data-journey-count]').textContent = `${count} ${count === 1 ? 'record' : 'records'} near the selected ${years.length === 1 ? 'year' : 'years'}`;
+    }
+    document.querySelector('[data-journey-shortcut="dinosaurs"]').hidden = !deep;
     const key = `${deep}/${human}/${state.borders}/${[...state.cats].sort().join(',')}/${HistoryDiscovery.isComparing()}`;
     if (key === lastKey) return;
     lastKey = key;
