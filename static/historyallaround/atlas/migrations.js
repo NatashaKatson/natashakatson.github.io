@@ -69,7 +69,7 @@
     const near = matches.filter(inPeriod).sort((a,b) => a.start-b.start);
     const other = matches.filter(event => !inPeriod(event)).sort((a,b) => b.start-a.start);
     const periodLabel = years.length > 1 ? `${fmt(years[0])} & ${fmt(years[1])}` : fmt(years[0]);
-    status.textContent = selectedPeriod ? `${near.length} histories near ${periodLabel} · ±${SAME_TIME_YEARS} years` : query
+    status.textContent = selectedPeriod ? `${near.length} ${near.length === 1 ? 'history' : 'histories'} near ${periodLabel} · ±${SAME_TIME_YEARS} years` : query
       ? `${matches.length} ${matches.length === 1 ? 'match' : 'matches'} · ${records.length} histories total`
       : `${current.length} near ${periodLabel} · ${records.length} histories total`;
     const focusedId = results.contains(document.activeElement) ? document.activeElement.dataset.migrationRecord : null;

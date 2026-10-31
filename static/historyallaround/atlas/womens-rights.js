@@ -73,7 +73,7 @@
     const matches = selectedPeriod ? filtered.filter(inPeriod) : filtered;
     const description = record => `${fmtEvent(record)} · ${record.rights.country}${inPeriod(record)?' · Near displayed year':''}`;
     const periodLabel = years.map(year => fmt(year)).join(' & ');
-    status.textContent = selectedPeriod ? `${matches.length} milestones near ${periodLabel} · ±${SAME_TIME_YEARS} years` : `${matches.length} of ${records.length} milestones · ${matches.filter(inPeriod).length} near ${periodLabel}`;
+    status.textContent = selectedPeriod ? `${matches.length} ${matches.length === 1 ? 'milestone' : 'milestones'} near ${periodLabel} · ±${SAME_TIME_YEARS} years` : `${matches.length} of ${records.length} milestones · ${matches.filter(inPeriod).length} near ${periodLabel}`;
     const filters = JSON.stringify([query,topic.value,region.value,timeScope.value]);
     const period = years.join('/');
     // A timeline, selection or visibility update must not replace the focused
