@@ -140,6 +140,7 @@
   sheetToggle.onclick = () => setSheet(!sheetOpen);
   mobile.addEventListener('change', () => { setSheet(sheetOpen); renderWorkspace(); });
   function setWorkspace(next) {
+    window.scrollTo({ top: 0, behavior: 'instant' });
     workspace = next;
     app.dataset.workspace = next;
     document.querySelectorAll('[data-workspace]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.workspace === next)));
@@ -191,6 +192,7 @@
   document.querySelector('.skip-links a[href="#sideTitle"]').onclick = event => { event.preventDefault(); goToEvents(); };
   document.querySelector('.skip-links a[href="#cv"]').onclick = event => { event.preventDefault(); goToMap(); };
   function reveal(element) {
+    window.scrollTo({ top: 0, behavior: 'instant' });
     if (settings.open) closeSettingsForNavigation();
     const inJourneys = !!element.closest('.sidebar-extras');
     if (inJourneys) {

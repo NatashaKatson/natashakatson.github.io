@@ -195,7 +195,7 @@ body { height: auto; min-height: 100%; overflow: visible; background: var(--work
   .brand h1 { font-size: 19px; }
   .brand > svg { width: 24px; height: 24px; }
   .workspace-nav { display: none; }
-  .app > header .head-tools { display: block; }
+  .app > header .head-tools { display: block; width: 44px; flex: 0 0 44px; }
   .app > header .history-search-trigger { width: 44px; height: 44px; min-height: 44px; padding: 7px; justify-content: center; background: transparent; border: 0; }
   .history-search-trigger .search-label { display: none; }
   .app > .stage { grid-area: stage; order: initial; min-height: 0; height: auto; scroll-margin-top: 0; }
