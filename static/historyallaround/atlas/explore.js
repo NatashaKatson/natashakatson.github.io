@@ -141,6 +141,7 @@
       suggested.querySelectorAll('[data-suggested-year]').forEach(button => button.setAttribute('aria-current', Number(button.dataset.suggestedYear) === state.year ? 'date' : 'false'));
     }
     const context = document.getElementById('atlasMain').dataset.sidebarContext;
+    intro.hidden = context === 'people';
     const browseKey = `${state.year}/${region}/${category}/${context}/${[...state.cats]}`;
     if (lastBrowse !== browseKey) {
       lastBrowse = browseKey;

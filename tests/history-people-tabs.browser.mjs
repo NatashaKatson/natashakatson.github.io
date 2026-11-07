@@ -36,11 +36,38 @@ const screenshot = async (name) => {
 };
 try {
   await send('Page.enable'); await send('Runtime.enable'); await send('Network.enable');
+  await send('Network.setCacheDisabled', {cacheDisabled: true});
   await send('Network.setBlockedURLs', {urls: ['https://fonts.googleapis.com/*', 'https://fonts.gstatic.com/*']});
   await send('Emulation.setDeviceMetricsOverride', {width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false});
   await send('Page.navigate', {url: testURL + '#3000bc'});
   await waitFor('!!window.AtlasUI && !!window.HistoryDiscovery');
   await evaluate('stopSpin();flyToken++');
+  for (const width of [1440, 390]) {
+    await send('Emulation.setDeviceMetricsOverride', {width, height: 1000, deviceScaleFactor: 1, mobile: width <= 860});
+    console.log(await evaluate(`(async () => {
+      const check = (value, message) => { if (!value) throw Error(message); };
+      const visible = node => !!node.getClientRects().length && getComputedStyle(node).display !== 'none';
+      setYear(1884);
+      AtlasUI.goToEvents();
+      document.querySelector('[data-context="events"]').click();
+      const intro = document.getElementById('yearIntroduction');
+      check(visible(intro) && intro.textContent.includes('Berlin Conference'), 'Events shows the 1884 world context');
+      document.querySelector('[data-context="people"]').click();
+      check(!visible(intro), 'People hides the event introduction at 1884');
+      check(visible(document.getElementById('people')), 'People list is visible at 1884');
+      check(visible(document.getElementById('browseRegion')) && !visible(document.getElementById('browseCategory')), 'People keeps region browsing without event types');
+      update();
+      await new Promise(requestAnimationFrame);
+      check(!visible(intro), 'Same-year redraw keeps event introduction hidden');
+      setYear(1885);
+      await new Promise(requestAnimationFrame);
+      check(!visible(intro), 'Date change keeps event introduction hidden in People');
+      document.querySelector('[data-context="events"]').click();
+      check(visible(intro) && intro.textContent.includes('1885'), 'Events restores the current world context');
+      return 'PASS world context stays in Events at ' + innerWidth + 'px';
+    })()`));
+  }
+  await evaluate('setYear(-3000)');
   await evaluate('HistoryDiscovery.explore([30.52, 50.45])');
   await waitFor(`document.querySelector('.discovery-panel').textContent.includes('Search complete')`);
   for (const width of [1440, 390]) {
