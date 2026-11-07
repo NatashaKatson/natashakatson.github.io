@@ -40,10 +40,21 @@ const evaluate = async (expression) => {
     );
   return result.result.value;
 };
+const waitFor = async (expression) => {
+  for (let attempt = 0; attempt < 150; attempt++) {
+    if (await evaluate(expression)) return;
+    await new Promise((resolve) => setTimeout(resolve, 100));
+  }
+  throw new Error('Not ready: ' + expression);
+};
 
+try {
 await send('Page.enable');
   await send('Page.addScriptToEvaluateOnNewDocument', { source: workspaceSetup });
   await send("Runtime.enable");
+await send('Network.enable');
+await send('Network.setCacheDisabled', {cacheDisabled:true});
+await send('Network.setBlockedURLs', {urls:['https://fonts.googleapis.com/*','https://fonts.gstatic.com/*']});
 await send('Page.enable');
 await send('Page.addScriptToEvaluateOnNewDocument',{source:`{const D=Date;window.Date=class extends D{constructor(...args){super(...(args.length?args:['2035-06-01T12:00:00Z']));}};}`});
 const errors = [];
@@ -63,7 +74,7 @@ await new Promise((r) => setTimeout(r, 100));
 await send("Page.navigate", {
   url: (process.env.ATLAS_TEST_URL || "http://127.0.0.1:8891/atlas/") + "#1789",
 });
-await new Promise((r) => setTimeout(r, 2500));
+await waitFor('!!window.AtlasUI && !!document.querySelector(".population-values")');
 console.log(await evaluate(`(async()=>{
 const assert=(v,m)=>{if(!v)throw Error(m)};
 assert(NOW===2026&&yearAt(1)===2026&&new Date().getFullYear()===2035,'fixed endpoint independent of browser clock');
@@ -126,7 +137,8 @@ return 'Mobile population comparison fits 390px';
 const shot=await send('Page.captureScreenshot',{format:'png'});
 (await import('node:fs')).writeFileSync((await import('node:path')).join((await import('node:os')).tmpdir(),'history-population-mobile.png'),Buffer.from(shot.data,'base64'));
 await send('Page.addScriptToEvaluateOnNewDocument',{source:`{const original=fetch;window.__restorePopulationFetch=()=>{window.fetch=original};window.fetch=(url,...args)=>url==='population.json'?Promise.reject(new Error('Test missing population data')):original(url,...args);}`});
-await send('Page.reload',{ignoreCache:true});await new Promise(r=>setTimeout(r,1500));
+await send('Page.reload',{ignoreCache:true});
+await waitFor('!!window.AtlasUI && !!document.querySelector(".population-values") && document.querySelector(".population-values").textContent.includes("unavailable")');
 console.log(await evaluate(`(async()=>{
 const assert=(v,m)=>{if(!v)throw Error(m)};
 assert(document.querySelector('.population-values').textContent.includes('unavailable'),'failure state');
@@ -138,5 +150,8 @@ assert(document.querySelector('.population-value')&&document.querySelector('.pop
 return 'Population failure is nonblocking and retry recovers';
 })()`));
 console.log('Browser exceptions:',errors);
-await fetch(cdpURL+'/json/close/'+page.id);ws.close();
 if(errors.length)throw Error(JSON.stringify(errors));
+} finally {
+  await fetch(cdpURL+'/json/close/'+page.id).catch(()=>{});
+  ws.close();
+}
