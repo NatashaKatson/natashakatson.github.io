@@ -17,9 +17,27 @@
       return year < start ? api.yearsBetween(year, start)
         : year > end ? api.yearsBetween(end, year) : 0;
     },
+    inYear(record, year) {
+      if (!Number.isInteger(year) || year === 0) return false;
+      const end = record.end ?? record.start;
+      // Fossil ages carry an explicitly disclosed million-year uncertainty window.
+      // Human milestones are never moved into a neighbouring calendar year.
+      if (record.cat === 'dinosaurs') return year <= -66000000 && api.yearGap(record.start, end, year) <= 1000000;
+      return year >= record.start && year <= end;
+    },
+    temporalKind(record) {
+      return record.cat === 'dinosaurs' ? 'fossil-range' : record.ongoing ? 'ongoing-development'
+        : (record.end ?? record.start) > record.start ? 'historical-interval' : 'dated-milestone';
+    },
+    temporalStatus(record, year) {
+      if (!api.inYear(record, year)) return 'Different year';
+      if (record.cat === 'dinosaurs') return 'Approximate fossil age';
+      if (record.end === record.start || record.end == null) return record.approx ? 'Approximate date' : 'Dated milestone';
+      return year === record.start ? 'Begins in this year' : record.ongoing ? 'Ongoing in this year' : 'Within the recorded interval';
+    },
     isHistoricalContext(record, year) {
       return record.kind === 'event' && record.cat !== 'dinosaurs' && record.end > record.start &&
-        api.yearsBetween(record.start, year) > api.sameTimeYears;
+        year > record.start;
     },
     contemporaryPair(people, year, anchorWiki) {
       const alive = people.filter((p) => p.born <= year && p.died >= year);
@@ -77,7 +95,7 @@
     meanwhile(record, events, year) {
       const regions = new Set();
       return events.filter((e) => e.wiki !== record.wiki && e.region !== record.region &&
-        api.yearGap(e.start, e.end, year) <= api.sameTimeYears).sort((a, b) =>
+        api.inYear(e, year)).sort((a, b) =>
           Number(a.approx) - Number(b.approx) || a.start - b.start
         ).filter((e) => {
           if (regions.has(e.region)) return false;

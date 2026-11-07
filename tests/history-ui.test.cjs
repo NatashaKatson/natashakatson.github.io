@@ -80,12 +80,12 @@ test('browsing summaries preserve complete short text and do not mistake an abbr
   assert.equal(core.summary(''), '');
 });
 
-test('1992 contains nearby dated events without unrelated Indigenous community overviews', () => {
-  const active = records.filter((r) => core.yearGap(r.start, r.end, 1992) <= core.sameTimeYears);
+test('1992 contains only dated events and intervals that include that year', () => {
+  const active = records.filter((r) => core.inYear(r,1992));
   const context = active.filter((r) => core.isHistoricalContext(r, 1992));
   const dated = active.filter((r) => !core.isHistoricalContext(r, 1992));
   assert.deepEqual(context.map((r) => r.wiki), ['Seventh_cholera_pandemic', 'HIV/AIDS', 'Vietnamese_boat_people']);
-  assert.deepEqual(dated.map((r) => r.wiki), ['Dissolution_of_the_Soviet_Union', '1994_South_African_general_election', 'Bosnian_War', 'Great_Lakes_refugee_crisis', 'Belém_do_Pará_Convention', 'Planned_Parenthood_v._Casey', 'Freedom_of_Access_to_Clinic_Entrances_Act']);
+  assert.deepEqual(dated.map((r) => r.wiki), ['Bosnian_War', 'Planned_Parenthood_v._Casey']);
   assert(!active.some((r) => r.indigenous));
   assert.equal(core.isHistoricalContext(records.find((r) => r.wiki === 'Penicillin'), 1928), false);
   assert.equal(core.isHistoricalContext(records.find((r) => r.wiki === 'Tyrannosaurus'), -67000000), false);
@@ -104,7 +104,7 @@ test('country catalog includes every detailed-map destination with finite coordi
   }
 });
 
-test('timeline includes dates exactly two years away and excludes dates three years away', () => {
+test('timeline excludes neighbouring human years and retains documented intervals and fossil age uncertainty', () => {
   const html = fs.readFileSync('static/historyallaround/atlas/index.html', 'utf8');
   const context = vm.createContext({ DiscoveryCore: core, state: { year: 1819 } });
   vm.runInContext([
@@ -113,15 +113,15 @@ test('timeline includes dates exactly two years away and excludes dates three ye
     html.match(/^function relevance.*$/m)[0],
   ].join('\n'), context);
   const relevance = (start, end = start, year = 1819) => {
-    context.record = { start, end };
+    context.record = { start, end, cat: start < -1000000 ? "dinosaurs" : "culture" };
     context.year = year;
     return vm.runInContext('relevance(record, year, halfWin(year))', context);
   };
-  for (const date of [1817, 1819, 1821]) assert(relevance(date) > 0);
-  for (const date of [1816, 1822]) assert.equal(relevance(date), 0);
-  assert(relevance(-2, -2, 1) > 0, 'BC/AD dates skip year zero');
+  assert(relevance(1819) > 0);
+  for (const date of [1816,1817,1818,1820,1821,1822]) assert.equal(relevance(date), 0);
+  assert.equal(relevance(-1, -1, 1),0,'1 BC does not leak into AD 1');
   assert.equal(relevance(-3, -3, 1), 0);
   assert(relevance(1800, 1820) > 0, 'recorded periods retain their intervals');
   assert(relevance(-150000000, -150000000, -149000000) > 0, 'fossil window stays one million years');
-  assert.match(html, /within 2 years of/);
+  assert.match(html, /dated event.* in /);
 });

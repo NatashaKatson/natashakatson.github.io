@@ -35,6 +35,7 @@ try {
   await send('Page.enable'); await send('Runtime.enable'); await send('Network.enable');
   await send('Network.setCacheDisabled', { cacheDisabled: true });
   await send('Network.setBlockedURLs', { urls: ['https://*'] });
+  await send('Emulation.setDeviceMetricsOverride', { width: 1440, height: 950, deviceScaleFactor: 1, mobile: false });
   await send('Page.navigate', { url: url + '#1942' });
   await waitFor('!!window.AtlasExplore && !!window.AtlasUI');
   await evaluate('stopSpin()');
@@ -44,7 +45,7 @@ try {
       const check=(v,m)=>{if(!v)throw Error(m)};
       setYear(1942);AtlasUI.goToEvents();render();
       const intro=document.getElementById('yearIntroduction');
-      check(intro.open&&intro.textContent.includes('1942 — World War II'),'Year opens contextual introduction');
+      check(intro.open&&intro.textContent.includes('1942 — Continuing: World War II'),'Year opens contextual introduction');
       check(intro.textContent.includes('fifty nations')&&intro.querySelector('a[href^="https://www.nationalww2museum.org"]'),'Introduction is drawn from sourced data');
       check(intro.querySelectorAll('[data-intro-record]').length===3,'Bounded regional entry points');
       check(!intro.textContent.includes('United Nations founded'),'No future events presented as simultaneous');

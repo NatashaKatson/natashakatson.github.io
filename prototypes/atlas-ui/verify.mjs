@@ -67,14 +67,14 @@ try {
   await check(`document.querySelector('#detail h3 .event-emoji').textContent==='💊' && !!document.querySelector('#detail .close')`, 'Original detail card shows the new event emoji');
   await check(`(()=>{const icon=document.querySelector('#detail [data-meanwhile] .event-emoji');return icon&&getComputedStyle(icon).display==='inline-block'})()`, 'Related-event cards show their event emojis inline with titles');
   await screenshot('desktop');
-  await evaluate(`document.querySelector('#detail .close').click();setMode('flat');globalThis.drawnEmoji=[];const originalFillText=ctx.fillText;ctx.fillText=function(text,...args){drawnEmoji.push(text);return originalFillText.call(this,text,...args)};render();ctx.fillText=originalFillText;`);
-  await check(`drawnEmoji.includes('💊') && hits.some(h=>h.id===ev.find(e=>e.wiki==='Penicillin').id)`, 'Map draws the emoji and preserves the original selectable event');
+  await evaluate(`document.querySelector('#detail .close').click();setMode('flat');globalThis.drawnSymbols=[];const originalDrawSymbol=AtlasCartography.drawSymbol;AtlasCartography.drawSymbol=function(context,record,...args){drawnSymbols.push({id:record.id,symbol:AtlasCartography.symbolKey(record)});return originalDrawSymbol.call(this,context,record,...args)};render();AtlasCartography.drawSymbol=originalDrawSymbol;`);
+  await check(`drawnSymbols.some(r=>r.id===ev.find(e=>e.wiki==='Penicillin').id&&r.symbol==='medicine') && hits.some(h=>h.id===ev.find(e=>e.wiki==='Penicillin').id)`, 'Map draws a consistent medical vector symbol and preserves the selectable event');
   await waitFor(`Array.isArray(bCache.get(currentChunk()))`);
   await check(`polities().length>0`, 'Historical borders load from the embedded original datasets offline');
   await evaluate(`setYear(1992);stopSpin();globalThis.musqueam=ev.find(e=>e.wiki==='Musqueam_Indian_Band');`);
   await check(`musqueam.start===500 && musqueam.end===500 && !activeEvents().some(({e})=>e===musqueam)`, 'Musqueam movement has one approximate date and is absent in 1992');
-  await check(`document.getElementById('sideSub').textContent==='7 dated events within 2 years of 1992 · 3 historical context records'`, '1992 shows nearby dated events and continuing pandemics');
-  await check(`!document.querySelector('#regions [data-id="'+musqueam.id+'"]') && !!document.querySelector('#regions > .region [data-id="'+ev.find(e=>e.wiki==='Dissolution_of_the_Soviet_Union').id+'"]')`, 'Unrelated Indigenous overviews stay absent from the 1992 ledger');
+  await check(`document.getElementById('sideSub').textContent==='2 dated events in 1992 · 3 continuing developments'`, '1992 shows its own dated events and continuing developments');
+  await check(`!document.querySelector('#regions [data-id="'+musqueam.id+'"]') && !document.querySelector('#regions [data-id="'+ev.find(e=>e.wiki==='Dissolution_of_the_Soviet_Union').id+'"]') && !!document.querySelector('#regions > .region [data-id="'+ev.find(e=>e.wiki==='Bosnian_War').id+'"]')`, 'Unrelated dates stay absent while the recorded 1992 war onset is available');
   await check(`!activeEvents().some(({e})=>['Black_Death','COVID-19_pandemic','Inactivated_polio_vaccine'].includes(e.wiki))`, 'Unrelated past and future events do not appear in 1992');
   await screenshot('context-1992');
   await evaluate(`select(musqueam.id,false);`);

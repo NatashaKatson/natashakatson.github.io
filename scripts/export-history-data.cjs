@@ -40,7 +40,7 @@ const data = {
     eventCount: events.length,
     peopleCount: people.length,
     peopleDateConvention: 'People use inclusive birth and death years at annual resolution. A null diedYear means no recorded death; the map bounds that interval at the atlas coverage limit of 2026, without assigning a death date. Optional birthDate/deathDate fields preserve independently recorded calendar dates as ISO strings; missing day-level dates remain null. Approximate lifespans and calendar qualifications are explained in dateNote.',
-    dateConvention: 'Historical years use negative numbers for BC/BCE and positive numbers for AD/CE; there is no year zero. Prehistoric entries retain the atlas numeric dates, including approximate negative ages for dinosaurs. A null event endYear means a single dated entry. For ongoing events, endYear is the atlas coverage cutoff (2026), not a historical end date.',
+    dateConvention: 'Historical years use negative numbers for BC/BCE and positive numbers for AD/CE; there is no year zero. Prehistoric entries retain the atlas numeric dates, including approximate negative ages for dinosaurs. A null event endYear means a single dated entry. For ongoing events, endYear is the atlas coverage cutoff (2026), not a historical end date. Human milestones appear only in their recorded year; documented intervals include both endpoints. Approximate fossil ages retain their disclosed million-year window.',
     coordinates: 'Latitude and longitude in degrees. Points can represent a location associated with an entry rather than its full geographical extent.',
     ids: 'IDs match the current atlas array positions and may change if source records are reordered.',
     regions: {

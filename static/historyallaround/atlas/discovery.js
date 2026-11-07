@@ -769,7 +769,7 @@
     const section = el.querySelector(".meanwhile-slot");
     if (!section) return;
     section.className = "near meanwhile-slot";
-    section.innerHTML = `<b>Meanwhile… in ${esc(fmt(year))}</b><p>Dated events within 2 years and recorded historical periods elsewhere in this time window. Coincidence in time does not imply a causal connection; approximate dates remain approximate.</p>${pinned && pinned.id !== record.id ? `<button type="button" class="pinned-event">← Return to ${esc(pinned.title)} · ${esc(fmt(pinned.year))}</button>` : ""}${others.length ? others.map((r, i) => `<div class="meanwhile-card"><button type="button" class="story-card" data-meanwhile="${i}"><b>${AtlasEventEmojis.icon(r)}${esc(r.title)}</b><small>${esc(REGIONS[r.region])} · ${esc(fmtSpan(r.start, r.end !== r.start ? r.end : null, r.approx))}${core.isHistoricalContext(r, year) ? " · historical context" : ""}</small><span>${esc(r.blurb)}</span></button><a href="${esc(r.source || wikiUrl(r.wiki))}" target="_blank" rel="noopener">Source ↗</a></div>`).join("") : "<p>No records in other regions are available within 2 years of this date.</p>"}`;
+    section.innerHTML = `<b>Meanwhile… in ${esc(fmt(year))}</b><p>Dated events and recorded historical developments elsewhere in this year. Coincidence in time does not imply a causal connection; approximate dates remain approximate.</p>${pinned && pinned.id !== record.id ? `<button type="button" class="pinned-event">← Return to ${esc(pinned.title)} · ${esc(fmt(pinned.year))}</button>` : ""}${others.length ? others.map((r, i) => `<div class="meanwhile-card"><button type="button" class="story-card" data-meanwhile="${i}"><b>${AtlasEventEmojis.icon(r)}${esc(r.title)}</b><small>${esc(REGIONS[r.region])} · ${esc(fmtSpan(r.start, r.end !== r.start ? r.end : null, r.approx))}${core.isHistoricalContext(r, year) ? " · historical context" : ""}</small><span>${esc(r.blurb)}</span></button><a href="${esc(r.source || wikiUrl(r.wiki))}" target="_blank" rel="noopener">Source ↗</a></div>`).join("") : "<p>No records in other regions are available in this year.</p>"}`;
     section.querySelector(".pinned-event")?.addEventListener("click", () => {
       const anchor = pinned;
       trail.push(snapshot());
@@ -990,6 +990,7 @@
     jumpSearch,
     urlHash,
     openView,
+    labelViewport() { return compare.renderViewport || {x:0,width:W}; },
     render(scene) {
       renderSidebarScope();
       window.HistoryPaleogeography?.prepare(compare.on ? [compare.left, state.year] : [state.year]);
@@ -1012,7 +1013,9 @@
           ctx.beginPath();
           ctx.rect(x, 0, width, H);
           ctx.clip();
+          compare.renderViewport={x,width};
           withYear(year, scene);
+          compare.renderViewport=null;
           if (
             document.getElementById("changedOutlines").checked &&
             state.borders === "history"

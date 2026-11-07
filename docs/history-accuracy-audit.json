@@ -5,7 +5,7 @@
     "people": 123,
     "eventsWithSourceLinks": 422,
     "sourceReviewedEvents": 422,
-    "correctedOrClarifiedEvents": 282,
+    "correctedOrClarifiedEvents": 283,
     "borderChunks": 217,
     "borderFeatureInstances": 22193,
     "distinctBorderVersions": 13374,
@@ -2422,9 +2422,9 @@
     },
     {
       "id": "e160",
-      "title": "Russia invades Ukraine",
+      "title": "Russia’s full-scale invasion of Ukraine",
       "start": 2022,
-      "end": 2022,
+      "end": 2026,
       "approximate": false,
       "point": [
         30.52,
@@ -2432,8 +2432,8 @@
       ],
       "wiki": "Russian_invasion_of_Ukraine",
       "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
-      "review": "source-check",
-      "source": "https://ukraine.un.org/en/173250-statement-secretary-general-%E2%80%93-ukraine"
+      "review": "ongoing-interval-clarification",
+      "source": "https://ukraine.ohchr.org/sites/default/files/2026-02/2026-02-16%20HRMMU_Four%20Years%20On_fact%20sheet_1.pdf"
     },
     {
       "id": "e161",
@@ -5117,7 +5117,7 @@
       ],
       "wiki": "Refugees_of_the_Syrian_civil_war",
       "evidence": "date and principal claim source-reviewed; see review ledger for qualifications",
-      "review": "addition",
+      "review": "ongoing-context-clarification",
       "source": "https://www.unhcr.org/asia/emergencies/syria-emergency"
     },
     {

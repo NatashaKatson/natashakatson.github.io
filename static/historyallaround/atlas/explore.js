@@ -4,22 +4,38 @@
   let region = 'world', category = 'all', country = null, countryYear = null;
   let lastYear = null, lastIntro = '', lastBrowse = '', lastNavigation = '', lastDetail = null, preview = '';
   const intro = document.createElement('details');
-  intro.id = 'yearIntroduction'; intro.className = 'year-introduction'; intro.open = true;
+  intro.id = 'yearIntroduction'; intro.className = 'year-introduction'; intro.open = !matchMedia('(max-width: 860px)').matches;
   document.querySelector('.side-content').prepend(intro);
   const browse = document.createElement('div');
   browse.className = 'browse-controls';
-  browse.innerHTML = `<div class="browse-fields"><label>Region<select id="browseRegion"><option value="world">Around the world</option>${REGION_ORDER.map(r => `<option value="${r}">${esc(REGIONS[r])}</option>`).join('')}</select></label><label class="browse-type">Event type<select id="browseCategory"><option value="all">All visible types</option>${Object.entries(CATS).map(([key, name]) => `<option value="${key}">${esc(name)}</option>`).join('')}</select></label></div><p id="browseStatus" role="status"></p><button type="button" data-clear-browse hidden>Clear list filters</button>`;
+  browse.innerHTML = `<strong class="browse-label">Filter this list</strong><div class="browse-fields"><label>Region<select id="browseRegion"><option value="world">Worldwide</option>${REGION_ORDER.map(r => `<option value="${r}">${esc(REGIONS[r])}</option>`).join('')}</select></label><label class="browse-type">Event type<select id="browseCategory"><option value="all">All visible</option>${Object.entries(CATS).map(([key, name]) => `<option value="${key}">${esc(name)}</option>`).join('')}</select></label></div><p id="browseStatus" role="status"></p><button type="button" data-reveal-category hidden></button><button type="button" data-clear-browse hidden>Clear list filters</button>`;
   intro.after(browse);
   const regionInput = document.getElementById('browseRegion');
   const categoryInput = document.getElementById('browseCategory');
   const resetBrowse = browse.querySelector('[data-clear-browse]');
+  const revealCategory = browse.querySelector('[data-reveal-category]');
   const refreshBrowse = () => { lastBrowse = ''; update(); };
   regionInput.onchange = () => { region = regionInput.value; refreshBrowse(); };
   categoryInput.onchange = () => { category = categoryInput.value; refreshBrowse(); };
   resetBrowse.onclick = () => { region = 'world'; category = 'all'; regionInput.value = 'world'; categoryInput.value = 'all'; refreshBrowse(); };
+  revealCategory.onclick = () => {
+    if (category === 'all') return;
+    state.cats.add(category); buildMarks(); refreshBrowse();
+  };
 
   const panel = document.getElementById('eraPanel');
   panel.querySelector('h2').textContent = 'Explore years';
+  const closeYears = document.createElement('button'); closeYears.type = 'button'; closeYears.className = 'era-close'; closeYears.setAttribute('aria-label','Close year chooser'); closeYears.textContent = '×';
+  closeYears.onclick = () => document.getElementById('timelineScope').click(); panel.prepend(closeYears);
+  const exactYear = document.createElement('form'); exactYear.className = 'explore-exact-year';
+  exactYear.innerHTML = '<label for="exploreYearInput">Enter a year</label><div><input id="exploreYearInput" autocomplete="off" spellcheck="false" placeholder="2024, 500 BC or 150 Ma"><button type="submit">Go</button></div>';
+  panel.querySelector('h2').after(exactYear);
+  exactYear.onsubmit = event => {
+    event.preventDefault(); const input = document.getElementById('exploreYearInput'), year = parseYear(input.value);
+    if (year === null) { input.setCustomValidity('Enter a year from 252 Ma to 2026. There is no year zero.'); input.reportValidity(); return; }
+    input.setCustomValidity(''); document.getElementById('timelineScope').click(); stopPlay(); setYear(year); AtlasUI.goToMap();
+  };
+  exactYear.querySelector('input').oninput = event => event.target.setCustomValidity('');
   const suggested = document.createElement('section');
   suggested.className = 'suggested-years';
   suggested.innerHTML = '<h3>Start with a moment</h3><p>Choose a year, then discover what else was happening.</p>';
@@ -36,7 +52,7 @@
     suggested.append(button);
   }
   const eraHeading = document.createElement('h3'); eraHeading.textContent = 'Jump to an era'; suggested.append(eraHeading);
-  panel.querySelector('h2').after(suggested);
+  exactYear.after(suggested);
   const stepChoice = document.createElement('label');
   stepChoice.className = 'year-step-choice';
   stepChoice.innerHTML = 'Year arrows move by <select id="yearStep"><option value="1">1 year</option><option value="10">10 years</option><option value="100">100 years</option><option value="1000">1,000 years</option></select><small>Deep time always steps by 1 million years. You can enter any year directly.</small>';
@@ -58,29 +74,37 @@
   // Topic paths use dated, sourced records already in the Atlas. Sampling is
   // chronological; it makes no claim that each stop caused the following one.
   const journey = document.createElement('section'); journey.className = 'topic-journeys';
-  journey.innerHTML = '<h3>A few stops through time</h3><p>Follow a topic through five recorded moments. A selection, rather than a complete or causal history.</p><div class="topic-choices"></div><div class="topic-reader" hidden></div>';
-  document.getElementById('journeyTopics').after(journey);
+  journey.innerHTML = '<h3>Guided journeys</h3><p>Five stops through a topic. Choose a journey to begin.</p><div class="topic-choices"></div><div class="topic-reader" hidden></div>';
+  const topics = document.getElementById('journeyTopics');
+  topics.before(journey);
+  const collectionHeading = document.createElement('h3'); collectionHeading.className = 'collection-heading'; collectionHeading.textContent = 'Browse collections';
+  topics.before(collectionHeading);
+  const journeyStatus = document.createElement('p'); journeyStatus.className = 'sr-only'; journeyStatus.setAttribute('role', 'status');
+  journey.append(journeyStatus);
   let route = [], stop = 0, routeTitle = '';
-  function showStop() {
+  function showStop(direction = 'next') {
     const record = route[stop];
     if (!record) return;
     stopPlay();
     if (!state.cats.has(record.cat)) { state.cats.add(record.cat); buildMarks(); }
     setYear(record.start); select(record.id);
     const reader = journey.querySelector('.topic-reader'); reader.hidden = false;
-    reader.innerHTML = `<h4>${esc(routeTitle)} · stop ${stop + 1} of ${route.length}</h4><p><strong>${esc(fmt(record.start))}</strong> · ${esc(record.title)}</p><div><button type="button" data-route-prev ${stop === 0 ? 'disabled' : ''}>← Previous stop</button><button type="button" data-route-map>Read &amp; locate →</button><button type="button" data-route-next ${stop === route.length - 1 ? 'disabled' : ''}>Next stop →</button></div>`;
-    reader.querySelector('[data-route-prev]').onclick = () => { stop--; showStop(); };
-    reader.querySelector('[data-route-next]').onclick = () => { stop++; showStop(); };
+    reader.innerHTML = `<h4 tabindex="-1">${esc(routeTitle)} · stop ${stop + 1} of ${route.length}</h4><p><strong>${esc(fmt(record.start))}</strong> · ${esc(record.title)}</p><div><button type="button" data-route-prev ${stop === 0 ? 'disabled' : ''}>← Previous stop</button><button type="button" data-route-map>Read &amp; locate →</button><button type="button" data-route-next ${stop === route.length - 1 ? 'disabled' : ''}>Next stop →</button></div>`;
+    reader.querySelector('[data-route-prev]').onclick = () => { stop--; showStop('prev'); };
+    reader.querySelector('[data-route-next]').onclick = () => { stop++; showStop('next'); };
     reader.querySelector('[data-route-map]').onclick = () => select(record.id);
     document.querySelector('button[data-workspace="journeys"]').click();
-    journey.scrollIntoView({ block: 'nearest', behavior: 'instant' });
-    reader.querySelector(stop ? '[data-route-prev]' : '[data-route-next]').focus({ preventScroll: true });
+    journeyStatus.textContent = `${routeTitle}, stop ${stop + 1} of ${route.length}: ${fmt(record.start)}, ${record.title}`;
+    const activeButton = reader.querySelector(`[data-route-${direction}]`);
+    const focusTarget = activeButton.disabled ? reader.querySelector('h4') : activeButton;
+    focusTarget.focus({ preventScroll: true });
+    reader.scrollIntoView({ block: 'nearest', behavior: 'instant' });
   }
   for (const cat of ['technology', 'ideas', 'womens-rights']) {
     const records = core.journey(ev, cat);
     if (records.length < 2) continue;
     const button = document.createElement('button'); button.type = 'button'; button.dataset.topicJourney = cat;
-    button.textContent = `${CATS[cat]} · ${records.length} stops`;
+    button.innerHTML = `<span><strong>${esc(CATS[cat])}</strong><small>${records.length} stops · Start journey</small></span><span aria-hidden="true">→</span>`;
     button.onclick = () => { route = records; routeTitle = CATS[cat]; stop = 0; showStop(); };
     journey.querySelector('.topic-choices').append(button);
   }
@@ -105,10 +129,10 @@
     if (!feature || !card || card.querySelector('.mapped-records')) return;
     const year = country ? countryYear : HistoryDiscovery.selectionYear();
     const inside = r => core.matches(r, 'selected', point => inBox(feature.bbox, point) && d3.geoContains(feature, point));
-    const events = ev.filter(r => inside(r) && DiscoveryCore.yearGap(r.start, r.end, year) <= halfWin(year)).sort((a, b) => a.start - b.start);
+    const events = ev.filter(r => inside(r) && DiscoveryCore.inYear(r,year)).sort((a, b) => a.start - b.start);
     const people = ppl.filter(r => inside(r) && r.born <= year && r.died >= year);
     const section = document.createElement('section'); section.className = 'mapped-records';
-    section.innerHTML = `<h4>In this mapped area · ${esc(fmt(year))}</h4><p>Matches use representative marker locations, not nationality, residency or the full extent of an event. Includes all event types.</p><h5>${events.length} event${events.length === 1 ? '' : 's'} around this year</h5>${boundedRecords(events, year) || '<p>No event markers recorded here within 2 years.</p>'}<h5>${people.length} ${people.length === 1 ? 'person' : 'people'} alive</h5>${boundedRecords(people, year) || '<p>No associated people recorded here for this year.</p>'}`;
+    section.innerHTML = `<h4>In this mapped area · ${esc(fmt(year))}</h4><p>Matches use representative marker locations, not nationality, residency or the full extent of an event. Includes all event types.</p><h5>${events.length} event${events.length === 1 ? '' : 's'} in this year</h5>${boundedRecords(events, year) || '<p>No event markers recorded here in this year.</p>'}<h5>${people.length} ${people.length === 1 ? 'person' : 'people'} alive</h5>${boundedRecords(people, year) || '<p>No associated people recorded here for this year.</p>'}`;
     card.append(section);
   }
 
@@ -127,10 +151,11 @@
       lastIntro = key;
       const scene = core.context(ev, state.year), lead = scene.records[0];
       const period = scene.mode === 'period';
-      const title = lead && !period ? lead.title : scene.period?.name || 'A moment in history';
+      const continuing = lead && !period && DiscoveryCore.isHistoricalContext(lead, state.year);
+      const title = lead && !period ? (continuing ? 'Continuing: ' : '') + lead.title : scene.period?.name || 'A moment in history';
       preview = `${fmt(state.year)} — ${title}${lead && !period ? ' · ' + DiscoveryCore.summary(lead.blurb, 100) : ' · Explore the surrounding period'}`;
-      intro.innerHTML = `<summary><small>${years.length > 1 ? 'WORLD CONTEXT · RIGHT-HAND MAP' : 'THE WORLD IN THIS MOMENT'}</small><span>${esc(fmt(state.year))} — ${esc(title)}</span></summary><div class="year-introduction-body"><p>${period ? `Records are sparse for this exact year. Explore the wider ${esc(scene.period.name.toLowerCase())} through dated examples below; they did not necessarily happen in ${esc(fmt(state.year))}.` : esc(DiscoveryCore.summary(lead.blurb, 240))}</p>${!period && scene.records.length > 1 ? `<p class="intro-elsewhere">Elsewhere in this period: ${scene.records.slice(1).map(r => `${esc(r.title)} (${esc(REGIONS[r.region])})`).join('; ')}.</p>` : ''}${lead && !period ? `<p class="intro-source">${esc(fmtEvent(lead))}${lead.approx ? ' · approximate dates' : ''} · <a href="${esc(lead.source || wikiUrl(lead.wiki))}" target="_blank" rel="noopener">Source ↗</a></p>` : ''}<p class="intro-invitation">${period ? 'What can the surrounding period tell us?' : 'What else was happening? Explore simultaneous histories on the map.'}</p>${scene.records.length ? `<details class="intro-records"><summary>${period ? 'Explore period context' : 'Explore this moment & elsewhere'} · ${scene.records.length} records</summary>${scene.records.map(r => `<button type="button" data-intro-record="${r.id}"><strong>${esc(r.title)}</strong><small>${esc(REGIONS[r.region])} · ${esc(fmtEvent(r))}${r.approx ? ' · approximate' : ''}</small></button>`).join('')}</details>` : '<p>No sourced overview is available for this period in the atlas yet. Try Explore years.</p>'}</div>`;
-      intro.open = true;
+      const leadSummary = continuing ? `${DiscoveryCore.temporalStatus(lead,state.year)}; began ${fmt(lead.start,lead.approx)}. ${DiscoveryCore.summary(lead.blurb,240)}` : lead && DiscoveryCore.summary(lead.blurb,240);
+      intro.innerHTML = `<summary><small>${years.length > 1 ? 'WORLD CONTEXT · RIGHT-HAND MAP' : 'THE WORLD IN THIS MOMENT'}</small><span>${esc(fmt(state.year))} — ${esc(title)}</span></summary><div class="year-introduction-body"><p>${period ? `Records are sparse for this exact year. Explore the wider ${esc(scene.period.name.toLowerCase())} through dated examples below; they did not necessarily happen in ${esc(fmt(state.year))}.` : esc(leadSummary)}</p>${!period && scene.records.length > 1 ? `<p class="intro-elsewhere">Elsewhere in this year: ${scene.records.slice(1).map(r => `${esc(r.title)} (${esc(REGIONS[r.region])})`).join('; ')}.</p>` : ''}${lead && !period ? `<p class="intro-source">${esc(fmtEvent(lead))}${lead.approx ? ' · approximate dates' : ''} · <a href="${esc(lead.source || wikiUrl(lead.wiki))}" target="_blank" rel="noopener">Source ↗</a></p>` : ''}<p class="intro-invitation">${period ? 'What can the surrounding period tell us?' : 'What else was happening? Explore simultaneous histories on the map.'}</p>${scene.records.length ? `<details class="intro-records"><summary>${period ? 'Explore period context' : 'Explore this moment & elsewhere'} · ${scene.records.length} records</summary>${scene.records.map(r => `<button type="button" data-intro-record="${r.id}"><strong>${esc(r.title)}</strong><small>${esc(REGIONS[r.region])} · ${esc(fmtEvent(r))}${r.approx ? ' · approximate' : ''}</small></button>`).join('')}</details>` : '<p>No sourced overview is available for this period in the atlas yet. Try Explore years.</p>'}</div>`;
       intro.tabIndex = -1;
       intro.querySelectorAll('[data-intro-record]').forEach(button => button.onclick = () => {
         const r = byId[button.dataset.introRecord];
@@ -147,14 +172,21 @@
       lastBrowse = browseKey;
       const peopleTab = context === 'people';
       const count = peopleTab ? filterPeople(alivePeople().filter(p => p.born <= state.year && p.died >= state.year)).length : filterEvents(activeEvents()).length;
-      document.getElementById('browseStatus').textContent = `${count} ${peopleTab ? 'people alive' : 'records around this year'} · ${region === 'world' ? 'worldwide' : REGIONS[region]}. Filters apply to this list.`;
+      document.getElementById('browseStatus').textContent = `${count} ${peopleTab ? 'people alive' : 'records'} · ${region === 'world' ? 'worldwide' : REGIONS[region]}${!peopleTab && category !== 'all' ? ' · ' + CATS[category] : ''}. Map unchanged.`;
       resetBrowse.hidden = region === 'world' && (category === 'all' || peopleTab);
+      revealCategory.hidden = peopleTab || category === 'all' || state.cats.has(category);
+      if (!revealCategory.hidden) revealCategory.textContent = `Show ${CATS[category]} on the map and in this list`;
       browse.querySelector('.browse-type').hidden = peopleTab;
-      for (const option of categoryInput.options) option.hidden = option.value !== 'all' && (state.year < -1000000 ? option.value !== 'dinosaurs' : option.value === 'dinosaurs');
+      for (const option of categoryInput.options) {
+        option.hidden = option.value !== 'all' && (state.year < -1000000 ? option.value !== 'dinosaurs' : option.value === 'dinosaurs');
+        if (option.value !== 'all') option.textContent = CATS[option.value] + (state.cats.has(option.value) ? '' : ' (hidden)');
+      }
     }
-    const navigationKey = `${state.year}/${state.playing}/${[...state.cats]}`;
+    const step = state.year < -1000000 ? 1000000 : Number(document.getElementById('yearStep').value);
+    const navigationKey = `${state.year}/${state.playing}/${[...state.cats]}/${step}`;
     if (lastNavigation !== navigationKey) {
       lastNavigation = navigationKey;
+      document.querySelectorAll('.year-step-size').forEach(label => { label.textContent = step === 1000000 ? '1 Myr' : `${step.toLocaleString('en')}y`; });
       for (const [id, direction] of [['previousEvent', -1], ['nextEvent', 1]]) {
         const records = ev.filter(r => state.cats.has(r.cat) && (direction < 0 ? r.start < state.year : r.start > state.year)).sort((a, b) => direction < 0 ? b.start - a.start : a.start - b.start);
         const button = document.getElementById(id);

@@ -61,7 +61,7 @@
     if (key === lastKey) return;
     lastKey = key;
     visibility.checked = enabled;
-    const inPeriod = event => years.some(year => DiscoveryCore.yearGap(event.start,event.end,year) <= SAME_TIME_YEARS);
+    const inPeriod = event => years.some(year => DiscoveryCore.inYear(event,year));
     const current = records.filter(inPeriod);
     const filtered = query ? DiscoveryCore.search(searchable,query,'event',records.length).map(result => byId[result.recordId]) : records;
     const selectedPeriod = timeScope.value === 'selected';
@@ -69,9 +69,9 @@
     const near = matches.filter(inPeriod).sort((a,b) => a.start-b.start);
     const other = matches.filter(event => !inPeriod(event)).sort((a,b) => b.start-a.start);
     const periodLabel = years.length > 1 ? `${fmt(years[0])} & ${fmt(years[1])}` : fmt(years[0]);
-    status.textContent = selectedPeriod ? `${near.length} ${near.length === 1 ? 'history' : 'histories'} near ${periodLabel} · ±${SAME_TIME_YEARS} years` : query
+    status.textContent = selectedPeriod ? `${near.length} ${near.length === 1 ? 'history' : 'histories'} in ${periodLabel}` : query
       ? `${matches.length} ${matches.length === 1 ? 'match' : 'matches'} · ${records.length} histories total`
-      : `${current.length} near ${periodLabel} · ${records.length} histories total`;
+      : `${current.length} in ${periodLabel} · ${records.length} histories total`;
     const focusedId = results.contains(document.activeElement) ? document.activeElement.dataset.migrationRecord : null;
     const filters = JSON.stringify([query,timeScope.value]);
     const resetScroll = filters !== lastFilters;
@@ -85,8 +85,8 @@
       return rect.bottom > bounds.top && rect.top < bounds.bottom;
     });
     const anchorOffset = anchor?.getBoundingClientRect().top - bounds.top;
-    results.innerHTML = group(years.length > 1 ? 'Displayed periods' : `Around ${periodLabel}`,near) + (selectedPeriod ? '' : group('Other periods',other))
-      || (selectedPeriod ? `<p class="migrations-empty">No matching histories near ${esc(periodLabel)}. Choose All years to browse the full timeline.</p>` : '<p class="migrations-empty">No matching histories. Try a place, people or event.</p>');
+    results.innerHTML = group(years.length > 1 ? 'Displayed periods' : `In ${periodLabel}`,near) + (selectedPeriod ? '' : group('Other periods',other))
+      || (selectedPeriod ? `<p class="migrations-empty">No matching histories in ${esc(periodLabel)}. Choose All years to browse the full timeline.</p>` : '<p class="migrations-empty">No matching histories. Try a place, people or event.</p>');
     results.scrollTop = resetScroll ? 0 : scroll;
     if (!resetScroll && anchor) {
       const retained = results.querySelector(`[data-migration-record="${anchor.dataset.migrationRecord}"]`);

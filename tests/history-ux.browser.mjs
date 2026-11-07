@@ -96,7 +96,7 @@ try {
   await waitFor(`document.activeElement.classList.contains('selected-pair')`);
   await check(`(()=>{const card=document.querySelector('.selected-pair'),r=card.getBoundingClientRect(),s=document.getElementById('side').getBoundingClientRect();return card.textContent.includes('William Shakespeare')&&card.textContent.includes('Tokugawa Ieyasu')&&r.top>=s.top&&r.top<innerHeight})()`, 'Contemporaries short link foregrounds both people');
   await navigate(atlasURL, '1928');
-  await check(`document.getElementById('winLbl').textContent==='±'+SAME_TIME_YEARS+' years'`, 'Dock describes the implemented window');
+  await check(`document.getElementById('winLbl').textContent==='Selected year'`, 'Dock describes the exact-year display policy');
   await evaluate(`cv.focus();globalThis.beforeRotation=rot.slice()`); await key('ArrowRight','ArrowRight',39);
   await check(`rot[0]!==beforeRotation[0]&&document.activeElement===cv`, 'Arrow keys rotate the globe');
   await evaluate(`AtlasTestUI.settings()`);await click('#vFlat'); await evaluate(`AtlasUI.goToMap();cv.focus();globalThis.beforePan=flatT.x`); await key('ArrowLeft','ArrowLeft',37);

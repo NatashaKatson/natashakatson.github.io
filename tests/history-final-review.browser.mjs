@@ -48,7 +48,7 @@ try{
       for(const [api,selector] of [[HistoryWomensRights,'[data-rights-record]'],[HistoryMigrations,'[data-migration-record]']]){
         api.setScope('selected',true);
         const rows=[...document.querySelectorAll(selector)];
-        check(rows.every(row=>{const record=byId[row.dataset.rightsRecord||row.dataset.migrationRecord];return DiscoveryCore.yearGap(record.start,record.end,year)<=SAME_TIME_YEARS}),'Selected human histories stay within two years, including deep time');
+        check(rows.every(row=>{const record=byId[row.dataset.rightsRecord||row.dataset.migrationRecord];return DiscoveryCore.inYear(record,year)}),'Selected histories include only the displayed human year');
         if(year<-1000000)check(!rows.length,'No ancient human histories appear a million years ago');
         api.setScope('all');check(document.querySelectorAll(selector).length===(api===HistoryWomensRights?76:31),'Full catalogs are retained');
       }
@@ -72,7 +72,7 @@ try{
     await evaluate(`document.querySelector('.rights-close').focus()`);await key('Tab',true);
     check(await evaluate(`(()=>{const node=document.activeElement,r=node.getBoundingClientRect();return node.contains(document.elementFromPoint(r.left+r.width/2,r.top+r.height/2))&&!node.closest('[inert]')})()`),'Shift+Tab stays on a visible control');
     await key('Escape');
-    check(await evaluate(`!document.querySelector('[data-atlas-menu="womensRightsPanel"]').getAttribute('aria-expanded').includes('true')&&!stage.inert&&!document.getElementById('timeControls').inert&&!document.getElementById('atlasFooter').inert`),'Closing restores background controls');
+    check(await evaluate(`(()=>{const covered=innerWidth<=860&&document.getElementById('side').classList.contains('sheet-open');return !document.querySelector('[data-atlas-menu="womensRightsPanel"]').getAttribute('aria-expanded').includes('true')&&stage.inert===covered&&document.getElementById('timeControls').inert===covered&&!document.getElementById('atlasFooter').inert})()`),'Closing restores controls according to whether the mobile reader covers them');
     console.log('PASS safe footer, usable short-screen map and visible keyboard focus at '+width+'×'+height);
   }
   await send('Emulation.setSafeAreaInsetsOverride',{insets:{bottom:0,top:0,left:0,right:0}});

@@ -220,14 +220,13 @@ try {
     setYear(-90380000);render();
     assert(document.getElementById('yr').textContent.startsWith('≈90'),'map date is rounded and approximate');
     document.getElementById('editDate').click();
-    assert(document.activeElement.id==='gotoInput'&&document.activeElement.value==='90.38 Ma','editing preserves the exact deep-time year');
+    assert(document.activeElement.id==='exploreYearInput'&&document.activeElement.value==='90.38 Ma','editing preserves the exact deep-time year');
     assert(state.year===-90380000,'rounding the readout does not change the selected year');
     assert(document.getElementById('ticks').children.length<=5,'mobile ruler has a readable number of ticks after resize');
-    document.querySelector('[data-atlas-menu="eraPanel"]').click();
-    assert(!document.getElementById('eraPanel').hidden,'Choose era opens destinations');
+    assert(!document.getElementById('eraPanel').hidden,'Year display opens exact entry and era destinations');
     document.querySelector('#eraChoices button:nth-child(2)').click();render();
     assert(state.year===-150000000&&document.getElementById('eraPanel').hidden,'era selection navigates and closes the picker');
-    assert(document.activeElement.dataset.atlasMenu==='eraPanel','era selection returns focus');
+    assert(document.activeElement.id==='detail'&&!document.activeElement.closest('[inert]'),'dinosaur era selection focuses its visible reader');
     const options=document.querySelector('.dock-options');options.open=true;
     AtlasTestUI.filters();
     assert(document.getElementById('mapSettings').open,'Settings exposes the event categories');

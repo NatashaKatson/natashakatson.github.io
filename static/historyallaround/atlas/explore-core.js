@@ -38,8 +38,8 @@
         [-145000000, -66000001, 'Cretaceous'], [-66000000, -10001, 'Prehistory'],
         [-10000, -3001, 'Early farming societies'], [-3000, -501, 'Ancient history'],
         [-500, 499, 'Classical period'], [500, 1499, 'Medieval period'],
-        [1500, 1799, 'Early modern period'], [1800, 1899, '19th century'],
-        [1900, 1999, '20th century'], [2000, 2026, '21st century'],
+        [1500, 1800, 'Early modern period'], [1801, 1900, '19th century'],
+        [1901, 2000, '20th century'], [2001, 2026, '21st century'],
       ];
       const [from, to, name] = periods.find(([a, b]) => year >= a && year <= b) || periods.at(-1);
       return { from, to, name };

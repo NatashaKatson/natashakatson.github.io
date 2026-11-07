@@ -79,8 +79,8 @@ try {
           finally{ctx.fillText=original;}
           for(const name of names){
             const labels=drawn.filter(d=>d.text===name);
-            assert(labels.length===1,'one '+name+' label in '+mode+'/'+year);
-            if(selection?.name===name)assert(Math.abs(labels[0].x-proj(selection.cen)[0])<.01,'selected record keeps its label anchor');
+            assert(labels.length<=1,'no duplicate '+name+' label in '+mode+'/'+year);
+            if(selection?.name===name){assert(labels.length===1,'selected territory retains its label');assert(Math.abs(labels[0].x-proj(selection.cen)[0])<.01,'selected record keeps its label anchor');}
           }
         }
       }

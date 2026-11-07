@@ -88,7 +88,7 @@ try {
       await evaluate(`setYear(${year});AtlasUI.goToMap();document.getElementById('timelineScope').click()`);
       await pause(80);
       check(await evaluate(`(()=>{const r=document.getElementById('eraPanel').getBoundingClientRect();return r.top>=0&&r.bottom<=innerHeight&&r.height>=140})()`), 'Era chooser stays within the short viewport');
-      for(const [edge,year] of [['first',-228000000],['last',1903]]) {
+      for(const [edge,year] of [['first',-228000000],['last',2001]]) {
         const point=await evaluate(`(()=>{
           const panel=document.getElementById('eraPanel');
           const buttons=[...panel.querySelectorAll('#eraChoices button')].filter(button=>!button.hidden);

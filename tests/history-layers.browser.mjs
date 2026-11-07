@@ -50,7 +50,7 @@ try {
     const check=(v,m)=>{if(!v)throw Error(m)};stopSpin();flyToken++;
     document.querySelector('[data-atlas-menu="layersPanel"]').click();
     check(document.querySelectorAll('[data-layer-toggle]').length===4,'Four overlay controls remain in Layers');
-    check(document.querySelector('[data-layer-count="trade"]').textContent==='4 in this period · 4 total','Trade count follows 1300');
+    check(document.querySelector('[data-layer-count="trade"]').textContent==='4 in this year · 4 total','Trade count follows 1300');
     const trade=document.querySelector('[data-layer-toggle="trade"]');trade.click();render();
     check(!state.cats.has('trade')&&document.querySelector('#legend [data-k="trade"]').getAttribute('aria-pressed')==='false','Layer toggle synchronises event filter');
     trade.click();render();
@@ -64,7 +64,7 @@ try {
   console.log(await evaluate(`(async()=>{
     const check=(v,m)=>{if(!v)throw Error(m)};
     document.querySelector('[data-atlas-menu="migrationsPanel"]').click();
-    check(document.getElementById('migrationStatus').textContent==='0 near 1300 · 31 histories total','Year count is distinguished from the whole catalogue');
+    check(document.getElementById('migrationStatus').textContent==='0 in 1300 · 31 histories total','Year count is distinguished from the whole catalogue');
     const catalogue=document.getElementById('migrationResults');
     check(catalogue.querySelectorAll('[data-migration-record]').length===31&&!document.querySelector('#layersPanel [data-migration-record]'),'All migrations are available in their dedicated menu');
     const event=ev.find(e=>e.wiki==='Bosnian_War');
@@ -113,7 +113,7 @@ try {
     const choose=cat=>{state.cats=new Set([cat]);buildMarks();update();render()};
     choose('trade');setYear(1700);render();check(!hits.some(h=>h.radius===7)&&document.querySelector('.route-map-note').hidden,'Expired trade routes disappear');
     choose('migrations');setYear(1950);render();
-    check(document.getElementById('migrationStatus').textContent==='5 near 1950 · 31 histories total','Migration count updates with the year: '+document.getElementById('migrationStatus').textContent);
+    check(document.getElementById('migrationStatus').textContent==='4 in 1950 · 31 histories total','Migration count updates with the year: '+document.getElementById('migrationStatus').textContent);
     choose('climate');setYear(1816);render();
     check(activeEvents().some(({e})=>e.wiki==='Year_Without_a_Summer'),'Climate event follows timeline');
     check(!hits.some(h=>h.radius===7),'Climate markers do not invent affected-area tracks');

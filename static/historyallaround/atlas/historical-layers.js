@@ -40,11 +40,11 @@
         const button = section.querySelector(`[data-layer-toggle="${cat}"]`);
         button.setAttribute('aria-pressed', String(enabled));
         button.querySelector('b').textContent = enabled ? '✓' : '○';
-        const count = years.map(year => records[cat].filter(e => DiscoveryCore.yearGap(e.start,e.end,year) <= halfWin(year)).length);
+        const count = years.map(year => records[cat].filter(e => DiscoveryCore.inYear(e,year)).length);
         const total = records[cat].length;
         section.querySelector(`[data-layer-count="${cat}"]`).textContent = years.length > 1
           ? `${count[0]} left · ${count[1]} right · ${total} total${enabled ? '' : ' · hidden'}`
-          : `${count[0]} in this period · ${total} total${enabled ? '' : ' · hidden'}`;
+          : `${count[0]} in this year · ${total} total${enabled ? '' : ' · hidden'}`;
       }
       note.hidden = !years.some(year => HistoricalLayersCore.active(ev,year,state.cats).length);
     },

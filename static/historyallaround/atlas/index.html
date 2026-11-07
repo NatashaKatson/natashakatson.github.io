@@ -426,7 +426,7 @@ header .seg{padding:2px;background:#f0ebe3;border:1px solid rgba(45,36,32,.1);bo
     <canvas id="cv" tabindex="0" aria-label="World map showing events at the selected time" aria-describedby="mapKeyboardHelp"></canvas>
     <p id="mapKeyboardHelp" class="sr-only">Use arrow keys to move the map, plus and minus to zoom, and Home to reset the view. Press Tab to leave the map. Events are also available in the event list.</p>
     <button type="button" id="mapToolsToggle" class="atlas-menu-trigger" aria-haspopup="dialog" aria-expanded="false" aria-controls="mapSettings">☷ <span>Map settings</span></button>
-    <div class="readout"><button type="button" id="editDate" aria-label="Edit selected date"><span class="yr" id="yr"></span><span class="date-edit-icon" aria-hidden="true">⌄</span></button><span class="readout-era" id="readoutEra"></span></div>
+    <div class="readout"><button type="button" id="editDate" aria-label="Change selected year" aria-controls="eraPanel" aria-expanded="false"><span class="yr" id="yr"></span><span class="date-edit-icon" aria-hidden="true">⌄</span></button><span class="readout-era" id="readoutEra"></span></div>
     <div class="atlas-toolbar" id="mapTools" aria-label="Map controls">
       <div class="atlas-menu"><button type="button" class="atlas-menu-trigger" data-atlas-menu="womensRightsPanel" aria-expanded="false" aria-controls="womensRightsPanel"><span aria-hidden="true">👩</span> Women’s rights <span aria-hidden="true">⌄</span></button>
         <section class="atlas-menu-panel womens-rights-panel" id="womensRightsPanel" aria-labelledby="womensRightsTitle" hidden></section>
@@ -466,7 +466,7 @@ header .seg{padding:2px;background:#f0ebe3;border:1px solid rgba(45,36,32,.1);bo
       <div class="atlas-menu"><button type="button" class="atlas-menu-trigger" data-atlas-menu="eraPanel" aria-expanded="false" aria-controls="eraPanel"><span id="currentEraLabel">Choose era</span> <span aria-hidden="true">⌄</span></button>
         <section class="atlas-menu-panel era-panel" id="eraPanel" aria-label="Choose an era" hidden><h2>Where in time?</h2><div id="eraChoices"></div></section>
       </div>
-      <button type="button" class="timeline-scope" id="timelineScope" aria-expanded="false" aria-controls="eraPanel">Explore years ↗</button>
+      <button type="button" class="timeline-scope" id="timelineScope" aria-label="Explore years" aria-expanded="false" aria-controls="eraPanel"><span class="timeline-scope-label">Explore years</span><span class="timeline-scope-short" aria-hidden="true">Years</span> ⌄</button>
       <button type="button" class="atlas-menu-trigger" id="compareToggle" aria-pressed="false" aria-controls="compareYears" aria-describedby="compareDescription">Compare</button>
       <details class="dock-options"><summary>Share &amp; tools <span aria-hidden="true">⌄</span></summary><div class="dock-options-content"></div></details>
     </div>
@@ -487,7 +487,7 @@ header .seg{padding:2px;background:#f0ebe3;border:1px solid rgba(45,36,32,.1);bo
     <button type="button" id="eventSheetToggle" class="sheet-toggle" aria-expanded="false" aria-controls="sideBody"><span class="sheet-handle" aria-hidden="true"></span><span>Around this time</span><span id="sheetPreview">Browse events ↑</span></button>
     <div id="sideBody">
     <div class="side-intro"><div class="kicker">At the same time</div><h2 id="sideTitle" tabindex="-1">Around this time</h2><div class="sub" id="sideSub"></div><p class="sidebar-scope" id="sideScope">Worldwide records. Open a place’s history for a local timeline.</p><div class="context-tabs" role="group" aria-label="Around this time"><button type="button" data-context="events" aria-pressed="true">Events</button><button type="button" data-context="people" aria-pressed="false">People</button></div></div>
-    <div class="side-content"><div id="detail" role="region" aria-label="Selected story"></div><div id="regions" role="region" aria-label="Events near the selected date"></div>
+    <div class="side-content"><div id="detail" role="region" aria-label="Selected story"></div><div id="regions" role="region" aria-label="Events in the selected year"></div>
     <h3 class="atlas-section-title" id="peopleTitle">People alive at this moment</h3><div class="sub" id="peopleSub" style="margin-bottom:8px"></div><div class="people" id="people"></div>
     <section class="journey-shortcuts" aria-label="Follow a journey"><h3>Follow a journey</h3><button type="button" data-journey-shortcut="womensRightsPanel"><span>Women’s rights<small data-journey-count></small></span><span>→</span></button><button type="button" data-journey-shortcut="migrationsPanel"><span>Human migrations<small data-journey-count></small></span><span>→</span></button><button type="button" data-journey-shortcut="dinosaurs">Life before humans <span>→</span></button></section>
     <section class="sidebar-extras" aria-labelledby="sidebarExtrasTitle"><div class="sidebar-extras-intro"><h3 id="sidebarExtrasTitle">Explore other times</h3><p>These suggestions have their own dates. Opening one changes the timeline.</p></div><div id="journeyTopics"></div><div id="journeyPanels"></div><div class="journey-collections" id="journeyCollections"><div class="fact" id="fact"></div></div></section><p class="workspace-coverage">A selection of history, not a complete record.<br><button type="button" class="footer-shortcut" data-atlas-footer>About, sources &amp; support ↓</button></p></div>
@@ -523,6 +523,7 @@ header .seg{padding:2px;background:#f0ebe3;border:1px solid rgba(45,36,32,.1);bo
 <script src="discovery-core.js"></script>
 <script src="explore-core.js"></script>
 <script src="event-emojis.js"></script>
+<script src="cartography.js"></script>
 <script src="historical-layers-core.js"></script>
 <script src="great-lakes.js"></script>
 <script src="water-data.js"></script>
@@ -692,7 +693,7 @@ const EVENTS = [
 [2008,null,0,"Global financial crisis","Banks collapse and the world enters a deep recession.",40.7,-74.0,"am","power","2008_financial_crisis","https://www.federalreservehistory.org/essays/great-recession-of-200709"],
 [2010,2012,0,"Arab Spring","Protests spread across the Arab world, starting in Tunisia.",36.8,10.18,"me","power","Arab_Spring","https://publications.parliament.uk/pa/cm201012/cmselect/cmfaff/writev/arab/as07.htm"],
 [2020,2023,0,"COVID-19 global health emergency","WHO declares a public health emergency of international concern in January 2020 and ends that designation in May 2023. Ending the emergency designation does not mean that COVID-19 or the pandemic ended. The marker locates WHO in Geneva, rather than the outbreak's origin.",46.232,6.134,"eu","pandemics","COVID-19_pandemic","https://www.who.int/news/item/05-05-2023-statement-on-the-fifteenth-meeting-of-the-international-health-regulations-(2005)-emergency-committee-regarding-the-coronavirus-disease-(covid-19)-pandemic",null,null,null,["pandemics","pandemic","coronavirus","COVID"]],
-[2022,null,0,"Russia invades Ukraine","Russia launches a full-scale invasion of Ukraine.",50.45,30.52,"eu","war","Russian_invasion_of_Ukraine","https://ukraine.un.org/en/173250-statement-secretary-general-%E2%80%93-ukraine"],
+[2022,2026,0,"Russia’s full-scale invasion of Ukraine","Russia launches its full-scale invasion of Ukraine on 24 February 2022. The war and its civilian consequences continue in subsequent years, as documented by UN human-rights monitoring. This interval represents the continuing conflict, not a new invasion in each year. The Kyiv marker is a representative location, not the extent of fighting; 2026 is the atlas coverage limit, not an end date.",50.45,30.52,"eu","war","Russian_invasion_of_Ukraine","https://ukraine.ohchr.org/sites/default/files/2026-02/2026-02-16%20HRMMU_Four%20Years%20On_fact%20sheet_1.pdf",null,null,null,null,true],
 [2022,null,0,"Webb telescope's first images","NASA releases the James Webb Space Telescope's first science images in July 2022. The marker locates the Space Telescope Science Institute in Baltimore, which supports the mission; the telescope operates in space.",39.33,-76.62,"am","technology","James_Webb_Space_Telescope","https://science.nasa.gov/mission/webb/webbs-first-images/",null,null,null,["technology","technology milestones"]],
 // Fashion & dress
 [-38000,null,1,"Needles with eyes","Eyed bone needles from Denisova Cave in Siberia are reported from layers around 40,000 years old in a 2024 scholarly review. Such tools allow thread to be drawn through material; they do not prove the precise form of the clothing sewn. Earlier press reports gave about 50,000 years; this entry follows the 2024 review.",51.4,84.68,"as","fashion","Sewing_needle","https://pmc.ncbi.nlm.nih.gov/articles/PMC11212769/"],
@@ -882,7 +883,7 @@ const EVENTS = [
 [1979,1989,0,"Soviet–Afghan War: refugees in Pakistan and Iran","War and repression drive Afghans into Pakistan, Iran and other countries. Flight begins before the Soviet invasion and continues after the Soviet withdrawal. The 1979–1989 interval highlights the Soviet-war phase; the Kabul marker and two arrows represent selected connections rather than all origins or border crossings. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",34.56,69.21,"as","migrations","Afghan_refugees","https://unama.unmissions.org/en/news/unhcr-marks-30-years-of-helping-afghan-refugees",null,null,null,["migrations","migration","refugees","displacement","Soviet Afghan War","Afghanistan","Pakistan","Iran","Soviet invasion","Cold War"],false],
 [1992,1995,0,"Bosnian War: refugees and internal displacement","War, ethnic cleansing and persecution uproot people across Bosnia and Herzegovina. Some seek refuge in neighbouring countries or farther away; others remain displaced within Bosnia. Sarajevo represents an affected city. The lines show selected outward connections, and the war-end cutoff does not imply that refugees have returned. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",43.86,18.41,"eu","migrations","Bosnian_War","https://encyclopedia.ushmm.org/content/en/article/bosnia",null,null,null,["migrations","migration","refugees","displacement","Bosnian War","Bosnia","Yugoslav wars","ethnic cleansing","Croatia","Germany","Balkans"],false],
 [1994,1996,0,"Rwandan genocide and war: regional refugee crisis","The genocide against the Tutsi and armed conflict cause mass displacement within Rwanda and across its borders. Refugees flee toward Zaire, now the Democratic Republic of the Congo, and Tanzania, among other destinations. The interval highlights the 1994 exodus and major 1996 returns; people’s circumstances and later movements vary. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",-1.94,30.06,"af","migrations","Great_Lakes_refugee_crisis","https://www.unhcr.org/news/eight-year-rwandan-refugee-saga-tanzania-comes-end",null,null,null,["migrations","migration","refugees","displacement","Rwandan genocide","Rwanda","Great Lakes","Zaire","DR Congo","Tanzania","refugee crisis"],false],
-[2011,2026,0,"Syrian war: refugee displacement and continuing exile","Conflict from 2011 forces Syrians to seek safety within the country and abroad, including in Lebanon, Türkiye and Jordan. Refugees and returnees continue to need protection after later political changes. These outward arrows summarise selected displacement connections; they do not depict current traffic or return flows. The 2026 endpoint is the atlas coverage limit. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",33.51,36.29,"me","migrations","Refugees_of_the_Syrian_civil_war","https://www.unhcr.org/asia/emergencies/syria-emergency",null,null,null,["migrations","migration","refugees","displacement","Syrian civil war","Syria","Syrian refugees","Arab Spring","Lebanon","Turkey","Jordan"],true],
+[2011,2026,0,"Syrian war: refugee displacement and continuing exile","Conflict from 2011 forces Syrians to seek safety within the country and abroad, including in Lebanon, Türkiye and Jordan. Refugees and returnees continue to need protection after later political changes. These outward arrows summarise selected displacement connections; they do not depict current traffic or return flows. The 2026 endpoint is the atlas coverage limit. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes. Some people have returned since late 2024, while many remain displaced. The interval does not imply fresh outward movement in every year.",33.51,36.29,"me","migrations","Refugees_of_the_Syrian_civil_war","https://www.unhcr.org/asia/emergencies/syria-emergency",null,null,null,["migrations","migration","refugees","displacement","Syrian civil war","Syria","Syrian refugees","Arab Spring","Lebanon","Turkey","Jordan"],true],
 [2022,2026,0,"Russia’s full-scale invasion: flight from Ukraine","Russia’s full-scale invasion in February 2022 causes major new displacement in Ukraine and across its borders, intensifying a crisis already under way since 2014. The arrows show selected routes toward Poland and Moldova, not all destinations or present-day traffic. Refugees and displaced people remain in need of protection; 2026 is the atlas coverage limit. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",50.45,30.52,"eu","migrations","Ukrainian_refugee_crisis","https://www.unhcr.org/ukraine",null,null,null,["migrations","migration","refugees","displacement","Ukraine war","Russia Ukraine war","Russian invasion","Ukraine refugees","Poland","Moldova","2022","Russian Ukraine war 2023","2023"],true],
 // Requested Belarusian exile and Jewish wartime displacement records.
 [2020,2026,0,"Belarus after 2020: political exile in Poland","Repression following Belarus’s 2020 presidential election drives people to seek safety in Poland, alongside migration for other reasons. Not every Belarusian resident in Poland is a political exile or has refugee status. The Minsk–Poland connection summarises this continuing displacement phase through the atlas’s 2026 coverage limit; it is not a picture of present-day traffic. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",53.9,27.56,"eu","migrations","Belarusian_diaspora","https://www.euaa.europa.eu/news-events/belarus-new-report-highlights-deteriorating-human-rights-situation",null,null,null,["migrations","migration","Belarus","Belarusian","Belarussian","Poland","2020","Belarus protests","political exile","repression","refugees"],true],
@@ -1138,7 +1139,7 @@ const FACTS = [
 const REGIONS={eu:"Europe",me:"Middle East & North Africa",af:"Sub-Saharan Africa",as:"Asia",am:"Americas",oc:"Oceania"};
 const REGION_ORDER=["eu","me","af","as","am","oc"];
 const CATS={power:"Power & states",war:"War",ideas:"Science & exploration",culture:"Culture & faith",nature:"People & nature",fashion:"Fashion & dress",pandemics:"Pandemics",trade:"Trade routes",migrations:"Migrations",climate:"Climate events",technology:"Technology","womens-rights":"Women’s rights",dinosaurs:"Dinosaurs"};
-const ERAS=[[-252000000,"Dinosaurs"],[-66000000,"Before humans"],[-300000,"Prehistory"],[-3200,"Ancient"],[-800,"Classical"],[500,"Medieval"],[1500,"Early modern"],[1800,"Modern"]];
+const ERAS=[[-252000000,"Dinosaurs"],[-66000000,"Prehistory"],[-10000,"Early farming societies"],[-3000,"Ancient history"],[-500,"Classical period"],[500,"Medieval period"],[1500,"Early modern period"],[1801,"19th century"],[1901,"20th century"],[2001,"21st century"]];
 // The atlas intentionally ends in 2026, independently of the browser clock.
 const NOW=2026,SLIDER_STEPS=3000000;
 const LAST_YEAR_KEY="atlas.last-year.v1";
@@ -1286,17 +1287,17 @@ function visible(lon,lat){if(state.mode!=="globe")return true;return center&&d3.
 function stars(){const w=Math.round(W*DPR),h=Math.round(H*DPR);if(starLayer&&starLayer.width===w&&starLayer.height===h)return starLayer;
   const c=document.createElement("canvas");c.width=w;c.height=h;const x=c.getContext("2d");x.scale(DPR,DPR);x.fillStyle=C.star;
   for(const[sx,sy,sr,sa]of STARS){x.globalAlpha=sa;x.beginPath();x.arc(sx*W,sy*H,sr,0,7);x.fill()}return starLayer=c}
-let hits=[],polLabels=[];
+let hits=[],polLabels=[],hoveredEventId=null;
 // People and events can share a city. Keep each marker selectable and connect
 // displaced markers to their recorded point rather than changing the coordinates.
 function eventMarkerPoint(x,y,placed){
   for(const radius of [0,28,56,84,112])for(let step=0;step<(radius?8:1);step++){
     const angle=step*Math.PI/4,p={x:x+radius*Math.cos(angle),y:y+radius*Math.sin(angle)};
-    if(p.x>=12&&p.x<=W-12&&p.y>=12&&p.y<=H-12&&placed.every(q=>Math.hypot(p.x-q.x,p.y-q.y)>=26))return p;
+    if(p.x>=12&&p.x<=W-12&&p.y>=12&&p.y<=H-12&&placed.every(q=>Math.hypot(p.x-q.x,p.y-q.y)>=22)&&!(AtlasCartography.frameControls||[]).some(b=>AtlasCartography.overlaps([p.x-10,p.y-10,20,20],b)))return p;
   }
   return {x,y};
 }
-function relevance(e,y,w){const d=DiscoveryCore.yearGap(e.start,e.end,y);return d<=w?1-0.55*(d/w):0}
+function relevance(e,y,w){if(!DiscoveryCore.inYear(e,y))return 0;const d=DiscoveryCore.yearGap(e.start,e.end,y);return e.cat==="dinosaurs"&&w?1-0.55*(d/w):1}
 // Both are asked for several times per frame, so the last answer is kept until the year or filters change.
 let actMemo={},pplMemo={};
 function activeEvents(){const y=state.year,k=y+"|"+[...state.cats];if(actMemo.k===k)return actMemo.v;const w=halfWin(y);
@@ -1306,6 +1307,8 @@ function alivePeople(){const y=state.year;if(pplMemo.y===y)return pplMemo.v;pplM
 // Many things ask for a redraw (pointer moves, the slider, the spin); they are folded into one per frame.
 let drawQ=0;function draw(){if(!drawQ)drawQ=requestAnimationFrame(()=>{drawQ=0;render()})}
 function render(){if(window.HistoryDiscovery)window.HistoryDiscovery.render(renderScene);else renderScene()}
+// Screen-space controls reserve their actual painted bounds, including open help.
+function mapControlBoxes(){const canvas=cv.getBoundingClientRect();return [...stage.querySelectorAll('.readout,#mapToolsToggle,.zoom,.map-context,#ancientGeography,.comparison-label')].filter(node=>node.getClientRects().length&&getComputedStyle(node).visibility!=="hidden").map(node=>{const r=node.getBoundingClientRect();return [r.left-canvas.left-5,r.top-canvas.top-5,r.width+10,r.height+10]}).filter(b=>b[2]>10&&b[3]>10)}
 function renderScene(){
   if(!W||!H)return;makeProj();const G=geo();ctx.setTransform(DPR,0,0,DPR,0,0);ctx.clearRect(0,0,W,H);
   const globe=state.mode==="globe",[cx,cy]=proj.translate(),R=proj.scale(),evidenceView=window.HistoryDiscovery?.evidenceView();
@@ -1351,7 +1354,7 @@ function renderScene(){
   ctx.save();ctx.font=`italic 400 ${W<600?8.5:10.5}px ${C.display}`;ctx.textAlign="center";ctx.textBaseline="middle";ctx.fillStyle=C["water-label"];
   for(const[name,lon,lat]of G.ancient?[]:WATER_LABELS){if(W<600&&!name.includes("Ocean"))continue;if(!visible(lon,lat))continue;const p=proj([lon,lat]);if(!p||!Number.isFinite(p[0])||!Number.isFinite(p[1]))continue;if(globe&&Math.hypot(p[0]-cx,p[1]-cy)>R*.84)continue;ctx.fillText(name,p[0],p[1])}ctx.restore();
   // State names near the map's focus, with collision checks against event markers.
-  polLabels=[];const polityNames=new Set();let selectedCallout=null;
+  polLabels=[];const polityNames=new Set(),countryLabels=[],controlBoxes=mapControlBoxes(),labelViewport=window.HistoryDiscovery?.labelViewport?.()||{x:0,width:W};let selectedCallout=null;
   const marks=pols.length?[...activeEvents().map(a=>a.e),...alivePeople()].filter(o=>visible(o.lon,o.lat)).map(o=>proj([o.lon,o.lat])):[];
   if(pols.length){ctx.font=`500 ${W<600?9:10.5}px ${C.display}`;ctx.textAlign="center";ctx.textBaseline="middle";let n=0;const named=new Set();
     // A state's rough on-screen size comes from its stored area, so labels don't need every outline projected again.
@@ -1359,9 +1362,9 @@ function renderScene(){
     const labelDistance=f=>{const p=proj(f.cen);return Math.hypot(p[0]-W/2,p[1]-H/2)};
     const labelOrder=[...pols].sort((a,b)=>Number(samePolity(b,selectedPolity))-Number(samePolity(a,selectedPolity))||labelDistance(a)-labelDistance(b));
     // Realms and their constituents can share a name; the first placed label wins (selection is ordered first).
-    for(const f of labelOrder){if(n>=(W<600?5:9))break;if(named.has(f.name))continue;const bw=Math.sqrt(f.area)*R,isSelected=samePolity(f,selectedPolity);if(bw<12&&!isSelected)continue;
+    for(const f of labelOrder){if(n>=(W<600?4:7))break;if(named.has(f.name))continue;const bw=Math.sqrt(f.area)*R,isSelected=samePolity(f,selectedPolity);if(bw<12&&!isSelected)continue;
       const lp=f.cen;if(!visible(lp[0],lp[1]))continue;const[cx2,cy2]=proj(lp);if(globe&&Math.hypot(cx2-cx,cy2-cy)>R*.86)continue;const t=f.name;const tw=ctx.measureText(t).width;if(tw>Math.max(80,bw*1.7)&&!isSelected)continue;
-      const collisions=b=>polLabels.filter(o=>!(b[0]>o[0]+o[2]||b[0]+b[2]<o[0]||b[1]>o[1]+o[3]||b[1]+b[3]<o[1])).length+marks.filter(([mx,my])=>mx>b[0]-9&&mx<b[0]+b[2]+9&&my>b[1]-9&&my<b[1]+b[3]+9).length;
+      const collisions=b=>controlBoxes.filter(o=>AtlasCartography.overlaps(b,o,3)).length+polLabels.filter(o=>!(b[0]>o[0]+o[2]||b[0]+b[2]<o[0]||b[1]>o[1]+o[3]||b[1]+b[3]<o[1])).length+marks.filter(([mx,my])=>mx>b[0]-9&&mx<b[0]+b[2]+9&&my>b[1]-9&&my<b[1]+b[3]+9).length;
       let ly=null;
       if(isSelected){
         // A selected territory always gets a readable label. Wrap on phones,
@@ -1378,7 +1381,7 @@ function renderScene(){
         ly=best.y;polLabels.push(best.box);selectedCallout={lines,x:lx,y:ly,anchor:[cx2,cy2],box:best.box,font:ctx.font};
       }else for(const dy of[0,16,-16,30,-30]){const b=[cx2-tw/2-4,cy2+dy-8,tw+8,16];if(!collisions(b)){ly=cy2+dy;polLabels.push(b);break}}
       if(ly===null)continue;named.add(f.name);polityNames.add(f.name);n++;
-      if(!isSelected){ctx.lineWidth=2.5;ctx.strokeStyle=C.halo;ctx.strokeText(t,cx2,ly);ctx.fillStyle=C.ink;ctx.fillText(t,cx2,ly)}}
+      if(!isSelected)countryLabels.push({text:t,x:cx2,y:ly,box:polLabels.at(-1),font:ctx.font,color:C.muted})}
     ctx.textAlign="start"}
   if(!G.ancient&&zoomK>=2){
     ctx.save();ctx.font=`italic 500 ${W<600?10:11}px ${C.display}`;ctx.textAlign="center";ctx.textBaseline="middle";
@@ -1389,10 +1392,10 @@ function renderScene(){
       const p=proj(lake.point),tw=ctx.measureText(name).width,b=[p[0]-tw/2-3,p[1]-8,tw+6,16];
       if(tw>bw*5||b[0]<6||b[1]<6||b[0]+b[2]>W-6||b[1]+b[3]>H-6)continue;
       if(polLabels.some(o=>!(b[0]>o[0]+o[2]||b[0]+b[2]<o[0]||b[1]>o[1]+o[3]||b[1]+b[3]<o[1]))||marks.some(([x,y])=>x>b[0]-9&&x<b[0]+b[2]+9&&y>b[1]-9&&y<b[1]+b[3]+9))continue;
-      named.add(name);polLabels.push(b);ctx.lineWidth=3;ctx.strokeStyle=C.halo;ctx.strokeText(name,...p);ctx.fillStyle=C["lake-ink"];ctx.fillText(name,...p);
+      named.add(name);polLabels.push(b);countryLabels.push({text:name,x:p[0],y:p[1],box:b,font:ctx.font,color:C["lake-ink"]});
     }ctx.restore();
   }
-  hits=[];
+  hits=[];AtlasCartography.frameControls=controlBoxes;
   if(window.HistoryChallenge?.isPicking())return;
   const people=alivePeople(),peopleMarks=[];
   for(const p of people){if(!visible(p.lon,p.lat))continue;const[ax,ay]=proj([p.lon,p.lat]),marker=eventMarkerPoint(ax,ay,peopleMarks),{x,y}=marker;peopleMarks.push(marker);
@@ -1400,7 +1403,7 @@ function renderScene(){
     ctx.save();ctx.translate(x,y);ctx.rotate(Math.PI/4);ctx.strokeStyle=C.ink;ctx.lineWidth=1.4;ctx.fillStyle=C.paper;ctx.beginPath();ctx.rect(-3.5,-3.5,7,7);ctx.fill();ctx.stroke();ctx.restore();
     hits.push({x,y,id:p.id,label:p.name+" · "+fmtPerson(p)})}
   const act=activeEvents(),fossilMarks=[],emojiMarks=peopleMarks.slice();
-  const labelled=polLabels.slice();
+
   act.slice().reverse().forEach(({e,r})=>{if(evidenceView&&e.indigenous?.evidence)return;const point=window.HistoryPaleogeography?.point(e,state.year)||[e.lon,e.lat];if(!visible(...point))return;let[x,y]=proj(point);
     if(e.cat==="dinosaurs"){
       const marker=window.HistoryDinosaurs?.drawMarker(e,[x,y],fossilMarks);
@@ -1408,25 +1411,37 @@ function renderScene(){
     }
     const anchor={x,y},marker=eventMarkerPoint(x,y,emojiMarks);emojiMarks.push(marker);x=marker.x;y=marker.y;
     if(x!==anchor.x||y!==anchor.y){ctx.save();ctx.strokeStyle=C['c-'+e.cat];ctx.globalAlpha=.55;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(anchor.x,anchor.y);ctx.lineTo(x,y);ctx.stroke();ctx.restore()}
-    const emoji=AtlasEventEmojis.get(e);
-    ctx.save();ctx.globalAlpha=.65+.35*r;ctx.fillStyle=C.ink;
-    ctx.font='20px "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif';ctx.textAlign="center";ctx.textBaseline="middle";
-    ctx.fillText(emoji,x,y+.5);ctx.restore();
+    AtlasCartography.drawSymbol(ctx,e,x,y,{color:C['c-'+e.cat]||C.ink,paper:C.paper,selected:e.id===state.sel,hovered:e.id===hoveredEventId});
     hits.push({x,y,id:e.id,label:e.title+" · "+fmtEvent(e)})});
-  // labels for strongest few, avoiding overlap
-  ctx.font=`500 ${W<600?10.5:11.5}px ${C.display}`;ctx.textBaseline="middle";
-  const maxL=W<600?3:6;let n=0;
-  // Keep documented Indigenous communities legible alongside colonial fills. These are place markers, not territory polygons.
-  const labelOrder=act.slice().sort((a,b)=>Number(b.e.id===state.sel)-Number(a.e.id===state.sel)||Number(!!b.e.indigenous)-Number(!!a.e.indigenous));
-  for(const{e}of labelOrder){if(n>=maxL)break;if(e.cat==="dinosaurs"||(evidenceView&&e.indigenous?.evidence))continue;const marker=hits.find(h=>h.id===e.id&&!h.radius);if(!marker)continue;const{x,y}=marker;if(x<8||x>W-8||y<8||y>H-8)continue;
-    let label=e.indigenous?.mapLabel||e.title;if(e.indigenous&&polityNames.has(label))continue;
-    const selected=e.id===state.sel;if(W<600&&!selected&&zoomK<1.5)continue;
-    const maxWidth=Math.max(70,Math.min(W-48,selected?260:180));
-    if(ctx.measureText(label).width>maxWidth){while(label.length&&ctx.measureText(label+"…").width>maxWidth)label=label.slice(0,-1);label+="…"}
-    const tw=ctx.measureText(label).width;
-    let lx=x+16;if(lx+tw>W-8)lx=x-16-tw;lx=Math.max(8,Math.min(W-tw-8,lx));const box=[lx-3,y-9,tw+6,18];
-    if(labelled.some(b=>!(box[0]>b[0]+b[2]||box[0]+box[2]<b[0]||box[1]>b[1]+b[3]||box[1]+box[3]<b[1])))continue;labelled.push(box);n++;
-    ctx.lineWidth=3;ctx.strokeStyle=C.halo;ctx.lineJoin="round";ctx.strokeText(label,lx,y);ctx.fillStyle=C.ink;ctx.fillText(label,lx,y)}
+  // Event text gets first choice of space. Country names fill the remaining gaps.
+  ctx.font=`500 ${W<600?11:12}px ${C.display}`;ctx.textBaseline="middle";ctx.textAlign="left";
+  const markerBoxes=hits.filter(h=>!h.radius).map(h=>({id:h.id,box:[h.x-10,h.y-10,20,20]}));
+  const candidates=act.flatMap(({e})=>{
+    if(e.cat==="dinosaurs"||(evidenceView&&e.indigenous?.evidence))return [];
+    const marker=hits.find(h=>h.id===e.id&&!h.radius);if(!marker)return [];
+    const selected=e.id===state.sel,hovered=e.id===hoveredEventId;
+    return [{...e,year:state.year,selected,hovered,x:marker.x,y:marker.y,
+      text:(e.indigenous?.mapLabel||e.title)+(e.ongoing&&state.year>e.start?" · ongoing":"")}];
+  });
+  const tipNode=document.getElementById('tip'),tipRect=tipNode.hidden?null:tipNode.getBoundingClientRect(),canvasRect=cv.getBoundingClientRect();
+  const textObstacles=tipRect?[...controlBoxes,[tipRect.left-canvasRect.left,tipRect.top-canvasRect.top,tipRect.width,tipRect.height]]:controlBoxes;
+  const placements=AtlasCartography.placeLabels(candidates,{width:W,height:H,measure:text=>ctx.measureText(text).width,
+    reserved:[...textObstacles,...(selectedCallout?[selectedCallout.box]:[])],markers:markerBoxes,
+    bounds:[labelViewport.x+6,6,Math.max(0,labelViewport.width-12),H-12],limit:Math.max(4,Math.min(16,Math.floor(W*H/35000)))});
+  for(const label of placements){const {box,lines,x,y}=label;
+    const end=[Math.max(box[0],Math.min(box[0]+box[2],x)),Math.max(box[1],Math.min(box[1]+box[3],y))];
+    ctx.save();ctx.strokeStyle=C.muted;ctx.globalAlpha=.55;ctx.lineWidth=.7;ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(...end);ctx.stroke();ctx.restore();
+    if(label.selected||label.hovered){ctx.fillStyle=C.paper;ctx.fillRect(...box)}
+    ctx.lineWidth=3;ctx.lineJoin="round";ctx.strokeStyle=C.halo;ctx.fillStyle=C.ink;
+    lines.forEach((text,i)=>{const lx=box[0]+5,ly=box[1]+10+i*15;ctx.strokeText(text,lx,ly);ctx.fillText(text,lx,ly)});
+  }
+  const eventBoxes=placements.map(p=>p.box),visibleCountries=[];
+  for(const label of countryLabels){if(textObstacles.some(b=>AtlasCartography.overlaps(label.box,b,3))||eventBoxes.some(b=>AtlasCartography.overlaps(label.box,b,4)))continue;
+    ctx.save();ctx.font=label.font;ctx.textAlign="center";ctx.textBaseline="middle";ctx.globalAlpha=.72;ctx.lineWidth=2;ctx.strokeStyle=C.halo;ctx.strokeText(label.text,label.x,label.y);ctx.fillStyle=label.color;ctx.fillText(label.text,label.x,label.y);ctx.restore();visibleCountries.push(label);
+  }
+  polLabels=[...visibleCountries.map(c=>c.box),...(selectedCallout?[selectedCallout.box]:[])];
+  AtlasCartography.lastLayout={year:state.year,mode:state.mode,placements,countries:visibleCountries,controls:textObstacles,markers:markerBoxes,
+    hidden:candidates.filter(c=>!placements.some(p=>p.id===c.id)).map(c=>c.id)};
   hits.push(...routeHits);
   // selection ring
   const s=state.sel&&byId[state.sel];
@@ -1447,7 +1462,7 @@ function startPinch(){const[a,b]=[...pts.values()];pinch={d:Math.hypot(a[0]-b[0]
 cv.addEventListener("pointerdown",e=>{
   if(e.pointerType==="mouse"&&e.button!==0)return;
   pts.set(e.pointerId,[e.clientX,e.clientY]);cv.setPointerCapture(e.pointerId);
-  hoverE=null;document.getElementById("tip").hidden=true;
+  hoverE=null;hoveredEventId=null;document.getElementById("tip").hidden=true;
   if(pts.size===1)startDrag(e.pointerId,pts.get(e.pointerId));else startPinch();
 });
 cv.addEventListener("pointermove",e=>{
@@ -1467,7 +1482,7 @@ cv.addEventListener("pointermove",e=>{
 let hoverE=null,hoverQ=0;
 function hover(){hoverQ=0;const e=hoverE;if(!e||pts.size)return;
   const r=cv.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,h=nearest(x,y),m=h?null:mapAt(x,y);cv.classList.toggle("hot",!!(h||m));
-  const tip=document.getElementById("tip"),lbl=h?h.label:m&&m.label;
+  const tip=document.getElementById("tip"),lbl=h?h.label:m&&m.label;const nextHover=h&&byId[h.id]?.kind==="event"?h.id:null;if(nextHover!==hoveredEventId){hoveredEventId=nextHover;draw()}
   if(lbl&&e.pointerType==="mouse"){tip.hidden=false;tip.textContent=lbl;tip.classList.toggle("country",!h);tip.style.left=x+"px";tip.style.top=y+"px"}else tip.hidden=true}
 function endPt(e){
   if(!pts.delete(e.pointerId))return;
@@ -1477,7 +1492,7 @@ function endPt(e){
 }
 cv.addEventListener("pointerup",e=>{const d=drag,tap=pts.size===1&&d?.id===e.pointerId&&!d.moved;endPt(e);if(tap){if(window.HistoryChallenge?.pickMap(e)){e.stopImmediatePropagation();return}const r=cv.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,h=nearest(x,y);if(h)select(h.id,false,h.year??null);else{const m=mapAt(x,y);if(m?.water&&window.HistoryDiscovery)HistoryDiscovery.selectWater(proj.invert([x,y]),m.year??state.year,m.polity);else if(m&&m.polity)selectPolity(m.polity,m.year??state.year);else if(m?.country&&window.AtlasExplore)AtlasExplore.selectCountry(m.country,m.year??state.year);else if(m&&e.pointerType!=="mouse"){const tip=document.getElementById("tip");tip.hidden=false;tip.textContent=m.label;tip.classList.add("country");tip.style.left=x+"px";tip.style.top=y+"px";clearTimeout(tapT);tapT=setTimeout(()=>tip.hidden=true,2500)}}}});
 cv.addEventListener("pointercancel",endPt);cv.addEventListener("lostpointercapture",endPt);
-cv.addEventListener("pointerleave",()=>{hoverE=null;document.getElementById("tip").hidden=true});
+cv.addEventListener("pointerleave",()=>{hoverE=null;hoveredEventId=null;document.getElementById("tip").hidden=true;draw()});
 cv.addEventListener("wheel",e=>{e.preventDefault();setZoom(zoomK*Math.exp(-e.deltaY*0.0015))},{passive:false});
 function setZoom(k){if(!Number.isFinite(k)||k<=0)return;zoomK=Math.max(.7,Math.min(6,k));userMoved=true;needHi();moved();draw()}
 const inBox=(b,ll)=>{const[[w,so],[ea,n]]=b;if(ll[1]<so||ll[1]>n)return false;return w<=ea?(ll[0]>=w&&ll[0]<=ea):(ll[0]>=w||ll[0]<=ea)};
@@ -1565,9 +1580,9 @@ function closeSelection(){const saved=sidebarReturn;sidebarReturn=null;state.sel
   const row=saved&&saved.year===state.year&&document.querySelector(`#side [data-id="${saved.id}"]`);
   if(row){for(let parent=row.parentElement;parent&&parent.id!=="side";parent=parent.parentElement)if(parent.tagName==="DETAILS")parent.open=true;window.AtlasUI?.revealList(saved);document.getElementById("side").scrollTop=saved.scroll;if(innerWidth<=860)row.scrollIntoView({block:"center",behavior:"instant"});row.focus({preventScroll:true})}
   else if(innerWidth<=860&&window.AtlasUI)AtlasUI.goToMap();else slider.focus()}
-function historicalContextNote(x,year){return DiscoveryCore.isHistoricalContext(x,year)?`<p class="timeline-context-note"><strong>Historical context for ${esc(fmt(year))}</strong><br>This record covers ${esc(fmtEvent(x))}. Its date range describes a historical period, rather than an event dated ${esc(fmt(year))}.</p>`:""}
+function historicalContextNote(x,year){return DiscoveryCore.isHistoricalContext(x,year)?`<p class="timeline-context-note"><strong>${esc(DiscoveryCore.temporalStatus(x,year))} · ${esc(fmt(year))}</strong><br>Began ${esc(fmt(x.start,x.approx))}. This record covers ${esc(fmtEvent(x))}; it is not a new event in ${esc(fmt(year))}.</p>`:""}
 function select(id,fly=true,recordYear=null){sidebarReturn=null;window.HistoryDiscovery?.selectedRecord(recordYear);state.sel=id;selectedPolity=null;const x=byId[id];stopPlay();
-  if(!(recordYear!==null&&window.HistoryDiscovery?.isComparing())&&x.kind==="event"&&(state.year<x.start-halfWin(x.start)||state.year>x.end+halfWin(x.start))){state.year=x.start;slider.value=Math.round(tAt(x.start)*SLIDER_STEPS)}
+  if(!(recordYear!==null&&window.HistoryDiscovery?.isComparing())&&x.kind==="event"&&!DiscoveryCore.inYear(x,state.year)){state.year=x.start;slider.value=Math.round(tAt(x.start)*SLIDER_STEPS)}
   if(!(recordYear!==null&&window.HistoryDiscovery?.isComparing())&&x.kind==="person"&&(state.year<x.born||state.year>x.died)){state.year=x.born;slider.value=Math.round(tAt(x.born)*SLIDER_STEPS)}
   if(fly||state.mode==="globe"){const point=window.HistoryPaleogeography?.point(x,recordYear??state.year)||[x.lon,x.lat];if(Number.isFinite(point[0])&&Number.isFinite(point[1])){if(state.mode==="globe")flyTo(...point);else{stopSpin();flyToken++;userMoved=true;makeProj();const p=proj(point);flatT.x+=W/2-p[0];flatT.y+=H/2-p[1]}}}update();
   revealDetail()}
@@ -1598,12 +1613,12 @@ function renderSide(){
   const expanded=new Set([...document.querySelectorAll("#regions [data-browse-group][open],#people [data-browse-group][open]")].map(node=>node.dataset.browseGroup));
   const act=window.AtlasExplore?.filterEvents(activeEvents())||activeEvents(),y=state.year;
   const context=act.filter(({e})=>DiscoveryCore.isHistoricalContext(e,y)),dated=act.filter(({e})=>!DiscoveryCore.isHistoricalContext(e,y));
-  document.getElementById("sideSub").textContent=y<-1000000?`Approximate ages · within 1 million years of the selected date · ${act.length} fossil record${act.length===1?"":"s"}`:`${dated.length} dated event${dated.length===1?"":"s"} within 2 years of ${fmt(y)}`+(context.length?` · ${context.length} historical context record${context.length===1?"":"s"}`:"");
+  document.getElementById("sideSub").textContent=y<-1000000?`Approximate ages · within 1 million years of the selected date · ${act.length} fossil record${act.length===1?"":"s"}`:`${dated.length} dated event${dated.length===1?"":"s"} in ${fmt(y)}`+(context.length?` · ${context.length} continuing development${context.length===1?"":"s"}`:"");
   const by={};for(const{e}of act)(by[e.region]??=[]).push(e);
   const reg=document.getElementById("regions");
   const filled=REGION_ORDER.filter(r=>by[r]);
-  reg.innerHTML=dated.length?eventRegions(dated):`<div class="empty empty-recovery"><p>${y<-1000000?"No dinosaur records in this time window.":`No dated events within ${SAME_TIME_YEARS} years of ${esc(fmt(y))}.`} This atlas contains a growing selection of records; a gap does not mean nothing happened.</p><div>${[-1,1].map(dir=>{const target=(window.AtlasExplore?.filterEvents(ev.map(e=>({e})))||ev.map(e=>({e}))).map(r=>r.e).filter(e=>state.cats.has(e.cat)&&(dir<0?e.start<y:e.start>y)).sort((a,b)=>dir<0?b.start-a.start:a.start-b.start)[0];return target?`<button type="button" data-near-event="${target.id}">${dir<0?"← Previous":"Next →"}: ${esc(fmt(target.start))}<strong>${esc(target.title)}</strong></button>`:""}).join("")}<button type="button" data-reset-empty>Reset event filters</button><a href="#discover=cleopatra-world">Try Cleopatra’s world →</a></div></div>`;
-  if(context.length)reg.insertAdjacentHTML("beforeend",`<section class="timeline-context-list" aria-label="Historical context"><h3>Historical context in ${esc(fmt(y))}</h3><p>Historical periods whose recorded date ranges overlap this time window.</p>${eventRegions(context,true)}</section>`);
+  reg.innerHTML=dated.length?eventRegions(dated):`<div class="empty empty-recovery"><p>${y<-1000000?"No dinosaur records in this time window.":`No dated events recorded in ${esc(fmt(y))}.`} This atlas contains a growing selection of records; a gap does not mean nothing happened.</p><div>${[-1,1].map(dir=>{const target=(window.AtlasExplore?.filterEvents(ev.map(e=>({e})))||ev.map(e=>({e}))).map(r=>r.e).filter(e=>state.cats.has(e.cat)&&(dir<0?e.start<y:e.start>y)).sort((a,b)=>dir<0?b.start-a.start:a.start-b.start)[0];return target?`<button type="button" data-near-event="${target.id}">${dir<0?"← Previous":"Next →"}: ${esc(fmt(target.start))}<strong>${esc(target.title)}</strong></button>`:""}).join("")}<button type="button" data-reset-empty>Reset event filters</button><a href="#discover=cleopatra-world">Try Cleopatra’s world →</a></div></div>`;
+  if(context.length)reg.insertAdjacentHTML("beforeend",`<section class="timeline-context-list" aria-label="Historical context"><h3>Historical developments in ${esc(fmt(y))}</h3><p>Recorded intervals that include this year. Their original start dates remain visible.</p>${eventRegions(context,true)}</section>`);
   const quiet=REGION_ORDER.filter(r=>!by[r]).map(r=>REGIONS[r]);
   if(filled.length&&quiet.length&&!window.AtlasExplore?.hasRegionFilter())reg.insertAdjacentHTML("beforeend",`<p class="empty">Nothing recorded here yet for ${quiet.join(", ")}.</p>`);
   reg.querySelectorAll('[data-near-event]').forEach(button=>button.onclick=()=>select(button.dataset.nearEvent));
@@ -1634,15 +1649,15 @@ function update(fast){
   const y=state.year;if(!state.playing){playBtn.innerHTML=y>=NOW?"↻ Replay":"▶ Play";playBtn.setAttribute("aria-label",y>=NOW?"Replay from the beginning of the timeline":"Play")}const yr=document.getElementById("yr");
   yr.classList.toggle("deep-time-year",y<=-1000000);
   yr.innerHTML=y<=-1000000?`≈${(Math.abs(y)/1000000).toLocaleString("en-US",{maximumFractionDigits:0})}<small>million years ago</small>`:y<0?`${Math.abs(y).toLocaleString("en-US")}<small>BC</small>`:y<1000?`<small style="margin:0 .15em 0 0">AD</small>${y}`:`${y}`;
-  document.getElementById("editDate").setAttribute("aria-label",`Edit selected date: ${fmt(y)}`);
-  document.getElementById("editDate").title=`${fmt(y)} · Edit date`;
+  document.getElementById("editDate").setAttribute("aria-label",`Change selected year: ${fmt(y)}`);
+  document.getElementById("editDate").title=`${fmt(y)} · Change year`;
   document.getElementById("era").textContent=y < -66000000 ? y < -201000000 ? "Triassic" : y < -145000000 ? "Jurassic" : "Cretaceous" : eraOf(y);
   {const n=activeEvents().length,r=new Set(activeEvents().map(a=>a.e.region)).size,pp=alivePeople().filter(p=>p.born<=y&&p.died>=y).length;
    document.getElementById("nowLine").innerHTML=n?`<b>${n} ${y<-1000000?"fossil record":"record"}${n===1?"":"s"}</b> across ${r} region${r===1?"":"s"}`+(pp?` · <b>${pp}</b> ${pp===1?"person":"people"} alive`:""):y<-1000000?"No fossil records in this time window.":"No records here yet. Jump to a recorded event."}
-  const t=tAt(y),w=halfWin(y),a=tAt(Math.max(-252000000,y-w)),b=tAt(Math.min(NOW,y+w));
+  const t=tAt(y),w=y<-1000000?1000000:0,a=tAt(Math.max(-252000000,y-w)),b=tAt(Math.min(NOW,y+w));
   const win=document.getElementById("win");win.style.left=a*100+"%";win.style.width=(b-a)*100+"%";
   document.getElementById("needle").style.left=t*100+"%";
-  document.getElementById("winLbl").textContent=y<-1000000?"±1 million years":`±${SAME_TIME_YEARS} years`;
+  document.getElementById("winLbl").textContent=y<-1000000?"±1 million years":"Selected year";
   for(const id of ["prev","next"]){const b=document.getElementById(id),size=y<-1000000?1000000:Number(document.getElementById("yearStep")?.value||1);const label=(id==="prev"?"Back":"Forward")+" "+(size===1000000?"1 million":size)+" "+(size===1?"year":"years");b.setAttribute("aria-label",label);b.title=label;b.disabled=id==="prev"?y<=-252000000:y>=NOW}
   slider.setAttribute("aria-valuetext",fmt(y));
   clearTimeout(slowT);if(!fast||performance.now()-slowAt>200)slow();else slowT=setTimeout(slow,200);

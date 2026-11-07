@@ -234,14 +234,14 @@ test("recent years contain sourced events visible to the timeline", () => {
   assert.equal(vm.runInContext("activeEvents().length", context), 0);
 });
 
-test("meanwhile uses inclusive two-year dates, other regions, and preserves sparse coverage", () => {
+test("meanwhile uses the selected year and ongoing intervals, other regions, and sparse coverage", () => {
   const anchor = { wiki: "Anchor", region: "am" };
   const ongoing = { wiki: "Ongoing", region: "as", start: 1810, end: 1820, approx: false };
   const exact = { wiki: "Exact", region: "eu", start: 1815, end: 1815, approx: false };
   const nearbyYear = { wiki: "Next", region: "af", start: 1817, end: 1817, approx: false };
   const sameRegion = { wiki: "Local", region: "am", start: 1815, end: 1815 };
   const events = [ongoing, exact, nearbyYear, sameRegion, { ...exact, wiki: "Duplicate region" }];
-  assert.deepEqual(core.meanwhile(anchor, events, 1815), [ongoing, exact, nearbyYear]);
+  assert.deepEqual(core.meanwhile(anchor, events, 1815), [ongoing, exact]);
   assert.deepEqual(core.meanwhile(anchor, [{ ...nearbyYear, start: 1818, end: 1818 }], 1815), []);
   assert.deepEqual(core.meanwhile(anchor, events, 1850), []);
 });

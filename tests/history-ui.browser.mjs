@@ -73,14 +73,14 @@ try {
     assert(document.activeElement===detail,'Selected reader receives keyboard focus');
     detail.querySelector('.close').click();
     assert(document.activeElement.dataset.id===event.id&&Math.abs(side.scrollTop-saved)<2,'Close restores list focus and scroll');
-    for(const [year,visible] of [[1926,true],[1930,true],[1925,false],[1931,false]]){
+    for(const [year,visible] of [[1926,false],[1928,true],[1930,false],[1925,false],[1931,false]]){
       setYear(year);
-      assert(!!document.querySelector('#regions [data-id="'+event.id+'"]')===visible,'Penicillin follows the inclusive two-year window in '+year);
+      assert(!!document.querySelector('#regions [data-id="'+event.id+'"]')===visible,'Penicillin appears only in its recorded year: '+year);
     }
     setYear(1992);const musqueam=ev.find(e=>e.wiki==='Musqueam_Indian_Band');
-    assert(document.getElementById('sideSub').textContent==='4 dated events within 2 years of 1992 · 3 historical context records','1992 contains dated events and continuing periods with women’s-rights markers off by default');
+    assert(document.getElementById('sideSub').textContent==='1 dated event in 1992 · 3 continuing developments','1992 contains dated events and continuing periods with women’s-rights markers off by default');
     for(const wiki of ['Dissolution_of_the_Soviet_Union','1994_South_African_general_election']){
-      assert(document.querySelector('#regions [data-id="'+ev.find(e=>e.wiki===wiki).id+'"]'),'1992 includes '+wiki);
+      assert(!document.querySelector('#regions [data-id="'+ev.find(e=>e.wiki===wiki).id+'"]'),'1992 excludes nearby milestones '+wiki);
     }
     assert(!activeEvents().some(({e})=>e.indigenous),'No unrelated continuing Indigenous overviews');
     select(musqueam.id,false);

@@ -133,7 +133,8 @@
       "lat": 46.232,
       "lon": 6.134,
       "source": "https://www.who.int/news/item/05-05-2023-statement-on-the-fifteenth-meeting-of-the-international-health-regulations-(2005)-emergency-committee-regarding-the-coronavirus-disease-(covid-19)-pandemic",
-      "reason": "The existing 2020–2023 range describes the PHEIC designation, not the full duration of the pandemic. The Geneva marker is grouped under Europe in the regional ledger."
+      "reason": "The existing 2020–2023 range describes the PHEIC designation, not the full duration of the pandemic. The Geneva marker is grouped under Europe in the regional ledger.",
+      "rechecked": "2026-11-07"
     },
     {
       "wiki": "Byzantine_silk",
@@ -944,16 +945,27 @@
     },
     {
       "wiki": "Russian_invasion_of_Ukraine",
-      "change": "source-check",
-      "source": "https://ukraine.un.org/en/173250-statement-secretary-general-%E2%80%93-ukraine",
-      "reason": "Chronology and main subject checked against the linked institutional or scholarly source. The point is a representative location, not the full geographical extent of the event."
+      "change": "ongoing-interval-clarification",
+      "source": "https://ukraine.ohchr.org/sites/default/files/2026-02/2026-02-16%20HRMMU_Four%20Years%20On_fact%20sheet_1.pdf",
+      "reason": "Rechecked 7 November 2026: UN statement dates the full-scale invasion to 24 February 2022; the February 2026 OHCHR Four Years On factsheet documents continued hostilities and civilian impacts through January 2026. Treat as an ongoing development and label its onset separately from later years.",
+      "start": 2022,
+      "end": 2026,
+      "ongoing": true,
+      "title": "Russia’s full-scale invasion of Ukraine",
+      "blurb": "Russia launches its full-scale invasion of Ukraine on 24 February 2022. The war and its civilian consequences continue in subsequent years, as documented by UN human-rights monitoring. This interval represents the continuing conflict, not a new invasion in each year. The Kyiv marker is a representative location, not the extent of fighting; 2026 is the atlas coverage limit, not an end date.",
+      "sources": [
+        "https://ukraine.un.org/en/173250-statement-secretary-general-%E2%80%93-ukraine",
+        "https://ukraine.ohchr.org/sites/default/files/2026-02/2026-02-16%20HRMMU_Four%20Years%20On_fact%20sheet_1.pdf"
+      ],
+      "rechecked": "2026-11-07"
     },
     {
       "wiki": "James_Webb_Space_Telescope",
       "change": "correction or clarification",
       "source": "https://science.nasa.gov/mission/webb/webbs-first-images/",
       "reason": "The source supports this qualified chronology or description; the former wording implied greater precision or an unsupported claim.",
-      "blurb": "NASA releases the James Webb Space Telescope's first science images in July 2022. The marker locates the Space Telescope Science Institute in Baltimore, which supports the mission; the telescope operates in space."
+      "blurb": "NASA releases the James Webb Space Telescope's first science images in July 2022. The marker locates the Space Telescope Science Institute in Baltimore, which supports the mission; the telescope operates in space.",
+      "rechecked": "2026-11-07"
     },
     {
       "wiki": "Sewing_needle",
@@ -1330,7 +1342,8 @@
       "wiki": "Chandrayaan-3",
       "change": "source-check",
       "source": "https://www.isro.gov.in/ISRO_EN/Chandrayaan3.html",
-      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described.",
+      "rechecked": "2026-11-07"
     },
     {
       "wiki": "2024_Summer_Olympics",
@@ -1343,7 +1356,8 @@
       "wiki": "Vera_C._Rubin_Observatory",
       "change": "source-check",
       "source": "https://www.nsf.gov/news/first-imagery-nsf-doe-vera-c-rubin-observatory",
-      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described.",
+      "rechecked": "2026-11-07"
     },
     {
       "wiki": "2026_Winter_Olympics",
@@ -1356,7 +1370,8 @@
       "wiki": "Artemis_II",
       "change": "source-check",
       "source": "https://www.nasa.gov/mission/artemis-ii/",
-      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described."
+      "reason": "Date and principal claim checked against the linked source; locations represent the place or region described.",
+      "rechecked": "2026-11-07"
     },
     {
       "wiki": "Reign_of_Cleopatra",
@@ -2259,7 +2274,8 @@
       "additionalSources": [
         "https://wwwnc.cdc.gov/eid/article/17/11/11-1109_article"
       ],
-      "ongoing": true
+      "ongoing": true,
+      "rechecked": "2026-11-07"
     },
     {
       "wiki": "1968_influenza_pandemic",
@@ -2289,7 +2305,8 @@
       "additionalSources": [
         "https://www.who.int/en/news-room/fact-sheets/detail/hiv-aids"
       ],
-      "ongoing": true
+      "ongoing": true,
+      "rechecked": "2026-11-07"
     },
     {
       "wiki": "2009_swine_flu_pandemic",
@@ -2593,7 +2610,8 @@
       "additionalSources": [
         "https://www.who.int/news/item/05-05-2023-statement-on-the-fifteenth-meeting-of-the-international-health-regulations-(2005)-emergency-committee-regarding-the-coronavirus-disease-(covid-19)-pandemic",
         "https://data.who.int/dashboards/covid19/variants"
-      ]
+      ],
+      "rechecked": "2026-11-07"
     },
     {
       "wiki": "Silk_Roads",
@@ -3086,20 +3104,25 @@
     },
     {
       "wiki": "Refugees_of_the_Syrian_civil_war",
-      "change": "addition",
+      "change": "ongoing-context-clarification",
       "start": 2011,
       "end": 2026,
       "approx": 0,
       "title": "Syrian war: refugee displacement and continuing exile",
-      "blurb": "Conflict from 2011 forces Syrians to seek safety within the country and abroad, including in Lebanon, Türkiye and Jordan. Refugees and returnees continue to need protection after later political changes. These outward arrows summarise selected displacement connections; they do not depict current traffic or return flows. The 2026 endpoint is the atlas coverage limit. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes.",
+      "blurb": "Conflict from 2011 forces Syrians to seek safety within the country and abroad, including in Lebanon, Türkiye and Jordan. Refugees and returnees continue to need protection after later political changes. These outward arrows summarise selected displacement connections; they do not depict current traffic or return flows. The 2026 endpoint is the atlas coverage limit. Arrows are schematic links between representative places across this interval, not individual journeys or surveyed routes. Some people have returned since late 2024, while many remain displaced. The interval does not imply fresh outward movement in every year.",
       "lat": 33.51,
       "lon": 36.29,
       "source": "https://www.unhcr.org/asia/emergencies/syria-emergency",
-      "reason": "UNHCR dates the emergency to 2011 and identifies neighbouring host countries. Its 2026 reporting documents continuing refugee, displacement and return needs.",
+      "reason": "UNHCR’s March 2026 operational update documents both return movements since December 2024 and persistent displacement. Preserve the sourced 2011 onset while explaining later developments and the atlas coverage cutoff.",
       "ongoing": true,
       "additionalSources": [
         "https://data.unhcr.org/en/country/syr",
         "https://www.unhcr.org/sites/default/files/2026-01/unhcr-regional-flash-update-61-syria-situation.pdf"
+      ],
+      "rechecked": "2026-11-07",
+      "sources": [
+        "https://www.unhcr.org/asia/emergencies/syria-emergency",
+        "https://data.unhcr.org/en/documents/details/122121"
       ]
     },
     {
@@ -3136,7 +3159,8 @@
         "https://www.migracje.uw.edu.pl/publikacje/polityka-polski-wobec-migracji-z-bialorusi-po-2020-roku-2/",
         "https://nbp.pl/wp-content/uploads/2026/02/Sytuacja_uchodzcow_z_Bialorusi-ANG-2025-WWW.pdf"
       ],
-      "ongoing": true
+      "ongoing": true,
+      "rechecked": "2026-11-07"
     },
     {
       "wiki": "Jewish_refugees_from_Nazi_Germany_and_German-occupied_Europe",

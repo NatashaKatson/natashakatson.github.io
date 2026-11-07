@@ -6,7 +6,7 @@
   const settingsContents = document.getElementById('settingsContents');
   const toolsToggle = document.getElementById('mapToolsToggle');
   const mobile = matchMedia('(max-width: 860px)');
-  let restoreSettingsFocus = true;
+  let restoreSettingsFocus = true, eraReturnFocus = null;
   let workspace = 'explore', context = byId[state.sel]?.kind === 'person' || HistoryDiscovery.contemporaryPair() ? 'people' : 'events', sheetOpen = false;
 
   // Relocate real controls so their existing state, handlers and IDs survive.
@@ -15,10 +15,15 @@
     const button = document.getElementById(id);
     button.type = 'button';
     button.classList.add('year-step');
+    button.innerHTML = `<span aria-hidden="true">${id === 'prev' ? '‹' : '›'}</span><small class="year-step-size" aria-hidden="true">1y</small>`;
     if (id === 'prev') document.getElementById('timelineDateSlot').prepend(button);
     else document.getElementById('timelineDateSlot').append(button);
   }
   document.querySelector('.year-steppers').remove();
+  for (const id of ['previousEvent', 'nextEvent']) {
+    const caption = document.createElement('small'); caption.className = 'event-jump-caption'; caption.textContent = 'Event'; caption.setAttribute('aria-hidden', 'true');
+    document.getElementById(id).append(caption);
+  }
   const layers = document.getElementById('layersPanel');
   layers.hidden = false;
   layers.querySelector('h2').remove();
@@ -33,9 +38,14 @@
   filters.querySelector('h2').append(document.getElementById('filterCount'));
   const categoryDetails = document.createElement('details');
   categoryDetails.className = 'settings-section';
-  categoryDetails.innerHTML = '<summary>Event categories <span id="categoryStatus"></span></summary>';
+  categoryDetails.innerHTML = '<summary>Visible event types <span id="categoryStatus"></span></summary>';
   categoryDetails.append(filters);
   settingsContents.append(categoryDetails);
+  for (const chip of filters.querySelectorAll('[data-k]')) {
+    const symbol = chip.querySelector('i'); symbol.classList.add('category-symbol'); symbol.innerHTML = AtlasCartography.svg(chip.dataset.k);
+  }
+  const symbolNote = document.createElement('p'); symbolNote.className = 'map-symbol-note'; symbolNote.textContent = 'Circle symbols identify event types; diamonds mark people. Select any marker for its full title, dates and source.';
+  filters.prepend(symbolNote);
   const comparison = document.createElement('details');
   comparison.className = 'settings-section';
   comparison.innerHTML = '<summary>Compare years</summary>';
@@ -106,6 +116,7 @@
 
   function openSettings() {
     closeMenus();
+    if (mobile.matches && sheetOpen) setSheet(false);
     if (settings.open) { settings.close(); return; }
     restoreSettingsFocus = true;
     settings.showModal();
@@ -130,12 +141,17 @@
 
   const body = document.getElementById('sideBody');
   const sheetToggle = document.getElementById('eventSheetToggle');
+  const sheetDismiss = document.createElement('span'); sheetDismiss.className = 'sheet-dismiss'; sheetDismiss.textContent = 'Back to map ↓'; sheetDismiss.setAttribute('aria-hidden', 'true');
+  sheetToggle.append(sheetDismiss);
   function setSheet(open) {
     sheetOpen = open;
     side.classList.toggle('sheet-open', open);
     sheetToggle.setAttribute('aria-expanded', String(open));
+    sheetToggle.setAttribute('aria-label', open ? 'Close reader and return to map' : workspace === 'journeys' ? 'Open journeys through time' : 'Open records around this time');
     body.inert = mobile.matches && !open;
     body.setAttribute('aria-hidden', String(mobile.matches && !open));
+    stage.inert = mobile.matches && open;
+    document.getElementById('timeControls').inert = !!window.HistoryChallenge?.isPicking() || mobile.matches && open;
   }
   sheetToggle.onclick = () => setSheet(!sheetOpen);
   mobile.addEventListener('change', () => { setSheet(sheetOpen); renderWorkspace(); updatePanelAccessibility(); });
@@ -225,9 +241,9 @@
     renderWorkspace();
   }
   const editYear = () => {
-    const input = document.getElementById('gotoInput');
-    input.value = fmtInputYear(state.year);
-    input.focus({ preventScroll: true }); input.select();
+    if (!document.getElementById('eraPanel').hidden) { closeMenus(true); return; }
+    scopeButton.click();
+    eraReturnFocus = document.getElementById('editDate');
   };
   document.getElementById('editDate').onclick = editYear;
   document.getElementById('previousEvent').onclick = () => stepEvent(-1);
@@ -235,8 +251,12 @@
   document.getElementById('resetFilters').onclick = resetEventFilters;
   const scopeButton = document.getElementById('timelineScope');
   scopeButton.onclick = () => {
+    if (scopeButton.getAttribute('aria-expanded') === 'true') { closeMenus(true); return; }
     openMenu(document.querySelector('[data-atlas-menu="eraPanel"]'));
-    document.getElementById('eraPanel').querySelector('[data-suggested-year], #eraChoices button:not([hidden])')?.focus({ preventScroll: true });
+    eraReturnFocus = scopeButton;
+    const input = document.getElementById('exploreYearInput');
+    if (input) { input.value = fmtInputYear(state.year); input.focus({ preventScroll: true }); input.select(); }
+    else document.getElementById('eraPanel').querySelector('[data-suggested-year], #eraChoices button:not([hidden])')?.focus({ preventScroll: true });
   };
   const dateInput = document.getElementById('gotoInput');
   const dateForm = document.getElementById('goto');
@@ -256,17 +276,18 @@
   function restorePanelAccessibility() {
     for (const [node, inert] of panelInertState) node.inert = inert;
     panelInertState.clear();
-    panels.querySelectorAll('[role="dialog"]').forEach(panel => { panel.removeAttribute('role'); panel.removeAttribute('aria-modal'); });
+    document.querySelectorAll('#eraPanel[role="dialog"], #journeyPanels [role="dialog"]').forEach(panel => { panel.removeAttribute('role'); panel.removeAttribute('aria-modal'); });
   }
   function updatePanelAccessibility() {
     restorePanelAccessibility();
-    const panel = panels.querySelector('.atlas-menu-panel:not([hidden])');
+    const panel = document.querySelector('#eraPanel:not([hidden]), #journeyPanels .atlas-menu-panel:not([hidden])');
     if (!panel || (!mobile.matches && innerHeight > 720)) return;
     panel.setAttribute('role', 'dialog');
     const bounds = panel.getBoundingClientRect();
     const focused = document.activeElement;
     let coveredFocus = false;
-    for (const node of [app.querySelector('header'), stage, document.getElementById('timeControls'), sheetToggle, side.querySelector('.side-intro'), side.querySelector('.workspace-coverage'), footer, document.querySelector('.mobile-atlas-nav')]) {
+    for (const node of [app.querySelector('header'), stage, document.getElementById('timeControls'), ...document.querySelectorAll('.time > .population-strip, .time > .controls, .time > .timeline-date, .time > .ruler, .time > .time-summary, .time > .event-navigation'), sheetToggle, side.querySelector('.side-intro'), side.querySelector('.workspace-coverage'), footer, document.querySelector('.mobile-atlas-nav')]) {
+      if (node.contains(panel)) continue;
       const rect = node.getBoundingClientRect();
       if (!rect.width || !rect.height || rect.right <= bounds.left || rect.left >= bounds.right || rect.bottom <= bounds.top || rect.top >= bounds.bottom) continue;
       panelInertState.set(node, node.inert);
@@ -280,7 +301,7 @@
   window.addEventListener('resize', updatePanelAccessibility);
   document.addEventListener('keydown', event => {
     if (event.key !== 'Tab') return;
-    const panel = panels.querySelector('[aria-modal="true"]');
+    const panel = document.querySelector('#eraPanel[aria-modal="true"], #journeyPanels [aria-modal="true"]');
     if (!panel) return;
     const focusable = [...panel.querySelectorAll('button, input, select, a[href], [tabindex]')].filter(node => !node.disabled && node.tabIndex >= 0 && node.getClientRects().length);
     const first = focusable[0], last = focusable.at(-1);
@@ -292,21 +313,28 @@
     let returnTrigger;
     for (const trigger of menuTriggers) {
       const panel = document.getElementById(trigger.dataset.atlasMenu);
-      if (restoreFocus && panel.contains(document.activeElement)) returnTrigger = trigger;
+      if (restoreFocus && panel.contains(document.activeElement)) returnTrigger = panel.id === 'eraPanel' ? eraReturnFocus || trigger : trigger;
       panel.hidden = true;
       trigger.setAttribute('aria-expanded', 'false');
     }
     side.classList.remove('journey-panel-open');
+    eraReturnFocus = null;
     returnTrigger?.focus({ preventScroll: true });
     scopeButton.setAttribute('aria-expanded', 'false');
+    document.getElementById('editDate').setAttribute('aria-expanded', 'false');
   }
   function openMenu(trigger) {
     closeMenus();
     const panel = document.getElementById(trigger.dataset.atlasMenu);
+    if (panel.id === 'eraPanel' && mobile.matches && sheetOpen) setSheet(false);
     if (panel.closest('#journeyPanels') && settings.open) closeSettingsForNavigation();
     panel.hidden = false;
     trigger.setAttribute('aria-expanded', 'true');
-    if (panel.id === 'eraPanel') scopeButton.setAttribute('aria-expanded', 'true');
+    if (panel.id === 'eraPanel') {
+      eraReturnFocus = trigger;
+      scopeButton.setAttribute('aria-expanded', 'true'); document.getElementById('editDate').setAttribute('aria-expanded', 'true');
+      updatePanelAccessibility();
+    }
     if (panel.closest('#journeyPanels')) {
       if (workspace !== 'journeys') setWorkspace('journeys');
       panel.hidden = false;
@@ -327,11 +355,8 @@
   };
   document.addEventListener('pointerdown', event => {
     // Journey panels remain open while the map is explored. Era selection is transient.
-    if (!event.target.closest('.atlas-menu')) {
-      const eraTrigger = document.querySelector('[data-atlas-menu="eraPanel"]');
-      document.getElementById('eraPanel').hidden = true;
-      eraTrigger.setAttribute('aria-expanded', 'false');
-      scopeButton.setAttribute('aria-expanded', 'false');
+    if (!event.target.closest('.atlas-menu, #editDate, #timelineScope')) {
+      if (!document.getElementById('eraPanel').hidden) closeMenus();
     }
   });
   document.addEventListener('keydown', event => {
@@ -400,7 +425,8 @@
     document.getElementById('sheetPreview').textContent = journeys ? 'Browse journeys ↑' : (heading || (context === 'people' ? 'Browse people ↑' : window.AtlasExplore?.preview() || document.querySelector('#yearIntroduction > summary span')?.textContent || document.querySelector('#regions .t')?.textContent || 'Browse events ↑'));
     sheetToggle.querySelector('span:nth-child(2)').textContent = journeys ? 'Journeys' : 'Around this time';
     document.getElementById('currentEraLabel').textContent = document.getElementById('era').textContent;
-    document.getElementById('readoutEra').textContent = document.getElementById('era').textContent;
+    document.getElementById('readoutEra').textContent = 'Era · ' + document.getElementById('era').textContent;
+    document.getElementById('readoutEra').title = 'Broad historical era, independent of the border dataset. Period conventions vary by region.';
     if (document.activeElement !== dateInput) dateInput.value = fmtInputYear(state.year);
     fitDateField();
     // Keep the reading card brief; preserve every source and related record.
@@ -469,7 +495,8 @@
     ['Cretaceous', '≈67 million years ago', -67000000, 2],
     ['Prehistory', '10,000 BC', -10000], ['Ancient', '3000 BC', -3000],
     ['Classical', '500 BC', -500], ['Medieval', '1000', 1000],
-    ['Early modern', '1600', 1600], ['Modern', '1903', 1903],
+    ['Early modern', '1600', 1600], ['19th century', '1801', 1801],
+    ['20th century', '1901', 1901], ['21st century', '2001', 2001],
   ];
   for (const [name, date, year, dinosaurEra] of destinations) {
     const button = document.createElement('button');
@@ -477,10 +504,11 @@
     if (dinosaurEra !== undefined) button.dataset.dinosaurDestination = dinosaurEra;
     button.innerHTML = `<span>${name}</span><small>${date}</small>`;
     button.onclick = () => {
+      const returnFocus = eraReturnFocus || document.querySelector('[data-atlas-menu="eraPanel"]');
       closeMenus();
       if (dinosaurEra !== undefined) document.querySelector(`[data-dinosaur-era="${dinosaurEra}"]`).click();
       else { stopPlay(); setYear(year); }
-      document.querySelector('[data-atlas-menu="eraPanel"]').focus({ preventScroll: true });
+      (state.sel ? document.getElementById('detail') : returnFocus).focus({ preventScroll: true });
     };
     choices.append(button);
   }
@@ -523,9 +551,9 @@
     document.querySelector('.journey-shortcuts h3').textContent = `Explore near ${years.map(year => fmt(year)).join(' & ')}`;
     for (const [id, category] of [['womensRightsPanel', 'womens-rights'], ['migrationsPanel', 'migrations']]) {
       const button = document.querySelector(`[data-journey-shortcut="${id}"]`);
-      const count = ev.filter(record => record.cat === category && years.some(year => DiscoveryCore.yearGap(record.start, record.end, year) <= SAME_TIME_YEARS)).length;
+      const count = ev.filter(record => record.cat === category && years.some(year => DiscoveryCore.inYear(record,year))).length;
       button.hidden = !human;
-      button.querySelector('[data-journey-count]').textContent = `${count} ${count === 1 ? 'record' : 'records'} near the selected ${years.length === 1 ? 'year' : 'years'}`;
+      button.querySelector('[data-journey-count]').textContent = `${count} ${count === 1 ? 'record' : 'records'} in the selected ${years.length === 1 ? 'year' : 'years'}`;
     }
     document.querySelector('[data-journey-shortcut="dinosaurs"]').hidden = !deep;
     const key = `${deep}/${human}/${state.borders}/${[...state.cats].sort().join(',')}/${HistoryDiscovery.isComparing()}`;
@@ -541,12 +569,13 @@
     document.getElementById('categoryStatus').textContent = defaultView && human ? 'Default view' : hiddenCount ? `${hiddenCount} hidden` : 'All shown';
     document.getElementById('filterCount').textContent = defaultView && human ? 'Default' : hiddenCount ? `${hiddenCount} hidden` : 'All';
     document.getElementById('resetFilters').disabled = defaultView;
-    document.getElementById('filterContext').textContent = 'Filters apply to the map and worldwide event list. ' + (deep && human ? 'Showing types for both displayed periods.' : deep ? 'Fossil records for this period.' : `Dated events within ${SAME_TIME_YEARS} years; longer periods are historical context.`);
+    document.getElementById('filterContext').textContent = 'Visibility applies to the map and worldwide event list. ' + (deep && human ? 'Showing types for both displayed periods.' : deep ? 'Fossil records use approximate ages.' : 'Milestones appear in their recorded year; historical developments appear inside their recorded intervals.');
     const dinosaursEnabled = state.cats.has('dinosaurs');
     browse.hidden = !deep || !dinosaursEnabled;
     for (const button of choices.querySelectorAll('[data-dinosaur-destination]')) button.hidden = !dinosaursEnabled;
     historyNote.hidden = !human || state.borders !== 'history';
     document.querySelector('.population-strip').hidden = deep && !human;
+    fitPopulation();
     stage.classList.toggle('deep-time-only', deep && !human);
   } };
   AtlasUI.render();

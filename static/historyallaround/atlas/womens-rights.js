@@ -68,12 +68,12 @@
     const matchedIds = query ? new Set(DiscoveryCore.search(searchable,query,'event',records.length).map(result => result.recordId)) : null;
     const matchesTopic = record => topic.value === 'all' || record.rights.topic === topic.value || (topic.value === 'us-abortion' && record.rights.topic === 'reproductive' && record.rights.country.startsWith('United States'));
     const filtered = records.filter(record => (!matchedIds || matchedIds.has(record.id)) && matchesTopic(record) && (region.value === 'all' || record.region === region.value));
-    const inPeriod = record => years.some(year => DiscoveryCore.yearGap(record.start,record.end,year) <= SAME_TIME_YEARS);
+    const inPeriod = record => years.some(year => DiscoveryCore.inYear(record,year));
     const selectedPeriod = timeScope.value === 'selected';
     const matches = selectedPeriod ? filtered.filter(inPeriod) : filtered;
-    const description = record => `${fmtEvent(record)} · ${record.rights.country}${inPeriod(record)?' · Near displayed year':''}`;
+    const description = record => `${fmtEvent(record)} · ${record.rights.country}${inPeriod(record)?' · In displayed year':''}`;
     const periodLabel = years.map(year => fmt(year)).join(' & ');
-    status.textContent = selectedPeriod ? `${matches.length} ${matches.length === 1 ? 'milestone' : 'milestones'} near ${periodLabel} · ±${SAME_TIME_YEARS} years` : `${matches.length} of ${records.length} milestones · ${matches.filter(inPeriod).length} near ${periodLabel}`;
+    status.textContent = selectedPeriod ? `${matches.length} ${matches.length === 1 ? 'milestone' : 'milestones'} in ${periodLabel}` : `${matches.length} of ${records.length} milestones · ${matches.filter(inPeriod).length} in ${periodLabel}`;
     const filters = JSON.stringify([query,topic.value,region.value,timeScope.value]);
     const period = years.join('/');
     // A timeline, selection or visibility update must not replace the focused

@@ -51,7 +51,7 @@ try{
         if(category==='womens-rights'){document.getElementById('rightsTopic').value='reproductive';document.getElementById('rightsRegion').value='af';}
         const before=[...state.cats].join();
         const shortcut=document.querySelector('[data-journey-shortcut="'+panel+'"]');
-        const expected=ev.filter(record=>record.cat===category&&DiscoveryCore.yearGap(record.start,record.end,state.year)<=halfWin(state.year));
+        const expected=ev.filter(record=>record.cat===category&&DiscoveryCore.inYear(record,state.year));
         check(shortcut.textContent.includes(expected.length+' '+(expected.length===1?'record':'records')),'Shortcut count follows the year');
         shortcut.click();
         check(state.year===year&&document.getElementById(scope).value==='selected','Shortcut selects period without changing the date');
@@ -60,7 +60,7 @@ try{
         check(document.getElementById(search).value===''&&[...state.cats].join()===before,'Shortcut clears stale search without changing marker visibility');
         if(!expected.length)check(document.getElementById(panel).textContent.includes('No matching')&&document.getElementById(panel).textContent.includes('All years'),'No unrelated fallback records in an empty period');
         setYear(year===1300?1950:1300);render();
-        check([...document.querySelectorAll(rowSelector)].every(row=>{const record=byId[row.dataset.rightsRecord||row.dataset.migrationRecord];return DiscoveryCore.yearGap(record.start,record.end,state.year)<=halfWin(state.year)}),'Open period list tracks subsequent year changes');
+        check([...document.querySelectorAll(rowSelector)].every(row=>{const record=byId[row.dataset.rightsRecord||row.dataset.migrationRecord];return DiscoveryCore.inYear(record,state.year)}),'Open period list tracks subsequent year changes');
         document.querySelector('button[data-workspace="journeys"]').click();
         document.querySelector('[data-atlas-menu="'+panel+'"]').click();
         check(document.getElementById(scope).value==='all'&&document.querySelectorAll(rowSelector).length===ev.filter(record=>record.cat===category).length,'Journeys retains the complete catalogue');
@@ -69,7 +69,7 @@ try{
       const form=document.getElementById('compareYears');form.elements.left.value='1920';form.elements.right.value='2022';form.requestSubmit();
       for(const [panel,category,scope,rowSelector] of topics){
         AtlasUI.goToEvents();document.querySelector('[data-journey-shortcut="'+panel+'"]').click();
-        const expected=ev.filter(record=>record.cat===category&&[1920,2022].some(year=>DiscoveryCore.yearGap(record.start,record.end,year)<=halfWin(year)));
+        const expected=ev.filter(record=>record.cat===category&&[1920,2022].some(year=>DiscoveryCore.inYear(record,year)));
         check(document.querySelectorAll(rowSelector).length===expected.length,'Comparison shortcut includes both displayed years');
       }
       document.getElementById('compareToggle').click();

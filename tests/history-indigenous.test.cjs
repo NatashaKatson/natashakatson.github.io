@@ -66,8 +66,8 @@ test('same-year suggestions exclude unrelated community histories and treat shor
     assert.deepEqual(core.meanwhile(anchor,[records.find(r=>r.wiki===wiki)],1956),[],wiki);
   }
   const resistance=records.find(r=>r.wiki==='Red_River_Resistance');
-  assert.equal(core.isHistoricalContext(resistance,1870),false,'a two-year Indigenous event is dated like any other event');
-  assert.equal(core.isHistoricalContext({...resistance,indigenous:undefined},1870),false);
+  assert.equal(core.isHistoricalContext(resistance,1870),true,'the second year of an interval is continuing context, regardless of identity');
+  assert.equal(core.isHistoricalContext({...resistance,indigenous:undefined},1870),true);
 });
 
 test('all discovery stops reuse dated records and their primary source links',()=>{
