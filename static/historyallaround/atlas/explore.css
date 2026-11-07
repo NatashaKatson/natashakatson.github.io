@@ -42,6 +42,7 @@
 .people > .more-records { width: 100%; }
 .person small { display: block; color: #756c60; font: 10px/1.5 var(--body); }
 .topic-journeys { margin: 20px 0; padding-block: 16px; border-block: 1px solid var(--workspace-line); }
+.side.journey-panel-open .topic-journeys { display: none; }
 .topic-journeys h3, .topic-journeys h4 { font: 500 19px/1.4 var(--display); }
 .topic-journeys p { font: 12px/1.6 var(--body); color: #756c60; }
 .topic-choices, .topic-reader > div { display: flex; flex-wrap: wrap; gap: 8px; }

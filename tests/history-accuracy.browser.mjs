@@ -114,7 +114,17 @@ try {
     const expected=document.createElement('canvas');expected.width=expected.height=1;const ec=expected.getContext('2d');
     ec.fillStyle=C.land;ec.fillRect(0,0,1,1);
     for(const f of polities().filter(f=>d3.geoContains(f,point))){ec.fillStyle=STATE_FILLS[f.hue];ec.fillRect(0,0,1,1)}
-    const a=ctx.getImageData(Math.round(pixel[0]*DPR),Math.round(pixel[1]*DPR),1,1).data,b=ec.getImageData(0,0,1,1).data;
+    // Test territory paint independently of labels and their halos, which can
+    // move over the sample point as the people/event coverage changes.
+    const textMethods=[ctx.fillText,ctx.strokeText];
+    let a;
+    try{
+      ctx.fillText=()=>{};ctx.strokeText=()=>{};render();
+      a=ctx.getImageData(Math.round(pixel[0]*DPR),Math.round(pixel[1]*DPR),1,1).data;
+    }finally{
+      [ctx.fillText,ctx.strokeText]=textMethods;render();
+    }
+    const b=ec.getImageData(0,0,1,1).data;
     assert([...a].every((v,i)=>Math.abs(v-b[i])<=3),'territory fill agrees with area-ordered hover identity');
     assert(!d3.geoContains(polities().find(f=>f.name==='French Fifth Republic'),point),'France geometry excludes independent Algeria');
     await loadChunk(2000);setYear(2000);render();
