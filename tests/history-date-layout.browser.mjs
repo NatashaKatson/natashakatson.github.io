@@ -36,6 +36,7 @@ const screenshot = async (name) => {
 };
 try {
   await send('Page.enable');await send('Runtime.enable');await send('Network.enable');
+  await send('Network.setCacheDisabled',{cacheDisabled:true});
   await send('Network.setBlockedURLs',{urls:['https://fonts.googleapis.com/*','https://fonts.gstatic.com/*']});
   await send('Emulation.setDeviceMetricsOverride',{width:1594,height:900,deviceScaleFactor:1,mobile:false});
   await send('Page.navigate',{url:testURL+'#201578000bc'});
@@ -51,12 +52,33 @@ try {
         const rects=['.controls','.timeline-date','.dock-actions'].map(selector=>document.querySelector('.time '+selector).getBoundingClientRect());
         const overlap=rects.some((a,i)=>rects.slice(i+1).some(b=>a.left<b.right-.5&&a.right>b.left+.5&&a.top<b.bottom-.5&&a.bottom>b.top+.5));
         const field=input.getBoundingClientRect(),date=rects[1],centered=Math.abs((field.left+field.right-date.left-date.right)/2)<1;
-        return{value:input.value,expected:fmtInputYear(state.year),roundTrip:parseYear(input.value)===state.year,text,available,centered,overlap,overflow:document.documentElement.scrollWidth>innerWidth||document.getElementById('atlasMain').getBoundingClientRect().bottom>innerHeight+1,border:getComputedStyle(document.getElementById('prev')).borderWidth};
+        return{value:input.value,expected:fmtInputYear(state.year),roundTrip:parseYear(input.value)===state.year,text,available,font:style.font,fieldWidth:field.width,padding:style.padding,centered,overlap,overflow:document.documentElement.scrollWidth>innerWidth||document.getElementById('atlasMain').getBoundingClientRect().bottom>innerHeight+1,border:getComputedStyle(document.getElementById('prev')).borderWidth};
       })()`);
       if(result.value!==result.expected||!result.roundTrip||!result.centered||result.text>result.available+1||result.overlap||result.overflow||result.border!=='0px')throw Error(JSON.stringify({width,height,year,...result}));
     }
     console.log(`PASS Dates, precision, arrow styling and layout fit at ${width}×${height}`);
   }
+  await send('Emulation.setDeviceMetricsOverride',{width:320,height:650,deviceScaleFactor:1,mobile:true});
+  console.log(await evaluate(`(async()=>{
+    const input=document.getElementById('gotoInput');
+    try{
+      for(const size of ['16px','20px'])for(const font of ['Georgia','"Times New Roman"','"Courier New"']){
+        input.style.fontSize=size;input.style.fontFamily=font;
+        for(const year of [1,1492,1928,2026,-500,-201578999]){
+          // Exercise the compact width observed in CI as well as full BC dates.
+          input.style.width=year>=1000?'40px':'';
+          setYear(year);stopSpin();AtlasUI.goToMap();render();
+          await new Promise(requestAnimationFrame);
+          const style=getComputedStyle(input),measure=document.createElement('canvas').getContext('2d');measure.font=style.font;
+          const text=measure.measureText(input.value).width,available=input.clientWidth-parseFloat(style.paddingLeft)-parseFloat(style.paddingRight);
+          if(text>available+1)throw Error('Fallback font clips date: '+JSON.stringify({year,value:input.value,font:style.font,text,available}));
+        }
+      }
+      return 'PASS 320px dates with serif and monospace fallback fonts at larger text size';
+    }finally{
+      input.style.removeProperty('font-size');input.style.removeProperty('font-family');input.style.removeProperty('width');
+    }
+  })()`));
   await send('Emulation.setDeviceMetricsOverride',{width:1594,height:900,deviceScaleFactor:1,mobile:false});
   await evaluate(`setYear(-201578000);stopSpin()`);await pause(100);
   await screenshot('date-fixed-desktop');
