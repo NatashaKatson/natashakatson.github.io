@@ -33,10 +33,48 @@ async function navigate(hash) {
   }
   throw Error('Atlas failed to load');
 }
+async function click(selector) {
+  await evaluate(`document.querySelector(${JSON.stringify(selector)}).scrollIntoView({block:'center',behavior:'instant'})`);
+  await evaluate('new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))');
+  const target = await evaluate(`(()=>{
+    const node=document.querySelector(${JSON.stringify(selector)}),rect=node.getBoundingClientRect();
+    const x=rect.left+rect.width/2,y=rect.top+rect.height/2;
+    if(!rect.width||!rect.height||!node.contains(document.elementFromPoint(x,y)))throw Error('Button is covered: '+${JSON.stringify(selector)});
+    return {x,y};
+  })()`);
+  await send('Input.dispatchMouseEvent', {type:'mousePressed',...target,button:'left',clickCount:1});
+  await send('Input.dispatchMouseEvent', {type:'mouseReleased',...target,button:'left',clickCount:1});
+  await evaluate('new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))');
+}
 try {
   await send('Page.enable');
   await send('Page.addScriptToEvaluateOnNewDocument', { source: workspaceSetup });
   await send('Runtime.enable'); await send('Network.enable'); await send('Network.setCacheDisabled', { cacheDisabled: true });
+  await send('Network.setBlockedURLs', {urls:['https://fonts.googleapis.com/*','https://fonts.gstatic.com/*']});
+  for (const width of [1440, 390]) {
+    await send('Emulation.setDeviceMetricsOverride', {width,height:1000,deviceScaleFactor:1,mobile:width<=860});
+    for (const entry of ['era picker', 'settings']) {
+      await navigate('#1903');
+      await evaluate('stopSpin()');
+      if (entry === 'era picker') {
+        await click('#timelineScope');
+        await click('.dinosaur-jump');
+      } else {
+        await click('#mapToolsToggle');
+        await click('.dock-options > summary');
+        await click('.dinosaur-trigger');
+      }
+      console.log(await evaluate(`(()=>{
+        const assert=(value,message)=>{if(!value)throw Error(message)};
+        assert(state.year===-67000000&&byId[state.sel]?.wiki==='Tyrannosaurus','Explore dinosaurs selects its fossil record');
+        assert(document.getElementById('eraPanel').hidden&&!document.getElementById('mapSettings').open,'Explore dinosaurs dismisses the picker and settings');
+        const heading=document.querySelector('.dinosaur-detail h3'),rect=heading.getBoundingClientRect(),side=document.getElementById('side').getBoundingClientRect();
+        assert(rect.top>=side.top&&rect.bottom<=side.bottom,'Selected dinosaur heading is in the visible sidebar');
+        assert(heading.contains(document.elementFromPoint(rect.left+rect.width/2,rect.top+rect.height/2)),'Selected dinosaur heading is uncovered');
+        return 'Real dinosaur exploration click from ${entry} passed at ${width}px';
+      })()`));
+    }
+  }
   await send('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false });
   await navigate('#1903');
   console.log(await evaluate(`(async()=>{

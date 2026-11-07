@@ -56,8 +56,7 @@
   async function open(record, year = Math.round((record.start + record.end) / 2)) {
     await HistoryDiscovery.jumpSearch({ kind: "dinosaur", recordId: record.id,
       start: year, lon: record.lon, lat: record.lat });
-    if (innerWidth <= 860) stage.scrollIntoView({ block: "center", behavior: "instant" });
-    else document.querySelector(".side").scrollTo({ top: 0 });
+    revealDetail();
   }
   trigger.onclick = () => open(fossils.find((e) => e.wiki === "Tyrannosaurus"));
   card.querySelectorAll("[data-dinosaur-era]").forEach((b) => b.onclick = () => {
