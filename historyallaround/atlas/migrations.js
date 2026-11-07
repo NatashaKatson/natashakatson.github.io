@@ -22,7 +22,7 @@
   const search = panel.querySelector('#migrationSearch');
   const status = panel.querySelector('#migrationStatus');
   const results = panel.querySelector('#migrationResults');
-  let lastKey = '';
+  let lastKey = '', lastFilters = '';
 
   panel.querySelector('.migrations-close').onclick = () => {
     if (trigger.getAttribute('aria-expanded') === 'true') trigger.click();
@@ -73,10 +73,34 @@
       ? `${matches.length} ${matches.length === 1 ? 'match' : 'matches'} · ${records.length} histories total`
       : `${current.length} near ${periodLabel} · ${records.length} histories total`;
     const focusedId = results.contains(document.activeElement) ? document.activeElement.dataset.migrationRecord : null;
+    const filters = JSON.stringify([query,timeScope.value]);
+    const resetScroll = filters !== lastFilters;
+    lastFilters = filters;
+    const scroll = results.scrollTop;
+    const bounds = results.getBoundingClientRect();
+    // Keep the same visible history when date grouping moves records between
+    // sections. Restore focus without scrolling the page or the outer sidebar.
+    const anchor = [...results.querySelectorAll('[data-migration-record]')].find(button => {
+      const rect = button.getBoundingClientRect();
+      return rect.bottom > bounds.top && rect.top < bounds.bottom;
+    });
+    const anchorOffset = anchor?.getBoundingClientRect().top - bounds.top;
     results.innerHTML = group(years.length > 1 ? 'Displayed periods' : `Around ${periodLabel}`,near) + (selectedPeriod ? '' : group('Other periods',other))
       || (selectedPeriod ? `<p class="migrations-empty">No matching histories near ${esc(periodLabel)}. Choose All years to browse the full timeline.</p>` : '<p class="migrations-empty">No matching histories. Try a place, people or event.</p>');
-    if (focusedId) (results.querySelector(`[data-migration-record="${focusedId}"]`) || search).focus({preventScroll:true});
-    results.scrollTop = 0;
+    results.scrollTop = resetScroll ? 0 : scroll;
+    if (!resetScroll && anchor) {
+      const retained = results.querySelector(`[data-migration-record="${anchor.dataset.migrationRecord}"]`);
+      if (retained) results.scrollTop += retained.getBoundingClientRect().top - results.getBoundingClientRect().top - anchorOffset;
+    }
+    if (focusedId) {
+      const focused = !resetScroll && results.querySelector(`[data-migration-record="${focusedId}"]`);
+      (focused || search).focus({preventScroll:true});
+      if (focused) {
+        const rect = focused.getBoundingClientRect(), list = results.getBoundingClientRect();
+        if (rect.top < list.top) results.scrollTop += rect.top - list.top;
+        else if (rect.bottom > list.bottom) results.scrollTop += rect.bottom - list.bottom;
+      }
+    }
   } };
   HistoryMigrations.render();
 })();

@@ -126,12 +126,14 @@
       return JSON.stringify([feature.name, feature.member || ""]);
     },
     politicalStatus(feature) {
+      if (feature.properties?.politicalStatus) return feature.properties.politicalStatus;
+      if (feature.member === 'Commonwealth of Nations') return 'Commonwealth member';
       if (feature.member) return feature.member === feature.name
         ? `Constituent of ${feature.member}` : `Part of ${feature.member}`;
       if (/unverified/i.test(feature.name)) return "Unverified";
       if (feature.name === "Commonwealth of Nations") return "Association of countries";
       if (/culture|civilization|regional system/i.test(feature.name)) return "Cultural region";
-      return "Independent";
+      return "Mapped polity";
     },
     greatLakesGeometry(geometry, boundary) {
       // Cliopatria follows the lake shores here, excluding water and even
@@ -207,7 +209,7 @@
     active(features, year) {
       const seen = new Map();
       for (const f of features)
-        if (f.from <= year && f.to >= year) {
+        if (!f.properties?.quarantined && f.from <= year && f.to >= year) {
           const key = api.polityKey(f), old = seen.get(key);
           if (!old || f.from > old.from) seen.set(key, f);
         }
