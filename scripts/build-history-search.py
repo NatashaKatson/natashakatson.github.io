@@ -32,6 +32,8 @@ def build_states():
         topo = snapshot(chunk)
         for index, geometry in enumerate(topo['objects']['p']['geometries']):
             p = geometry['properties']
+            if p.get('quarantined'):
+                continue
             start = max(chunk, p['f'])
             end = min(chunk + manifest['chunkSize'] - 1, p['t'], manifest['to'])
             if start == 0:

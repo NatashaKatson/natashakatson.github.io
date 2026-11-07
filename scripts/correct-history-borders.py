@@ -317,6 +317,52 @@ def verified_corrections(topo, chunk):
     topo['objects']['p']['geometries'] = result
 
 
+def reviewed_identities(topo):
+    """Keep documented names and recognition distinct from source geometry.
+
+    Quarantined features retain their original dates and arcs for provenance,
+    but are excluded from the runtime, local histories and generated search.
+    """
+    result = []
+    for original in topo['objects']['p']['geometries']:
+        p = original['properties']
+        name = p['n']
+        if name == 'Grand Duchy of Berg':
+            p.update(quarantined=True,
+                     status='Source identity and geometry require replacement: these outlines omit the documented capital at Düsseldorf, and versions after 1813 outlive the Grand Duchy of Berg. Retained for provenance; not displayed as historical coverage.',
+                     source='https://rheinische-geschichte.lvr.de/Orte-und-Raeume/grossherzogtum-berg/DE-2086/lido/57d11981116210.76405013')
+        if name == 'United Principalities of Moldavia and Wallachia' and p['t'] >= 1881:
+            if p['f'] < 1881:
+                earlier = copy.deepcopy(original)
+                earlier['properties']['t'] = 1880
+                result.append(earlier)
+            p.update(n='Kingdom of Romania', f=max(p['f'], 1881), w='Kingdom_of_Romania',
+                     status='Romania became a kingdom in 1881. The dated name is corrected here; the simplified territorial outline remains the historical source reconstruction.',
+                     source='https://history.state.gov/countries/romania')
+        if name == 'Turkish Republic of Northern Cyprus':
+            if p['f'] < 1983:
+                earlier = copy.deepcopy(original)
+                earlier['properties'].update(
+                    n='Turkish Cypriot-administered area', t=min(p['t'], 1982),
+                    w='Turkish_Federated_State_of_Cyprus', politicalStatus='De facto administration',
+                    basis='Control and sovereignty differ',
+                    status='Turkish Cypriot administration in northern Cyprus. This outline represents source coverage of de facto control, not recognized sovereignty. The declaration of a Turkish Republic of Northern Cyprus followed in November 1983.',
+                    source='https://www.gov.cy/pio/en/documents/important-security-council-resolutions/resolution-541-1983/')
+                result.append(earlier)
+                if p['t'] < 1983:
+                    continue
+            p.update(f=max(p['f'], 1983), politicalStatus='Recognition disputed',
+                     basis='Control and sovereignty differ',
+                     status='Self-declared administration in northern Cyprus, recognized only by Türkiye. UN Security Council resolution 541 (1983) considers the declaration legally invalid and calls on states not to recognize a Cypriot state other than the Republic of Cyprus. This outline does not establish sovereignty.',
+                     source='https://www.gov.cy/pio/en/documents/important-security-council-resolutions/resolution-541-1983/')
+        if name == 'British Overseas Territories':
+            p.update(m='United Kingdom', politicalStatus='UK overseas territories',
+                     status='These territories have constitutional relationships with the United Kingdom. They are not separate sovereign members of the Commonwealth. This aggregate preserves the dated source outlines, not a current inventory of territories.',
+                     source='https://commonslibrary.parliament.uk/research-briefings/cbp-9583/')
+        result.append(original)
+    topo['objects']['p']['geometries'] = result
+
+
 if __name__ == '__main__':
     changed = []
     for path in sorted(ROOT.glob('c*.json')):
@@ -325,6 +371,7 @@ if __name__ == '__main__':
         original = copy.deepcopy(topo)
         correct(topo)
         verified_corrections(topo, int(path.stem[1:]))
+        reviewed_identities(topo)
         crimea_occupation(topo, int(path.stem[1:]))
         colonial_identities(topo)
         historical_extent_notes(topo)

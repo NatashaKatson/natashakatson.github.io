@@ -1230,6 +1230,7 @@ function loadChunk(c){if(bCache.has(c))return Promise.resolve(bCache.get(c));
     // same dated geometry: drawing, scans, comparisons, search and shared views.
     const fs=topojson.feature(t,t.objects.p).features.flatMap(f=>{
       const q=f.properties,from=HistoryGreatLakes.from;
+      if(q.quarantined)return [];
       return ["Canada","United States of America"].includes(q.n)&&q.f<from&&q.t>=from
         ? [{...f,properties:{...q,t:from-1}},{...f,properties:{...q,f:from}}] : [f];
     });
@@ -1350,7 +1351,7 @@ function renderScene(){
   ctx.save();ctx.font=`italic 400 ${W<600?8.5:10.5}px ${C.display}`;ctx.textAlign="center";ctx.textBaseline="middle";ctx.fillStyle=C["water-label"];
   for(const[name,lon,lat]of G.ancient?[]:WATER_LABELS){if(W<600&&!name.includes("Ocean"))continue;if(!visible(lon,lat))continue;const p=proj([lon,lat]);if(!p||!Number.isFinite(p[0])||!Number.isFinite(p[1]))continue;if(globe&&Math.hypot(p[0]-cx,p[1]-cy)>R*.84)continue;ctx.fillText(name,p[0],p[1])}ctx.restore();
   // State names near the map's focus, with collision checks against event markers.
-  polLabels=[];const polityNames=new Set();
+  polLabels=[];const polityNames=new Set();let selectedCallout=null;
   const marks=pols.length?[...activeEvents().map(a=>a.e),...alivePeople()].filter(o=>visible(o.lon,o.lat)).map(o=>proj([o.lon,o.lat])):[];
   if(pols.length){ctx.font=`500 ${W<600?9:10.5}px ${C.display}`;ctx.textAlign="center";ctx.textBaseline="middle";let n=0;const named=new Set();
     // A state's rough on-screen size comes from its stored area, so labels don't need every outline projected again.
@@ -1360,9 +1361,24 @@ function renderScene(){
     // Realms and their constituents can share a name; the first placed label wins (selection is ordered first).
     for(const f of labelOrder){if(n>=(W<600?5:9))break;if(named.has(f.name))continue;const bw=Math.sqrt(f.area)*R,isSelected=samePolity(f,selectedPolity);if(bw<12&&!isSelected)continue;
       const lp=f.cen;if(!visible(lp[0],lp[1]))continue;const[cx2,cy2]=proj(lp);if(globe&&Math.hypot(cx2-cx,cy2-cy)>R*.86)continue;const t=f.name;const tw=ctx.measureText(t).width;if(tw>Math.max(80,bw*1.7)&&!isSelected)continue;
-      const hitsBox=b=>polLabels.some(o=>!(b[0]>o[0]+o[2]||b[0]+b[2]<o[0]||b[1]>o[1]+o[3]||b[1]+b[3]<o[1]))||marks.some(([mx,my])=>mx>b[0]-9&&mx<b[0]+b[2]+9&&my>b[1]-9&&my<b[1]+b[3]+9);
-      let ly=null;for(const dy of[0,16,-16,30,-30]){const b=[cx2-tw/2-4,cy2+dy-8,tw+8,16];if(!hitsBox(b)){ly=cy2+dy;polLabels.push(b);break}}if(ly===null)continue;named.add(f.name);polityNames.add(f.name);n++;
-      ctx.lineWidth=2.5;ctx.strokeStyle=C.halo;ctx.strokeText(t,cx2,ly);ctx.fillStyle=C.ink;ctx.fillText(t,cx2,ly)}
+      const collisions=b=>polLabels.filter(o=>!(b[0]>o[0]+o[2]||b[0]+b[2]<o[0]||b[1]>o[1]+o[3]||b[1]+b[3]<o[1])).length+marks.filter(([mx,my])=>mx>b[0]-9&&mx<b[0]+b[2]+9&&my>b[1]-9&&my<b[1]+b[3]+9).length;
+      let ly=null;
+      if(isSelected){
+        // A selected territory always gets a readable label. Wrap on phones,
+        // search farther from crowded markers, and keep its callout in view.
+        const lines=[];let line="";
+        for(const word of t.split(" ")){const next=line?line+" "+word:word;if(line&&ctx.measureText(next).width>W-32){lines.push(line);line=word}else line=next}lines.push(line);
+        const width=Math.max(...lines.map(text=>ctx.measureText(text).width))+12,height=lines.length*13+8;
+        const lx=Math.max(width/2+6,Math.min(W-width/2-6,cx2));
+        let best=null;
+        for(const dy of[0,16,-16,30,-30,48,-48,64,-64,80,-80,104,-104]){
+          const y=Math.max(height/2+6,Math.min(H-height/2-6,cy2+dy)),box=[lx-width/2,y-height/2,width,height],score=collisions(box);
+          if(!best||score<best.score)best={y,box,score};if(!score)break;
+        }
+        ly=best.y;polLabels.push(best.box);selectedCallout={lines,x:lx,y:ly,anchor:[cx2,cy2],box:best.box,font:ctx.font};
+      }else for(const dy of[0,16,-16,30,-30]){const b=[cx2-tw/2-4,cy2+dy-8,tw+8,16];if(!collisions(b)){ly=cy2+dy;polLabels.push(b);break}}
+      if(ly===null)continue;named.add(f.name);polityNames.add(f.name);n++;
+      if(!isSelected){ctx.lineWidth=2.5;ctx.strokeStyle=C.halo;ctx.strokeText(t,cx2,ly);ctx.fillStyle=C.ink;ctx.fillText(t,cx2,ly)}}
     ctx.textAlign="start"}
   if(!G.ancient&&zoomK>=2){
     ctx.save();ctx.font=`italic 500 ${W<600?10:11}px ${C.display}`;ctx.textAlign="center";ctx.textBaseline="middle";
@@ -1418,6 +1434,10 @@ function renderScene(){
   const selectedMarker=s&&hits.find(h=>h.id===s.id&&!h.radius);
   if(selectedMarker&&s.cat!=="dinosaurs"){const{x,y}=selectedMarker;ctx.beginPath();ctx.arc(x,y,13,0,7);ctx.strokeStyle=C.accent;ctx.lineWidth=2.5;ctx.stroke();
     ctx.beginPath();ctx.arc(x,y,19,0,7);ctx.globalAlpha=.35;ctx.lineWidth=1.5;ctx.stroke();ctx.globalAlpha=1}
+  if(selectedCallout){const{lines,x,y,anchor,box,font}=selectedCallout;ctx.save();ctx.font=font;ctx.textAlign="center";ctx.textBaseline="middle";
+    if(Math.hypot(x-anchor[0],y-anchor[1])>12){ctx.beginPath();ctx.moveTo(...anchor);ctx.lineTo(x,y);ctx.strokeStyle=C.accent;ctx.lineWidth=1;ctx.stroke()}
+    ctx.fillStyle=C.paper;ctx.fillRect(...box);ctx.strokeStyle=C.accent;ctx.lineWidth=.8;ctx.strokeRect(...box);ctx.fillStyle=C.ink;
+    lines.forEach((text,i)=>ctx.fillText(text,x,y+(i-(lines.length-1)/2)*13));ctx.restore()}
 }
 
 // pan / rotate / zoom

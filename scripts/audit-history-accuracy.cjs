@@ -89,6 +89,7 @@ function audit() {
     for (const geometry of topology.objects.p.geometries) {
       const p = geometry.properties;
       featureInstances++;
+      check(!p.quarantined || (p.quarantined === true && !!p.status && p.source?.startsWith('https://')), `${chunk}: quarantine lacks provenance ${p.n}`);
       check(!!p.n && Number.isInteger(p.f) && Number.isInteger(p.t) && p.f <= p.t, `${chunk}: invalid dates/name ${p.n}`);
       check(Number.isFinite(p.a) && p.a > 0 && p.a < 4 * Math.PI, `${chunk}: invalid area ${p.n}`);
       check(['Polygon', 'MultiPolygon'].includes(geometry.type), `${chunk}: invalid geometry ${p.n}`);
@@ -98,7 +99,7 @@ function audit() {
         check(points.length >= 4, `${chunk}: short ring ${p.n}`);
         if (points.length) check(Math.hypot(points[0][0] - points.at(-1)[0], points[0][1] - points.at(-1)[1]) < .02, `${chunk}: open ring ${p.n}`);
       }
-      const feature = { name: unparen(p.n), member: unparen(p.m), from: p.f, to: p.t, area: p.a, basis: p.basis || '' };
+      const feature = { name: unparen(p.n), member: unparen(p.m), from: p.f, to: p.t, area: p.a, basis: p.basis || '', properties: p };
       features.push(feature);
       versions.set(JSON.stringify([p.n, p.m, p.f, p.t]), feature);
     }
@@ -126,7 +127,9 @@ function audit() {
       sourceReviewedEvents: reviewed,
       correctedOrClarifiedEvents: reviews.filter((r) => ['start','end','approx','title','blurb','lat','lon'].some((key) => key in r)).length,
       borderChunks: index.chunks.length, borderFeatureInstances: featureInstances,
-      distinctBorderVersions: versions.size, decodedArcs: arcCount, historicalSearchRecords: search.rows.length },
+      distinctBorderVersions: versions.size,
+      quarantinedBorderVersions: [...versions.values()].filter(f => f.properties.quarantined).length,
+      decodedArcs: arcCount, historicalSearchRecords: search.rows.length },
     errors, warnings, events: eventRows };
 }
 

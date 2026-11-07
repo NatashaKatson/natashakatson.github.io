@@ -76,6 +76,42 @@ try {
   await send('Input.dispatchKeyEvent',{type:'keyDown',key:'Escape',code:'Escape',windowsVirtualKeyCode:27});
   await send('Input.dispatchKeyEvent',{type:'keyUp',key:'Escape',code:'Escape',windowsVirtualKeyCode:27});
   assert(await evaluate(`document.getElementById('migrationsPanel').hidden&&document.activeElement.dataset.atlasMenu==='migrationsPanel'`),'Escape closes and restores trigger focus');
+  for (const width of [1440,390]) {
+    await send('Emulation.setDeviceMetricsOverride',{width,height:1000,deviceScaleFactor:1,mobile:width<=860});
+    const focusedId = await evaluate(`(()=>{
+      setYear(2026);AtlasTestUI.journeys();HistoryMigrations.setScope('all',true);
+      document.querySelector('[data-atlas-menu="migrationsPanel"]').click();render();
+      const list=document.getElementById('migrationResults'),last=[...list.querySelectorAll('[data-migration-record]')].at(-1);
+      last.focus();last.scrollIntoView({block:'nearest',behavior:'instant'});
+      return last.dataset.migrationRecord;
+    })()`);
+    await send('Input.dispatchKeyEvent',{type:'keyDown',key:'ArrowLeft',code:'ArrowLeft',windowsVirtualKeyCode:37,modifiers:8});
+    await send('Input.dispatchKeyEvent',{type:'keyUp',key:'ArrowLeft',code:'ArrowLeft',windowsVirtualKeyCode:37,modifiers:8});
+    await waitFor('state.year===2025');
+    await evaluate('render()');
+    assert(await evaluate(`(()=>{
+      const list=document.getElementById('migrationResults'),focused=document.activeElement,r=focused.getBoundingClientRect(),b=list.getBoundingClientRect();
+      return focused.dataset.migrationRecord===${JSON.stringify(focusedId)}&&list.scrollTop>100&&r.top>=b.top-1&&r.bottom<=b.bottom+1;
+    })()`),`Date shortcut keeps the migration result focused and visible at ${width}px`);
+    assert(await evaluate(`(()=>{
+      const list=document.getElementById('migrationResults');document.getElementById('migrationSearch').focus({preventScroll:true});
+      list.scrollTop=list.scrollHeight;
+      const before=[...list.querySelectorAll('[data-migration-record]')].find(b=>b.getBoundingClientRect().bottom>list.getBoundingClientRect().top).dataset.migrationRecord;
+      setYear(2026);render();
+      const after=[...list.querySelectorAll('[data-migration-record]')].find(b=>b.getBoundingClientRect().bottom>list.getBoundingClientRect().top).dataset.migrationRecord;
+      return before===after&&list.scrollTop>100;
+    })()`),`Date updates preserve the migration reading position without list focus at ${width}px`);
+    assert(await evaluate(`(()=>{
+      const search=document.getElementById('migrationSearch'),list=document.getElementById('migrationResults');
+      search.value='WWII';search.dispatchEvent(new Event('input',{bubbles:true}));
+      return list.scrollTop===0&&list.querySelectorAll('[data-migration-record]').length===4;
+    })()`),`Changing the migration search starts at its first result at ${width}px`);
+    await evaluate(`HistoryMigrations.setScope('selected',true);document.querySelector('#migrationResults [data-migration-record]').focus();setYear(1300);render()`);
+    assert(await evaluate(`document.activeElement===document.getElementById('migrationSearch')&&!document.querySelector('#migrationResults [data-migration-record]')`),'A result leaving the selected period returns focus to search');
+    await evaluate(`document.querySelector('.migrations-close').click();setYear(2023);render()`);
+  }
+  await send('Emulation.setDeviceMetricsOverride',{width:1440,height:1000,deviceScaleFactor:1,mobile:false});
+  console.log('Migration date updates preserve visible keyboard focus and reading position; search and scope reset correctly');
   console.log(await evaluate(`(()=>{
     const check=(v,m)=>{if(!v)throw Error(m)};
     state.cats=new Set(['migrations']);buildMarks();update();render();

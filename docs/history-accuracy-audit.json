@@ -7,10 +7,11 @@
     "sourceReviewedEvents": 422,
     "correctedOrClarifiedEvents": 282,
     "borderChunks": 217,
-    "borderFeatureInstances": 22190,
-    "distinctBorderVersions": 13372,
+    "borderFeatureInstances": 22193,
+    "distinctBorderVersions": 13374,
+    "quarantinedBorderVersions": 8,
     "decodedArcs": 134438,
-    "historicalSearchRecords": 2100
+    "historicalSearchRecords": 2101
   },
   "errors": [],
   "warnings": [

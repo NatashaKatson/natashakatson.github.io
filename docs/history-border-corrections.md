@@ -1,5 +1,44 @@
 # Historical border corrections
 
+## Identity and recognition corrections — 7 November 2026
+
+Romania's source records dated from **1881** now use **Kingdom of Romania**.
+The **1880–1899** source version is split at 1881; territorial arcs stay unchanged.
+Search is regenerated from these dated records, preserving the source's later
+coverage gaps. The chronology follows the
+[US Office of the Historian](https://history.state.gov/countries/romania).
+
+All eight source versions labeled **Grand Duchy of Berg** are quarantined.
+Their polygons omit its documented capital at Düsseldorf, and the versions
+after **1813** also outlive the duchy. The
+[LVR regional history institute](https://rheinische-geschichte.lvr.de/Orte-und-Raeume/grossherzogtum-berg/DE-2086/lido/57d11981116210.76405013)
+documents both the capital and dissolution. The original dates and arcs remain
+in the archive with `quarantined: true` and a provenance note; the runtime loader,
+dated selection helper and search builder exclude them. Local-history scans,
+comparison maps and old shared selections cannot display these outlines as Berg.
+This leaves a coverage gap pending a verified replacement, rather than assigning
+the incorrect geometry to a guessed successor state.
+
+**Northern Cyprus** now distinguishes de facto administration from recognition.
+Before **1983** its recorded area is labeled **Turkish Cypriot-administered area**;
+from 1983, the self-declared republic has an explicit recognition qualification
+and a link to
+[Security Council resolution 541](https://www.gov.cy/pio/en/documents/important-security-council-resolutions/resolution-541-1983/).
+These are identity/status corrections, not a reconstruction of the buffer zone.
+
+Missing source membership no longer implies independence: the generic reader
+label is **Mapped polity**, with specific `politicalStatus` metadata taking
+precedence. Commonwealth membership has association wording. The source's
+**British Overseas Territories** aggregate now records its UK relationship,
+with a [Parliamentary source](https://commonslibrary.parliament.uk/research-briefings/cbp-9583/),
+rather than treating the territories as separate Commonwealth members.
+
+`reviewed_identities()` in the correction script is idempotent. Python tests
+check repeat regeneration and arc preservation; Node and browser regressions
+check dated names, exclusions, search and the source-linked readers.
+
+## Earlier territorial corrections
+
 The Cliopatria snapshots in `atlas/borders/c1975.json` and `c2000.json`
 contained a three-polygon feature named **Russian-occupied territories**, dated
 1992–2024 and assigned to **Russian Federation**. Its polygons are in South

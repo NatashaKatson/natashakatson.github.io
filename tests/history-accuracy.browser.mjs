@@ -87,6 +87,41 @@ try {
     }
     selectedPolity=null;
   `);
+  await checkSection('Reviewed polity identities and recognition', `
+    for(const year of [1806,1813,1814,1820,1827]){
+      const features=await loadChunk(chunkOf(year));setYear(year);
+      assert(!features.some(f=>f.name==='Grand Duchy of Berg'),'quarantined Berg geometry is absent from all runtime consumers');
+    }
+    for(const [year,name,status] of [[1880,'United Principalities of Moldavia and Wallachia','Mapped polity'],[1881,'Kingdom of Romania','Mapped polity'],[1916,'Kingdom of Romania','Mapped polity'],[1982,'Turkish Cypriot-administered area','De facto administration'],[1983,'Turkish Republic of Northern Cyprus','Recognition disputed'],[2024,'Turkish Republic of Northern Cyprus','Recognition disputed']]){
+      await loadChunk(chunkOf(year));setYear(year);
+      const polity=polities().find(f=>f.name===name);assert(polity,'dated identity exists: '+name+'/'+year);
+      selectPolity(polity);render();
+      assert(document.querySelector('#detail h3').textContent===name,'reader uses dated identity');
+      assert(DiscoveryCore.politicalStatus(polity)===status,'reader does not infer independence');
+      if(year>=1983&&name.includes('Cyprus'))assert(document.getElementById('detail').textContent.includes('resolution 541'),'recognition qualification is readable');
+    }
+    selectedPolity=null;
+  `);
+  for (const [width,height] of [[1440,1000],[390,844]]) {
+    await send('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:1,mobile:width<=860});
+    await checkSection('Selected labels at '+width+'px', `
+      AtlasUI.goToMap();resize();
+      for(const [name,year] of [['Kingdom of Belgium',1885],['Federal Republic of Germany',2026],['Republic of Poland',2026],['Second Republic of Austria',2026]]){
+        await loadChunk(chunkOf(year));setYear(year);
+        const polity=polities().find(f=>f.name===name);
+        for(const mode of ['globe','flat']){
+          setMode(mode);stopSpin();flyToken++;zoomK=1.6;rot=[-polity.cen[0],-polity.cen[1],0];flatT={x:0,y:0};makeProj();
+          if(mode==='flat'){const point=proj(polity.cen);flatT.x+=W/2-point[0];flatT.y+=H/2-point[1]}
+          selectPolity(polity);const drawn=[],old=ctx.fillText;
+          try{ctx.fillText=function(text,...args){drawn.push(text);return old.call(this,text,...args)};render()}finally{ctx.fillText=old}
+          assert(drawn.filter(t=>t===name).length===1,'selected label drawn exactly once: '+name+'/'+mode);
+          const box=polLabels[0];assert(box[0]>=0&&box[1]>=0&&box[0]+box[2]<=W&&box[1]+box[3]<=H,'selected callout stays in the map');
+        }
+      }
+      selectedPolity=null;
+    `);
+  }
+  await send('Emulation.setDeviceMetricsOverride',{width:1440,height:1000,deviceScaleFactor:1,mobile:false});
   await checkSection('Aggregate selection and sharing', `
     const rows=(await(await fetch('search-states.json')).json()).rows;
     for(const [name,year] of [['Netherlands',1917],['Dutch Republic',1769],['Spanish Empire',1877]]){

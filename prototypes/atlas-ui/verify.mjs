@@ -1,6 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { createRequire } from 'node:module';
+const { records } = createRequire(import.meta.url)('../../scripts/audit-history-accuracy.cjs');
+const sourceRecords = records();
 const root = path.dirname(fileURLToPath(import.meta.url));
 const testURL = process.env.ATLAS_TEST_URL || pathToFileURL(path.join(root, 'preview.html')).href;
 const screenshotDir = process.env.ATLAS_SCREENSHOT_DIR || path.join(root, 'previews');
@@ -40,15 +43,18 @@ try {
   await send('Page.enable'); await send('Runtime.enable'); await send('Network.enable');
   // The standalone preview embeds dependencies; the served atlas loads D3 and
   // TopoJSON from HTTPS CDNs. Only optional services are blocked in URL mode.
-  await send('Network.setBlockedURLs', { urls: process.env.ATLAS_TEST_URL
-    ? ['https://fonts.googleapis.com/*', 'https://fonts.gstatic.com/*', 'https://cdnjs.buymeacoffee.com/*']
-    : ['http://*', 'https://*'] });
+  await send('Network.setBlockedURLs', { urls: testURL.startsWith('file:')
+    ? ['http://*', 'https://*']
+    : ['https://fonts.googleapis.com/*', 'https://fonts.gstatic.com/*', 'https://cdnjs.buymeacoffee.com/*'] });
   await send('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false });
   await send('Page.navigate', { url: testURL + '#1928' });
-  await waitFor(`!!window.AtlasUI && !!window.HistoryDinosaurs && !!window.AtlasEventEmojis`);
+  await waitFor(`!!window.AtlasExplore && !!window.HistoryDinosaurs && !!window.AtlasEventEmojis`);
   await evaluate('stopSpin();');
   await evaluate(`state.cats.add('womens-rights');buildMarks();update();`);
-  await check(`ev.length===422 && ppl.length===66`, 'All original records and thematic additions are retained');
+  await check(`ev.length===${sourceRecords.events.length} && ppl.length===${sourceRecords.people.length}`, 'All current source events and people are retained');
+  await evaluate(`document.querySelector('[data-workspace="journeys"]').click()`);
+  await check(`getComputedStyle(document.getElementById('yearIntroduction')).display==='none' && getComputedStyle(document.querySelector('.browse-controls')).display==='none'`, 'Bundled Explore styles hide the event overview in Journeys');
+  await evaluate('AtlasUI.goToEvents()');
   await check(`document.querySelector('.side-intro h2').textContent==='Around this time' && !!document.querySelector('#fact') && !!document.querySelector('.curated-discoveries') && !!document.querySelector('#people')`, 'Contextual panel retains stories, people, and discovery cards');
   await check(`slider.max==='3000000' && slider.min==='0' && !!document.querySelector('#play') && !!document.querySelector('#eraChoices') && !!document.querySelector('.dock-options')`, 'Original slider, playback, eras, and More controls are retained');
   await check(`AtlasEventEmojis.get(ev.find(e=>e.wiki==='Penicillin'))==='💊' && AtlasEventEmojis.get(ev.find(e=>e.wiki==='Smallpox_vaccine'))==='💉' && AtlasEventEmojis.get(ev.find(e=>e.wiki==='Stethoscope'))==='🩺' && AtlasEventEmojis.get(ev.find(e=>e.wiki==='Spanish_flu'))==='🦠'`, 'Medical discoveries, vaccines, diagnostics, and pandemics have specific emojis');
