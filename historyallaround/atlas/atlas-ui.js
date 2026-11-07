@@ -212,6 +212,7 @@
   document.querySelector('.skip-links a[href="#cv"]').onclick = event => { event.preventDefault(); goToMap(); };
   function reveal(element) {
     window.scrollTo({ top: 0, behavior: 'instant' });
+    if (element.id === 'detail') closeMenus();
     if (settings.open) closeSettingsForNavigation();
     const inJourneys = !!element.closest('.sidebar-extras');
     if (inJourneys) {
