@@ -52,7 +52,7 @@
       const place = shuffle(exactEvents.filter((r) => mapSources.has(r.wiki) &&
         Number.isFinite(r.lon) && Number.isFinite(r.lat)), rng)[0];
       if (place) puzzles.push({ kind: "place", id: "place:" + key(place) + `:${place.lon},${place.lat}:500`, record: place, tolerance: 500 });
-      const exactPeople = people.filter((r) => !r.approx && Number.isInteger(r.born) &&
+      const exactPeople = people.filter((r) => !r.approx && !r.living && Number.isInteger(r.born) &&
         Number.isInteger(r.died) && r.born < r.died).sort((a, b) => key(a).localeCompare(key(b)));
       const overlaps = [], apart = [];
       for (let i = 0; i < exactPeople.length; i++) for (let j = i + 1; j < exactPeople.length; j++) {

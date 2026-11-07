@@ -392,6 +392,7 @@ header .seg{padding:2px;background:#f0ebe3;border:1px solid rgba(45,36,32,.1);bo
 <link rel="stylesheet" href="atlas-ui.css">
 <link rel="stylesheet" href="womens-rights.css">
 <link rel="stylesheet" href="workspace.css">
+<link rel="stylesheet" href="explore.css">
 </head>
 <body>
 
@@ -465,7 +466,7 @@ header .seg{padding:2px;background:#f0ebe3;border:1px solid rgba(45,36,32,.1);bo
       <div class="atlas-menu"><button type="button" class="atlas-menu-trigger" data-atlas-menu="eraPanel" aria-expanded="false" aria-controls="eraPanel"><span id="currentEraLabel">Choose era</span> <span aria-hidden="true">⌄</span></button>
         <section class="atlas-menu-panel era-panel" id="eraPanel" aria-label="Choose an era" hidden><h2>Where in time?</h2><div id="eraChoices"></div></section>
       </div>
-      <button type="button" class="timeline-scope" id="timelineScope" aria-expanded="false" aria-controls="eraPanel">All eras ↗</button>
+      <button type="button" class="timeline-scope" id="timelineScope" aria-expanded="false" aria-controls="eraPanel">Explore years ↗</button>
       <button type="button" class="atlas-menu-trigger" id="compareToggle" aria-pressed="false" aria-controls="compareYears" aria-describedby="compareDescription">Compare</button>
       <details class="dock-options"><summary>Share &amp; tools <span aria-hidden="true">⌄</span></summary><div class="dock-options-content"></div></details>
     </div>
@@ -520,6 +521,7 @@ header .seg{padding:2px;background:#f0ebe3;border:1px solid rgba(45,36,32,.1);bo
 <script src="vendor/d3.min.js" onerror="AtlasLoadState.fail()"></script>
 <script src="vendor/topojson-client.min.js" onerror="AtlasLoadState.fail()"></script>
 <script src="discovery-core.js"></script>
+<script src="explore-core.js"></script>
 <script src="event-emojis.js"></script>
 <script src="historical-layers-core.js"></script>
 <script src="great-lakes.js"></script>
@@ -666,7 +668,7 @@ const EVENTS = [
 [1928,null,0,"Penicillin discovered","Alexander Fleming notices mould killing bacteria.",51.52,-0.17,"eu","ideas","Penicillin","https://www.acs.org/education/whatischemistry/landmarks/flemingpenicillin.html?trk=public_post_reshare-text",null,null,null,["medicine","medical history","medical inventions","antibiotics","Alexander Fleming"]],
 [1929,null,0,"Wall Street Crash","The crash deepens an economic downturn that develops into the worldwide Great Depression.",40.71,-74.01,"am","power","Wall_Street_crash_of_1929","https://www.federalreservehistory.org/essays/stock-market-crash-of-1929"],
 [1930,null,0,"Salt March","Gandhi walks to the sea to protest British salt laws.",20.89,72.8,"as","power","Salt_March","https://gandhistory.in/collection/collection-details.php?id=99"],
-[1939,1945,0,"World War II","The deadliest conflict in history.",52.23,21.01,"eu","war","World_War_II","https://www.nationalww2museum.org/students-teachers/student-resources/explore-wwii-history"],
+[1939,1945,0,"World War II","More than fifty nations take part in World War II, the deadliest conflict in history.",52.23,21.01,"eu","war","World_War_II","https://www.nationalww2museum.org/students-teachers/student-resources/explore-wwii-history"],
 [1933,1945,0,"The Holocaust","From 1933 to 1945, Nazi Germany and its allies and collaborators systematically persecute and murder European Jews. Six million Jews are murdered, chiefly during the war. The marker locates the Auschwitz region as one site within a continent-wide genocide, not the entire event.",50.03,19.18,"eu","war","The_Holocaust","https://encyclopedia.ushmm.org/content/en/article/introduction-to-the-holocaust"],
 [1945,null,0,"Hiroshima and Nagasaki","The only nuclear weapons ever used in war.",34.39,132.45,"as","war","Atomic_bombings_of_Hiroshima_and_Nagasaki","https://documents.un.org/api/symbol/access?l=en&s=A%2F51%2F218&t=pdf"],
 [1945,null,0,"United Nations founded","The UN Charter is signed in San Francisco on 26 June 1945. The United Nations formally comes into existence on 24 October, when the Charter enters into force. The marker locates the signing city.",37.78,-122.42,"am","power","United_Nations","https://www.un.org/en/about-us/un-charter"],
@@ -968,7 +970,8 @@ const EVENTS = [
 [2022,2023,0,"Leaving Russia after the invasion: anti-war exile and flight from mobilization","After Russia’s full-scale invasion of Ukraine on February 24, 2022, some people leave Russia because they oppose the war and do not want to support it; others fear repression for dissent or being sent to fight. These motives can overlap. A second major departure wave follows the September 21 mobilization announcement. Human Rights Watch documents both waves and the crackdown on anti-war speech; Reuters interviews describe opposition to the invasion and fear of the call-up. Georgia and Kazakhstan are among the destinations. Not everyone who leaves has the same political views or refugee status. The 2022–2023 interval highlights the initial waves and early aftermath, not the end of exile. Arrows are schematic connections from Russia to representative destinations, not individual journeys or migration counts.",55.75,37.62,"eu","migrations","Russian_emigration_following_the_Russian_invasion_of_Ukraine","https://www.hrw.org/world-report/2023/country-chapters/russian-federation",null,null,null,["migrations","migration","emigration","Russia","Russian emigrants","leaving Russia","from Russia","anti-war","opposition to war","political exile","repression","mobilization","mobilisation","conscription","draft evasion","army","Georgia","Tbilisi","Kazakhstan","2022","2023"],false],
 ];
 
-// [name, born, died, approx, role, lat, lon, region, wikiSlug]
+// [name, born, died (null = no recorded death), approx, role, lat, lon, region, wikiSlug, sourceUrl?, review?]
+// Years are inclusive, with no year zero. Review metadata preserves date uncertainty and representative locations.
 const PEOPLE = [
 ["Hammurabi",-1810,-1750,1,"King of Babylon",32.54,44.42,"me","Hammurabi"],
 ["Ramesses II",-1303,-1213,1,"Pharaoh of Egypt",25.7,32.64,"me","Ramesses_II"],
@@ -1035,7 +1038,64 @@ const PEOPLE = [
 ["Martin Luther King Jr.",1929,1968,0,"Civil rights leader",33.75,-84.39,"am","Martin_Luther_King_Jr."],
 ["Yuri Gagarin",1934,1968,0,"First human in space",55.6,34.6,"eu","Yuri_Gagarin"],
 ["Emperor Yuan of Han",-75,-33,0,"Han emperor in China, reigning 48–33 BC",34.27,108.9,"as","Emperor_Yuan_of_Han","https://en.wikipedia.org/wiki/Emperor_Yuan_of_Han"],
-["Virgil",-70,-19,0,"Roman poet",45.16,10.8,"eu","Virgil","https://www.livius.org/articles/person/virgil/"]
+["Virgil",-70,-19,0,"Roman poet",45.16,10.8,"eu","Virgil","https://www.livius.org/articles/person/virgil/"],
+["Grigori Rasputin",1869,1916,0,"Russian religious adviser whose influence at the imperial court became a focus of political controversy",59.94,30.31,"eu","Grigori_Rasputin","https://encyclopedia.1914-1918-online.net/wp-content/uploads/2023/01/ams/957382/pdf/1914-1918-Online-rasputin_grigorii_efimovich-2014-10-08.pdf",{"location":"Saint Petersburg / Petrograd, imperial court","fields":["religion","politics"],"reviewedOn":"2026-11-06","aliases":["Grigory Rasputin","Grigorii Rasputin","Григорий Распутин"],"dateNote":"Dates use the Gregorian calendar; older accounts also give different birth years. The UPenn library authority corroborates 1869–1916."}],
+["Plato",-428,-348,1,"Athenian philosopher who founded the Academy and wrote influential philosophical dialogues",37.97,23.72,"eu","Plato","https://iep.utm.edu/plato/",{"location":"Athens, Academy and philosophical activity","fields":["philosophy"],"reviewedOn":"2026-11-06","dateNote":"Commonly dated 428/427–348/347 BCE; the map uses approximate representative years."}],
+["Sima Qian",-145,-86,1,"Han historian whose Records of the Grand Historian shaped Chinese historical writing",34.27,108.9,"as","Sima_Qian","https://ethicsofsuicide.lib.utah.edu/selections/sima-qian/",{"location":"Chang’an, Han court and historical writing","fields":["literature"],"reviewedOn":"2026-11-06","dateNote":"Birth is variously dated around 145 or 135 BCE; death is conventionally placed around 86 BCE."}],
+["Sappho",-630,-570,1,"Greek lyric poet from Lesbos whose surviving poems explore love and personal relationships",39.1,26.55,"eu","Sappho","https://www.britishmuseum.org/sites/default/files/2021-11/Desire_Love_Identity_Audio_Transcript_15.11.21.pdf",{"location":"Mytilene, Lesbos, associated home","fields":["literature"],"reviewedOn":"2026-11-06","dateNote":"Lifespan is approximate; the British Museum gives around 630–570 BCE."}],
+["Hannibal",-247,-183,1,"Carthaginian commander who led an army across the Alps during the Second Punic War",36.85,10.32,"me","Hannibal","https://doi.org/10.1093/obo/9780199791279-0272",{"location":"Carthage, home polity","fields":["politics","war"],"reviewedOn":"2026-11-06","aliases":["Hannibal Barca"],"dateNote":"Birth and death years are approximate; ancient accounts differ on the death year."}],
+["Ban Zhao",45,116,1,"Han historian who helped complete the Book of Han and wrote Lessons for Women",34.62,112.45,"as","Ban_Zhao","https://chinesebox.voices.wooster.edu/banzhao/",{"location":"Luoyang, Eastern Han court","fields":["literature","philosophy"],"reviewedOn":"2026-11-06","aliases":["Banzhao","班昭"],"dateNote":"Lifespan is approximate; sources also give 49 CE for her birth."}],
+["Augustine of Hippo",354,430,0,"North African Christian bishop and philosopher, author of Confessions and The City of God",36.9,7.77,"me","Augustine_of_Hippo","https://plato.stanford.edu/entries/augustine/",{"location":"Hippo Regius, present-day Annaba, bishopric","fields":["religion","philosophy"],"reviewedOn":"2026-11-06","aliases":["Saint Augustine","Aurelius Augustinus"],"birthDate":"0354-11-13","deathDate":"0430-08-28"}],
+["Aryabhata",476,550,1,"Indian mathematician and astronomer whose Aryabhatiya treats calculation, trigonometry and planetary models",25.61,85.14,"as","Aryabhata","https://mathshistory.st-andrews.ac.uk/Biographies/Aryabhata_I/",{"location":"Kusumapura / Patna region, approximate place of work","fields":["science"],"reviewedOn":"2026-11-06","dateNote":"Birth year follows his account of his age in 499; death year is conventional and the precise location of Kusumapura is uncertain."}],
+["K’inich Janaab’ Pakal",603,683,0,"Maya ruler of Palenque associated with a major programme of monumental architecture and inscriptions",17.48,-92.05,"am","Kʼinich_Janaabʼ_Pakal","https://revistas.inah.gob.mx/index.php/lavozinah/issue/download/2518/2728",{"location":"Palenque, Maya royal court","fields":["politics","art"],"reviewedOn":"2026-11-06","aliases":["Pakal the Great","Pacal","Kinich Janaab Pakal"]}],
+["Li Bai",701,762,0,"Tang poet known for vivid imagery and an enduring influence on Chinese literature",31.78,104.74,"as","Li_Bai","https://www.poetryfoundation.org/poets/li-po",{"location":"Jiangyou, Sichuan, region where he grew up","fields":["literature"],"reviewedOn":"2026-11-06","aliases":["Li Po","Li Bo","李白"]}],
+["Ibn al-Haytham",965,1039,1,"Mathematician and investigator of optics whose Book of Optics examined light and vision",30.04,31.24,"me","Ibn_al-Haytham","https://mathshistory.st-andrews.ac.uk/Biographies/Al-Haytham/",{"location":"Cairo, associated place of scientific work","fields":["science"],"reviewedOn":"2026-11-06","aliases":["Alhazen","Ibn al Haytham"],"dateNote":"Approximate lifespan follows MacTutor’s 965–1039; other references give death around 1040."}],
+["Omar Khayyam",1048,1131,1,"Persian mathematician, astronomer and philosopher also associated with the Rubaiyat poetic tradition",36.21,58.8,"me","Omar_Khayyam","https://www.iranicaonline.org/articles/khayyam-omar/khayyam-omar-i-life/",{"location":"Nishapur, associated home and burial place","fields":["science","philosophy","literature"],"reviewedOn":"2026-11-06","aliases":["Umar Khayyam"],"dateNote":"Birth and death dates are reconstructed from conflicting sources; 1048–1131 is a conventional approximate lifespan."}],
+["Hildegard of Bingen",1098,1179,0,"Benedictine abbess, visionary author, composer and writer on medicine and the natural world",49.97,7.9,"eu","Hildegard_of_Bingen","https://epistolae.ctl.columbia.edu/woman/115.html",{"location":"Rupertsberg near Bingen, abbey and place of work","fields":["religion","music","science"],"reviewedOn":"2026-11-06"}],
+["Rumi",1207,1273,0,"Persian-language poet and Sufi teacher whose Masnavi became an influential work of spiritual literature",37.87,32.49,"me","Rumi","https://www.loc.gov/exhibits/thousand-years-of-the-persian-book/classical-persian-poetry.html",{"location":"Konya, principal place of teaching and writing","fields":["religion","literature"],"reviewedOn":"2026-11-06","aliases":["Jalal al-Din Rumi","Jalaluddin Rumi","Mevlana"]}],
+["Ibn Khaldun",1332,1406,0,"North African historian and author of the Muqaddima, analysing society, power and historical change",36.81,10.18,"me","Ibn_Khaldun","https://www.loc.gov/item/2021666190/",{"location":"Tunis, birthplace and a centre of his scholarship","fields":["philosophy","literature"],"reviewedOn":"2026-11-06","aliases":["Ibn Khaldoun"]}],
+["Sejong the Great",1397,1450,0,"Joseon king who sponsored scholarship and the creation of the Korean Hangul writing system",37.58,126.98,"as","Sejong_the_Great","https://www.worldhistory.org/Sejong_the_Great/",{"location":"Seoul, Joseon royal court","fields":["politics","science"],"reviewedOn":"2026-11-06","aliases":["King Sejong"],"birthDate":"1397-05-15","deathDate":"1450-04-08"}],
+["Guru Nanak",1469,1539,0,"Founder of the Sikh tradition whose teachings emphasised devotion, service and equality",31.45,73.69,"as","Guru_Nanak","https://www.sikhcoalition.org/wp-content/uploads/2021/03/SikhCelebrations-2021.pdf",{"location":"Nankana Sahib, birthplace in Punjab","fields":["religion"],"reviewedOn":"2026-11-06","aliases":["Guru Nanak Dev"]}],
+["Martin Luther",1483,1546,0,"German theologian whose writings helped initiate the Protestant Reformation",51.87,12.65,"eu","Martin_Luther","https://www.luther.de/en/leben/",{"location":"Wittenberg, university and Reformation activity","fields":["religion"],"reviewedOn":"2026-11-06","birthDate":"1483-11-10","deathDate":"1546-02-18"}],
+["Ahmad Baba",1556,1627,0,"Timbuktu scholar and jurist whose writings form part of West Africa’s manuscript heritage",16.77,-3.01,"af","Ahmad_Baba_al-Timbukti","https://tombouctoumanuscripts.uct.ac.za/overview/timbuktus-history",{"location":"Timbuktu, centre of scholarship","fields":["religion","literature"],"reviewedOn":"2026-11-06","aliases":["Ahmed Baba","Ahmad Baba al-Timbukti"]}],
+["Johannes Kepler",1571,1630,0,"Mathematician and astronomer who formulated three laws of planetary motion",50.08,14.42,"eu","Johannes_Kepler","https://mathshistory.st-andrews.ac.uk/Biographies/Kepler/",{"location":"Prague, place of astronomical work","fields":["science"],"reviewedOn":"2026-11-06","birthDate":"1571-12-27","deathDate":"1630-11-15"}],
+["Nzinga",1583,1663,1,"Queen of Ndongo and Matamba who used diplomacy and military resistance against Portuguese expansion",-9.3,16.93,"af","Nzinga_of_Ndongo_and_Matamba","https://www.metmuseum.org/essays/ana-nzinga-queen-of-ndongo",{"location":"Matamba, approximate regional anchor for her kingdom","fields":["politics"],"reviewedOn":"2026-11-06","aliases":["Njinga","Nzingha Mbande","Ana Nzinga"],"dateNote":"Birth year is approximate; regional marker represents Matamba rather than a precisely located royal residence."}],
+["René Descartes",1596,1650,0,"Philosopher and mathematician influential in early modern metaphysics and analytic geometry",52.16,4.5,"eu","René_Descartes","https://plato.stanford.edu/entries/descartes/",{"location":"Leiden, associated period of work in the Dutch Republic","fields":["philosophy","science"],"reviewedOn":"2026-11-06","aliases":["Rene Descartes"]}],
+["Baruch Spinoza",1632,1677,0,"Dutch philosopher of Portuguese Jewish ancestry who wrote the Ethics and defended freedom of thought",52.37,4.9,"eu","Baruch_Spinoza","https://plato.stanford.edu/entries/spinoza/",{"location":"Amsterdam, birthplace and early intellectual life","fields":["philosophy"],"reviewedOn":"2026-11-06","aliases":["Benedict de Spinoza","Bento Spinoza"]}],
+["Sor Juana Inés de la Cruz",1651,1695,1,"New Spanish poet, scholar and nun who argued for women’s access to learning",19.43,-99.13,"am","Juana_Inés_de_la_Cruz","https://poets.org/poet/sor-juana-ines-de-la-cruz",{"location":"Mexico City, convent and literary activity","fields":["literature","religion","social movements"],"reviewedOn":"2026-11-06","aliases":["Sor Juana","Juana Ines de la Cruz"],"dateNote":"Birth year is disputed, commonly 1648 or 1651; the map follows the Academy of American Poets’ qualified 1651."}],
+["Phillis Wheatley Peters",1753,1784,1,"West African-born poet enslaved in Boston whose published work challenged racist claims about intellectual ability",42.36,-71.06,"am","Phillis_Wheatley","https://www.poetryfoundation.org/poets/phillis-wheatley",{"location":"Boston, place of literary work following forced transport from West Africa","fields":["literature","social movements"],"reviewedOn":"2026-11-06","aliases":["Phillis Wheatley"],"dateNote":"Birth year and precise West African birthplace are uncertain; about 1753 is conventional."}],
+["Mary Wollstonecraft",1759,1797,0,"Moral and political philosopher, author of A Vindication of the Rights of Woman",51.51,-0.13,"eu","Mary_Wollstonecraft","https://plato.stanford.edu/entries/wollstonecraft/",{"location":"London, associated home and writing","fields":["philosophy","social movements"],"reviewedOn":"2026-11-06"}],
+["Tecumseh",1768,1813,1,"Shawnee leader who built an Indigenous confederacy opposing United States territorial expansion",39.93,-83.81,"am","Tecumseh","https://www.biographi.ca/en/bio/tecumseh_5F.html",{"location":"Springfield, Ohio region, approximate birthplace","fields":["politics","social movements"],"reviewedOn":"2026-11-06","dateNote":"Birth year and precise birthplace are uncertain; the Dictionary of Canadian Biography gives about 1768."}],
+["Mary Seacole",1805,1881,1,"Jamaican healer, entrepreneur and memoirist who cared for soldiers during the Crimean War",17.97,-76.79,"am","Mary_Seacole","https://www.npg.org.uk/collections/search/personExtended/mp70879/mary-jane-seacole-nee-grant?tab=biography",{"location":"Kingston, Jamaica, birthplace and early medical learning","fields":["medicine","literature"],"reviewedOn":"2026-11-06","aliases":["Mary Jane Seacole"],"dateNote":"The National Portrait Gallery gives birth around 1805.","deathDate":"1881-05-14"}],
+["Truganini",1812,1876,1,"Palawa woman and leader whose life records the violence of British colonisation in Tasmania",-43.3,147.23,"oc","Truganini","https://adb.anu.edu.au/biography/trugernanner-truganini-4752",{"location":"D’Entrecasteaux Channel, Tasmania, approximate home region","fields":["social movements"],"reviewedOn":"2026-11-06","aliases":["Trugernanner"],"dateNote":"Birth year is approximate. Her death did not mark the disappearance of Tasmanian Aboriginal peoples."}],
+["Frederick Douglass",1818,1895,0,"Abolitionist, author and orator who escaped slavery and advocated equal civil and political rights",38.86,-76.99,"am","Frederick_Douglass","https://www.nps.gov/people/frederick-douglass.htm",{"location":"Cedar Hill, Washington, DC, later home","fields":["social movements","literature"],"reviewedOn":"2026-11-06","dateNote":"Birth month is recorded as February 1818; the exact day is unknown.","deathDate":"1895-02-20"}],
+["Karl Marx",1818,1883,0,"Philosopher and political economist whose analysis of capitalism influenced socialist and communist movements",51.51,-0.13,"eu","Karl_Marx","https://plato.stanford.edu/entries/marx/",{"location":"London, major period of research and writing","fields":["philosophy","politics"],"reviewedOn":"2026-11-06"}],
+["Lakshmibai",1828,1858,0,"Rani of Jhansi and a prominent leader of armed resistance during the Indian rebellion of 1857–1858",25.45,78.57,"as","Rani_of_Jhansi","https://www.qrhmuseum.com/lakshmibai-the-rani-of-jhansi",{"location":"Jhansi, kingdom and centre of resistance","fields":["politics","war"],"reviewedOn":"2026-11-06","aliases":["Rani Lakshmi Bai","Rani of Jhansi","Manikarnika Tambe"],"birthDate":"1828-11-19","deathDate":"1858-06-18"}],
+["Sitting Bull",1831,1890,1,"Hunkpapa Lakota holy man and leader in resistance to United States expansion into the Northern Plains",45.8,-100.6,"am","Sitting_Bull","https://americanindian.si.edu/nk360/plains-belonging-nation/oceti-sakowin.cshtml",{"location":"Standing Rock region, associated home and community","fields":["religion","politics"],"reviewedOn":"2026-11-06","aliases":["Tatanka Iyotanka","Tatanka-Iyotanka"],"dateNote":"The Smithsonian gives 1831?; other sources place his birth between 1831 and 1837."}],
+["Yaa Asantewaa",1840,1921,1,"Asante queen mother of Ejisu who rallied resistance to British colonial rule in 1900",6.72,-1.47,"af","Yaa_Asantewaa","https://encyclopaediaafricana.com/asantewaa-yaa/",{"location":"Ejisu, Asante, seat of her office","fields":["politics","social movements"],"reviewedOn":"2026-11-06","dateNote":"The conventional birth year is around 1840; the Encyclopaedia Africana also discusses the 1840s or 1850s."}],
+["José Martí",1853,1895,0,"Cuban poet and political organiser whose writings and activism supported independence from Spain",23.11,-82.37,"am","José_Martí","https://guides.loc.gov/world-of-1898/jose-marti",{"location":"Havana, birthplace","fields":["literature","politics"],"reviewedOn":"2026-11-06","aliases":["Jose Marti"]}],
+["Nikola Tesla",1856,1943,0,"Serbian-American electrical inventor whose work helped develop alternating-current power systems",40.75,-73.99,"am","Nikola_Tesla","https://academic.oup.com/american-national-biography/reference/63042/reference-article-abstract/570591285",{"location":"New York City, major period of electrical research","fields":["science","technology"],"reviewedOn":"2026-11-06"}],
+["Rabindranath Tagore",1861,1941,0,"Bengali poet, educator and composer awarded the 1913 Nobel Prize in Literature",22.57,88.36,"as","Rabindranath_Tagore","https://www.nobelprize.org/prizes/literature/1913/tagore/facts/",{"location":"Kolkata / Calcutta, birthplace and literary life","fields":["literature","music"],"reviewedOn":"2026-11-06","birthDate":"1861-05-07","deathDate":"1941-08-07"}],
+["Vladimir Lenin",1870,1924,0,"Bolshevik leader who headed the Soviet government after the October Revolution and helped establish one-party rule",55.75,37.62,"eu","Vladimir_Lenin","https://encyclopedia.ushmm.org/content/en/article/vladimir-lenin",{"location":"Moscow, Soviet government","fields":["politics"],"reviewedOn":"2026-11-06","aliases":["Vladimir Ilyich Ulyanov"]}],
+["Winston Churchill",1874,1965,0,"British prime minister during much of the Second World War and again from 1951 to 1955",51.5,-0.13,"eu","Winston_Churchill","https://www.gov.uk/government/history/past-prime-ministers/winston-churchill",{"location":"London, seat of government","fields":["politics"],"reviewedOn":"2026-11-06"}],
+["Joseph Stalin",1878,1953,0,"Soviet dictator whose rule involved forced collectivisation, mass repression and leadership during the Second World War",55.75,37.62,"eu","Joseph_Stalin","https://encyclopedia.1914-1918-online.net/wp-content/uploads/2023/01/ams/959092/pdf/1914-1918-Online-stalin_joseph-2017-01-31.pdf",{"location":"Moscow, Soviet government","fields":["politics"],"reviewedOn":"2026-11-06","aliases":["Iosif Stalin","Ioseb Jughashvili"],"dateNote":"Uses the documented 1878 birth year rather than the official Soviet-era 1879 date."}],
+["Te Puea Hērangi",1883,1952,0,"Waikato Māori leader who strengthened the Kīngitanga and helped establish Tūrangawaewae marae",-37.66,175.15,"oc","Te_Puea_Hērangi","https://teara.govt.nz/en/biographies/3h17/herangi-te-kirihaehae-te-puea",{"location":"Ngāruawāhia, Tūrangawaewae marae","fields":["politics","social movements"],"reviewedOn":"2026-11-06","aliases":["Te Puea Herangi"]}],
+["C. V. Raman",1888,1970,0,"Indian physicist awarded the Nobel Prize for research on the scattering of light",12.97,77.59,"as","C._V._Raman","https://www.nobelprize.org/prizes/physics/1930/raman/biographical/",{"location":"Bengaluru / Bangalore, Indian Institute of Science and later research","fields":["science"],"reviewedOn":"2026-11-06","aliases":["Chandrasekhara Venkata Raman"],"birthDate":"1888-11-07","deathDate":"1970-11-21"}],
+["Adolf Hitler",1889,1945,0,"Nazi dictator whose regime initiated war in Europe and perpetrated the Holocaust and other mass atrocities",52.52,13.4,"eu","Adolf_Hitler","https://encyclopedia.ushmm.org/content/en/article/adolf-hitler",{"location":"Berlin, seat of the Nazi regime","fields":["politics","war"],"reviewedOn":"2026-11-06"}],
+["Gabriela Mistral",1889,1957,0,"Chilean poet, educator and diplomat, the first Latin American writer awarded the Nobel Prize in Literature",-30.03,-70.71,"am","Gabriela_Mistral","https://www.loc.gov/item/n50033817/gabriela-mistral-chile-1889-1957/",{"location":"Vicuña, Chile, birthplace","fields":["literature"],"reviewedOn":"2026-11-06","aliases":["Lucila Godoy Alcayaga"]}],
+["Alan Turing",1912,1954,0,"Mathematician whose work helped establish computer science and contributed to wartime codebreaking",53.47,-2.23,"eu","Alan_Turing","https://turingarchive.kings.cam.ac.uk/about-alan-turing",{"location":"Manchester, later work on computing and mathematical biology","fields":["science","technology"],"reviewedOn":"2026-11-06"}],
+["Abdus Salam",1926,1996,0,"Pakistani theoretical physicist awarded a share of the Nobel Prize for electroweak unification",31.27,72.32,"as","Abdus_Salam","https://www.nobelprize.org/prizes/physics/1979/salam/facts/",{"location":"Jhang, Punjab, birthplace","fields":["science"],"reviewedOn":"2026-11-06","birthDate":"1926-01-29","deathDate":"1996-11-21"}],
+["Chinua Achebe",1930,2013,0,"Nigerian novelist whose Things Fall Apart examines Igbo society and the impact of colonialism",6.15,6.86,"af","Chinua_Achebe","https://academic.oup.com/reference/62328/reference-article-abstract/553807702",{"location":"Ogidi, Nigeria, birthplace and formative community","fields":["literature"],"reviewedOn":"2026-11-06"}],
+["Tu Youyou",1930,null,0,"Chinese pharmaceutical researcher awarded a share of the Nobel Prize for discoveries leading to artemisinin malaria therapy",39.91,116.39,"as","Tu_Youyou","https://www.nobelprize.org/prizes/medicine/2015/tu/facts/",{"location":"Beijing, China Academy of Chinese Medical Sciences","fields":["science","medicine"],"reviewedOn":"2026-11-06","aliases":["Youyou Tu","屠呦呦"],"birthDate":"1930-12-30"}],
+["Desmond Tutu",1931,2021,0,"South African Anglican archbishop and opponent of apartheid awarded the Nobel Peace Prize",-33.93,18.42,"af","Desmond_Tutu","https://www.nobelprize.org/prizes/peace/1984/tutu/facts/",{"location":"Cape Town, archbishopric","fields":["religion","social movements"],"reviewedOn":"2026-11-06","birthDate":"1931-10-07","deathDate":"2021-12-26"}],
+["Wole Soyinka",1934,null,0,"Nigerian playwright, poet and political activist awarded the 1986 Nobel Prize in Literature",7.16,3.35,"af","Wole_Soyinka","https://www.nobelprize.org/prizes/literature/1986/soyinka/facts/",{"location":"Abeokuta, Nigeria, birthplace","fields":["literature","social movements"],"reviewedOn":"2026-11-06","birthDate":"1934-07-13"}],
+["Wangari Maathai",1940,2011,0,"Kenyan environmental and democracy activist who founded the Green Belt Movement and received the Nobel Peace Prize",-1.29,36.82,"af","Wangari_Maathai","https://www.nobelprize.org/prizes/peace/2004/maathai/facts/",{"location":"Nairobi, Green Belt Movement activity","fields":["science","social movements"],"reviewedOn":"2026-11-06","birthDate":"1940-04-01","deathDate":"2011-09-25"}],
+["Rigoberta Menchú Tum",1959,null,0,"K’iche’ Maya human rights advocate awarded the Nobel Peace Prize for work on Indigenous rights and reconciliation",15.42,-90.77,"am","Rigoberta_Menchú","https://www.nobelprize.org/prizes/peace/1992/tum/facts/",{"location":"Chimel, Guatemala, approximate birthplace and community anchor","fields":["social movements"],"reviewedOn":"2026-11-06","aliases":["Rigoberta Menchu","Rigoberta Menchu Tum"],"birthDate":"1959-01-09"}],
+["Maryam Mirzakhani",1977,2017,0,"Iranian mathematician whose work on geometry and dynamical systems earned the first Fields Medal awarded to a woman",35.69,51.39,"me","Maryam_Mirzakhani","https://www.ias.edu/scholars/maryam-mirzakhani",{"location":"Tehran, birthplace and early mathematical education","fields":["science"],"reviewedOn":"2026-11-06"}],
+["Huda Shaarawi",1879,1947,0,"Egyptian feminist and nationalist who founded the Egyptian Feminist Union",30.04,31.24,"me","Huda_Shaarawi","https://catalogue.bnf.fr/ark:/12148/cb124745405",{"location":"Cairo, feminist organising and public life","fields":["social movements","politics"],"aliases":["Huda Sha’arawi","Hoda Shaarawi"],"reviewedOn":"2026-11-06"}],
+["Rifa’a al-Tahtawi",1801,1873,0,"Egyptian educator, translator and writer associated with nineteenth-century intellectual and educational reform",30.04,31.24,"me","Rifa'a_al-Tahtawi","https://www.rem.routledge.com/articles/al-tahtawi-rifaa-1801-1873",{"location":"Cairo, translation school and educational work","fields":["literature","philosophy"],"aliases":["Rifaa al Tahtawi","Rifa al Tahtawi"],"reviewedOn":"2026-11-06"}],
+["Abd al-Qadir",1808,1883,0,"Algerian emir and Sufi scholar who led resistance to French conquest",35.4,0.14,"me","Emir_Abdelkader","https://islamansiklopedisi.org.tr/abdulkadir-el-cezairi",{"location":"Mascara, Algeria, centre of his emirate","fields":["politics","religion"],"aliases":["Abdelkader","Abd el Kader","Abd al Qadir al Jazairi"],"reviewedOn":"2026-11-06"}],
+["Jamal al-Din al-Afghani",1838,1897,1,"Muslim political activist and reformist thinker who advocated resistance to European imperial expansion",34.78,48.12,"me","Jamal_al-Din_al-Afghani","https://www.iranicaonline.org/articles/afgani-jamal-al-din/",{"location":"Asadabad, Iran, associated birthplace","fields":["politics","philosophy","religion"],"aliases":["Jamal ad Din al Afghani","Jamal al Din Asadabadi"],"dateNote":"Birth is dated 1838 or 1839. His adopted name al-Afghani does not establish an Afghan birthplace.","reviewedOn":"2026-11-06"}]
 ];
 
 // [year to jump to, text]
@@ -1108,6 +1168,7 @@ function fmt(y,approx){const c=approx?"c. ":"";if(y<=-1000000)return c+(Math.abs
 function fmtInputYear(y){return y<=-1000000?`${Math.abs(y)/1000000} Ma`:fmt(y)}
 function fmtSpan(a,b,ap){if(a<=-1000000&&b<=-1000000&&a!==b)return (ap?"c. ":"")+(Math.abs(a)/1000000).toLocaleString("en-US",{maximumFractionDigits:3})+"–"+(Math.abs(b)/1000000).toLocaleString("en-US",{maximumFractionDigits:3})+" million years ago";return b&&b!==a?fmt(a,ap)+"–"+(a<0&&b>0?fmt(b):(b<0?Math.abs(b).toLocaleString("en-US")+" BC":b)):fmt(a,ap)}
 function fmtEvent(e){return e.ongoing?fmt(e.start,e.approx)+"–present":fmtSpan(e.start,e.end,e.approx)}
+function fmtPerson(p){return p.living?"Born "+fmt(p.born,p.approx):fmtSpan(p.born,p.died,p.approx)}
 function eraOf(y){let e=ERAS[0][1];for(const[s,n]of ERAS)if(y>=s)e=n;return e}
 function parseYear(s){
   s=s.trim().toLowerCase().replace(/,/g,"");
@@ -1122,7 +1183,8 @@ function parseYear(s){
 }
 
 const ev=EVENTS.map((e,i)=>({id:"e"+i,kind:"event",start:e[0],end:e[1]??e[0],approx:!!e[2],title:e[3],blurb:e[4],lat:e[5],lon:e[6],region:e[7],cat:e[8],wiki:e[9],source:e[10],fossilRegion:e[11],locationSource:e[12],indigenous:e[13],aliases:e[14]||[],ongoing:!!e[15],rights:e[16]||null}));
-const ppl=PEOPLE.map((p,i)=>({id:"p"+i,kind:"person",name:p[0],born:p[1],died:p[2],approx:!!p[3],role:p[4],lat:p[5],lon:p[6],region:p[7],wiki:p[8],source:p[9]}));
+// Null death years remain null in source/export data. NOW bounds their map interval only.
+const ppl=PEOPLE.map((p,i)=>({id:"p"+i,kind:"person",name:p[0],born:p[1],died:p[2]??NOW,living:p[2]===null,approx:!!p[3],role:p[4],lat:p[5],lon:p[6],region:p[7],wiki:p[8],source:p[9],review:p[10],aliases:p[10]?.aliases||[]}));
 const byId=Object.fromEntries([...ev,...ppl].map(x=>[x.id,x]));
 const wikiUrl=s=>"https://en.wikipedia.org/wiki/"+encodeURIComponent(s).replace(/%2C/g,",").replace(/%27/g,"'");
 
@@ -1224,7 +1286,7 @@ function stars(){const w=Math.round(W*DPR),h=Math.round(H*DPR);if(starLayer&&sta
   const c=document.createElement("canvas");c.width=w;c.height=h;const x=c.getContext("2d");x.scale(DPR,DPR);x.fillStyle=C.star;
   for(const[sx,sy,sr,sa]of STARS){x.globalAlpha=sa;x.beginPath();x.arc(sx*W,sy*H,sr,0,7);x.fill()}return starLayer=c}
 let hits=[],polLabels=[];
-// Nearby events can share a reporting city. Keep each emoji selectable and connect
+// People and events can share a city. Keep each marker selectable and connect
 // displaced markers to their recorded point rather than changing the coordinates.
 function eventMarkerPoint(x,y,placed){
   for(const radius of [0,28,56,84,112])for(let step=0;step<(radius?8:1);step++){
@@ -1238,7 +1300,7 @@ function relevance(e,y,w){const d=DiscoveryCore.yearGap(e.start,e.end,y);return 
 let actMemo={},pplMemo={};
 function activeEvents(){const y=state.year,k=y+"|"+[...state.cats];if(actMemo.k===k)return actMemo.v;const w=halfWin(y);
   actMemo={k,v:ev.filter(e=>state.cats.has(e.cat)&&(e.cat!=="dinosaurs"||y<=-66000000)&&relevance(e,y,w)>0).map(e=>({e,r:relevance(e,y,w)})).sort((a,b)=>b.r-a.r||a.e.start-b.e.start)};return actMemo.v}
-function alivePeople(){const y=state.year;if(pplMemo.y===y)return pplMemo.v;const w=halfWin(y)*0.25;pplMemo={y,v:ppl.filter(p=>p.born<=y+w&&p.died>=y-w)};return pplMemo.v}
+function alivePeople(){const y=state.year;if(pplMemo.y===y)return pplMemo.v;pplMemo={y,v:ppl.filter(p=>p.born<=y&&p.died>=y)};return pplMemo.v}
 
 // Many things ask for a redraw (pointer moves, the slider, the spin); they are folded into one per frame.
 let drawQ=0;function draw(){if(!drawQ)drawQ=requestAnimationFrame(()=>{drawQ=0;render()})}
@@ -1273,6 +1335,7 @@ function renderScene(){
   else if(!G.ancient){
     ctx.beginPath();path(water);ctx.fillStyle=C.lake;ctx.fill();
     if(state.borders==="today"){ctx.beginPath();path(G.borders);ctx.strokeStyle=C.border;ctx.lineWidth=lw;ctx.stroke()}}
+  window.AtlasExplore?.drawCountry();
   ctx.beginPath();path(G.land);ctx.strokeStyle=C["land-edge"];ctx.lineWidth=.8;ctx.stroke();
   if(!G.ancient){ctx.beginPath();path(water);ctx.strokeStyle=C["lake-edge"];ctx.lineWidth=.8;ctx.stroke()}
   if(globe){// shade the far side, add a soft highlight and a rim
@@ -1315,11 +1378,12 @@ function renderScene(){
   }
   hits=[];
   if(window.HistoryChallenge?.isPicking())return;
-  const people=alivePeople();
-  for(const p of people){if(!visible(p.lon,p.lat))continue;const[x,y]=proj([p.lon,p.lat]);
+  const people=alivePeople(),peopleMarks=[];
+  for(const p of people){if(!visible(p.lon,p.lat))continue;const[ax,ay]=proj([p.lon,p.lat]),marker=eventMarkerPoint(ax,ay,peopleMarks),{x,y}=marker;peopleMarks.push(marker);
+    if(x!==ax||y!==ay){ctx.save();ctx.strokeStyle=C.ink;ctx.globalAlpha=.45;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(ax,ay);ctx.lineTo(x,y);ctx.stroke();ctx.restore()}
     ctx.save();ctx.translate(x,y);ctx.rotate(Math.PI/4);ctx.strokeStyle=C.ink;ctx.lineWidth=1.4;ctx.fillStyle=C.paper;ctx.beginPath();ctx.rect(-3.5,-3.5,7,7);ctx.fill();ctx.stroke();ctx.restore();
-    hits.push({x,y,id:p.id,label:p.name+" · "+fmtSpan(p.born,p.died,p.approx)})}
-  const act=activeEvents(),fossilMarks=[],emojiMarks=[];
+    hits.push({x,y,id:p.id,label:p.name+" · "+fmtPerson(p)})}
+  const act=activeEvents(),fossilMarks=[],emojiMarks=peopleMarks.slice();
   const labelled=polLabels.slice();
   act.slice().reverse().forEach(({e,r})=>{if(evidenceView&&e.indigenous?.evidence)return;const point=window.HistoryPaleogeography?.point(e,state.year)||[e.lon,e.lat];if(!visible(...point))return;let[x,y]=proj(point);
     if(e.cat==="dinosaurs"){
@@ -1391,7 +1455,7 @@ function endPt(e){
   // Continue from the remaining finger's current position, without treating it as a tap.
   if(pts.size===1){const[id,point]=[...pts][0];startDrag(id,point,true)}else if(pts.size>1)startPinch();
 }
-cv.addEventListener("pointerup",e=>{const d=drag,tap=pts.size===1&&d?.id===e.pointerId&&!d.moved;endPt(e);if(tap){if(window.HistoryChallenge?.pickMap(e)){e.stopImmediatePropagation();return}const r=cv.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,h=nearest(x,y);if(h)select(h.id,false,h.year??null);else{const m=mapAt(x,y);if(m?.water&&window.HistoryDiscovery)HistoryDiscovery.selectWater(proj.invert([x,y]),m.year??state.year,m.polity);else if(m&&m.polity)selectPolity(m.polity,m.year??state.year);else if(m&&e.pointerType!=="mouse"){const tip=document.getElementById("tip");tip.hidden=false;tip.textContent=m.label;tip.classList.add("country");tip.style.left=x+"px";tip.style.top=y+"px";clearTimeout(tapT);tapT=setTimeout(()=>tip.hidden=true,2500)}}}});
+cv.addEventListener("pointerup",e=>{const d=drag,tap=pts.size===1&&d?.id===e.pointerId&&!d.moved;endPt(e);if(tap){if(window.HistoryChallenge?.pickMap(e)){e.stopImmediatePropagation();return}const r=cv.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top,h=nearest(x,y);if(h)select(h.id,false,h.year??null);else{const m=mapAt(x,y);if(m?.water&&window.HistoryDiscovery)HistoryDiscovery.selectWater(proj.invert([x,y]),m.year??state.year,m.polity);else if(m&&m.polity)selectPolity(m.polity,m.year??state.year);else if(m?.country&&window.AtlasExplore)AtlasExplore.selectCountry(m.country,m.year??state.year);else if(m&&e.pointerType!=="mouse"){const tip=document.getElementById("tip");tip.hidden=false;tip.textContent=m.label;tip.classList.add("country");tip.style.left=x+"px";tip.style.top=y+"px";clearTimeout(tapT);tapT=setTimeout(()=>tip.hidden=true,2500)}}}});
 cv.addEventListener("pointercancel",endPt);cv.addEventListener("lostpointercapture",endPt);
 cv.addEventListener("pointerleave",()=>{hoverE=null;document.getElementById("tip").hidden=true});
 cv.addEventListener("wheel",e=>{e.preventDefault();setZoom(zoomK*Math.exp(-e.deltaY*0.0015))},{passive:false});
@@ -1409,7 +1473,7 @@ function mapAtYear(x,y){if(window.HistoryPaleogeography?.isDeep(state.year))retu
     for(const f of pols)if(inBox(f.bbox,ll)&&d3.geoContains(f,ll)&&(!hit||f.area<hit.area))hit=f;
     return hit?{label:hit.name+(hit.member&&hit.member!==hit.name?` · part of ${hit.member}`:"")+(hit.basis?` · ${hit.basis}`:""),polity:hit}:null}
   for(const c of (hi||lo).countries){const[[w,so],[ea,n]]=c.bbox;if(ll[1]<so||ll[1]>n)continue;if(w<=ea?(ll[0]<w||ll[0]>ea):(ll[0]<w&&ll[0]>ea))continue;
-    if(d3.geoContains(c,ll))return{label:c.properties.name+" (today)",polity:null}}return null}
+    if(d3.geoContains(c,ll))return{label:c.properties.name+" (today)",polity:null,country:c}}return null}
 function nearest(x,y){let best=null,bd=Infinity;for(const h of hits){const d=Math.hypot(h.x-x,h.y-y);if(d<=(h.radius||16)&&d<bd){bd=d;best=h}}return best}
 function syncBordersUI(){for(const b of document.querySelectorAll(".bseg button"))b.setAttribute("aria-pressed",b.dataset.b===state.borders);
   document.querySelector('.bseg [data-b="history"]').title=currentBorderFailed()?"Historical borders unavailable; no modern borders substituted":"";draw()}
@@ -1457,7 +1521,7 @@ slider.addEventListener("keydown",e=>{if(e.key==="ArrowLeft"&&!e.shiftKey){nudge
 function clearTimelineSelection(){sidebarReturn=null;state.sel=null;selectedPolity=null;window.HistoryDiscovery?.timelineChanged()}
 function setYear(y,keepSel){y=roundYear(Math.max(-252000000,Math.min(NOW,y)));if(y!==state.year)sidebarReturn=null;if(y<-300000)state.cats.add("dinosaurs");state.year=y;slider.value=Math.round(tAt(y)*SLIDER_STEPS);if(!keepSel)clearTimelineSelection();update()}
 function stepEvent(dir){const list=ev.filter(e=>state.cats.has(e.cat)).map(e=>e.start).sort((a,b)=>a-b);const y=state.year;const t=dir>0?list.find(s=>s>y):[...list].reverse().find(s=>s<y);if(t!==undefined){stopPlay();setYear(t)}}
-function nudgeYear(dir){stopPlay();const y=state.year===-1&&dir>0?1:state.year===1&&dir<0?-1:state.year+dir*(state.year<-1000000?1000000:1);setYear(y)}
+function nudgeYear(dir){stopPlay();const size=state.year<-1000000?1000000:Number(document.getElementById("yearStep")?.value||1);setYear(AtlasExploreCore.stepYear(state.year,dir,size))}
 document.getElementById("prev").onclick=()=>nudgeYear(-1);
 document.getElementById("next").onclick=()=>nudgeYear(1);
 const TIMELAPSE_DURATION_MS=30000;
@@ -1479,15 +1543,16 @@ function revealInSidebar(el){const side=document.getElementById("side");window.A
 function revealDetail(){const el=document.getElementById("detail");el.setAttribute("tabindex","-1");revealInSidebar(el);el.focus({preventScroll:true})}
 function closeSelection(){const saved=sidebarReturn;sidebarReturn=null;state.sel=null;selectedPolity=null;update();
   const row=saved&&saved.year===state.year&&document.querySelector(`#side [data-id="${saved.id}"]`);
-  if(row){window.AtlasUI?.revealList(saved);document.getElementById("side").scrollTop=saved.scroll;if(innerWidth<=860)row.scrollIntoView({block:"center",behavior:"instant"});row.focus({preventScroll:true})}
+  if(row){for(let parent=row.parentElement;parent&&parent.id!=="side";parent=parent.parentElement)if(parent.tagName==="DETAILS")parent.open=true;window.AtlasUI?.revealList(saved);document.getElementById("side").scrollTop=saved.scroll;if(innerWidth<=860)row.scrollIntoView({block:"center",behavior:"instant"});row.focus({preventScroll:true})}
   else if(innerWidth<=860&&window.AtlasUI)AtlasUI.goToMap();else slider.focus()}
 function historicalContextNote(x,year){return DiscoveryCore.isHistoricalContext(x,year)?`<p class="timeline-context-note"><strong>Historical context for ${esc(fmt(year))}</strong><br>This record covers ${esc(fmtEvent(x))}. Its date range describes a historical period, rather than an event dated ${esc(fmt(year))}.</p>`:""}
 function select(id,fly=true,recordYear=null){sidebarReturn=null;window.HistoryDiscovery?.selectedRecord(recordYear);state.sel=id;selectedPolity=null;const x=byId[id];stopPlay();
   if(!(recordYear!==null&&window.HistoryDiscovery?.isComparing())&&x.kind==="event"&&(state.year<x.start-halfWin(x.start)||state.year>x.end+halfWin(x.start))){state.year=x.start;slider.value=Math.round(tAt(x.start)*SLIDER_STEPS)}
-  if(fly||state.mode==="globe"){const point=window.HistoryPaleogeography?.point(x,recordYear??state.year)||[x.lon,x.lat];flyTo(...point)}update();
+  if(!(recordYear!==null&&window.HistoryDiscovery?.isComparing())&&x.kind==="person"&&(state.year<x.born||state.year>x.died)){state.year=x.born;slider.value=Math.round(tAt(x.born)*SLIDER_STEPS)}
+  if(fly||state.mode==="globe"){const point=window.HistoryPaleogeography?.point(x,recordYear??state.year)||[x.lon,x.lat];if(Number.isFinite(point[0])&&Number.isFinite(point[1])){if(state.mode==="globe")flyTo(...point);else{stopSpin();flyToken++;userMoved=true;makeProj();const p=proj(point);flatT.x+=W/2-p[0];flatT.y+=H/2-p[1]}}}update();
   revealDetail()}
 function selectPolity(f,year=state.year){sidebarReturn=null;if(window.HistoryDiscovery)window.HistoryDiscovery.selectPolityYear(year);state.sel=null;selectedPolity=f;stopPlay();stopSpin();renderDetail();draw();revealDetail()}
-function renderDetail(){renderDetailBase();if(window.HistoryDiscovery)window.HistoryDiscovery.detail()}
+function renderDetail(){renderDetailBase();if(window.HistoryDiscovery)window.HistoryDiscovery.detail();window.AtlasExplore?.detail()}
 function renderDetailBase(){const el=document.getElementById("detail");if(selectedPolity){const f=selectedPolity,member=DiscoveryCore.politicalStatus(f),link=f.wiki?`<a href="${wikiUrl(f.wiki)}" target="_blank" rel="noopener">Read more on Wikipedia ↗</a>`:"";
     el.innerHTML=`<div class="detail polity"><button class="iconbtn close" aria-label="Close">×</button><div class="kicker"><i></i>Political coverage in ${esc(fmt(state.year))}</div><h3>${esc(f.name)}</h3><div class="meta-grid"><div><span>Mapped coverage</span><strong>${esc(fmtSpan(f.from,f.to))}</strong></div><div><span>Political status</span><strong>${esc(member)}</strong></div></div>${f.status?`<p>${esc(f.status)}</p>`:""}<p>Approximate, simplified reconstruction. Mapped extents may include claims and do not establish effective control. Coverage dates describe this source record.</p>${f.source?`<p><a href="${esc(f.source)}" target="_blank" rel="noopener">Source ↗</a></p>`:""}${link}</div>`;
     el.querySelector(".close").onclick=closeSelection;return}
@@ -1500,32 +1565,38 @@ function renderDetailBase(){const el=document.getElementById("detail");if(select
     <h3>${AtlasEventEmojis.icon(x)}${esc(x.title)}</h3>${historicalContextNote(x,state.year)}<p>${esc(x.blurb)}</p>${x.indigenous?`<p class="indigenous-context"><strong>${x.indigenous.evidence?"Archaeological evidence · dated site":"Indigenous history · documented place"}</strong><br>${x.indigenous.evidence?"Dates represent rounded evidence ages. Site locations do not establish a migration track or a modern national identity.":"This marker locates a community or site, not a territorial boundary. Dates refer to the described event or archaeological evidence, not the lifetime of a people. Colonial map fills can overlap Indigenous homelands."}${x.indigenous.territorySource?` <a href="${esc(x.indigenous.territorySource)}" target="_blank" rel="noopener">Territory &amp; community reference ↗</a>`:""}</p>`:""}${window.HistoricalLayersCore?.routes.some(route=>route.wiki===x.wiki)?`<p class="route-method">Schematic connections · routes and timings are approximate. Select a line or marker to read its source.</p>`:""}${x.rights?`<p class="rights-context">${esc(x.rights.country)} · ${esc(window.HistoryWomensRights?.topics[x.rights.topic]||"Women’s rights")}<br>This is a dated historical milestone. Legal scope and practical access may change later.</p>`:""}${x.source?`<p><a href="${esc(x.source)}" target="_blank" rel="noopener">Source ↗</a></p>`:""}${x.rights?"":`<a href="${wikiUrl(x.wiki)}" target="_blank" rel="noopener">Read more on Wikipedia ↗</a>`}
     <div class="meanwhile-slot"></div></div>`}
   else{const age=DiscoveryCore.yearsBetween(x.born,state.year);el.innerHTML=`<div class="detail" style="--c:var(--ink)"><button class="iconbtn close" aria-label="Close">×</button>
-    <div class="kicker"><i></i>${esc(fmt(x.born,x.approx))} – ${esc(fmt(x.died,x.approx))} · ${REGIONS[x.region]}</div>
+    <div class="kicker"><i></i>${esc(fmtPerson(x))} · ${REGIONS[x.region]}</div>
     <h3>${esc(x.name)}</h3><p>${esc(x.role)}.${state.year>=x.born&&state.year<=x.died?` In ${esc(fmt(state.year))}, about ${age} years old.`:""}</p>
+    <p class="person-location">${x.review?.location?`<strong>Associated place:</strong> ${esc(x.review.location)}<br>`:""}The marker represents an associated place; whereabouts vary over a lifetime.</p>
+    ${x.review?.dateNote?`<p>${esc(x.review.dateNote)}</p>`:""}${x.living?`<p>No death is recorded in this dataset. Coverage extends through ${NOW}.</p>`:""}
     <a href="${esc(x.source||wikiUrl(x.wiki))}" target="_blank" rel="noopener">${x.source?"Source":"Read more on Wikipedia"} ↗</a></div>`}
   el.querySelector(".close").onclick=closeSelection}
 function eventRegions(records,showRanges=false){const by={};for(const{e}of records)(by[e.region]??=[]).push(e);
-  return REGION_ORDER.filter(r=>by[r]).map(r=>`<div class="region"><h4><span>${REGIONS[r]}</span><span>${by[r].length}</span></h4>${by[r].sort((a,b)=>a.start-b.start).map(e=>`<button class="item" data-id="${e.id}" aria-current="${state.sel===e.id}" style="--c:var(--c-${e.cat})"><span class="y">${esc(showRanges||e.cat==="pandemics"?fmtEvent(e):fmt(e.start,e.approx))}</span><span><span class="t">${AtlasEventEmojis.icon(e)}${esc(e.title)}</span><span class="b">${esc(DiscoveryCore.summary(e.blurb))}</span></span></button>`).join("")}</div>`).join("")}
+  const row=e=>`<button class="item" data-id="${e.id}" aria-current="${state.sel===e.id}" style="--c:var(--c-${e.cat})"><span class="y">${esc(showRanges||e.cat==="pandemics"?fmtEvent(e):fmt(e.start,e.approx))}</span><span><span class="t">${AtlasEventEmojis.icon(e)}${esc(e.title)}</span><span class="b">${esc(DiscoveryCore.summary(e.blurb))}</span></span></button>`;
+  return REGION_ORDER.filter(r=>by[r]).map(r=>{const events=by[r].sort((a,b)=>a.start-b.start);return `<div class="region"><h4><span>${REGIONS[r]}</span><span>${events.length}</span></h4>${events.slice(0,4).map(row).join("")}${events.length>4?`<details class="more-records" data-browse-group="${showRanges?'context':'events'}-${r}"><summary>Show ${events.length-4} more in ${REGIONS[r]}</summary>${events.slice(4).map(row).join("")}</details>`:""}</div>`}).join("")}
 function renderSide(){
-  const act=activeEvents(),y=state.year;
+  const expanded=new Set([...document.querySelectorAll("#regions [data-browse-group][open],#people [data-browse-group][open]")].map(node=>node.dataset.browseGroup));
+  const act=window.AtlasExplore?.filterEvents(activeEvents())||activeEvents(),y=state.year;
   const context=act.filter(({e})=>DiscoveryCore.isHistoricalContext(e,y)),dated=act.filter(({e})=>!DiscoveryCore.isHistoricalContext(e,y));
   document.getElementById("sideSub").textContent=y<-1000000?`Approximate ages · within 1 million years of the selected date · ${act.length} fossil record${act.length===1?"":"s"}`:`${dated.length} dated event${dated.length===1?"":"s"} within 2 years of ${fmt(y)}`+(context.length?` · ${context.length} historical context record${context.length===1?"":"s"}`:"");
   const by={};for(const{e}of act)(by[e.region]??=[]).push(e);
   const reg=document.getElementById("regions");
   const filled=REGION_ORDER.filter(r=>by[r]);
-  reg.innerHTML=dated.length?eventRegions(dated):`<div class="empty empty-recovery"><p>${y<-1000000?"No dinosaur records in this time window.":`No dated events within ${SAME_TIME_YEARS} years of ${esc(fmt(y))}.`} This atlas contains a growing selection of records; a gap does not mean nothing happened.</p><div>${[-1,1].map(dir=>{const target=ev.filter(e=>state.cats.has(e.cat)&&(dir<0?e.start<y:e.start>y)).sort((a,b)=>dir<0?b.start-a.start:a.start-b.start)[0];return target?`<button type="button" data-near-event="${target.id}">${dir<0?"← Previous":"Next →"}: ${esc(fmt(target.start))}<strong>${esc(target.title)}</strong></button>`:""}).join("")}<button type="button" data-reset-empty>Reset event filters</button><a href="#discover=cleopatra-world">Try Cleopatra’s world →</a></div></div>`;
+  reg.innerHTML=dated.length?eventRegions(dated):`<div class="empty empty-recovery"><p>${y<-1000000?"No dinosaur records in this time window.":`No dated events within ${SAME_TIME_YEARS} years of ${esc(fmt(y))}.`} This atlas contains a growing selection of records; a gap does not mean nothing happened.</p><div>${[-1,1].map(dir=>{const target=(window.AtlasExplore?.filterEvents(ev.map(e=>({e})))||ev.map(e=>({e}))).map(r=>r.e).filter(e=>state.cats.has(e.cat)&&(dir<0?e.start<y:e.start>y)).sort((a,b)=>dir<0?b.start-a.start:a.start-b.start)[0];return target?`<button type="button" data-near-event="${target.id}">${dir<0?"← Previous":"Next →"}: ${esc(fmt(target.start))}<strong>${esc(target.title)}</strong></button>`:""}).join("")}<button type="button" data-reset-empty>Reset event filters</button><a href="#discover=cleopatra-world">Try Cleopatra’s world →</a></div></div>`;
   if(context.length)reg.insertAdjacentHTML("beforeend",`<section class="timeline-context-list" aria-label="Historical context"><h3>Historical context in ${esc(fmt(y))}</h3><p>Historical periods whose recorded date ranges overlap this time window.</p>${eventRegions(context,true)}</section>`);
   const quiet=REGION_ORDER.filter(r=>!by[r]).map(r=>REGIONS[r]);
-  if(filled.length&&quiet.length)reg.insertAdjacentHTML("beforeend",`<p class="empty">Nothing recorded here yet for ${quiet.join(", ")}.</p>`);
+  if(filled.length&&quiet.length&&!window.AtlasExplore?.hasRegionFilter())reg.insertAdjacentHTML("beforeend",`<p class="empty">Nothing recorded here yet for ${quiet.join(", ")}.</p>`);
   reg.querySelectorAll('[data-near-event]').forEach(button=>button.onclick=()=>select(button.dataset.nearEvent));
   reg.querySelector('[data-reset-empty]')?.addEventListener('click',resetEventFilters);
-  const pp=alivePeople().filter(p=>p.born<=y&&p.died>=y);
+  const pp=window.AtlasExplore?.filterPeople(alivePeople())||alivePeople();
   for(const id of ["peopleTitle","peopleSub","people"])document.getElementById(id).hidden=!pp.length;
-  document.getElementById("peopleSub").textContent=pp.length?`${pp.length} of the people in this atlas`:"";
-  document.getElementById("people").innerHTML=pp.length?pp.map(p=>`<button class="person" data-id="${p.id}">${esc(p.name)}<em>age ≈${DiscoveryCore.yearsBetween(p.born,y)}</em></button>`).join(""):`<p class="empty">None of the people in this atlas were alive in ${esc(fmt(y))}.</p>`;
+  document.getElementById("peopleSub").textContent=pp.length?`${pp.length} of the people in this atlas · Birth and death years are inclusive; c. marks approximate dates. Markers show associated places.`:"";
+  const personRow=p=>`<button class="person" data-id="${p.id}"><span>${esc(p.name)}</span><small>${esc(p.role)} · ${esc(REGIONS[p.region])}</small><em>age ≈${DiscoveryCore.yearsBetween(p.born,y)} · ${esc(fmtPerson(p))}</em></button>`;
+  document.getElementById("people").innerHTML=pp.length?pp.slice(0,8).map(personRow).join("")+(pp.length>8?`<details class="more-records" data-browse-group="people"><summary>Show ${pp.length-8} more people</summary>${pp.slice(8).map(personRow).join("")}</details>`:""):`<p class="empty">None of the people in this atlas were alive in ${esc(fmt(y))}${window.AtlasExplore?.hasRegionFilter()?" in this region":""}.</p>`;
+  for(const node of document.querySelectorAll("#regions [data-browse-group],#people [data-browse-group]"))node.open=expanded.has(node.dataset.browseGroup);
 
 }
-document.getElementById("side").addEventListener("click",e=>{const b=e.target.closest("[data-id]");if(b){const saved={id:b.dataset.id,year:state.year,scroll:document.getElementById("side").scrollTop};select(b.dataset.id);sidebarReturn=saved}});
+document.getElementById("side").addEventListener("click",e=>{const b=e.target.closest("[data-id]");if(b){const saved={id:b.dataset.id,year:state.year,scroll:document.getElementById("side").scrollTop};const r=byId[b.dataset.id];if(r?.cat&&!state.cats.has(r.cat)){state.cats.add(r.cat);buildMarks()}select(b.dataset.id,true,b.dataset.recordYear?Number(b.dataset.recordYear):null);sidebarReturn=saved}});
 function renderFact(){const[fy,ft]=FACTS[state.factI];const el=document.getElementById("fact");
   el.innerHTML=`<b>Same time, different worlds</b><p>${esc(ft)}</p><div class="row"><button id="fGo">Go to ${esc(fmt(fy))}</button><button id="fNext">Another fact</button></div>`;
   document.getElementById("fGo").onclick=()=>{stopPlay();setYear(fy)};
@@ -1552,7 +1623,7 @@ function update(fast){
   const win=document.getElementById("win");win.style.left=a*100+"%";win.style.width=(b-a)*100+"%";
   document.getElementById("needle").style.left=t*100+"%";
   document.getElementById("winLbl").textContent=y<-1000000?"±1 million years":`±${SAME_TIME_YEARS} years`;
-  for(const id of ["prev","next"])document.getElementById(id).setAttribute("aria-label",(id==="prev"?"Previous":"Next")+(y<-1000000?" million years":" year"));
+  for(const id of ["prev","next"]){const b=document.getElementById(id),size=y<-1000000?1000000:Number(document.getElementById("yearStep")?.value||1);const label=(id==="prev"?"Back":"Forward")+" "+(size===1000000?"1 million":size)+" "+(size===1?"year":"years");b.setAttribute("aria-label",label);b.title=label;b.disabled=id==="prev"?y<=-252000000:y>=NOW}
   slider.setAttribute("aria-valuetext",fmt(y));
   clearTimeout(slowT);if(!fast||performance.now()-slowAt>200)slow();else slowT=setTimeout(slow,200);
   draw();
@@ -1589,5 +1660,6 @@ startSpin();
 <script src="migrations.js"></script>
 <script src="womens-rights.js"></script>
 <script src="atlas-ui.js"></script>
+<script src="explore.js"></script>
 </body>
 </html>

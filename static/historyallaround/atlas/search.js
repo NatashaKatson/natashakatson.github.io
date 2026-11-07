@@ -11,8 +11,8 @@
     ...ev.map((r) => ({ kind: r.cat === "dinosaurs" ? "dinosaur" : "event", title: r.title, aliases: [r.wiki.replaceAll("_", " "), ...(r.aliases || []), ...(r.indigenous?.aliases || []), ...(r.rights ? [r.rights.country] : []), ...(r.rights?.topic === "reproductive" ? ["abortion", "abortions", "reproductive rights"] : []), ...(r.cat === "dinosaurs" ? ["dinosaur", "dinosaurs"] : []), ...(r.wiki === "Tyrannosaurus" ? ["T. rex", "T rex", "Tyrannosaurus rex"] : [])],
       description: r.blurb, start: r.start, end: r.end, approx: r.approx, ongoing: r.ongoing,
       lon: r.lon, lat: r.lat, recordId: r.id })),
-    ...ppl.map((r) => ({ kind: "person", title: r.name, aliases: [r.wiki.replaceAll("_", " ")],
-      description: r.role, start: r.born, end: r.died, approx: r.approx,
+    ...ppl.map((r) => ({ kind: "person", title: r.name, aliases: [r.wiki.replaceAll("_", " "), ...r.aliases, ...(r.review?.fields || []), ...(r.review?.location ? [r.review.location] : [])],
+      description: r.role, start: r.born, end: r.died, approx: r.approx, living: r.living,
       lon: r.lon, lat: r.lat, recordId: r.id })),
     ...HistoryCountries.rows.map(([title, lon, lat]) => ({ kind: "place", title, aliases: [],
       description: "Present-day country or territory", lon, lat })),
@@ -51,6 +51,7 @@
 
   function dateLabel(r) {
     if (r.kind === "place") return `Present-day place · explore ${fmt(state.year)}`;
+    if (r.kind === "person") return fmtPerson({ born: r.start, died: r.end, approx: r.approx, living: r.living });
     const span = fmtEvent(r);
     return r.kind === "state" ? `Mapped ${span} · open ${fmt(r.year)}` : span;
   }

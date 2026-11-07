@@ -38,7 +38,7 @@ try {
   await send('Page.enable'); await send('Runtime.enable'); await send('Network.enable');
   await send('Network.setBlockedURLs', {urls: ['https://fonts.googleapis.com/*', 'https://fonts.gstatic.com/*']});
   await send('Emulation.setDeviceMetricsOverride', {width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false});
-  await send('Page.navigate', {url: testURL + '#2022'});
+  await send('Page.navigate', {url: testURL + '#3000bc'});
   await waitFor('!!window.AtlasUI && !!window.HistoryDiscovery');
   await evaluate('stopSpin();flyToken++');
   await evaluate('HistoryDiscovery.explore([30.52, 50.45])');
@@ -59,7 +59,7 @@ try {
       check(document.getElementById('atlasMain').dataset.sidebarContext === 'people', 'People context selected');
       check(!visible(panel) && !visible(document.getElementById('detail')) && !visible(document.getElementById('regions')), 'People excludes local history and event details');
       check(visible(document.getElementById('people')) && document.getElementById('sideSub').hidden, 'People content replaces event summary');
-      check(document.getElementById('people').textContent.includes('None of the people in this atlas were alive in 2022'), 'Clear empty state at 2022');
+      check(document.getElementById('people').textContent.includes('None of the people in this atlas were alive in 3,000 BC'), 'Clear empty state at 3000 BC');
       check(document.getElementById('side').scrollTop === 0, 'Tab change resets stale scroll');
       update();
       await new Promise(requestAnimationFrame);

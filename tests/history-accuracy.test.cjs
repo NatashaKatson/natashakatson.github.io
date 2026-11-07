@@ -12,7 +12,7 @@ test('every event, person, border arc and historical search destination passes i
   const result = audit();
   assert.deepEqual(result.errors, []);
   assert.equal(result.counts.events, 422);
-  assert.equal(result.counts.people, 66);
+  assert.equal(result.counts.people, 123);
   assert.equal(result.counts.sourceReviewedEvents, 422);
   assert.equal(result.counts.eventsWithSourceLinks, 422);
   assert.equal(result.counts.borderChunks, 217);

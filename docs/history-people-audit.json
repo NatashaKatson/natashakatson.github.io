@@ -1,0 +1,940 @@
+{
+  "reviewedOn": "2026-11-06",
+  "cutoff": 2026,
+  "regions": {
+    "eu": "Europe",
+    "me": "Middle East & North Africa",
+    "af": "Sub-Saharan Africa",
+    "as": "Asia",
+    "am": "Americas",
+    "oc": "Oceania"
+  },
+  "method": "Counts describe a curated selection, not all historical people. Period-region cells count recorded lifespans overlapping each period, so a person can appear in several periods. Regions group associated marker locations, not nationality or ethnicity; North Africa is included in me. Fields are documented for the additions only.",
+  "baseline": {
+    "total": 66,
+    "byRegion": {
+      "eu": 27,
+      "me": 10,
+      "af": 5,
+      "as": 13,
+      "am": 8,
+      "oc": 3
+    },
+    "periodRegion": [
+      {
+        "period": "Ancient",
+        "start": -10000,
+        "end": 499,
+        "eu": 7,
+        "me": 5,
+        "af": 0,
+        "as": 5,
+        "am": 0,
+        "oc": 0
+      },
+      {
+        "period": "Medieval",
+        "start": 500,
+        "end": 1399,
+        "eu": 2,
+        "me": 4,
+        "af": 2,
+        "as": 3,
+        "am": 0,
+        "oc": 0
+      },
+      {
+        "period": "Renaissance & early modern",
+        "start": 1400,
+        "end": 1699,
+        "eu": 8,
+        "me": 1,
+        "af": 0,
+        "as": 4,
+        "am": 2,
+        "oc": 0
+      },
+      {
+        "period": "18th & 19th centuries",
+        "start": 1700,
+        "end": 1899,
+        "eu": 12,
+        "me": 0,
+        "af": 2,
+        "as": 3,
+        "am": 4,
+        "oc": 3
+      },
+      {
+        "period": "20th & 21st centuries",
+        "start": 1900,
+        "end": 2026,
+        "eu": 4,
+        "me": 0,
+        "af": 2,
+        "as": 2,
+        "am": 3,
+        "oc": 1
+      }
+    ],
+    "sourceLinks": 3,
+    "noRecordedDeath": 0
+  },
+  "current": {
+    "total": 123,
+    "byRegion": {
+      "eu": 42,
+      "me": 21,
+      "af": 12,
+      "as": 24,
+      "am": 19,
+      "oc": 5
+    },
+    "periodRegion": [
+      {
+        "period": "Ancient",
+        "start": -10000,
+        "end": 499,
+        "eu": 9,
+        "me": 7,
+        "af": 0,
+        "as": 8,
+        "am": 0,
+        "oc": 0
+      },
+      {
+        "period": "Medieval",
+        "start": 500,
+        "end": 1399,
+        "eu": 3,
+        "me": 8,
+        "af": 2,
+        "as": 6,
+        "am": 1,
+        "oc": 0
+      },
+      {
+        "period": "Renaissance & early modern",
+        "start": 1400,
+        "end": 1699,
+        "eu": 12,
+        "me": 2,
+        "af": 2,
+        "as": 6,
+        "am": 3,
+        "oc": 0
+      },
+      {
+        "period": "18th & 19th centuries",
+        "start": 1700,
+        "end": 1899,
+        "eu": 19,
+        "me": 4,
+        "af": 3,
+        "as": 6,
+        "am": 12,
+        "oc": 5
+      },
+      {
+        "period": "20th & 21st centuries",
+        "start": 1900,
+        "end": 2026,
+        "eu": 10,
+        "me": 2,
+        "af": 7,
+        "as": 6,
+        "am": 6,
+        "oc": 2
+      }
+    ],
+    "sourceLinks": 60,
+    "noRecordedDeath": 3
+  },
+  "added": [
+    {
+      "name": "Grigori Rasputin",
+      "wiki": "Grigori_Rasputin",
+      "source": "https://encyclopedia.1914-1918-online.net/wp-content/uploads/2023/01/ams/957382/pdf/1914-1918-Online-rasputin_grigorii_efimovich-2014-10-08.pdf",
+      "location": "Saint Petersburg / Petrograd, imperial court",
+      "fields": [
+        "religion",
+        "politics"
+      ],
+      "reviewedOn": "2026-11-06",
+      "aliases": [
+        "Grigory Rasputin",
+        "Grigorii Rasputin",
+        "Григорий Распутин"
+      ],
+      "dateNote": "Dates use the Gregorian calendar; older accounts also give different birth years. The UPenn library authority corroborates 1869–1916."
+    },
+    {
+      "name": "Plato",
+      "wiki": "Plato",
+      "source": "https://iep.utm.edu/plato/",
+      "location": "Athens, Academy and philosophical activity",
+      "fields": [
+        "philosophy"
+      ],
+      "reviewedOn": "2026-11-06",
+      "dateNote": "Commonly dated 428/427–348/347 BCE; the map uses approximate representative years."
+    },
+    {
+      "name": "Sima Qian",
+      "wiki": "Sima_Qian",
+      "source": "https://ethicsofsuicide.lib.utah.edu/selections/sima-qian/",
+      "location": "Chang’an, Han court and historical writing",
+      "fields": [
+        "literature"
+      ],
+      "reviewedOn": "2026-11-06",
+      "dateNote": "Birth is variously dated around 145 or 135 BCE; death is conventionally placed around 86 BCE."
+    },
+    {
+      "name": "Sappho",
+      "wiki": "Sappho",
+      "source": "https://www.britishmuseum.org/sites/default/files/2021-11/Desire_Love_Identity_Audio_Transcript_15.11.21.pdf",
+      "location": "Mytilene, Lesbos, associated home",
+      "fields": [
+        "literature"
+      ],
+      "reviewedOn": "2026-11-06",
+      "dateNote": "Lifespan is approximate; the British Museum gives around 630–570 BCE."
+    },
+    {
+      "name": "Hannibal",
+      "wiki": "Hannibal",
+      "source": "https://doi.org/10.1093/obo/9780199791279-0272",
+      "location": "Carthage, home polity",
+      "fields": [
+        "politics",
+        "war"
+      ],
+      "reviewedOn": "2026-11-06",
+      "aliases": [
+        "Hannibal Barca"
+      ],
+      "dateNote": "Birth and death years are approximate; ancient accounts differ on the death year."
+    },
+    {
+      "name": "Ban Zhao",
+      "wiki": "Ban_Zhao",
+      "source": "https://chinesebox.voices.wooster.edu/banzhao/",
+      "location": "Luoyang, Eastern Han court",
+      "fields": [
+        "literature",
+        "philosophy"
+      ],
+      "reviewedOn": "2026-11-06",
+      "aliases": [
+        "Banzhao",
+        "班昭"
+      ],
+      "dateNote": "Lifespan is approximate; sources also give 49 CE for her birth."
+    },
+    {
+      "name": "Augustine of Hippo",
+      "wiki": "Augustine_of_Hippo",
+      "source": "https://plato.stanford.edu/entries/augustine/",
+      "location": "Hippo Regius, present-day Annaba, bishopric",
+      "fields": [
+        "religion",
+        "philosophy"
+      ],
+      "reviewedOn": "2026-11-06",
+      "aliases": [
+        "Saint Augustine",
+        "Aurelius Augustinus"
+      ],
+      "birthDate": "0354-11-13",
+      "deathDate": "0430-08-28"
+    },
+    {
+      "name": "Aryabhata",
+      "wiki": "Aryabhata",
+      "source": "https://mathshistory.st-andrews.ac.uk/Biographies/Aryabhata_I/",
+      "location": "Kusumapura / Patna region, approximate place of work",
+      "fields": [
+        "science"
+      ],
+      "reviewedOn": "2026-11-06",
+      "dateNote": "Birth year follows his account of his age in 499; death year is conventional and the precise location of Kusumapura is uncertain."
+    },
+    {
+      "name": "K’inich Janaab’ Pakal",
+      "wiki": "Kʼinich_Janaabʼ_Pakal",
+      "source": "https://revistas.inah.gob.mx/index.php/lavozinah/issue/download/2518/2728",
+      "location": "Palenque, Maya royal court",
+      "fields": [
+        "politics",
+        "art"
+      ],
+      "reviewedOn": "2026-11-06",
+      "aliases": [
+        "Pakal the Great",
+        "Pacal",
+        "Kinich Janaab Pakal"
+      ]
+    },
+    {
+      "name": "Li Bai",
+      "wiki": "Li_Bai",
+      "source": "https://www.poetryfoundation.org/poets/li-po",
+      "location": "Jiangyou, Sichuan, region where he grew up",
+      "fields": [
+        "literature"
+      ],
+      "reviewedOn": "2026-11-06",
+      "aliases": [
+        "Li Po",
+        "Li Bo",
+        "李白"
+      ]
+    },
+    {
+      "name": "Ibn al-Haytham",
+      "wiki": "Ibn_al-Haytham",
+      "source": "https://mathshistory.st-andrews.ac.uk/Biographies/Al-Haytham/",
+      "location": "Cairo, associated place of scientific work",
+      "fields": [
+        "science"
+      ],
+      "reviewedOn": "2026-11-06",
+      "aliases": [
+        "Alhazen",
+        "Ibn al Haytham"
+      ],
+      "dateNote": "Approximate lifespan follows MacTutor’s 965–1039; other references give death around 1040."
+    },
+    {
+      "name": "Omar Khayyam",
+      "wiki": "Omar_Khayyam",
+      "source": "https://www.iranicaonline.org/articles/khayyam-omar/khayyam-omar-i-life/",
+      "location": "Nishapur, associated home and burial place",
+      "fields": [
+        "science",
+        "philosophy",
+        "literature"
+      ],
+      "reviewedOn": "2026-11-06",
+      "aliases": [
+        "Umar Khayyam"
+      ],
+      "dateNote": "Birth and death dates are reconstructed from conflicting sources; 1048–1131 is a conventional approximate lifespan."
+    },
+    {
+      "name": "Hildegard of Bingen",
+      "wiki": "Hildegard_of_Bingen",
+      "source": "https://epistolae.ctl.columbia.edu/woman/115.html",
+      "location": "Rupertsberg near Bingen, abbey and place of work",
+      "fields": [
+        "religion",
+        "music",
+        "science"
+      ],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "name": "Rumi",
+      "wiki": "Rumi",
+      "source": "https://www.loc.gov/exhibits/thousand-years-of-the-persian-book/classical-persian-poetry.html",
+      "location": "Konya, principal place of teaching and writing",
+      "fields": [
+        "religion",
+        "literature"
+      ],
+      "reviewedOn": "2026-11-06",
+      "aliases": [
+        "Jalal al-Din Rumi",
+        "Jalaluddin Rumi",
+        "Mevlana"
+      ]
+    },
+    {
+      "name": "Ibn Khaldun",
+      "wiki": "Ibn_Khaldun",
+      "source": "https://www.loc.gov/item/2021666190/",
+      "location": "Tunis, birthplace and a centre of his scholarship",
+      "fields": [
+        "philosophy",
+        "literature"
+      ],
+      "reviewedOn": "2026-11-06",
+      "aliases": [
+        "Ibn Khaldoun"
+      ]
+    },
+    {
+      "name": "Sejong the Great",
+      "wiki": "Sejong_the_Great",
+      "source": "https://www.worldhistory.org/Sejong_the_Great/",
+      "location": "Seoul, Joseon royal court",
+      "fields": [
+        "politics",
+        "science"
+      ],
+      "reviewedOn": "2026-11-06",
+      "aliases": [
+        "King Sejong"
+      ],
+      "birthDate": "1397-05-15",
+      "deathDate": "1450-04-08"
+    },
+    {
+      "name": "Guru Nanak",
+      "wiki": "Guru_Nanak",
+      "source": "https://www.sikhcoalition.org/wp-content/uploads/2021/03/SikhCelebrations-2021.pdf",
+      "location": "Nankana Sahib, birthplace in Punjab",
+      "fields": [
+        "religion"
+      ],
+      "reviewedOn": "2026-11-06",
+      "aliases": [
+        "Guru Nanak Dev"
+      ]
+    },
+    {
+      "name": "Martin Luther",
+      "wiki": "Martin_Luther",
+      "source": "https://www.luther.de/en/leben/",
+      "location": "Wittenberg, university and Reformation activity",
+      "fields": [
+        "religion"
+      ],
+      "reviewedOn": "2026-11-06",
+      "birthDate": "1483-11-10",
+      "deathDate": "1546-02-18"
+    },
+    {
+      "name": "Ahmad Baba",
+      "wiki": "Ahmad_Baba_al-Timbukti",
+      "source": "https://tombouctoumanuscripts.uct.ac.za/overview/timbuktus-history",
+      "location": "Timbuktu, centre of scholarship",
+      "fields": [
+        "religion",
+        "literature"
+      ],
+      "reviewedOn": "2026-11-06",
+      "aliases": [
+        "Ahmed Baba",
+        "Ahmad Baba al-Timbukti"
+      ]
+    },
+    {
+      "name": "Johannes Kepler",
+      "wiki": "Johannes_Kepler",
+      "source": "https://mathshistory.st-andrews.ac.uk/Biographies/Kepler/",
+      "location": "Prague, place of astronomical work",
+      "fields": [
+        "science"
+      ],
+      "reviewedOn": "2026-11-06",
+      "birthDate": "1571-12-27",
+      "deathDate": "1630-11-15"
+    },
+    {
+      "name": "Nzinga",
+      "wiki": "Nzinga_of_Ndongo_and_Matamba",
+      "source": "https://www.metmuseum.org/essays/ana-nzinga-queen-of-ndongo",
+      "location": "Matamba, approximate regional anchor for her kingdom",
+      "fields": [
+        "politics"
+      ],
+      "reviewedOn": "2026-11-06",
+      "aliases": [
+        "Njinga",
+        "Nzingha Mbande",
+        "Ana Nzinga"
+      ],
+      "dateNote": "Birth year is approximate; regional marker represents Matamba rather than a precisely located royal residence."
+    },
+    {
+      "name": "René Descartes",
+      "wiki": "René_Descartes",
+      "source": "https://plato.stanford.edu/entries/descartes/",
+      "location": "Leiden, associated period of work in the Dutch Republic",
+      "fields": [
+        "philosophy",
+        "science"
+      ],
+      "reviewedOn": "2026-11-06",
+      "aliases": [
+        "Rene Descartes"
+      ]
+    },
+    {
+      "name": "Baruch Spinoza",
+      "wiki": "Baruch_Spinoza",
+      "source": "https://plato.stanford.edu/entries/spinoza/",
+      "location": "Amsterdam, birthplace and early intellectual life",
+      "fields": [
+        "philosophy"
+      ],
+      "reviewedOn": "2026-11-06",
+      "aliases": [
+        "Benedict de Spinoza",
+        "Bento Spinoza"
+      ]
+    },
+    {
+      "name": "Sor Juana Inés de la Cruz",
+      "wiki": "Juana_Inés_de_la_Cruz",
+      "source": "https://poets.org/poet/sor-juana-ines-de-la-cruz",
+      "location": "Mexico City, convent and literary activity",
+      "fields": [
+        "literature",
+        "religion",
+        "social movements"
+      ],
+      "reviewedOn": "2026-11-06",
+      "aliases": [
+        "Sor Juana",
+        "Juana Ines de la Cruz"
+      ],
+      "dateNote": "Birth year is disputed, commonly 1648 or 1651; the map follows the Academy of American Poets’ qualified 1651."
+    },
+    {
+      "name": "Phillis Wheatley Peters",
+      "wiki": "Phillis_Wheatley",
+      "source": "https://www.poetryfoundation.org/poets/phillis-wheatley",
+      "location": "Boston, place of literary work following forced transport from West Africa",
+      "fields": [
+        "literature",
+        "social movements"
+      ],
+      "reviewedOn": "2026-11-06",
+      "aliases": [
+        "Phillis Wheatley"
+      ],
+      "dateNote": "Birth year and precise West African birthplace are uncertain; about 1753 is conventional."
+    },
+    {
+      "name": "Mary Wollstonecraft",
+      "wiki": "Mary_Wollstonecraft",
+      "source": "https://plato.stanford.edu/entries/wollstonecraft/",
+      "location": "London, associated home and writing",
+      "fields": [
+        "philosophy",
+        "social movements"
+      ],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "name": "Tecumseh",
+      "wiki": "Tecumseh",
+      "source": "https://www.biographi.ca/en/bio/tecumseh_5F.html",
+      "location": "Springfield, Ohio region, approximate birthplace",
+      "fields": [
+        "politics",
+        "social movements"
+      ],
+      "reviewedOn": "2026-11-06",
+      "dateNote": "Birth year and precise birthplace are uncertain; the Dictionary of Canadian Biography gives about 1768."
+    },
+    {
+      "name": "Mary Seacole",
+      "wiki": "Mary_Seacole",
+      "source": "https://www.npg.org.uk/collections/search/personExtended/mp70879/mary-jane-seacole-nee-grant?tab=biography",
+      "location": "Kingston, Jamaica, birthplace and early medical learning",
+      "fields": [
+        "medicine",
+        "literature"
+      ],
+      "reviewedOn": "2026-11-06",
+      "aliases": [
+        "Mary Jane Seacole"
+      ],
+      "dateNote": "The National Portrait Gallery gives birth around 1805.",
+      "deathDate": "1881-05-14"
+    },
+    {
+      "name": "Truganini",
+      "wiki": "Truganini",
+      "source": "https://adb.anu.edu.au/biography/trugernanner-truganini-4752",
+      "location": "D’Entrecasteaux Channel, Tasmania, approximate home region",
+      "fields": [
+        "social movements"
+      ],
+      "reviewedOn": "2026-11-06",
+      "aliases": [
+        "Trugernanner"
+      ],
+      "dateNote": "Birth year is approximate. Her death did not mark the disappearance of Tasmanian Aboriginal peoples."
+    },
+    {
+      "name": "Frederick Douglass",
+      "wiki": "Frederick_Douglass",
+      "source": "https://www.nps.gov/people/frederick-douglass.htm",
+      "location": "Cedar Hill, Washington, DC, later home",
+      "fields": [
+        "social movements",
+        "literature"
+      ],
+      "reviewedOn": "2026-11-06",
+      "dateNote": "Birth month is recorded as February 1818; the exact day is unknown.",
+      "deathDate": "1895-02-20"
+    },
+    {
+      "name": "Karl Marx",
+      "wiki": "Karl_Marx",
+      "source": "https://plato.stanford.edu/entries/marx/",
+      "location": "London, major period of research and writing",
+      "fields": [
+        "philosophy",
+        "politics"
+      ],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "name": "Lakshmibai",
+      "wiki": "Rani_of_Jhansi",
+      "source": "https://www.qrhmuseum.com/lakshmibai-the-rani-of-jhansi",
+      "location": "Jhansi, kingdom and centre of resistance",
+      "fields": [
+        "politics",
+        "war"
+      ],
+      "reviewedOn": "2026-11-06",
+      "aliases": [
+        "Rani Lakshmi Bai",
+        "Rani of Jhansi",
+        "Manikarnika Tambe"
+      ],
+      "birthDate": "1828-11-19",
+      "deathDate": "1858-06-18"
+    },
+    {
+      "name": "Sitting Bull",
+      "wiki": "Sitting_Bull",
+      "source": "https://americanindian.si.edu/nk360/plains-belonging-nation/oceti-sakowin.cshtml",
+      "location": "Standing Rock region, associated home and community",
+      "fields": [
+        "religion",
+        "politics"
+      ],
+      "reviewedOn": "2026-11-06",
+      "aliases": [
+        "Tatanka Iyotanka",
+        "Tatanka-Iyotanka"
+      ],
+      "dateNote": "The Smithsonian gives 1831?; other sources place his birth between 1831 and 1837."
+    },
+    {
+      "name": "Yaa Asantewaa",
+      "wiki": "Yaa_Asantewaa",
+      "source": "https://encyclopaediaafricana.com/asantewaa-yaa/",
+      "location": "Ejisu, Asante, seat of her office",
+      "fields": [
+        "politics",
+        "social movements"
+      ],
+      "reviewedOn": "2026-11-06",
+      "dateNote": "The conventional birth year is around 1840; the Encyclopaedia Africana also discusses the 1840s or 1850s."
+    },
+    {
+      "name": "José Martí",
+      "wiki": "José_Martí",
+      "source": "https://guides.loc.gov/world-of-1898/jose-marti",
+      "location": "Havana, birthplace",
+      "fields": [
+        "literature",
+        "politics"
+      ],
+      "reviewedOn": "2026-11-06",
+      "aliases": [
+        "Jose Marti"
+      ]
+    },
+    {
+      "name": "Nikola Tesla",
+      "wiki": "Nikola_Tesla",
+      "source": "https://academic.oup.com/american-national-biography/reference/63042/reference-article-abstract/570591285",
+      "location": "New York City, major period of electrical research",
+      "fields": [
+        "science",
+        "technology"
+      ],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "name": "Rabindranath Tagore",
+      "wiki": "Rabindranath_Tagore",
+      "source": "https://www.nobelprize.org/prizes/literature/1913/tagore/facts/",
+      "location": "Kolkata / Calcutta, birthplace and literary life",
+      "fields": [
+        "literature",
+        "music"
+      ],
+      "reviewedOn": "2026-11-06",
+      "birthDate": "1861-05-07",
+      "deathDate": "1941-08-07"
+    },
+    {
+      "name": "Vladimir Lenin",
+      "wiki": "Vladimir_Lenin",
+      "source": "https://encyclopedia.ushmm.org/content/en/article/vladimir-lenin",
+      "location": "Moscow, Soviet government",
+      "fields": [
+        "politics"
+      ],
+      "reviewedOn": "2026-11-06",
+      "aliases": [
+        "Vladimir Ilyich Ulyanov"
+      ]
+    },
+    {
+      "name": "Winston Churchill",
+      "wiki": "Winston_Churchill",
+      "source": "https://www.gov.uk/government/history/past-prime-ministers/winston-churchill",
+      "location": "London, seat of government",
+      "fields": [
+        "politics"
+      ],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "name": "Joseph Stalin",
+      "wiki": "Joseph_Stalin",
+      "source": "https://encyclopedia.1914-1918-online.net/wp-content/uploads/2023/01/ams/959092/pdf/1914-1918-Online-stalin_joseph-2017-01-31.pdf",
+      "location": "Moscow, Soviet government",
+      "fields": [
+        "politics"
+      ],
+      "reviewedOn": "2026-11-06",
+      "aliases": [
+        "Iosif Stalin",
+        "Ioseb Jughashvili"
+      ],
+      "dateNote": "Uses the documented 1878 birth year rather than the official Soviet-era 1879 date."
+    },
+    {
+      "name": "Te Puea Hērangi",
+      "wiki": "Te_Puea_Hērangi",
+      "source": "https://teara.govt.nz/en/biographies/3h17/herangi-te-kirihaehae-te-puea",
+      "location": "Ngāruawāhia, Tūrangawaewae marae",
+      "fields": [
+        "politics",
+        "social movements"
+      ],
+      "reviewedOn": "2026-11-06",
+      "aliases": [
+        "Te Puea Herangi"
+      ]
+    },
+    {
+      "name": "C. V. Raman",
+      "wiki": "C._V._Raman",
+      "source": "https://www.nobelprize.org/prizes/physics/1930/raman/biographical/",
+      "location": "Bengaluru / Bangalore, Indian Institute of Science and later research",
+      "fields": [
+        "science"
+      ],
+      "reviewedOn": "2026-11-06",
+      "aliases": [
+        "Chandrasekhara Venkata Raman"
+      ],
+      "birthDate": "1888-11-07",
+      "deathDate": "1970-11-21"
+    },
+    {
+      "name": "Adolf Hitler",
+      "wiki": "Adolf_Hitler",
+      "source": "https://encyclopedia.ushmm.org/content/en/article/adolf-hitler",
+      "location": "Berlin, seat of the Nazi regime",
+      "fields": [
+        "politics",
+        "war"
+      ],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "name": "Gabriela Mistral",
+      "wiki": "Gabriela_Mistral",
+      "source": "https://www.loc.gov/item/n50033817/gabriela-mistral-chile-1889-1957/",
+      "location": "Vicuña, Chile, birthplace",
+      "fields": [
+        "literature"
+      ],
+      "reviewedOn": "2026-11-06",
+      "aliases": [
+        "Lucila Godoy Alcayaga"
+      ]
+    },
+    {
+      "name": "Alan Turing",
+      "wiki": "Alan_Turing",
+      "source": "https://turingarchive.kings.cam.ac.uk/about-alan-turing",
+      "location": "Manchester, later work on computing and mathematical biology",
+      "fields": [
+        "science",
+        "technology"
+      ],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "name": "Abdus Salam",
+      "wiki": "Abdus_Salam",
+      "source": "https://www.nobelprize.org/prizes/physics/1979/salam/facts/",
+      "location": "Jhang, Punjab, birthplace",
+      "fields": [
+        "science"
+      ],
+      "reviewedOn": "2026-11-06",
+      "birthDate": "1926-01-29",
+      "deathDate": "1996-11-21"
+    },
+    {
+      "name": "Chinua Achebe",
+      "wiki": "Chinua_Achebe",
+      "source": "https://academic.oup.com/reference/62328/reference-article-abstract/553807702",
+      "location": "Ogidi, Nigeria, birthplace and formative community",
+      "fields": [
+        "literature"
+      ],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "name": "Tu Youyou",
+      "wiki": "Tu_Youyou",
+      "source": "https://www.nobelprize.org/prizes/medicine/2015/tu/facts/",
+      "location": "Beijing, China Academy of Chinese Medical Sciences",
+      "fields": [
+        "science",
+        "medicine"
+      ],
+      "reviewedOn": "2026-11-06",
+      "aliases": [
+        "Youyou Tu",
+        "屠呦呦"
+      ],
+      "birthDate": "1930-12-30"
+    },
+    {
+      "name": "Desmond Tutu",
+      "wiki": "Desmond_Tutu",
+      "source": "https://www.nobelprize.org/prizes/peace/1984/tutu/facts/",
+      "location": "Cape Town, archbishopric",
+      "fields": [
+        "religion",
+        "social movements"
+      ],
+      "reviewedOn": "2026-11-06",
+      "birthDate": "1931-10-07",
+      "deathDate": "2021-12-26"
+    },
+    {
+      "name": "Wole Soyinka",
+      "wiki": "Wole_Soyinka",
+      "source": "https://www.nobelprize.org/prizes/literature/1986/soyinka/facts/",
+      "location": "Abeokuta, Nigeria, birthplace",
+      "fields": [
+        "literature",
+        "social movements"
+      ],
+      "reviewedOn": "2026-11-06",
+      "birthDate": "1934-07-13"
+    },
+    {
+      "name": "Wangari Maathai",
+      "wiki": "Wangari_Maathai",
+      "source": "https://www.nobelprize.org/prizes/peace/2004/maathai/facts/",
+      "location": "Nairobi, Green Belt Movement activity",
+      "fields": [
+        "science",
+        "social movements"
+      ],
+      "reviewedOn": "2026-11-06",
+      "birthDate": "1940-04-01",
+      "deathDate": "2011-09-25"
+    },
+    {
+      "name": "Rigoberta Menchú Tum",
+      "wiki": "Rigoberta_Menchú",
+      "source": "https://www.nobelprize.org/prizes/peace/1992/tum/facts/",
+      "location": "Chimel, Guatemala, approximate birthplace and community anchor",
+      "fields": [
+        "social movements"
+      ],
+      "reviewedOn": "2026-11-06",
+      "aliases": [
+        "Rigoberta Menchu",
+        "Rigoberta Menchu Tum"
+      ],
+      "birthDate": "1959-01-09"
+    },
+    {
+      "name": "Maryam Mirzakhani",
+      "wiki": "Maryam_Mirzakhani",
+      "source": "https://www.ias.edu/scholars/maryam-mirzakhani",
+      "location": "Tehran, birthplace and early mathematical education",
+      "fields": [
+        "science"
+      ],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "name": "Huda Shaarawi",
+      "wiki": "Huda_Shaarawi",
+      "source": "https://catalogue.bnf.fr/ark:/12148/cb124745405",
+      "location": "Cairo, feminist organising and public life",
+      "fields": [
+        "social movements",
+        "politics"
+      ],
+      "aliases": [
+        "Huda Sha’arawi",
+        "Hoda Shaarawi"
+      ],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "name": "Rifa’a al-Tahtawi",
+      "wiki": "Rifa'a_al-Tahtawi",
+      "source": "https://www.rem.routledge.com/articles/al-tahtawi-rifaa-1801-1873",
+      "location": "Cairo, translation school and educational work",
+      "fields": [
+        "literature",
+        "philosophy"
+      ],
+      "aliases": [
+        "Rifaa al Tahtawi",
+        "Rifa al Tahtawi"
+      ],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "name": "Abd al-Qadir",
+      "wiki": "Emir_Abdelkader",
+      "source": "https://islamansiklopedisi.org.tr/abdulkadir-el-cezairi",
+      "location": "Mascara, Algeria, centre of his emirate",
+      "fields": [
+        "politics",
+        "religion"
+      ],
+      "aliases": [
+        "Abdelkader",
+        "Abd el Kader",
+        "Abd al Qadir al Jazairi"
+      ],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "name": "Jamal al-Din al-Afghani",
+      "wiki": "Jamal_al-Din_al-Afghani",
+      "source": "https://www.iranicaonline.org/articles/afgani-jamal-al-din/",
+      "location": "Asadabad, Iran, associated birthplace",
+      "fields": [
+        "politics",
+        "philosophy",
+        "religion"
+      ],
+      "aliases": [
+        "Jamal ad Din al Afghani",
+        "Jamal al Din Asadabadi"
+      ],
+      "dateNote": "Birth is dated 1838 or 1839. His adopted name al-Afghani does not establish an Afghan birthplace.",
+      "reviewedOn": "2026-11-06"
+    }
+  ],
+  "errors": []
+}

@@ -21,19 +21,25 @@ const events = eventRows.map((row, index) => {
 });
 const people = personRows.map((row, index) => {
   const [name, bornYear, diedYear, approximate, role, latitude, longitude,
-    region, wikipediaSlug, sourceUrl] = row;
+    region, wikipediaSlug, sourceUrl, review] = row;
   return {
     id: 'p' + index, name, bornYear, diedYear, approximate: !!approximate, role,
     latitude, longitude, region, wikipediaSlug, wikipediaUrl: wikipediaUrl(wikipediaSlug),
     sourceUrl: sourceUrl ?? null,
+    birthDate: review?.birthDate ?? null, deathDate: review?.deathDate ?? null,
+    noRecordedDeath: diedYear === null,
+    location: review?.location ?? null, dateNote: review?.dateNote ?? null,
+    fields: review?.fields ?? [], aliases: review?.aliases ?? [],
+    reviewedOn: review?.reviewedOn ?? null,
   };
 });
 const data = {
   metadata: {
-    schemaVersion: 2,
+    schemaVersion: 3,
     sourceFile: 'static/historyallaround/atlas/index.html',
     eventCount: events.length,
     peopleCount: people.length,
+    peopleDateConvention: 'People use inclusive birth and death years at annual resolution. A null diedYear means no recorded death; the map bounds that interval at the atlas coverage limit of 2026, without assigning a death date. Optional birthDate/deathDate fields preserve independently recorded calendar dates as ISO strings; missing day-level dates remain null. Approximate lifespans and calendar qualifications are explained in dateNote.',
     dateConvention: 'Historical years use negative numbers for BC/BCE and positive numbers for AD/CE; there is no year zero. Prehistoric entries retain the atlas numeric dates, including approximate negative ages for dinosaurs. A null event endYear means a single dated entry. For ongoing events, endYear is the atlas coverage cutoff (2026), not a historical end date.',
     coordinates: 'Latitude and longitude in degrees. Points can represent a location associated with an entry rather than its full geographical extent.',
     ids: 'IDs match the current atlas array positions and may change if source records are reordered.',

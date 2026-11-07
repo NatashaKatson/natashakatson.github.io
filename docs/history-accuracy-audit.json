@@ -2,7 +2,7 @@
   "scope": "Every event summary and principal date reviewed against sources; all border files scanned for integrity. This is not an independent certification of every historical frontier.",
   "counts": {
     "events": 422,
-    "people": 66,
+    "people": 123,
     "eventsWithSourceLinks": 422,
     "sourceReviewedEvents": 422,
     "correctedOrClarifiedEvents": 282,

@@ -1,9 +1,10 @@
 {
   "metadata": {
-    "schemaVersion": 2,
+    "schemaVersion": 3,
     "sourceFile": "static/historyallaround/atlas/index.html",
     "eventCount": 422,
-    "peopleCount": 66,
+    "peopleCount": 123,
+    "peopleDateConvention": "People use inclusive birth and death years at annual resolution. A null diedYear means no recorded death; the map bounds that interval at the atlas coverage limit of 2026, without assigning a death date. Optional birthDate/deathDate fields preserve independently recorded calendar dates as ISO strings; missing day-level dates remain null. Approximate lifespans and calendar qualifications are explained in dateNote.",
     "dateConvention": "Historical years use negative numbers for BC/BCE and positive numbers for AD/CE; there is no year zero. Prehistoric entries retain the atlas numeric dates, including approximate negative ages for dinosaurs. A null event endYear means a single dated entry. For ongoing events, endYear is the atlas coverage cutoff (2026), not a historical end date.",
     "coordinates": "Latitude and longitude in degrees. Points can represent a location associated with an entry rather than its full geographical extent.",
     "ids": "IDs match the current atlas array positions and may change if source records are reordered.",
@@ -3006,7 +3007,7 @@
     {
       "id": "e136",
       "title": "World War II",
-      "description": "The deadliest conflict in history.",
+      "description": "More than fifty nations take part in World War II, the deadliest conflict in history.",
       "startYear": 1939,
       "endYear": 1945,
       "approximate": false,
@@ -11495,7 +11496,15 @@
       "region": "me",
       "wikipediaSlug": "Hammurabi",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Hammurabi",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p1",
@@ -11509,7 +11518,15 @@
       "region": "me",
       "wikipediaSlug": "Ramesses_II",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Ramesses_II",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p2",
@@ -11523,7 +11540,15 @@
       "region": "as",
       "wikipediaSlug": "The_Buddha",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/The_Buddha",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p3",
@@ -11537,7 +11562,15 @@
       "region": "as",
       "wikipediaSlug": "Confucius",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Confucius",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p4",
@@ -11551,7 +11584,15 @@
       "region": "eu",
       "wikipediaSlug": "Socrates",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Socrates",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p5",
@@ -11565,7 +11606,15 @@
       "region": "eu",
       "wikipediaSlug": "Aristotle",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Aristotle",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p6",
@@ -11579,7 +11628,15 @@
       "region": "eu",
       "wikipediaSlug": "Alexander_the_Great",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Alexander_the_Great",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p7",
@@ -11593,7 +11650,15 @@
       "region": "as",
       "wikipediaSlug": "Ashoka",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Ashoka",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p8",
@@ -11607,7 +11672,15 @@
       "region": "eu",
       "wikipediaSlug": "Archimedes",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Archimedes",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p9",
@@ -11621,7 +11694,15 @@
       "region": "as",
       "wikipediaSlug": "Qin_Shi_Huang",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Qin_Shi_Huang",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p10",
@@ -11635,7 +11716,15 @@
       "region": "eu",
       "wikipediaSlug": "Julius_Caesar",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Julius_Caesar",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p11",
@@ -11649,7 +11738,15 @@
       "region": "me",
       "wikipediaSlug": "Cleopatra",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Cleopatra",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p12",
@@ -11663,7 +11760,15 @@
       "region": "eu",
       "wikipediaSlug": "Augustus",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Augustus",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p13",
@@ -11677,7 +11782,15 @@
       "region": "me",
       "wikipediaSlug": "Jesus",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Jesus",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p14",
@@ -11691,7 +11804,15 @@
       "region": "me",
       "wikipediaSlug": "Hypatia",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Hypatia",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p15",
@@ -11705,7 +11826,15 @@
       "region": "me",
       "wikipediaSlug": "Muhammad",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Muhammad",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p16",
@@ -11719,7 +11848,15 @@
       "region": "eu",
       "wikipediaSlug": "Charlemagne",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Charlemagne",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p17",
@@ -11733,7 +11870,15 @@
       "region": "me",
       "wikipediaSlug": "Al-Khwarizmi",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Al-Khwarizmi",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p18",
@@ -11747,7 +11892,15 @@
       "region": "as",
       "wikipediaSlug": "Murasaki_Shikibu",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Murasaki_Shikibu",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p19",
@@ -11761,7 +11914,15 @@
       "region": "me",
       "wikipediaSlug": "Avicenna",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Avicenna",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p20",
@@ -11775,7 +11936,15 @@
       "region": "as",
       "wikipediaSlug": "Genghis_Khan",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Genghis_Khan",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p21",
@@ -11789,7 +11958,15 @@
       "region": "af",
       "wikipediaSlug": "Sundiata_Keita",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Sundiata_Keita",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p22",
@@ -11803,7 +11980,15 @@
       "region": "eu",
       "wikipediaSlug": "Marco_Polo",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Marco_Polo",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p23",
@@ -11817,7 +12002,15 @@
       "region": "af",
       "wikipediaSlug": "Mansa_Musa",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Mansa_Musa",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p24",
@@ -11831,7 +12024,15 @@
       "region": "me",
       "wikipediaSlug": "Ibn_Battuta",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Ibn_Battuta",
-      "sourceUrl": "https://catalogue.bnf.fr/ark:/12148/cb11908143b"
+      "sourceUrl": "https://catalogue.bnf.fr/ark:/12148/cb11908143b",
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p25",
@@ -11845,7 +12046,15 @@
       "region": "as",
       "wikipediaSlug": "Zheng_He",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Zheng_He",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p26",
@@ -11859,7 +12068,15 @@
       "region": "eu",
       "wikipediaSlug": "Joan_of_Arc",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Joan_of_Arc",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p27",
@@ -11873,7 +12090,15 @@
       "region": "am",
       "wikipediaSlug": "Pachacuti",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Pachacuti",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p28",
@@ -11887,7 +12112,15 @@
       "region": "eu",
       "wikipediaSlug": "Leonardo_da_Vinci",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Leonardo_da_Vinci",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p29",
@@ -11901,7 +12134,15 @@
       "region": "am",
       "wikipediaSlug": "Moctezuma_II",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Moctezuma_II",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p30",
@@ -11915,7 +12156,15 @@
       "region": "eu",
       "wikipediaSlug": "Nicolaus_Copernicus",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Nicolaus_Copernicus",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p31",
@@ -11929,7 +12178,15 @@
       "region": "me",
       "wikipediaSlug": "Suleiman_the_Magnificent",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Suleiman_the_Magnificent",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p32",
@@ -11943,7 +12200,15 @@
       "region": "as",
       "wikipediaSlug": "Akbar",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Akbar",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p33",
@@ -11957,7 +12222,15 @@
       "region": "as",
       "wikipediaSlug": "Tokugawa_Ieyasu",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Tokugawa_Ieyasu",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p34",
@@ -11971,7 +12244,15 @@
       "region": "eu",
       "wikipediaSlug": "William_Shakespeare",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/William_Shakespeare",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p35",
@@ -11985,7 +12266,15 @@
       "region": "eu",
       "wikipediaSlug": "Galileo_Galilei",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Galileo_Galilei",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p36",
@@ -11999,7 +12288,15 @@
       "region": "eu",
       "wikipediaSlug": "Isaac_Newton",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Isaac_Newton",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p37",
@@ -12013,7 +12310,15 @@
       "region": "as",
       "wikipediaSlug": "Kangxi_Emperor",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Kangxi_Emperor",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p38",
@@ -12027,7 +12332,15 @@
       "region": "eu",
       "wikipediaSlug": "Peter_the_Great",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Peter_the_Great",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p39",
@@ -12041,7 +12354,15 @@
       "region": "eu",
       "wikipediaSlug": "Johann_Sebastian_Bach",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Johann_Sebastian_Bach",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p40",
@@ -12055,7 +12376,15 @@
       "region": "oc",
       "wikipediaSlug": "Tupaia",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Tupaia",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p41",
@@ -12069,7 +12398,15 @@
       "region": "eu",
       "wikipediaSlug": "Catherine_the_Great",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Catherine_the_Great",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p42",
@@ -12083,7 +12420,15 @@
       "region": "am",
       "wikipediaSlug": "Toussaint_Louverture",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Toussaint_Louverture",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p43",
@@ -12097,7 +12442,15 @@
       "region": "eu",
       "wikipediaSlug": "Wolfgang_Amadeus_Mozart",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Wolfgang_Amadeus_Mozart",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p44",
@@ -12111,7 +12464,15 @@
       "region": "oc",
       "wikipediaSlug": "Kamehameha_I",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Kamehameha_I",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p45",
@@ -12125,7 +12486,15 @@
       "region": "eu",
       "wikipediaSlug": "Napoleon",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Napoleon",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p46",
@@ -12139,7 +12508,15 @@
       "region": "am",
       "wikipediaSlug": "Simón_Bolívar",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Sim%C3%B3n_Bol%C3%ADvar",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p47",
@@ -12153,7 +12530,15 @@
       "region": "af",
       "wikipediaSlug": "Shaka",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Shaka",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p48",
@@ -12167,7 +12552,15 @@
       "region": "eu",
       "wikipediaSlug": "Alexander_Pushkin",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Alexander_Pushkin",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p49",
@@ -12181,7 +12574,15 @@
       "region": "eu",
       "wikipediaSlug": "Charles_Darwin",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Charles_Darwin",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p50",
@@ -12195,7 +12596,15 @@
       "region": "am",
       "wikipediaSlug": "Abraham_Lincoln",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Abraham_Lincoln",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p51",
@@ -12209,7 +12618,15 @@
       "region": "eu",
       "wikipediaSlug": "Ada_Lovelace",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Ada_Lovelace",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p52",
@@ -12223,7 +12640,15 @@
       "region": "am",
       "wikipediaSlug": "Harriet_Tubman",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Harriet_Tubman",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p53",
@@ -12237,7 +12662,15 @@
       "region": "eu",
       "wikipediaSlug": "Leo_Tolstoy",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Leo_Tolstoy",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p54",
@@ -12251,7 +12684,15 @@
       "region": "af",
       "wikipediaSlug": "Menelik_II",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Menelik_II",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p55",
@@ -12265,7 +12706,15 @@
       "region": "oc",
       "wikipediaSlug": "Kate_Sheppard",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Kate_Sheppard",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p56",
@@ -12279,7 +12728,15 @@
       "region": "eu",
       "wikipediaSlug": "Marie_Curie",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Marie_Curie",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p57",
@@ -12293,7 +12750,15 @@
       "region": "as",
       "wikipediaSlug": "Mahatma_Gandhi",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Mahatma_Gandhi",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p58",
@@ -12307,7 +12772,15 @@
       "region": "eu",
       "wikipediaSlug": "Albert_Einstein",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Albert_Einstein",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p59",
@@ -12321,7 +12794,15 @@
       "region": "as",
       "wikipediaSlug": "Mao_Zedong",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Mao_Zedong",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p60",
@@ -12335,7 +12816,15 @@
       "region": "am",
       "wikipediaSlug": "Frida_Kahlo",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Frida_Kahlo",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p61",
@@ -12349,7 +12838,15 @@
       "region": "af",
       "wikipediaSlug": "Nelson_Mandela",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Nelson_Mandela",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p62",
@@ -12363,7 +12860,15 @@
       "region": "am",
       "wikipediaSlug": "Martin_Luther_King_Jr.",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Martin_Luther_King_Jr.",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p63",
@@ -12377,7 +12882,15 @@
       "region": "eu",
       "wikipediaSlug": "Yuri_Gagarin",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Yuri_Gagarin",
-      "sourceUrl": null
+      "sourceUrl": null,
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p64",
@@ -12391,7 +12904,15 @@
       "region": "as",
       "wikipediaSlug": "Emperor_Yuan_of_Han",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Emperor_Yuan_of_Han",
-      "sourceUrl": "https://en.wikipedia.org/wiki/Emperor_Yuan_of_Han"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Emperor_Yuan_of_Han",
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
     },
     {
       "id": "p65",
@@ -12405,7 +12926,1518 @@
       "region": "eu",
       "wikipediaSlug": "Virgil",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Virgil",
-      "sourceUrl": "https://www.livius.org/articles/person/virgil/"
+      "sourceUrl": "https://www.livius.org/articles/person/virgil/",
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": null,
+      "dateNote": null,
+      "fields": [],
+      "aliases": [],
+      "reviewedOn": null
+    },
+    {
+      "id": "p66",
+      "name": "Grigori Rasputin",
+      "bornYear": 1869,
+      "diedYear": 1916,
+      "approximate": false,
+      "role": "Russian religious adviser whose influence at the imperial court became a focus of political controversy",
+      "latitude": 59.94,
+      "longitude": 30.31,
+      "region": "eu",
+      "wikipediaSlug": "Grigori_Rasputin",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Grigori_Rasputin",
+      "sourceUrl": "https://encyclopedia.1914-1918-online.net/wp-content/uploads/2023/01/ams/957382/pdf/1914-1918-Online-rasputin_grigorii_efimovich-2014-10-08.pdf",
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": "Saint Petersburg / Petrograd, imperial court",
+      "dateNote": "Dates use the Gregorian calendar; older accounts also give different birth years. The UPenn library authority corroborates 1869–1916.",
+      "fields": [
+        "religion",
+        "politics"
+      ],
+      "aliases": [
+        "Grigory Rasputin",
+        "Grigorii Rasputin",
+        "Григорий Распутин"
+      ],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p67",
+      "name": "Plato",
+      "bornYear": -428,
+      "diedYear": -348,
+      "approximate": true,
+      "role": "Athenian philosopher who founded the Academy and wrote influential philosophical dialogues",
+      "latitude": 37.97,
+      "longitude": 23.72,
+      "region": "eu",
+      "wikipediaSlug": "Plato",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Plato",
+      "sourceUrl": "https://iep.utm.edu/plato/",
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": "Athens, Academy and philosophical activity",
+      "dateNote": "Commonly dated 428/427–348/347 BCE; the map uses approximate representative years.",
+      "fields": [
+        "philosophy"
+      ],
+      "aliases": [],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p68",
+      "name": "Sima Qian",
+      "bornYear": -145,
+      "diedYear": -86,
+      "approximate": true,
+      "role": "Han historian whose Records of the Grand Historian shaped Chinese historical writing",
+      "latitude": 34.27,
+      "longitude": 108.9,
+      "region": "as",
+      "wikipediaSlug": "Sima_Qian",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Sima_Qian",
+      "sourceUrl": "https://ethicsofsuicide.lib.utah.edu/selections/sima-qian/",
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": "Chang’an, Han court and historical writing",
+      "dateNote": "Birth is variously dated around 145 or 135 BCE; death is conventionally placed around 86 BCE.",
+      "fields": [
+        "literature"
+      ],
+      "aliases": [],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p69",
+      "name": "Sappho",
+      "bornYear": -630,
+      "diedYear": -570,
+      "approximate": true,
+      "role": "Greek lyric poet from Lesbos whose surviving poems explore love and personal relationships",
+      "latitude": 39.1,
+      "longitude": 26.55,
+      "region": "eu",
+      "wikipediaSlug": "Sappho",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Sappho",
+      "sourceUrl": "https://www.britishmuseum.org/sites/default/files/2021-11/Desire_Love_Identity_Audio_Transcript_15.11.21.pdf",
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": "Mytilene, Lesbos, associated home",
+      "dateNote": "Lifespan is approximate; the British Museum gives around 630–570 BCE.",
+      "fields": [
+        "literature"
+      ],
+      "aliases": [],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p70",
+      "name": "Hannibal",
+      "bornYear": -247,
+      "diedYear": -183,
+      "approximate": true,
+      "role": "Carthaginian commander who led an army across the Alps during the Second Punic War",
+      "latitude": 36.85,
+      "longitude": 10.32,
+      "region": "me",
+      "wikipediaSlug": "Hannibal",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Hannibal",
+      "sourceUrl": "https://doi.org/10.1093/obo/9780199791279-0272",
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": "Carthage, home polity",
+      "dateNote": "Birth and death years are approximate; ancient accounts differ on the death year.",
+      "fields": [
+        "politics",
+        "war"
+      ],
+      "aliases": [
+        "Hannibal Barca"
+      ],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p71",
+      "name": "Ban Zhao",
+      "bornYear": 45,
+      "diedYear": 116,
+      "approximate": true,
+      "role": "Han historian who helped complete the Book of Han and wrote Lessons for Women",
+      "latitude": 34.62,
+      "longitude": 112.45,
+      "region": "as",
+      "wikipediaSlug": "Ban_Zhao",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Ban_Zhao",
+      "sourceUrl": "https://chinesebox.voices.wooster.edu/banzhao/",
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": "Luoyang, Eastern Han court",
+      "dateNote": "Lifespan is approximate; sources also give 49 CE for her birth.",
+      "fields": [
+        "literature",
+        "philosophy"
+      ],
+      "aliases": [
+        "Banzhao",
+        "班昭"
+      ],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p72",
+      "name": "Augustine of Hippo",
+      "bornYear": 354,
+      "diedYear": 430,
+      "approximate": false,
+      "role": "North African Christian bishop and philosopher, author of Confessions and The City of God",
+      "latitude": 36.9,
+      "longitude": 7.77,
+      "region": "me",
+      "wikipediaSlug": "Augustine_of_Hippo",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Augustine_of_Hippo",
+      "sourceUrl": "https://plato.stanford.edu/entries/augustine/",
+      "birthDate": "0354-11-13",
+      "deathDate": "0430-08-28",
+      "noRecordedDeath": false,
+      "location": "Hippo Regius, present-day Annaba, bishopric",
+      "dateNote": null,
+      "fields": [
+        "religion",
+        "philosophy"
+      ],
+      "aliases": [
+        "Saint Augustine",
+        "Aurelius Augustinus"
+      ],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p73",
+      "name": "Aryabhata",
+      "bornYear": 476,
+      "diedYear": 550,
+      "approximate": true,
+      "role": "Indian mathematician and astronomer whose Aryabhatiya treats calculation, trigonometry and planetary models",
+      "latitude": 25.61,
+      "longitude": 85.14,
+      "region": "as",
+      "wikipediaSlug": "Aryabhata",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Aryabhata",
+      "sourceUrl": "https://mathshistory.st-andrews.ac.uk/Biographies/Aryabhata_I/",
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": "Kusumapura / Patna region, approximate place of work",
+      "dateNote": "Birth year follows his account of his age in 499; death year is conventional and the precise location of Kusumapura is uncertain.",
+      "fields": [
+        "science"
+      ],
+      "aliases": [],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p74",
+      "name": "K’inich Janaab’ Pakal",
+      "bornYear": 603,
+      "diedYear": 683,
+      "approximate": false,
+      "role": "Maya ruler of Palenque associated with a major programme of monumental architecture and inscriptions",
+      "latitude": 17.48,
+      "longitude": -92.05,
+      "region": "am",
+      "wikipediaSlug": "Kʼinich_Janaabʼ_Pakal",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/K%CA%BCinich_Janaab%CA%BC_Pakal",
+      "sourceUrl": "https://revistas.inah.gob.mx/index.php/lavozinah/issue/download/2518/2728",
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": "Palenque, Maya royal court",
+      "dateNote": null,
+      "fields": [
+        "politics",
+        "art"
+      ],
+      "aliases": [
+        "Pakal the Great",
+        "Pacal",
+        "Kinich Janaab Pakal"
+      ],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p75",
+      "name": "Li Bai",
+      "bornYear": 701,
+      "diedYear": 762,
+      "approximate": false,
+      "role": "Tang poet known for vivid imagery and an enduring influence on Chinese literature",
+      "latitude": 31.78,
+      "longitude": 104.74,
+      "region": "as",
+      "wikipediaSlug": "Li_Bai",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Li_Bai",
+      "sourceUrl": "https://www.poetryfoundation.org/poets/li-po",
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": "Jiangyou, Sichuan, region where he grew up",
+      "dateNote": null,
+      "fields": [
+        "literature"
+      ],
+      "aliases": [
+        "Li Po",
+        "Li Bo",
+        "李白"
+      ],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p76",
+      "name": "Ibn al-Haytham",
+      "bornYear": 965,
+      "diedYear": 1039,
+      "approximate": true,
+      "role": "Mathematician and investigator of optics whose Book of Optics examined light and vision",
+      "latitude": 30.04,
+      "longitude": 31.24,
+      "region": "me",
+      "wikipediaSlug": "Ibn_al-Haytham",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Ibn_al-Haytham",
+      "sourceUrl": "https://mathshistory.st-andrews.ac.uk/Biographies/Al-Haytham/",
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": "Cairo, associated place of scientific work",
+      "dateNote": "Approximate lifespan follows MacTutor’s 965–1039; other references give death around 1040.",
+      "fields": [
+        "science"
+      ],
+      "aliases": [
+        "Alhazen",
+        "Ibn al Haytham"
+      ],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p77",
+      "name": "Omar Khayyam",
+      "bornYear": 1048,
+      "diedYear": 1131,
+      "approximate": true,
+      "role": "Persian mathematician, astronomer and philosopher also associated with the Rubaiyat poetic tradition",
+      "latitude": 36.21,
+      "longitude": 58.8,
+      "region": "me",
+      "wikipediaSlug": "Omar_Khayyam",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Omar_Khayyam",
+      "sourceUrl": "https://www.iranicaonline.org/articles/khayyam-omar/khayyam-omar-i-life/",
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": "Nishapur, associated home and burial place",
+      "dateNote": "Birth and death dates are reconstructed from conflicting sources; 1048–1131 is a conventional approximate lifespan.",
+      "fields": [
+        "science",
+        "philosophy",
+        "literature"
+      ],
+      "aliases": [
+        "Umar Khayyam"
+      ],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p78",
+      "name": "Hildegard of Bingen",
+      "bornYear": 1098,
+      "diedYear": 1179,
+      "approximate": false,
+      "role": "Benedictine abbess, visionary author, composer and writer on medicine and the natural world",
+      "latitude": 49.97,
+      "longitude": 7.9,
+      "region": "eu",
+      "wikipediaSlug": "Hildegard_of_Bingen",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Hildegard_of_Bingen",
+      "sourceUrl": "https://epistolae.ctl.columbia.edu/woman/115.html",
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": "Rupertsberg near Bingen, abbey and place of work",
+      "dateNote": null,
+      "fields": [
+        "religion",
+        "music",
+        "science"
+      ],
+      "aliases": [],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p79",
+      "name": "Rumi",
+      "bornYear": 1207,
+      "diedYear": 1273,
+      "approximate": false,
+      "role": "Persian-language poet and Sufi teacher whose Masnavi became an influential work of spiritual literature",
+      "latitude": 37.87,
+      "longitude": 32.49,
+      "region": "me",
+      "wikipediaSlug": "Rumi",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Rumi",
+      "sourceUrl": "https://www.loc.gov/exhibits/thousand-years-of-the-persian-book/classical-persian-poetry.html",
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": "Konya, principal place of teaching and writing",
+      "dateNote": null,
+      "fields": [
+        "religion",
+        "literature"
+      ],
+      "aliases": [
+        "Jalal al-Din Rumi",
+        "Jalaluddin Rumi",
+        "Mevlana"
+      ],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p80",
+      "name": "Ibn Khaldun",
+      "bornYear": 1332,
+      "diedYear": 1406,
+      "approximate": false,
+      "role": "North African historian and author of the Muqaddima, analysing society, power and historical change",
+      "latitude": 36.81,
+      "longitude": 10.18,
+      "region": "me",
+      "wikipediaSlug": "Ibn_Khaldun",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Ibn_Khaldun",
+      "sourceUrl": "https://www.loc.gov/item/2021666190/",
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": "Tunis, birthplace and a centre of his scholarship",
+      "dateNote": null,
+      "fields": [
+        "philosophy",
+        "literature"
+      ],
+      "aliases": [
+        "Ibn Khaldoun"
+      ],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p81",
+      "name": "Sejong the Great",
+      "bornYear": 1397,
+      "diedYear": 1450,
+      "approximate": false,
+      "role": "Joseon king who sponsored scholarship and the creation of the Korean Hangul writing system",
+      "latitude": 37.58,
+      "longitude": 126.98,
+      "region": "as",
+      "wikipediaSlug": "Sejong_the_Great",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Sejong_the_Great",
+      "sourceUrl": "https://www.worldhistory.org/Sejong_the_Great/",
+      "birthDate": "1397-05-15",
+      "deathDate": "1450-04-08",
+      "noRecordedDeath": false,
+      "location": "Seoul, Joseon royal court",
+      "dateNote": null,
+      "fields": [
+        "politics",
+        "science"
+      ],
+      "aliases": [
+        "King Sejong"
+      ],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p82",
+      "name": "Guru Nanak",
+      "bornYear": 1469,
+      "diedYear": 1539,
+      "approximate": false,
+      "role": "Founder of the Sikh tradition whose teachings emphasised devotion, service and equality",
+      "latitude": 31.45,
+      "longitude": 73.69,
+      "region": "as",
+      "wikipediaSlug": "Guru_Nanak",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Guru_Nanak",
+      "sourceUrl": "https://www.sikhcoalition.org/wp-content/uploads/2021/03/SikhCelebrations-2021.pdf",
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": "Nankana Sahib, birthplace in Punjab",
+      "dateNote": null,
+      "fields": [
+        "religion"
+      ],
+      "aliases": [
+        "Guru Nanak Dev"
+      ],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p83",
+      "name": "Martin Luther",
+      "bornYear": 1483,
+      "diedYear": 1546,
+      "approximate": false,
+      "role": "German theologian whose writings helped initiate the Protestant Reformation",
+      "latitude": 51.87,
+      "longitude": 12.65,
+      "region": "eu",
+      "wikipediaSlug": "Martin_Luther",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Martin_Luther",
+      "sourceUrl": "https://www.luther.de/en/leben/",
+      "birthDate": "1483-11-10",
+      "deathDate": "1546-02-18",
+      "noRecordedDeath": false,
+      "location": "Wittenberg, university and Reformation activity",
+      "dateNote": null,
+      "fields": [
+        "religion"
+      ],
+      "aliases": [],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p84",
+      "name": "Ahmad Baba",
+      "bornYear": 1556,
+      "diedYear": 1627,
+      "approximate": false,
+      "role": "Timbuktu scholar and jurist whose writings form part of West Africa’s manuscript heritage",
+      "latitude": 16.77,
+      "longitude": -3.01,
+      "region": "af",
+      "wikipediaSlug": "Ahmad_Baba_al-Timbukti",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Ahmad_Baba_al-Timbukti",
+      "sourceUrl": "https://tombouctoumanuscripts.uct.ac.za/overview/timbuktus-history",
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": "Timbuktu, centre of scholarship",
+      "dateNote": null,
+      "fields": [
+        "religion",
+        "literature"
+      ],
+      "aliases": [
+        "Ahmed Baba",
+        "Ahmad Baba al-Timbukti"
+      ],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p85",
+      "name": "Johannes Kepler",
+      "bornYear": 1571,
+      "diedYear": 1630,
+      "approximate": false,
+      "role": "Mathematician and astronomer who formulated three laws of planetary motion",
+      "latitude": 50.08,
+      "longitude": 14.42,
+      "region": "eu",
+      "wikipediaSlug": "Johannes_Kepler",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Johannes_Kepler",
+      "sourceUrl": "https://mathshistory.st-andrews.ac.uk/Biographies/Kepler/",
+      "birthDate": "1571-12-27",
+      "deathDate": "1630-11-15",
+      "noRecordedDeath": false,
+      "location": "Prague, place of astronomical work",
+      "dateNote": null,
+      "fields": [
+        "science"
+      ],
+      "aliases": [],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p86",
+      "name": "Nzinga",
+      "bornYear": 1583,
+      "diedYear": 1663,
+      "approximate": true,
+      "role": "Queen of Ndongo and Matamba who used diplomacy and military resistance against Portuguese expansion",
+      "latitude": -9.3,
+      "longitude": 16.93,
+      "region": "af",
+      "wikipediaSlug": "Nzinga_of_Ndongo_and_Matamba",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Nzinga_of_Ndongo_and_Matamba",
+      "sourceUrl": "https://www.metmuseum.org/essays/ana-nzinga-queen-of-ndongo",
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": "Matamba, approximate regional anchor for her kingdom",
+      "dateNote": "Birth year is approximate; regional marker represents Matamba rather than a precisely located royal residence.",
+      "fields": [
+        "politics"
+      ],
+      "aliases": [
+        "Njinga",
+        "Nzingha Mbande",
+        "Ana Nzinga"
+      ],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p87",
+      "name": "René Descartes",
+      "bornYear": 1596,
+      "diedYear": 1650,
+      "approximate": false,
+      "role": "Philosopher and mathematician influential in early modern metaphysics and analytic geometry",
+      "latitude": 52.16,
+      "longitude": 4.5,
+      "region": "eu",
+      "wikipediaSlug": "René_Descartes",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Ren%C3%A9_Descartes",
+      "sourceUrl": "https://plato.stanford.edu/entries/descartes/",
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": "Leiden, associated period of work in the Dutch Republic",
+      "dateNote": null,
+      "fields": [
+        "philosophy",
+        "science"
+      ],
+      "aliases": [
+        "Rene Descartes"
+      ],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p88",
+      "name": "Baruch Spinoza",
+      "bornYear": 1632,
+      "diedYear": 1677,
+      "approximate": false,
+      "role": "Dutch philosopher of Portuguese Jewish ancestry who wrote the Ethics and defended freedom of thought",
+      "latitude": 52.37,
+      "longitude": 4.9,
+      "region": "eu",
+      "wikipediaSlug": "Baruch_Spinoza",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Baruch_Spinoza",
+      "sourceUrl": "https://plato.stanford.edu/entries/spinoza/",
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": "Amsterdam, birthplace and early intellectual life",
+      "dateNote": null,
+      "fields": [
+        "philosophy"
+      ],
+      "aliases": [
+        "Benedict de Spinoza",
+        "Bento Spinoza"
+      ],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p89",
+      "name": "Sor Juana Inés de la Cruz",
+      "bornYear": 1651,
+      "diedYear": 1695,
+      "approximate": true,
+      "role": "New Spanish poet, scholar and nun who argued for women’s access to learning",
+      "latitude": 19.43,
+      "longitude": -99.13,
+      "region": "am",
+      "wikipediaSlug": "Juana_Inés_de_la_Cruz",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Juana_In%C3%A9s_de_la_Cruz",
+      "sourceUrl": "https://poets.org/poet/sor-juana-ines-de-la-cruz",
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": "Mexico City, convent and literary activity",
+      "dateNote": "Birth year is disputed, commonly 1648 or 1651; the map follows the Academy of American Poets’ qualified 1651.",
+      "fields": [
+        "literature",
+        "religion",
+        "social movements"
+      ],
+      "aliases": [
+        "Sor Juana",
+        "Juana Ines de la Cruz"
+      ],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p90",
+      "name": "Phillis Wheatley Peters",
+      "bornYear": 1753,
+      "diedYear": 1784,
+      "approximate": true,
+      "role": "West African-born poet enslaved in Boston whose published work challenged racist claims about intellectual ability",
+      "latitude": 42.36,
+      "longitude": -71.06,
+      "region": "am",
+      "wikipediaSlug": "Phillis_Wheatley",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Phillis_Wheatley",
+      "sourceUrl": "https://www.poetryfoundation.org/poets/phillis-wheatley",
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": "Boston, place of literary work following forced transport from West Africa",
+      "dateNote": "Birth year and precise West African birthplace are uncertain; about 1753 is conventional.",
+      "fields": [
+        "literature",
+        "social movements"
+      ],
+      "aliases": [
+        "Phillis Wheatley"
+      ],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p91",
+      "name": "Mary Wollstonecraft",
+      "bornYear": 1759,
+      "diedYear": 1797,
+      "approximate": false,
+      "role": "Moral and political philosopher, author of A Vindication of the Rights of Woman",
+      "latitude": 51.51,
+      "longitude": -0.13,
+      "region": "eu",
+      "wikipediaSlug": "Mary_Wollstonecraft",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Mary_Wollstonecraft",
+      "sourceUrl": "https://plato.stanford.edu/entries/wollstonecraft/",
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": "London, associated home and writing",
+      "dateNote": null,
+      "fields": [
+        "philosophy",
+        "social movements"
+      ],
+      "aliases": [],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p92",
+      "name": "Tecumseh",
+      "bornYear": 1768,
+      "diedYear": 1813,
+      "approximate": true,
+      "role": "Shawnee leader who built an Indigenous confederacy opposing United States territorial expansion",
+      "latitude": 39.93,
+      "longitude": -83.81,
+      "region": "am",
+      "wikipediaSlug": "Tecumseh",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Tecumseh",
+      "sourceUrl": "https://www.biographi.ca/en/bio/tecumseh_5F.html",
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": "Springfield, Ohio region, approximate birthplace",
+      "dateNote": "Birth year and precise birthplace are uncertain; the Dictionary of Canadian Biography gives about 1768.",
+      "fields": [
+        "politics",
+        "social movements"
+      ],
+      "aliases": [],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p93",
+      "name": "Mary Seacole",
+      "bornYear": 1805,
+      "diedYear": 1881,
+      "approximate": true,
+      "role": "Jamaican healer, entrepreneur and memoirist who cared for soldiers during the Crimean War",
+      "latitude": 17.97,
+      "longitude": -76.79,
+      "region": "am",
+      "wikipediaSlug": "Mary_Seacole",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Mary_Seacole",
+      "sourceUrl": "https://www.npg.org.uk/collections/search/personExtended/mp70879/mary-jane-seacole-nee-grant?tab=biography",
+      "birthDate": null,
+      "deathDate": "1881-05-14",
+      "noRecordedDeath": false,
+      "location": "Kingston, Jamaica, birthplace and early medical learning",
+      "dateNote": "The National Portrait Gallery gives birth around 1805.",
+      "fields": [
+        "medicine",
+        "literature"
+      ],
+      "aliases": [
+        "Mary Jane Seacole"
+      ],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p94",
+      "name": "Truganini",
+      "bornYear": 1812,
+      "diedYear": 1876,
+      "approximate": true,
+      "role": "Palawa woman and leader whose life records the violence of British colonisation in Tasmania",
+      "latitude": -43.3,
+      "longitude": 147.23,
+      "region": "oc",
+      "wikipediaSlug": "Truganini",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Truganini",
+      "sourceUrl": "https://adb.anu.edu.au/biography/trugernanner-truganini-4752",
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": "D’Entrecasteaux Channel, Tasmania, approximate home region",
+      "dateNote": "Birth year is approximate. Her death did not mark the disappearance of Tasmanian Aboriginal peoples.",
+      "fields": [
+        "social movements"
+      ],
+      "aliases": [
+        "Trugernanner"
+      ],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p95",
+      "name": "Frederick Douglass",
+      "bornYear": 1818,
+      "diedYear": 1895,
+      "approximate": false,
+      "role": "Abolitionist, author and orator who escaped slavery and advocated equal civil and political rights",
+      "latitude": 38.86,
+      "longitude": -76.99,
+      "region": "am",
+      "wikipediaSlug": "Frederick_Douglass",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Frederick_Douglass",
+      "sourceUrl": "https://www.nps.gov/people/frederick-douglass.htm",
+      "birthDate": null,
+      "deathDate": "1895-02-20",
+      "noRecordedDeath": false,
+      "location": "Cedar Hill, Washington, DC, later home",
+      "dateNote": "Birth month is recorded as February 1818; the exact day is unknown.",
+      "fields": [
+        "social movements",
+        "literature"
+      ],
+      "aliases": [],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p96",
+      "name": "Karl Marx",
+      "bornYear": 1818,
+      "diedYear": 1883,
+      "approximate": false,
+      "role": "Philosopher and political economist whose analysis of capitalism influenced socialist and communist movements",
+      "latitude": 51.51,
+      "longitude": -0.13,
+      "region": "eu",
+      "wikipediaSlug": "Karl_Marx",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Karl_Marx",
+      "sourceUrl": "https://plato.stanford.edu/entries/marx/",
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": "London, major period of research and writing",
+      "dateNote": null,
+      "fields": [
+        "philosophy",
+        "politics"
+      ],
+      "aliases": [],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p97",
+      "name": "Lakshmibai",
+      "bornYear": 1828,
+      "diedYear": 1858,
+      "approximate": false,
+      "role": "Rani of Jhansi and a prominent leader of armed resistance during the Indian rebellion of 1857–1858",
+      "latitude": 25.45,
+      "longitude": 78.57,
+      "region": "as",
+      "wikipediaSlug": "Rani_of_Jhansi",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Rani_of_Jhansi",
+      "sourceUrl": "https://www.qrhmuseum.com/lakshmibai-the-rani-of-jhansi",
+      "birthDate": "1828-11-19",
+      "deathDate": "1858-06-18",
+      "noRecordedDeath": false,
+      "location": "Jhansi, kingdom and centre of resistance",
+      "dateNote": null,
+      "fields": [
+        "politics",
+        "war"
+      ],
+      "aliases": [
+        "Rani Lakshmi Bai",
+        "Rani of Jhansi",
+        "Manikarnika Tambe"
+      ],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p98",
+      "name": "Sitting Bull",
+      "bornYear": 1831,
+      "diedYear": 1890,
+      "approximate": true,
+      "role": "Hunkpapa Lakota holy man and leader in resistance to United States expansion into the Northern Plains",
+      "latitude": 45.8,
+      "longitude": -100.6,
+      "region": "am",
+      "wikipediaSlug": "Sitting_Bull",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Sitting_Bull",
+      "sourceUrl": "https://americanindian.si.edu/nk360/plains-belonging-nation/oceti-sakowin.cshtml",
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": "Standing Rock region, associated home and community",
+      "dateNote": "The Smithsonian gives 1831?; other sources place his birth between 1831 and 1837.",
+      "fields": [
+        "religion",
+        "politics"
+      ],
+      "aliases": [
+        "Tatanka Iyotanka",
+        "Tatanka-Iyotanka"
+      ],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p99",
+      "name": "Yaa Asantewaa",
+      "bornYear": 1840,
+      "diedYear": 1921,
+      "approximate": true,
+      "role": "Asante queen mother of Ejisu who rallied resistance to British colonial rule in 1900",
+      "latitude": 6.72,
+      "longitude": -1.47,
+      "region": "af",
+      "wikipediaSlug": "Yaa_Asantewaa",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Yaa_Asantewaa",
+      "sourceUrl": "https://encyclopaediaafricana.com/asantewaa-yaa/",
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": "Ejisu, Asante, seat of her office",
+      "dateNote": "The conventional birth year is around 1840; the Encyclopaedia Africana also discusses the 1840s or 1850s.",
+      "fields": [
+        "politics",
+        "social movements"
+      ],
+      "aliases": [],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p100",
+      "name": "José Martí",
+      "bornYear": 1853,
+      "diedYear": 1895,
+      "approximate": false,
+      "role": "Cuban poet and political organiser whose writings and activism supported independence from Spain",
+      "latitude": 23.11,
+      "longitude": -82.37,
+      "region": "am",
+      "wikipediaSlug": "José_Martí",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Jos%C3%A9_Mart%C3%AD",
+      "sourceUrl": "https://guides.loc.gov/world-of-1898/jose-marti",
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": "Havana, birthplace",
+      "dateNote": null,
+      "fields": [
+        "literature",
+        "politics"
+      ],
+      "aliases": [
+        "Jose Marti"
+      ],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p101",
+      "name": "Nikola Tesla",
+      "bornYear": 1856,
+      "diedYear": 1943,
+      "approximate": false,
+      "role": "Serbian-American electrical inventor whose work helped develop alternating-current power systems",
+      "latitude": 40.75,
+      "longitude": -73.99,
+      "region": "am",
+      "wikipediaSlug": "Nikola_Tesla",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Nikola_Tesla",
+      "sourceUrl": "https://academic.oup.com/american-national-biography/reference/63042/reference-article-abstract/570591285",
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": "New York City, major period of electrical research",
+      "dateNote": null,
+      "fields": [
+        "science",
+        "technology"
+      ],
+      "aliases": [],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p102",
+      "name": "Rabindranath Tagore",
+      "bornYear": 1861,
+      "diedYear": 1941,
+      "approximate": false,
+      "role": "Bengali poet, educator and composer awarded the 1913 Nobel Prize in Literature",
+      "latitude": 22.57,
+      "longitude": 88.36,
+      "region": "as",
+      "wikipediaSlug": "Rabindranath_Tagore",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Rabindranath_Tagore",
+      "sourceUrl": "https://www.nobelprize.org/prizes/literature/1913/tagore/facts/",
+      "birthDate": "1861-05-07",
+      "deathDate": "1941-08-07",
+      "noRecordedDeath": false,
+      "location": "Kolkata / Calcutta, birthplace and literary life",
+      "dateNote": null,
+      "fields": [
+        "literature",
+        "music"
+      ],
+      "aliases": [],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p103",
+      "name": "Vladimir Lenin",
+      "bornYear": 1870,
+      "diedYear": 1924,
+      "approximate": false,
+      "role": "Bolshevik leader who headed the Soviet government after the October Revolution and helped establish one-party rule",
+      "latitude": 55.75,
+      "longitude": 37.62,
+      "region": "eu",
+      "wikipediaSlug": "Vladimir_Lenin",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Vladimir_Lenin",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/vladimir-lenin",
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": "Moscow, Soviet government",
+      "dateNote": null,
+      "fields": [
+        "politics"
+      ],
+      "aliases": [
+        "Vladimir Ilyich Ulyanov"
+      ],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p104",
+      "name": "Winston Churchill",
+      "bornYear": 1874,
+      "diedYear": 1965,
+      "approximate": false,
+      "role": "British prime minister during much of the Second World War and again from 1951 to 1955",
+      "latitude": 51.5,
+      "longitude": -0.13,
+      "region": "eu",
+      "wikipediaSlug": "Winston_Churchill",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Winston_Churchill",
+      "sourceUrl": "https://www.gov.uk/government/history/past-prime-ministers/winston-churchill",
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": "London, seat of government",
+      "dateNote": null,
+      "fields": [
+        "politics"
+      ],
+      "aliases": [],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p105",
+      "name": "Joseph Stalin",
+      "bornYear": 1878,
+      "diedYear": 1953,
+      "approximate": false,
+      "role": "Soviet dictator whose rule involved forced collectivisation, mass repression and leadership during the Second World War",
+      "latitude": 55.75,
+      "longitude": 37.62,
+      "region": "eu",
+      "wikipediaSlug": "Joseph_Stalin",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Joseph_Stalin",
+      "sourceUrl": "https://encyclopedia.1914-1918-online.net/wp-content/uploads/2023/01/ams/959092/pdf/1914-1918-Online-stalin_joseph-2017-01-31.pdf",
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": "Moscow, Soviet government",
+      "dateNote": "Uses the documented 1878 birth year rather than the official Soviet-era 1879 date.",
+      "fields": [
+        "politics"
+      ],
+      "aliases": [
+        "Iosif Stalin",
+        "Ioseb Jughashvili"
+      ],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p106",
+      "name": "Te Puea Hērangi",
+      "bornYear": 1883,
+      "diedYear": 1952,
+      "approximate": false,
+      "role": "Waikato Māori leader who strengthened the Kīngitanga and helped establish Tūrangawaewae marae",
+      "latitude": -37.66,
+      "longitude": 175.15,
+      "region": "oc",
+      "wikipediaSlug": "Te_Puea_Hērangi",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Te_Puea_H%C4%93rangi",
+      "sourceUrl": "https://teara.govt.nz/en/biographies/3h17/herangi-te-kirihaehae-te-puea",
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": "Ngāruawāhia, Tūrangawaewae marae",
+      "dateNote": null,
+      "fields": [
+        "politics",
+        "social movements"
+      ],
+      "aliases": [
+        "Te Puea Herangi"
+      ],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p107",
+      "name": "C. V. Raman",
+      "bornYear": 1888,
+      "diedYear": 1970,
+      "approximate": false,
+      "role": "Indian physicist awarded the Nobel Prize for research on the scattering of light",
+      "latitude": 12.97,
+      "longitude": 77.59,
+      "region": "as",
+      "wikipediaSlug": "C._V._Raman",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/C._V._Raman",
+      "sourceUrl": "https://www.nobelprize.org/prizes/physics/1930/raman/biographical/",
+      "birthDate": "1888-11-07",
+      "deathDate": "1970-11-21",
+      "noRecordedDeath": false,
+      "location": "Bengaluru / Bangalore, Indian Institute of Science and later research",
+      "dateNote": null,
+      "fields": [
+        "science"
+      ],
+      "aliases": [
+        "Chandrasekhara Venkata Raman"
+      ],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p108",
+      "name": "Adolf Hitler",
+      "bornYear": 1889,
+      "diedYear": 1945,
+      "approximate": false,
+      "role": "Nazi dictator whose regime initiated war in Europe and perpetrated the Holocaust and other mass atrocities",
+      "latitude": 52.52,
+      "longitude": 13.4,
+      "region": "eu",
+      "wikipediaSlug": "Adolf_Hitler",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Adolf_Hitler",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/adolf-hitler",
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": "Berlin, seat of the Nazi regime",
+      "dateNote": null,
+      "fields": [
+        "politics",
+        "war"
+      ],
+      "aliases": [],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p109",
+      "name": "Gabriela Mistral",
+      "bornYear": 1889,
+      "diedYear": 1957,
+      "approximate": false,
+      "role": "Chilean poet, educator and diplomat, the first Latin American writer awarded the Nobel Prize in Literature",
+      "latitude": -30.03,
+      "longitude": -70.71,
+      "region": "am",
+      "wikipediaSlug": "Gabriela_Mistral",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Gabriela_Mistral",
+      "sourceUrl": "https://www.loc.gov/item/n50033817/gabriela-mistral-chile-1889-1957/",
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": "Vicuña, Chile, birthplace",
+      "dateNote": null,
+      "fields": [
+        "literature"
+      ],
+      "aliases": [
+        "Lucila Godoy Alcayaga"
+      ],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p110",
+      "name": "Alan Turing",
+      "bornYear": 1912,
+      "diedYear": 1954,
+      "approximate": false,
+      "role": "Mathematician whose work helped establish computer science and contributed to wartime codebreaking",
+      "latitude": 53.47,
+      "longitude": -2.23,
+      "region": "eu",
+      "wikipediaSlug": "Alan_Turing",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Alan_Turing",
+      "sourceUrl": "https://turingarchive.kings.cam.ac.uk/about-alan-turing",
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": "Manchester, later work on computing and mathematical biology",
+      "dateNote": null,
+      "fields": [
+        "science",
+        "technology"
+      ],
+      "aliases": [],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p111",
+      "name": "Abdus Salam",
+      "bornYear": 1926,
+      "diedYear": 1996,
+      "approximate": false,
+      "role": "Pakistani theoretical physicist awarded a share of the Nobel Prize for electroweak unification",
+      "latitude": 31.27,
+      "longitude": 72.32,
+      "region": "as",
+      "wikipediaSlug": "Abdus_Salam",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Abdus_Salam",
+      "sourceUrl": "https://www.nobelprize.org/prizes/physics/1979/salam/facts/",
+      "birthDate": "1926-01-29",
+      "deathDate": "1996-11-21",
+      "noRecordedDeath": false,
+      "location": "Jhang, Punjab, birthplace",
+      "dateNote": null,
+      "fields": [
+        "science"
+      ],
+      "aliases": [],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p112",
+      "name": "Chinua Achebe",
+      "bornYear": 1930,
+      "diedYear": 2013,
+      "approximate": false,
+      "role": "Nigerian novelist whose Things Fall Apart examines Igbo society and the impact of colonialism",
+      "latitude": 6.15,
+      "longitude": 6.86,
+      "region": "af",
+      "wikipediaSlug": "Chinua_Achebe",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Chinua_Achebe",
+      "sourceUrl": "https://academic.oup.com/reference/62328/reference-article-abstract/553807702",
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": "Ogidi, Nigeria, birthplace and formative community",
+      "dateNote": null,
+      "fields": [
+        "literature"
+      ],
+      "aliases": [],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p113",
+      "name": "Tu Youyou",
+      "bornYear": 1930,
+      "diedYear": null,
+      "approximate": false,
+      "role": "Chinese pharmaceutical researcher awarded a share of the Nobel Prize for discoveries leading to artemisinin malaria therapy",
+      "latitude": 39.91,
+      "longitude": 116.39,
+      "region": "as",
+      "wikipediaSlug": "Tu_Youyou",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Tu_Youyou",
+      "sourceUrl": "https://www.nobelprize.org/prizes/medicine/2015/tu/facts/",
+      "birthDate": "1930-12-30",
+      "deathDate": null,
+      "noRecordedDeath": true,
+      "location": "Beijing, China Academy of Chinese Medical Sciences",
+      "dateNote": null,
+      "fields": [
+        "science",
+        "medicine"
+      ],
+      "aliases": [
+        "Youyou Tu",
+        "屠呦呦"
+      ],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p114",
+      "name": "Desmond Tutu",
+      "bornYear": 1931,
+      "diedYear": 2021,
+      "approximate": false,
+      "role": "South African Anglican archbishop and opponent of apartheid awarded the Nobel Peace Prize",
+      "latitude": -33.93,
+      "longitude": 18.42,
+      "region": "af",
+      "wikipediaSlug": "Desmond_Tutu",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Desmond_Tutu",
+      "sourceUrl": "https://www.nobelprize.org/prizes/peace/1984/tutu/facts/",
+      "birthDate": "1931-10-07",
+      "deathDate": "2021-12-26",
+      "noRecordedDeath": false,
+      "location": "Cape Town, archbishopric",
+      "dateNote": null,
+      "fields": [
+        "religion",
+        "social movements"
+      ],
+      "aliases": [],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p115",
+      "name": "Wole Soyinka",
+      "bornYear": 1934,
+      "diedYear": null,
+      "approximate": false,
+      "role": "Nigerian playwright, poet and political activist awarded the 1986 Nobel Prize in Literature",
+      "latitude": 7.16,
+      "longitude": 3.35,
+      "region": "af",
+      "wikipediaSlug": "Wole_Soyinka",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Wole_Soyinka",
+      "sourceUrl": "https://www.nobelprize.org/prizes/literature/1986/soyinka/facts/",
+      "birthDate": "1934-07-13",
+      "deathDate": null,
+      "noRecordedDeath": true,
+      "location": "Abeokuta, Nigeria, birthplace",
+      "dateNote": null,
+      "fields": [
+        "literature",
+        "social movements"
+      ],
+      "aliases": [],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p116",
+      "name": "Wangari Maathai",
+      "bornYear": 1940,
+      "diedYear": 2011,
+      "approximate": false,
+      "role": "Kenyan environmental and democracy activist who founded the Green Belt Movement and received the Nobel Peace Prize",
+      "latitude": -1.29,
+      "longitude": 36.82,
+      "region": "af",
+      "wikipediaSlug": "Wangari_Maathai",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Wangari_Maathai",
+      "sourceUrl": "https://www.nobelprize.org/prizes/peace/2004/maathai/facts/",
+      "birthDate": "1940-04-01",
+      "deathDate": "2011-09-25",
+      "noRecordedDeath": false,
+      "location": "Nairobi, Green Belt Movement activity",
+      "dateNote": null,
+      "fields": [
+        "science",
+        "social movements"
+      ],
+      "aliases": [],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p117",
+      "name": "Rigoberta Menchú Tum",
+      "bornYear": 1959,
+      "diedYear": null,
+      "approximate": false,
+      "role": "K’iche’ Maya human rights advocate awarded the Nobel Peace Prize for work on Indigenous rights and reconciliation",
+      "latitude": 15.42,
+      "longitude": -90.77,
+      "region": "am",
+      "wikipediaSlug": "Rigoberta_Menchú",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Rigoberta_Mench%C3%BA",
+      "sourceUrl": "https://www.nobelprize.org/prizes/peace/1992/tum/facts/",
+      "birthDate": "1959-01-09",
+      "deathDate": null,
+      "noRecordedDeath": true,
+      "location": "Chimel, Guatemala, approximate birthplace and community anchor",
+      "dateNote": null,
+      "fields": [
+        "social movements"
+      ],
+      "aliases": [
+        "Rigoberta Menchu",
+        "Rigoberta Menchu Tum"
+      ],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p118",
+      "name": "Maryam Mirzakhani",
+      "bornYear": 1977,
+      "diedYear": 2017,
+      "approximate": false,
+      "role": "Iranian mathematician whose work on geometry and dynamical systems earned the first Fields Medal awarded to a woman",
+      "latitude": 35.69,
+      "longitude": 51.39,
+      "region": "me",
+      "wikipediaSlug": "Maryam_Mirzakhani",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Maryam_Mirzakhani",
+      "sourceUrl": "https://www.ias.edu/scholars/maryam-mirzakhani",
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": "Tehran, birthplace and early mathematical education",
+      "dateNote": null,
+      "fields": [
+        "science"
+      ],
+      "aliases": [],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p119",
+      "name": "Huda Shaarawi",
+      "bornYear": 1879,
+      "diedYear": 1947,
+      "approximate": false,
+      "role": "Egyptian feminist and nationalist who founded the Egyptian Feminist Union",
+      "latitude": 30.04,
+      "longitude": 31.24,
+      "region": "me",
+      "wikipediaSlug": "Huda_Shaarawi",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Huda_Shaarawi",
+      "sourceUrl": "https://catalogue.bnf.fr/ark:/12148/cb124745405",
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": "Cairo, feminist organising and public life",
+      "dateNote": null,
+      "fields": [
+        "social movements",
+        "politics"
+      ],
+      "aliases": [
+        "Huda Sha’arawi",
+        "Hoda Shaarawi"
+      ],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p120",
+      "name": "Rifa’a al-Tahtawi",
+      "bornYear": 1801,
+      "diedYear": 1873,
+      "approximate": false,
+      "role": "Egyptian educator, translator and writer associated with nineteenth-century intellectual and educational reform",
+      "latitude": 30.04,
+      "longitude": 31.24,
+      "region": "me",
+      "wikipediaSlug": "Rifa'a_al-Tahtawi",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Rifa'a_al-Tahtawi",
+      "sourceUrl": "https://www.rem.routledge.com/articles/al-tahtawi-rifaa-1801-1873",
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": "Cairo, translation school and educational work",
+      "dateNote": null,
+      "fields": [
+        "literature",
+        "philosophy"
+      ],
+      "aliases": [
+        "Rifaa al Tahtawi",
+        "Rifa al Tahtawi"
+      ],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p121",
+      "name": "Abd al-Qadir",
+      "bornYear": 1808,
+      "diedYear": 1883,
+      "approximate": false,
+      "role": "Algerian emir and Sufi scholar who led resistance to French conquest",
+      "latitude": 35.4,
+      "longitude": 0.14,
+      "region": "me",
+      "wikipediaSlug": "Emir_Abdelkader",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Emir_Abdelkader",
+      "sourceUrl": "https://islamansiklopedisi.org.tr/abdulkadir-el-cezairi",
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": "Mascara, Algeria, centre of his emirate",
+      "dateNote": null,
+      "fields": [
+        "politics",
+        "religion"
+      ],
+      "aliases": [
+        "Abdelkader",
+        "Abd el Kader",
+        "Abd al Qadir al Jazairi"
+      ],
+      "reviewedOn": "2026-11-06"
+    },
+    {
+      "id": "p122",
+      "name": "Jamal al-Din al-Afghani",
+      "bornYear": 1838,
+      "diedYear": 1897,
+      "approximate": true,
+      "role": "Muslim political activist and reformist thinker who advocated resistance to European imperial expansion",
+      "latitude": 34.78,
+      "longitude": 48.12,
+      "region": "me",
+      "wikipediaSlug": "Jamal_al-Din_al-Afghani",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Jamal_al-Din_al-Afghani",
+      "sourceUrl": "https://www.iranicaonline.org/articles/afgani-jamal-al-din/",
+      "birthDate": null,
+      "deathDate": null,
+      "noRecordedDeath": false,
+      "location": "Asadabad, Iran, associated birthplace",
+      "dateNote": "Birth is dated 1838 or 1839. His adopted name al-Afghani does not establish an Afghan birthplace.",
+      "fields": [
+        "politics",
+        "philosophy",
+        "religion"
+      ],
+      "aliases": [
+        "Jamal ad Din al Afghani",
+        "Jamal al Din Asadabadi"
+      ],
+      "reviewedOn": "2026-11-06"
     }
   ]
 }

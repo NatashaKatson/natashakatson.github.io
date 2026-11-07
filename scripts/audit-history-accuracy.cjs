@@ -54,9 +54,14 @@ function audit() {
       source: source || null };
   });
   for (const [i, row] of people.entries()) {
-    check(Number.isInteger(row[1]) && row[1] !== 0 && Number.isInteger(row[2]) && row[2] !== 0 && row[1] <= row[2], `p${i}: invalid lifespan`);
-    check(Math.abs(row[5]) <= 90 && Math.abs(row[6]) <= 180, `p${i}: invalid point`);
+    check(Number.isInteger(row[1]) && row[1] !== 0 && row[1] <= 2026 &&
+      (row[2] === null || (Number.isInteger(row[2]) && row[2] !== 0 && row[2] <= 2026 && row[1] <= row[2])), `p${i}: invalid lifespan`);
+    check(Number.isFinite(row[5]) && Math.abs(row[5]) <= 90 && Number.isFinite(row[6]) && Math.abs(row[6]) <= 180, `p${i}: invalid point`);
+    check(!!row[0] && !!row[4] && !!row[8] && [0, 1].includes(row[3]), `p${i}: incomplete record`);
+    check(['eu', 'me', 'af', 'as', 'am', 'oc'].includes(row[7]), `p${i}: unknown region`);
+    check(!row[9] || /^https:\/\//.test(row[9]), `p${i}: invalid source URL`);
   }
+  check(new Set(people.map(row => row[8])).size === people.length, 'Duplicate person identities');
   const index = read('borders/index.json');
   check(JSON.stringify(index) === html.match(/id="bordersIndex">(.*?)<\/script>/s)[1], 'Embedded border manifest differs from disk');
   const versions = new Map(), byChunk = new Map();

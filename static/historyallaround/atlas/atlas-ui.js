@@ -235,7 +235,7 @@
   const scopeButton = document.getElementById('timelineScope');
   scopeButton.onclick = () => {
     openMenu(document.querySelector('[data-atlas-menu="eraPanel"]'));
-    document.getElementById('eraChoices').querySelector('button:not([hidden])')?.focus({ preventScroll: true });
+    document.getElementById('eraPanel').querySelector('[data-suggested-year], #eraChoices button:not([hidden])')?.focus({ preventScroll: true });
   };
   const dateInput = document.getElementById('gotoInput');
   const dateForm = document.getElementById('goto');
@@ -367,6 +367,7 @@
     }
     lastJourneySelection = journeySelection; lastChallengeView = challengeView;
     app.dataset.sidebarContext = context;
+    window.AtlasExplore?.render();
     document.querySelectorAll('[data-workspace]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.workspace === workspace)));
     const detailNode = document.getElementById('detail').firstElementChild;
     const key = `${workspace}/${context}/${state.year}/${state.sel}/${selectedPolity?.name || ''}/${journeySelection}/${challengeView}`;
@@ -395,7 +396,7 @@
     const pair = document.querySelector('.contemporaries-card');
     if (pair) pair.hidden = journeys || context !== 'people' || (!HistoryDiscovery.contemporaryPair() && !DiscoveryCore.contemporaryPair(ppl, state.year));
     const heading = !document.getElementById('detail').hidden && document.querySelector('#detail h3')?.textContent;
-    document.getElementById('sheetPreview').textContent = journeys ? 'Browse journeys ↑' : (heading || (context === 'people' ? 'Browse people ↑' : document.querySelector('#regions .t')?.textContent || 'Browse events ↑'));
+    document.getElementById('sheetPreview').textContent = journeys ? 'Browse journeys ↑' : (heading || (context === 'people' ? 'Browse people ↑' : window.AtlasExplore?.preview() || document.querySelector('#yearIntroduction > summary span')?.textContent || document.querySelector('#regions .t')?.textContent || 'Browse events ↑'));
     sheetToggle.querySelector('span:nth-child(2)').textContent = journeys ? 'Journeys' : 'Around this time';
     document.getElementById('currentEraLabel').textContent = document.getElementById('era').textContent;
     document.getElementById('readoutEra').textContent = document.getElementById('era').textContent;
