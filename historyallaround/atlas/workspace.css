@@ -40,7 +40,8 @@ body { height: auto; min-height: 100%; overflow: visible; background: var(--work
 .timeline-date .goto { width: auto; flex: none; align-items: center; gap: 3px; }
 .timeline-date .goto > div { flex: none; }
 .timeline-date .tool-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
-.timeline-date .goto input { width: 133px; min-width: 0; height: 40px; font: 500 21px var(--display); text-align: center; padding: 4px 6px; border: 1px solid transparent; background: transparent; border-radius: 5px; }
+/* Four-digit years must fit even with wider fallback fonts and compact widths. */
+.timeline-date .goto input { width: 133px; min-width: calc(4ch + 14px); height: 40px; font: 500 21px var(--display); text-align: center; padding: 4px 6px; border: 1px solid transparent; background: transparent; border-radius: 5px; }
 .timeline-date .goto input:hover, .timeline-date .goto input:focus { border-color: #d6cabb; background: #fff; }
 .time .timeline-date .goto input.is-wide-date { width: 16ch; }
 .timeline-date .goto .iconbtn { display: none; width: 28px !important; height: 36px !important; min-height: 36px; background: transparent !important; color: var(--workspace-accent) !important; }

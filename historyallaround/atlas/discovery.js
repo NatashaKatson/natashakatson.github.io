@@ -143,6 +143,7 @@
     };
   }
   function restore(s) {
+    window.AtlasExplore?.clearCountry();
     flyToken++;
     placeToken++;
     pinned = s.pinned ?? null;
@@ -924,6 +925,7 @@
     if (!isCurrent()) return false;
     trail.push(snapshot());
     if (trail.length > 30) trail.shift();
+    window.AtlasExplore?.clearCountry();
     placeToken++;
     linkToken++;
     place = null;
@@ -1101,6 +1103,7 @@
       compare.selectedYear = year;
     },
     selectWater(point, year, polity) {
+      window.AtlasExplore?.clearCountry();
       clearPlaceForSelection();
       lastPoint = point;
       searchPlace = null;
@@ -1126,6 +1129,9 @@
     },
     displayedYears() {
       return compare.on ? [compare.left, state.year] : [state.year];
+    },
+    selectionYear() {
+      return compare.selectedYear ?? state.year;
     },
     detail() {
       renderSidebarScope();

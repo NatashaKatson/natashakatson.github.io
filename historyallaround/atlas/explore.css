@@ -1,0 +1,71 @@
+/* Discovery additions use the Atlas's existing paper, serif and accent palette. */
+.year-introduction { margin: 0 0 18px; padding: 0 0 16px; border-bottom: 1px solid var(--workspace-line); }
+.year-introduction > summary { cursor: pointer; list-style: none; }
+.year-introduction > summary::-webkit-details-marker { display: none; }
+.year-introduction > summary small { display: block; font: 9px/1.6 var(--body); letter-spacing: .12em; color: #8a503d; }
+.year-introduction > summary span { display: block; margin-top: 5px; font: 500 22px/1.35 var(--display); }
+.year-introduction > summary span::after { content: ' +'; color: var(--workspace-accent); font: 16px var(--body); }
+.year-introduction[open] > summary span::after { content: ' −'; }
+.year-introduction p { font: 13px/1.65 var(--body); margin: 10px 0; }
+.year-introduction .intro-source { font-size: 10px; color: #766a5e; }
+.year-introduction a { color: var(--workspace-accent); }
+.intro-invitation { color: #665b50; }
+.intro-records > summary, .more-records > summary { cursor: pointer; min-height: 36px; padding: 8px 0; font: 12px/1.6 var(--body); color: var(--workspace-accent); }
+.intro-records button, .area-record { display: block; width: 100%; padding: 10px 8px; border: 0; border-bottom: 1px solid var(--workspace-line); background: transparent; font: 12px/1.5 var(--body); text-align: left; cursor: pointer; color: var(--workspace-ink); }
+.intro-records button:hover, .area-record:hover { background: #fffdfa; }
+.intro-records strong, .area-record strong { display: block; font-weight: 500; }
+.intro-records small, .area-record small { display: block; margin-top: 3px; font-size: 10px; color: #756c60; }
+.browse-controls { margin-bottom: 16px; }
+.browse-fields { display: flex; gap: 8px; }
+.browse-fields label { display: block; flex: 1; min-width: 0; font: 10px/1.6 var(--body); color: #756c60; }
+.browse-fields select, .year-step-choice select { display: block; width: 100%; max-width: 100%; min-height: 40px; margin-top: 4px; padding: 7px; border: 1px solid var(--workspace-line); border-radius: 4px; background: #fffdfa; color: var(--workspace-ink); font: 12px var(--body); }
+.browse-controls p { margin: 7px 0 0; font: 10px/1.6 var(--body); color: #756c60; }
+.browse-controls > button { min-height: 36px; border: 0; padding: 4px 0; background: none; color: var(--workspace-accent); font: 12px var(--body); cursor: pointer; }
+.app[data-workspace='journeys'] .year-introduction, .app[data-workspace='journeys'] .browse-controls { display: none; }
+.suggested-years h3 { font: 500 15px var(--display); margin: 14px 0 5px; }
+.suggested-years p { font: 11px/1.6 var(--body); margin: 6px 0; }
+.era-panel .suggested-years button { display: flex; gap: 12px; width: 100%; align-items: baseline; padding: 9px 4px; border: 0; border-bottom: 1px solid var(--workspace-line); background: none; color: var(--workspace-ink); font: 12px/1.5 var(--body); text-align: left; cursor: pointer; }
+.suggested-years button b { flex: 0 0 65px; color: var(--workspace-accent); font-weight: 500; }
+.suggested-years button[aria-current='date'] { background: #eee5d8; }
+.year-step-choice { display: block; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--workspace-line); font: 12px/1.6 var(--body); }
+.year-step-choice small { display: block; margin-top: 8px; color: #756c60; }
+.era-panel { max-height: min(680px, calc(100dvh - 280px)); overflow-y: auto; overscroll-behavior: contain; }
+.atlas-quick-help { position: relative; pointer-events: auto; }
+.atlas-quick-help > summary { cursor: pointer; min-height: 36px; padding: 8px 0; font: 11px/1.6 var(--body); color: #765c46; }
+.atlas-quick-help[open] { max-width: min(330px, calc(100vw - 100px)); padding: 12px; background: #faf8f4f5; border: 1px solid var(--workspace-line); border-radius: 5px; box-shadow: 0 5px 20px #30271e14; max-height: min(60dvh, var(--atlas-help-height, 360px)); overflow-y: auto; }
+.map-context .atlas-quick-help p { position: static; width: auto; max-width: none; padding: 0; border: 0; border-radius: 0; background: none; box-shadow: none; margin: 8px 0; font: 12px/1.6 var(--body); color: var(--workspace-ink); }
+.atlas-quick-help button { border: 0; padding: 0; background: none; color: var(--workspace-accent); text-decoration: underline; font: inherit; cursor: pointer; }
+.mapped-records { margin-top: 16px; border-top: 1px solid var(--workspace-line); }
+.mapped-records h4 { font: 500 16px/1.4 var(--display); margin: 14px 0 8px; }
+.mapped-records h5 { font: 500 12px var(--body); margin: 14px 0 5px; }
+.side .mapped-records p { font-size: 11px; line-height: 1.6; }
+.people > .more-records { width: 100%; }
+.person small { display: block; color: #756c60; font: 10px/1.5 var(--body); }
+.topic-journeys { margin: 20px 0; padding-block: 16px; border-block: 1px solid var(--workspace-line); }
+.side.journey-panel-open .topic-journeys { display: none; }
+.topic-journeys h3, .topic-journeys h4 { font: 500 19px/1.4 var(--display); }
+.topic-journeys p { font: 12px/1.6 var(--body); color: #756c60; }
+.topic-choices, .topic-reader > div { display: flex; flex-wrap: wrap; gap: 8px; }
+.topic-journeys button { min-height: 40px; padding: 8px 10px; border: 1px solid var(--workspace-line); border-radius: 4px; background: #fffdfa; color: var(--workspace-accent); font: 12px/1.5 var(--body); cursor: pointer; }
+.topic-journeys button:disabled { opacity: .45; cursor: default; }
+.topic-reader { margin-top: 16px; }
+@media (min-width: 1181px) {
+  .time .controls .play { width: auto; padding-inline: 12px; gap: 7px; font-size: 11px; border-radius: 22px; }
+  .time .controls .play::before { display: none; }
+}
+@media (max-width: 860px) {
+  .browse-fields select { font-size: 16px; }
+  .suggested-years button, .intro-records button, .area-record, .more-records > summary, .intro-records > summary { min-height: 44px; }
+  .atlas-quick-help > summary { min-height: 44px; }
+  .time:has(#eraPanel:not([hidden])) { z-index: 40; }
+  .era-panel { top: 12px; bottom: auto; max-height: calc(100dvh - 24px); }
+}
+@media (max-width: 860px) and (min-height: 551px) {
+  .side:not(.sheet-open) #sheetPreview { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; white-space: normal; line-height: 1.4; }
+}
+@media (min-width: 861px) and (max-height: 720px) {
+  .era-panel { position: fixed; top: 12px; bottom: auto; right: 24px; max-height: calc(100dvh - 24px); }
+}
+@media (max-height: 700px) {
+  .map-context .atlas-quick-help[open] { position: fixed; top: 12px; left: 12px; z-index: 50; max-width: min(330px, calc(100vw - 24px)); max-height: calc(100dvh - 24px); }
+}
