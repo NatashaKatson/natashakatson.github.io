@@ -5,6 +5,7 @@ import os from 'node:os';
 import path from 'node:path';
 const cdp = process.env.ATLAS_CDP_URL || 'http://127.0.0.1:9231';
 const url = process.env.ATLAS_TEST_URL || 'http://127.0.0.1:8891/atlas/';
+const screenshotDir = process.env.ATLAS_SCREENSHOT_DIR || os.tmpdir();
 const tab = await (await fetch(cdp + '/json/new?about:blank', { method: 'PUT' })).json();
 const ws = new WebSocket(tab.webSocketDebuggerUrl);
 await new Promise((resolve, reject) => { ws.addEventListener('open', resolve, { once: true }); ws.addEventListener('error', reject, { once: true }); });
@@ -32,7 +33,7 @@ const waitFor = async (expression) => {
   throw Error('Not ready: ' + expression);
 };
 
-const shot=async name=>{const s=await send('Page.captureScreenshot',{format:'png'});fs.writeFileSync('/private/tmp/atlas-cartography-'+name+'.png',Buffer.from(s.data,'base64'))};
+const shot=async name=>{const s=await send('Page.captureScreenshot',{format:'png'});fs.mkdirSync(screenshotDir,{recursive:true});fs.writeFileSync(path.join(screenshotDir,'atlas-cartography-'+name+'.png'),Buffer.from(s.data,'base64'))};
 const click=async selector=>{const p=await evaluate(`(()=>{const r=document.querySelector(${JSON.stringify(selector)}).getBoundingClientRect();return{x:r.left+r.width/2,y:r.top+r.height/2}})()`);for(const type of ['mousePressed','mouseReleased'])await send('Input.dispatchMouseEvent',{type,...p,button:'left',clickCount:1})};
 try{
  await send('Page.enable');await send('Runtime.enable');await send('Network.enable');await send('Network.setCacheDisabled',{cacheDisabled:true});await send('Network.setBlockedURLs',{urls:['https://*']});

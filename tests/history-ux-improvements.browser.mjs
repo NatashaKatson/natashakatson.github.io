@@ -1,8 +1,11 @@
 // User-facing regressions from the November UI review: reading space and journey continuity.
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
 const cdp = process.env.ATLAS_CDP_URL || 'http://127.0.0.1:9231';
 const url = process.env.ATLAS_TEST_URL || 'http://127.0.0.1:8891/atlas/';
+const screenshotDir = process.env.ATLAS_SCREENSHOT_DIR || os.tmpdir();
 const tab = await (await fetch(cdp + '/json/new?about:blank', { method: 'PUT' })).json();
 const ws = new WebSocket(tab.webSocketDebuggerUrl);
 await new Promise((resolve, reject) => { ws.addEventListener('open', resolve, { once: true }); ws.addEventListener('error', reject, { once: true }); });
@@ -37,7 +40,8 @@ const enter = async () => {
 };
 const screenshot = async name => {
   const shot = await send('Page.captureScreenshot', { format: 'png' });
-  fs.writeFileSync('/private/tmp/atlas-ux-updated-' + name + '.png', Buffer.from(shot.data, 'base64'));
+  fs.mkdirSync(screenshotDir, { recursive: true });
+  fs.writeFileSync(path.join(screenshotDir, 'atlas-ux-updated-' + name + '.png'), Buffer.from(shot.data, 'base64'));
 };
 try {
   await send('Page.enable'); await send('Runtime.enable'); await send('Network.enable');
